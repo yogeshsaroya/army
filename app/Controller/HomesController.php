@@ -1,0 +1,605 @@
+<?php
+
+App::uses('AppController', 'Controller');
+
+class HomesController extends AppController
+{
+
+    public $uses = array('User', 'Brand', 'Model', 'Motor', 'Product', 'ExhaustBrand', 'ExhaustModel', 'ExhaustProduct', 'Library', 'ItemDetail', 'QualityDetail', 'Cart', 'PromoCode', 'WebSetting', 'World', 'Shipping', 'Address', 'Order', 'OrderItem', 'OrderHistory');
+    var $components = array('Auth', 'Session', 'Email', 'RequestHandler', 'Paginator', 'DATA');
+    var $helpers = array('Html', 'Form', 'Session', 'Paginator', 'Lab');
+    function beforeFilter()
+    {
+        AppController::beforeFilter();
+        $this->Auth->allow();
+    }
+
+    public function index()
+    {
+        $this->set('title_for_layout', 'ARMYTRIX OBDII VALVETRONIC REMOTE CONTROL MODULE');
+        $page_meta = [
+            'des' => 'ARMYTRIX OBDII Sound kits, the Innovative Valvetronic Technology Brings about Unprecedented Versatility to Car Owners.',
+            'key' => 'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
+        ];
+        $this->set('page_meta', $page_meta);
+    }
+
+    public function sound_test()
+    {
+        $this->set('title_for_layout', 'Armytrix Advanced Sound Control Kits : ARMYTRIX - Automotive Weaponized');
+    }
+
+    public function performance()
+    {
+        $this->set('title_for_layout', 'ARMYTRIX PERFORMANCE ENGINEERING');
+        $page_meta = [
+            'des' => 'High-Performance Vehicles are Sophisticated Machines Built to Satisfy our Desire to Test the Boundaries. ARMYTRIX Push Performance Parts Beyond the Imaginable.',
+            'key' => 'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
+        ];
+        $this->set('page_meta', $page_meta);
+    }
+    public function testimonial()
+    {
+        $this->set('title_for_layout', 'WHAT DO THEY SAY ABOUT ARMYTRIX');
+        $page_meta = [
+            'des' => 'Full Throttle Engaged, F1 Style Audio Pitch Invades Your Auditory System. ARMYTRIX Arsenal Continues to Evolve, Call upon our Perpetually Stocked Armory.',
+            'key' => 'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
+        ];
+        $this->set('page_meta', $page_meta);
+    }
+
+    public function material()
+    {
+        $this->set('title_for_layout', 'ARMYTRIX MARKETING MATERIALS');
+        $page_meta = [
+            'des' => 'Feel Free to Send us Your Company email in Below form, we will Share all our Marketing Materials with You, Thanks!',
+            'key' => 'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
+        ];
+        $this->set('page_meta', $page_meta);
+
+        if ($this->RequestHandler->isAjax()) {
+            if (!empty($this->data)) {
+
+                if (isset($this->data['g-recaptcha-response']) && !empty($this->data['g-recaptcha-response'])) {
+                    $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . DataSecret . "&response=" . $this->data['g-recaptcha-response'] . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
+                    $arr = json_decode($response, true);
+                    if (isset($arr['success'])) {
+
+                        $parameters = array('WEB' => $this->data['User']['url'], 'EMAIL' => $this->data['User']['email']);
+
+                        $this->DATA->AppMail('marketing@armytrix.com', 'Dropbox', $parameters, $dateTime = DATE);
+                        echo "<div class='alert alert-success'>Message sent.</div>";
+                        echo "<script>$('#drop_frm')[0].reset();</script>";
+                    } else {
+                        echo "<div class='alert alert-danger'>Please verify that you are not a robot.</div>";
+                    }
+                } else {
+                    echo "<div class='alert alert-danger'>Please verify that you are not a robot.</div>";
+                }
+                echo '<script>grecaptcha.reset();</script>';
+                exit;
+            }
+        }
+    }
+    public function program()
+    {
+        $this->set('title_for_layout', 'SPONSORSHIP');
+        $page_meta = [
+            'des' => 'If You are SEMA Confirmed Attendee that Needs ARMYTRIX.  If You\'re a Youtuber Working on an Incredible Project Car You Believe Needs ARMYTRIX.',
+            'key' => 'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
+        ];
+        $this->set('page_meta', $page_meta);
+    }
+
+    public function suggest()
+    {
+        $this->set('title_for_layout', 'Suggest Armytrix');
+
+
+        if ($this->RequestHandler->isAjax()) {
+            if (!empty($this->data)) {
+
+                $m = trim($this->data['msg']);
+                if (empty($m)) {
+                    echo "<div class='alert alert-danger'>Please enter your suggestion.</div>";
+                } else {
+                    if (isset($this->data['g-recaptcha-response']) && !empty($this->data['g-recaptcha-response'])) {
+                        $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . DataSecret . "&response=" . $this->data['g-recaptcha-response'] . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
+                        $arr = json_decode($response, true);
+                        if (isset($arr['success'])) {
+
+                            $parameters = array('TEXT' => $this->data['msg']);
+
+                            $this->DATA->AppMail('admin@armytrix.com', 'SuggestUs', $parameters, $dateTime = DATE);
+                            echo "<div class='alert alert-success'>Message sent.</div>";
+                            echo "<script>$('#frm')[0].reset();</script>";
+                        } else {
+                            echo "<div class='alert alert-danger'>Please verify that you are not a robot.</div>";
+                        }
+                    } else {
+                        echo "<div class='alert alert-danger'>Please verify that you are not a robot.</div>";
+                    }
+                }
+
+                exit;
+            }
+        }
+    }
+
+
+    public function instagram()
+    {
+        $this->redirect('/'); die;
+        $this->set('title_for_layout', 'Armytrix Owner Instagram');
+        $this->loadModel('Instagram');
+
+        $data = $this->Instagram->find('all', array('conditions' => array('Instagram.image IS NOT NULL', 'Instagram.url IS NOT NULL', 'Instagram.user_name IS NOT NULL'), 'limit' => 200, 'order' => array('Instagram.id' => 'DESC')));
+        $this->set('data', $data);
+
+        if ($this->RequestHandler->isAjax()) {
+            if (!empty($this->data)) {
+
+                $this->request->data['Instagram']['url'] = $this->data['url'];
+                $this->Instagram->save($this->data);
+                $parameters = array('TEXT' => $this->data['url']);
+                $this->DATA->AppMail('marketing@armytrix.com', 'Instagram', $parameters, $dateTime = DATE);
+                echo "<div class='alert alert-success'>Message sent.</div>";
+                exit;
+            }
+        }
+    }
+
+
+
+    public function youtube()
+    {
+        $this->set('title_for_layout', 'Youtube - Armytrix Performance Upgrades');
+
+        if ($this->RequestHandler->isAjax()) {
+            $li = null;
+            if (!empty($this->data)) {
+
+                if (isset($this->data['Youtube'])) {
+                    if (isset($_SERVER['HTTP_SEC_FETCH_SITE']) && $_SERVER['HTTP_SEC_FETCH_SITE'] == 'same-origin') {
+                        if (empty($this->data['Youtube']['images'])) {
+                            echo '<div class="alert alert-danger">Please upload images.</div>';
+                            die;
+                        } else {
+                            $s = $imgLink = null;
+                            foreach ($this->data['Youtube'] as $k => $v) {
+                                if ($k != 'images') {
+                                    $st = uc(str_replace("_", " ", $k));
+                                    $s .= '<p>' . $st . ': ' . $v . '</p>';
+                                }
+                            }
+                            $imgs = trim($this->data['Youtube']['images'], ',');
+                            $arr_img = explode(',', $imgs);
+                            if (!empty($arr_img)) {
+                                foreach ($arr_img as $k => $v) {
+                                    $ml = SITEURL . "cdn/youtube/" . $v;
+                                    $imgLink .= '<a href="' . $ml . '">' . $v . '</a><br> ';
+                                }
+                            }
+                            $s .= '<p>Images: ' . $imgLink . '</p>';
+                        }
+                        $parameters = array('TEXT' => $s);
+                        $this->DATA->AppMail('marketing@armytrix.com', 'Youtube', $parameters, DATE);
+                        echo "<script>$('#y_sfrm').html('<div class=\"alert alert-success\">Your form has been successfully submitted</div>');</script>";
+                    } else {
+                        die('error');
+                    }
+                    
+                }
+
+                if (isset($this->data['Image']) && !empty($this->data['Image'])) {
+                    foreach ($this->data['Image']['pic'] as $list) {
+
+                        if (isset($list['name']) && !empty($list['name'])) {
+
+                            $file = $list['name'];
+                            $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+                            $arr_ext = array('jpg', 'jpeg', 'gif', 'png');
+                            if (in_array($ext, $arr_ext)) {
+                                $imagePath = 'cdn/youtube/';
+                                if (!file_exists($imagePath)) {
+                                    mkdir($imagePath, 0777, true);
+                                }
+
+                                $new_img = "youtube_" . strtolower(rand(12345, 98765) . "." . $ext);
+                                try {
+                                    if (move_uploaded_file($list['tmp_name'], WWW_ROOT . $imagePath . $new_img)) {
+
+                                        $img  = show_image($imagePath, $new_img, 100, 100, 100, 'ff', $type = null, $img_tag = null);
+                                        $li = "<li img_name='$new_img'><img src='$img' alt=''></li>";
+                                        echo "<script>$('#id_utube').prepend(\"$li\");</script>";
+                                    }
+                                } catch (Exception $e) {
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            exit;
+        }
+    }
+    public function sema()
+    {
+        $this->set('title_for_layout', 'SEMA - Armytrix Performance Upgrades');
+        if ($this->RequestHandler->isAjax()) {
+            if (isset($_SERVER['HTTP_SEC_FETCH_SITE']) && $_SERVER['HTTP_SEC_FETCH_SITE'] == 'same-origin') {
+                $li = null;
+                if (!empty($this->data)) {
+                    if (isset($this->data['Sema'])) {
+                        if (empty($this->data['Sema']['images'])) {
+                            echo '<div class="alert alert-danger">Please upload images.</div>';
+                            die;
+                        } else {
+                            $s = $imgLink = null;
+                            foreach ($this->data['Sema'] as $k => $v) {
+                                if ($k != 'images') {
+                                    $st = uc(str_replace("_", " ", $k));
+                                    $s .= '<p>' . $st . ': ' . $v . '</p>';
+                                }
+                            }
+                            $imgs = trim($this->data['Sema']['images'], ',');
+                            $arr_img = explode(',', $imgs);
+                            if (!empty($arr_img)) {
+                                foreach ($arr_img as $k => $v) {
+                                    $ml = SITEURL . "cdn/sema/" . $v;
+                                    $imgLink .= '<a href="' . $ml . '">' . $v . '</a><br> ';
+                                }
+                            }
+                            $s .= '<p>Images: ' . $imgLink . '</p>';
+                        }
+                        $parameters = array('TEXT' => $s);
+                        $this->DATA->AppMail('marketing@armytrix.com', 'Sema', $parameters, DATE);
+                        echo "<script>$('#y_sfrm').html('<div class=\"alert alert-success\">Your form has been successfully submitted</div>');</script>";
+                    }
+                    if (isset($this->data['Image']) && !empty($this->data['Image'])) {
+                        foreach ($this->data['Image']['pic'] as $list) {
+                            if (isset($list['name']) && !empty($list['name'])) {
+                                $file = $list['name'];
+                                $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+                                $arr_ext = array('jpg', 'jpeg', 'gif', 'png');
+                                if (in_array($ext, $arr_ext)) {
+                                    $imagePath = 'cdn/sema/';
+                                    if (!file_exists($imagePath)) {
+                                        mkdir($imagePath, 0777, true);
+                                    }
+                                    $new_img = "sema_" . strtolower(rand(12345, 98765) . "." . $ext);
+                                    try {
+                                        if (move_uploaded_file($list['tmp_name'], WWW_ROOT . $imagePath . $new_img)) {
+                                            $img  = show_image($imagePath, $new_img, 100, 100, 100, 'ff', $type = null, $img_tag = null);
+                                            $li = "<li img_name='$new_img'><img src='$img' alt=''></li>";
+                                            echo "<script>$('#id_utube').prepend(\"$li\");</script>";
+                                        }
+                                    } catch (Exception $e) {
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                die('error');
+            }
+            exit;
+        }
+    }
+
+
+    public function dyno()
+    {
+        $this->layout = '404';
+        $this->set('title_for_layout', 'We pay you to dyno');
+
+        if ($this->RequestHandler->isAjax()) {
+            $li = null;
+            if (!empty($this->data)) {
+
+                if (isset($this->data['Youtube'])) {
+
+                    if (empty($this->data['Youtube']['images'])) {
+                        echo '<div class="alert alert-danger">Please upload images.</div>';
+                        die;
+                    } else {
+                        $s = $imgLink = null;
+                        foreach ($this->data['Youtube'] as $k => $v) {
+                            if ($k != 'images') {
+                                $st = uc(str_replace("_", " ", $k));
+                                $s .= '<p>' . $st . ': ' . $v . '</p>';
+                            }
+                        }
+                        $imgs = trim($this->data['Youtube']['images'], ',');
+                        $arr_img = explode(',', $imgs);
+                        if (!empty($arr_img)) {
+                            foreach ($arr_img as $k => $v) {
+                                $ml = SITEURL . "cdn/dyno/" . $v;
+                                $imgLink .= '<a href="' . $ml . '">' . $v . '</a><br> ';
+                            }
+                        }
+                        $s .= '<p>Images: ' . $imgLink . '</p>';
+                    }
+                    $parameters = array('TEXT' => $s);
+                    $this->DATA->AppMail('marketing@armytrix.com', 'Dyno', $parameters, DATE);
+                    echo "<script>$('#y_sfrm').html('<div class=\"alert alert-success\">Your form has been successfully submitted</div>');</script>";
+                }
+
+
+
+                if (isset($this->data['Image']) && !empty($this->data['Image'])) {
+                    foreach ($this->data['Image']['pic'] as $list) {
+
+                        if (isset($list['name']) && !empty($list['name'])) {
+
+                            $file = $list['name'];
+                            $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+                            $arr_ext = array('jpg', 'jpeg', 'gif', 'png');
+                            if (in_array($ext, $arr_ext)) {
+                                $imagePath = 'cdn/dyno/';
+                                if (!file_exists($imagePath)) {
+                                    mkdir($imagePath, 0777, true);
+                                }
+
+                                $new_img = "dyno_" . strtolower(rand(12345, 98765) . "." . $ext);
+                                try {
+                                    if (move_uploaded_file($list['tmp_name'], WWW_ROOT . $imagePath . $new_img)) {
+
+                                        $img  = show_image($imagePath, $new_img, 100, 100, 100, 'ff', $type = null, $img_tag = null);
+                                        $li = "<li img_name='$new_img'><img src='$img' alt=''></li>";
+                                        echo "<script>$('#id_utube').prepend(\"$li\");</script>";
+                                    }
+                                } catch (Exception $e) {
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            exit;
+        }
+    }
+
+    public function new_kit_request()
+    {
+        $this->set('title_for_layout', 'NEW KIT REQUEST for ARMYTRIX');
+        $page_meta = [
+            'des' => 'Can\'t Find a Kit? Let us Know What You Drive and we May Build it Next.',
+            'key' => 'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
+        ];
+        $this->set('page_meta', $page_meta);
+
+        $bList = $this->Brand->find('list', array('order' => array('Brand.name' => 'ASC'), 'fields' => array('Brand.name', 'Brand.name')));
+        $bList['other / not listed'] = "-- Other / Not listed --";
+
+        $this->set('bList', $bList);
+        if ($this->RequestHandler->isAjax()) {
+            if (isset($this->data['g-recaptcha-response']) && !empty($this->data['g-recaptcha-response'])) {
+                $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . DataSecret . "&response=" . $this->data['g-recaptcha-response'] . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
+                $arr = json_decode($response, true);
+                if (isset($arr['success'])) {
+
+                    $forms = [
+                        'id' => null, 'type' => 2, 'first_name' => $this->data['Request']['first_name'], 'last_name' => $this->data['Request']['last_name'],
+                        'country' => $this->data['Request']['country'], 'state' => NULL, 'city' => NULL, 'zip' => NULL, 'email' => $this->data['Request']['email'],
+                        'mobile' => NULL, 'contact_for' => NULL, 'message' => $this->data['Request']['note'], 'subject' => NULL, 'source' => NULL,
+                        'year' => $this->data['Request']['year'], 'make' => $this->data['Request']['make'], 'model' => $this->data['Request']['model']
+                    ];
+                    $this->DATA->form_data($forms);
+                    $parameters = array(
+                        'FIRST_NAME' => $this->data['Request']['first_name'], 'LAST_NAME' => $this->data['Request']['last_name'],
+                        'COUNTRY' => $this->data['Request']['country'], 'EMAIL' => $this->data['Request']['email'], 'YEAR' => $this->data['Request']['year'],
+                        'MAKE' => $this->data['Request']['make'], 'MODEL' => $this->data['Request']['model'], 'MSG' => $this->data['Request']['note']
+                    );
+                    $this->DATA->AppMail('inquiry@armytrix.com', 'NewKitRequest', $parameters, $dateTime = DATE);
+                    echo "<div class='alert alert-success'>Message sent.</div>";
+                    echo "<script>$('#kit_req')[0].reset();</script>";
+                } else {
+                    echo "<div class='alert alert-danger'>Please verify that you are not a robot.</div>";
+                }
+            } else {
+                echo "<div class='alert alert-danger'>Please verify that you are not a robot.</div>";
+            }
+            echo '<script>grecaptcha.reset();</script>';
+            exit;
+        }
+    }
+    public function immediate_paypal_rebate()
+    {
+        $this->redirect('/');
+        $this->set('title_for_layout', 'Immediate PayPal Rebate');
+
+        if ($this->RequestHandler->isAjax()) {
+            if (isset($this->data['g-recaptcha-response']) && !empty($this->data['g-recaptcha-response'])) {
+                $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . DataSecret . "&response=" . $this->data['g-recaptcha-response'] . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
+                $arr = json_decode($response, true);
+                if (isset($arr['success'])) {
+                    $parameters = array(
+                        'NAME' => $this->data['Request']['f_name'] . " " . $this->data['Request']['l_name'],
+                        'EMAIL' => $this->data['Request']['email'],
+                        'LINK' => $this->data['Request']['link'],
+                        'PAYPAL' => $this->data['Request']['paypal']
+                    );
+                    $this->DATA->AppMail('marketing@armytrix.com', 'Rebate', $parameters, $dateTime = DATE);
+                    echo "<div class='alert alert-success'>Message sent.</div>";
+                    echo "<script>$('#kit_req')[0].reset();</script>";
+                } else {
+                    echo "<div class='alert alert-danger'>Please verify that you are not a robot.</div>";
+                }
+            } else {
+                echo "<div class='alert alert-danger'>Please verify that you are not a robot.</div>";
+            }
+            echo '<script>grecaptcha.reset();</script>';
+            exit;
+        }
+    }
+
+
+    public function warranty_registration()
+    {
+        $this->set('title_for_layout', 'Warranty Registration');
+        $this->loadModel('Warranty');
+
+        if ($this->RequestHandler->isAjax()) {
+            if (!empty($this->data)) {
+                if (isset($this->request->data['Warranty']['installation_date']) && !empty($this->request->data['Warranty']['installation_date'])) {
+                    $this->request->data['Warranty']['installation_date'] = date('Y-m-d', strtotime($this->request->data['Warranty']['installation_date']));
+                }
+                if (isset($this->data['g-recaptcha-response']) && !empty($this->data['g-recaptcha-response'])) {
+                    $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . DataSecret . "&response=" . $this->data['g-recaptcha-response'] . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
+                    $arr = json_decode($response, true);
+                    echo "<script>grecaptcha.reset();</script>";
+                    if (isset($arr['success'])) {
+                        if (filter_var($this->data['Warranty']['email'], FILTER_VALIDATE_EMAIL)) {
+                            $body = $this->DATA->email_structure();
+                            $pa = array('DATE' => TODAYDATE, 'NAME' => $this->data['Warranty']['first_name'], 'COUNTRY' => $this->data['Warranty']['country'], 'EmailTemplateSkeleton' => $body);
+                            if ($this->Warranty->validates()) {
+                                $this->Warranty->save($this->request->data);
+                                $this->DATA->AppMail($this->data['Warranty']['email'], 'WarrantyUser', $pa, DATE, 2);
+                                $this->DATA->AppMail('inquiry@armytrix.com', 'WarrantyAdmin', $pa, DATE, 2);
+                                //echo "<div class='alert alert-success'>Message sent.</div>";
+                                echo "<script> $('#wfrm_div').html('<div class=\'alert alert-success\'>Warranty registration form has been submitted..</div>'); $('#preloader').hide();
+$('html, body').animate({ scrollTop: $('#warranty_registration').offset().top - 200 }, 200);
+</script>";
+                            } else {
+                                $str = null;
+                                $errors = $this->Warranty->validationErrors;
+                                if (!empty($errors)) {
+                                    foreach ($errors as $err) {
+                                        $str .= $err[0] . "<br>";
+                                    }
+                                    echo '<div class="alert alert-danger fadeIn animated">' . $str . '</div>';
+                                    echo "<script>grecaptcha.reset();</script>";
+                                }
+                            }
+                        }
+                    } else {
+                        echo "<div class='alert alert-danger'>Please verify that you are not a robot.</div>";
+                        echo "<script>grecaptcha.reset();</script>";
+                    }
+                } else {
+                    echo "<div class='alert alert-danger'>Please verify that you are not a robot.</div>";
+                    echo "<script>grecaptcha.reset();</script>";
+                }
+            }
+            exit;
+        }
+    }
+
+    public function contact_us()
+    {
+        $this->set('title_for_layout', 'CONTACT ARMYTRIX');
+        $page_meta = [
+            'des' => 'Please Fill out the Form and we\'ll get Back in Touch with You',
+            'key' => 'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
+        ];
+        $this->set('page_meta', $page_meta);
+
+
+        if ($this->RequestHandler->isAjax()) {
+            if (!empty($this->data)) {
+
+                if (isset($this->data['g-recaptcha-response']) && !empty($this->data['g-recaptcha-response'])) {
+                    $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . DataSecret . "&response=" . $this->data['g-recaptcha-response'] . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
+                    $arr = json_decode($response, true);
+
+                    if (isset($arr['success'])) {
+                        $for = $this->DATA->getEngine($this->data['Request']['engine']);
+                        $forms = [
+                            'id' => null, 'type' => 3,
+                            'user_type' => $this->data['Request']['type'],
+                            'first_name' => $this->data['Request']['f_name'], 'last_name' => $this->data['Request']['l_name'],
+                            'country' => $this->data['Request']['country'], 'state' => $this->data['Request']['state'], 'city' => $this->data['Request']['city'],
+                            'zip' => $this->data['Request']['zip_code'], 'email' => $this->data['Request']['email'],
+                            'mobile' => $this->data['Request']['phone'],
+                            'make' => @$for['Brand']['name'], 'model' => @$for['Model']['name'], 'engine' => @$for['Motor']['name'],
+                            'message' => $this->data['Request']['message'],
+                            'subject' => $this->data['Request']['subject'], 'source' => $this->data['Request']['hear'],
+                            'year' => null
+                        ];
+                        $this->DATA->form_data($forms);
+
+                        $parameters = array(
+                            'USER_TYPE' => $this->data['Request']['type'],
+                            'FNAME' => $this->data['Request']['f_name'],
+                            'LNAME' => $this->data['Request']['l_name'],
+                            'PHONE' => $this->data['Request']['phone'],
+                            'EMAIL' => $this->data['Request']['email'],
+                            'CITY' => $this->data['Request']['city'],
+                            'STATE' => $this->data['Request']['state'],
+                            'COUNTRY' => $this->data['Request']['country'],
+                            'ZIP' => $this->data['Request']['zip_code'],
+                            'SUBJECT' => $this->data['Request']['subject'],
+                            'ABOUT' => $this->data['Request']['hear'],
+                            'FOR' => @$for['Brand']['name'] . " / " . @$for['Model']['name'] . " / " . @$for['Motor']['name'],
+                            'BRAND' => @$for['Brand']['name'],
+                            'MODEL' => @$for['Model']['name'],
+                            'ENGINE' => @$for['Motor']['name'],
+                            'MSG' => $this->data['Request']['message']
+                        );
+                        $this->DATA->AppMail('inquiry@armytrix.com', 'ContactNew', $parameters, DATE);
+
+                        echo "<div class='alert alert-success'>Message sent.</div>";
+                        echo "<script>$('#kit_req')[0].reset();</script>";
+                    } else {
+                        echo "<div class='alert alert-danger'>Please verify that you are not a robot.</div>";
+                    }
+                } else {
+                    echo "<div class='alert alert-danger'>Please verify that you are not a robot.</div>";
+                }
+            }
+            echo '<script>grecaptcha.reset();</script>';
+            exit;
+        }
+    }
+
+    function remove_last_number($file_string)
+    {
+        //remove extension from string
+        $filename = substr($file_string, 0, (strrpos($file_string, ".")));
+
+        //break the filename by the `-` character, creating an array of each section
+        $filename_parts = explode('-', $filename);
+
+        //remove the last part of the filename, add it back if it contains any digits that aren't numbers
+        $last_elem = array_pop($filename_parts);
+        if (!preg_match("/^\d+$/", $last_elem)) {
+            $filename_parts[] = $last_elem;
+        }
+
+        //return correct filename by imploding all the parts back together and adding the extension.
+        return implode(' ', $filename_parts);
+    }
+
+    public function update_alt()
+    {
+        $this->autoRender = false;
+        $data = $this->Library->find('all', ['conditions' => [/* 'Library.alt IS NULL' */]]);
+        $arr = [];
+        if (!empty($data)) {
+            foreach ($data as $list) {
+                $alt =  null;
+                $alt = $this->remove_last_number($list['Library']['file_name']);
+                $alt = str_replace("armytrix exhaust", "armytrix valvetronic exhaust", $alt);
+                $arr[] = ['id' => $list['Library']['id'], 'title' => $alt, 'alt' => $alt, 'description' => $alt, 'old_name' => $list['Library']['file_name']];
+            }
+        }
+        if (!empty($arr)) {
+            ec(count($arr));
+            $this->Library->saveAll($arr);
+            echo "Saved";
+        }
+    }
+
+
+    public function privacy_policy() {
+	    $this->set('title_for_layout', 'Privacy Policy');
+	    $page_meta = [
+	        'des'=>'ARMYTRIX CORP. Warrants its Products to be Free of all Defects in Material and Workmanship. Warranty Extends only to the Original Buyer and is Not Transferable',
+	        'key'=>'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
+	    ];
+		$this->set(compact('page_meta'));
+	}
+
+}

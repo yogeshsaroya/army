@@ -1,0 +1,56 @@
+html, body, h1,h2,h3,h4,h5{font-family:Arial,"Helvetica Neue",Helvetica,sans-serif}
+span.dsp-block{display:block;margin-bottom:20px}
+.invoice-page{padding:50px 0;font-size:25px;color:#000;line-height:1.3;text-align:left}
+.invoice-page .container{max-width:955px}
+.invoice-page a{text-decoration:none;color:inherit}
+.invoice-page p,.invoice-page td,.invoice-page div,.invoice-page blockquote p,.invoice-page input{font-size:25px}
+.nav-bar{background:#333;margin:30px 0}
+.nav-bar ul li{float:left;width:33.33%}
+.nav-bar ul li a{display:block;padding:15px 10px;text-align:center;color:#fff!important;text-transform:uppercase}
+.sec-pad{padding:30px 0}
+.flex-box{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex;flex-wrap:wrap}
+.just-strch{justify-content:stretch}
+.col-sm-5.bg-gray{background:#eee;padding:40px}
+.bg-gray h3{font-size:30px;text-transform:uppercase;margin:0 0 30px}
+.invoice-page address{font-weight:lighter;margin-bottom:40px}
+.ordr-viw{margin-bottom:40px;color:#0a0}
+.ordr-viw h4{font-size:21px;margin:0}
+.ordr-viw p{color:#0a0}
+.bg-gray > :last-child{margin-bottom:0}
+h1.order-revew{text-align:center;font-size:51px;text-transform:uppercase;position:relative;margin:60px 0}
+h1.order-revew span{display:inline-block;padding:10px 50px;background:#fff;position:relative;z-index:55;font-size:50px;letter-spacing:2px}
+h1.order-revew:before{position:absolute;top:50%;transform:translateY(-50%);-webkit-transform:translateY(-50%);content:"";height:1px;width:100%;z-index:0;left:0;background:#000}
+.align-cnter{align-items:center}
+.flex-unwrap{flex-wrap:nowrap}
+.invoice-total{margin-bottom:10px}
+.price-boxx{color:#0a0;text-align:right;min-width:170px}
+.txt-bx{width:100%}
+
+.invoice-total-box.sec-pad{padding:0}
+.cntct-dlts{text-align:center;padding-left:80px;background:url(../v/em/msg-icon.png) no-repeat left center;max-width:350px;margin:15px auto;width:100%}
+.cntct-dlts h2{font-size:30px;line-height:1.2;margin:0}
+.cntct-dlts h6{font-size:20px;text-transform:uppercase;vertical-align:middle;font-weight:500;line-height:1.2;margin:0}
+.bg-black{background:#333;text-align:center;color:#fff;padding:18px 10px;text-transform:uppercase}
+.bg-black p{color:#fff;margin:0;padding:0}
+.foot-botm{padding:20px;text-align:center;line-height:1.2;font-size:20px}
+.foot-botm p{margin:0;font-size:16px;font-style:italic}
+.foot-botm p a{text-decoration:underline}
+.cntct-dlts h6 img{width:auto}
+@media (max-width: 980px) {
+.invoice-page p,.invoice-page td,.invoice-page div,.invoice-page blockquote p,.invoice-page input,.invoice-page{font-size:20px}
+h1.order-revew span{padding:10px 30px;font-size:40px}
+#main_sec .nav-bar a{color:#fff!important}
+.logo-box img{max-width:300px;width:95%}
+}
+@media (max-width: 767px) {
+.row.flex-box > *{width:100%}
+.product-dlts-box{text-align:center;max-width:400px;margin:auto;padding:0}
+.product-dlts-box .row{margin-bottom:40px}
+.logo-box img{max-width:250px}
+}
+@media (max-width: 580px) {
+.invoice-page p,.invoice-page td,.invoice-page div,.invoice-page blockquote p,.invoice-page input,.invoice-page{font-size:16px}
+h1.order-revew span{padding:10px 20px;font-size:30px;letter-spacing:1px}
+.cntct-dlts{padding-left:50px;max-width:350px;background-size:40px}
+.cntct-dlts h2{font-size:25px}
+}

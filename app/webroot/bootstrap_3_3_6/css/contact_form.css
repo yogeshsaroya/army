@@ -1,0 +1,122 @@
+.comment-form input[type="text"], input[type="email"], input[type="password"], textarea, select {
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+display: block;
+width: 100% !important;
+text-shadow: none;
+font-size: 13px;
+line-height: 20px;
+color: #fff!important;
+background: #000;
+height: 40px;
+padding: 9px 18px 11px 18px;
+border: none !important;
+border-radius: 0;
+margin: 0 0 7px 0;
+-webkit-appearance: none !important;
+outline: none;
+}
+
+input[type="submit"], input[type="reset"] {
+  padding: 8px 20px 11px 20px;
+  background-color: #40b7b8;
+  display: inline-block;
+  margin: 0;
+  border-radius: 0;
+  border: none;
+  font-size: 13px !important;
+  line-height: 20px !important;
+  height: 40px;
+  color: #ffffff;
+  padding: 8px 20px 12px 20px;
+  border-radius: 3px;
+  -webkit-appearance: none;
+  text-transform: uppercase;
+  font-weight: 900;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+input[type="reset"] {
+  background: #222;
+}
+
+input[type="reset"]:hover {
+  background: #959595;
+}
+
+.comment-form .form-row {
+  width: 100%;
+  height: 80px;
+}
+
+.comment-form .form-row .form-group {
+  width: 49%;
+  float: left;
+  margin: 5px;
+}
+
+.comment-form .clear-fix {
+  clear: both;
+}
+
+.comment-form textarea {
+  height: 150px;
+}
+
+.comment-form span.alert {
+  color: red;
+  display: inline-block;
+  font-size: 0.9em;
+  margin: 0;
+  padding: 0;
+}
+
+.comment-form .form-group.alert input {
+  border: 1px solid #f00;
+}
+
+.recaptcha * {
+  line-height: 1!important;
+  font-weight: normal!important;
+}
+
+.recaptchatable, #recaptcha_area tr, #recaptcha_area td, #recaptcha_area th {
+  line-height: 1!important;
+  border-collapse: collapse!important;
+}
+
+#recaptcha_area input {
+    height: auto;
+    display: inline;
+}
+
+#recaptcha_response_field {
+  background-color: #fff;
+  line-height: 1px!important;
+  color: #000!important;
+  font-size: 8pt!important;
+  font-family: helvetica,sans-serif!important;
+  border: 1px solid #cca940!important;
+}
+
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #fff!important;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #fff!important;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #fff!important;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color:    #fff!important;
+}
+
+.hide {
+  display: none!important;
+}

@@ -1,0 +1,27 @@
+.red{color:#d73925}
+.animated{-webkit-animation-duration:1s;animation-duration:1s;-webkit-animation-fill-mode:both;animation-fill-mode:both}
+100%{opacity:1;opacity:1}
+.fadeIn{-webkit-animation-name:fadeIn;animation-name:fadeIn}
+
+.attachment-block {
+  border: 1px solid #f4f4f4;
+  padding: 5px;
+  margin-bottom: 10px;
+  background: #f7f7f7;
+}
+.attachment-block .attachment-img {
+  max-width: 100px;
+  max-height: 100px;
+  height: auto;
+  float: left;
+}
+.attachment-block .attachment-pushed {
+  margin-left: 110px;
+}
+.attachment-block .attachment-heading {
+  margin: 0;
+}
+.attachment-block .attachment-text {
+  color: #555;
+}
+

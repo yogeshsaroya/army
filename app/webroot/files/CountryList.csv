@@ -1,0 +1,251 @@
+ID,short_name,iso,catback,down_pipe,owrc,fedex_pack,region
+1,Afghanistan,AF,499,399,99,49,3
+2,Aland Islands,AX,299,149,70,39,2
+3,Albania,AL,299,149,70,39,2
+4,Algeria,DZ,499,299,199,59,3
+5,American Samoa,AS,0,0,0,0,4
+6,Andorra,AD,299,149,70,39,2
+7,Angola,AO,499,299,199,59,3
+8,Anguilla,AI,250,250,250,250,1
+9,Antarctica,AQ,0,0,0,0,4
+10,Antigua and Barbuda,AG,250,250,250,250,1
+11,Argentina,AR,399,180,115,45,3
+12,Armenia,AM,299,149,70,39,2
+13,Aruba,AW,250,250,250,250,1
+14,Australia,AU,399,180,115,45,3
+15,Austria,AT,299,149,70,39,2
+16,Azerbaijan,AZ,299,149,70,39,2
+17,Bahamas,BS,250,250,250,250,1
+18,Bahrain,BH,299,149,65,39,3
+19,Bangladesh,BD,499,399,99,49,3
+20,Barbados,BB,250,250,250,250,1
+21,Belarus,BY,299,149,70,39,2
+22,Belgium,BE,299,149,70,39,2
+23,Belize,BZ,250,250,250,250,1
+24,Benin,BJ,499,299,199,59,3
+25,Bermuda,BM,250,250,250,250,1
+26,Bhutan,BT,499,399,99,49,3
+27,Bolivia,BO,250,250,250,250,1
+28,"Bonaire, Sint Eustatius and Saba",BQ,250,250,250,250,1
+29,Bosnia and Herzegovina,BA,299,149,70,39,2
+30,Botswana,BW,499,299,199,59,3
+31,Bouvet Island,BV,250,250,250,250,1
+32,Brazil,BR,250,250,250,250,1
+33,British Indian Ocean Territory,IO,499,399,99,49,3
+34,Brunei,BN,199,99,65,25,3
+35,Bulgaria,BG,299,149,70,39,2
+36,Burkina Faso,BF,499,299,199,59,3
+37,Burundi,BI,499,299,199,59,3
+38,Cambodia,KH,299,149,65,39,3
+39,Cameroon,CM,499,299,199,59,3
+40,Canada,CA,299,150,75,25,3
+41,Cape Verde,CV,499,299,199,59,3
+42,Cayman Islands,KY,250,250,250,250,1
+43,Central African Republic,CF,499,299,199,59,3
+44,Chad,TD,499,299,199,59,3
+45,Chile,CL,250,250,250,250,1
+46,China,CN,0,0,0,0,5
+47,Christmas Island,CX,0,0,0,0,4
+48,Cocos (Keeling) Islands,CC,0,0,0,0,4
+49,Colombia,CO,250,250,250,250,1
+50,Comoros,KM,499,299,199,59,3
+51,Congo,CG,499,299,199,59,3
+52,Cook Islands,CK,0,0,0,0,4
+53,Costa Rica,CR,250,250,250,250,1
+54,Cote d'ivoire (Ivory Coast),CI,499,299,199,59,3
+55,Croatia,HR,299,149,70,39,2
+56,Cuba,CU,250,250,250,250,1
+57,Curacao,CW,250,250,250,250,1
+58,Cyprus,CY,299,149,70,39,2
+59,Czech Republic,CZ,299,149,70,39,2
+60,Democratic Republic of the Congo,CD,250,250,250,250,1
+61,Denmark,DK,299,149,70,39,2
+62,Djibouti,DJ,499,299,199,59,3
+63,Dominica,DM,250,250,250,250,1
+64,Dominican Republic,DO,250,250,250,250,1
+65,Ecuador,EC,250,250,250,250,1
+66,Egypt,EG,499,299,199,59,3
+67,El Salvador,SV,250,250,250,250,1
+68,Equatorial Guinea,GQ,499,299,199,59,3
+69,Eritrea,ER,499,299,199,59,3
+70,Estonia,EE,299,149,70,39,2
+71,Ethiopia,ET,499,299,199,59,3
+72,Falkland Islands (Malvinas),FK,250,250,250,250,1
+73,Faroe Islands,FO,299,149,70,39,2
+74,Fiji,FJ,399,180,115,45,3
+75,Finland,FI,299,149,70,39,2
+76,France,FR,299,149,70,39,2
+77,French Guiana,GF,250,250,250,250,1
+78,French Polynesia,PF,0,0,0,0,4
+79,French Southern Territories,TF,0,0,0,0,4
+80,Gabon,GA,499,299,199,59,3
+81,Gambia,GM,499,299,199,59,3
+82,Georgia,GE,499,399,99,49,3
+83,Germany,DE,299,149,70,39,2
+84,Ghana,GH,499,299,199,59,3
+85,Gibraltar,GI,299,149,70,39,2
+86,Greece,GR,299,149,70,39,2
+87,Greenland,GL,250,250,250,250,1
+88,Grenada,GD,250,250,250,250,1
+89,Guadaloupe,GP,250,250,250,250,1
+90,Guam,GU,0,0,0,0,4
+91,Guatemala,GT,250,250,250,250,1
+92,Guernsey,GG,299,149,70,39,2
+93,Guinea,Sm,499,299,199,59,3
+94,Guinea-Bissau,GW,499,299,199,59,3
+95,Guyana,GY,250,250,250,250,1
+96,Haiti,HT,250,250,250,250,1
+97,Heard Island and McDonald Islands,HM,0,0,0,0,4
+98,Honduras,HN,250,250,250,250,1
+99,Hong Kong,HK,0,0,0,0,4
+100,Hungary,HU,299,149,70,39,2
+101,Iceland,IS,299,149,70,39,2
+102,India,IN,399,199,99,49,3
+103,Indonesia,ID,0,0,0,0,4
+104,Iran,IR,0,0,0,0,4
+105,Iraq,IQ,399,199,99,49,3
+106,Ireland,IE,299,149,70,39,2
+107,Isle of Man,IM,299,149,70,39,2
+108,Israel,IL,399,199,99,49,3
+109,Italy,IT,299,149,70,39,2
+110,Jamaica,JM,250,250,250,250,1
+111,Japan,JP,0,0,0,0,4
+112,Jersey,JE,299,149,70,39,2
+113,Jordan,JO,399,199,99,49,3
+114,Kazakhstan,KZ,299,149,70,39,2
+115,Kenya,KE,499,299,199,59,3
+116,Kiribati,KI,399,180,115,45,3
+117,Kosovo,XK,299,149,70,39,2
+118,Kuwait,KW,399,199,99,49,3
+119,Kyrgyzstan,KG,399,199,99,49,3
+120,Laos,LA,299,149,65,39,3
+121,Latvia,LV,299,149,70,39,2
+122,Lebanon,LB,399,199,99,49,3
+123,Lesotho,LS,499,299,199,59,3
+124,Liberia,LR,499,299,199,59,3
+125,Libya,LY,499,299,199,59,3
+126,Liechtenstein,LI,299,149,70,39,2
+127,Lithuania,LT,299,149,70,39,2
+128,Luxembourg,LU,299,149,70,39,2
+129,Macao,MO,0,0,0,0,4
+130,Macedonia,MK,299,149,70,39,2
+131,Madagascar,MG,499,299,199,59,3
+132,Malawi,MW,499,299,199,59,3
+133,Malaysia,MY,0,0,0,0,4
+134,Maldives,MV,499,399,99,49,3
+135,Mali,ML,499,299,199,59,3
+136,Malta,MT,299,149,70,39,2
+137,Marshall Islands,MH,399,180,115,45,3
+138,Martinique,MQ,250,250,250,250,1
+139,Mauritania,MR,499,299,199,59,3
+140,Mauritius,MU,499,299,199,59,3
+141,Mayotte,YT,499,299,199,59,3
+142,Mexico,MX,250,250,250,250,1
+143,Micronesia,FM,399,180,115,45,3
+144,Moldava,MD,299,149,70,39,2
+145,Monaco,MC,299,149,70,39,2
+146,Mongolia,MN,399,199,99,49,3
+147,Montenegro,ME,299,149,70,39,2
+148,Montserrat,MS,250,250,250,250,1
+149,Morocco,MA,499,299,199,59,3
+150,Mozambique,MZ,499,299,199,59,3
+151,Myanmar (Burma),MM,399,199,99,49,3
+152,Namibia,NA,499,299,199,59,3
+153,Nauru,NR,399,180,115,45,3
+154,Nepal,NP,399,199,99,49,3
+155,Netherlands,NL,299,149,70,39,2
+156,New Caledonia,NC,399,180,115,45,3
+157,New Zealand,NZ,399,180,115,45,3
+158,Nicaragua,NI,250,250,250,250,1
+159,Niger,NE,499,299,199,59,3
+160,Nigeria,NG,499,299,199,59,3
+161,Niue,NU,0,0,0,0,4
+162,Norfolk Island,NF,0,0,0,0,4
+163,North Korea,KP,0,0,0,0,4
+164,Northern Mariana Islands,MP,0,0,0,0,4
+165,Norway,NO,299,149,70,39,2
+166,Oman,OM,399,199,99,49,3
+167,Pakistan,PK,399,199,99,49,3
+168,Palau,PW,399,180,115,45,3
+169,Palestine,PS,399,199,99,49,3
+170,Panama,PA,250,250,250,250,1
+171,Papua New Guinea,PG,399,180,115,45,3
+172,Paraguay,PY,250,250,250,250,1
+173,Peru,PE,250,250,250,250,1
+174,Phillipines,PH,0,0,0,0,4
+175,Pitcairn,PN,0,0,0,0,4
+176,Poland,PL,299,149,70,39,2
+177,Portugal,PT,299,149,70,39,2
+178,Puerto Rico,PR,250,250,250,250,1
+179,Qatar,QA,399,199,99,49,3
+180,Reunion,RE,499,299,199,59,3
+181,Romania,RO,299,149,70,39,2
+182,Russia,RU,499,299,199,59,3
+183,Rwanda,RW,499,299,199,59,3
+184,Saint Barthelemy,BL,250,250,250,250,1
+185,Saint Helena,SH,499,299,199,59,3
+186,Saint Kitts and Nevis,KN,250,250,250,250,1
+187,Saint Lucia,LC,250,250,250,250,1
+188,Saint Martin,MF,250,250,250,250,1
+189,Saint Pierre and Miquelon,PM,250,250,250,250,1
+190,Saint Vincent and the Grenadines,VC,250,250,250,250,1
+191,Samoa,WS,399,180,115,45,3
+192,San Marino,SM,299,149,70,39,2
+193,Sao Tome and Principe,ST,499,299,199,59,3
+194,Saudi Arabia,SA,399,199,99,49,3
+195,Senegal,SN,499,299,199,59,3
+196,Serbia,RS,299,149,70,39,2
+197,Seychelles,SC,499,299,199,59,3
+198,Sierra Leone,SL,499,299,199,59,3
+199,Singapore,SG,199,99,65,25,3
+200,Sint Maarten,SX,250,250,250,250,1
+201,Slovakia,SK,299,149,70,39,2
+202,Slovenia,SI,299,149,70,39,2
+203,Solomon Islands,SB,399,180,115,45,3
+204,Somalia,SO,499,299,199,59,3
+205,South Africa,ZA,499,299,199,59,3
+206,South Georgia and the South Sandwich Islands,GS,0,0,0,0,4
+207,South Korea,KR,199,99,65,25,3
+208,South Sudan,SS,499,299,199,59,3
+209,Spain,ES,299,149,70,39,2
+210,Sri Lanka,LK,399,199,99,49,3
+211,Sudan,SD,499,299,199,59,3
+212,Suriname,SR,250,250,250,250,1
+213,Svalbard and Jan Mayen,SJ,0,0,0,0,4
+214,Swaziland,SZ,499,299,199,59,3
+215,Sweden,SE,299,149,70,39,2
+216,Switzerland,CH,299,149,70,39,2
+217,Syria,SY,399,199,99,49,3
+218,Taiwan,TW,0,0,0,0,5
+219,Tajikistan,TJ,399,199,99,49,3
+220,Tanzania,TZ,499,299,199,59,3
+221,Thailand,TH,0,0,0,0,4
+222,Timor-Leste (East Timor),TL,399,199,99,49,3
+223,Togo,TG,499,299,199,59,3
+224,Tokelau,TK,0,0,0,0,4
+225,Tonga,TO,399,180,115,45,3
+226,Trinidad and Tobago,TT,250,250,250,250,1
+227,Tunisia,TN,499,299,199,59,3
+228,Turkey,TR,299,149,70,39,2
+229,Turkmenistan,TM,399,199,99,49,3
+230,Turks and Caicos Islands,TC,250,250,250,250,1
+231,Tuvalu,TV,399,180,115,45,3
+232,Uganda,UG,499,299,199,59,3
+233,Ukraine,UA,299,149,70,39,2
+234,United Arab Emirates,AE,399,199,99,49,3
+235,United Kingdom,GB,299,149,70,39,2
+236,United States,US,100,100,100,100,1
+237,United States Minor Outlying Islands,UM,0,0,0,0,4
+238,Uruguay,UY,250,250,250,250,1
+239,Uzbekistan,UZ,399,199,99,49,3
+240,Vanuatu,VU,399,180,115,45,3
+241,Vatican City,VA,299,149,70,39,2
+242,Venezuela,VE,250,250,250,250,1
+243,Vietnam,VN,0,0,0,0,4
+244,"Virgin Islands, British",VG,250,250,250,250,1
+245,"Virgin Islands, US",VI,250,250,250,250,1
+246,Wallis and Futuna,WF,0,0,0,0,4
+247,Western Sahara,EH,499,299,199,59,3
+248,Yemen,YE,399,199,99,49,3
+249,Zambia,ZM,499,299,199,59,3
+250,Zimbabwe,ZW,499,299,199,59,3
