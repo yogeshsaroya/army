@@ -207,9 +207,7 @@
 &noscript=1" />
   </noscript>
   <!-- End Facebook Pixel Code -->
-
 </head>
-
 <body>
   <?php echo $this->element('v2/header'); ?>
   <div id="v2_main">
