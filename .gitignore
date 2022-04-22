@@ -4,6 +4,7 @@
 /app/Config/bootstrap.php
 
 /app/webroot/cdn/*
+/app/webroot/cache/*
 
 /app/tmp/cache/models/*
 /app/tmp/cache/persistent/*

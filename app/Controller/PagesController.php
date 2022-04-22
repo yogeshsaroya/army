@@ -12,6 +12,7 @@ class PagesController extends AppController {
 
 	}
 
+	/* new pages */ 
 	public function home() {
 		$this->layout = 'default_v2';
 		$this->set('title_for_layout', 'ARMYTRIX - Automotive Weaponized');
@@ -19,6 +20,7 @@ class PagesController extends AppController {
 		$is_home = 'yes';
 		$this->set(compact('page_meta','is_home'));
 	}
+	
 
 	public function send_em(){
 	    $this->autoRender = false;
