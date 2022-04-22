@@ -1,0 +1,31 @@
+#home_slider .slick-dots li button {
+    background-color: hsla(0, 0%, 67%, .95);
+    border: 0;
+    color: transparent;
+    cursor: pointer;
+    display: block;
+    font-size: 0;
+    height: 5px;
+    width: 50px;
+    line-height: 0;
+    outline: none;
+    padding: 0;
+}
+
+#home_slider .slick-dots li {
+    cursor: pointer;
+    flex: 0 1 auto;
+    height: 5px;
+    margin: 15px;
+    position: relative;
+    text-indent: -999px;
+    width: 30px;
+}
+
+#home_slider .slick-dots li button:before {
+    content: unset;
+}
+
+#home_slider .slick-active button {
+    background-color: #38D430 !important
+}
