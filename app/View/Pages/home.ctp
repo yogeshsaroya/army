@@ -35,7 +35,8 @@ echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme']);
             infinite: true,
             speed: 500,
             fade: true,
-            cssEase: 'linear'
+            cssEase: 'linear',
+            adaptiveHeight : false
         });
 
     });
