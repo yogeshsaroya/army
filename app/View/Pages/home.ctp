@@ -137,12 +137,12 @@ echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme']);
 <div class="auto-play-video">
     <div class="abst_head midlle bold_light">
    <h1>Join Team Armytrix</h1>
-   <h3>I
+   <h3>It's Your Turn. Creat Your Own Story.</h3>   
 <video width="100%" height="auto" controls="disable"  class="_autoplay_vid" muted id="video_5">
   <source src="<?php echo SITEURL;?>v_4/images/video TI page-21.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
- t's Your Turn. Creat Your Own Story.</h3>   
+ 
  </div> 
 </div>
 <!-- auto play video--> 
