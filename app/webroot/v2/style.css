@@ -1,3 +1,40 @@
+body h1{
+    font-size: 30px;
+    line-height: 1;
+    letter-spacing: 0;
+     font-family: 'Oswald', sans-serif;
+}
+body h2{
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: 2px;
+     font-family: 'Oswald', sans-serif;
+} 
+body h3{
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: 1px;
+     font-family: 'Oswald', sans-serif;
+}
+body h4{
+    font-size: 16px;
+    line-height: 1;
+    letter-spacing: 0;
+     font-family: 'Roboto', sans-serif;
+}
+.content_1{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 1.5;
+}
+.content_2{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 1.3;
+}
+
 /*header start*/
  header{
     position: fixed;
@@ -68,7 +105,7 @@ div#home_slider {
     margin-bottom: 0;
 }
 #home_slider .slick-track .slick-slide{
-    height: calc(100vh - 60px);
+    height: calc(100vh - 66px);
     min-height: 500px;
 }
 #home_slider .slick-track .slick-slide .video ,
@@ -86,7 +123,7 @@ div#home_slider {
     object-fit: cover;
 }
 #home_slider .slick-dots {
-    bottom: 15px;
+    bottom: 20px;
  }   
 #home_slider .slick-dots li button {
         background-color: rgba(255,255,255);
@@ -148,9 +185,10 @@ div#home_slider {
     color: #fff;
     border: 1px solid;
     transition: all 500ms ease;
-    letter-spacing: 2px;
+    font-family: 'Open Sans', sans-serif;
     font-size: 16px;
-    line-height: 1.1;
+    letter-spacing: 0;
+    line-height: 1.5;
     text-align: center;
 }
 .btnDark{
@@ -164,14 +202,14 @@ div#home_slider {
 
 /*bottom links*/
 .serVicesLinks{
-    padding: 30px 0;
+    padding: 20px 0;
     border-bottom: 1px solid #e3dfdf;
     margin-bottom: 40px
 }
-.serVicesLinks h1{
+.serVicesLinks h2{
     margin: 0;
 }
-.serVicesLinks h1 a:hover{
+.serVicesLinks h2 a:hover{
     color: #38D430;
 }
 
@@ -204,6 +242,11 @@ div#home_slider {
 .fullWidthImages > img{
     width: 100%;
     height: auto;
+}
+
+/*join armytrix*/
+.inheritClr{
+    color: inherit;
 }
 
 

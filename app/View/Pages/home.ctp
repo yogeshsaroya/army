@@ -23,7 +23,7 @@ echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme']);
      <!-- overlay and teext -->
             <div class="overlay">
                 <div class="contentWrap text-center">
-                    <h3>THE FIRST EVER MOTOCYCLE VALVETRONIC EXHAUST</h3>
+                    <h3>THE FIRST EVER CAR </h3>
                     <a href="#" class="linkBtn">WEAPONIZED NOW</a>
                 </div>
             </div>
@@ -32,7 +32,7 @@ echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme']);
     <div> <img src="https://tesla-cdn.thron.com/delivery/public/image/tesla/35861782-9705-4f73-84f0-86d615adb661/bvlatuR/std/4096x2560/Model-S-Main-Hero-Desktop-LHD" alt="banner images"><!-- overlay and teext -->
             <div class="overlay">
                 <div class="contentWrap text-center">
-                    <h3>THE FIRST EVER MOTOCYCLE VALVETRONIC EXHAUST</h3>
+                    <h3>THE FIRST EVER MOTOCYCLE </h3>
                     <a href="#" class="linkBtn">WEAPONIZED NOW</a>
                 </div>
             </div>
@@ -43,14 +43,14 @@ echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme']);
 <section class="serVicesLinks">
 <div class="container">
     <div class="row">
-        <h1 class="col-xs-6 text-center"><a href="#">CAR EXHAUST</a></h1>
-        <h1 class="col-xs-6 text-center"><a href="#">MOTORCYCLE EXHAUST </a></h1>
+        <h2 class="col-xs-6 text-center"><a href="#">CAR EXHAUST</a></h2>
+        <h2 class="col-xs-6 text-center"><a href="#">MOTORCYCLE EXHAUST </a></h2>
     </div>
 </div>
 </section>
 
 <section>
-    <div class="container">
+    <div class="container-fluid mx-90">
          <h1>ARMYTRIX OFFICIAL WEBSITE</h1>
          <h3>NEWS & PROJECTS</h3>
          <div class="row d-flex">
@@ -136,14 +136,24 @@ echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme']);
 <!-- auto play video-->
 <div class="auto-play-video">
     <div class="abst_head midlle bold_light">
-   <h1>Join Team Armytrix</h1>
-   <h3>It's Your Turn. Creat Your Own Story.</h3>   
-<video width="100%" height="auto" controls="disable"  class="_autoplay_vid" muted id="video_5">
-  <source src="<?php echo SITEURL;?>v_4/images/video TI page-21.mp4" type="video/mp4">
+   <h2><a href="https://www.youtube.com/user/armytrix?sub_confirmation=1" class="inheritClr">Join Team Armytrix</a></h2>
+   <h3>It's Your Turn. Creat Your Own Story.</h3> 
+    </div>
+
+<div class="posRltv">
+<video width="100%" height="auto" controls="disable" class="_autoplay_vid" muted="" id="video_5">
+  <source src="https://www.armytrix.com/v_4/images/video TI page-21.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
+
+<span class="playIcon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+  <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+</svg>
+</span>
+</div>
  
- </div> 
+ 
 </div>
 <!-- auto play video--> 
 
