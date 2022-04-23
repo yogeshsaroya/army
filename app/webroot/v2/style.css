@@ -1,5 +1,95 @@
+/*header start*/
+ header{
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    right: 0;
+    top: 0;
+    background: transparent;
+    border-bottom: 1px solid rgb(211 205 205 / 6%);
+ }
+ header.fixedHeader{
+    background: rgba(255,255,255,0.8);
+ }
+  header > div{
+    width: 95%;
+    padding: 10px 40px;
+  }
+  header div * {
+    color: #000;
+}
+ .d-flex{
+    display: flex;
+    flex-wrap: wrap;
+ }
+ .align-items-center{
+    align-items: center;
+ }
+ .logoWrap {
+    max-width: 250px;
+    margin: auto;
+    text-align: center;
+}
+.mr-auto {
+    margin-right: auto;
+}
+.ml-auto {
+    margin-left: auto;
+}
+.leftMenuBar{
+    position: relative;
+    height: 40px;
+    width: 60px;
+}
+.leftMenuBar > svg{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 5;
+}
+.closeMenu{
+    display: none;
+}
+.cartBox span {
+    display: block;
+    margin-right: 10px;
+    margin-top: -3px;
+}
+.cartWrap{
+    cursor: pointer;
+}
+/*header end*/
+section{
+    padding: 60px 0;
+}
+div#home_slider {
+    margin-bottom: 0;
+}
+#home_slider .slick-track .slick-slide{
+    height: calc(100vh - 60px);
+    min-height: 500px;
+}
+#home_slider .slick-track .slick-slide .video ,
+#home_slider .slick-track .slick-slide > img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    left: 0;
+    top: 0;
+}
+.video video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#home_slider .slick-dots {
+    bottom: 15px;
+ }   
 #home_slider .slick-dots li button {
-    background-color: hsla(0, 0%, 67%, .95);
+        background-color: rgba(255,255,255);
     border: 0;
     color: transparent;
     cursor: pointer;
@@ -16,7 +106,7 @@
     cursor: pointer;
     flex: 0 1 auto;
     height: 5px;
-    margin: 15px;
+    margin: 8px;
     position: relative;
     text-indent: -999px;
     width: 50px;
@@ -29,3 +119,92 @@
 #home_slider .slick-active button {
     background-color: #38D430 !important
 }
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
+    background: rgba(0,0,0,0.7);
+}
+.contentWrap{
+    color: #fff;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 50px;
+    padding: 30px 15px;
+    width: 100%;
+}
+.contentWrap h3{
+    color: #fff;
+}
+.linkBtn {
+    display: inline-block;
+    padding: 12px 30px 10px;
+    min-width: 180px;
+    color: #fff;
+    border: 1px solid;
+    transition: all 500ms ease;
+    letter-spacing: 2px;
+    font-size: 16px;
+    line-height: 1.1;
+    text-align: center;
+}
+.btnDark{
+    background: #000;
+}
+.linkBtn:hover {
+    background: #38D430;
+    border-color: #38D430;
+    color: #fff;
+}
+
+/*bottom links*/
+.serVicesLinks{
+    padding: 30px 0;
+    border-bottom: 1px solid #e3dfdf;
+    margin-bottom: 40px
+}
+.serVicesLinks h1{
+    margin: 0;
+}
+.serVicesLinks h1 a:hover{
+    color: #38D430;
+}
+
+/*news blog*/
+
+.mt-5{
+    margin-top: 5rem; 
+}
+.blogBox img {
+    margin-bottom: 15px;
+    height: 220px;
+    object-fit: cover;
+    width: 100%;
+}
+/*full width images*/
+.posRltv{
+    position: relative;
+}
+.clrWhite{
+    color: #fff;
+}
+.bottom20{
+    bottom: 0;
+    padding: 30px;
+}
+.top30{
+    bottom: auto;
+    top: 30%;
+}
+.fullWidthImages > img{
+    width: 100%;
+    height: auto;
+}
+
+
+
