@@ -190,6 +190,7 @@ div#home_slider {
     letter-spacing: 0;
     line-height: 1.5;
     text-align: center;
+    background: rgba(0,0,0,0.5);
 }
 .btnDark{
     background: #000;
@@ -248,6 +249,38 @@ div#home_slider {
 .inheritClr{
     color: inherit;
 }
+.playIcon{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50% , -50%);
+    z-index: 9;
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    border: 5px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+}
+
+/*footer*/
+.bgWhite{
+    background: #fff;
+}
+.bgWhite h2.mb-4{
+    margin-bottom: 50px;
+}
+.linkSpace h3 {
+    text-align: left;
+    margin-bottom: 40px; 
+}
+.linkSpace h3:last-child {
+    margin-bottom: 0;
+}
+
 
 
 
