@@ -162,6 +162,10 @@ echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme']);
 </div>
 <!-- auto play video--> 
 
+<!-- <div class="fullWidthImages posRltv">
+    <img src="<?php echo SITEURL;?>v2/img/icon-youtube-dark.png" alt="youtube">
+</div> -->
+
 
 
 <?php echo $this->Html->script(["/v2/slick/slick.min"]); ?>

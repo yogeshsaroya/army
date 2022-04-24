@@ -1,7 +1,7 @@
 <header>
 	<div class="container-fluid d-flex align-items-center">
 		<div class="leftMenuBar mr-auto">
-			<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+			<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-list openMenu" viewBox="0 0 16 16">
 			  <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
 			</svg>
 
@@ -28,7 +28,19 @@
 </header>
 
 
+<div class="leftSideNav">
+	<ul class="navbarSide">
+		<li><a href="#">CAR EXHAUST</a></li>
+		<li><a href="#">MOTORCYCLE EXHAUST</a></li>
+		<li class="mt-5"><a href="#">CHECK CART</a></li>
+		<li><a href="#">FIND A DEALER</a></li>
+		<li><a href="#">CONTACT US</a></li>
+	</ul>	
+</div>
+
+
 <script>
+ $(document).ready(function(){	
 	$(window).scroll(function(){
     if ($(this).scrollTop() > 10) {
        $('header').addClass('fixedHeader');
@@ -36,4 +48,19 @@
        $('header').removeClass('fixedHeader');
     }
 });
+	// menu open js
+
+	$('.openMenu').click(function(){
+       $(this).hide('fast');
+       $('.closeMenu').fadeIn('slow');
+       $('body').addClass('openMenuBar');
+	});
+	$('.closeMenu').click(function(){
+       $(this).hide('fast');
+       $('.openMenu').fadeIn('slow');
+       $('body').removeClass('openMenuBar');
+	});
+
+});
+
 </script>

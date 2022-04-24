@@ -1,3 +1,6 @@
+html , body{
+    overflow-x: hidden;
+}
 body{
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
@@ -56,7 +59,8 @@ body h4{
     border-bottom: 1px solid rgb(211 205 205 / 6%);
  }
  header.fixedHeader{
-    background: rgba(255,255,255,0.8);
+    background: rgba(255,255,255,1);
+    box-shadow: rgb(0 0 0 / 10%) 0px 20px 40px -20px;
  }
   header > div,
   .lastFooter > div{
@@ -109,6 +113,48 @@ body h4{
 .cartWrap{
     cursor: pointer;
 }
+
+/*left navigation*/
+.leftSideNav{
+    position: fixed;
+    left: -500px;
+    top: 0;
+    z-index: 998;
+    background: #fff;
+    width: 400px
+    background: #fff;
+    padding: 40px;
+    padding-top: 120px;
+    height: 100vh;
+    overflow: hidden;
+    overflow-y: auto;
+    text-align: left;
+    transition: all 500ms ease-in-out;
+    box-shadow: 0 10px 20px -5px rgb(0 0 0 / 10%)
+
+}
+.openMenuBar .leftSideNav{
+    left: 0;
+}
+.navbarSide{
+    list-style: none;
+    padding: 0;
+}
+.navbarSide li{
+    margin-top: 20px;
+    display: block;
+}
+.navbarSide li.mt-5{
+    margin-top: 40px;
+}
+.navbarSide li a{
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: 1px;
+    font-family: 'Oswald', sans-serif;
+    color: #444;
+}
+
 /*header end*/
 section{
     padding: 60px 0;
@@ -209,6 +255,7 @@ div#home_slider {
 }
 .subscribeBtn{
     background: #FF0000;
+    border-color: #FF0000;
     color: #fff;
     min-width: auto;
     padding: 10px 20px;
@@ -220,7 +267,7 @@ div#home_slider {
     margin-right: 20px;
 }
 .subscribeBtn i img{
-    max-height: 45px;
+    max-height: 35px;
 }
 
 .linkBtn:hover {
@@ -277,11 +324,19 @@ div#home_slider {
 .inheritClr{
     color: inherit;
 }
-.playIcon{
-    position: absolute;
-    left: 50%;
+.centerScreen{
+     position: absolute;
+    left: 0;
+    right: 0;
+    max-width: 230px;
+    margin: auto;
     top: 50%;
-    transform: translate(-50% , -50%);
+    transform: translate(0 , -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.playIcon{
     z-index: 9;
     width: 70px;
     height: 70px;
@@ -292,6 +347,10 @@ div#home_slider {
     justify-content: center;
     color: #fff;
     cursor: pointer;
+    margin: auto;
+}
+.centerScreen .playIcon +  .subscribeBtn{
+    margin-top: 70px;
 }
 
 /*footer*/
