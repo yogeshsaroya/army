@@ -18,7 +18,23 @@ class PagesController extends AppController {
 		$this->set('title_for_layout', 'ARMYTRIX - Automotive Weaponized');
 		$page_meta = array('des'=>@$this->meta['des'], 'key'=>$this->meta['keys']);
 		$is_home = 'yes';
+		$url = 'https://www.armytrix.com/blog/wp-json/featured/news';
+		//$blogPosts = $this->DATA->fetch($url);
 		$this->set(compact('page_meta','is_home'));
+	}
+
+	public function product_exhaust() {
+		$this->layout = 'default_v2';
+	    $this->set('title_for_layout', 'ARMYTRIX VALVETRONIC EXHAUST SYSTEM');
+	    $page_meta = [
+	        'des'=>'ARMYTRIX Best Aftermarket Upgrades Titanium & Stainless Steel Turbo-back Cat-Back Valvetronic Exhaust Downpipes Tips Headers Decat Test Straight Exhaust Sound',
+	        'key'=>'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
+	    ];
+		$bid = array();
+		$b_list = $this->ItemDetail->find('list',array('conditions'=>array('ItemDetail.status'=>1),'group'=>array('ItemDetail.brand_id'),'fields'=>array('ItemDetail.id','ItemDetail.brand_id')));
+		if(!empty($b_list)){ foreach ($b_list as $k=>$l){ $bid[]=$l; } }
+		$b = $this->Brand->find('list',array('order'=>array('Brand.name'=>'ASC'),'conditions'=>array('Brand.id'=>$bid)));
+		$this->set(compact('page_meta','b'));
 	}
 	
 
@@ -1780,18 +1796,7 @@ public function tuning_box_qa() {
 		$this->set(compact('page_meta','b','product','paging'));
 	}
 
-	public function product_exhaust() {
-	    $this->set('title_for_layout', 'ARMYTRIX VALVETRONIC EXHAUST SYSTEM');
-	    $page_meta = [
-	        'des'=>'ARMYTRIX Best Aftermarket Upgrades Titanium & Stainless Steel Turbo-back Cat-Back Valvetronic Exhaust Downpipes Tips Headers Decat Test Straight Exhaust Sound',
-	        'key'=>'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
-	    ];
-		$bid = array();
-		$b_list = $this->ItemDetail->find('list',array('conditions'=>array('ItemDetail.status'=>1),'group'=>array('ItemDetail.brand_id'),'fields'=>array('ItemDetail.id','ItemDetail.brand_id')));
-		if(!empty($b_list)){ foreach ($b_list as $k=>$l){ $bid[]=$l; } }
-		$b = $this->Brand->find('list',array('order'=>array('Brand.name'=>'ASC'),'conditions'=>array('Brand.id'=>$bid)));
-		$this->set(compact('page_meta','b'));
-	}
+
 
 
 	public function product_exhaust_result() {
