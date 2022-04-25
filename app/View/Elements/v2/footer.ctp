@@ -27,6 +27,7 @@
 				<h3><a href="#" class="inheritClr">WARRANTY</a></h3>
 				<h3><a href="#" class="inheritClr">FAQS</a></h3>
 				<h3><a href="#" class="inheritClr">NEW KITS</a></h3>
+				
 			</div>
 			<!-- end of colom -->
 		</div>

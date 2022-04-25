@@ -49,44 +49,45 @@ echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme']);
 </div>
 </section>
 
-<section>
-    <div class="container-fluid mx-90">
+<section class="blogBox">
+
+    <div class="container-fluid mx-90">        
          <h1>ARMYTRIX OFFICIAL WEBSITE</h1>
          <h3>NEWS & PROJECTS</h3>
-         <div class="row d-flex">
+         <div class="row d-flex loadBox">
              <div class="col-sm-4">
                  <div class="blogBox text-left">
-                     <a href="#">
+                     <div class="imgWraps">
                          <img src="<?php echo SITEURL;?>v2/img/shop.jpg" alt="blog Images">
-                     </a>
+                     </div>
                     
                          <h4>LBWK Corvette C8 PROJECT</h4>
                          <p>22.04.2022 FILM KILLER LBWK C8 <a href="#">#ARMYTRIX</a> x AIRLIFT x Liberty Walk Silhouette WORKS x LTMW</p>
-                    
-                 </div>
-             </div>
-             <!-- end of colom -->
-             <div class="col-sm-4">
-                  <div class="blogBox text-left">
-                     <a href="#">
-                         <img src="<?php echo SITEURL;?>v2/img/shop.jpg" alt="blog Images">
-                     </a>
-                    
-                         <h4>LBWK Corvette C8 PROJECT</h4>
-                         <p>22.04.2022 FILM KILLER LBWK C8 <a href="#">#ARMYTRIX</a> x AIRLIFT x Liberty Walk Silhouette WORKS x LTMW</p>
-                    
+                    <a href="#" class="wholeBoxLink"></a>
                  </div>
              </div>
              <!-- end of colom -->
              <div class="col-sm-4">
                  <div class="blogBox text-left">
-                     <a href="#">
+                     <div class="imgWraps">
                          <img src="<?php echo SITEURL;?>v2/img/shop.jpg" alt="blog Images">
-                     </a>
+                     </div>
                     
                          <h4>LBWK Corvette C8 PROJECT</h4>
                          <p>22.04.2022 FILM KILLER LBWK C8 <a href="#">#ARMYTRIX</a> x AIRLIFT x Liberty Walk Silhouette WORKS x LTMW</p>
+                    <a href="#" class="wholeBoxLink"></a>
+                 </div>
+             </div>
+             <!-- end of colom -->
+             <div class="col-sm-4">
+                 <div class="blogBox text-left">
+                     <div class="imgWraps">
+                         <img src="<?php echo SITEURL;?>v2/img/shop.jpg" alt="blog Images">
+                     </div>
                     
+                         <h4>LBWK Corvette C8 PROJECT</h4>
+                         <p>22.04.2022 FILM KILLER LBWK C8 <a href="#">#ARMYTRIX</a> x AIRLIFT x Liberty Walk Silhouette WORKS x LTMW</p>
+                    <a href="#" class="wholeBoxLink"></a>
                  </div>
              </div>
              <!-- end of colom -->
@@ -162,9 +163,12 @@ echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme']);
 </div>
 <!-- auto play video--> 
 
-<!-- <div class="fullWidthImages posRltv">
-    <img src="<?php echo SITEURL;?>v2/img/icon-youtube-dark.png" alt="youtube">
-</div> -->
+<div class="fullWidthImages posRltv">
+    <img src="<?php echo SITEURL;?>v2/img/main-end.jpg" alt="main end image">
+   <!--  <div class="contentWrap text-right bottomRight">
+                    <a href="#" class="linkBtn transparentBtn"><i><img src="<?php echo SITEURL;?>v2/img/logo-rec.png" alt="armytrix logo"></i>  <span>ARMYTRIX official website</span></a>
+                </div> -->
+</div>
 
 
 
