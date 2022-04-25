@@ -15,8 +15,9 @@
 		</div>
 
 		<div class="ml-auto cartBox d-flex align-items-center">
+		<span>Check your orders</span>
 			<div class="cartHead">
-				<span>Check your orders</span>
+				
 				<i class="cartWrap">
 					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 17 17">
 						<path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"></path>
@@ -48,3 +49,40 @@
 <div class="sideNav rightSide">
 	<h2>Your Cart Is Empty</h2>
 </div>
+
+
+<?php $this->Html->scriptStart(array('block' => 'scriptBottom')); ?>
+ $(document).ready(function(){	
+	$(window).scroll(function(){
+    if ($(this).scrollTop() > 10) {
+       $('header').addClass('fixedHeader');
+    } else {
+       $('header').removeClass('fixedHeader');
+    }
+});
+	// menu open js
+
+	$('.openMenu').click(function(){
+       $(this).hide('fast');
+       $('.closeMenu').fadeIn('slow');
+       $('body').addClass('openMenuBar');
+	});
+	$('.closeMenu').click(function(){
+       $(this).hide('fast');
+       $('.openMenu').fadeIn('slow');
+       $('body').removeClass('openMenuBar');
+	});
+	
+
+	$('.cartWrap').click(function(){
+       $(this).hide('fast');
+       $('.closeCartMenu').fadeIn('slow');
+       $('body').addClass('openCartBar');
+	});
+	$('.closeCartMenu').click(function(){
+       $(this).hide('fast');
+       $('.cartWrap').fadeIn('slow');
+       $('body').removeClass('openCartBar');
+	});
+});
+<?php $this->Html->scriptEnd(); ?>
