@@ -4,170 +4,149 @@ echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme']);
 <div id="home_slider" class="your-class">
     <div>
         <div class="video">
-            <video poster="https://smartstayz.com/v/working_on_phone.jpg" id="bgvid" playsinline="" autoplay="" loop="">
-             <source src="https://smartstayz.com/v/working_on_phone.webm" type="video/webm">
-             <source src=" https://smartstayz.com/v/working_on_phone.mp4" type="video/mp4">
+            <video poster="https://res.cloudinary.com/armytrix/image/upload/v1650866595/Slider/Slide_1/Corvette-c8-landscape_rw4cjy.jpg" id="bgvid" playsinline autoplay loop muted>
+                <source src="https://res.cloudinary.com/armytrix/video/upload/v1650866599/Slider/Slide_1/Corvette-c8-landscape.mp4" type="video/mp4">
             </video>
-<!-- overlay and teext -->
-            <div class="overlay">
-                <div class="contentWrap text-center">
-                    <h3>THE FIRST EVER MOTOCYCLE VALVETRONIC EXHAUST</h3>
-                    <a href="#" class="linkBtn">WEAPONIZED NOW</a>
-                </div>
+            <div class="overlay"><div class="contentWrap text-center"><h3>THE FIRST EVER MOTOCYCLE VALVETRONIC EXHAUST</h3><a href="#" class="linkBtn">WEAPONIZED NOW</a></div>
             </div>
-            <!-- end of overlay and text -->
+        </div>
+    </div>
+    <div>
+    <div class="video">
+            <video poster="https://res.cloudinary.com/armytrix/image/upload/v1650873612/Slider/Slide_2/LBWK-Leo-GTR-landscape_sykyjn.jpg" id="bgvid" playsinline autoplay loop muted>
+                <source src="https://res.cloudinary.com/armytrix/video/upload/v1650873619/Slider/Slide_2/LBWK-Leo-GTR-landscape_iwkoa7.mp4" type="video/mp4">
+            </video>
+            <div class="overlay"><div class="contentWrap text-center"><h3>THE FIRST EVER MOTOCYCLE VALVETRONIC EXHAUST</h3><a href="#" class="linkBtn">WEAPONIZED NOW</a></div>
+            </div>
         </div>
     </div>
 
-    <div> <img src="https://mclaren.scene7.com/is/image/mclaren/McLaren_GT_Adventures_Dubai_01:crop-16x9?wid=1980&hei=1114" alt="banner image">
-     <!-- overlay and teext -->
-            <div class="overlay">
-                <div class="contentWrap text-center">
-                    <h3>THE FIRST EVER CAR </h3>
-                    <a href="#" class="linkBtn">WEAPONIZED NOW</a>
-                </div>
+    <?php /*?>
+    <div>
+        <img src="https://mclaren.scene7.com/is/image/mclaren/McLaren_GT_Adventures_Dubai_01:crop-16x9?wid=1980&hei=1114" alt="banner image">
+        <div class="overlay">
+            <div class="contentWrap text-center">
+                <h3>THE FIRST EVER CAR </h3><a href="#" class="linkBtn">WEAPONIZED NOW</a>
             </div>
-            <!-- end of overlay and text -->
+        </div>
     </div>
-    <div> <img src="https://tesla-cdn.thron.com/delivery/public/image/tesla/35861782-9705-4f73-84f0-86d615adb661/bvlatuR/std/4096x2560/Model-S-Main-Hero-Desktop-LHD" alt="banner images"><!-- overlay and teext -->
-            <div class="overlay">
-                <div class="contentWrap text-center">
-                    <h3>THE FIRST EVER MOTOCYCLE </h3>
-                    <a href="#" class="linkBtn">WEAPONIZED NOW</a>
-                </div>
-            </div>
-            <!-- end of overlay and text --></div>
+    <?php */?>
+
 
 </div>
 
 <section class="serVicesLinks">
-<div class="container">
-    <div class="row">
-        <h2 class="col-xs-6 text-center"><a href="#">CAR EXHAUST</a></h2>
-        <h2 class="col-xs-6 text-center"><a href="#">MOTORCYCLE EXHAUST </a></h2>
+    <div class="container">
+        <div class="row">
+            <h2 class="col-xs-6 text-center"><a href=" <?php echo SITEURL; ?>product-exhaust">CAR EXHAUST</a></h2>
+            <h2 class="col-xs-6 text-center"><a href=" <?php echo SITEURL; ?>motocycle-exhaust">MOTORCYCLE EXHAUST </a></h2>
+        </div>
     </div>
-</div>
 </section>
 
 <section class="blogBox">
 
-    <div class="container-fluid mx-90">        
-         <h1>ARMYTRIX OFFICIAL WEBSITE</h1>
-         <h3>NEWS & PROJECTS</h3>
-         <div class="row d-flex loadBox">
-             <div class="col-sm-4">
-                 <div class="blogBox text-left">
-                     <div class="imgWraps">
-                         <img src="<?php echo SITEURL;?>v2/img/shop.jpg" alt="blog Images">
-                     </div>
-                    
-                         <h4>LBWK Corvette C8 PROJECT</h4>
-                         <p>22.04.2022 FILM KILLER LBWK C8 <a href="#">#ARMYTRIX</a> x AIRLIFT x Liberty Walk Silhouette WORKS x LTMW</p>
-                    <a href="#" class="wholeBoxLink"></a>
-                 </div>
-             </div>
-             <!-- end of colom -->
-             <div class="col-sm-4">
-                 <div class="blogBox text-left">
-                     <div class="imgWraps">
-                         <img src="<?php echo SITEURL;?>v2/img/shop.jpg" alt="blog Images">
-                     </div>
-                    
-                         <h4>LBWK Corvette C8 PROJECT</h4>
-                         <p>22.04.2022 FILM KILLER LBWK C8 <a href="#">#ARMYTRIX</a> x AIRLIFT x Liberty Walk Silhouette WORKS x LTMW</p>
-                    <a href="#" class="wholeBoxLink"></a>
-                 </div>
-             </div>
-             <!-- end of colom -->
-             <div class="col-sm-4">
-                 <div class="blogBox text-left">
-                     <div class="imgWraps">
-                         <img src="<?php echo SITEURL;?>v2/img/shop.jpg" alt="blog Images">
-                     </div>
-                    
-                         <h4>LBWK Corvette C8 PROJECT</h4>
-                         <p>22.04.2022 FILM KILLER LBWK C8 <a href="#">#ARMYTRIX</a> x AIRLIFT x Liberty Walk Silhouette WORKS x LTMW</p>
-                    <a href="#" class="wholeBoxLink"></a>
-                 </div>
-             </div>
-             <!-- end of colom -->
-         </div>
-         <!-- end of row -->
+    <div class="container-fluid mx-90">
+        <h1>ARMYTRIX OFFICIAL WEBSITE</h1>
+        <h3>NEWS & PROJECTS</h3>
+        <div class="row d-flex loadBox" id="blogPost">
+            <div class="col-sm-4">
+                <div class="blogBox text-left">
+                    <div class="imgWraps"><img src="https://res.cloudinary.com/armytrix/image/upload/v1650885696/home/ARMYTRIX.png" alt=""></div>
+                    <h4> &nbsp </h4>
+                    <p>&nbsp</p><a href="javascript:void(0);" class="wholeBoxLink"></a>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="blogBox text-left">
+                    <div class="imgWraps"><img src="https://res.cloudinary.com/armytrix/image/upload/v1650885696/home/ARMYTRIX.png" alt=""></div>
+                    <h4> &nbsp </h4>
+                    <p>&nbsp</p><a href="javascript:void(0);" class="wholeBoxLink"></a>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="blogBox text-left">
+                    <div class="imgWraps"><img src="https://res.cloudinary.com/armytrix/image/upload/v1650885696/home/ARMYTRIX.png" alt=""></div>
+                    <h4> &nbsp </h4>
+                    <p>&nbsp</p><a href="javascript:void(0);" class="wholeBoxLink"></a>
+                </div>
+            </div>
 
-         <div class="buttonWrap mt-5 text-center">
-             <a href="#" class="linkBtn btnDark">DISCOVER  MORE</a>
-         </div>
+        </div>
+        <!-- end of row -->
+
+        <div class="buttonWrap mt-5 text-center">
+            <a href=" <?php echo SITEURL; ?>blog/" class="linkBtn btnDark">DISCOVER MORE</a>
+        </div>
     </div>
 </section>
 <section class="fullWidthImageWrap">
     <div class="fullWidthImages posRltv">
-         <img src="<?php echo SITEURL;?>v2/img/shop.jpg" alt="full Images">
-         <!-- teext -->
-                <div class="contentWrap text-right bottom20">
-                    <h2 class="clrWhite">SOUND KIT</h2>
-                    <a href="#" class="linkBtn">DISCOVER MORE</a>
-                </div>
-            <!-- end of text -->
-    </div>
-    <!-- end of full width image wrap -->
+        <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865455/home/shop_ntocqa.png" alt="full Images">
 
-     <div class="fullWidthImages posRltv">
-         <img src="<?php echo SITEURL;?>v2/img/sound_kit.jpg" alt="full Images">
-         <!-- teext -->
-                <div class="contentWrap text-right bottom20">
-                    <h2 class="clrWhite">APPAREL & ACCESSORIES</h2>
-                    <a href="#" class="linkBtn">BUY NOW</a>
-                </div>
-            <!-- end of text -->
+        <div class="contentWrap text-right bottom20">
+            <h2 class="clrWhite">SOUND KIT</h2>
+            <a href=" <?php echo SITEURL; ?>sound" class="linkBtn">DISCOVER MORE</a>
+        </div>
+
     </div>
-    <!-- end of full width image wrap -->
+
 
     <div class="fullWidthImages posRltv">
-         <img src="<?php echo SITEURL;?>v2/img/testArmytrix.jpg" alt="full Images">
-         <!-- teext -->
-                <div class="contentWrap text-center top30">
-                    <h2 class="clrWhite">WHAT DO THEY SAY ABOUT ARMYTRIX</h2>
-                    <a href="#" class="linkBtn">DISCOVER MORE</a>
-                </div>
-            <!-- end of text -->
+        <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865459/home/sound_kit_stncoj.jpg" alt="full Images">
+
+        <div class="contentWrap text-right bottom20">
+            <h2 class="clrWhite">APPAREL & ACCESSORIES</h2>
+            <a href=" <?php echo SITEURL; ?>shop" class="linkBtn">BUY NOW</a>
+        </div>
+
     </div>
-    <!-- end of full width image wrap -->
+
+
+    <div class="fullWidthImages posRltv">
+        <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865452/home/test_evkqle.jpg" alt="full Images">
+
+        <div class="contentWrap text-center top30">
+            <h2 class="clrWhite">WHAT DO THEY SAY ABOUT ARMYTRIX</h2>
+            <a href=" <?php echo SITEURL; ?>testimonial" class="linkBtn">DISCOVER MORE</a>
+        </div>
+
+    </div>
+
 </section>
 
 <!-- auto play video-->
 <div class="auto-play-video">
     <div class="abst_head midlle bold_light">
-   <h2><a href="https://www.youtube.com/user/armytrix?sub_confirmation=1" class="inheritClr">Join Team Armytrix</a></h2>
-   <h3>It's Your Turn. Creat Your Own Story.</h3> 
+        <h2><a href="https://www.youtube.com/user/armytrix?sub_confirmation=1" class="inheritClr">Join Team Armytrix</a></h2>
+        <h3>It's Your Turn. Creat Your Own Story.</h3>
     </div>
 
-<div class="posRltv">
-<video width="100%" height="auto" controls="disable" class="_autoplay_vid" muted="" id="video_5">
-  <source src="https://www.armytrix.com/v_4/images/video TI page-21.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-<div class="centerScreen">
-<span class="playIcon">
-    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 14 16">
-  <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"></path>
-</svg>
-</span>
+    <div class="posRltv">
+        <video width="100%" height="auto" class="_autoplay_vid" id="video_5" muted loop autoplay>
+            <source src="https://res.cloudinary.com/armytrix/video/upload/v1650883576/home/armytrix-trailer.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="centerScreen">
+            <span class="playIcon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 14 16">
+                    <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"></path>
+                </svg>
+            </span>
 
-<a href="#" class="subscribeBtn linkBtn d-flex align-items-center">
-    <i><img src="<?php echo SITEURL;?>v2/img/icon-youtube-dark.png" alt="youtube"></i> <span>Subscribe</span>
-</a>
+            <a href="https://www.youtube.com/user/armytrix?sub_confirmation=1" class="subscribeBtn linkBtn d-flex align-items-center">
+                <i><img src="<?php echo SITEURL; ?>v2/img/icon-youtube-dark.png" alt="youtube"></i> <span>Subscribe</span>
+            </a>
+        </div>
+    </div>
+
+
 </div>
-</div>
- 
- 
-</div>
-<!-- auto play video--> 
+<!-- auto play video-->
 
 <div class="fullWidthImages posRltv">
-    <img src="<?php echo SITEURL;?>v2/img/main-end.jpg" alt="main end image">
-   <!--  <div class="contentWrap text-right bottomRight">
-                    <a href="#" class="linkBtn transparentBtn"><i><img src="<?php echo SITEURL;?>v2/img/logo-rec.png" alt="armytrix logo"></i>  <span>ARMYTRIX official website</span></a>
-                </div> -->
+    <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865453/home/main-end_liba2e.png" alt="">
+
 </div>
 
 
@@ -176,13 +155,35 @@ echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme']);
 <script>
     $(document).ready(function() {
 
+        $.getJSON('https://www.armytrix.com/blog/wp-json/featured/news', function(data) {
+            var str = '';
+            var n = 1;
+            $(data['news']).each((index, element) => {
+                if (n <= 3) {
+                    var imgList = element['featured_image'];
+                    var img = 'https://res.cloudinary.com/armytrix/image/upload/v1650885696/home/ARMYTRIX.png';
+                    if (typeof imgList != "undefined" && imgList != null) {
+                        img = imgList.medium_large;
+                    }
+                    str += '<div class="col-sm-4"><div class="blogBox text-left"><div class="imgWraps"><img src="' + img + '" alt=""></div>' +
+                        '<h4>' + element['title'] + '</h4><p><b>' + element['published_on'] + ' </b>: ' + element['description'] + '</p>' +
+                        '<a href="' + element['url'] + '" class="wholeBoxLink"></a></div></div>';
+                }
+                n = n + 1;
+            });
+            $("#blogPost").html(str);
+            $("#blogPost").removeClass('loadBox');
+        });
+
         $('#home_slider').slick({
             dots: true,
+            autoplay : true,
+            autoplaySpeed : 10000,
             infinite: true,
             speed: 500,
             fade: true,
             cssEase: 'linear',
-            adaptiveHeight : false
+            adaptiveHeight: false
         });
 
     });

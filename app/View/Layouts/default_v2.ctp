@@ -219,7 +219,41 @@
   }
   ?>
 
-  
+<script>
+ $(document).ready(function(){	
+	$(window).scroll(function(){
+    if ($(this).scrollTop() > 10) {
+       $('header').addClass('fixedHeader');
+    } else {
+       $('header').removeClass('fixedHeader');
+    }
+});
+	// menu open js
+
+	$('.openMenu').click(function(){
+       $(this).hide('fast');
+       $('.closeMenu').fadeIn('slow');
+       $('body').addClass('openMenuBar');
+	});
+	$('.closeMenu').click(function(){
+       $(this).hide('fast');
+       $('.openMenu').fadeIn('slow');
+       $('body').removeClass('openMenuBar');
+	});
+	
+
+	$('.cartHead').click(function(){
+       $(this).hide('fast');
+       $('.closeCartMenu').fadeIn('slow');
+       $('body').addClass('openCartBar');
+	});
+	$('.closeCartMenu').click(function(){
+       $(this).hide('fast');
+       $('.cartHead').fadeIn('slow');
+       $('body').removeClass('openCartBar');
+	});
+});
+</script>
 </body>
 
 </html>
