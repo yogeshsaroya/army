@@ -1,50 +1,31 @@
-<source src="https://www.brabus.com/_Resources/Persistent/f/5/5/8/f5581ce60174376d3585b8c885eaea733dda223b/10sek_Website_Teaser_XLP-SuperWhite_H264_WEB_NA.mp4" 
-data-landscape="https://www.brabus.com/_Resources/Persistent/f/5/5/8/f5581ce60174376d3585b8c885eaea733dda223b/10sek_Website_Teaser_XLP-SuperWhite_H264_WEB_NA.mp4" 
-data-portrait="https://www.brabus.com/_Resources/Persistent/5/0/6/d/506d0a1d7082dbd701adf02b08f37ee37f998a14/10sek_Website_Teaser_Hochkant_XLP-SuperWhite_H264_WEB_NA.mp4" type="video/mp4">
-
-
 <?php
-echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme']);
-?>
-<div id="home_slider" class="your-class">
-    <div>
-        <div class="video">
-            <video poster="https://res.cloudinary.com/armytrix/image/upload/v1650866595/Slider/Slide_1/Corvette-c8-landscape_rw4cjy.jpg" id="bgvid" playsinline autoplay loop muted>
-                <source src="https://res.cloudinary.com/armytrix/video/upload/v1650866599/Slider/Slide_1/Corvette-c8-landscape.mp4" type="video/mp4">
-            </video>
-            <div class="overlay">
-                <div class="contentWrap text-center">
-                    <h3>THE FIRST EVER MOTOCYCLE VALVETRONIC EXHAUST</h3><a href="#" class="linkBtn">WEAPONIZED NOW</a>
+echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme'], ['block' => 'css']);
+if (!empty($data)) { ?>
+    <div id="home_slider" class="your-class">
+        <?php foreach ($data as $list) {
+            $video = $list['VideoSlider']['video_for_pc'];
+            $poster = $list['VideoSlider']['poster_for_pc'];
+            if (isset($IsMobile)) {
+                $video = $list['VideoSlider']['video_for_mob'];
+                $poster = $list['VideoSlider']['poster_for_mob'];
+            }
+        ?>
+            <div>
+                <div class="video">
+                    <video poster="<?php echo $poster; ?>" id="bgvid" playsinline autoplay loop muted>
+                        <source src="<?php echo $video; ?>" type="video/mp4">
+                    </video>
+                    <div class="overlay">
+                        <div class="contentWrap text-center">
+                            <h3><?php echo strtoupper($list['VideoSlider']['heading']); ?></h3>
+                            <a href="<?php echo $list['VideoSlider']['url']; ?>" class="linkBtn"><?php echo strtoupper($list['VideoSlider']['button_title']); ?></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php } ?>
     </div>
-    <div>
-        <div class="video">
-            <video poster="https://res.cloudinary.com/armytrix/image/upload/v1650873612/Slider/Slide_2/LBWK-Leo-GTR-portrait_o29mqw.jpg" id="bgvid" playsinline autoplay loop muted>
-                <source src="https://res.cloudinary.com/armytrix/video/upload/v1650873620/Slider/Slide_2/LBWK-Leo-GTR-portrait_nae1qy.mp4" type="video/mp4">
-            </video>
-            <div class="overlay">
-                <div class="contentWrap text-center">
-                    <h3>THE FIRST EVER MOTOCYCLE VALVETRONIC EXHAUST</h3><a href="#" class="linkBtn">WEAPONIZED NOW</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <?php /*?>
-    <div>
-        <img src="https://mclaren.scene7.com/is/image/mclaren/McLaren_GT_Adventures_Dubai_01:crop-16x9?wid=1980&hei=1114" alt="banner image">
-        <div class="overlay">
-            <div class="contentWrap text-center">
-                <h3>THE FIRST EVER CAR </h3><a href="#" class="linkBtn">WEAPONIZED NOW</a>
-            </div>
-        </div>
-    </div>
-    <?php */ ?>
-
-
-</div>
+<?php } ?>
 
 <section class="serVicesLinks">
     <div class="container">
@@ -162,40 +143,12 @@ echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme']);
 
 
 
-<?php echo $this->Html->script(["/v2/slick/slick.min"]); ?>
-<script>
-    $(document).ready(function() {
+<?php echo $this->Html->script(["/v2/slick/slick.min"], ['block' => 'script']); ?>
+<?php $this->Html->scriptStart(array('block' => 'scriptBottom')); ?>
+$(document).ready(function() {
 
-        $.getJSON('https://www.armytrix.com/blog/wp-json/featured/news', function(data) {
-            var str = '';
-            var n = 1;
-            $(data['news']).each((index, element) => {
-                if (n <= 3) {
-                    var imgList = element['featured_image'];
-                    var img = 'https://res.cloudinary.com/armytrix/image/upload/v1650885696/home/ARMYTRIX.png';
-                    if (typeof imgList != "undefined" && imgList != null) {
-                        img = imgList.medium_large;
-                    }
-                    str += '<div class="col-sm-4"><div class="blogBox text-left"><div class="imgWraps"><img src="' + img + '" alt=""></div>' +
-                        '<h4>' + element['title'] + '</h4><p><b>' + element['published_on'] + ' </b>: ' + element['description'] + '</p>' +
-                        '<a href="' + element['url'] + '" class="wholeBoxLink"></a></div></div>';
-                }
-                n = n + 1;
-            });
-            $("#blogPost").html(str);
-            $("#blogPost").removeClass('loadBox');
-        });
-
-        $('#home_slider').slick({
-            dots: true,
-            autoplay: true,
-            autoplaySpeed: 10000,
-            infinite: true,
-            speed: 500,
-            fade: true,
-            cssEase: 'linear',
-            adaptiveHeight: false
-        });
-
-    });
-</script>
+$.getJSON('https://www.armytrix.com/blog/wp-json/featured/news', function(data) {
+var str = '';
+var n = 1;
+$(data['news']).each((index, element) => {
+if (n <= 3) { var imgList=element['featured_image']; var img='https://res.cloudinary.com/armytrix/image/upload/v1650885696/home/ARMYTRIX.png' ; if (typeof imgList !="undefined" && imgList !=null) { img=imgList.medium_large; } str +='<div class="col-sm-4"><div class="blogBox text-left"><div class="imgWraps"><img src="' + img + '" alt=""></div>' + '<h4>' + element['title'] + '</h4><p><b>' + element['published_on'] + ' </b>: ' + element['description'] + '</p>' + '<a href="' + element['url'] + '" class="wholeBoxLink"></a></div></div>' ; } n=n + 1; }); $("#blogPost").html(str); $("#blogPost").removeClass('loadBox'); }); $('#home_slider').slick({ dots: true, autoplay: true, autoplaySpeed: 10000, infinite: true, speed: 500, fade: true, cssEase: 'linear' , adaptiveHeight: false }); }); <?php $this->Html->scriptEnd(); ?>

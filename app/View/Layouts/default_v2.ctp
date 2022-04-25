@@ -68,7 +68,9 @@
 
   echo $this->Html->css(array('theme'));
 
-  echo $this->Html->script(array());
+  echo $this->fetch('css');
+	echo $this->fetch('script');
+
   echo $this->Js->writeBuffer(array('catch' => TRUE));
   echo $scripts_for_layout;
   if (isset($IsMobile) && $IsMobile == 'yes') { ?>
@@ -254,6 +256,7 @@
 	});
 });
 </script>
+<?php echo $this->fetch('scriptBottom'); ?>
 </body>
 
 </html>

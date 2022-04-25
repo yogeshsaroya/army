@@ -17,10 +17,9 @@ class PagesController extends AppController {
 		$this->layout = 'default_v2';
 		$this->set('title_for_layout', 'ARMYTRIX - Automotive Weaponized');
 		$page_meta = array('des'=>@$this->meta['des'], 'key'=>$this->meta['keys']);
-		$is_home = 'yes';
-		$url = 'https://www.armytrix.com/blog/wp-json/featured/news';
-		//$blogPosts = $this->DATA->fetch($url);
-		$this->set(compact('page_meta','is_home'));
+		$this->loadModel('VideoSlider');
+		$data = $this->VideoSlider->find('all',['order' => ['VideoSlider.position' => 'ASC']]);
+		$this->set(compact('page_meta','data'));
 	}
 
 	public function product_exhaust() {
