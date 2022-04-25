@@ -1,3 +1,8 @@
+<source src="https://www.brabus.com/_Resources/Persistent/f/5/5/8/f5581ce60174376d3585b8c885eaea733dda223b/10sek_Website_Teaser_XLP-SuperWhite_H264_WEB_NA.mp4" 
+data-landscape="https://www.brabus.com/_Resources/Persistent/f/5/5/8/f5581ce60174376d3585b8c885eaea733dda223b/10sek_Website_Teaser_XLP-SuperWhite_H264_WEB_NA.mp4" 
+data-portrait="https://www.brabus.com/_Resources/Persistent/5/0/6/d/506d0a1d7082dbd701adf02b08f37ee37f998a14/10sek_Website_Teaser_Hochkant_XLP-SuperWhite_H264_WEB_NA.mp4" type="video/mp4">
+
+
 <?php
 echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme']);
 ?>
@@ -7,16 +12,22 @@ echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme']);
             <video poster="https://res.cloudinary.com/armytrix/image/upload/v1650866595/Slider/Slide_1/Corvette-c8-landscape_rw4cjy.jpg" id="bgvid" playsinline autoplay loop muted>
                 <source src="https://res.cloudinary.com/armytrix/video/upload/v1650866599/Slider/Slide_1/Corvette-c8-landscape.mp4" type="video/mp4">
             </video>
-            <div class="overlay"><div class="contentWrap text-center"><h3>THE FIRST EVER MOTOCYCLE VALVETRONIC EXHAUST</h3><a href="#" class="linkBtn">WEAPONIZED NOW</a></div>
+            <div class="overlay">
+                <div class="contentWrap text-center">
+                    <h3>THE FIRST EVER MOTOCYCLE VALVETRONIC EXHAUST</h3><a href="#" class="linkBtn">WEAPONIZED NOW</a>
+                </div>
             </div>
         </div>
     </div>
     <div>
-    <div class="video">
-            <video poster="https://res.cloudinary.com/armytrix/image/upload/v1650873612/Slider/Slide_2/LBWK-Leo-GTR-landscape_sykyjn.jpg" id="bgvid" playsinline autoplay loop muted>
-                <source src="https://res.cloudinary.com/armytrix/video/upload/v1650873619/Slider/Slide_2/LBWK-Leo-GTR-landscape_iwkoa7.mp4" type="video/mp4">
+        <div class="video">
+            <video poster="https://res.cloudinary.com/armytrix/image/upload/v1650873612/Slider/Slide_2/LBWK-Leo-GTR-portrait_o29mqw.jpg" id="bgvid" playsinline autoplay loop muted>
+                <source src="https://res.cloudinary.com/armytrix/video/upload/v1650873620/Slider/Slide_2/LBWK-Leo-GTR-portrait_nae1qy.mp4" type="video/mp4">
             </video>
-            <div class="overlay"><div class="contentWrap text-center"><h3>THE FIRST EVER MOTOCYCLE VALVETRONIC EXHAUST</h3><a href="#" class="linkBtn">WEAPONIZED NOW</a></div>
+            <div class="overlay">
+                <div class="contentWrap text-center">
+                    <h3>THE FIRST EVER MOTOCYCLE VALVETRONIC EXHAUST</h3><a href="#" class="linkBtn">WEAPONIZED NOW</a>
+                </div>
             </div>
         </div>
     </div>
@@ -30,7 +41,7 @@ echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme']);
             </div>
         </div>
     </div>
-    <?php */?>
+    <?php */ ?>
 
 
 </div>
@@ -177,8 +188,8 @@ echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme']);
 
         $('#home_slider').slick({
             dots: true,
-            autoplay : true,
-            autoplaySpeed : 10000,
+            autoplay: true,
+            autoplaySpeed: 10000,
             infinite: true,
             speed: 500,
             fade: true,
