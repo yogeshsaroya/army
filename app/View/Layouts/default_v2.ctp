@@ -68,7 +68,9 @@
 
   echo $this->Html->css(array('theme'));
 
-  echo $this->Html->script(array());
+  echo $this->fetch('css');
+	echo $this->fetch('script');
+
   echo $this->Js->writeBuffer(array('catch' => TRUE));
   echo $scripts_for_layout;
   if (isset($IsMobile) && $IsMobile == 'yes') { ?>
@@ -213,15 +215,14 @@
   <div id="v2_main">
     <?php echo $this->fetch('content'); ?>
   </div>
-  <?php echo $this->element('v2/footer'); ?>
-
-  <?php //echo $this->element('sql_dump');   
+  <?php 
+  if ($this->params['controller'] == 'pages' && $this->params['action'] == 'home') {
+    echo $this->element('v2/footer'); 
+  }
   ?>
-  <?php /*?>
-<script type="text/javascript">
-function googleTranslateElementInit() { new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element'); } </script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-<?php */ ?>
+
+
+<?php echo $this->fetch('scriptBottom'); ?>
 </body>
 
 </html>

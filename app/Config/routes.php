@@ -28,7 +28,7 @@
  
 	Router::parseExtensions('html', 'rss', 'xml','json','php');
 	Router::connect('/backend/*', array('controller' => 'users', 'action' => 'login', 'lab' => true));
-	Router::connect('/', array('controller' => 'pages', 'action' => 'index_1'));
+	Router::connect('/', array('controller' => 'pages', 'action' => 'home'));
 	
 	Router::connect('/login/*', array('controller' => 'users', 'action' => 'login'));
 	Router::connect('/register/*', array('controller' => 'users', 'action' => 'sign_up'));

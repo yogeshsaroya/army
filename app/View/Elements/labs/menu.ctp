@@ -182,8 +182,9 @@ $imgPath = 'no-profile-image.jpg';
               <ul class="treeview-menu">
               <?php /*?>
               <li><a href="<?php echo SITEURL."lab/labs/languages";?>" > <i class="fa fa-circle-o"></i>Languages</a></li>
-              	<li><a href="<?php echo SITEURL."lab/labs/home_slider";?>" > <i class="fa fa-circle-o"></i>Manage Slider</a></li>
-              	<?php */?>
+              <?php */?>
+              	<li><a href="<?php echo SITEURL."lab/labs/home_slider";?>" > <i class="fa fa-circle-o"></i>Video Slider</a></li>
+              	
               	<li><a href="<?php echo SITEURL."lab/labs/new_releases";?>" > <i class="fa fa-circle-o"></i>New Releases</a></li>
               	<li><a href="<?php echo SITEURL."lab/labs/settings";?>" > <i class="fa fa-circle-o"></i>Setting</a></li>
               	<li><a href="<?php echo SITEURL."lab/labs/change_pwd";?>"><i class="fa fa-circle-o"></i> Change password</a></li>

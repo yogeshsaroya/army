@@ -5,7 +5,7 @@
 </style>
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h1> <a href="<?php echo SITEURL."lab/labs/manage_slider"?>">Add new slide </a></h1>
+          <h1> <a href="<?php echo SITEURL."lab/labs/manage_slider"?>">Add New Video Slide </a></h1>
         </section>
         <!-- Main content -->
         <section class="content">
@@ -15,11 +15,6 @@
             
             <div id="app_err"></div>
             <?php echo $this->Session->flash('msg');?>
-
-		
-
-
-              
               <div class="box box-success">
                 <div class="box-header"> <h3 class="box-title">All Slides</h3> </div>
                 <div class="box-body">
@@ -29,8 +24,10 @@
 											<thead>
 											
 					<tr role="row">
-                        <th><?php echo $this->Paginator->sort('HomeSlider.id', 'ID', array('escape' => false)); ?></th>
-                        <th><?php echo $this->Paginator->sort('HomeSlider.title', 'Title', array('escape' => false)); ?></th>
+                        <th><?php echo $this->Paginator->sort('VideoSlider.id', 'ID', array('escape' => false)); ?></th>
+                        <th><?php echo $this->Paginator->sort('VideoSlider.poster_for_pc', 'Poster', array('escape' => false)); ?></th>
+                        <th><?php echo $this->Paginator->sort('VideoSlider.heading', 'Heading', array('escape' => false)); ?></th>
+                        <th><?php echo $this->Paginator->sort('VideoSlider.url', 'URL', array('escape' => false)); ?></th>
                         <th>Edit</th>
                         <th>Action</th>
                     </tr>
@@ -38,15 +35,17 @@
 <tbody id="table_rows">
 
                 <?php if(!empty($data)) {  $n=1; foreach($data as $list){?>
-                    <tr id="img_<?php echo $list['HomeSlider']['id'];?>">
-                        <td><?php echo $n;?></td>
-                        <td><?php echo $list['HomeSlider']['title'];?></td>
-                        <td> <?php echo $this->html->link('Edit','/lab/labs/manage_slider/'.$list['HomeSlider']['id']);?></tb>
-                        <td> <?php  echo $this->html->link('Delete','/lab/labs/home_slider/?del='.$list['HomeSlider']['id'],array('class' => 'text-red','confirm' => 'Do you want to delete this slide?'));?></tb>
+                    <tr id="img_<?php echo $list['VideoSlider']['id'];?>">
+                    <td><?php echo $list['VideoSlider']['id'];?></td>
+                        <td><img src="<?php echo $list['VideoSlider']['poster_for_pc'];?>" alt="" width="150"></td>
+                        <td><?php echo $list['VideoSlider']['heading'];?></td>
+                        <td><?php echo $list['VideoSlider']['url'];?></td>
+                        <td> <?php echo $this->html->link('Edit','/lab/labs/manage_slider/'.$list['VideoSlider']['id']);?></tb>
+                        <td> <?php  echo $this->html->link('Delete','/lab/labs/home_slider/?del='.$list['VideoSlider']['id'],array('class' => 'text-red','confirm' => 'Do you want to delete this slide?'));?></tb>
                         </td>
                     </tr>
                    <?php $n++; }}else{?>
-                   <td colspan="4">Your HomeSlider tab is empty</td>
+                   <td colspan="5">Tab is empty</td>
                    <?php }?> 
 </tbody>
 											
