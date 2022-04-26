@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="/css/cs-css.css"/>
+<?php echo $this->Html->css(["cs-css"], ['block' => 'css']); ?>
 <?php if (!empty($style)) { echo $style; } ?>
 
 <div class="customer-support-wrapper cs-damage-step1">
@@ -17,7 +17,7 @@
 		
 		<?php if (!empty($image)) {?>
 			<div class="cs-damage-subimage">
-				<img src="../image/customer-support/<?php echo $image; ?>" />
+				<img src="<?php echo SITEURL;?>image/customer-support/<?php echo $image; ?>" />
 			</div>
 		<?php } ?>
 		
@@ -30,10 +30,10 @@
 		<?php if (!empty($url) and !empty($url2)) {?>
 			<div class="customer-support-pages">
 				<div class="customer-support-page">
-					<a href="<?php echo $url; ?>"><img src="../image/customer-support/<?php echo $nextstepimage1; ?>" /></a>
+					<a href="<?php echo $url; ?>"><img src="<?php echo SITEURL;?>image/customer-support/<?php echo $nextstepimage1; ?>" /></a>
 				</div>
 				<div class="customer-support-page">
-					<a href="<?php echo $url2; ?>"><img src="../image/customer-support/<?php echo $nextstepimage2; ?>" /></a>
+					<a href="<?php echo $url2; ?>"><img src="<?php echo SITEURL;?>image/customer-support/<?php echo $nextstepimage2; ?>" /></a>
 				</div>
 				<div class="cs-clear"></div>
 			</div>

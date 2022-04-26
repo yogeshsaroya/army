@@ -228,7 +228,7 @@
 		</div>
 		
 		<div class="cs-fitment-subimage">
-			<img src="../image/customer-support/fit-is-step2.png" />
+			<img src="<?php echo SITEURL;?>image/customer-support/fit-is-step2.png" />
 		</div>
 		
 		<div class="customer-support-subtitle">
@@ -236,10 +236,10 @@
 		</div>
 		<div class="customer-support-pages">
 			<div class="customer-support-page">
-				<a href="/fitment-issue-step3-2"><img src="../image/customer-support/damage-step2-g5742.png" /></a>
+				<a href="<?php echo SITEURL;?>fitment-issue-step3-2"><img src="<?php echo SITEURL;?>image/customer-support/damage-step2-g5742.png" /></a>
 			</div>
 			<div class="customer-support-page">
-				<a href="/fitment-issue-step3-3"><img src="../image/customer-support/damage-step2-g5743.png" /></a>
+				<a href="<?php echo SITEURL;?>fitment-issue-step3-3"><img src="<?php echo SITEURL;?>image/customer-support/damage-step2-g5743.png" /></a>
 			</div>
 			<div class="cs-clear"></div>
 		</div>

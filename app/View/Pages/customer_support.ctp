@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="/css/cs-css.css"/>
+<?php echo $this->Html->css(["cs-css"], ['block' => 'css']); ?>
 
 <div class="customer-support-wrapper">
 
@@ -16,19 +16,19 @@
 		</div>
 		<div class="customer-support-pages">
 			<div class="customer-support-page">
-				<a href="/damage"><img src="../image/customer-support/g236.png" /></a>
+				<a href="<?php echo SITEURL;?>damage"><img src="<?php echo SITEURL;?>image/customer-support/g236.png" /></a>
 			</div>
 			<div class="customer-support-page">
-				<a href="/lost-parts"><img src="../image/customer-support/g2622.png" /></a>
+				<a href="<?php echo SITEURL;?>lost-parts"><img src="<?php echo SITEURL;?>image/customer-support/g2622.png" /></a>
 			</div>
 			<div class="customer-support-page">
-				<a href="/fitment-issue"><img src="../image/customer-support/g2702.png" /></a>
+				<a href="<?php echo SITEURL;?>fitment-issue"><img src="<?php echo SITEURL;?>image/customer-support/g2702.png" /></a>
 			</div>
 			<div class="customer-support-page">
-				<a href="/check-engine"><img src="../image/customer-support/g2812.png" /></a>
+				<a href="<?php echo SITEURL;?>check-engine"><img src="<?php echo SITEURL;?>image/customer-support/g2812.png" /></a>
 			</div>
 			<div class="customer-support-page">
-				<a href="/valve-control/check-the-function-of-your-obd"><img src="../image/customer-support/text2682.png" /></a>
+				<a href="<?php echo SITEURL;?>valve-control/check-the-function-of-your-obd"><img src="<?php echo SITEURL;?>image/customer-support/text2682.png" /></a>
 			</div>
 			<div class="cs-clear"></div>
 		</div>

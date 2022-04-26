@@ -19,14 +19,14 @@
 			<div class="col-sm-3 linkSpace">
 				<h3><a href="<?php echo SITEURL;?>dealer" class="inheritClr">FIND A DEALAR</a></h3>
 				<h3><a href="<?php echo SITEURL;?>homes/material" class="inheritClr">COLLABORATE</a></h3>
-				<h3><a href="<?php echo SITEURL;?>program" class="inheritClr">SPONSORSHIP</a></h3>
+				<h3><a href="<?php echo SITEURL;?>homes/program" class="inheritClr">SPONSORSHIP</a></h3>
 			</div>
 			<!-- end of colom -->
 
 			<div class="col-sm-3 linkSpace">
 				<h3><a href="<?php echo SITEURL;?>warranty" class="inheritClr">WARRANTY</a></h3>
 				<h3><a href="<?php echo SITEURL;?>faqs" class="inheritClr">FAQS</a></h3>
-				<h3><a href="<?php echo SITEURL;?>new_kit_request" class="inheritClr">NEW KITS</a></h3>
+				<h3><a href="<?php echo SITEURL;?>homes/new_kit_request" class="inheritClr">NEW KITS</a></h3>
 
 			</div>
 			<!-- end of colom -->
