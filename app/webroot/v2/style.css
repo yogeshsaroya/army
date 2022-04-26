@@ -14,7 +14,7 @@ img {
     max-width: 100%;
 }
 
-body h1 , #new-ui-add h1 {
+body h1 , #new-ui-add h1 ,     .serVicesLinks .row > h2 {
     font-size: 30px;
     line-height: 1;
     letter-spacing: 0;
@@ -1148,7 +1148,7 @@ section.bgWhite .container {
       margin: 0 auto
     }
 
-    #new-ui-add h2 {
+    #new-ui-add h2  {
       font-size: 18px;
       color: #fff;
       text-transform: uppercase;
@@ -1372,15 +1372,39 @@ section.bgWhite .container {
 
     }
 }
+@media (max-width: 767px){
+    .container-fmr .col-sm-8-nw .box-frm::after {
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 9px solid #fff;
+        position: relative;
+        content: "";
+        display: block;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: 20px auto;
+   }
+    .container-fmr .col-sm-8-nw .box-frm:last-child::after {
+        display: none;
+    }
+
+}
 
 @media (max-width: 580px) {
     body , .content_2, .blogBox p{
         font-size: 10px;
     }
-    body h1 , #new-ui-add h1 {
+    body h1 , #new-ui-add h1 , 
+    .serVicesLinks .row > h2 , .serVicesLinks .row > h2 > a{
         font-weight: bold;
         font-size: 18px;
     }
+    /*.serVicesLinks .row > h2 , .serVicesLinks .row > h2 > a{
+        font-weight: normal;
+    }*/
     body h2,
     body h2 a {
         font-size: 16px;
@@ -1457,15 +1481,26 @@ section.bgWhite .container {
         width: 100%;
         max-width: 450px;
     }
+    .serVicesLinks > .container{
+        width: 100%;
+    }
     .serVicesLinks .row {
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
     }
     .serVicesLinks .row > h2 {
         width: auto;
         white-space: nowrap;
-        padding: 0 8px
+        padding: 0 8px;
+        text-align: left;
+        margin-left: 0;
+        margin-right: auto;
+    }
+    .serVicesLinks .row > h2 + h2{
+        margin-left: auto;
+        text-align: right;
+        margin-right: 0;
     }
     .serVicesLinks{
         margin-bottom: 0;
