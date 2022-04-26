@@ -1,4 +1,4 @@
-<?php echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme'], ['block' => 'css']); ?>
+<?php echo $this->Html->css(["/v2/product_page", "/v2/slick/slick", '/v2/slick/slick-theme'], ['block' => 'css']); ?>
 
 
 
