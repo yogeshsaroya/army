@@ -14,7 +14,7 @@ img {
     max-width: 100%;
 }
 
-body h1 {
+body h1 , #new-ui-add h1 {
     font-size: 30px;
     line-height: 1;
     letter-spacing: 0;
@@ -666,6 +666,61 @@ section.bgWhite .container {
     margin: 0;
 }
 
+/*start exaust page*/
+.fullScreen{
+    height: 100vh;
+    position: relative;
+}
+.fullScreen > *{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center center; 
+}
+#tuning_box_page .tuning-box {
+    margin-top: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+#tuning_box_page #new-ui-add {
+    margin: 0 auto;
+    max-width: 1400px;
+}
+#tuning_box_page #new-ui-add h1{
+    padding: 10px 0;
+    font-weight: inherit;
+    color: #fff;
+}
+#tuning_box_page #new-ui-add h2{
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+#tuning_box_page #new-ui-add .tuningconfig {
+    background: transparent;
+    padding: 10px 0 0;
+}
+#tuning_box_page #new-ui-add select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: #fff;
+    border: 2px solid #fff !important;
+    background-color: rgba(0,0,0,0.5); !important;
+    height: 50px;
+    margin: 0;
+    width: 100% !important;
+    font-family: 'Oswald', sans-serif;
+    font-weight: inherit !important;
+    font-size: 24px !important;
+    padding: 5px;
+    text-align: center;
+    vertical-align: middle;
+}
+/*end of exaust page*/
 
 @media (min-width: 768px) {
     .text-sm-right {
@@ -772,7 +827,7 @@ section.bgWhite .container {
     body , .content_2, .blogBox p{
         font-size: 10px;
     }
-    body h1 {
+    body h1 , #new-ui-add h1 {
         font-weight: bold;
         font-size: 18px;
     }

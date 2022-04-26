@@ -1,7 +1,7 @@
 <?php
 echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme'], ['block' => 'css']);
 if (!empty($data)) { ?>
-    <div id="home_slider" class="your-class">
+    <div id="home_slider" class="your-class homePg">
         <?php foreach ($data as $list) {
             $video = $list['VideoSlider']['video_for_pc'];
             $poster = $list['VideoSlider']['poster_for_pc'];

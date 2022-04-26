@@ -17,16 +17,7 @@
     border: none !important
   }
 
-  .tuningconfig {
-    font-size: .95em;
-    padding: 1px 10px 0;
-    border-bottom-width: 0;
-    border-bottom-style: solid;
-    border-bottom-color: #ececec;
-    text-align: left;
-    display: block;
-    background-color: #8d8d8d
-  }
+
 
   span.main_head {
     font-size: 16px;
@@ -553,15 +544,14 @@
 <div id="preloader" style="display: none;">
   <div id="status">&nbsp;</div>
 </div>
-<div class="fullscreen_block_ video-bg" id="tuning_box_page" style="min-height: 400px;">
-  <iframe id="home_bg_v" style=" z-index: -99; width: 100%; height: autp" src="https://www.youtube.com/embed/TocQT9-xdeA?playlist=TocQT9-xdeA&controls=0&showinfo=0&autoplay=1&rel=0&loop=1&controls=0&vq=hd720&enablejsapi=1" allowfullscreen="" frameborder="0">
-  </iframe>
+<div class="fullscreen_block_new" id="tuning_box_page" style="min-height: 400px;">
+  <div class="fullScreen"><img src="https://res.cloudinary.com/armytrix/image/upload/v1650865426/product/armytrix-product-exhaust.jpg" alt="full image"></div>
   <div class="tuning-box">
     <div class="clearfix"></div>
     <div class="container" id="new-ui-add">
-      <h1>Select Brand , Model and Engine / Year and choose the Armytrix Exhaust Systems</h1>
+      <h2 class="mb-0">SELECT BRAND , MODEL AND ENGINE / YEAR </h2>
+      <h1>WEAPONIZED BY THE ARMYTRIX EXHAUST SYSTEMS</h1>
       <div class="col-md-12 main_d no-pad">
-
         <div class="fadein">
           <div class="tuningconfig">
             <form id="frmTun">
