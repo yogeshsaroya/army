@@ -122,5 +122,11 @@ $(document).on('click', '.popup-modal-dismiss', function (e) {
        $('.cartWrap').fadeIn('slow');
        $('body').removeClass('openCartBar');
 	});
+
+	var screenHeight = $(window).height();
+	var linkHt = $('.serVicesLinks').outerHeight();
+	$('#home_slider .slick-track .slick-slide').css('height' , screenHeight - linkHt);
+
+	$('.fullScreen').css('height' , screenHeight)
 });
 <?php $this->Html->scriptEnd(); ?>

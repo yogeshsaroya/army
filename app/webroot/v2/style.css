@@ -265,7 +265,7 @@ div#home_slider {
 }
 
 #home_slider .slick-track .slick-slide {
-    height: calc(100vh - 66px);
+    height: calc(100% - 66px);
     min-height: 500px;
 }
 
@@ -372,6 +372,8 @@ div#home_slider {
     min-width: auto;
     padding: 8px 10px;
     font-size: 20px;
+    display: flex;
+    align-items: center;
 }
 
 .subscribeBtn i {
@@ -1201,17 +1203,27 @@ section.bgWhite .container {
     }
   }
 
-
-
 .fullScreen{
     height: 100vh;
     position: relative;
+}
+.fullScreen:before{
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.3);
 }
 .fullScreen > *{
     height: 100%;
     width: 100%;
     object-fit: cover;
     object-position: center center; 
+    vertical-align: bottom;
 }
 #tuning_box_page .tuning-box {
     margin-top: 0;
@@ -1220,6 +1232,7 @@ section.bgWhite .container {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
+    z-index: 5;
 }
 #tuning_box_page #new-ui-add {
     margin: 0 auto;

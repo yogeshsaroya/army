@@ -3,7 +3,7 @@
 <div id="preloader" style="display: none;">
   <div id="status">&nbsp;</div>
 </div>
-<div class="fullscreen_block_new" id="tuning_box_page" style="min-height: 400px;">
+<div class="fullscreen_block_new fulScreen" id="tuning_box_page" style="min-height: 400px;">
   <div class="fullScreen"><img src="https://res.cloudinary.com/armytrix/image/upload/v1650865426/product/armytrix-product-exhaust.jpg" alt="full image"></div>
   <div class="tuning-box">
     <div class="clearfix"></div>
