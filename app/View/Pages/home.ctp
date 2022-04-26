@@ -42,21 +42,21 @@ if (!empty($data)) { ?>
         <h1>ARMYTRIX OFFICIAL WEBSITE</h1>
         <h3>NEWS & PROJECTS</h3>
         <div class="row d-flex loadBox" id="blogPost">
-            <div class="col-sm-4">
+            <div class="col-md-4">
                 <div class="blogBox text-left">
                     <div class="imgWraps"><img src="https://res.cloudinary.com/armytrix/image/upload/v1650885696/home/ARMYTRIX.png" alt=""></div>
                     <h4> &nbsp </h4>
                     <p>&nbsp</p><a href="javascript:void(0);" class="wholeBoxLink"></a>
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-md-4">
                 <div class="blogBox text-left">
                     <div class="imgWraps"><img src="https://res.cloudinary.com/armytrix/image/upload/v1650885696/home/ARMYTRIX.png" alt=""></div>
                     <h4> &nbsp </h4>
                     <p>&nbsp</p><a href="javascript:void(0);" class="wholeBoxLink"></a>
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-md-4">
                 <div class="blogBox text-left">
                     <div class="imgWraps"><img src="https://res.cloudinary.com/armytrix/image/upload/v1650885696/home/ARMYTRIX.png" alt=""></div>
                     <h4> &nbsp </h4>

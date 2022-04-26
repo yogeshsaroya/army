@@ -92,9 +92,9 @@ $(document).on('click', '.popup-modal-dismiss', function (e) {
  $(document).ready(function(){	
 	$(window).scroll(function(){
     if ($(this).scrollTop() > 10) {
-       $('header').addClass('fixedHeader');
+       $('body').addClass('fixedHeader');
     } else {
-       $('header').removeClass('fixedHeader');
+       $('body').removeClass('fixedHeader');
     }
 });
 	// menu open js
@@ -103,6 +103,7 @@ $(document).on('click', '.popup-modal-dismiss', function (e) {
        $(this).hide('fast');
        $('.closeMenu').fadeIn('slow');
        $('body').addClass('openMenuBar');
+       
 	});
 	$('.closeMenu').click(function(){
        $(this).hide('fast');
