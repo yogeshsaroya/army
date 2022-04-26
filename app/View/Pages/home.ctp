@@ -1,7 +1,7 @@
 <?php
 echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme'], ['block' => 'css']);
 if (!empty($data)) { ?>
-    <div id="home_slider" class="your-class">
+    <div id="home_slider" class="your-class homePg">
         <?php foreach ($data as $list) {
             $video = $list['VideoSlider']['video_for_pc'];
             $poster = $list['VideoSlider']['poster_for_pc'];
@@ -42,21 +42,21 @@ if (!empty($data)) { ?>
         <h1>ARMYTRIX OFFICIAL WEBSITE</h1>
         <h3>NEWS & PROJECTS</h3>
         <div class="row d-flex loadBox" id="blogPost">
-            <div class="col-sm-4">
+            <div class="col-md-4">
                 <div class="blogBox text-left">
                     <div class="imgWraps"><img src="https://res.cloudinary.com/armytrix/image/upload/v1650885696/home/ARMYTRIX.png" alt=""></div>
                     <h4> &nbsp </h4>
                     <p>&nbsp</p><a href="javascript:void(0);" class="wholeBoxLink"></a>
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-md-4">
                 <div class="blogBox text-left">
                     <div class="imgWraps"><img src="https://res.cloudinary.com/armytrix/image/upload/v1650885696/home/ARMYTRIX.png" alt=""></div>
                     <h4> &nbsp </h4>
                     <p>&nbsp</p><a href="javascript:void(0);" class="wholeBoxLink"></a>
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-md-4">
                 <div class="blogBox text-left">
                     <div class="imgWraps"><img src="https://res.cloudinary.com/armytrix/image/upload/v1650885696/home/ARMYTRIX.png" alt=""></div>
                     <h4> &nbsp </h4>

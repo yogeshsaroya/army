@@ -14,7 +14,6 @@ class PagesController extends AppController {
 
 	/* new pages */ 
 	public function home() {
-		$this->layout = 'default_v2';
 		$this->set('title_for_layout', 'ARMYTRIX - Automotive Weaponized');
 		$page_meta = array('des'=>@$this->meta['des'], 'key'=>$this->meta['keys']);
 		$this->loadModel('VideoSlider');
@@ -23,10 +22,9 @@ class PagesController extends AppController {
 	}
 
 	public function product_exhaust() {
-		$this->layout = 'default_v2';
-	    $this->set('title_for_layout', 'ARMYTRIX VALVETRONIC EXHAUST SYSTEM');
+		$this->set('title_for_layout', 'Valvetronic Exhaust System Weaponzied by ARMYTRIX');
 	    $page_meta = [
-	        'des'=>'ARMYTRIX Best Aftermarket Upgrades Titanium & Stainless Steel Turbo-back Cat-Back Valvetronic Exhaust Downpipes Tips Headers Decat Test Straight Exhaust Sound',
+	        'des'=>'Best Sounding Aftermarket Exhaust Upgrades. Titanium & Stainless Steel Turbo-back Cat-Back Valvetronic Exhaust Downpipes Tips Headers Decat Test Straight Exhaust Sound',
 	        'key'=>'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
 	    ];
 		$bid = array();

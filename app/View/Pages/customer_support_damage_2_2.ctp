@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="/css/cs-css.css"/>
+<?php echo $this->Html->css(["cs-css"], ['block' => 'css']); ?>
 
 <div class="customer-support-wrapper cs-damage-step2-2">
 
@@ -13,7 +13,7 @@
 		</div>
 		
 		<div class="cs-damage-subimage">
-			<img src="../image/customer-support/damage-step2-2-g702.png" />
+			<img src="<?php echo SITEURL;?>image/customer-support/damage-step2-2-g702.png" />
 		</div>
 		
 		<div class="customer-support-subtitle">

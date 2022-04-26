@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" type="text/css" href="/css/cs-css.css"/>
+<?php echo $this->Html->css(["cs-css"], ['block' => 'css']); ?>
 
 <div class="customer-support-wrapper cs-damage-step2">
 
@@ -22,10 +22,10 @@
 		</div>
 		<div class="customer-support-pages">
 			<div class="customer-support-page">
-				<a href="/damage-step3"><img src="../image/customer-support/damage-step2-g5742.png" /></a>
+				<a href="<?php echo SITEURL;?>damage-step3"><img src="../image/customer-support/damage-step2-g5742.png" /></a>
 			</div>
 			<div class="customer-support-page">
-				<a href="/damage-step3-2"><img src="../image/customer-support/damage-step2-g5743.png" /></a>
+				<a href="<?php echo SITEURL;?>damage-step3-2"><img src="../image/customer-support/damage-step2-g5743.png" /></a>
 			</div>
 			<div class="cs-clear"></div>
 		</div>

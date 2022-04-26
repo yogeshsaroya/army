@@ -15,7 +15,7 @@
 		</div>
 
 		<div class="ml-auto cartBox d-flex align-items-center">
-		<span>Check your orders</span>
+		<a class="popup-modal" href="#od_st_modal">Check your orders</a>
 			<div class="cartHead">
 				
 				<i class="cartWrap">
@@ -45,6 +45,23 @@
 		<li><?php echo $this->Html->link('CONTACT US', '/contact'); ?></li>
 	</ul>
 </div>
+<div id="od_st_modal" class="white-popup-block mfp-hide">
+	<h2>Check Order Status</h2>
+	
+<div class="row">
+  <div class="col-lg-12">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Enter Order Number... " id="ord_num" autofocus="autofocus">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" id="od_s">Go!</button>
+      </span>
+    </div>
+    <br>
+	<p class="text-right"><a class="popup-modal-dismiss" href="#">Close</a></p>
+  </div>
+</div>
+	
+</div>
 
 <div class="sideNav rightSide">
 	<h2>Your Cart Is Empty</h2>
@@ -52,12 +69,32 @@
 
 
 <?php $this->Html->scriptStart(array('block' => 'scriptBottom')); ?>
+$(function () {
+
+$("#od_s").click(function(){
+	  var n = $.trim ( $("#ord_num").val() );
+	  location.href = SITEURL+"pages/order/success/"+n;
+	  
+	});
+
+$('.popup-modal').magnificPopup({
+	type: 'inline',
+	preloader: false,
+	focus: '#username',
+	modal: true
+});
+$(document).on('click', '.popup-modal-dismiss', function (e) {
+	e.preventDefault();
+	$.magnificPopup.close();
+});
+});
+
  $(document).ready(function(){	
 	$(window).scroll(function(){
     if ($(this).scrollTop() > 10) {
-       $('header').addClass('fixedHeader');
+       $('body').addClass('fixedHeader');
     } else {
-       $('header').removeClass('fixedHeader');
+       $('body').removeClass('fixedHeader');
     }
 });
 	// menu open js
@@ -66,6 +103,7 @@
        $(this).hide('fast');
        $('.closeMenu').fadeIn('slow');
        $('body').addClass('openMenuBar');
+       
 	});
 	$('.closeMenu').click(function(){
        $(this).hide('fast');

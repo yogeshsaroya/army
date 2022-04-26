@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="/css/cs-css.css"/>
+<?php echo $this->Html->css(["cs-css"], ['block' => 'css']); ?>
 
 <div class="customer-support-wrapper">
 

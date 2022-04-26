@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="/css/cs-css.css"/>
+<?php echo $this->Html->css(["cs-css"], ['block' => 'css']); ?>
 
 <div class="customer-support-wrapper cs-fitment-step3">
 
@@ -28,7 +28,7 @@
 		- Proper videos of the problem
 		</div>
 		<div class="customer-support-title2 customer-support-subtitle2">
-		(please upload to one of this platform first) <img src="../image/customer-support/fit-is-step_social.png" />
+		(please upload to one of this platform first) <img src="<?php echo SITEURL;?>image/customer-support/fit-is-step_social.png" />
 		</div>
 		<input name="field[]" class="cs-field"  type="text" placeholder="Video link(URL):"/>
 		<div class="customer-support-title2">
@@ -36,13 +36,13 @@
 		</div>
 		<input name="file[]" type="file" class="cs-field" id="my_file" style="display: none;" multiple />
 		<div class="cs-upload">
-			<img src="../image/customer-support/upload.png" />
+			<img src="<?php echo SITEURL;?>image/customer-support/upload.png" />
 		</div>
 		<textarea name="field[]" class="cs-field" placeholder="Problem description"></textarea>
 		
 		</form>
 		<div class="form-button">
-			<img src="../image/customer-support/send-green.png" />
+			<img src="<?php echo SITEURL;?>image/customer-support/send-green.png" />
 		</div>
 	</div>
 	<div class="customer-support-bg3">

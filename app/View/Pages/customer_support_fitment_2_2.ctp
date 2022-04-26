@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="/css/cs-css.css"/>
+<?php echo $this->Html->css(["cs-css"], ['block' => 'css']); ?>
 
 <div class="customer-support-wrapper cs-fitment-step2">
 
@@ -13,7 +13,7 @@
 		</div>
 
 	</div>
-	<a href="/fitment-issue-step3">
+	<a href="<?php echo SITEURL;?>fitment-issue-step3">
 	<div class="customer-support-bg3">
 		<div class="customer-support-subtitle">
 		No data is found for the model, version, and year of your car
