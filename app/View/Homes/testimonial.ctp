@@ -14,7 +14,7 @@ h1{font-size:32px}
 .vide-sec .gallery:after{position:relative;clear:both;content:""}
 .vide-sec .img-sec-grid-cntnt{padding-top:10px}
 .vide-sec .fw_content_wrapper{background:transparent!important;max-width:1240px;margin:auto!important;padding:0 20px}
-.vide-sec{padding-bottom:120px}
+.vide-sec{padding-bottom:120px; background-color: rgba(0,0,0,0.7);}
 .vide-sec .top-sec{padding-top:100px;background-color:rgba(0,0,0,0.7);overflow:hidden;padding-bottom:50px;border-bottom:3px solid #fff}
 .vide-sec .img-section{overflow:hidden;padding-top:50px}
 @media (max-width:1054px) {
@@ -89,11 +89,8 @@ h1{font-size:32px}
           		echo '<div class="col-sm-3"> <a href="//www.youtube.com/watch?v='.$k.'" class="popup-youtube img-sec-grid"><img src="//img.youtube.com/vi/'.$k.'/0.jpg" alt=""><div class="img-sec-grid-cntnt"><P>'.$v.'</p></div></a> </div>';
           	}
           }?>
-
-            
           </div>
         </div>
   </div>
 </div>
-
 <div class="fixed_bg bg1"></div>
