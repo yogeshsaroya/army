@@ -99,7 +99,7 @@ $(document).on('click', '.popup-modal-dismiss', function (e) {
        $('body').removeClass('fixedHeader');
     }
 });
-	// menu open js
+
 
 	$('.openMenu').click(function(){
        $(this).hide('fast');
