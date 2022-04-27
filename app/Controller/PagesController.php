@@ -1513,7 +1513,7 @@ class PagesController extends AppController
 		$this->set(compact('page_meta', 'b', 'product', 'paging'));
 	}
 
-	
+
 	public function get_product()
 	{
 		$this->autoRender = false;
@@ -2637,5 +2637,44 @@ class PagesController extends AppController
 	public function flash_sale_pop()
 	{
 	}
+
+	public function ecu_qa()
+	{
+		$this->set('title_for_layout', 'ECU Tuning Questions - Armytrix Performance Upgrades');
+		$page_meta = array('des' => @$this->meta['des'], 'key' => $this->meta['keys']);
+		$this->set(compact('page_meta'));
+	}
+
+	public function ecu_warranty()
+	{
+		$this->set('title_for_layout', 'ECU Tuning Warranty - Armytrix Performance Upgrades');
+		$page_meta = array('des' => @$this->meta['des'], 'key' => $this->meta['keys']);
+		$this->set(compact('page_meta'));
+	}
+
+	public function ecu()
+	{
+		$this->set('title_for_layout', 'ECU Tuning - Armytrix Performance Upgrades');
+		$page_meta = array('des' => @$this->meta['des'], 'key' => $this->meta['keys']);
+		$this->set(compact('page_meta'));
+	}
+
+	public function check_product()
+	{
+		$this->autoRender = false;
+		if ($this->RequestHandler->isAjax() && !empty($this->data)) {
+			$getPro = $this->ItemDetail->find('first', array('recursive' => -1,'conditions' => [
+				'ItemDetail.language'=>'eng','ItemDetail.status'=>1,
+				'ItemDetail.brand_id' => $this->data['brand'],'ItemDetail.model_id' => $this->data['model'],'ItemDetail.motor_id' => $this->data['motor']]));
+			if( isset($getPro['ItemDetail']['url']) && !empty($getPro['ItemDetail']['url']) ){
+				echo "<script> window.location.href ='".SITEURL."product/".$getPro['ItemDetail']['url']."';</script>";
+			}
+			
+			die;
+			die;
+		}
+		exit;
+	}
+
 
 }

@@ -92,7 +92,20 @@ $img = 'https://res.cloudinary.com/armytrix/image/upload/v1651024830/home/phone-
 
       if (brand != '' && model != '' && motor != '') {
         $('#preloader').show();
-        window.location = SITEURL + "product-exhaust-result?brand=" + brand + "&model=" + model + "&motor=" + motor + " ";;
+        $.ajax({
+          type: 'POST',
+          url: '<?php echo SITEURL; ?>pages/check_product',
+          data: {brand:brand,model:model,motor:motor},
+          success: function(data) {
+            $("#app_error").html(data);
+            $('#preloader').hide();
+          },
+          error: function(comment) {
+            $("#app_error").html(data);
+            $('#preloader').hide();
+          }
+        });
+        
       }
 
 
