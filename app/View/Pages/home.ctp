@@ -141,6 +141,17 @@
 <?php $this->Html->scriptStart(array('block' => 'scriptBottom')); ?>
 $(document).ready(function() {
 
+
+    $(window).scroll(function() {
+      $('._autoplay_vid').each(function() {
+        if ($(this).is(":in-viewport")) {
+          $(this)[0].play();
+        } else {
+          $(this)[0].pause();
+        }
+      });
+    });
+
 $.getJSON('https://www.armytrix.com/blog/wp-json/featured/news', function(data) {
 var str = '';
 var n = 1;
