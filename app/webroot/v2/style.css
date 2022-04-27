@@ -276,7 +276,8 @@ header div svg:hover {
 
 /*header end*/
 
-#v2_footer {
+#v2_footer,
+#v2_home section {
     padding: 60px 0;
 }
 
@@ -1390,7 +1391,8 @@ td {
     body h4 {
         font-size: 12px;
     }
-    #v2_footer {
+    #v2_footer,
+    #v2_home section {
         padding: 35px 0;
     }
     .cartBox .popup-modal {
@@ -1468,4 +1470,17 @@ td {
         bottom: 0;
         padding: 20px 10px;
     }
+}
+
+#ord_num {
+    min-height: 41px;
+}
+
+.black_bg {
+    background-color: #000;
+}
+
+.btn-default:hover {
+    color: #fff;
+    background-color: gray !important
 }

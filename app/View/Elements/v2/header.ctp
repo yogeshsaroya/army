@@ -55,7 +55,7 @@
     <div class="input-group">
       <input type="text" class="form-control" placeholder="Enter Order Number... " id="ord_num" autofocus="autofocus">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button" id="od_s">Go!</button>
+        <button class="btn btn-default black_bg" type="button" id="od_s">Go!</button>
       </span>
     </div>
     <br>

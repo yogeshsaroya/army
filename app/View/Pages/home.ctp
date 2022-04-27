@@ -1,3 +1,5 @@
+<div id="v2_home">
+
 <?php
 echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme'], ['block' => 'css']);
 if (!empty($data)) { ?>
@@ -128,6 +130,8 @@ if (!empty($data)) { ?>
 
 <div class="fullWidthImages posRltv">
     <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865453/home/main-end_liba2e.png" alt="">
+
+</div>
 
 </div>
 
