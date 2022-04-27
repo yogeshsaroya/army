@@ -15,7 +15,7 @@
 		</div>
 
 		<div class="ml-auto cartBox d-flex align-items-center">
-		<a class="popup-modal" href="#od_st_modal">Check your orders</a>
+		
 			<div class="cartHead">
 				
 				<i class="cartWrap">
@@ -41,6 +41,8 @@
 		<li><?php echo $this->Html->link('CAR EXHAUST', '/product-exhaust'); ?></li>
 		<li><?php echo $this->Html->link('MOTORCYCLE EXHAUST', '/motocycle-exhaust '); ?></li>
 		<li class="mt-5"><?php echo $this->Html->link('CHECK CART', '/cart'); ?></li>
+		
+		<li><?php echo $this->Html->link('Check your orders', '#od_st_modal',['class'=>'popup-modal']); ?></li>
 		<li><?php echo $this->Html->link('FIND A DEALER', '/dealer'); ?></li>
 		<li><?php echo $this->Html->link('CONTACT US', '/contact'); ?></li>
 	</ul>
