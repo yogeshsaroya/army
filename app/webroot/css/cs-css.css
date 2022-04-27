@@ -1,305 +1,1274 @@
-#main_sec{margin-top:100px !important;}
-.customer-support-main{padding:50px;background-size:contain;background-position:0 -2%;background-repeat:no-repeat;position:relative;z-index:1;margin-top:-175px}
-.customer-support-title{line-height:80px;font-size:80px;text-transform:uppercase;color:#009245;left:6%;position:relative}
-.customer-support-title2{margin-top:150px;font-weight:700;font-size:40px;color:#1e1e1e;letter-spacing:-2px}
-.customer-support-subtitle{margin-top:20px;color:#4d4d4d;font-size:20px;font-weight:700}
-.customer-support-bg{background-image:url(../image/customer-support/main-top.png);height:250px;z-index:3;background-position-x:-50px;background-size:115% 100%;background-repeat:no-repeat}
-.customer-support-pages{margin:50px auto;text-align:center;width:1300px}
-.customer-support-page:hover{cursor:pointer}
-.customer-support-page{float:left;width:250px;margin-right:10px;margin-bottom:10px}
-.customer-support-page:last-child{margin-right:0}
-.cs-clear{clear:both}
+#main_sec {
+    margin-top: 100px !important;
+}
+
+.customer-support-main {
+    padding: 50px;
+    background-size: contain;
+    background-position: 0 -2%;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+    margin-top: -175px
+}
+
+.customer-support-title {
+    line-height: 80px;
+    font-size: 80px;
+    text-transform: uppercase;
+    color: #009245;
+    left: 6%;
+    position: relative
+}
+
+.customer-support-title2 {
+    margin-top: 150px;
+    font-weight: 700;
+    font-size: 40px;
+    color: #1e1e1e;
+    letter-spacing: -2px
+}
+
+.customer-support-subtitle {
+    margin-top: 20px;
+    color: #4d4d4d;
+    font-size: 20px;
+    font-weight: 700
+}
+
+.customer-support-bg {
+    background-image: url(../image/customer-support/main-top.png);
+    height: 250px;
+    z-index: 3;
+    background-position-x: -50px;
+    background-size: 115% 100%;
+    background-repeat: no-repeat
+}
+
+.customer-support-pages {
+    margin: 50px auto;
+    text-align: center;
+    width: 1300px
+}
+
+.customer-support-page:hover {
+    cursor: pointer
+}
+
+.customer-support-page {
+    float: left;
+    width: 250px;
+    margin-right: 10px;
+    margin-bottom: 10px
+}
+
+.customer-support-page:last-child {
+    margin-right: 0
+}
+
+.cs-clear {
+    clear: both
+}
+
 @media screen and (max-width:1599px) {
-#main_sec{margin-top:60px}
-.customer-support-title{left:10%}
+    #main_sec {
+        margin-top: 60px
+    }
+    .customer-support-title {
+        left: 10%
+    }
 }
+
 @media screen and (max-width:1399px) {
-.customer-support-pages{width:100%}
+    .customer-support-pages {
+        width: 100%
+    }
 }
+
 @media screen and (max-width:1279px) {
-#main_sec{margin-top:140px}
-.customer-support-title{left:12%}
-.customer-support-main{padding-top:30px}
+    #main_sec {
+        margin-top: 140px
+    }
+    .customer-support-title {
+        left: 12%
+    }
+    .customer-support-main {
+        padding-top: 30px
+    }
 }
+
 @media screen and (max-width:1024px) {
-.customer-support-title{left:initial;font-size:40px}
-.customer-support-bg{display:none}
-.customer-support-main{padding-top:30px;margin-top:150px}
+    .customer-support-title {
+        left: initial;
+        font-size: 40px
+    }
+    .customer-support-bg {
+        display: none
+    }
+    .customer-support-main {
+        padding-top: 30px;
+        margin-top: 150px
+    }
 }
+
 @media screen and (max-width:767px) {
-.customer-support-main{margin-top:280px}
-.customer-support-page{float:none;margin:10px auto}
+    .customer-support-page {
+        float: none;
+        margin: 10px auto
+    }
 }
-.cs-damage-step1 .customer-support-bg{background-image:url(../image/customer-support/damage-top.png);height:145px;z-index:3;background-position-x:initial;background-size:100%;background-repeat:no-repeat;background-position-y:bottom}
-.cs-damage-step1 .customer-support-title2{color:#46c67a;font-size:20px;font-weight:400;margin-top:0;letter-spacing:initial}
-.cs-damage-step1 .customer-support-main{margin-top:-78px;padding-top:0}
-.cs-damage-step1 .customer-support-title{left:initial}
-.cs-damage-subimage{margin-top:75px;margin-bottom:75px}
-.cs-damage-step1 .customer-support-subtitle{font-weight:400;font-size:20px}
-.cs-damage-step1 .customer-support-page{width:280px;margin-right:0}
-.cs-damage-step1 .customer-support-page:first-child{margin-right:140px}
-.cs-damage-step1 .customer-support-pages{width:700px}
-.cs-damage-step1 .customer-support-bg2{background-image:url(../image/customer-support/damage-bg2-g36.png);height:390px;z-index:3;background-position-x:initial;background-size:100%;background-repeat:no-repeat;background-position-y:bottom;margin-top:-460px}
-.cs-damage-step1{margin-bottom:100px}
+
+.cs-damage-step1 .customer-support-bg {
+    background-image: url(../image/customer-support/damage-top.png);
+    height: 145px;
+    z-index: 3;
+    background-position-x: initial;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: bottom
+}
+
+.cs-damage-step1 .customer-support-title2 {
+    color: #46c67a;
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 0;
+    letter-spacing: initial
+}
+
+.cs-damage-step1 .customer-support-main {
+    margin-top: -78px;
+    padding-top: 0
+}
+
+.cs-damage-step1 .customer-support-title {
+    left: initial
+}
+
+.cs-damage-subimage {
+    margin-top: 75px;
+    margin-bottom: 75px
+}
+
+.cs-damage-step1 .customer-support-subtitle {
+    font-weight: 400;
+    font-size: 20px
+}
+
+.cs-damage-step1 .customer-support-page {
+    width: 280px;
+    margin-right: 0
+}
+
+.cs-damage-step1 .customer-support-page:first-child {
+    margin-right: 140px
+}
+
+.cs-damage-step1 .customer-support-pages {
+    width: 700px
+}
+
+.cs-damage-step1 .customer-support-bg2 {
+    background-image: url(../image/customer-support/damage-bg2-g36.png);
+    height: 390px;
+    z-index: 3;
+    background-position-x: initial;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    margin-top: -460px
+}
+
+.cs-damage-step1 {
+    margin-bottom: 100px
+}
+
 @media screen and (min-width:1600px) {
-.cs-damage-step1 .customer-support-bg2{height:425px}
+    .cs-damage-step1 .customer-support-bg2 {
+        height: 425px
+    }
 }
+
 @media screen and (min-width:1900px) {
-.cs-damage-step1 .customer-support-bg2{height:450px;margin-top:-500px}
+    .cs-damage-step1 .customer-support-bg2 {
+        height: 450px;
+        margin-top: -500px
+    }
 }
+
 @media screen and (max-width:1399px) {
-.cs-damage-step1 .customer-support-bg2{background-position-x:100px}
+    .cs-damage-step1 .customer-support-bg2 {
+        background-position-x: 100px
+    }
 }
+
 @media screen and (max-width:1024px) {
-.cs-damage-step1 .customer-support-bg2{display:none}
-.cs-damage-step1 .customer-support-main{margin-top:0}
+    .cs-damage-step1 .customer-support-bg2 {
+        display: none
+    }
+    .cs-damage-step1 .customer-support-main {
+        margin-top: 0
+    }
 }
+
 @media screen and (max-width:767px) {
-.cs-damage-step1 .customer-support-main{margin-top:280px}
-.cs-damage-step1 .customer-support-page{float:none;margin:10px auto}
-.cs-damage-step1 .customer-support-pages{width:100%}
+    .cs-damage-step1 .customer-support-page {
+        float: none;
+        margin: 10px auto
+    }
+    .cs-damage-step1 .customer-support-pages {
+        width: 100%
+    }
 }
-.cs-damage-step2 .customer-support-bg{background-image:url(../image/customer-support/damage-top-step2.png);height:145px;z-index:3;background-position-x:initial;background-size:100%;background-repeat:no-repeat;background-position-y:bottom}
-.cs-damage-step2 .customer-support-title2{color:#444;font-size:30px;font-weight:700;margin-top:20px;letter-spacing:initial}
-.cs-damage-step2 .customer-support-main{margin-top:-78px;padding-top:0}
-.cs-damage-step2 .customer-support-title{left:initial}
-.cs-damage-step2 .cs-damage-subimage{width:450px;margin:75px auto}
-.cs-damage-step2 .customer-support-subtitle{font-weight:400;font-size:25px;line-height:25px}
-.cs-damage-step2 .customer-support-page{width:280px;margin-right:0}
-.cs-damage-step2 .customer-support-page:first-child{margin-right:140px}
-.cs-damage-step2 .customer-support-pages{width:700px}
-.cs-damage-step2 .customer-support-bg2{background-image:url(../image/customer-support/damage-bg2-g36.png);height:390px;z-index:3;background-position-x:initial;background-size:100%;background-repeat:no-repeat;background-position-y:bottom;margin-top:-460px}
-.cs-damage-step2{margin-bottom:100px}
+
+.cs-damage-step2 .customer-support-bg {
+    background-image: url(../image/customer-support/damage-top-step2.png);
+    height: 145px;
+    z-index: 3;
+    background-position-x: initial;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: bottom
+}
+
+.cs-damage-step2 .customer-support-title2 {
+    color: #444;
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 20px;
+    letter-spacing: initial
+}
+
+.cs-damage-step2 .customer-support-main {
+    margin-top: -78px;
+    padding-top: 0
+}
+
+.cs-damage-step2 .customer-support-title {
+    left: initial
+}
+
+.cs-damage-step2 .cs-damage-subimage {
+    width: 450px;
+    margin: 75px auto
+}
+
+.cs-damage-step2 .customer-support-subtitle {
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 25px
+}
+
+.cs-damage-step2 .customer-support-page {
+    width: 280px;
+    margin-right: 0
+}
+
+.cs-damage-step2 .customer-support-page:first-child {
+    margin-right: 140px
+}
+
+.cs-damage-step2 .customer-support-pages {
+    width: 700px
+}
+
+.cs-damage-step2 .customer-support-bg2 {
+    background-image: url(../image/customer-support/damage-bg2-g36.png);
+    height: 390px;
+    z-index: 3;
+    background-position-x: initial;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    margin-top: -460px
+}
+
+.cs-damage-step2 {
+    margin-bottom: 100px
+}
+
 @media screen and (min-width:1600px) {
-.cs-damage-step1 .customer-support-bg2{height:425px}
+    .cs-damage-step1 .customer-support-bg2 {
+        height: 425px
+    }
 }
+
 @media screen and (min-width:1900px) {
-.cs-damage-step1 .customer-support-bg2{height:450px;margin-top:-500px}
+    .cs-damage-step1 .customer-support-bg2 {
+        height: 450px;
+        margin-top: -500px
+    }
 }
+
 @media screen and (max-width:1399px) {
-.cs-damage-step2 .customer-support-bg2{background-position-x:100px}
+    .cs-damage-step2 .customer-support-bg2 {
+        background-position-x: 100px
+    }
 }
+
 @media screen and (max-width:1024px) {
-.cs-damage-step2 .customer-support-bg2{display:none}
-.cs-damage-step2 .customer-support-main{margin-top:0}
+    .cs-damage-step2 .customer-support-bg2 {
+        display: none
+    }
+    .cs-damage-step2 .customer-support-main {
+        margin-top: 0
+    }
 }
+
 @media screen and (max-width:767px) {
-.cs-damage-step2 .customer-support-main{margin-top:280px}
-.cs-damage-step2 .customer-support-page{float:none;margin:10px auto}
-.cs-damage-step2 .customer-support-pages{width:100%}
+    .cs-damage-step2 .customer-support-main {
+        margin-top: 280px
+    }
+    .cs-damage-step2 .customer-support-page {
+        float: none;
+        margin: 10px auto
+    }
+    .cs-damage-step2 .customer-support-pages {
+        width: 100%
+    }
 }
-.cs-damage-step2-2 .customer-support-bg{background-image:url(../image/customer-support/damage-top-step2.png);height:145px;z-index:3;background-position-x:initial;background-size:100%;background-repeat:no-repeat;background-position-y:bottom}
-.cs-damage-step2-2 .customer-support-title2{color:#444;font-size:30px;font-weight:700;margin-top:20px;letter-spacing:initial}
-.cs-damage-step2-2 .customer-support-main{margin-top:-78px;padding-top:0}
-.cs-damage-step2-2 .customer-support-title{left:initial}
-.cs-damage-step2-2 .cs-damage-subimage{width:450px;margin:75px auto}
-.cs-damage-step2-2 .customer-support-subtitle{font-weight:400;font-size:25px;line-height:25px;margin-bottom:70px}
-.cs-damage-step2-2 .customer-support-page{width:280px;margin-right:0}
-.cs-damage-step2-2 .customer-support-page:first-child{margin-right:140px}
-.cs-damage-step2-2 .customer-support-pages{width:700px}
-.cs-damage-step2-2 .customer-support-bg2{background-image:url(../image/customer-support/damage-bg2-g36.png);height:390px;z-index:3;background-position-x:initial;background-size:100%;background-repeat:no-repeat;background-position-y:bottom;margin-top:-460px}
-.cs-damage-step2-2{margin-bottom:100px}
+
+.cs-damage-step2-2 .customer-support-bg {
+    background-image: url(../image/customer-support/damage-top-step2.png);
+    height: 145px;
+    z-index: 3;
+    background-position-x: initial;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: bottom
+}
+
+.cs-damage-step2-2 .customer-support-title2 {
+    color: #444;
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 20px;
+    letter-spacing: initial
+}
+
+.cs-damage-step2-2 .customer-support-main {
+    margin-top: -78px;
+    padding-top: 0
+}
+
+.cs-damage-step2-2 .customer-support-title {
+    left: initial
+}
+
+.cs-damage-step2-2 .cs-damage-subimage {
+    width: 450px;
+    margin: 75px auto
+}
+
+.cs-damage-step2-2 .customer-support-subtitle {
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 25px;
+    margin-bottom: 70px
+}
+
+.cs-damage-step2-2 .customer-support-page {
+    width: 280px;
+    margin-right: 0
+}
+
+.cs-damage-step2-2 .customer-support-page:first-child {
+    margin-right: 140px
+}
+
+.cs-damage-step2-2 .customer-support-pages {
+    width: 700px
+}
+
+.cs-damage-step2-2 .customer-support-bg2 {
+    background-image: url(../image/customer-support/damage-bg2-g36.png);
+    height: 390px;
+    z-index: 3;
+    background-position-x: initial;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    margin-top: -460px
+}
+
+.cs-damage-step2-2 {
+    margin-bottom: 100px
+}
+
 @media screen and (max-width:1399px) {
-.cs-damage-step2-2 .customer-support-bg2{background-position-x:100px}
+    .cs-damage-step2-2 .customer-support-bg2 {
+        background-position-x: 100px
+    }
 }
+
 @media screen and (max-width:1024px) {
-.cs-damage-step2-2 .customer-support-bg2{display:none}
-.cs-damage-step2-2 .customer-support-main{margin-top:0}
+    .cs-damage-step2-2 .customer-support-bg2 {
+        display: none
+    }
+    .cs-damage-step2-2 .customer-support-main {
+        margin-top: 0
+    }
 }
+
 @media screen and (max-width:767px) {
-.cs-damage-step2-2 .customer-support-main{margin-top:280px}
-.cs-damage-step2-2 .customer-support-page{float:none;margin:10px auto}
-.cs-damage-step2-2 .customer-support-pages{width:100%}
+    .cs-damage-step2-2 .customer-support-main {
+        margin-top: 280px
+    }
+    .cs-damage-step2-2 .customer-support-page {
+        float: none;
+        margin: 10px auto
+    }
+    .cs-damage-step2-2 .customer-support-pages {
+        width: 100%
+    }
 }
-.cs-damage-step3 .customer-support-bg{background-image:url(../image/customer-support/damage-top-step3.png);height:145px;z-index:3;background-position-x:initial;background-size:100%;background-repeat:no-repeat;background-position-y:bottom}
-.cs-damage-step3 .customer-support-title2{color:#444;font-size:30px;font-weight:700;margin-top:40px;margin-bottom:20px;letter-spacing:initial}
-.cs-damage-step3 .customer-support-main{margin-top:-78px;padding-top:0}
-.cs-damage-step3 .customer-support-title{left:initial;font-size:60px;text-transform:none;color:#444;font-weight:700}
-.cs-damage-step3 .cs-damage-subimage{width:450px;margin:75px auto}
-.cs-damage-step3 .customer-support-subtitle{font-weight:400;font-size:25px;line-height:25px;margin-bottom:70px}
-.cs-damage-step3 .customer-support-page{width:280px;margin-right:0}
-.cs-damage-step3 .customer-support-page:first-child{margin-right:140px}
-.cs-damage-step3 .customer-support-pages{width:700px}
-.cs-damage-step3 .customer-support-bg3{background-image:url(../image/customer-support/damage-bg3-g36.png);height:90px;z-index:3;background-position-x:initial;background-size:100%;background-repeat:no-repeat;background-position-y:bottom;margin-top:-74px}
-.cs-damage-step3{margin-bottom:100px}
-.cs-damage-step3 form{width:640px;margin:0 auto;text-align:left;color:#fff}
-.cs-damage-step3 form input,.cs-damage-step3 form textarea{width:100%;border-radius:5px;background-color:#999;padding:4px;padding-left:20px;font-size:20px;color:#fff}
-.cs-damage-step3 form textarea{height:300px;padding-top:20px}
-.cs-damage-step3 form input::-webkit-input-placeholder{color:#fff}
-.cs-damage-step3 form input::-moz-placeholder{color:#fff}
-.cs-damage-step3 form input:-ms-input-placeholder{color:#fff}
-.cs-damage-step3 form input:-moz-placeholder{color:#fff}
-.cs-damage-step3 form textarea::-webkit-input-placeholder{color:#fff}
-.cs-damage-step3 form textarea::-moz-placeholder{color:#fff}
-.cs-damage-step3 form textarea:-ms-input-placeholder{color:#fff}
-.cs-damage-step3 form textarea:-moz-placeholder{color:#fff}
-.form-button{width:50%;height:50px;float:right}
-.form-button img{width:200px}
-.form-button:hover{cursor:pointer}
-.cs-upload{margin-bottom:20px}
+
+.cs-damage-step3 .customer-support-bg {
+    background-image: url(../image/customer-support/damage-top-step3.png);
+    height: 145px;
+    z-index: 3;
+    background-position-x: initial;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: bottom
+}
+
+.cs-damage-step3 .customer-support-title2 {
+    color: #444;
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    letter-spacing: initial
+}
+
+.cs-damage-step3 .customer-support-main {
+    margin-top: -78px;
+    padding-top: 0
+}
+
+.cs-damage-step3 .customer-support-title {
+    left: initial;
+    font-size: 60px;
+    text-transform: none;
+    color: #444;
+    font-weight: 700
+}
+
+.cs-damage-step3 .cs-damage-subimage {
+    width: 450px;
+    margin: 75px auto
+}
+
+.cs-damage-step3 .customer-support-subtitle {
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 25px;
+    margin-bottom: 70px
+}
+
+.cs-damage-step3 .customer-support-page {
+    width: 280px;
+    margin-right: 0
+}
+
+.cs-damage-step3 .customer-support-page:first-child {
+    margin-right: 140px
+}
+
+.cs-damage-step3 .customer-support-pages {
+    width: 700px
+}
+
+.cs-damage-step3 .customer-support-bg3 {
+    background-image: url(../image/customer-support/damage-bg3-g36.png);
+    height: 90px;
+    z-index: 3;
+    background-position-x: initial;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    margin-top: -74px
+}
+
+.cs-damage-step3 {
+    margin-bottom: 100px
+}
+
+.cs-damage-step3 form {
+    width: 640px;
+    margin: 0 auto;
+    text-align: left;
+    color: #fff
+}
+
+.cs-damage-step3 form input,
+.cs-damage-step3 form textarea {
+    width: 100%;
+    border-radius: 5px;
+    background-color: #999;
+    padding: 4px;
+    padding-left: 20px;
+    font-size: 20px;
+    color: #fff
+}
+
+.cs-damage-step3 form textarea {
+    height: 300px;
+    padding-top: 20px
+}
+
+.cs-damage-step3 form input::-webkit-input-placeholder {
+    color: #fff
+}
+
+.cs-damage-step3 form input::-moz-placeholder {
+    color: #fff
+}
+
+.cs-damage-step3 form input:-ms-input-placeholder {
+    color: #fff
+}
+
+.cs-damage-step3 form input:-moz-placeholder {
+    color: #fff
+}
+
+.cs-damage-step3 form textarea::-webkit-input-placeholder {
+    color: #fff
+}
+
+.cs-damage-step3 form textarea::-moz-placeholder {
+    color: #fff
+}
+
+.cs-damage-step3 form textarea:-ms-input-placeholder {
+    color: #fff
+}
+
+.cs-damage-step3 form textarea:-moz-placeholder {
+    color: #fff
+}
+
+.form-button {
+    width: 50%;
+    height: 50px;
+    float: right
+}
+
+.form-button img {
+    width: 200px
+}
+
+.form-button:hover {
+    cursor: pointer
+}
+
+.cs-upload {
+    margin-bottom: 20px
+}
+
 @media screen and (max-width:1399px) {
-.cs-damage-step3 .customer-support-bg3{background-position-x:100px}
+    .cs-damage-step3 .customer-support-bg3 {
+        background-position-x: 100px
+    }
 }
+
 @media screen and (max-width:1024px) {
-.cs-damage-step3 .customer-support-bg3{display:none}
-.cs-damage-step3 .customer-support-main{margin-top:0}
-.form-button img{display:block;float:right}
+    .cs-damage-step3 .customer-support-bg3 {
+        display: none
+    }
+    .cs-damage-step3 .customer-support-main {
+        margin-top: 0
+    }
+    .form-button img {
+        display: block;
+        float: right
+    }
 }
+
 @media screen and (max-width:767px) {
-.cs-damage-step3 .customer-support-main{margin-top:280px}
-.cs-damage-step3 .customer-support-page{float:none;margin:10px auto}
-.cs-damage-step3 .customer-support-pages{width:100%}
+    .cs-damage-step3 .customer-support-main {
+        margin-top: 280px
+    }
+    .cs-damage-step3 .customer-support-page {
+        float: none;
+        margin: 10px auto
+    }
+    .cs-damage-step3 .customer-support-pages {
+        width: 100%
+    }
 }
-.customer-support-main input,.customer-support-main textarea{background-image:url(../image/customer-support/form-tick.png);background-position:98% 10px;background-size:30px 20px;background-repeat:no-repeat}
-.customer-support-main input#my_file{background-image:none}
-.customer-support-main input.cs-ok,.customer-support-main textarea.cs-ok{background-image:url(../image/customer-support/form-tick-ok.png)}
-.customer-support-main input.cs-selected,.customer-support-main textarea.cs-selected{border:1px red solid!important}
-.cs-date{margin-bottom:7px}
-.cs-damage-step3 form input.cs-inst-date{padding-left:170px}
-.cs-damage-step3 form input.cs-pur-date{padding-left:160px}
-.cs-input-desc{position:absolute;color:#fff;font-size:20px;margin-top:12px;margin-left:23px;display:block}
-.cs-damage-step3-2 .customer-support-bg{background-image:url(../image/customer-support/damage-top-step3-2.png);height:145px;z-index:3;background-position-x:initial;background-size:100%;background-repeat:no-repeat;background-position-y:bottom}
-.cs-damage-step3-2 .customer-support-title2{color:#444;font-size:30px;font-weight:700;margin-top:40px;margin-bottom:20px;letter-spacing:initial}
-.cs-damage-step3-2 .customer-support-main{margin-top:-78px;padding-top:0}
-.cs-damage-step3-2 .customer-support-title{left:initial;font-size:60px;text-transform:none;color:#444;font-weight:700}
-.cs-damage-step3-2 .cs-damage-subimage{width:450px;margin:75px auto}
-.cs-damage-step3-2 .customer-support-subtitle{font-weight:400;font-size:25px;line-height:25px;margin-bottom:70px}
-.cs-damage-step3-2 .customer-support-page{width:280px;margin-right:0}
-.cs-damage-step3-2 .customer-support-page:first-child{margin-right:140px}
-.cs-damage-step3-2 .customer-support-pages{width:700px}
-.cs-damage-step3-2 .customer-support-bg3{background-image:url(../image/customer-support/damage-bg3-g36.png);height:90px;z-index:3;background-position-x:initial;background-size:100%;background-repeat:no-repeat;background-position-y:bottom;margin-top:-74px}
-.cs-damage-step3-2{margin-bottom:100px}
-.cs-damage-step3-2 form{width:640px;margin:0 auto;text-align:left;color:#fff}
-.cs-damage-step3-2 form input,.cs-damage-step3-2 form textarea{width:100%;border-radius:5px;background-color:#999;padding:4px;padding-left:20px;font-size:20px;color:#fff}
-.cs-damage-step3-2 form textarea{height:300px;padding-top:20px}
-.cs-damage-step3-2 form input::-webkit-input-placeholder{color:#fff}
-.cs-damage-step3-2 form input::-moz-placeholder{color:#fff}
-.cs-damage-step3-2 form input:-ms-input-placeholder{color:#fff}
-.cs-damage-step3-2 form input:-moz-placeholder{color:#fff}
-.cs-damage-step3-2 form textarea::-webkit-input-placeholder{color:#fff}
-.cs-damage-step3-2 form textarea::-moz-placeholder{color:#fff}
-.cs-damage-step3-2 form textarea:-ms-input-placeholder{color:#fff}
-.cs-damage-step3-2 form textarea:-moz-placeholder{color:#fff}
+
+.customer-support-main input,
+.customer-support-main textarea {
+    background-image: url(../image/customer-support/form-tick.png);
+    background-position: 98% 10px;
+    background-size: 30px 20px;
+    background-repeat: no-repeat
+}
+
+.customer-support-main input#my_file {
+    background-image: none
+}
+
+.customer-support-main input.cs-ok,
+.customer-support-main textarea.cs-ok {
+    background-image: url(../image/customer-support/form-tick-ok.png)
+}
+
+.customer-support-main input.cs-selected,
+.customer-support-main textarea.cs-selected {
+    border: 1px red solid!important
+}
+
+.cs-date {
+    margin-bottom: 7px
+}
+
+.cs-damage-step3 form input.cs-inst-date {
+    padding-left: 170px
+}
+
+.cs-damage-step3 form input.cs-pur-date {
+    padding-left: 160px
+}
+
+.cs-input-desc {
+    position: absolute;
+    color: #fff;
+    font-size: 20px;
+    margin-top: 12px;
+    margin-left: 23px;
+    display: block
+}
+
+.cs-damage-step3-2 .customer-support-bg {
+    background-image: url(../image/customer-support/damage-top-step3-2.png);
+    height: 145px;
+    z-index: 3;
+    background-position-x: initial;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: bottom
+}
+
+.cs-damage-step3-2 .customer-support-title2 {
+    color: #444;
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    letter-spacing: initial
+}
+
+.cs-damage-step3-2 .customer-support-main {
+    margin-top: -78px;
+    padding-top: 0
+}
+
+.cs-damage-step3-2 .customer-support-title {
+    left: initial;
+    font-size: 60px;
+    text-transform: none;
+    color: #444;
+    font-weight: 700
+}
+
+.cs-damage-step3-2 .cs-damage-subimage {
+    width: 450px;
+    margin: 75px auto
+}
+
+.cs-damage-step3-2 .customer-support-subtitle {
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 25px;
+    margin-bottom: 70px
+}
+
+.cs-damage-step3-2 .customer-support-page {
+    width: 280px;
+    margin-right: 0
+}
+
+.cs-damage-step3-2 .customer-support-page:first-child {
+    margin-right: 140px
+}
+
+.cs-damage-step3-2 .customer-support-pages {
+    width: 700px
+}
+
+.cs-damage-step3-2 .customer-support-bg3 {
+    background-image: url(../image/customer-support/damage-bg3-g36.png);
+    height: 90px;
+    z-index: 3;
+    background-position-x: initial;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    margin-top: -74px
+}
+
+.cs-damage-step3-2 {
+    margin-bottom: 100px
+}
+
+.cs-damage-step3-2 form {
+    width: 640px;
+    margin: 0 auto;
+    text-align: left;
+    color: #fff
+}
+
+.cs-damage-step3-2 form input,
+.cs-damage-step3-2 form textarea {
+    width: 100%;
+    border-radius: 5px;
+    background-color: #999;
+    padding: 4px;
+    padding-left: 20px;
+    font-size: 20px;
+    color: #fff
+}
+
+.cs-damage-step3-2 form textarea {
+    height: 300px;
+    padding-top: 20px
+}
+
+.cs-damage-step3-2 form input::-webkit-input-placeholder {
+    color: #fff
+}
+
+.cs-damage-step3-2 form input::-moz-placeholder {
+    color: #fff
+}
+
+.cs-damage-step3-2 form input:-ms-input-placeholder {
+    color: #fff
+}
+
+.cs-damage-step3-2 form input:-moz-placeholder {
+    color: #fff
+}
+
+.cs-damage-step3-2 form textarea::-webkit-input-placeholder {
+    color: #fff
+}
+
+.cs-damage-step3-2 form textarea::-moz-placeholder {
+    color: #fff
+}
+
+.cs-damage-step3-2 form textarea:-ms-input-placeholder {
+    color: #fff
+}
+
+.cs-damage-step3-2 form textarea:-moz-placeholder {
+    color: #fff
+}
+
 @media screen and (max-width:1399px) {
-.cs-damage-step3-2 .customer-support-bg3{background-position-x:100px}
+    .cs-damage-step3-2 .customer-support-bg3 {
+        background-position-x: 100px
+    }
 }
+
 @media screen and (max-width:1024px) {
-.cs-damage-step3-2 .customer-support-bg3{display:none}
-.cs-damage-step3-2 .customer-support-main{margin-top:0}
-.form-button img{display:block;float:right}
+    .cs-damage-step3-2 .customer-support-bg3 {
+        display: none
+    }
+    .cs-damage-step3-2 .customer-support-main {
+        margin-top: 0
+    }
+    .form-button img {
+        display: block;
+        float: right
+    }
 }
+
 @media screen and (max-width:767px) {
-.cs-damage-step3-2 .customer-support-main{margin-top:280px}
-.cs-damage-step3-2 .customer-support-page{float:none;margin:10px auto}
-.cs-damage-step3-2 .customer-support-pages{width:100%}
+    .cs-damage-step3-2 .customer-support-main {
+        margin-top: 280px
+    }
+    .cs-damage-step3-2 .customer-support-page {
+        float: none;
+        margin: 10px auto
+    }
+    .cs-damage-step3-2 .customer-support-pages {
+        width: 100%
+    }
 }
-.cs-damage-step3-2 form input.cs-inst-date{padding-left:170px}
-.cs-damage-step3-2 form input.cs-pur-date{padding-left:160px}
-.cs-damage-subimage{margin:75px auto;width:400px}
-.cs-damage-step3 .customer-support-bg{background-image:url(../image/customer-support/damage-top-step2.png);height:145px;z-index:3;background-position-x:initial;background-size:100%;background-repeat:no-repeat;background-position-y:bottom}
-.cs-damage-step3-2 .customer-support-bg{background-image:url(../image/customer-support/damage-top-step2.png);height:145px;z-index:3;background-position-x:initial;background-size:100%;background-repeat:no-repeat;background-position-y:bottom}
-.cs-fitment-step1 .customer-support-bg{background-image:url(../image/customer-support/damage-top.png);height:145px;z-index:3;background-position-x:initial;background-size:100%;background-repeat:no-repeat;background-position-y:bottom}
-.cs-fitment-step1 .customer-support-title2{color:#46c67a;font-size:20px;font-weight:400;margin-top:0;letter-spacing:initial}
-.cs-fitment-step1 .customer-support-main{margin-top:-78px;padding-top:0}
-.cs-fitment-step1 .customer-support-title{left:initial}
-.cs-fitment-subimage{margin:75px auto;width:400px}
-.cs-fitment-step1 .customer-support-subtitle{font-weight:400;font-size:20px}
-.cs-fitment-step1 .customer-support-page{width:280px;margin-right:0}
-.cs-fitment-step1 .customer-support-page:first-child{margin-right:140px}
-.cs-fitment-step1 .customer-support-pages{width:700px}
-.cs-fitment-step1 .customer-support-bg2{background-image:url(../image/customer-support/damage-bg2-g36.png);height:390px;z-index:3;background-position-x:initial;background-size:100%;background-repeat:no-repeat;background-position-y:bottom;margin-top:-460px}
-.cs-fitment-step1{margin-bottom:100px}
+
+.cs-damage-step3-2 form input.cs-inst-date {
+    padding-left: 170px
+}
+
+.cs-damage-step3-2 form input.cs-pur-date {
+    padding-left: 160px
+}
+
+.cs-damage-subimage {
+    margin: 75px auto;
+    width: 400px
+}
+
+.cs-damage-step3 .customer-support-bg {
+    background-image: url(../image/customer-support/damage-top-step2.png);
+    height: 145px;
+    z-index: 3;
+    background-position-x: initial;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: bottom
+}
+
+.cs-damage-step3-2 .customer-support-bg {
+    background-image: url(../image/customer-support/damage-top-step2.png);
+    height: 145px;
+    z-index: 3;
+    background-position-x: initial;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: bottom
+}
+
+.cs-fitment-step1 .customer-support-bg {
+    background-image: url(../image/customer-support/damage-top.png);
+    height: 145px;
+    z-index: 3;
+    background-position-x: initial;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: bottom
+}
+
+.cs-fitment-step1 .customer-support-title2 {
+    color: #46c67a;
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 0;
+    letter-spacing: initial
+}
+
+.cs-fitment-step1 .customer-support-main {
+    margin-top: -78px;
+    padding-top: 0
+}
+
+.cs-fitment-step1 .customer-support-title {
+    left: initial
+}
+
+.cs-fitment-subimage {
+    margin: 75px auto;
+    width: 400px
+}
+
+.cs-fitment-step1 .customer-support-subtitle {
+    font-weight: 400;
+    font-size: 20px
+}
+
+.cs-fitment-step1 .customer-support-page {
+    width: 280px;
+    margin-right: 0
+}
+
+.cs-fitment-step1 .customer-support-page:first-child {
+    margin-right: 140px
+}
+
+.cs-fitment-step1 .customer-support-pages {
+    width: 700px
+}
+
+.cs-fitment-step1 .customer-support-bg2 {
+    background-image: url(../image/customer-support/damage-bg2-g36.png);
+    height: 390px;
+    z-index: 3;
+    background-position-x: initial;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    margin-top: -460px
+}
+
+.cs-fitment-step1 {
+    margin-bottom: 100px
+}
+
 @media screen and (max-width:1399px) {
-.cs-fitment-step1 .customer-support-bg2{background-position-x:100px}
+    .cs-fitment-step1 .customer-support-bg2 {
+        background-position-x: 100px
+    }
 }
+
 @media screen and (max-width:1024px) {
-.cs-fitment-step1 .customer-support-bg2{display:none}
-.cs-fitment-step1 .customer-support-main{margin-top:0}
+    .cs-fitment-step1 .customer-support-bg2 {
+        display: none
+    }
+    .cs-fitment-step1 .customer-support-main {
+        margin-top: 0
+    }
 }
+
 @media screen and (max-width:767px) {
-.cs-fitment-step1 .customer-support-main{margin-top:280px}
-.cs-fitment-step1 .customer-support-page{float:none;margin:10px auto}
-.cs-fitment-step1 .customer-support-pages{width:100%}
+    .cs-fitment-step1 .customer-support-main {
+        margin-top: 280px
+    }
+    .cs-fitment-step1 .customer-support-page {
+        float: none;
+        margin: 10px auto
+    }
+    .cs-fitment-step1 .customer-support-pages {
+        width: 100%
+    }
 }
-.cs-fitment-step2 .customer-support-bg{background-image:url(../image/customer-support/damage-top-step2.png);height:145px;z-index:3;background-position-x:initial;background-size:100%;background-repeat:no-repeat;background-position-y:bottom}
-.cs-fitment-step2 .customer-support-title2 div{font-size:36px;line-height:40px;font-weight:700;margin-bottom:10px}
-.cs-fitment-step2 .customer-support-title2{color:#444;font-size:30px;font-weight:400;margin-top:20px;letter-spacing:initial}
-.cs-fitment-step2 .customer-support-main{margin-top:-78px;padding-top:0}
-.cs-fitment-step2 .customer-support-title{left:initial}
-.cs-fitment-step2 .cs-fitment-subimage{width:450px;margin:75px auto}
-.cs-fitment-step2 .customer-support-subtitle{font-weight:400;font-size:25px;line-height:25px}
-.cs-fitment-step2 .customer-support-page{width:280px;margin-right:0}
-.cs-fitment-step2 .customer-support-page:first-child{margin-right:140px}
-.cs-fitment-step2 .customer-support-pages{width:700px}
-.cs-fitment-step2 .customer-support-bg2{background-image:url(../image/customer-support/damage-bg2-g36.png);height:390px;z-index:3;background-position-x:initial;background-size:100%;background-repeat:no-repeat;background-position-y:bottom;margin-top:-460px}
-.cs-fitment-step2{margin-bottom:100px}
+
+.cs-fitment-step2 .customer-support-bg {
+    background-image: url(../image/customer-support/damage-top-step2.png);
+    height: 145px;
+    z-index: 3;
+    background-position-x: initial;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: bottom
+}
+
+.cs-fitment-step2 .customer-support-title2 div {
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: 700;
+    margin-bottom: 10px
+}
+
+.cs-fitment-step2 .customer-support-title2 {
+    color: #444;
+    font-size: 30px;
+    font-weight: 400;
+    margin-top: 20px;
+    letter-spacing: initial
+}
+
+.cs-fitment-step2 .customer-support-main {
+    margin-top: -78px;
+    padding-top: 0
+}
+
+.cs-fitment-step2 .customer-support-title {
+    left: initial
+}
+
+.cs-fitment-step2 .cs-fitment-subimage {
+    width: 450px;
+    margin: 75px auto
+}
+
+.cs-fitment-step2 .customer-support-subtitle {
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 25px
+}
+
+.cs-fitment-step2 .customer-support-page {
+    width: 280px;
+    margin-right: 0
+}
+
+.cs-fitment-step2 .customer-support-page:first-child {
+    margin-right: 140px
+}
+
+.cs-fitment-step2 .customer-support-pages {
+    width: 700px
+}
+
+.cs-fitment-step2 .customer-support-bg2 {
+    background-image: url(../image/customer-support/damage-bg2-g36.png);
+    height: 390px;
+    z-index: 3;
+    background-position-x: initial;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    margin-top: -460px
+}
+
+.cs-fitment-step2 {
+    margin-bottom: 100px
+}
+
 @media screen and (min-width:1600px) {
-.cs-fitment-step1 .customer-support-bg2{height:425px}
+    .cs-fitment-step1 .customer-support-bg2 {
+        height: 425px
+    }
 }
+
 @media screen and (min-width:1900px) {
-.cs-fitment-step1 .customer-support-bg2{height:450px;margin-top:-500px}
+    .cs-fitment-step1 .customer-support-bg2 {
+        height: 450px;
+        margin-top: -500px
+    }
 }
+
 @media screen and (max-width:1399px) {
-.cs-fitment-step2 .customer-support-bg2{background-position-x:100px}
+    .cs-fitment-step2 .customer-support-bg2 {
+        background-position-x: 100px
+    }
 }
+
 @media screen and (max-width:1024px) {
-.cs-fitment-step2 .customer-support-bg2{display:none}
-.cs-fitment-step2 .customer-support-main{margin-top:0}
+    .cs-fitment-step2 .customer-support-bg2 {
+        display: none
+    }
+    .cs-fitment-step2 .customer-support-main {
+        margin-top: 0
+    }
 }
+
 @media screen and (max-width:767px) {
-.cs-fitment-step2 .customer-support-main{margin-top:280px}
-.cs-fitment-step2 .customer-support-page{float:none;margin:10px auto}
-.cs-fitment-step2 .customer-support-pages{width:100%}
+    .cs-fitment-step2 .customer-support-main {
+        margin-top: 280px
+    }
+    .cs-fitment-step2 .customer-support-page {
+        float: none;
+        margin: 10px auto
+    }
+    .cs-fitment-step2 .customer-support-pages {
+        width: 100%
+    }
 }
-.cs-fitment-step2 .customer-support-subtitle{font-weight:400;font-size:25px;line-height:25px;margin-top:400px;color:#009245;top:45px;position:relative}
-.cs-fitment-step2 .customer-support-bg3{background-image:url(../image/customer-support/damage-bg3-g36.png);height:90px;z-index:3;background-position-x:initial;background-size:100%;background-repeat:no-repeat;background-position-y:bottom;margin-top:-74px}
+
+.cs-fitment-step2 .customer-support-subtitle {
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 25px;
+    margin-top: 400px;
+    color: #009245;
+    top: 45px;
+    position: relative
+}
+
+.cs-fitment-step2 .customer-support-bg3 {
+    background-image: url(../image/customer-support/damage-bg3-g36.png);
+    height: 90px;
+    z-index: 3;
+    background-position-x: initial;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    margin-top: -74px
+}
+
 @media screen and (max-width:1399px) {
-.cs-fitment-step2 .customer-support-bg3{background-position-x:100px}
+    .cs-fitment-step2 .customer-support-bg3 {
+        background-position-x: 100px
+    }
 }
+
 @media screen and (max-width:1024px) {
-.cs-fitment-step2 .customer-support-bg3{display:none}
-.cs-fitment-step2 .customer-support-main{margin-top:0}
-.form-button img{display:block;float:right}
+    .cs-fitment-step2 .customer-support-bg3 {
+        display: none
+    }
+    .cs-fitment-step2 .customer-support-main {
+        margin-top: 0
+    }
+    .form-button img {
+        display: block;
+        float: right
+    }
 }
-.cs-fitment-step3 .customer-support-bg{background-image:url(../image/customer-support/damage-top-step3.png);height:145px;z-index:3;background-position-x:initial;background-size:100%;background-repeat:no-repeat;background-position-y:bottom}
-.cs-fitment-step3 .customer-support-title2{color:#444;font-size:30px;font-weight:700;margin-top:40px;margin-bottom:20px;letter-spacing:initial}
-.cs-fitment-step3 .customer-support-main{margin-top:-78px;padding-top:0}
-.cs-fitment-step3 .customer-support-title{left:initial;font-size:60px;text-transform:none;color:#444;font-weight:700}
-.cs-fitment-step3 .cs-fitment-subimage{width:450px;margin:75px auto}
-.cs-fitment-step3 .customer-support-subtitle{font-weight:400;font-size:25px;line-height:25px;margin-bottom:70px}
-.cs-fitment-step3 .customer-support-page{width:280px;margin-right:0}
-.cs-fitment-step3 .customer-support-page:first-child{margin-right:140px}
-.cs-fitment-step3 .customer-support-pages{width:700px}
-.cs-fitment-step3 .customer-support-bg3{background-image:url(../image/customer-support/damage-bg3-g36.png);height:90px;z-index:3;background-position-x:initial;background-size:100%;background-repeat:no-repeat;background-position-y:bottom;margin-top:-74px}
-.cs-fitment-step3{margin-bottom:100px}
-.cs-fitment-step3 form{width:640px;margin:0 auto;text-align:left;color:#fff}
-.cs-fitment-step3 form input,.cs-fitment-step3 form textarea{width:100%;border-radius:5px;background-color:#999;padding:4px;padding-left:20px;font-size:20px;color:#fff}
-.cs-fitment-step3 form textarea{height:300px;padding-top:20px}
-.cs-fitment-step3 form input::-webkit-input-placeholder{color:#fff}
-.cs-fitment-step3 form input::-moz-placeholder{color:#fff}
-.cs-fitment-step3 form input:-ms-input-placeholder{color:#fff}
-.cs-fitment-step3 form input:-moz-placeholder{color:#fff}
-.cs-fitment-step3 form textarea::-webkit-input-placeholder{color:#fff}
-.cs-fitment-step3 form textarea::-moz-placeholder{color:#fff}
-.cs-fitment-step3 form textarea:-ms-input-placeholder{color:#fff}
-.cs-fitment-step3 form textarea:-moz-placeholder{color:#fff}
+
+.cs-fitment-step3 .customer-support-bg {
+    background-image: url(../image/customer-support/damage-top-step3.png);
+    height: 145px;
+    z-index: 3;
+    background-position-x: initial;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: bottom
+}
+
+.cs-fitment-step3 .customer-support-title2 {
+    color: #444;
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    letter-spacing: initial
+}
+
+.cs-fitment-step3 .customer-support-main {
+    margin-top: -78px;
+    padding-top: 0
+}
+
+.cs-fitment-step3 .customer-support-title {
+    left: initial;
+    font-size: 60px;
+    text-transform: none;
+    color: #444;
+    font-weight: 700
+}
+
+.cs-fitment-step3 .cs-fitment-subimage {
+    width: 450px;
+    margin: 75px auto
+}
+
+.cs-fitment-step3 .customer-support-subtitle {
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 25px;
+    margin-bottom: 70px
+}
+
+.cs-fitment-step3 .customer-support-page {
+    width: 280px;
+    margin-right: 0
+}
+
+.cs-fitment-step3 .customer-support-page:first-child {
+    margin-right: 140px
+}
+
+.cs-fitment-step3 .customer-support-pages {
+    width: 700px
+}
+
+.cs-fitment-step3 .customer-support-bg3 {
+    background-image: url(../image/customer-support/damage-bg3-g36.png);
+    height: 90px;
+    z-index: 3;
+    background-position-x: initial;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    margin-top: -74px
+}
+
+.cs-fitment-step3 {
+    margin-bottom: 100px
+}
+
+.cs-fitment-step3 form {
+    width: 640px;
+    margin: 0 auto;
+    text-align: left;
+    color: #fff
+}
+
+.cs-fitment-step3 form input,
+.cs-fitment-step3 form textarea {
+    width: 100%;
+    border-radius: 5px;
+    background-color: #999;
+    padding: 4px;
+    padding-left: 20px;
+    font-size: 20px;
+    color: #fff
+}
+
+.cs-fitment-step3 form textarea {
+    height: 300px;
+    padding-top: 20px
+}
+
+.cs-fitment-step3 form input::-webkit-input-placeholder {
+    color: #fff
+}
+
+.cs-fitment-step3 form input::-moz-placeholder {
+    color: #fff
+}
+
+.cs-fitment-step3 form input:-ms-input-placeholder {
+    color: #fff
+}
+
+.cs-fitment-step3 form input:-moz-placeholder {
+    color: #fff
+}
+
+.cs-fitment-step3 form textarea::-webkit-input-placeholder {
+    color: #fff
+}
+
+.cs-fitment-step3 form textarea::-moz-placeholder {
+    color: #fff
+}
+
+.cs-fitment-step3 form textarea:-ms-input-placeholder {
+    color: #fff
+}
+
+.cs-fitment-step3 form textarea:-moz-placeholder {
+    color: #fff
+}
+
 @media screen and (max-width:1399px) {
-.cs-fitment-step3 .customer-support-bg3{background-position-x:100px}
+    .cs-fitment-step3 .customer-support-bg3 {
+        background-position-x: 100px
+    }
 }
+
 @media screen and (max-width:1024px) {
-.cs-fitment-step3 .customer-support-bg3{display:none}
-.cs-fitment-step3 .customer-support-main{margin-top:0}
-.form-button img{display:block;float:right}
+    .cs-fitment-step3 .customer-support-bg3 {
+        display: none
+    }
+    .cs-fitment-step3 .customer-support-main {
+        margin-top: 0
+    }
+    .form-button img {
+        display: block;
+        float: right
+    }
 }
+
 @media screen and (max-width:767px) {
-.cs-fitment-step3 .customer-support-main{margin-top:280px}
-.cs-fitment-step3 .customer-support-page{float:none;margin:10px auto}
-.cs-fitment-step3 .customer-support-pages{width:100%}
+    .cs-fitment-step3 .customer-support-main {
+        margin-top: 280px
+    }
+    .cs-fitment-step3 .customer-support-page {
+        float: none;
+        margin: 10px auto
+    }
+    .cs-fitment-step3 .customer-support-pages {
+        width: 100%
+    }
 }
-.cs-fitment-step3 form input.cs-inst-date{padding-left:170px}
-.cs-fitment-step3 form input.cs-pur-date{padding-left:160px}
-.cs-fitment-step3 .customer-support-subtitle2 img{float:right;height:30px}
-.cs-fitment-step3 .customer-support-subtitle2{font-size:24px;font-weight:300;margin-top:0}
-.cs-fitment-step3-3 .customer-support-bg{background-image:url(../image/customer-support/damage-top-step3-2.png)}
-.customer-support-main form input.cs-ok,.customer-support-main form textarea.cs-ok{border:0!important}
-.customer-support-main form #my_file.cs-selected{display:block!important}
+
+.cs-fitment-step3 form input.cs-inst-date {
+    padding-left: 170px
+}
+
+.cs-fitment-step3 form input.cs-pur-date {
+    padding-left: 160px
+}
+
+.cs-fitment-step3 .customer-support-subtitle2 img {
+    float: right;
+    height: 30px
+}
+
+.cs-fitment-step3 .customer-support-subtitle2 {
+    font-size: 24px;
+    font-weight: 300;
+    margin-top: 0
+}
+
+.cs-fitment-step3-3 .customer-support-bg {
+    background-image: url(../image/customer-support/damage-top-step3-2.png)
+}
+
+.customer-support-main form input.cs-ok,
+.customer-support-main form textarea.cs-ok {
+    border: 0!important
+}
+
+.customer-support-main form #my_file.cs-selected {
+    display: block!important
+}
