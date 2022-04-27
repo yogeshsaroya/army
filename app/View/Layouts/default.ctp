@@ -59,20 +59,20 @@
   <link rel="preload" href="<?php echo SITEURL; ?>css/bootstrap.min.css" as="style">
   <link rel="preload" href="<?php echo SITEURL; ?>bootstrap_3_3_6/css/ui.css" as="style">
 
-  <?php echo $this->Html->css(array('bootstrap.min', '/bootstrap_3_3_6/css/ui','animate'));
+  <?php echo $this->Html->css(array('bootstrap.min', '/bootstrap_3_3_6/css/ui', 'animate'));
 
-  echo $this->Html->script(array('jquery.min.js', '/bootstrap_3_3_6/js/bootstrap.min.js', 'magnific/jquery.magnific-popup.min','bootstrap-notify.min'));
-  echo $this->Html->css(array('theme','/v2/style.css?v='.rand(123,98745)));
+  echo $this->Html->script(array('jquery.min.js', '/bootstrap_3_3_6/js/bootstrap.min.js', 'magnific/jquery.magnific-popup.min', 'bootstrap-notify.min'));
+  echo $this->Html->css(array('theme', '/v2/style.css?v=' . rand(123, 98745)));
   echo $this->fetch('css');
-	echo $this->fetch('script');
+  echo $this->fetch('script');
 
   echo $this->Js->writeBuffer(array('catch' => TRUE));
   echo $scripts_for_layout;
   if (isset($IsMobile) && $IsMobile == 'yes') { ?>
     <style>
-      
+
     </style>
-  <?php }?>
+  <?php } ?>
 
   <script>
     var SITEURL = '<?php echo SITEURL; ?>';
@@ -153,6 +153,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-982355893"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
+
       function gtag() {
         dataLayer.push(arguments);
       }
@@ -204,17 +205,31 @@
   </noscript>
   <!-- End Facebook Pixel Code -->
 </head>
-<body <?php echo (isset($tran_header) ?  null : 'id="b_head"');?>>
+<?php
+  if ($this->params['controller'] == 'homes') {
+    if(in_array($this->params['action'],['home'])){
+
+    }
+  }
+  elseif ($this->params['controller'] == 'pages') {
+    if(in_array($this->params['action'],['home','product_exhaust'])){
+      $tran_header = 'yes';
+    }
+  }
+
+?>
+
+<body <?php echo (isset($tran_header) ?  null : 'id="b_head"'); ?>>
   <?php echo $this->element('v2/header'); ?>
   <div id="v2_main">
     <?php echo $this->fetch('content'); ?>
   </div>
-  <?php 
+  <?php
   if ($this->params['controller'] == 'pages' && $this->params['action'] == 'home') {
-    echo $this->element('v2/footer'); 
+    echo $this->element('v2/footer');
   }
   ?>
-<?php echo $this->fetch('scriptBottom'); ?>
+  <?php echo $this->fetch('scriptBottom'); ?>
 </body>
 
 </html>

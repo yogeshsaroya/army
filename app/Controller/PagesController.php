@@ -22,8 +22,7 @@ class PagesController extends AppController
 		$page_meta = array('des' => @$this->meta['des'], 'key' => $this->meta['keys']);
 		$this->loadModel('VideoSlider');
 		$data = $this->VideoSlider->find('all', ['order' => ['VideoSlider.position' => 'ASC']]);
-		$tran_header = 'yes';
-		$this->set(compact('page_meta', 'data','tran_header'));
+		$this->set(compact('page_meta', 'data'));
 	}
 
 	public function product_exhaust()
