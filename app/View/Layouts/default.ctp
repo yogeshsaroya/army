@@ -146,14 +146,13 @@
 
   <?php
 
-  if ($this->params['controller'] == 'pages' && $this->params['action'] == 'index_1') {
+  if ($this->params['controller'] == 'pages' && $this->params['action'] == 'home') {
 
   ?>
     <!-- Global site tag (gtag.js) - Google Ads: 982355893 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-982355893"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-
       function gtag() {
         dataLayer.push(arguments);
       }
@@ -205,7 +204,7 @@
   </noscript>
   <!-- End Facebook Pixel Code -->
 </head>
-<body>
+<body id="b_head">
   <?php echo $this->element('v2/header'); ?>
   <div id="v2_main">
     <?php echo $this->fetch('content'); ?>
@@ -215,8 +214,6 @@
     echo $this->element('v2/footer'); 
   }
   ?>
-
-
 <?php echo $this->fetch('scriptBottom'); ?>
 </body>
 

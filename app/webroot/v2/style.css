@@ -72,6 +72,14 @@ header {
     border-bottom: 1px solid rgb(211 205 205 / 6%);
 }
 
+#b_head header {
+    background: #000;
+}
+
+#b_head #v2_main {
+    margin-top: 61px;
+}
+
 .fixedHeader header {
     background: rgba(0, 0, 0, 0.5);
     box-shadow: rgb(0 0 0 / 10%) 0px 20px 40px -20px;
