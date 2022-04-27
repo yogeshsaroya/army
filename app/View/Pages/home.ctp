@@ -85,7 +85,7 @@ if (!empty($data)) { ?>
 
 
     <div class="fullWidthImages posRltv">
-        <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865459/home/sound_kit_stncoj.jpg" alt="full Images">
+        <img src="https://res.cloudinary.com/armytrix/image/upload/v1651024830/home/Sound__kit_rl8zos.jpg" alt="full Images">
 
         <div class="contentWrap text-right bottom20">
             <h2 class="clrWhite">APPAREL & ACCESSORIES</h2>
@@ -111,7 +111,7 @@ if (!empty($data)) { ?>
 <div class="auto-play-video">
     <div class="abst_head midlle bold_light">
         <h2><a href="https://www.youtube.com/user/armytrix?sub_confirmation=1" class="inheritClr">Join Team Armytrix</a></h2>
-        <h3>It's Your Turn. Creat Your Own Story.</h3>
+        <h3>It's Your Turn. Create Your Own Story.</h3>
     </div>
 
     <div class="posRltv">
@@ -119,17 +119,7 @@ if (!empty($data)) { ?>
             <source src="https://res.cloudinary.com/armytrix/video/upload/v1650883576/home/armytrix-trailer.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        <div class="centerScreen">
-            <span class="playIcon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 14 16">
-                    <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"></path>
-                </svg>
-            </span>
-
-            <a href="https://www.youtube.com/user/armytrix?sub_confirmation=1" class="subscribeBtn linkBtn d-flex align-items-center">
-                <i><img src="<?php echo SITEURL; ?>v2/img/icon-youtube-dark.png" alt="youtube"></i> <span>Subscribe</span>
-            </a>
-        </div>
+ 
     </div>
 
 

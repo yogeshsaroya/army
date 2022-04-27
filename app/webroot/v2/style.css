@@ -377,27 +377,6 @@ div#home_slider {
     background: #000;
 }
 
-.subscribeBtn {
-    background: #FF0000;
-    border-color: #FF0000;
-    color: #fff;
-    min-width: auto;
-    padding: 8px 10px;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-}
-
-.subscribeBtn i {
-    color: #000;
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.subscribeBtn i img {
-    max-height: 30px;
-}
-
 .linkBtn:hover {
     background: #38D430;
     border-color: #38D430;
@@ -506,37 +485,6 @@ div#home_slider {
 
 .inheritClr {
     color: inherit;
-}
-
-.centerScreen {
-    position: absolute;
-    left: 0;
-    right: 0;
-    max-width: 170px;
-    margin: auto;
-    top: 50%;
-    transform: translate(0, -50%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.playIcon {
-    z-index: 9;
-    width: 70px;
-    height: 70px;
-    border-radius: 100%;
-    border: 5px solid #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    cursor: pointer;
-    margin: auto;
-}
-
-.centerScreen .playIcon+.subscribeBtn {
-    margin-top: 70px;
 }
 
 .bottomRight {
@@ -1479,21 +1427,6 @@ td {
     .top30 {
         bottom: auto;
         top: 0;
-    }
-    .centerScreen .playIcon+.subscribeBtn {
-        margin-top: 20px;
-        min-width: auto;
-    }
-    .subscribeBtn i img {
-        max-height: 20px;
-    }
-    .centerScreen {
-        max-width: 120px;
-    }
-    .playIcon {
-        width: 45px;
-        height: 45px;
-        border: 3px solid #fff;
     }
     .sideNav {
         width: 100%;

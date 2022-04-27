@@ -4,7 +4,7 @@
 		<div class="row d-flex">
 			<div class="col-sm-3 linkSpace">
 				<h3><a href="<?php echo SITEURL;?>privacy-policy" class="inheritClr">PRIVACY POLICY</a></h3>
-				<h3><a href="<?php echo SITEURL;?>customer-support" class="inheritClr">CUSTOM SUPPORT</a></h3>
+				<h3><a href="<?php echo SITEURL;?>customer-support" class="inheritClr">CUSTOMER SUPPORT</a></h3>
 				<h3><a href="<?php echo SITEURL;?>warranty_registration" class="inheritClr">WARRANTY REGISTRATION</a></h3>
 			</div>
 			<!-- end of colom -->
