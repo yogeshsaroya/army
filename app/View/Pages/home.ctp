@@ -117,7 +117,7 @@
         </div>
 
         <div class="posRltv">
-            <video width="100%" height="auto" class="_autoplay_vid" id="video_5" muted loop autoplay>
+            <video width="100%" height="auto" id="video_5" muted loop autoplay >
                 <source src="https://res.cloudinary.com/armytrix/video/upload/v1650883576/home/armytrix-trailer.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -140,17 +140,6 @@
 <?php echo $this->Html->script(["/v2/slick/slick.min"], ['block' => 'script']); ?>
 <?php $this->Html->scriptStart(array('block' => 'scriptBottom')); ?>
 $(document).ready(function() {
-
-
-    $(window).scroll(function() {
-      $('._autoplay_vid').each(function() {
-        if ($(this).is(":in-viewport")) {
-          $(this)[0].play();
-        } else {
-          $(this)[0].pause();
-        }
-      });
-    });
 
 $.getJSON('https://www.armytrix.com/blog/wp-json/featured/news', function(data) {
 var str = '';
