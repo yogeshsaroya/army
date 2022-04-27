@@ -204,7 +204,7 @@
   </noscript>
   <!-- End Facebook Pixel Code -->
 </head>
-<body id="b_head">
+<body <?php echo (isset($tran_header) ?  null : 'id="b_head"');?>>
   <?php echo $this->element('v2/header'); ?>
   <div id="v2_main">
     <?php echo $this->fetch('content'); ?>
