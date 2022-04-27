@@ -127,6 +127,8 @@ $(document).on('click', '.popup-modal-dismiss', function (e) {
 	var linkHt = $('.serVicesLinks').outerHeight();
 	$('#home_slider .slick-track .slick-slide').css('height' , screenHeight - linkHt);
 
-	$('.fullScreen').css('height' , screenHeight)
+	$('.fullScreen').css('height' , screenHeight);
+
+	 
 });
 <?php $this->Html->scriptEnd(); ?>

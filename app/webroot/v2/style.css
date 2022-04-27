@@ -1258,7 +1258,7 @@ section.bgWhite .container {
     appearance: none;
     color: #fff;
     border: 1px solid #fff !important;
-    background-color: rgba(0,0,0,0.3); !important;
+    background-color: rgba(0,0,0,0.3);
     height: 50px;
     margin: 0;
     width: 100% !important;
@@ -1269,6 +1269,7 @@ section.bgWhite .container {
     text-align: center;
     vertical-align: middle;
     border-radius: 5px;
+    line-height: 1.5;
 }
 /*end of exaust page*/
 
@@ -1373,12 +1374,15 @@ section.bgWhite .container {
     }
 }
 @media (max-width: 767px){
-    .container-fmr .col-sm-8-nw .box-frm::after {
+    .container-fmr .col-sm-8-nw .box-frm{
+        width: 100%;
+    }
+    .container-fmr .col-sm-8-nw .box-frm:after {
         width: 0;
         height: 0;
-        border-left: 8px solid transparent;
-        border-right: 8px solid transparent;
-        border-top: 9px solid #fff;
+        border-left: 11px solid transparent;
+        border-right: 11px solid transparent;
+        border-top: 12px solid #fff;
         position: relative;
         content: "";
         display: block;
@@ -1387,8 +1391,11 @@ section.bgWhite .container {
         right: 0;
         margin: 20px auto;
    }
-    .container-fmr .col-sm-8-nw .box-frm:last-child::after {
-        display: none;
+    .container-fmr .col-sm-8-nw .box-frm:nth-child(3):after {
+        border-top-color: #4AFF0C;
+    }
+    #new-ui-add #frmTun #get_info{
+        margin: 0 auto;
     }
 
 }

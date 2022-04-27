@@ -15,7 +15,7 @@
           <div class="tuningconfig">
             <form id="frmTun">
               <div class="container-fmr ma-box d-flex">
-                <div class="col-sm-8 no-pad col-sm-8-nw">
+                <div class="col-sm-8 no-pad col-sm-8-nw d-flex">
                   <div class="nowrap col-sm-4 box-frm arw-rt">
                     <select class="lable_txt arw-rt" id="brand" name="brand">
                       <option value="">Select Brand</option>
@@ -37,7 +37,6 @@
                       <option value="">Select Engine</option>
                     </select>
                   </div>
-                  <div class="clearfix"></div>
                 </div>
 
 

@@ -2,10 +2,27 @@
 
 
 
-<div class="your-class" id="product_slider">
-  <div><img src="https://www.armytrix.com/cdn/800_530_100_ff_cdn/bmw-g80-m3/6-g82-m4.jpg" alt=""></div>
-  <div><img src="https://www.armytrix.com/cdn/800_530_100_ff_cdn/bmw-g80-m3/1-g82-m4.jpg" alt=""></div>
-  <div><img src="https://www.armytrix.com/cdn/800_530_100_ff_cdn/bmw-g80-m3/3-g82-m4.jpg" alt=""></div>
+<div class="whiteHeader headSpac" id="product_slider">
+  <div>
+    <div class="prodctBg">
+        <h1>BMW F80 M3 (201-2019) OPF/NON-OPF ARMYTRIX VALVETRONIC EXHAUST SYSTEM</h1>
+        <img src="https://www.armytrix.com/cdn/800_530_100_ff_cdn/bmw-g80-m3/6-g82-m4.jpg" alt="">
+     </div>
+   </div>
+   <!-- end of slider -->
+<div>
+    <div class="prodctBg">
+        <h1>BMW F80 M3 (201-2019) OPF/NON-OPF ARMYTRIX VALVETRONIC EXHAUST SYSTEM</h1>
+        <img src="https://www.armytrix.com/cdn/800_530_100_ff_cdn/bmw-g80-m3/6-g82-m4.jpg" alt="">
+     </div>
+   </div>
+   <!-- end of slider --><div>
+    <div class="prodctBg">
+        <h1>BMW F80 M3 (201-2019) OPF/NON-OPF ARMYTRIX VALVETRONIC EXHAUST SYSTEM</h1>
+        <img src="https://www.armytrix.com/cdn/800_530_100_ff_cdn/bmw-g80-m3/6-g82-m4.jpg" alt="">
+     </div>
+   </div>
+   <!-- end of slider -->
 </div>
 
 
@@ -30,6 +47,9 @@ $(document).ready(function() {
         enableTouch:true,
         enableDrag:true,
         freeMove:true,
-    }); }); 
+    });
+       
+
+     }); 
     
     <?php $this->Html->scriptEnd(); ?>
