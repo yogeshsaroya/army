@@ -276,7 +276,7 @@ header div svg:hover {
 
 /*header end*/
 
-section {
+#v2_footer {
     padding: 60px 0;
 }
 
@@ -528,7 +528,7 @@ video {
     background: #fff;
 }
 
-section.bgWhite .container {
+#v2_footer.bgWhite .container {
     max-width: 1400px;
 }
 
@@ -1390,7 +1390,7 @@ td {
     body h4 {
         font-size: 12px;
     }
-    section {
+    #v2_footer {
         padding: 35px 0;
     }
     .cartBox .popup-modal {

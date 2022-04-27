@@ -1,4 +1,4 @@
-<section class="bgWhite">
+<section class="bgWhite" id="v2_footer">
 	<div class="container">
 		<h2 class="text-center mb-4">WE EXCITE YOUR LIFE</h2>
 		<div class="row d-flex">
