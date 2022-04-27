@@ -68,12 +68,8 @@
 
   echo $this->Js->writeBuffer(array('catch' => TRUE));
   echo $scripts_for_layout;
-  if (isset($IsMobile) && $IsMobile == 'yes') { ?>
-    <style>
-
-    </style>
-  <?php } ?>
-
+  ?>
+  
   <script>
     var SITEURL = '<?php echo SITEURL; ?>';
     $(document).ready(function() {

@@ -1,7 +1,7 @@
-<?php if(isset($IsMobile) && $IsMobile == 'yes'){
-echo $this->Html->css(array('theme','responsive','custom')); 
-echo $this->Html->script(array('modules','theme'));
-}?>
+<?php 
+echo $this->Html->css(array('responsive','custom'), ['block' => 'css']); 
+echo $this->Html->script(array('modules','theme'), ['block' => 'scriptBottom']);
+?>
 <style>
 h1{font-size:32px}
 .sub_head{font-size:20px}
@@ -16,6 +16,10 @@ h5.shortcode_toggles_item_title.expanded_no {
 .shortcode_toggles_item_body {
     border: 1px solid #ddd;
     padding: 0 0 0 5%;
+}
+.shortcode_toggles_item_body {
+    text-align: initial;
+ 
 }
 </style>
 <div class="col-md-12" id="faq_div">
