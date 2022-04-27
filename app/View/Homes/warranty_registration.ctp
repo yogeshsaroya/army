@@ -8,8 +8,7 @@ grecaptcha.render('g-recaptcha', {
 <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
 
 <?php 
-if(isset($IsMobile)){ echo $this->html->css(array('theme','/font-awesome/css/font-awesome.min.css')); }
-echo $this->html->css(array('//fonts.googleapis.com/css?family=Titillium+Web'));
+
 echo $this->html->script(array('jquery.form.min', '/v/formValidation.min','/v/bootstrap.min'));
 ?>
 
@@ -18,7 +17,7 @@ echo $this->html->script(array('jquery.form.min', '/v/formValidation.min','/v/bo
   
 <style>
 #warranty_registration{font-size:15px;font-family:'Open Sans',sans-serif}
-#warranty_registration .row{width:auto;margin:0 -15px}
+
 .mx-700{max-width:800px;padding:80px 15px;margin:auto}
 #warranty_registration h2{font-family:"NimbusSanL-Bol";font-size:35px;color:#000;margin:0 0 15px}
 #warranty_registration p{font-family:'Open Sans',sans-serif;font-size:24px;color:#333}
@@ -77,7 +76,7 @@ echo $this->html->script(array('jquery.form.min', '/v/formValidation.min','/v/bo
 
 <div class="col-sm-6"><div class="form-group"> <label for="ins_date">Installation Date<sup>*</sup></label><input type="date" class="form-control" id="ins_date" name="data[Warranty][installation_date]" required="required"> </div> </div>
 
-<div class="rows clear-fx"><div class="col-sm-12"><div id="g-recaptcha"></div></div>
+<div class="rows clear-fx"><div class="col-sm-12 no-padding"><div id="g-recaptcha"></div></div>
 <div class="clearfix"></div>
 <br>
 <div class="clearfix"></div>
