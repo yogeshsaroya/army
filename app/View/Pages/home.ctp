@@ -36,7 +36,7 @@ if (!empty($data)) { ?>
     </div>
 </section>
 
-<section class="blogBox">
+<section class="blogBox pad60">
 
     <div class="container-fluid mx-90">
         <h1>ARMYTRIX OFFICIAL WEBSITE</h1>
@@ -72,7 +72,7 @@ if (!empty($data)) { ?>
         </div>
     </div>
 </section>
-<section class="fullWidthImageWrap">
+<section class="fullWidthImageWrap pad60">
     <div class="fullWidthImages posRltv">
         <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865455/home/shop_ntocqa.png" alt="full Images">
 
