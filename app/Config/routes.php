@@ -76,14 +76,11 @@
 	
 	Router::connect('/product-tuning-box/*', array('controller' => 'pages', 'action' => 'product_tuning_box'));
 	Router::connect('/product-exhaust/*', array('controller' => 'pages', 'action' => 'product_exhaust'));
-	Router::connect('/product-exhaust-brands/*', array('controller' => 'pages', 'action' => 'product_exhaust_brands'));
 	Router::connect('/terms_and_conditions/*', array('controller' => 'pages', 'action' => 't_and_c'));
 	Router::connect('/faqs/*', array('controller' => 'pages', 'action' => 'faqs'));
 	
 	Router::connect('/sound/*', array('controller' => 'homes', 'action' => 'index'));
 	Router::connect('/performance/*', array('controller' => 'homes', 'action' => 'performance'));
-	
-	Router::connect('/product-exhaust-result/*', array('controller' => 'pages', 'action' => 'product_exhaust_result'));
 	
 	
 	Router::connect('/suggest/*', array('controller' => 'homes', 'action' => 'suggest'));

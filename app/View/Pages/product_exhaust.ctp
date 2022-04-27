@@ -79,33 +79,11 @@ $img = 'https://res.cloudinary.com/armytrix/image/upload/v1651024830/home/phone-
 </div>
 
 <script>
-  var tag = document.createElement('script');
-
-  tag.src = "https://www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-  var player;
-
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('home_bg_v', {
-      events: {
-        'onReady': onPlayerReady
-      }
-    });
-  }
-
-  function onPlayerReady() {
-    player.playVideo();
-    // Mute!
-    player.mute();
-  }
-
   jQuery(document).ready(function() {
     "use strict";
     window['btnReset'] = function() {
       $("#get_info").prop("disabled", false);
-      $("#get_info").val('TUNE IT');
+      $("#get_info").val('WEAPONIZED');
     };
     $("#get_info").click(function() {
       var brand = $.trim($('#brand').val());
