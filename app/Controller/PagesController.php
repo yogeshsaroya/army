@@ -1513,6 +1513,7 @@ class PagesController extends AppController
 		$this->set(compact('page_meta', 'b', 'product', 'paging'));
 	}
 
+	
 	public function get_product()
 	{
 		$this->autoRender = false;
