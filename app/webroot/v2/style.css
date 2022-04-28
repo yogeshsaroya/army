@@ -427,7 +427,7 @@ header div svg:hover {
 }
 
 .cartSideBar {
-    height: 100vh;
+    height: 80vh;
     overflow: hidden;
     padding: 0;
 }
