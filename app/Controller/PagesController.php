@@ -946,17 +946,17 @@ class PagesController extends AppController
 					$this->set('getAll', $getAll);
 					$this->render('cart_list');
 					$ct = count($getAll);
-					echo "<script>$('#cart-total').html('" . $ct . " item(s)');</script>";
-					$title = str_replace("'", '', $get_pro['Product']['title']);
-					echo "<script>$.notify({ title: 'Success',
+					//echo "<script>$('#cart-total').html('" . $ct . " item(s)');</script>";
+					//$title = str_replace("'", '', $get_pro['Product']['title']);
+					/*echo "<script>$.notify({ title: 'Success',
                 	message: 'You have added " . $title . " to your shopping cart!'},{placement: {from: \"bottom\",align: \"right\"},
                 	type: 'alert-pastel-info',allow_dismiss: true,delay:5000,animate: {enter: 'animated fadeInDown',exit: 'animated fadeOutUp'},
                 	template: '<div data-notify=\"container\" class=\"col-xs-11 col-sm-3 alert alert-{0}\" role=\"alert\">' +
             		'<span data-notify=\"title\">{1}</span>' +
             		'<span data-notify=\"message\">{2}</span>' +
-            	'</div>'});</script>";
+            	'</div>'});</script>"; */
 					if ($this->RequestHandler->isMobile()) {
-						echo "<script> $('#mob_cart_img').html('<img alt=\"\" src=\"" . SITEURL . "ui/cart_1.png\">'); </script>";
+						//echo "<script> $('#mob_cart_img').html('<img alt=\"\" src=\"" . SITEURL . "ui/cart_1.png\">'); </script>";
 					}
 				} elseif ($this->data['get'] == 'exhaust') {
 					$ti = null;
@@ -1020,13 +1020,13 @@ class PagesController extends AppController
 						}
 					}
 					$ti = str_replace("'", '', $ti);
-					if (!empty($ti)) {
+					/* if (!empty($ti)) {
 						echo "<script>$.notify({ title: 'Success',
                 	message: 'You have added " . $ti . " to your shopping cart!'},{placement: {from: \"bottom\",align: \"right\"},
                 	type: 'alert-pastel-info',allow_dismiss: true,delay:5000,animate: {enter: 'animated fadeInDown',exit: 'animated fadeOutUp'},
                 	template: '<div data-notify=\"container\" class=\"col-xs-11 col-sm-3 alert alert-{0}\" role=\"alert\">' +
             		'<span data-notify=\"title\">{1}</span> <span data-notify=\"message\">{2}</span> </div>'});</script>";
-					}
+					} */
 
 					$cnd = [];
 					if (!empty($tid)) {
@@ -1039,9 +1039,9 @@ class PagesController extends AppController
 					$this->set('getAll', $getAll);
 					$this->render('cart_list');
 					$ct = count($getAll);
-					echo "<script>$('#cart-total').html('" . $ct . " item(s)');</script>";
+					//echo "<script>$('#cart-total').html('" . $ct . " item(s)');</script>";
 					if ($this->RequestHandler->isMobile()) {
-						echo "<script> $('#mob_cart_img').html('<img alt=\"\" src=\"" . SITEURL . "ui/cart_1.png\">'); </script>";
+						//echo "<script> $('#mob_cart_img').html('<img alt=\"\" src=\"" . SITEURL . "ui/cart_1.png\">'); </script>";
 					}
 				}
 			}
