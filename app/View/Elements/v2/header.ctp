@@ -65,7 +65,8 @@
 	
 </div>
 
-<div class="sideNav rightSide">
+<div class="sideNav rightSide cartSideBar">
+	<div class="cartProducts">
 	<h2>Products</h2>
 	<div class="cartPro d-flex align-items-center wrapUnset">
 		<div class="imgWrap">
@@ -156,6 +157,35 @@
 		</div>
 	</div>
 	<!-- end of cartProduct -->
+
+</div>
+<!--cart product wrap -->
+
+	<div class="subTotals">
+		<p class="d-flex">
+			<span><strong>Sub-Total</strong></span>
+			<span>USD $64.38</span>
+		</p>
+
+		<p class="d-flex">
+			<span><strong>Total</strong></span>
+			<span>USD $64.38</span>
+		</p>
+
+<div class="btn-wrap">
+		<div class="row">
+			<div class="col-xs-6">
+				<a href="#" class="linkBtn btnDark">VIEW CART</a>
+			</div>
+			<!-- end of col -->
+			<div class="col-xs-6">
+				<a href="#" class="linkBtn btnDark">CHECK OUT</a>
+			</div>
+			<!-- end of col -->
+		</div>
+	</div>
+</div>
+<!-- end of subtotal wrap -->
 </div>
 
 
@@ -216,10 +246,13 @@ $(document).on('click', '.popup-modal-dismiss', function (e) {
 
 	var screenHeight = $(window).height();
 	var linkHt = $('.serVicesLinks').outerHeight();
+	var subTotalsht = $('.subTotals').outerHeight();
+
+
 	$('#home_slider .slick-track .slick-slide').css('height' , screenHeight - linkHt);
 
 	$('.fullScreen').css('height' , screenHeight);
-
+	$('.cartSideBar').css('padding-top' , linkHt + 20).css('padding-bottom' , subTotalsht + 20);
 	 
 });
 <?php $this->Html->scriptEnd(); ?>

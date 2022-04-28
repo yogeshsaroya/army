@@ -350,6 +350,55 @@ object-fit: cover;
   margin-left: auto;
 }
 
+.subTotals{
+  position: absolute;
+  bottom: 0;
+  z-index: 55;
+  right: 0;
+  width: 100%;
+  background: #fff;
+  padding: 20px;
+  padding-left: 60px;
+  border-top: 1px solid #ededed;
+}
+
+.subTotals .btnDark{
+  min-width: 100px;
+  padding: 10px 20px;
+  display: block;
+}
+.btn-wrap > .row{
+  margin: 0 -5px;
+  padding-left: 50px;
+}
+.btn-wrap .row > div{
+  padding: 10px 5px 0;
+}
+.subTotals p.d-flex {
+    font-size: 16px;
+    font-family: 'Oswald', sans-serif;
+    margin-left: auto;
+    margin-bottom: 20px;
+    flex-wrap: unset;
+}
+.subTotals p.d-flex span{
+   display: inline-block;
+   min-width: 65px;
+   text-align: right;
+}
+.subTotals p.d-flex span:last-child{
+  margin-left: auto;
+  margin-right: 0;
+}
+.cartSideBar{
+  height: 100vh;
+  overflow: hidden;
+  padding: 0;
+}
+.cartProducts {
+    max-height: 100vh;
+    overflow: auto;
+}
 /*header end*/
 
 <<<<<<< HEAD
