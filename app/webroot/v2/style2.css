@@ -129,7 +129,14 @@ header div p {
 }
 
 header div *:hover,
+<<<<<<< HEAD:app/webroot/v2/style.css
 header div svg:hover {
+=======
+header div svg:hover ,
+header#v2_header  div *:hover,
+header#v2_header h1  div svg:hover {
+    color: #38D430;
+>>>>>>> 4307c17 (...):app/webroot/v2/style2.css
     cursor: pointer;
 }
 
@@ -428,6 +435,10 @@ header div svg:hover {
 
 /*header end*/
 
+<<<<<<< HEAD:app/webroot/v2/style.css
+=======
+
+>>>>>>> 4307c17 (...):app/webroot/v2/style2.css
 #v2_footer,
 #v2_home section {
     padding: 60px 0;
@@ -553,7 +564,7 @@ div#home_slider {
     margin-bottom: 40px
 }
 
-.serVicesLinks h2 {
+#v2_main  .serVicesLinks h2 {
     margin: 0;
 }
 
