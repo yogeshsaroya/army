@@ -276,7 +276,7 @@ if( $is_cateback > 1 ||  $is_pipe > 1){ ?>
 .item-quantity .in-stock-pro{margin-top:15px}
 .out-stock-pro > h3{font-size:18px;font-weight:300;margin:auto;position:relative;text-align:center;text-transform:capitalize;color: red}
 .in-stock-pro > h3{font-size:18px;font-weight:300;margin:auto;position:relative;text-align:center;text-transform:capitalize}
-.in-stock-pro > h3::before{background-image:url(<?php echo SITEURL;?>img/right-icon.png);background-size:100% auto;content:"";height:20px;left:19px;position:absolute;width:20px}
+.in-stock-pro > h3::before{background-image:url(<?php echo SITEURL;?>img/right-icon.png);background-size:100% auto;content:"";height:20px;left:10px;position:absolute;width:20px}
 .item-price > h3,.item-total-price > h3{font-size:15px;font-weight:400}
 .item-details li{overflow:hidden;padding:20px 0}
 .free-gift-section .item-quantity .btn-snp{background:#999 none repeat scroll 0 0}

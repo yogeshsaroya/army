@@ -69,7 +69,7 @@
   echo $this->Js->writeBuffer(array('catch' => TRUE));
   echo $scripts_for_layout;
   ?>
-  
+
   <script>
     var SITEURL = '<?php echo SITEURL; ?>';
     $(document).ready(function() {
@@ -202,16 +202,14 @@
   <!-- End Facebook Pixel Code -->
 </head>
 <?php
-  if ($this->params['controller'] == 'homes') {
-    if(in_array($this->params['action'],['home'])){
-
-    }
+if ($this->params['controller'] == 'homes') {
+  if (in_array($this->params['action'], ['home'])) {
   }
-  elseif ($this->params['controller'] == 'pages') {
-    if(in_array($this->params['action'],['home','product_exhaust'])){
-      $tran_header = 'yes';
-    }
+} elseif ($this->params['controller'] == 'pages') {
+  if (in_array($this->params['action'], ['home', 'product_exhaust'])) {
+    $tran_header = 'yes';
   }
+}
 
 ?>
 
@@ -225,6 +223,15 @@
     echo $this->element('v2/footer');
   }
   ?>
+  <script>
+    $(document).ready(function() {
+      var screenHeight = $(window).height();
+      var linkHt = $('.serVicesLinks').outerHeight();
+      var subTotalsht = $('.subTotals').outerHeight();
+      $('.cartSideBar').css('padding-top', linkHt + <?php echo (isset($tran_header) ?  20 : 81); ?>).css('padding-bottom', subTotalsht + <?php echo (isset($tran_header) ?  20 : 81); ?>);
+
+    });
+  </script>
   <?php echo $this->fetch('scriptBottom'); ?>
 </body>
 
