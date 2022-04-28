@@ -1,4 +1,4 @@
-<header>
+<header id="v2_header">
 	<div class="container-fluid d-flex align-items-center">
 		<div class="leftMenuBar mr-auto">
 			<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-list openMenu" viewBox="0 0 16 16">
@@ -66,7 +66,96 @@
 </div>
 
 <div class="sideNav rightSide">
-	<h2>Your Cart Is Empty</h2>
+	<h2>Products</h2>
+	<div class="cartPro d-flex align-items-center wrapUnset">
+		<div class="imgWrap">
+			<img src="https://res.cloudinary.com/armytrix/image/upload/v1650865455/home/shop_ntocqa.png" alt="product img">
+		</div>
+		<div class="proDetails d-flex wrapUnset">
+			<div  class="titletg">
+			   <h2>Product Name</h2>
+			   <div class="d-flex wrapUnset align-items-center">
+			   	 <span class="removeProd">Delete</span>
+			   	<div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Qty <i class="proNmber">1</i> 
+	  	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down arrowDown" viewBox="0 0 16 16">
+	  <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+	</svg>
+</button>
+  <ul class="dropdown-menu">
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+  </ul>
+</div>
+			   </div>
+			   <!-- end of qwality div -->
+		    </div>
+		    <!-- end of title div -->
+		    <span class="priceMny">$25.87</span>
+		</div>
+	</div>
+	<!-- end of cartProduct -->
+
+	<div class="cartPro d-flex align-items-center wrapUnset">
+		<div class="imgWrap">
+			<img src="https://res.cloudinary.com/armytrix/image/upload/v1650865455/home/shop_ntocqa.png" alt="product img">
+		</div>
+		<div class="proDetails d-flex wrapUnset">
+			<div  class="titletg">
+			   <h2>Product Name</h2>
+			   <div class="d-flex wrapUnset align-items-center">
+			   	 <span class="removeProd">Delete</span>
+			   	<div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Qty <i class="proNmber">1</i> 
+	  	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down arrowDown" viewBox="0 0 16 16">
+	  <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+	</svg>
+</button>
+  <ul class="dropdown-menu">
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+  </ul>
+</div>
+			   </div>
+			   <!-- end of qwality div -->
+		    </div>
+		    <!-- end of title div -->
+		    <span class="priceMny">$25.87</span>
+		</div>
+	</div>
+	<!-- end of cartProduct -->
+
+	<div class="cartPro d-flex align-items-center wrapUnset">
+		<div class="imgWrap">
+			<img src="https://res.cloudinary.com/armytrix/image/upload/v1650865455/home/shop_ntocqa.png" alt="product img">
+		</div>
+		<div class="proDetails d-flex wrapUnset">
+			<div  class="titletg">
+			   <h2>Product Name</h2>
+			   <div class="d-flex wrapUnset align-items-center">
+			   	 <span class="removeProd">Delete</span>
+			   	<div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Qty <i class="proNmber">1</i> 
+	  	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down arrowDown" viewBox="0 0 16 16">
+	  <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+	</svg>
+</button>
+  <ul class="dropdown-menu">
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+  </ul>
+</div>
+			   </div>
+			   <!-- end of qwality div -->
+		    </div>
+		    <!-- end of title div -->
+		    <span class="priceMny">$25.87</span>
+		</div>
+	</div>
+	<!-- end of cartProduct -->
 </div>
 
 

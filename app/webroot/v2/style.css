@@ -3,7 +3,7 @@ body {
     overflow-x: hidden;
 }
 
-body {
+#v2_main , #v2_header , #v2_footer {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     letter-spacing: 0;
@@ -14,30 +14,36 @@ img {
     max-width: 100%;
 }
 
-body h1,
-#new-ui-add h1,
+#v2_main  h1, #v2_header h1 , #v2_footer h1,
+#v2_main #new-ui-add h1,
 .serVicesLinks .row>h2 {
     font-size: 30px;
     line-height: 1;
     letter-spacing: 0;
     font-family: 'Oswald', sans-serif;
+    margin: 0 0 18px;
+
+}
+#v2_main .serVicesLinks .row > h2{
+  margin: 0;
 }
 
-body h2 {
+#v2_main h2 , #v2_header h2 , #v2_footer h2 {
     font-size: 24px;
     line-height: 1;
     letter-spacing: 2px;
     font-family: 'Oswald', sans-serif;
+    margin: 0 0 15px;
 }
 
-body h3 {
+#v2_main h3 , #v2_header h3 , #v2_footer h3 {
     font-size: 20px;
     line-height: 1;
     letter-spacing: 1px;
     font-family: 'Oswald', sans-serif;
+    margin: 0 0 12px;
 }
-
-body h4 {
+#v2_main h4 , #v2_header h4 , #v2_footer h4 {
     font-size: 16px;
     line-height: 1;
     letter-spacing: 0;
@@ -111,8 +117,14 @@ header div p {
     color: #fff;
 }
 
+<<<<<<< HEAD
 header div *:hover,
 header div svg:hover {
+=======
+header#v2_header  div *:hover,
+header#v2_header h1  div svg:hover {
+    color: #38D430;
+>>>>>>> 94e7da8 (update cart)
     cursor: pointer;
 }
 
@@ -146,13 +158,13 @@ header div svg:hover {
     width: 60px;
 }
 
-.row {
+#v2_main .row {
     margin-left: 0;
     margin-right: 0;
     max-width: 100%;
 }
 
-.row>div {
+#v2_main .row>div {
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -271,12 +283,81 @@ header div svg:hover {
     color: #444;
     text-transform: uppercase;
 }
+.cartPro {
+  margin-bottom: 20px;
+}
+.wrapUnset{
+  flex-wrap: unset;
+}
+.rightSide .titletg h2 {
+    text-transform: inherit;
+    font-size: 20px;
+    margin: 0 ;
+}
+.dropdown > .btn {
+    color: #000;
+    padding: 0;
+    line-height: 1;
+    background: transparent;
+    padding: 0 12px 0 12px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    transform: all 300 ease;
+ }
+ .dropdown > .btn:hover ,  .open .dropdown-toggle.btn-primary {
+   background: transparent;
+   color: #000;
+ }
 
+.dropdown > .btn i{ 
+  font-style: normal;
+  margin: 0 5px;
+}
+.dropdown-menu{
+  min-width: 80px;
+  background: #eee;
+  border: 2px solid #38D430;
+  font-size: 20px;
+}
+.dropdown-menu li {
+  padding: 0;
+  width: 100%;
+}
+.dropdown-menu li a{
+  font-weight: bold;
+  display: block;
+  padding: 5px 15px;
+  border-bottom: 1px solid #ccc;
+}
+.proDetails {
+  width: calc(100% - 120px);
+  justify-content: space-between;
+}
+.imgWrap {
+    width: 100px;
+    margin-right: 20px
+}
+.imgWrap img{
+  width: 100%;
+height: 100%;
+object-fit: cover;
+}
+.priceMny{
+  font-weight: bold;
+  font-size: 20px;
+  font-family: 'Oswald', sans-serif;
+  margin-left: auto;
+}
 
 /*header end*/
 
+<<<<<<< HEAD
 #v2_footer,
 #v2_home section {
+=======
+#v2_footer , #v2_main section{
+>>>>>>> 703e5aa (update header)
     padding: 60px 0;
 }
 
@@ -299,7 +380,7 @@ div#home_slider {
     top: 0;
 }
 
-.video video {
+#v2_main .video video {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -341,7 +422,7 @@ div#home_slider {
     background-color: #38D430 !important
 }
 
-.overlay {
+#v2_main .overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -394,7 +475,7 @@ div#home_slider {
 
 /*bottom links*/
 
-.serVicesLinks {
+#v2_main .serVicesLinks {
     padding: 20px 0;
     border-bottom: 1px solid #e3dfdf;
     margin-bottom: 40px
@@ -530,6 +611,7 @@ video {
 
 #v2_footer.bgWhite .container {
     max-width: 1400px;
+    width: 100%;
 }
 
 .bgWhite h2.mb-4 {
@@ -550,7 +632,7 @@ video {
     margin-right: -15px;
 }
 
-.socialMedia>li {
+.socialMedia > li {
     flex: 1;
     width: 17%;
     padding: 5px 15px;
@@ -642,84 +724,79 @@ video {
 
 /*start exaust page*/
 
-.white_text p {
+#v2_main .white_text p {
     color: #fff
 }
 
-.pd_10 {
+#v2_main .pd_10 {
     padding: 20px
 }
 
-.main_d {
+#v2_main .main_d {
     background-color: #fff
 }
 
-#new_tuning table,
-#new_tuning td,
-#new_tuning th {
+#v2_main #new_tuning table,
+#v2_main #new_tuning td,
+#v2_main #new_tuning th {
     border: none !important
 }
 
-span.main_head {
+#v2_main span.main_head {
     font-size: 16px;
     font-weight: 700
 }
-
-select {
-    width: 200px !important
-}
-
-.lable_txt {
+#v2_main .lable_txt {
     float: left;
     margin: 0 10px 10px 0
 }
 
-span.lable_txt {
+#v2_main span.lable_txt {
     line-height: 40px;
     font-size: 14px;
     text-transform: capitalize
 }
 
-.progress.active .progress-bar {
+#v2_main .progress.active .progress-bar {
     -webkit-transition: none !important;
     transition: none !important
 }
 
-.tuning-box {
+#v2_main .tuning-box {
     margin: auto;
     max-width: 1250px
 }
 
-.tuning-box-content {
+#v2_main .tuning-box-content {
     background-color: #efefef;
     overflow: hidden;
     padding: 10px 10px 15px
 }
 
-table,
-th,
-td {
+#v2_main table,
+#v2_main th,
+#v2_main td {
     border: none !important
 }
 
-.tuningconfig {
+#v2_main .tuningconfig {
     margin: 0
 }
 
-.col-md-12.main_d.no-pad {
+#v2_main .col-md-12.main_d.no-pad {
     margin: 0;
     padding: 0
 }
 
-th.right {
+#v2_main .tuningconfig th.right {
     width: 250px
 }
 
-table {
+#v2_main .tuningconfig table {
     margin: 10px 60px
 }
 
-#details_tab {
+#v2_main #details_tab {
     width: 95%;
     margin: 5% auto;
     padding: 30px 0
@@ -733,102 +810,102 @@ table {
     text-align: left
 }
 
-th {
+#v2_main th {
     font-size: 15px;
     font-weight: 600
 }
 
-td {
+#v2_main td {
     font-size: 16px
 }
 
-.progress {
+#v2_main .progress {
     height: 30px !important
 }
 
-.progress-bar {
+#v2_main .progress-bar {
     font-size: 18px !important;
     line-height: 29px !important
 }
 
-.tuning-box {
+#v2_main .tuning-box {
     margin: auto;
     max-width: 100%
 }
 
-.heading_main {
+#v2_main .heading_main {
     border-bottom: 4px #fff solid;
     padding: 0 0 10px;
     width: 80%;
     margin: auto
 }
 
-#show_info {
+#v2_main #show_info {
     min-height: 268px;
     max-width: 1250px;
     margin: auto
 }
-
-#show_info th,
-#show_info td {
+ 
+#v2_main #show_info th,
+#v2_main #show_info td {
     border-left: 1px #fff solid !important;
     border-right: thin solid !important;
     border-top: 1px #fff solid !important;
     border-bottom: thin solid !important
 }
 
-#show_info th:last-child,
-#show_info td:last-child {
+#v2_main #show_info th:last-child,
+#v2_main #show_info td:last-child {
     border-right: 1px #fff solid !important
 }
 
-.info_box {
+#v2_main .info_box {
     background-color: #fff;
     padding-top: 30px
 }
 
-.progress-bar-danger {
+#v2_main .progress-bar-danger {
     background-color: #696969 !important
 }
 
-.progress-bar-success {
+#v2_main .progress-bar-success {
     background-color: red !important
 }
 
-.fullscreen_block_ {
+#v2_main .fullscreen_block_ {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(img/tuningbg.jpg) no-repeat scroll center center / cover;
     padding: 10px 0 0;
     background-attachment: fixed !important
 }
 
-#show_info th,
-#show_info tr,
-#show_info td {
+#v2_main #show_info th,
+#v2_main #show_info tr,
+#v2_main #show_info td {
     color: #fff;
     font-weight: 600
 }
 
-#show_info .heading_main {
+#v2_main #show_info .heading_main {
     color: #fff
 }
 
-.main_d {
+#v2_main .main_d {
     background-color: transparent
 }
 
-.info_box {
+#v2_main .info_box {
     background-color: transparent !important
 }
 
-#new-ui-add {
-    margin: 14% auto
+#v2_main #new-ui-add {
+    margin: 14% auto#v2_main 
 }
 
-#new-ui-add .no-pad {
+#v2_main #new-ui-add .no-pad {
     padding: 0
 }
 
-#new-ui-add h1 {
+#v2_main #new-ui-add h1 {
     font-weight: 400;
     color: #fff;
     text-align: center;
@@ -838,55 +915,55 @@ td {
     text-transform: uppercase
 }
 
-#new-ui-add .tuningconfig {
+#v2_main #new-ui-add .tuningconfig {
     background: #212728;
     padding: 40px 30px 0;
 }
 
-#new-ui-add #frmTun {
+#v2_main #new-ui-add #frmTun {
     padding: 0
 }
 
-#new-ui-add select.active-arw {
+#v2_main #new-ui-add select.active-arw {
     background-color: green !important;
 }
 
-#new-ui-add .lable_txt:hover {
+#v2_main #new-ui-add .lable_txt:hover {
     background-color: green !important;
 }
 
-#new-ui-add select option {
+#v2_main #new-ui-add select option {
     background: #212728;
     padding: 12px
 }
 
-#new-ui-add #show_info {
+#v2_main #new-ui-add #show_info {
     min-height: auto !important
 }
 
-#new-ui-add select,
-#new-ui-add label {
+#v2_main #new-ui-add select,
+#v2_main #new-ui-add label {
     font-weight: 700;
     font-size: 20px
 }
 
-#app_error {
+#v2_main #app_error {
     padding: 0 15px
 }
 
-#app_error .alert {
+#v2_main #app_error .alert {
     margin: 15px 0
 }
 
-#new-ui-add #frmTun .td-bx {
+#v2_main #new-ui-add #frmTun .td-bx {
     margin-top: 0
 }
 
-#new-ui-add .progress-bar-danger {
+#v2_main #new-ui-add .progress-bar-danger {
     background-color: transparent !important
 }
 
-#new-ui-add .progress {
+#v2_main #new-ui-add .progress {
     background-color: transparent;
     border-radius: 0;
     -webkit-box-shadow: none;
@@ -895,7 +972,7 @@ td {
     font-weight: 600
 }
 
-#new-ui-add .progress-bar {
+#v2_main #new-ui-add .progress-bar {
     color: #20272A !important;
     font-weight: 600;
     background-color: transparent;
@@ -911,11 +988,11 @@ td {
     font-weight: 600
 }
 
-#new-ui-add #frmTun .container-fmr.ma-box {
+#v2_main #new-ui-add #frmTun .container-fmr.ma-box {
     margin-bottom: 0
 }
-
-#new-ui-add #frmTun #get_info {
+ 
+#v2_main #new-ui-add #frmTun #get_info {
     background-color: transparent;
     display: block;
     margin: 0;
@@ -936,35 +1013,35 @@ td {
     font-family: 'Oswald', sans-serif;
 }
 
-#new-ui-add #frmTun #get_info:hover {
+#v2_main #new-ui-add #frmTun #get_info:hover {
     background: #4AFF0C;
     color: #fff;
 }
 
-#new-ui-add #frmTun #get_info img {
+#v2_main #new-ui-add #frmTun #get_info img {
     max-width: 18px;
     margin-top: -5px;
     width: 100%
 }
 
-#new-ui-add #frmTun span.main_head,
-#new-ui-add #frmTun label,
-#frmTun .lable_txt {
+#v2_main #new-ui-add #frmTun span.main_head,
+#v2_main #new-ui-add #frmTun label,
+#v2_main #frmTun .lable_txt {
     color: #fff
 }
-
-#new-ui-add .col-sm-4-nw,
-#frmTun .col-sm-4.text-left {
+ 
+#v2_main #new-ui-add .col-sm-4-nw,
+#v2_main #frmTun .col-sm-4.text-left {
     width: 22%;
     padding: 0 20px 0;
 }
 
-#new-ui-add .col-sm-8-nw {
+#v2_main #new-ui-add .col-sm-8-nw {
     width: 78%;
     padding: 0;
 }
 
-.nowrap.col-sm-7.box-frm {
+#v2_main .nowrap.col-sm-7.box-frm {
     width: 100%;
     padding-left: 0;
     padding-right: 0;
@@ -989,29 +1066,29 @@ td {
     border-bottom: thin solid !important
 }
 
-#new-ui-add #show_info th,
-#new-ui-add #show_info tr,
-#new-ui-add #show_info td {
+#v2_main #new-ui-add #show_info th,
+#v2_main #new-ui-add #show_info tr,
+#v2_main #new-ui-add #show_info td {
     color: #20272A;
     border-color: #20272A !important;
     border-width: 2px !important
 }
 
-#new-ui-add #show_info th:first-child {
+#v2_main #new-ui-add #show_info th:first-child {
     background: #728684;
     color: #fff
 }
 
-#new-ui-add #show_info tr:first-child th:last-child {
+#v2_main #new-ui-add #show_info tr:first-child th:last-child {
     color: green
 }
 
-#new-ui-add #details_tab {
+#v2_main #new-ui-add #details_tab {
     width: 95%;
     margin: 30px auto
 }
 
-.arw-rt::before {
+#v2_main .arw-rt::before {
     width: 0;
     height: 0;
     border-top: 5px solid transparent;
@@ -1026,13 +1103,13 @@ td {
     margin: auto
 }
 
-.col-sm-4-nw .arw-rt::before {
+#v2_main .col-sm-4-nw .arw-rt::before {
     right: auto;
     border-left: 9px solid #4AFF0C;
     left: -5px;
 }
 
-.fullscreen_block_.video-bg iframe {
+#v2_main .fullscreen_block_.video-bg iframe {
     position: absolute;
     top: 0;
     left: 0;
@@ -1040,91 +1117,91 @@ td {
     height: 100%
 }
 
-#main_sec {
+#v2_main #main_sec {
     margin: 0
 }
 
 @media (max-width:1150px) {
-    #new-ui-add.container {
+    #v2_main #new-ui-add.container {
         max-width: 940px
     }
-    #new-ui-add h2 {
+    #v2_main #new-ui-add h2 {
         font-size: 20px
     }
-    #new-ui-add select {
+    #v2_main #new-ui-add select {
         padding: 0 22px 0 8px
     }
 }
 
 @media (max-width:991px) {
-    #new-ui-add .col-sm-4-nw,
-    #frmTun .col-sm-4.text-left {
+    #v2_main #new-ui-add .col-sm-4-nw,
+    #v2_main #frmTun .col-sm-4.text-left {
         width: 100%;
         max-width: 330px;
         margin: 30px auto 0;
         float: none
     }
-    #new-ui-add select {
+    #v2_main #new-ui-add select {
         width: 100% !important
     }
-    #new-ui-add .col-sm-8-nw {
+    #v2_main #new-ui-add .col-sm-8-nw {
         width: 100%;
         float: none
     }
-    #new-ui-add h2 {
+    #v2_main #new-ui-add h2 {
         font-size: 20px
     }
-    #new-ui-add h2::before,
-    #new-ui-add h2::after {
+    #v2_main #new-ui-add h2::before,
+    #v2_main #new-ui-add h2::after {
         background-size: 20px auto;
         width: 20px;
         height: 30px;
         vertical-align: middle
     }
-    #main_sec {
+    #v2_main #main_sec {
         margin: 0
     }
-    .col-sm-4-nw .arw-rt::before {
+    #v2_main .col-sm-4-nw .arw-rt::before {
         display: none;
     }
 }
 
 @media (max-width:767px) {
-    #new-ui-add .col-sm-4-nw,
-    #frmTun .col-sm-4.text-left {
+    #v2_main #new-ui-add .col-sm-4-nw,
+    #v2_main #frmTun .col-sm-4.text-left {
         max-width: 100%
     }
-    div#app_error {
+    #v2_main div#app_error {
         padding-bottom: 5px
     }
-    #new-ui-add .col-sm-4-nw,
-    #frmTun .col-sm-4.text-left {
+    #v2_main #new-ui-add .col-sm-4-nw,
+    #v2_main #frmTun .col-sm-4.text-left {
         margin: 0 auto
     }
-    #new-ui-add h2 {
+    #v2_main #new-ui-add h2 {
         font-size: 18px;
         color: #fff;
         text-transform: uppercase;
         padding: 0 15px;
         text-align: center;
     }
-    #new-ui-add #frmTun #get_info img {
+    #v2_main #new-ui-add #frmTun #get_info img {
         max-width: 20px;
         margin-top: -5px;
         width: 100%
     }
-    #new-ui-add select {
+   #v2_main #new-ui-add select {
         margin: 0 0 15px
     }
-    #new-ui-add #frmTun #get_info {
+    #v2_main #new-ui-add #frmTun #get_info {
         width: 100%;
         float: none;
         margin: 25px 0 0
     }
-    .arw-rt::before {
+    #v2_main .arw-rt::before {
         display: none
     }
-    .fullscreen_block_.video-bg {
+    #v2_main .fullscreen_block_.video-bg {
         background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(img/tuningbg.jpg) no-repeat scroll center center / cover;
         padding: 15px 0 !important;
         margin: 0 !important;
@@ -1134,27 +1211,27 @@ td {
         max-height: 100% !important;
         height: auto !important
     }
-    .fullscreen_block_.video-bg iframe {
+    #v2_main .fullscreen_block_.video-bg iframe {
         display: none
     }
-    #new-ui-add h2::before,
-    #new-ui-add h2::after {
+    #v2_main #new-ui-add h2::before,
+    #v2_main #new-ui-add h2::after {
         display: none
     }
 }
 
 @media (max-width:580px) {
-    #new-ui-add h2 {
+    #v2_main #new-ui-add h2 {
         font-size: 18px
     }
 }
 
-.fullScreen {
+#v2_main .fullScreen {
     height: 100vh;
     position: relative;
 }
 
-.fullScreen:before {
+ #v2_main .fullScreen:before {
     position: absolute;
     content: "";
     top: 0;
@@ -1166,7 +1243,7 @@ td {
     background: rgba(0, 0, 0, 0.3);
 }
 
-.fullScreen>* {
+#v2_main .fullScreen>* {
     height: 100%;
     width: 100%;
     object-fit: cover;
@@ -1174,7 +1251,7 @@ td {
     vertical-align: bottom;
 }
 
-#tuning_box_page .tuning-box {
+#v2_main #tuning_box_page .tuning-box {
     margin-top: 0;
     position: absolute;
     top: 50%;
@@ -1184,12 +1261,12 @@ td {
     z-index: 5;
 }
 
-#tuning_box_page #new-ui-add {
+#v2_main #tuning_box_page #new-ui-add {
     margin: 0 auto;
     max-width: 1000px;
 }
 
-#tuning_box_page #new-ui-add h1 {
+#v2_main #tuning_box_page #new-ui-add h1 {
     padding: 10px 0;
     font-weight: inherit;
     color: #fff;
@@ -1201,12 +1278,12 @@ td {
     padding: 0;
 }
 
-#tuning_box_page #new-ui-add .tuningconfig {
+#v2_main #tuning_box_page #new-ui-add .tuningconfig {
     background: transparent;
     padding: 10px 0 0;
 }
 
-#tuning_box_page #new-ui-add select {
+#v2_main #tuning_box_page #new-ui-add select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -1226,7 +1303,6 @@ td {
     line-height: 1.5;
 }
 
-
 /*end of exaust page*/
 
 @media (min-width: 768px) {
@@ -1239,48 +1315,48 @@ td {
 }
 
 @media (min-width: 1500px) {
-    div#blogPost {
+   #v2_main  div#blogPost {
         padding: 0 60px;
     }
-    .blogBox {
+    #v2_main .blogBox {
         padding-left: 10px;
         padding-right: 10px;
     }
-    .blogBox img {
+    #v2_main .blogBox img {
         height: 320px;
     }
 }
 
 @media (min-width: 2000px) {
-    .blogBox img {
+    #v2_main .blogBox img {
         height: 420px;
     }
 }
 
 @media (max-width: 1024px) and (min-width: 581px) {
-    #blogPost .col-sm-4,
-    #blogPost .col-md-4 {
+   #v2_main #blogPost .col-sm-4,
+  #v2_main  #blogPost .col-md-4 {
         width: 50%;
         margin-bottom: 30px;
     }
-    .blogBox .mt-5 {
+    #v2_main .blogBox .mt-5 {
         margin-top: 2rem;
     }
 }
 
 @media (max-width: 991px) {
-    h3,
-    h3 span,
-    h3 a {
+   #v2_main h3, #v2_header h3 , #v2_footer h3 ,
+   #v2_main h3 span , #v2_header h3 span , #v2_footer h3 span,
+   #v2_main h3 a ,  #v2_header h3 a , #v2_footer h3 a{
         font-size: 16px;
         line-height: 1.5;
     }
-    body,
-    p,
-    td,
-    div,
-    blockquote p,
-    input {
+   #v2_main , #v2_header , #v2_footer ,
+   #v2_main p,
+   #v2_main td,
+   #v2_main div,
+  #v2_main  blockquote p,
+   #v2_main input {
         font-size: 12px;
     }
     header>div,
@@ -1338,10 +1414,10 @@ td {
 }
 
 @media (max-width: 767px) {
-    .container-fmr .col-sm-8-nw .box-frm {
+  #v2_main  .container-fmr .col-sm-8-nw .box-frm {
         width: 100%;
     }
-    .container-fmr .col-sm-8-nw .box-frm:after {
+  #v2_main  .container-fmr .col-sm-8-nw .box-frm:after {
         width: 0;
         height: 0;
         border-left: 11px solid transparent;
@@ -1355,39 +1431,47 @@ td {
         right: 0;
         margin: 20px auto;
     }
-    .container-fmr .col-sm-8-nw .box-frm:nth-child(3):after {
+  #v2_main .container-fmr .col-sm-8-nw .box-frm:nth-child(3):after {
         border-top-color: #4AFF0C;
     }
-    #new-ui-add #frmTun #get_info {
+ #v2_main #new-ui-add #frmTun #get_info {
         margin: 0 auto;
     }
 }
 
 @media (max-width: 580px) {
-    body,
     .content_2,
-    .blogBox p {
+    #v2_main .blogBox p {
         font-size: 10px;
     }
-    body h1,
-    #new-ui-add h1,
-    .serVicesLinks .row>h2,
-    .serVicesLinks .row>h2>a {
+    #v2_footer h1, #v2_main h1,
+    #v2_main #new-ui-add h1,
+    #v2_main .serVicesLinks .row>h2,
+    #v2_main .serVicesLinks .row>h2>a {
         font-weight: bold;
         font-size: 18px;
+    }
+    #v2_main h1{
+      margin: 0 0 12px;
     }
     /*.serVicesLinks .row > h2 , .serVicesLinks .row > h2 > a{
         font-weight: normal;
     }*/
-    body h2,
-    body h2 a {
+    #v2_main h2 , #v2_footer h2,
+    #v2_main h2 a , #v2_footer h2 a{
         font-size: 16px;
     }
-    body h3,
-    body h3 a {
+    #v2_main h2{
+      margin: 0 0 8px;
+    }
+    #v2_main h3, #v2_footer h3 ,
+    #v2_main h3 a , #v2_footer h3 a {
         font-size: 14px;
     }
-    body h4 {
+    #v2_main h3{
+      margin: 0 0 12px;
+    }
+    #v2_main h4 , #v2_footer h4 {
         font-size: 12px;
     }
     #v2_footer,
@@ -1399,7 +1483,8 @@ td {
     }
     .linkBtn {
         font-size: 10px;
-        min-width: 150px;
+        min-width: 100px;
+        padding: 8px 15px;
     }
     .socialMedia>li>a>i {
         width: 30px;
@@ -1413,7 +1498,7 @@ td {
         text-align: center;
         flex: auto;
     }
-    .socialMedia>li.d-flex {
+    .socialMedia > li.d-flex {
         width: 100%;
         flex: auto;
         margin-top: 15px;
@@ -1485,9 +1570,20 @@ td {
 }
 
 .no-padding {
-    padding: 0px;
-}
+    padding: 0px;}
 
 #b_head .closeMenu {
     color: #fff;
+}
+    #v2_footer, #v2_main section {
+      padding: 30px 0;
+    }
+}
+@media (max-width: 420px){
+  #tuning_box_page #new-ui-add h2{
+    font-size: 12px;
+  }
+  #v2_main #tuning_box_page #new-ui-add h1{
+    font-size: 17px;
+  }
 }
