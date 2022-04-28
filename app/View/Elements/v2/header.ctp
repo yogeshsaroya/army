@@ -248,11 +248,15 @@ $(document).on('click', '.popup-modal-dismiss', function (e) {
 	var linkHt = $('.serVicesLinks').outerHeight();
 	var subTotalsht = $('.subTotals').outerHeight();
 
+	var cartSpace = subTotalsht + linkHt + 10;
+
 
 	$('#home_slider .slick-track .slick-slide').css('height' , screenHeight - linkHt);
 
 	$('.fullScreen').css('height' , screenHeight);
 	$('.cartSideBar').css('padding-top' , linkHt + 20).css('padding-bottom' , subTotalsht + 20);
+	$('.cartProducts').css('max-height' , screenHeight - cartSpace);
+	
 	 
 });
 <?php $this->Html->scriptEnd(); ?>

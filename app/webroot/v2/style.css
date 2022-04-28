@@ -330,9 +330,11 @@ header div svg:hover {
 
 .dropdown-menu {
     min-width: 80px;
-    background: #eee;
+    background: #000;
     border: 2px solid #38D430;
     font-size: 20px;
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
 }
 
 .dropdown-menu li {
@@ -345,6 +347,9 @@ header div svg:hover {
     display: block;
     padding: 5px 15px;
     border-bottom: 1px solid #ccc;
+}
+.dropdown-menu li:last-child a {
+    border-bottom: 0;
 }
 
 .proDetails {
@@ -407,8 +412,9 @@ header div svg:hover {
 
 .subTotals p.d-flex span {
     display: inline-block;
-    min-width: 65px;
+    min-width: 80px;
     text-align: right;
+    padding: 0 12px;
 }
 
 .subTotals p.d-flex span:last-child {
@@ -1546,7 +1552,7 @@ video {
     #v2_footer h2,
     #v2_main h2 a,
     #v2_footer h2 a {
-        font-size: 16px;
+        font-size: 14px;
     }
     #v2_main h2 {
         margin: 0 0 8px;
