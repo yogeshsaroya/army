@@ -434,7 +434,7 @@ header div svg:hover {
 
 @media (max-width: 480px) {
     .cartSideBar {
-        height: 90vh;
+        height: 80vh;
     }
 }
 
