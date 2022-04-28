@@ -16,7 +16,12 @@ class HomesController extends AppController
 
     public function index()
     {
-        $this->redirect('/');
+        $this->set('title_for_layout', 'ARMYTRIX OBDII VALVETRONIC REMOTE CONTROL MODULE');
+        $page_meta = [
+            'des' => 'ARMYTRIX OBDII Sound kits, the Innovative Valvetronic Technology Brings about Unprecedented Versatility to Car Owners.',
+            'key' => 'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
+        ];
+        $this->set('page_meta', $page_meta);
     }
 
 
