@@ -532,7 +532,7 @@ div#home_slider {
     padding: 12px 30px 10px;
     min-width: 180px;
     color: #fff;
-    border: 1px solid;
+    border: 0.1px solid;
     transition: all 500ms ease;
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
@@ -1685,4 +1685,31 @@ video {
     #v2_main #tuning_box_page #new-ui-add h1 {
         font-size: 17px;
     }
+}
+
+
+/*product page*/
+.mx-640{
+    max-width: 720px;
+    padding: 20px;
+    margin: auto;
+}
+div#v2_product .slick-arrow{
+    position: absolute;
+    top: 50%;
+    height: 60px;
+    width: 40px;
+    left: 0;
+    transform: translateY(-50%);
+    background: url(../v2/img/arrowControls.png) no-repeat 0 center;
+    background-size: 60px auto;
+}
+div#v2_product .slick-arrow.slick-next{
+    background: url(../v2/img/arrowControls.png) no-repeat right center;
+    background-size: 60px auto;
+    left: auto;
+    right: 0;
+}
+div#v2_product .slick-arrow:before{
+    display: none;
 }
