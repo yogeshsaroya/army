@@ -427,9 +427,15 @@ header div svg:hover {
 }
 
 .cartSideBar {
-    height: 80vh;
+    height: 100vh;
     overflow: hidden;
     padding: 0;
+}
+
+@media (max-width: 480px) {
+    .cartSideBar {
+        height: 90vh;
+    }
 }
 
 .cartProducts {
