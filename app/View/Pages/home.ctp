@@ -46,21 +46,21 @@
             <div class="row d-flex loadBox" id="blogPost">
                 <div class="col-md-4">
                     <div class="blogBox text-left">
-                        <div class="imgWraps"><img src="https://res.cloudinary.com/armytrix/image/upload/v1650885696/home/ARMYTRIX.png" alt=""></div>
+                        <div class="imgWraps"><img src="https://res.cloudinary.com/armytrix/image/upload/v1650885696/home/ARMYTRIX.png" loading="lazy" alt=""></div>
                         <h4> &nbsp </h4>
                         <p>&nbsp</p><a href="javascript:void(0);" class="wholeBoxLink"></a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="blogBox text-left">
-                        <div class="imgWraps"><img src="https://res.cloudinary.com/armytrix/image/upload/v1650885696/home/ARMYTRIX.png" alt=""></div>
+                        <div class="imgWraps"><img src="https://res.cloudinary.com/armytrix/image/upload/v1650885696/home/ARMYTRIX.png" loading="lazy" alt=""></div>
                         <h4> &nbsp </h4>
                         <p>&nbsp</p><a href="javascript:void(0);" class="wholeBoxLink"></a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="blogBox text-left">
-                        <div class="imgWraps"><img src="https://res.cloudinary.com/armytrix/image/upload/v1650885696/home/ARMYTRIX.png" alt=""></div>
+                        <div class="imgWraps"><img src="https://res.cloudinary.com/armytrix/image/upload/v1650885696/home/ARMYTRIX.png" loading="lazy" alt=""></div>
                         <h4> &nbsp </h4>
                         <p>&nbsp</p><a href="javascript:void(0);" class="wholeBoxLink"></a>
                     </div>
@@ -76,7 +76,7 @@
     </section>
     <section class="fullWidthImageWrap pad60">
         <div class="fullWidthImages posRltv">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865455/home/shop_ntocqa.png" alt="full Images">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865455/home/shop_ntocqa.png" loading="lazy" alt="full Images">
 
             <div class="contentWrap text-right bottom20">
                 <h2 class="clrWhite">SOUND KIT</h2>
@@ -87,7 +87,7 @@
 
 
         <div class="fullWidthImages posRltv">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/v1651024830/home/Sound__kit_rl8zos.jpg" alt="full Images">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/v1651024830/home/Sound__kit_rl8zos.jpg" loading="lazy" alt="full Images">
 
             <div class="contentWrap text-right bottom20">
                 <h2 class="clrWhite">APPAREL & ACCESSORIES</h2>
@@ -98,7 +98,7 @@
 
 
         <div class="fullWidthImages posRltv">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865452/home/test_evkqle.jpg" alt="full Images">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865452/home/test_evkqle.jpg" loading="lazy" alt="full Images">
 
             <div class="contentWrap text-center top30">
                 <h2 class="clrWhite">WHAT DO THEY SAY ABOUT ARMYTRIX</h2>
@@ -129,7 +129,7 @@
     <!-- auto play video-->
 
     <div class="fullWidthImages posRltv">
-        <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865453/home/main-end_liba2e.png" alt="">
+        <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865453/home/main-end_liba2e.png" loading="lazy" alt="">
 
     </div>
 

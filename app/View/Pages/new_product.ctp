@@ -9,18 +9,18 @@
 <div class="whiteHeader headSpac mx-640" id="product_slider">
   <div>
     <div class="prodctBg">
-        <img src="https://www.armytrix.com/cdn/800_530_100_ff_cdn/bmw-g80-m3/6-g82-m4.jpg" alt="">
+        <img src="https://www.armytrix.com/cdn/800_530_100_ff_cdn/bmw-g80-m3/6-g82-m4.jpg" loading="lazy" alt="">
      </div>
    </div>
    <!-- end of slider -->
 <div>
     <div class="prodctBg">
-        <img src="https://www.armytrix.com/cdn/800_530_100_ff_cdn/bmw-g80-m3/6-g82-m4.jpg" alt="">
+        <img src="https://www.armytrix.com/cdn/800_530_100_ff_cdn/bmw-g80-m3/6-g82-m4.jpg" loading="lazy" alt="">
      </div>
    </div>
    <!-- end of slider --><div>
     <div class="prodctBg">
-        <img src="https://www.armytrix.com/cdn/800_530_100_ff_cdn/bmw-g80-m3/6-g82-m4.jpg" alt="">
+        <img src="https://www.armytrix.com/cdn/800_530_100_ff_cdn/bmw-g80-m3/6-g82-m4.jpg" loading="lazy" alt="">
      </div>
    </div>
    <!-- end of slider -->

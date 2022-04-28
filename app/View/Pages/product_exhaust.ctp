@@ -11,7 +11,7 @@ $img = 'https://res.cloudinary.com/armytrix/image/upload/v1651024830/home/phone-
 </div>
 <div class="fullscreen_block_new fulScreen" id="tuning_box_page" style="min-height: 400px;">
   <div class="fullScreen">
-    <img src="<?php echo $img;?>" alt=""></div>
+    <img src="<?php echo $img;?>" loading="lazy" alt=""></div>
   <div class="tuning-box">
     <div class="clearfix"></div>
     <div class="container" id="new-ui-add">
@@ -51,7 +51,7 @@ $img = 'https://res.cloudinary.com/armytrix/image/upload/v1651024830/home/phone-
 
                   <div class="nowrap box-frm arw-rt">
                     <button class="btn btn-primary ps-ab" id="get_info" name="sub" type="button" value="WEAPONIZED">
-                      <img src="<?php echo SITEURL; ?>bootstrap_3_3_6/img/logo-icon.png" alt=""> WEAPONIZED</button>
+                      <img src="<?php echo SITEURL; ?>bootstrap_3_3_6/img/logo-icon.png" loading="lazy" alt=""> WEAPONIZED</button>
                   </div>
                 </div>
 
