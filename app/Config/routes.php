@@ -57,12 +57,7 @@
 	Router::connect('/ecu/*', array('controller' => 'pages', 'action' => 'ecu'));
 	Router::connect('/ecu-warranty/*', array('controller' => 'pages', 'action' => 'ecu_warranty'));
 	Router::connect('/ecu-qa/*', array('controller' => 'pages', 'action' => 'ecu_qa'));
-	
-	Router::connect('/tuning-box/*', array('controller' => 'pages', 'action' => 'tuning_box'));
-	Router::connect('/tuning-box-warranty/*', array('controller' => 'pages', 'action' => 'tuning_box_warranty'));
-	Router::connect('/tuning-box-qa/*', array('controller' => 'pages', 'action' => 'tuning_box_qa'));
-	
-	
+		
 	Router::connect('/technology/*', array('controller' => 'pages', 'action' => 'technology'));
 	Router::connect('/testimonial/*', array('controller' => 'homes', 'action' => 'testimonial'));
 	Router::connect('/dealer/*', array('controller' => 'pages', 'action' => 'our_dealers'));
@@ -76,6 +71,8 @@
 	
 	Router::connect('/product-tuning-box/*', array('controller' => 'pages', 'action' => 'product_tuning_box'));
 	Router::connect('/product-exhaust/*', array('controller' => 'pages', 'action' => 'product_exhaust'));
+	Router::connect('/motocycle-exhaust/*', array('controller' => 'pages', 'action' => 'motocycle_exhaust'));
+	
 	Router::connect('/terms_and_conditions/*', array('controller' => 'pages', 'action' => 't_and_c'));
 	Router::connect('/faqs/*', array('controller' => 'pages', 'action' => 'faqs'));
 	

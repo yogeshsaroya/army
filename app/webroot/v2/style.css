@@ -113,7 +113,6 @@ header div p {
 
 header div *:hover,
 header div svg:hover {
-    color: #38D430;
     cursor: pointer;
 }
 
@@ -1487,4 +1486,8 @@ td {
 
 .no-padding {
     padding: 0px;
+}
+
+#b_head .closeMenu {
+    color: #fff;
 }
