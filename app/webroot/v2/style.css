@@ -288,7 +288,9 @@ header div svg:hover {
     color: #444;
     text-transform: uppercase;
 }
-
+.cartProducts{
+    padding: 20px 30px;
+}
 .cartPro {
     margin-bottom: 20px;
 }
