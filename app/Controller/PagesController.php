@@ -57,86 +57,38 @@ class PagesController extends AppController
 
 	public function new_product($id = null, $type = null)
 	{
-		$page_meta = $data = $slider = $slidersTT = $gallery = $room_primary_image = $no_price = $feature = $lngtext = $langurl = $cat_back = $catalytic = $tuning_box = null;
-		if (isset($this->request->query['test']) && $this->request->query['test'] == 'abcd') {
-			$this->set('abcd', 'Yes');
-		}
+		$slider = $sliderSS = $slidersTT = [];
+		$page_meta = $data = $gallery = $cat_back = $catalytic = null;
+		
 		$this->ItemDetail->bindModel(array('belongsTo' => array('Brand', 'Model', 'Motor'), 'hasMany' => array('QualityDetail', 'Video' => ['order' => ['Video.pos' => 'ASC']])));
 		$data = $this->ItemDetail->find('first', array('recursive' => 2, 'conditions' => array('ItemDetail.url' => $id, 'ItemDetail.status' => 1)));
 		if (!empty($data)) {
-			if ($data['ItemDetail']['language'] == 'eng') {
-				$Adata = $data;
-				$item_detail_id = $data['ItemDetail']['id'];
-			} else {
-				$Adata = $this->ItemDetail->find('first', array('recursive' => -1, 'conditions' => array('ItemDetail.id' => $data['ItemDetail']['item_detail_id'], 'ItemDetail.status' => 1)));
-				$item_detail_id = $data['ItemDetail']['item_detail_id'];
-			}
+			$Adata = $data;
+			$item_detail_id = $data['ItemDetail']['id'];
+			
 			$cat_back_ids = explode(',', $Adata['ItemDetail']['cat_back_ids']);
 			$catalytic_ids = explode(',', $Adata['ItemDetail']['catalytic_ids']);
 			$accessory_ids = explode(',', $Adata['ItemDetail']['accessory_ids']);
 			$cat_back = $this->Product->find('all', array(/* 'recursive'=>-1, */'conditions' => array('Product.id' => $cat_back_ids, 'Product.status' => 1)));
 			$catalytic = $this->Product->find('all', array(/* 'recursive'=>-1, */'conditions' => array('Product.id' => $catalytic_ids, 'Product.status' => 1)));
 			$accessory = $this->Product->find('all', array(/* 'recursive'=>-1, */'conditions' => array('Product.id' => $accessory_ids, 'Product.status' => 1)));
-			$t = $s = 0;
-			if (!empty($cat_back)) {
-				foreach ($cat_back as $cList) {
-					if ($cList['Product']['material'] == 'titanium') {
-						$t++;
-					} elseif ($cList['Product']['material'] == 'stainless steel') {
-						$s++;
-					}
-				}
-			}
-			if (!empty($catalytic)) {
-				foreach ($catalytic as $c1List) {
-					if ($c1List['Product']['material'] == 'titanium') {
-						$t++;
-					} elseif ($c1List['Product']['material'] == 'stainless steel') {
-						$s++;
-					}
-				}
-			}
-			$feature = null;
-			if ($s > 0 && $t == 0) {
-				$feature = 'ss';
-				$meta_title = $data['ItemDetail']['meta_title'];
-			} elseif ($t > 0 && $s == 0) {
-				$feature = 'titanium';
-				$meta_title = $data['ItemDetail']['meta_title_tt'];
-				if (empty($data['ItemDetail']['meta_title_tt'])) {
-					$meta_title = $data['ItemDetail']['meta_title'];
-				}
-			} elseif ($t > 0 && $s > 0) {
-				if ($type == 'ti') {
-					$feature = 'titanium';
-					$meta_title = $data['ItemDetail']['meta_title_tt'];
-					if (empty($data['ItemDetail']['meta_title_tt'])) {
-						$meta_title = $data['ItemDetail']['meta_title'];
-					}
-				} else {
-					$feature = 'ss';
-					$meta_title = $data['ItemDetail']['meta_title'];
-				}
-			}
+			
+			$meta_title = $data['ItemDetail']['meta_title'];
 			$this->set('title_for_layout', $meta_title);
 			$page_meta = array('des' => $data['ItemDetail']['meta_description'], 'key' => $data['ItemDetail']['meta_keywords']);
+			
 			$sArr = explode(',', trim($data['ItemDetail']['slider']));
 			$sArr1 = explode(',', trim($data['ItemDetail']['tt_slider']));
 			if (!empty($sArr) && isset($sArr[0]) && !empty($sArr[0])) {
-				$slider = $this->Library->find('all', array('conditions' => array('Library.id' => $sArr), 'order' => ['Library.pos' => 'ASC']/* 'order'=>array('FIELD(Library.id,' . $data['ItemDetail']['slider'] . ')') */));
+				$sliderSS = $this->Library->find('all', array('conditions' => array('Library.id' => $sArr), 'order' => ['Library.pos' => 'ASC']/* 'order'=>array('FIELD(Library.id,' . $data['ItemDetail']['slider'] . ')') */));
 			}
 			if (!empty($sArr1) && isset($sArr1[0]) && !empty($sArr1[0])) {
-				$slidersTT = $this->Library->find('all', array('conditions' => array('Library.id' => $sArr1), 'order' => ['Library.pos' => 'ASC']/* 'order'=>array('FIELD(Library.id,' . $data['ItemDetail']['tt_slider'] . ')') */));
+				$slidersTT = $this->Library->find('all', array('conditions' => array('Library.id' => $sArr1), 'order' => ['Library.pos' => 'ASC']));
 			}
+			$slider = array_merge($sliderSS,$slidersTT);
 			$gArr = explode(',', $data['ItemDetail']['gallery']);
 			$gallery = $this->Library->find('all', array('conditions' => array('Library.id' => $gArr), 'order' => ['Library.pos' => 'ASC']));
-			if (isset($slider[0]['Library']['file_name'])) {
-				$room_primary_image = SITEURL . "cdn/" . $slider[0]['Library']['folder'] . "/" . $slider[0]['Library']['file_name'];
-			}
-			$string = $this->String->find('list', array('order' => array('String.id' => 'ASC'), 'fields' => array('String.id', 'String.text')));
-			$tran = $this->Translation->find('list', array('conditions' => array('Translation.code' => $data['ItemDetail']['language']), 'fields' => array('Translation.string_id', 'Translation.name')));
-			$lngtext = array('String' => $string, 'Translation' => $tran);
-			$this->set(compact('page_meta', 'data', 'slider', 'slidersTT', 'gallery', 'room_primary_image', 'no_price', 'feature', 'lngtext', 'langurl', 'cat_back', 'catalytic', 'accessory'));
+			$this->set(compact('page_meta', 'data', 'slider', 'gallery','cat_back', 'catalytic', 'accessory'));
 		} else {
 			$this->layout = '404';
 		}

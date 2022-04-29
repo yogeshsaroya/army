@@ -1,12 +1,58 @@
 <?php echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme',"/v2/product_page.css?v=" . rand(5646, 65465)], ['block' => 'css']); ?>
+<?php
+$imgArr = [];
+if (isset($slider) && !empty($slider)) {
+  foreach ($slider as $sList) { $imgArr[] = '"' . SITEURL . 'cdn/' . $sList['Library']['folder'] . "/" . $sList['Library']['file_name'] . '"'; }
+}
+if (isset($data) && !empty($data)) {
+?>
+<?php $this->Html->scriptStart(['block' => 'script','type'=>'application/ld+json']); ?>
+{
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "<?php echo addslashes($data['ItemDetail']['name']); ?>",
+      "image": [<?php echo implode(',', $imgArr); ?>],
+      "description": "<?php echo addslashes($data['ItemDetail']['meta_description']); ?>",
+
+      "brand": {
+        "@type": "Brand",
+        "name": "Armytrix"
+      },
+      "review": {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "Armytrix - Automotive Weaponized"
+        }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "2875"
+      }
+
+    }
+<?php $this->Html->scriptEnd(); ?>
+<?php } ?>
+
 <div id="v2_product">
 
   <h1 class="text-center mb-5">BMW F80 M3 (201-2019) OPF/NON-OPF ARMYTRIX VALVETRONIC EXHAUST SYSTEM</h1>
 
   <div class="whiteHeader headSpac mx-640" id="product_slider" >
-      <div class="prodctBg"><img src="https://www.armytrix.com/cdn/800_530_100_ff_cdn/bmw-g80-m3/6-g82-m4.jpg" loading="lazy" alt=""></div>
-      <div class="prodctBg"><img src="https://www.armytrix.com/cdn/800_530_100_ff_cdn/bmw-g80-m3/6-g82-m4.jpg" loading="lazy" alt=""></div>
-      <div class="prodctBg"><img src="https://www.armytrix.com/cdn/800_530_100_ff_cdn/bmw-g80-m3/6-g82-m4.jpg" loading="lazy" alt=""></div>
+    <?php 
+    if (isset($slider) && !empty($slider)) {
+      foreach ($slider as $sList) {
+        $p = 'cdn/' . $sList['Library']['folder'] . "/" . $sList['Library']['file_name'];
+        $main = new_show_image($p, 800, 530, 100, 'ff', null);
+        echo '<div class="prodctBg"><img src="'.$main.'" loading="lazy" alt=""></div>';
+      }
+    }?>
   </div>
 
   <!-- end of slider wrap -->
@@ -74,7 +120,7 @@
 $(document).ready(function() {
 
   $('#product_slider').slick({
-    dots: true,
+    dots: false,
   infinite: true,
   speed: 500,
   fade: true,
