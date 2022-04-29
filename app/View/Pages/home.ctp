@@ -1,8 +1,6 @@
+<?php echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme'], ['block' => 'css']); ?>
 <div id="v2_home">
-
-    <?php
-    echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme'], ['block' => 'css']);
-    if (!empty($data)) { ?>
+    <?php if (!empty($data)) { ?>
         <div id="home_slider" class="your-class homePg">
             <?php foreach ($data as $list) {
                 $video = $list['VideoSlider']['video_for_pc'];
@@ -155,4 +153,4 @@ if (n <= 3) { var imgList=element['featured_image']; var img='https://res.cloudi
         cssEase: 'linear' , 
         adaptiveHeight: false }); 
 }); 
-    <?php $this->Html->scriptEnd(); ?>
+<?php $this->Html->scriptEnd(); ?>
