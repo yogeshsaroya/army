@@ -14,7 +14,7 @@
             ?>
                 <div>
                     <div class="video">
-                        <video poster="<?php echo $poster; ?>" id="bgvid" playsinline autoplay loop muted>
+                        <video poster="<?php echo $poster; ?>" id="bgvid" preload="none" playsinline autoplay loop muted>
                             <source src="<?php echo $video; ?>" type="video/mp4">
                         </video>
                         <div class="overlay">
