@@ -1,4 +1,4 @@
-<?php echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme',"/v2/product_page.css?v=" . rand(5646, 65465)], ['block' => 'css']); ?>
+<?php echo $this->Html->css(["/v2/product_page.css?v=" . rand(5646, 65465)], ['block' => 'css']); ?>
 <?php
 $imgArr = [];
 if (isset($slider) && !empty($slider)) {
@@ -42,20 +42,10 @@ if (isset($data) && !empty($data)) {
 
 <div id="v2_product">
 
-  <h1 class="text-center mb-5">BMW F80 M3 (201-2019) OPF/NON-OPF ARMYTRIX VALVETRONIC EXHAUST SYSTEM</h1>
+<h1 class="text-center mb-5">BMW F80 M3 (201-2019) OPF/NON-OPF ARMYTRIX VALVETRONIC EXHAUST SYSTEM</h1>
 
-  <div class="whiteHeader headSpac mx-640" id="product_slider" >
-    <?php 
-    if (isset($slider) && !empty($slider)) {
-      foreach ($slider as $sList) {
-        $p = 'cdn/' . $sList['Library']['folder'] . "/" . $sList['Library']['file_name'];
-        $main = new_show_image($p, 800, 530, 100, 'ff', null);
-        echo '<div class="prodctBg"><img src="'.$main.'" loading="lazy" alt=""></div>';
-      }
-    }?>
-  </div>
-
-  <!-- end of slider wrap -->
+ <?php  echo $this->element('v2/product_slider',['slider'=>$slider]); ?>
+ 
 
   <div class="v2_conatainer hide">
     <div class="v2_row">
@@ -111,24 +101,7 @@ if (isset($data) && !empty($data)) {
     echo $this->element('pro/s4');
     echo $this->element('pro/s8');
     echo $this->element('pro/s18');
+  
   ?>
 
 </div>
-
-<?php echo $this->Html->script(["/v2/slick/slick.min"], ['block' => 'scriptBottom']); ?>
-<?php $this->Html->scriptStart(array('block' => 'scriptBottom')); ?>
-$(document).ready(function() {
-
-  $('#product_slider').slick({
-    dots: false,
-  infinite: true,
-  speed: 500,
-  fade: true,
-  cssEase: 'linear'
-      }); 
-
-
-
-});
-
-<?php $this->Html->scriptEnd(); ?>
