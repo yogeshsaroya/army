@@ -228,7 +228,7 @@ if ($this->params['controller'] == 'homes') {
       var screenHeight = $(window).height();
       var linkHt = $('.serVicesLinks').outerHeight();
       var subTotalsht = $('.subTotals').outerHeight();
-      $('.cartSideBar').css('padding-top', linkHt + <?php echo (isset($tran_header) ?  20 : 81); ?>).css('padding-bottom', subTotalsht + 20; ?>);
+      $('.cartSideBar').css('padding-top', linkHt + <?php echo (isset($tran_header) ?  20 : 81); ?>).css('padding-bottom', subTotalsht + 20);
 
     });
   </script>
