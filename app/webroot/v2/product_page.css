@@ -1,0 +1,61 @@
+div#v2_product .slick-arrow {
+    position: absolute;
+    top: 50%;
+    height: 60px;
+    width: 40px;
+    left: 0;
+    transform: translateY(-50%);
+    background: url(../v2/img/arrowControls.png) no-repeat 0 center;
+    background-size: 60px auto;
+}
+
+div#v2_product .slick-arrow.slick-next {
+    background: url(../v2/img/arrowControls.png) no-repeat right center;
+    background-size: 60px auto;
+    left: auto;
+    right: 0;
+}
+
+div#v2_product .slick-arrow:before,
+#product_slider .slick-dots {
+    display: none;
+}
+
+div#v2_product .pad60 {
+    padding: 60px 0;
+}
+
+.v2_conatainer {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.v2_row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+}
+
+.v2_row>div {
+    padding: 0 10px;
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+#v2_main .videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 0;
+    height: 0;
+}
+
+#v2_main .videoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

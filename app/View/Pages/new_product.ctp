@@ -28,9 +28,72 @@
 
 <!-- end of slider wrap -->
 
+<div class="v2_conatainer">
+  <div class="v2_row">
+     <div class="col-sm-6">
+        <div class="selectBox">
+          <select class="fullWidth">
+            <option>BMW G80 M3 ,M3 Competition 2020 + </option>
+            <option>BMW G80 M3 ,M3 Competition 2020 + </option>
+            <option>BMW G80 M3 ,M3 Competition 2020 + </option>
+            <option>BMW G80 M3 ,M3 Competition 2020 + </option>
+          </select>
+        </div>
+     </div>
+     <!-- end of col -->
+
+     <div class="col-sm-6">
+        <div class="selectBox">
+          <select class="fullWidth">
+            <option>BMW G80 M3 ,M3 Competition 2020 + </option>
+            <option>BMW G80 M3 ,M3 Competition 2020 + </option>
+            <option>BMW G80 M3 ,M3 Competition 2020 + </option>
+            <option>BMW G80 M3 ,M3 Competition 2020 + </option>
+          </select>
+        </div>
+     </div>
+     <!-- end of col -->
+
+  </div>  
+</div>
+
+
+<div class="fullWidthImageWrap pad60">
+        <div class="fullWidthImages posRltv">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865426/product/armytrix-product-exhaust.jpg
+" loading="lazy" alt="full Images">
+        </div>
+        <div class="fullWidthImages posRltv">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865426/product/armytrix-product-exhaust.jpg
+" loading="lazy" alt="full Images">
+        </div>
+        <div class="fullWidthImages posRltv">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865426/product/armytrix-product-exhaust.jpg
+" loading="lazy" alt="full Images">
+        </div>
+        <div class="fullWidthImages posRltv">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865426/product/armytrix-product-exhaust.jpg
+" loading="lazy" alt="full Images">
+        </div>
+        <div class="fullWidthImages posRltv">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865426/product/armytrix-product-exhaust.jpg
+" loading="lazy" alt="full Images">
+        </div>
+
+
+<div class="videoWrapper">
+  <iframe id="home_bg_v" style=" z-index: -99; width: 100%; height: autp" src="https://www.youtube.com/embed/V9t_oN6KHrs?&amp;playlist=V9t_oN6KHrs&amp;controls=0&amp;showinfo=0&amp;autoplay=1&amp;rel=0&amp;loop=1&amp;controls=0&amp;vq=hd1080&amp;enablejsapi=1" allowfullscreen="" frameborder="0"></iframe>
+</div>
+
+    </div>
+
 </div>
 
 </section>
+
+
+
+
 
 
 
