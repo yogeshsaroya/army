@@ -91,8 +91,8 @@ if (isset($data1) && !empty($data1)) {
       </div>
     </div>
     <div class="row">
-    <div class="col-sm-6"><?php echo $this->element('v2/pro_list',['id'=>'t1']); ?></div>
-    <div class="col-sm-6"><?php echo $this->element('v2/pro_list',['id'=>'t2']); ?></div>
+      <div class="col-sm-6"><?php echo $this->element('v2/pro_list', ['id' => 't1']); ?></div>
+      <div class="col-sm-6"><?php echo $this->element('v2/pro_list', ['id' => 't2']); ?></div>
     </div>
 
     <div class="cartWrap row d-flex mt-3">
@@ -118,20 +118,18 @@ if (isset($data1) && !empty($data1)) {
 
 
 
-<?php  echo $this->element('pro/img_list',['gallery'=>$gallery]); ?>
+  <?php echo $this->element('pro/img_list', ['gallery' => $gallery]); ?>
 
 
-  
-<?php if (!empty($data['Video'])) { ?>
-  <div class="videoWrapper container fullMxWd">
-          <?php foreach ($data['Video'] as $vlist) { 
-            //echo '<iframe id="home_bg_v" style=" z-index: -99; width: 100%; height: autp" src="https://www.youtube.com/embed/'.$vlist['video'].'?&amp;controls=0&amp;showinfo=0&amp;autoplay=1&amp;rel=0&amp;loop=1&amp;controls=0&amp;vq=hd1080&amp;enablejsapi=1" allowfullscreen="" frameborder="0"></iframe>';
-              echo '<iframe id="home_bg_v" style="width: 100%; height: 500px"  src="https://www.youtube.com/embed/UVm-ZFqsqZM?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-             
-} ?></div> <?php } ?>
-  
-    
-  
+
+  <?php if (!empty($data['Video'])) { ?>
+    <div class="videoWrapper container fullMxWd">
+      <?php foreach ($data['Video'] as $vlist) {
+        echo '<iframe id="home_bg_v" style="width: 100%; height: 500px"  src="https://www.youtube.com/embed/' . $vlist['video'] . '?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+      } ?></div> <?php } ?>
+
+
+
 
 
   <div class="slide_images container fullMxWd">
@@ -157,110 +155,59 @@ if (isset($data1) && !empty($data1)) {
 
 <?php $this->Html->scriptStart(array('block' => 'scriptBottom')); ?>
 $(document).ready(function() {
-    $("#p_t1").click(function() {
-        if ($('#li_t1').css('display') == 'none') {
-        $('#li_t1').show();
-        } else {
-        $('#li_t1').hide();
-        }
-    });
+$("#p_t1").click(function() {
+if ($('#li_t1').css('display') == 'none') {
+$('#li_t1').show();
+} else {
+$('#li_t1').hide();
+}
+});
 
-    $("#p_t2").click(function() {
-        if ($('#li_t2').css('display') == 'none') {
-        $('#li_t2').show();
-        } else {
-        $('#li_t2').hide();
-        }
-    });
+$("#p_t2").click(function() {
+if ($('#li_t2').css('display') == 'none') {
+$('#li_t2').show();
+} else {
+$('#li_t2').hide();
+}
+});
 });
 
 
 $('.btn-number').click(function(e) {
-    e.preventDefault();
+e.preventDefault();
 
-    fieldName = $(this).attr('data-field');
-    type = $(this).attr('data-type');
-    var input = $("input[name='" + fieldName + "']");
-    var currentVal = parseInt(input.val());
-    if (!isNaN(currentVal)) {
-      if (type == 'minus') {
+fieldName = $(this).attr('data-field');
+type = $(this).attr('data-type');
+var input = $("input[name='" + fieldName + "']");
+var currentVal = parseInt(input.val());
+if (!isNaN(currentVal)) {
+if (type == 'minus') {
 
-        if (currentVal > input.attr('min')) {
-          var nv = currentVal - 1;
-          input.val(nv).change();
-          if (input.attr('id') == 'cat_b_q') {
-            $('#cat_id_q').val(nv);
-          } else if (input.attr('id') == 'ecu_b_q') {
-            $('#ecu_id_q').val(nv);
-          } else if (input.attr('id') == 'accessory_b_q') {
-            $('#accessory_id_q').val(nv);
-          }
+if (currentVal > input.attr('min')) {
+var nv = currentVal - 1;
+input.val(nv).change();
+if (input.attr('id') == 'cat_b_q') {
+$('#cat_id_q').val(nv);
+} else if (input.attr('id') == 'ecu_b_q') {
+$('#ecu_id_q').val(nv);
+} else if (input.attr('id') == 'accessory_b_q') {
+$('#accessory_id_q').val(nv);
+}
+}
+if (parseInt(input.val()) == input.attr('min')) {
+$(this).attr('disabled', true);
+}
+
+} else if (type == 'plus') {
+
+if (currentVal < input.attr('max')) { var nv=currentVal + 1; input.val(nv).change(); if (input.attr('id')=='cat_b_q' ) { $('#cat_id_q').val(nv); } else if (input.attr('id')=='ecu_b_q' ) { $('#ecu_id_q').val(nv); } else if (input.attr('id')=='accessory_b_q' ) { $('#accessory_id_q').val(nv); } } if (parseInt(input.val())==input.attr('max')) { $(this).attr('disabled', true); } } } else { input.val(0); } }); $('.input-number').focusin(function() { $(this).data('oldValue', $(this).val()); }); $('.input-number').change(function() { minValue=parseInt($(this).attr('min')); maxValue=parseInt($(this).attr('max')); valueCurrent=parseInt($(this).val()); name=$(this).attr('name'); if (valueCurrent>= minValue) {
+  $(".btn-number[data-type='minus'][data-field='" + name + "']").removeAttr('disabled')
+  } else {
+  alert('Sorry, the minimum value was reached');
+  $(this).val($(this).data('oldValue'));
+  }
+  if (valueCurrent <= maxValue) { $(".btn-number[data-type='plus' ][data-field='" + name + "' ]").removeAttr('disabled') } else { alert('Sorry, the maximum value was reached'); $(this).val($(this).data('oldValue')); } }); $(".input-number").keydown(function(e) { // Allow: backspace, delete, tab, escape, enter and . if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !==-1 || // Allow: Ctrl+A (e.keyCode==65 && e.ctrlKey===true) || // Allow: home, end, left, right (e.keyCode>= 35 && e.keyCode <= 39)) { // let it happen, don't do anything return; } // Ensure that it is a number and stop the keypress if ((e.shiftKey || (e.keyCode < 48 || e.keyCode> 57)) && (e.keyCode < 96 || e.keyCode> 105)) {
+        e.preventDefault();
         }
-        if (parseInt(input.val()) == input.attr('min')) {
-          $(this).attr('disabled', true);
-        }
-
-      } else if (type == 'plus') {
-
-        if (currentVal < input.attr('max')) {
-          var nv = currentVal + 1;
-          input.val(nv).change();
-          if (input.attr('id') == 'cat_b_q') {
-            $('#cat_id_q').val(nv);
-          } else if (input.attr('id') == 'ecu_b_q') {
-            $('#ecu_id_q').val(nv);
-          } else if (input.attr('id') == 'accessory_b_q') {
-            $('#accessory_id_q').val(nv);
-          }
-
-        }
-        if (parseInt(input.val()) == input.attr('max')) {
-          $(this).attr('disabled', true);
-        }
-
-      }
-    } else {
-      input.val(0);
-    }
-  });
-  $('.input-number').focusin(function() {
-    $(this).data('oldValue', $(this).val());
-  });
-  $('.input-number').change(function() {
-
-    minValue = parseInt($(this).attr('min'));
-    maxValue = parseInt($(this).attr('max'));
-    valueCurrent = parseInt($(this).val());
-
-    name = $(this).attr('name');
-    if (valueCurrent >= minValue) {
-      $(".btn-number[data-type='minus'][data-field='" + name + "']").removeAttr('disabled')
-    } else {
-      alert('Sorry, the minimum value was reached');
-      $(this).val($(this).data('oldValue'));
-    }
-    if (valueCurrent <= maxValue) {
-      $(".btn-number[data-type='plus'][data-field='" + name + "']").removeAttr('disabled')
-    } else {
-      alert('Sorry, the maximum value was reached');
-      $(this).val($(this).data('oldValue'));
-    }
-
-
-  });
-  $(".input-number").keydown(function(e) {
-    // Allow: backspace, delete, tab, escape, enter and .
-    if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
-      // Allow: Ctrl+A
-      (e.keyCode == 65 && e.ctrlKey === true) ||
-      // Allow: home, end, left, right
-      (e.keyCode >= 35 && e.keyCode <= 39)) {
-      // let it happen, don't do anything
-      return;
-    }
-    // Ensure that it is a number and stop the keypress
-    if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-      e.preventDefault();
-    }
-  });
-<?php $this->Html->scriptEnd(); ?>
+        });
+        <?php $this->Html->scriptEnd(); ?>
