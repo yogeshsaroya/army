@@ -60,7 +60,10 @@ class PagesController extends AppController
 		$slider = $sliderSS = $slidersTT = [];
 		$page_meta = $data = $gallery = $cat_back = $catalytic = null;
 		
-		$this->ItemDetail->bindModel(array('belongsTo' => array('Brand', 'Model', 'Motor'), 'hasMany' => array('QualityDetail', 'Video' => ['order' => ['Video.pos' => 'ASC']])));
+		$this->ItemDetail->bindModel([
+			'belongsTo' => ['Brand', 'Model', 'Motor'], 
+		'hasMany' => ['QualityDetail', 'Video' => ['limit'=>1,'order' => ['Video.pos' => 'ASC']]]]
+	);
 		$data = $this->ItemDetail->find('first', array('recursive' => 2, 'conditions' => array('ItemDetail.url' => $id, 'ItemDetail.status' => 1)));
 		if (!empty($data)) {
 			$Adata = $data;
@@ -87,7 +90,7 @@ class PagesController extends AppController
 			}
 			$slider = array_merge($sliderSS,$slidersTT);
 			$gArr = explode(',', $data['ItemDetail']['gallery']);
-			$gallery = $this->Library->find('all', array('conditions' => array('Library.id' => $gArr), 'order' => ['Library.pos' => 'ASC']));
+			$gallery = $this->Library->find('all', array('conditions' => array('Library.id' => $gArr),'limit'=>5,'order' => ['Library.pos' => 'ASC']));
 			$this->set(compact('page_meta', 'data', 'slider', 'gallery','cat_back', 'catalytic', 'accessory'));
 			if(!empty($type)){ $this->render('n_product'); }
 			

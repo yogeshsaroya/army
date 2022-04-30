@@ -122,10 +122,16 @@ if (isset($data1) && !empty($data1)) {
 
 
   
-
+<?php if (!empty($data['Video'])) { ?>
   <div class="videoWrapper container fullMxWd">
-    <iframe id="home_bg_v" style=" z-index: -99; width: 100%; height: autp" src="https://www.youtube.com/embed/V9t_oN6KHrs?&amp;playlist=V9t_oN6KHrs&amp;controls=0&amp;showinfo=0&amp;autoplay=1&amp;rel=0&amp;loop=1&amp;controls=0&amp;vq=hd1080&amp;enablejsapi=1" allowfullscreen="" frameborder="0"></iframe>
-  </div>
+          <?php foreach ($data['Video'] as $vlist) { 
+            //echo '<iframe id="home_bg_v" style=" z-index: -99; width: 100%; height: autp" src="https://www.youtube.com/embed/'.$vlist['video'].'?&amp;controls=0&amp;showinfo=0&amp;autoplay=1&amp;rel=0&amp;loop=1&amp;controls=0&amp;vq=hd1080&amp;enablejsapi=1" allowfullscreen="" frameborder="0"></iframe>';
+              echo '<iframe id="home_bg_v" style="width: 100%; height: autp"  src="https://www.youtube.com/embed/UVm-ZFqsqZM?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+             
+} ?></div> <?php } ?>
+  
+    
+  
 
 
   <div class="slide_images container fullMxWd">
