@@ -24,12 +24,12 @@
 <div class="box-body">
 
 
-						<div class="box-body">
+<div class="box-body">
 <div class="row">
 <div class="box-body col-xs-12">
-<div class="col-xs-4"><?php echo $this->Form->input('brand_id',array('id'=>'brand_id', 'options'=>$brand,'default'=>@$q['brand'], 'empty'=>' --Select Make -- ','label'=>false,'class'=>'form-control'));?></div>
-<div class="col-xs-4"><?php echo $this->Form->input('model_id',array('id'=>'model_id','options'=>@$model_list,'default'=>@$q['model'],'empty'=>' --Select Model -- ','label'=>false,'class'=>'form-control'));?></div>
-<div class="col-xs-4"><?php echo $this->Form->input('motor_id',array('id'=>'motor_id','options'=>@$engList,'default'=>@$q['motor'],'empty'=>' --Select Year/Motor -- ','label'=>false,'class'=>'form-control'));?></div>
+<div class="col-xs-4"><?php echo $this->Form->input('brand_id',array('id'=>'brand_id', 'options'=>$brand,'default'=>(isset($q['brand']) ? $q['brand'] : null), 'empty'=>' --Select Make -- ','label'=>false,'class'=>'form-control'));?></div>
+<div class="col-xs-4"><?php echo $this->Form->input('model_id',array('id'=>'model_id','options'=>@$model_list,'default'=>(isset($q['model']) ? $q['model'] : null),'empty'=>' --Select Model -- ','label'=>false,'class'=>'form-control'));?></div>
+<div class="col-xs-4"><?php echo $this->Form->input('motor_id',array('id'=>'motor_id','options'=>@$engList,'default'=>(isset($q['motor']) ? $q['motor'] : null),'empty'=>' --Select Year/Motor -- ','label'=>false,'class'=>'form-control'));?></div>
 </div>
 </div>
 </div>

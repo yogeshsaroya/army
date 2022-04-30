@@ -74,7 +74,9 @@ if(isset($data['ItemDetail']) && !empty($data['ItemDetail'])){
 
 
 <div class="form-group"><label for="inputName" class="col-sm-2 control-label">About</label> <div class="col-sm-10"><?php echo $this->Form->input('about_details',array('class'=>'form-control','placeholder'=>'About','label'=>false,'required'=>false));?></div></div>
-<div class="form-group"><label for="inputName" class="col-sm-2 control-label">DATA</label> <div class="col-sm-10"><?php echo $this->Form->input('data_details',array('class'=>'form-control','placeholder'=>'Data','label'=>false,'required'=>false));?></div></div>
+<div class="form-group"><label for="inputName" class="col-sm-2 control-label">Fitment</label> <div class="col-sm-10"><?php echo $this->Form->input('fitment',array('class'=>'form-control','placeholder'=>'Fitment','label'=>false,'required'=>false));?></div></div>
+<div class="form-group"><label for="inputName" class="col-sm-2 control-label">Feature</label> <div class="col-sm-10"><?php echo $this->Form->input('feature',array('class'=>'form-control','placeholder'=>'Feature','label'=>false,'required'=>false));?></div></div>
+<div class="form-group"><label for="inputName" class="col-sm-2 control-label">Note</label> <div class="col-sm-10"><?php echo $this->Form->input('note',array('class'=>'form-control','placeholder'=>'Note','label'=>false,'required'=>false));?></div></div>
 
 
 <div class="form-group"><label for="inputName" class="col-sm-2 control-label">SEO URL</label>
