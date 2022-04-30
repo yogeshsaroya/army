@@ -1,5 +1,5 @@
 <!-- auto play video-->
-<div class="auto-play-video" id="s14">
+<div class="auto-play-video posRltv" id="s14">
 <video width="100%" height="auto" controls="disable"  class="_autoplay_vid" muted id="video_5">
   <source src="<?php echo SITEURL;?>v_4/images/video TI page-21.mp4" type="video/mp4">
   Your browser does not support the video tag.

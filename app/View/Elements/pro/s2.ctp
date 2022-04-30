@@ -1,5 +1,6 @@
-<section id="s2">
+<section id="s2" class="posRltv">
     <!--- phone mouseover iicons--->
+    
 <div id="bg-full-sld">
     <div class="page-wrap">
     <div class="phone-icons-right">

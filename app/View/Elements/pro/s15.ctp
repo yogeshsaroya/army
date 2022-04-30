@@ -1,5 +1,5 @@
 <!--start hose-->
-<div class="new_bg_img  img-tag-sec wing-sec" id="s15">
+<div class="new_bg_img  img-tag-sec wing-sec posRltv" id="s15">
 <h5 class="abst_head">
    <span><img src="<?php echo SITEURL;?>v_4/images/wing_img.jpg"  alt="" class="wing-img"/></span>
 Utilizing a rare high grade titanium <br> 

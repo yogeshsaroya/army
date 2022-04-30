@@ -1,7 +1,11 @@
-<section class="Labels-img text-center mt-botom-0" id="s18">
-    <h5>Shred Labels Set New Standard</h5>
-    <h2>High standard T.I.G. hand welding provides the strongest and smoothest welds without welding slag</h2>
-    <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865195/product/Titanium-10_gee03y.jpg" loading="lazy" alt="Modern minimalist design" class="img-wd-100" />
+<section class="Labels-img text-center mt-5 mt-botom-0 posRltv" id="s18">
+    <div class="container fullMxWd">
+    <h2>Shred Labels Set New Standard</h2>
+    <p>High standard T.I.G. hand welding provides the strongest and smoothest welds without welding slag</p>
+    <div class="posRlt">
+        <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865195/product/Titanium-10_gee03y.jpg" loading="lazy" alt="Modern minimalist design" class="img-wd-100" />
+        <h4 class="mdlTx">TITANIUM SERIES</h4>
+    </div>
     <div class="abst-btm dot-with">
 
         <ul class="controls noger-cont">
@@ -18,4 +22,5 @@
             </li>
         </ul>
     </div>
+</div>
 </section>

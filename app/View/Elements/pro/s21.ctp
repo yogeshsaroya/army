@@ -1,4 +1,4 @@
-<section class="text-center ht-img_new" id="s21">
+<section class="text-center ht-img_new posRltv" id="s21">
 <div class="new_title">
 <h5 class="clr-white">Meticulously crafted for precise fitment<br> Quality is our pride of workmanship</h5>
 </div>

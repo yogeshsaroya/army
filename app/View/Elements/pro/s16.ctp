@@ -1,5 +1,5 @@
 <!-- auto play video-->
-<div class="auto-play-video" id="s16">
+<div class="auto-play-video posRltv" id="s16">
 <video width="100%" height="auto" controls="disable"  class="_autoplay_vid" id="video_2" muted>
   <source src="<?php echo SITEURL;?>v_4/images/video TI page-10.mp4" type="video/mp4">
   

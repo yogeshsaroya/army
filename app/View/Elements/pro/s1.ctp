@@ -1,4 +1,4 @@
-<section class="whte-bg text-center img-tag-sec" id="s1">
+<section class="whte-bg text-center img-tag-sec posRltv" id="s1">
 <div class="abst_head color-wht pos-right head-title-size pos-botom-mobile">
 <h5>A Touch Of Brilliance</h5>
 <h2 class="light_fnt">Modern minimalist design<br>  Piano surface-like key brings high gloss finish</h2>

@@ -1,4 +1,4 @@
-<section class="gray-bg text-center padd-100 coating-bg-nw" id="s7">
+<section class="gray-bg text-center padd-100 coating-bg-nw posRltv" id="s7">
     <img src="<?php echo SITEURL;?>ui/img/bg-full.jpg"  alt=""/>
     <div class="abst-post-box">
     <h5 class="bg-font mx-500" style="color:#000 !important ">Special rapid-cooling<br> ceramic coating<br> reduces under-hood<br> temperature and<br> resistant to rust and<br> corrosion ( build-to-order )</h5>

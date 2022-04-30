@@ -1,4 +1,4 @@
-<section class="text-center ht-img_new s11-sec" id="s11">
+<section class="text-center ht-img_new s11-sec posRltv" id="s11">
 <div class="new_title">
 <h5 class="mg-non-bot">Crystallization of technology and art</h5>
    <p>Multiple refined mechanical polishing contributes to craftmanship level surface brightness.</p>

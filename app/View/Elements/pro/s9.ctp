@@ -1,5 +1,5 @@
 <!-- auto play video-->
-<div class="auto-play-video" id="s9">
+<div class="auto-play-video posRltv" id="s9">
 <video width="100%" height="auto" playsinline autoplay loop muted  class="_autoplay_vid" id="video_3">
   <source src="<?php echo SITEURL;?>v_4/images/video-SS-page-12.mp4" type="video/mp4">
   Your browser does not support the video tag.

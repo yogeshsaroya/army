@@ -8,7 +8,7 @@
     
 }?>
 <!--personalize nozer-->
-<div class="hand_welding full-img" id="s20">
+<div class="hand_welding full-img posRltv" id="s20">
     <!-- <img src="<?php echo SITEURL; ?>v_4/images/nozer.jpg" alt=""> -->
     <section class="bg-slide noger-embellish">
         <div class="bg_img_shiny1 full_ht_bg" id="sl_bg" style="background: url(<?php echo SITEURL.$k1;?>) no-repeat center center"></div>
