@@ -82,11 +82,8 @@ if(isset($data['ItemDetail']) && !empty($data['ItemDetail'])){
 <div class="form-group"><label for="inputName" class="col-sm-2 control-label">SEO URL</label>
 <div class="col-sm-10"><?php echo $this->Form->input('url',array('class'=>'form-control','placeholder'=>'url','label'=>false,'required'=>true));?></div></div>
 
-<div class="form-group"><label for="inputName" class="col-sm-2 control-label">Meta Title for SS only</label>
+<div class="form-group"><label for="inputName" class="col-sm-2 control-label">Meta Title</label>
 <div class="col-sm-10"><?php echo $this->Form->input('meta_title',array('class'=>'form-control','placeholder'=>'Meta Title','label'=>false,'required'=>false));?></div></div>
-
-<div class="form-group"><label for="inputName" class="col-sm-2 control-label">Meta Title for TI only </label>
-<div class="col-sm-10"><?php echo $this->Form->input('meta_title_tt',array('class'=>'form-control','placeholder'=>'Meta Title ti','label'=>false,'required'=>false));?></div></div>
 
 <div class="form-group"><label for="inputName" class="col-sm-2 control-label">Meta Description</label>
 <div class="col-sm-10"><?php echo $this->Form->input('meta_description',array('type'=>'text','class'=>'form-control','placeholder'=>'Meta Description','label'=>false));?></div></div>
