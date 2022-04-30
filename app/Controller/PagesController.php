@@ -89,6 +89,7 @@ class PagesController extends AppController
 			$gArr = explode(',', $data['ItemDetail']['gallery']);
 			$gallery = $this->Library->find('all', array('conditions' => array('Library.id' => $gArr), 'order' => ['Library.pos' => 'ASC']));
 			$this->set(compact('page_meta', 'data', 'slider', 'gallery','cat_back', 'catalytic', 'accessory'));
+			//$this->render('n_product');
 		} else {
 			$this->layout = '404';
 		}
