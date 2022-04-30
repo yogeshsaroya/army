@@ -2,7 +2,7 @@
  <section id="s2a" class="min-ht ">
  <div class="container fullMxWd posRltv">
    <div class="new_bg_img  img-tag-sec s2a-sec">
-     <img src="https://res.cloudinary.com/armytrix/image/upload/v1651225699/product/Product_20page-bg_kg3tdj.jpg" alt="" loading="lazy" class="img-wd-100" />
+     <img src="https://res.cloudinary.com/armytrix/image/upload/v1651225699/product/Product_20page-bg_kg3tdj.webp" alt="" loading="lazy" class="img-wd-100" />
      <div class="abst_head head-title-size color-wht pad-50 left-20 max-700">
        <h2 class="clr-white">Combination Of Intelligence</h2>
        <h4 class="clr-white">Cutting-edge Interactive Valve Control technology<br>

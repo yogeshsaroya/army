@@ -1,8 +1,8 @@
 
 <?php 
-$img = 'https://res.cloudinary.com/armytrix/image/upload/v1650865426/product/armytrix-product-exhaust.jpg';
+$img = 'https://res.cloudinary.com/armytrix/image/upload/v1650865426/product/armytrix-product-exhaust.webp';
 if( isset($IsMobile) ){
-$img = 'https://res.cloudinary.com/armytrix/image/upload/v1651024830/home/phone-product-exhaust-portrait_vwpvge.jpg';
+$img = 'https://res.cloudinary.com/armytrix/image/upload/v1651024830/home/phone-product-exhaust-portrait_vwpvge.webp';
 }
 
 ?>

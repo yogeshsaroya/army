@@ -66,9 +66,9 @@
 				</a>
 			</li>
 			<li class="d-flex justfy-content-end">
-				<span><img src="https://res.cloudinary.com/armytrix/image/upload/v1650865451/home/paypal-logo_xs427c.png" alt="pay pal"></span>
-				<span><img src="https://res.cloudinary.com/armytrix/image/upload/v1650884862/home/fedex_blaw0r.png" alt="fedEx"></span>
-				<span><img src="https://res.cloudinary.com/armytrix/image/upload/v1650884559/home/dhl-logo_uzvlhp.png" alt="DHL"></span>
+				<span><img src="https://res.cloudinary.com/armytrix/image/upload/v1650865451/home/paypal-logo_xs427c.webp" alt="pay pal"></span>
+				<span><img src="https://res.cloudinary.com/armytrix/image/upload/v1650884862/home/fedex_blaw0r.webp" alt="fedEx"></span>
+				<span><img src="https://res.cloudinary.com/armytrix/image/upload/v1650884559/home/dhl-logo_uzvlhp.webp" alt="DHL"></span>
 			</li>
 		</ul>
 	</div>

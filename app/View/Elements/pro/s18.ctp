@@ -3,7 +3,7 @@
     <h2>Shred Labels Set New Standard</h2>
     <p>High standard T.I.G. hand welding provides the strongest and smoothest welds without welding slag</p>
     <div class="posRlt">
-        <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865195/product/Titanium-10_gee03y.jpg" loading="lazy" alt="Modern minimalist design" class="img-wd-100" />
+        <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865195/product/Titanium-10_gee03y.webp" loading="lazy" alt="Modern minimalist design" class="img-wd-100" />
         <h4 class="mdlTx">TITANIUM SERIES</h4>
     </div>
     <div class="abst-btm dot-with">
