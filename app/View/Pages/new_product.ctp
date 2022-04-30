@@ -118,13 +118,10 @@ if (isset($data1) && !empty($data1)) {
 
 
 
+<?php  echo $this->element('pro/img_list'); ?>
 
-  <div class="fullWidthImageWrap pad60">
-    <div class="fullWidthImages posRltv container fullMxWd">
-      <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865426/product/armytrix-product-exhaust.webp" loading="lazy" alt="">
-    </div>
 
-  </div>
+  
 
   <div class="videoWrapper container fullMxWd">
     <iframe id="home_bg_v" style=" z-index: -99; width: 100%; height: autp" src="https://www.youtube.com/embed/V9t_oN6KHrs?&amp;playlist=V9t_oN6KHrs&amp;controls=0&amp;showinfo=0&amp;autoplay=1&amp;rel=0&amp;loop=1&amp;controls=0&amp;vq=hd1080&amp;enablejsapi=1" allowfullscreen="" frameborder="0"></iframe>
