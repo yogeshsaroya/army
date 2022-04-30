@@ -118,7 +118,7 @@ if (isset($data1) && !empty($data1)) {
 
 
 
-<?php  echo $this->element('pro/img_list'); ?>
+<?php  echo $this->element('pro/img_list',['gallery'=>$gallery]); ?>
 
 
   
