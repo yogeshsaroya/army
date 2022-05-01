@@ -78,7 +78,7 @@ if (isset($data1) && !empty($data1)) {
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row spaceCol">
         <div class="col-sm-6"><?php echo $this->element('v2/pro_list', ['id' => 't1', 'pro_data' => $cat_back]); ?></div>
         <div class="col-sm-6"><?php echo $this->element('v2/pro_list_pipe', ['id' => 't2', 'pro_data' => $catalytic]); ?></div>
         <div class="col-sm-6"><?php echo $this->element('v2/pro_list_accessory', ['id' => 't3', 'pro_data' => $accessory]); ?></div>
