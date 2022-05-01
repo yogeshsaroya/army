@@ -105,10 +105,10 @@ if (isset($data1) && !empty($data1)) {
 
         </div>
         <div class="col-sm-6">
-        <div id="chk_btn">
-        <div id="e_err"></div>
-        <button class="cartBtn fullWidth" onclick="addcart();">ADD TO CART</button>
-        </div>
+          <div id="chk_btn">
+            <div id="e_err"></div>
+            <button class="cartBtn fullWidth" onclick="addcart();">ADD TO CART</button>
+          </div>
         </div>
         <div class="col-sm-6">
           <div class="card-btn">
@@ -133,7 +133,7 @@ if (isset($data1) && !empty($data1)) {
   <?php if (!empty($data['Video'])) { ?>
     <div class="videoWrapperNw page_container fullMxWd">
       <?php foreach ($data['Video'] as $vlist) {
-        echo '<iframe id="home_bg_v" style="width: 100%; height: 100px%"  src="https://www.youtube.com/embed/' . $vlist['video'] . '?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        echo '<iframe id="home_bg_v" width="100%" height="500" loading="lazy" src="https://www.youtube.com/embed/' . $vlist['video'] . '?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
       } ?></div> <?php } ?>
 
   <div class="slide_images page_container fullMxWd">
@@ -147,29 +147,29 @@ if (isset($data1) && !empty($data1)) {
       <h2> ARMYTRIX VALVE CONTROL TECHNOLOGY</h2>
     </div>
     <div class="mt-3 mb-2">
-        <img src="<?php echo SITEURL;?>v2/img/mouse-hover-b1.jpg" alt="" loading="lazy" class="img-wd-100"/>
+      <img src="<?php echo SITEURL; ?>v2/img/mouse-hover-b1.jpg" alt="" loading="lazy" class="img-wd-100" />
     </div>
     <div class="text-left">
-     <p>FREEDOM TO SWITCH BETWEEN LOUD AND QUIET WITH THE PUSH OF A BUTTON
+      <p>FREEDOM TO SWITCH BETWEEN LOUD AND QUIET WITH THE PUSH OF A BUTTON
 
         With the push of a button on your ARMYRIX remotes or smartphone application, you get to switch between modes upon your wish. </p>
-     <p>CUSTOMIZEABLE AUTOMATIC MODE GIVES YOU A WORRY-FREE DRIVE 
+      <p>CUSTOMIZEABLE AUTOMATIC MODE GIVES YOU A WORRY-FREE DRIVE
 
         The automatic mode will open/close the exhaust valves based on predetermined RPM range or turbo bar, so you don’t have to manually switch all the time – you can also customize your own automatic mode upon your preference! </p>
-     <p>GAIN MORE POWER, LOSE NO TORQUE
+      <p>GAIN MORE POWER, LOSE NO TORQUE
 
-        Depending on the cars, modifications, and tunes you have, opening valves allow the exhaust gas to flow more freely, as it does not have to pass through any muffler. 
-        
+        Depending on the cars, modifications, and tunes you have, opening valves allow the exhaust gas to flow more freely, as it does not have to pass through any muffler.
+
         And with the valves being closed, it can retain the back pressure at low rpm, and maintain the torque that is usually lost with straight piped exhaust systems. </p>
     </div>
   </div>
 
-<div class="performedwrap text-center mt-50 page_container fullMxWd">
+  <div class="performedwrap text-center mt-50 page_container fullMxWd">
     <div class="pad15">
       <h2>ARMYTRIX VALVE CONTROL REMOTE</h2>
     </div>
     <div class="mt-3">
-      <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865425/product/product-fix-2_vasdds.jpg" alt="" loading="lazy" class="img-wd-100">
+      <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865425/product/product-fix-2_vasdds.webp" alt="" loading="lazy" class="img-wd-100">
     </div>
   </div>
 
@@ -180,49 +180,32 @@ if (isset($data1) && !empty($data1)) {
       <p class="text-left">The mobile APP of ARMYTRIX can connect to the OBDII device via Bluetooth, and be used to as a remote controller to easily control valve switch and provide you with real-time monitoring of variuos values of your car, such as rotate speed, speed, fuel, etc. The rpm value in Auto mode can be set to open valves.</p>
       <div class="row mt-3">
         <div class="col-sm-3 text-center">
-          <img src="<?php echo SITEURL; ?>v2/img/product-app-4_wihpks_1.png" alt="App" />
+          <img src="https://res.cloudinary.com/armytrix/image/upload/v1651403044/product/product-app-1_sgfbbv.webp" loading="lazy" alt="App" />
         </div>
         <div class="col-sm-3 text-center">
-          <img src="<?php echo SITEURL; ?>v2/img/product-app-4_wihpks_2.png" alt="App" />
+          <img src="https://res.cloudinary.com/armytrix/image/upload/v1651403044/product/product-app2_aevq7p.webp" loading="lazy" alt="App" />
         </div>
         <div class="col-sm-3 text-center">
-          <img src="<?php echo SITEURL; ?>v2/img/product-app-4_wihpks_3.png" alt="App" />
+          <img src="https://res.cloudinary.com/armytrix/image/upload/v1651403044/product/product-app-4_k65j7f.webp" loading="lazy" alt="App" />
         </div>
         <div class="col-sm-3 text-center">
-          <img src="<?php echo SITEURL; ?>v2/img/product-app-4_wihpks_4.png" alt="App" />
+          <img src="https://res.cloudinary.com/armytrix/image/upload/v1651403044/product/product-app-1_sgfbbv.webp" loading="lazy" alt="App" />
         </div>
       </div>
-
     </div>
-
-    <div class="page_container fullmxWd">
-      <img src="<?php echo SITEURL; ?>v2/img/3D.jpg" alt="" loading="lazy" class="img-wd-100">
-    </div>
-
-    <div class="page_container fullMxWd posRltv">
-
-      <?php
-
-      echo $this->element('pro/s2a');
-      echo $this->element('pro/s3');
-      echo $this->element('pro/s4');
-      echo $this->element('pro/s8');
-      echo $this->element('pro/s18');
-
-      ?>
-    </div>
-
-
+    <?php echo $this->element('pro/s2a');
+    echo $this->element('pro/s3');
+    echo $this->element('pro/s4');
+    ?>
     <div class="performedwrap text-center mt-50 page_container fullMxWd">
       <div class="pad15">
         <h2>DESIGNED TO PERFORM, DESTINED TO AMAZE</h2>
         <p>Highest standard multiple tests and verification evoke beast performance limit.</p>
       </div>
       <div class="mt-3">
-        <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865195/product/dyno_hhd7oy.png" alt="" loading="lazy" class="img-wd-100">
+        <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865195/product/dyno_hhd7oy.webp" alt="" loading="lazy" class="img-wd-100">
       </div>
     </div>
-
 
     <div class="performedwrap text-center mt-50 page_container fullMxWd">
       <div class="pad15">
@@ -230,10 +213,9 @@ if (isset($data1) && !empty($data1)) {
         <p>Protect exhaust pipes from breakage and facilitate cooling to maximize engine</p>
       </div>
       <div class="mt-3">
-        <img src="<?php echo SITEURL; ?>v2/img/Downpipe-png_geacsq.jpg" alt="" loading="lazy" class="img-wd-100">
+        <img src="https://res.cloudinary.com/armytrix/image/upload/v1651403215/product/Downpipe-png_geacsq_hna3s2.webp" alt="" loading="lazy" class="img-wd-100">
       </div>
     </div>
-
 
     <div class="performedwrap mt-50 page_container fullMxWd">
       <div class="pad15">
@@ -243,7 +225,7 @@ if (isset($data1) && !empty($data1)) {
       <div class="mt-3 d-flex">
         <div class="col-50">
           <div class="leftImg">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865195/product/standard-downpipe_ryhk9h.png" alt="" loading="lazy" class="img-wd-100">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865195/product/standard-downpipe_ryhk9h.webp" alt="" loading="lazy" class="img-wd-100">
           </div>
           <h4 class="pad15 text-left">
             Standard Downpipe<br />
@@ -251,7 +233,7 @@ if (isset($data1) && !empty($data1)) {
           </h4>
         </div>
         <div class="col-50 flexDirection">
-          <div class="rightImg"><img src="https://res.cloudinary.com/armytrix/image/upload/v1650865193/product/ceramic-coated-bg_jdfzkd.png" alt="" loading="lazy" class="img-wd-100"></div>
+          <div class="rightImg"><img src="https://res.cloudinary.com/armytrix/image/upload/v1650865193/product/ceramic-coated-bg_jdfzkd.webp" alt="" loading="lazy" class="img-wd-100"></div>
           <h4 class="pad15 text-left">
             Standard Downpipe<br />
             Deteriorate under high temperature which leads to pipe breakage.
@@ -260,38 +242,47 @@ if (isset($data1) && !empty($data1)) {
       </div>
     </div>
 
+
+    <?php echo $this->element('pro/s8'); ?>
+
+    <div class="page_container fullmxWd">
+      <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865200/product/3D_oo3xdl.webp" alt="" loading="lazy" class="img-wd-100">
+    </div>
+
+
     <div class="page_container fullmxWd text-center mt-50">
       <h2>METICULOUSLY CRAFTED FOR PRECISE FITMENT QUALITY IS OUR PRIDE IN WORKMANSHIP</h2>
-      <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865195/product/Meticulously-bg_joc6gw.jpg" alt="" loading="lazy" class="img-wd-100">
-      <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865194/product/h-min_rggyro.jpg" alt="" loading="lazy" class="img-wd-100">
+      <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865195/product/Meticulously-bg_joc6gw.webp" alt="" loading="lazy" class="img-wd-100">
+      <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865194/product/h-min_rggyro.webp" alt="" loading="lazy" class="img-wd-100">
 
     </div>
 
     <div class="page_container fullmxWd text-center mt-50">
       <h2>UTILIZING A RARE HIGH GRADE TITANIUM ENSURES THIS ACTION IS BUILT TO LAST</h2>
-      <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865194/product/horse_pwr_i5ungc.jpg" alt="" loading="lazy" class="img-wd-100">
+      <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865194/product/horse_pwr_i5ungc.webp" alt="" loading="lazy" class="img-wd-100">
     </div>
 
     <div class="page_container fullmxWd text-center mt-50">
       <h2>HIGH QUALITY TITANIUM ALLOY, LIGHTER WEIGHT</h2>
       <p>More than 60% lighter than the exhaust device of original factory, car body weight reduced significantly</p>
-      <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865195/product/r8-titanium_polzql.jpg" alt="" loading="lazy" class="img-wd-100 mt-3">
+      <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865195/product/r8-titanium_polzql.webp" alt="" loading="lazy" class="img-wd-100 mt-3">
     </div>
-
     <div class="page_container fullmxWd text-center mt-50">
       <h2>CRYSTALLIZATION OF TECHNOLOGY AND ART</h2>
       <p>Multiple refined mechanical polishing contributes to craftsmanship level surface brightness.</p>
-      <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865194/product/cristallization_img_m95rzj.jpg" alt="" loading="lazy" class="img-wd-100 mt-3">
+      
+      <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865194/product/cristallization_img_m95rzj.webp" alt="" loading="lazy" class="img-wd-100 mt-3">
     </div>
-
     <div class="page_container fullmxWd posRltv">
-      <h4 class="mdlTx leftTop">TITANIUM SERIES</h4>
-      <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865193/product/cristilizzation_fge103.jpg" alt="" loading="lazy" class="img-wd-100 ">
+      <h4 class="mdlTx leftTop">STAINLESS STEEL SERIES</h4>
+      <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865193/product/cristilizzation_fge103.webp" alt="" loading="lazy" class="img-wd-100 ">
     </div>
+    <?php echo $this->element('pro/s18'); ?>
 
-    <div class="page_container fullmxWd posRltv">
+
+    <div class="page_container fullmxWd posRltv mt-50">
       <h4 class="mdlTx bottomCenter">STAINLESS STEEL SERIES</h4>
-      <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865197/product/shared-label-bg_bbhu5n.jpg" alt="" loading="lazy" class="img-wd-100">
+      <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865197/product/shared-label-bg_bbhu5n.webp" alt="" loading="lazy" class="img-wd-100">
     </div>
 
 
@@ -301,4 +292,4 @@ if (isset($data1) && !empty($data1)) {
 </div>
 </div>
 
-<?php echo $this->element('pro/script',['data'=>$data]); ?>
+<?php echo $this->element('pro/script', ['data' => $data]); ?>
