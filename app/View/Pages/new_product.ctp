@@ -165,6 +165,9 @@ if (isset($data1) && !empty($data1)) {
     
     <div class="textMdl  text-center">
         <h2 class="clr-white mb-3">ARMYTRIX VALVE CONTROL REMOTE</h2>
+        <h4 class="clr-white">Exclusive OBDII dongle module<br>
+            Reduce 30% of installation time<br>
+            No more complex wiring work</h4>
 </div>  
     </div>
  </div>
@@ -212,14 +215,16 @@ if (isset($data1) && !empty($data1)) {
       </div>
       <div class="mt-3 d-flex">
         <div class="col-50">
+        <div class="leftImg">
           <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865195/product/standard-downpipe_ryhk9h.png" alt="" loading="lazy" class="img-wd-100">
+    </div>
           <h4 class="pad15 text-left">
             Standard Downpipe<br />
             Deteriorate under high temperature which leads to pipe breakage.
           </h4>
         </div>
         <div class="col-50 flexDirection">
-          <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865193/product/ceramic-coated-bg_jdfzkd.png" alt="" loading="lazy" class="img-wd-100">
+          <div class="rightImg"><img src="https://res.cloudinary.com/armytrix/image/upload/v1650865193/product/ceramic-coated-bg_jdfzkd.png" alt="" loading="lazy" class="img-wd-100"></div>
           <h4 class="pad15 text-left">
             Standard Downpipe<br />
             Deteriorate under high temperature which leads to pipe breakage.
