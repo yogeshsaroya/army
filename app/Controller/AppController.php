@@ -14,6 +14,8 @@ class AppController extends Controller {
 		$this->Session->delete('arm_co');
 		$RstrictedCountry = $this->DATA->getrRstrictedCountry();
 		
+		ec($_SERVER['SERVER_NAME']);die;
+
 		$co =  $this->Session->read('arm_co');
 		if( empty($co)){
 		    
@@ -24,8 +26,7 @@ class AppController extends Controller {
 	        if(!empty($aR)){ $aR['created'] = DATE; }
 	        
 			if(isset($aR['geoplugin_countryCode']) && array_key_exists ($aR['geoplugin_countryCode'], $RstrictedCountry)){
-			    //$aR['RstrictedCountry'] = $restricted = 1;
-				$aR['RstrictedCountry'] = $restricted = null;
+			    $aR['RstrictedCountry'] = $restricted = 1;
 				$this->Session->write('arm_co',$aR);
 				$co = $aR;
 			}
@@ -56,11 +57,11 @@ class AppController extends Controller {
 			$url = Router::url(null,true);
 			$pos = strpos($url, 'www');
 			if ($pos === false) {
-				// $this->redirect('https://www.' . env('SERVER_NAME') . $this->here,['status' => 301]);
+				$this->redirect('https://www.' . env('SERVER_NAME') . $this->here,['status' => 301]);
 				
 			}else{
 				if ( !$this->RequestHandler->isSSL()) { 
-				   // $this->redirect('https://' . env('SERVER_NAME') . $this->here,['status' => 301]);
+				    $this->redirect('https://' . env('SERVER_NAME') . $this->here,['status' => 301]);
 				}
 				}
 		}
@@ -98,7 +99,7 @@ class AppController extends Controller {
 					if(isset($rlist['Product']['type']) && in_array($rlist['Product']['type'], array(1,2,3,5))){ $dIds[]= $rlist['Cart']['id']; }
 				}
 				if(!empty($dIds)){ 
-				    //$this->Cart->deleteAll( array ( 'Cart.id IN' => $dIds), false ); 
+				    /* $this->Cart->deleteAll( array ( 'Cart.id IN' => $dIds), false );  */
 				}
 			}
 		}
@@ -106,15 +107,10 @@ class AppController extends Controller {
 		    $getAll = $this->Cart->find('all',array('recursive'=>2, 'conditions'=>$cnd)); 
 		}
 		$this->set(compact('getAll'));
-		//$ip = $this->request->clientIp();
 	}
 	
-	//set layout for any error
-	
-    function _setErrorLayout() { if ($this->name == 'CakeError') { 
-	//	$this->layout = '404'; 
-	} }
-    
+
+    function _setErrorLayout() { if ($this->name == 'CakeError') { $this->layout = '404'; } }
 	function beforeRender () { $this->_setErrorLayout(); } 
 	
 }
