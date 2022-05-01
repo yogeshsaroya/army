@@ -115,6 +115,11 @@ div#v2_product .pad60 {
     position: relative;
 }
 
+div#v2_product .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .blue-txt h5 {
     color: #3b3eff;
     font-size: 30px;
