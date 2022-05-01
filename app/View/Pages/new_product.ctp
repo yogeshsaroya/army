@@ -106,6 +106,7 @@ if (isset($data1) && !empty($data1)) {
         </div>
         <div class="col-sm-6">
           <button class="cartBtn fullWidth">ADD TO CART</button>
+          <a class="cartBtn fullWidth">Done , Checkout</a>
         </div>
         <div class="col-sm-6">
           <div class="card-btn">
@@ -138,10 +139,41 @@ if (isset($data1) && !empty($data1)) {
   </div>
   <div></div>
 
+  <div class="performedwrap text-center mt-50 page_container fullMxWd">
+      <div class="pad15 txtSpce">
+        <h2> ARMYTRIX VALVE CONTROL TECHNOLOGY</h2>
+      </div>
+      <div class="mt-3">
+        <img src="<?php echo SITEURL;?>v2/img/mouse-hover-b1.jpg" alt="" loading="lazy" class="img-wd-100">
+      </div>
+      <div class="txtBxs txtSpce">
+         <p>FREEDOM TO SWITCH BETWEEN LOUD AND QUIET WITH THE PUSH OF A BUTTON
+
+With the push of a button on your ARMYRIX remotes or smartphone application, you get to switch between modes upon your wish. </p>
+<p>CUSTOMIZEABLE AUTOMATIC MODE GIVES YOU A WORRY-FREE DRIVE 
+
+The automatic mode will open/close the exhaust valves based on predetermined RPM range or turbo bar, so you don’t have to manually switch all the time – you can also customize your own automatic mode upon your preference! </p>
+<p>GAIN MORE POWER, LOSE NO TORQUE
+
+Depending on the cars, modifications, and tunes you have, opening valves allow the exhaust gas to flow more freely, as it does not have to pass through any muffler. 
+
+And with the valves being closed, it can retain the back pressure at low rpm, and maintain the torque that is usually lost with straight piped exhaust systems.</p>
+      </div>
+    </div>
+
+  <div class="performedwrap text-center mt-50 page_container fullMxWd">
+      <div class="pad15 txtSpce">
+        <h2>ARMYTRIX VALVE CONTROL REMOTE</h2>
+      </div>
+      <div class="mt-3">
+        <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865425/product/product-fix-2_vasdds.jpg" alt="" loading="lazy" class="img-wd-100">
+      </div>
+    </div>
+
   <section class="pad60">
     <div class="page_container">
-      <h2 class="text-center">ARMYTRIX APP SMART ASSISTANT</h2>
-      <p class="text-left">The mobile APP of ARMYTRIX can connect to the OBDII device via Bluetooth, and be used to as a remote controller to easily control valve switch and provide you with real-time monitoring of variuos values of your car, such as rotate speed, speed, fuel, etc. The rpm value in Auto mode can be set to open valves.</p>
+      <h2 class="text-center txtSpce">ARMYTRIX APP SMART ASSISTANT</h2>
+      <p class="text-left txtSpce">The mobile APP of ARMYTRIX can connect to the OBDII device via Bluetooth, and be used to as a remote controller to easily control valve switch and provide you with real-time monitoring of variuos values of your car, such as rotate speed, speed, fuel, etc. The rpm value in Auto mode can be set to open valves.</p>
       <div class="row mt-3">
         <div class="col-sm-3 text-center">
           <img src="<?php echo SITEURL; ?>v2/img/product-app-4_wihpks_1.png" alt="App" />
@@ -178,7 +210,7 @@ if (isset($data1) && !empty($data1)) {
 
 
     <div class="performedwrap text-center mt-50 page_container fullMxWd">
-      <div class="pad15">
+      <div class="pad15 txtSpce">
         <h2>DESIGNED TO PERFORM, DESTINED TO AMAZE</h2>
         <p>Highest standard multiple tests and verification evoke beast performance limit.</p>
       </div>
@@ -189,7 +221,7 @@ if (isset($data1) && !empty($data1)) {
 
 
     <div class="performedwrap text-center mt-50 page_container fullMxWd">
-      <div class="pad15">
+      <div class="pad15 txtSpce">
         <h2 class="m-0">DOWNPIPE WITH CUTTING-EDGE FLEXIBLE PIPE TECHNOLOGY</h2>
         <p>Protect exhaust pipes from breakage and facilitate cooling to maximize engine</p>
       </div>
@@ -200,7 +232,7 @@ if (isset($data1) && !empty($data1)) {
 
 
     <div class="performedwrap mt-50 page_container fullMxWd">
-      <div class="pad15">
+      <div class="pad15 txtSpce">
         <h2>SPECIAL RAPID-COOLING CERAMIC COATING</h2>
         <p>Reduce under-hood temperature and resistant and corrosion</p>
       </div>
@@ -209,14 +241,14 @@ if (isset($data1) && !empty($data1)) {
           <div class="leftImg">
             <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865195/product/standard-downpipe_ryhk9h.png" alt="" loading="lazy" class="img-wd-100">
           </div>
-          <h4 class="pad15 text-left">
+          <h4 class="pad15 text-left txtSpce">
             Standard Downpipe<br />
             Deteriorate under high temperature which leads to pipe breakage.
           </h4>
         </div>
         <div class="col-50 flexDirection">
           <div class="rightImg"><img src="https://res.cloudinary.com/armytrix/image/upload/v1650865193/product/ceramic-coated-bg_jdfzkd.png" alt="" loading="lazy" class="img-wd-100"></div>
-          <h4 class="pad15 text-left">
+          <h4 class="pad15 text-left txtSpce">
             Standard Downpipe<br />
             Deteriorate under high temperature which leads to pipe breakage.
           </h4>
@@ -225,26 +257,26 @@ if (isset($data1) && !empty($data1)) {
     </div>
 
     <div class="page_container fullmxWd text-center mt-50">
-      <h2>METICULOUSLY CRAFTED FOR PRECISE FITMENT QUALITY IS OUR PRIDE IN WORKMANSHIP</h2>
+      <h2 class="txtSpce">METICULOUSLY CRAFTED FOR PRECISE FITMENT QUALITY IS OUR PRIDE IN WORKMANSHIP</h2>
       <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865195/product/Meticulously-bg_joc6gw.jpg" alt="" loading="lazy" class="img-wd-100">
       <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865194/product/h-min_rggyro.jpg" alt="" loading="lazy" class="img-wd-100">
 
     </div>
 
     <div class="page_container fullmxWd text-center mt-50">
-      <h2>UTILIZING A RARE HIGH GRADE TITANIUM ENSURES THIS ACTION IS BUILT TO LAST</h2>
+      <h2 class="txtSpce">UTILIZING A RARE HIGH GRADE TITANIUM ENSURES THIS ACTION IS BUILT TO LAST</h2>
       <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865194/product/horse_pwr_i5ungc.jpg" alt="" loading="lazy" class="img-wd-100">
     </div>
 
     <div class="page_container fullmxWd text-center mt-50">
-      <h2>HIGH QUALITY TITANIUM ALLOY, LIGHTER WEIGHT</h2>
-      <p>More than 60% lighter than the exhaust device of original factory, car body weight reduced significantly</p>
+      <h2 class="txtSpce">HIGH QUALITY TITANIUM ALLOY, LIGHTER WEIGHT</h2>
+      <p class="txtSpce">More than 60% lighter than the exhaust device of original factory, car body weight reduced significantly</p>
       <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865195/product/r8-titanium_polzql.jpg" alt="" loading="lazy" class="img-wd-100 mt-3">
     </div>
 
     <div class="page_container fullmxWd text-center mt-50">
-      <h2>CRYSTALLIZATION OF TECHNOLOGY AND ART</h2>
-      <p>Multiple refined mechanical polishing contributes to craftsmanship level surface brightness.</p>
+      <h2 class="txtSpce">CRYSTALLIZATION OF TECHNOLOGY AND ART</h2>
+      <p class="txtSpce">Multiple refined mechanical polishing contributes to craftsmanship level surface brightness.</p>
       <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865194/product/cristallization_img_m95rzj.jpg" alt="" loading="lazy" class="img-wd-100 mt-3">
     </div>
 
