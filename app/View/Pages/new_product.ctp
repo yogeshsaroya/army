@@ -142,6 +142,36 @@ if (isset($data1) && !empty($data1)) {
   <div></div>
 
 
+  <div class="performedwrap text-center mt-50 page_container fullMxWd">
+    <div class="pad15">
+      <h2> ARMYTRIX VALVE CONTROL TECHNOLOGY</h2>
+    </div>
+    <div class="mt-3 mb-2">
+        <img src="<?php echo SITEURL;?>v2/img/mouse-hover-b1.jpg" alt="" loading="lazy" class="img-wd-100"/>
+    </div>
+    <div class="text-left">
+     <p>FREEDOM TO SWITCH BETWEEN LOUD AND QUIET WITH THE PUSH OF A BUTTON
+
+        With the push of a button on your ARMYRIX remotes or smartphone application, you get to switch between modes upon your wish. </p>
+     <p>CUSTOMIZEABLE AUTOMATIC MODE GIVES YOU A WORRY-FREE DRIVE 
+
+        The automatic mode will open/close the exhaust valves based on predetermined RPM range or turbo bar, so you don’t have to manually switch all the time – you can also customize your own automatic mode upon your preference! </p>
+     <p>GAIN MORE POWER, LOSE NO TORQUE
+
+        Depending on the cars, modifications, and tunes you have, opening valves allow the exhaust gas to flow more freely, as it does not have to pass through any muffler. 
+        
+        And with the valves being closed, it can retain the back pressure at low rpm, and maintain the torque that is usually lost with straight piped exhaust systems. </p>
+    </div>
+  </div>
+
+<div class="performedwrap text-center mt-50 page_container fullMxWd">
+    <div class="pad15">
+      <h2>ARMYTRIX VALVE CONTROL REMOTE</h2>
+    </div>
+    <div class="mt-3">
+      <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865425/product/product-fix-2_vasdds.jpg" alt="" loading="lazy" class="img-wd-100">
+    </div>
+  </div>
 
 
   <section class="pad60">

@@ -70,11 +70,13 @@ div#v2_product .pad60 {
 .fullWidth {
     width: 100%;
 }
+.mb-2{
+    margin-bottom: 2rem;
+}
 
 #v2_main .videoWrapperNw {
     position: relative;
     padding-top: 0;
-    height: 0;
 }
 .img-wd-100{
     width: 100%;
