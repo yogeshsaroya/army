@@ -264,4 +264,4 @@ if (isset($data1) && !empty($data1)) {
 </div>
 </div>
 
-<?php echo $this->element('pro/script'); ?>
+<?php echo $this->element('pro/script',['data'=>$data]); ?>
