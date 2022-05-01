@@ -92,8 +92,8 @@ if (isset($data1) && !empty($data1)) {
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-6"><?php echo $this->element('v2/pro_list', ['id' => 't1']); ?></div>
-        <div class="col-sm-6"><?php echo $this->element('v2/pro_list', ['id' => 't2']); ?></div>
+        <div class="col-sm-6"><?php echo $this->element('v2/pro_list', ['id' => 't1','data'=>$cat_back]); ?></div>
+        <div class="col-sm-6"><?php echo $this->element('v2/pro_list', ['id' => 't2','data'=>$catalytic]); ?></div>
       </div>
 
       <div class="cartWrap row d-flex mt-3">
