@@ -455,6 +455,18 @@ section#s4 {
     padding: 0;
     margin-left: 28%;
 }
+.leftTop{
+    transform: none;
+    top: 10%;
+    left: 3%;
+}
+.bottomCenter{
+    transform: none;
+    top: auto;
+    bottom: 12%;
+    left: 0;
+    right: 0;
+}
 @media (min-width: 768px){
     .flexDirection{
         flex-direction: column-reverse;

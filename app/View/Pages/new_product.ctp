@@ -233,8 +233,26 @@ if (isset($data1) && !empty($data1)) {
     <div class="page_container fullmxWd text-center mt-50">
       <h2>HIGH QUALITY TITANIUM ALLOY, LIGHTER WEIGHT</h2>
       <p>More than 60% lighter than the exhaust device of original factory, car body weight reduced significantly</p>
-       <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865195/product/r8-titanium_polzql.jpg" alt="" loading="lazy" class="img-wd-100">      
+       <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865195/product/r8-titanium_polzql.jpg" alt="" loading="lazy" class="img-wd-100 mt-3">      
     </div>
+
+    <div class="page_container fullmxWd text-center mt-50">
+      <h2>CRYSTALLIZATION OF TECHNOLOGY AND ART</h2>
+      <p>Multiple refined mechanical polishing contributes to craftsmanship level surface brightness.</p>
+       <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865194/product/cristallization_img_m95rzj.jpg" alt="" loading="lazy" class="img-wd-100 mt-3">      
+    </div>
+
+    <div class="page_container fullmxWd posRltv">
+    <h4 class="mdlTx leftTop">TITANIUM SERIES</h4>
+       <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865193/product/cristilizzation_fge103.jpg" alt="" loading="lazy" class="img-wd-100 ">      
+    </div>
+
+    <div class="page_container fullmxWd posRltv">
+    <h4 class="mdlTx bottomCenter">STAINLESS STEEL SERIES</h4>
+       <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865197/product/shared-label-bg_bbhu5n.jpg" alt="" loading="lazy" class="img-wd-100">      
+    </div>
+
+    
    
 </div>
 </div>
