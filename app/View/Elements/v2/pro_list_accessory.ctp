@@ -1,11 +1,11 @@
 <div class="add-bx-sel">
-    <h2>CAT-BACK VALVETRONIC EXHAUST </h2>
+    <h2>Armytron Accessory</h2>
     <div class="col-md-9 no-pad">
         <div class="add-bx-drop-dwn">
 
             <div class="new-pro-drdwn">
-                <button  type="button" id="p_1">--- Catalytic Converter Replacement Selections ---</button>
-                <ul  id="cat_back_ul" style="display: none;">
+                <button class="" type="button" id="p_3">--- Armytron Accessory Selctions ---</button>
+                <ul class="" id="tuning_ul" style="display: none;">
                     <li id="c0" pid="none" p_amt="0" data_img="" full_img=""><a href="javascript:void(0);">Select</a></li>
                     <?php foreach ($pro_data as $cList) {
                         $p = 'cdn/' . $cList['Library']['full_path'];
@@ -38,9 +38,9 @@
         <div class="add-bx-snap">
             <div class="center">
                 <div class="input-group"> <span class="input-group-btn">
-                        <button type="button" class="btn btn-default btn-number snp-btn" disabled="disabled" data-type="minus" data-field="cat_back[1]"> <span class="glyphicon glyphicon-minus"></span> </button></span>
-                    <input type="text" name="cat_back[1]" class="form-control input-number" value="1" min="1" max="5" id="cat_b_q" readonly="readonly">
-                    <span class="input-group-btn"><button type="button" class="btn btn-default btn-number snp-btn" data-type="plus" data-field="cat_back[1]"> <span class="glyphicon glyphicon-plus"></span> </button></span>
+                        <button type="button" class="btn btn-default btn-number snp-btn" disabled="disabled" data-type="minus" data-field="tuning[1]"> <span class="glyphicon glyphicon-minus"></span> </button></span>
+                    <input type="text" name="tuning[1]" class="form-control input-number" value="1" min="1" max="5" id="accessory_b_q" readonly="readonly">
+                    <span class="input-group-btn"><button type="button" class="btn btn-default btn-number snp-btn" data-type="plus" data-field="tuning[1]"> <span class="glyphicon glyphicon-plus"></span> </button></span>
                 </div>
             </div>
         </div>
@@ -49,13 +49,4 @@
     <div class="clearfix"> </div>
 </div>
 
-<div class="productBx" id="cat_pic_id">
-
-<!--
-<div class='proImg'><img src="https://www.armytrix.com/cdn/800_530_100_ff_cdn/product-nissan-gtr-titanium/2017-nissan-gtr-r35-armytrix-titanium-exhaust-tuning-price-for-sale-08.jpg" alt="images" loading="lazy" /></div>
-<ul class="tabBtn d-flex"><li><a href="#">NI35S-DDC</a></li><li><a href="#" class="stanSteel">STAINLESS STEEL</a></li></ul>
-<p class="text-left">High-flow Performance De-catted Down-Pipe with Cat Simulator</p>
--->
-
-</div>
-
+<div class="productBx" id="tuning_pic_id"></div>

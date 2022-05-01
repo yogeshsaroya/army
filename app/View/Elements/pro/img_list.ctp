@@ -1,13 +1,9 @@
 <div class="fullWidthImageWrap pad60">
-<?php if (isset($gallery) && !empty($gallery)) { ?>
+    <?php if (isset($gallery) && !empty($gallery)) { ?>
         <?php foreach ($gallery as $gList) {
-            $p = 'cdn/' . $gList['Library']['folder'] . "/" . $gList['Library']['file_name'];
-            //$sImg = new_show_image($p, 200, 200, 100, 'cf', null); 
-            ?>
+            $p = 'cdn/' . $gList['Library']['folder'] . "/" . $gList['Library']['file_name']; ?>
             <div class="fullWidthImages posRltv container fullMxWd">
-                <img src="<?php echo SITEURL.$p;?>" loading="lazy" alt="">
+                <img src="<?php echo SITEURL . $p; ?>" loading="lazy" alt="">
             </div>
-        <?php } ?>
-    
-<?php } ?>
+        <?php }  } ?>
 </div>
