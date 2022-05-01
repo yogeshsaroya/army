@@ -107,7 +107,6 @@ if (isset($data1) && !empty($data1)) {
         <div class="col-sm-6">
         <div id="chk_btn">
         <div id="e_err"></div>
-          <a href="" class="cartBtn fullWidth">DONE, CHECKOUT</a>
         <button class="cartBtn fullWidth" onclick="addcart();">ADD TO CART</button>
         </div>
         </div>
