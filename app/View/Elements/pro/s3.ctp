@@ -2,11 +2,9 @@
  <section id="s3">
  <div class="container fullMxWd posRltv">
    <div class="new_bg_img  img-tag-sec s3-sec">
-    <?php if(isset($IsMobile)){?>
-    <img src="<?php echo SITEURL;?>v_4/images/mob/d.jpg"  alt="Plug and Play" class="img-wd-100" />
-    <?php }else{?>
+    
     <img src="<?php echo SITEURL;?>ui/images/Stainless_steel-13.jpg"  alt="Plug and Play" class="img-wd-100"/>
-    <?php }?>
+    
 
     <div class="textMdl  text-center">
         <h2 class="clr-white mb-3">Plug and Play</h2>
