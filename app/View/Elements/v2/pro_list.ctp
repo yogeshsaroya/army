@@ -12,9 +12,18 @@
                         $p = 'cdn/' . $cList['Library']['full_path'];
                         $cImg = new_show_image($p, 100, 100, 100, 'ff', null);
                     ?>
-                        <li class="<?php if ($cList['Product']['quantity'] == 0) {
-                                        echo 'disable-itm';
-                                    } ?>" qut="<?php echo $cList['Product']['quantity']; ?>" id="<?php echo $cList['Product']['id']; ?>" pid="<?php echo $cList['Product']['id']; ?>" p_amt="<?php echo $cList['Product']['price']; ?>" data_img="<?php echo $cImg; ?>" full_img="<?php echo SITEURL . $p; ?>"><a href="javascript:void(0);">
+                        <li class="<?php if ($cList['Product']['quantity'] == 0) { echo 'disable-itm';} ?>" 
+                        qut="<?php echo $cList['Product']['quantity']; ?>" 
+                        id="<?php echo $cList['Product']['id']; ?>" 
+                        pid="<?php echo $cList['Product']['id']; ?>" 
+                        p_amt="<?php echo $cList['Product']['price']; ?>" 
+                        data_img="<?php echo $cImg; ?>" 
+                        full_img="<?php echo SITEURL . $p;?>"
+                        data_part="<?php echo $cList['Product']['part']; ?>" 
+                        data_material="<?php echo $cList['Product']['material']; ?>" 
+                        data_abt="<?php echo addslashes($cList['Product']['description']); ?>" 
+                        
+                        ><a href="javascript:void(0);">
                                 <div class="part_m">
                                     <h4><?php echo $cList['Product']['part']; ?></h4>
                                 </div>
@@ -52,10 +61,11 @@
 
 <div class="productBx" id="cat_pic_id">
 
-
+<!--
 <div class='proImg'><img src="https://www.armytrix.com/cdn/800_530_100_ff_cdn/product-nissan-gtr-titanium/2017-nissan-gtr-r35-armytrix-titanium-exhaust-tuning-price-for-sale-08.jpg" alt="images" loading="lazy" /></div>
 <ul class="tabBtn d-flex"><li><span>NI35S-DDC</span></li><li><span class="stanSteel">STAINLESS STEEL</span></li></ul>
 <p class="text-left">High-flow Performance De-catted Down-Pipe with Cat Simulator</p>
+-->
 
 </div>
 
