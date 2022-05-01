@@ -585,11 +585,11 @@ section#s4 {
     
     }      
     #v2_main #v2_product .padMobile .row .col-sm-6{
-        width: 49%;
+        width: 47%;
         margin-left: 0;;
     }
     #v2_main #v2_product .padMobile .row .col-sm-6 + .col-sm-6{
-        margin-left: 2%;
+        margin-left: 6%;
     }
     #v2_main #v2_product .padMobile .row.spaceCol .col-sm-6:nth-child(3){
         margin-left: 0 !important;
