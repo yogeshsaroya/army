@@ -16,7 +16,7 @@
 <div class="form-group"><?php echo $this->Form->input('down_pipe',array('type'=>'number','min'=>0,'max'=>'999','class'=>'form-control','required'=>true)); ?></div>
 <div class="form-group"><?php echo $this->Form->input('owrc',array('type'=>'number','min'=>0,'max'=>'999','class'=>'form-control','required'=>true)); ?></div>
 <div class="form-group"><?php echo $this->Form->input('fedex_pack',array('type'=>'number','min'=>0,'max'=>'999','class'=>'form-control','required'=>true)); ?></div>
-<div class="form-group"><?php echo $this->Form->input('region',array('options'=>[/*'1'=>'1 - America Region','2'=>'2 - Europe Region',*/'3'=>'3 - Other Region','4'=>'4 - Only send inquires','5'=>'5 - Can not see price'], 'empty'=>' Select Region ', 'class'=>'form-control','required'=>true)); ?></div>
+<div class="form-group"><?php echo $this->Form->input('region',array('options'=>['1'=>'Price - can order','2'=>'No Price - can not order'], 'empty'=>' Select Region ', 'class'=>'form-control','required'=>true)); ?></div>
 
 <div class="box-footer">
 <div class="form-group ">

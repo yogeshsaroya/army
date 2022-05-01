@@ -60,11 +60,8 @@ if (!empty($data)) {
 <tr class="odd gradeX">
     <td class="center gnTxt"> <?php echo $list['CountryList']['id']; ?></td>
     <td class="center gnTxt"><?php 
-    if ($list['CountryList']['region'] == 1){ echo "America Region";}
-    elseif ($list['CountryList']['region'] == 2){ echo "Europe Region";}
-    elseif ($list['CountryList']['region'] == 3){ echo "Other Region";}
-    elseif ($list['CountryList']['region'] == 4){ echo "Inquires Only";}
-    elseif ($list['CountryList']['region'] == 5){ echo "None";}
+    if ($list['CountryList']['region'] == 1){ echo "Price";}
+    elseif ($list['CountryList']['region'] == 2){ echo "No Price";}
     ?></td>
     <td class="center gnTxt"><?php echo $list['CountryList']['short_name']; ?></td>
     <td class="center"> <?php echo "$".num_2($list['CountryList']['catback']); ?> </td>
