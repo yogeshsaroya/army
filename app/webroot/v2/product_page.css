@@ -444,9 +444,25 @@ section#s4 {
 }
 #v2_product .input-number , #v2_product .snp-btn{
     height: 40px;
+    text-align: center;
+    color: #333;
+    background: #ffffff;
+}
+#v2_product .input-number{
+    border-left: 1px solid #e1dede !important;
+    border-right: 1px solid #e1dede !important;
+    position: relative;
+    z-index: 3;
+    font-family: 'Oswald', sans-serif;
 }
 .add-bx-snap {
-    padding-left: 20px;
+    padding-left: 10px;
+}
+.add-bx-snap .input-group {
+    position: relative;
+    border: 1px solid #e1dede;
+    border-radius: 5px;
+    overflow: hidden;
 }
 .pad15 {
     padding: 15px 0 0;
