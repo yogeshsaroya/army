@@ -1,3 +1,7 @@
+.page_container {
+    max-width: 1150px;
+    margin: auto;
+}
 #v2_product .new-pro-drdwn ul {
     position: absolute;
     top: 100%;
@@ -76,7 +80,7 @@ div#v2_product .pad60 {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100% !important;
 }
 
 .box-squre {
@@ -96,7 +100,8 @@ div#v2_product .pad60 {
 }
 
 #s8 h5 {
-    font-size: 49px;
+    font-size: 30px;
+    font-family: 'Oswald', sans-serif;
 }
 
 .auto-play-video {
@@ -304,7 +309,7 @@ ul.controls li {
 }
 
 .dot-with ul.controls li {
-    margin: 15px 25px 0!important;
+    margin: 15px 20px 0!important;
     position: relative;
 }
 
@@ -387,4 +392,31 @@ div#v2_product .gray-bg1 {
 
 .s3-sec .textMdl {
     left: 20%;
+}
+
+section#s4 {
+    background: #949dac;
+    padding: 60px 0;
+}
+
+.mt-50{
+    margin-top: 8rem
+}
+#v2_product .m-0{
+    margin: 0;
+}
+#v2_product .col-50{
+    width: 100%;
+    margin-top: 20px;
+}
+
+@media (min-width: 768px){
+    .flexDirection{
+        flex-direction: column-reverse;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    #v2_product .col-50{
+        width: 50%;
+    }
 }

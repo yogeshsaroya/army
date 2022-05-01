@@ -43,13 +43,14 @@ if (isset($data1) && !empty($data1)) {
 <?php } ?>
 
 <div id="v2_product">
-
+<div class="padMobile">
+  <div class="page_container">
   <h1 class="text-center mt-3 mb-5">BMW F80 M3 (201-2019) OPF/NON-OPF ARMYTRIX VALVETRONIC EXHAUST SYSTEM</h1>
 
   <?php echo $this->element('v2/product_slider', ['slider' => $slider]); ?>
 
 
-  <div class="container">
+  
     <div class="row d-flex">
       <div class="col-sm-6">
         <div class="txtBx">
@@ -114,7 +115,7 @@ if (isset($data1) && !empty($data1)) {
       </div>
     </div>
   </div>
-
+</div>
 
 
 
@@ -123,21 +124,40 @@ if (isset($data1) && !empty($data1)) {
 
 
   <?php if (!empty($data['Video'])) { ?>
-    <div class="videoWrapper container fullMxWd">
+    <div class="videoWrapper page_container fullMxWd">
       <?php foreach ($data['Video'] as $vlist) {
-        echo '<iframe id="home_bg_v" style="width: 100%; height: 500px"  src="https://www.youtube.com/embed/' . $vlist['video'] . '?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        echo '<iframe id="home_bg_v" style="width: 100%; height: 100px%"  src="https://www.youtube.com/embed/' . $vlist['video'] . '?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
       } ?></div> <?php } ?>
 
-
-
-
-
-  <div class="slide_images container fullMxWd">
+  <div class="slide_images page_container fullMxWd">
     <div id="slideshow2"></div>
   </div>
   <div></div>
 
-  <div class="container fullMxWd posRltv">
+  <section class="pad60">
+       <div class="page_container">
+         <h2 class="text-center">ARMYTRIX APP SMART ASSISTANT</h2>
+         <p class="text-left">The mobile APP of ARMYTRIX can connect to the OBDII device via Bluetooth, and be used to as a remote controller to easily control valve switch and provide you with real-time monitoring of variuos values of your car, such as rotate speed, speed, fuel, etc. The rpm value in Auto mode can be set to open valves.</p>
+         <div class="row mt-3">
+           <div class="col-sm-3 text-center">
+             <img src="<?php echo SITEURL;?>v2/img/product-app-4_wihpks_1.png"  alt="App"/>
+           </div>
+           <div class="col-sm-3 text-center">
+             <img src="<?php echo SITEURL;?>v2/img/product-app-4_wihpks_2.png"  alt="App"/>
+           </div>
+           <div class="col-sm-3 text-center">
+             <img src="<?php echo SITEURL;?>v2/img/product-app-4_wihpks_3.png"  alt="App"/>
+           </div>
+           <div class="col-sm-3 text-center">
+             <img src="<?php echo SITEURL;?>v2/img/product-app-4_wihpks_4.png"  alt="App"/>
+           </div>
+         </div>
+
+      </div>
+    
+
+  <div class="page_container fullMxWd posRltv">   
+   
     <?php
 
     echo $this->element('pro/s2a');
@@ -147,11 +167,56 @@ if (isset($data1) && !empty($data1)) {
     echo $this->element('pro/s18');
 
     ?>
-  </div>
-
 </div>
 
+<div class="performedwrap text-center mt-50 page_container fullMxWd">
+      <div class="pad15">
+         <h2>DESIGNED TO PERFORM, DESTINED TO AMAZE</h2>
+         <p>Highest standard multiple tests and verification evoke beast performance limit.</p>
+      </div>
+       <div class="mt-3">
+       <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865195/product/dyno_hhd7oy.png" alt="" loading="lazy" class="img-wd-100">
+       </div>
+    </div>
+  
 
+  <div class="performedwrap text-center mt-50 page_container fullMxWd">
+      <div class="pad15">
+         <h2 class="m-0">DOWNPIPE WITH CUTTING-EDGE FLEXIBLE PIPE TECHNOLOGY</h2>
+         <p>Protect exhaust pipes from breakage and facilitate cooling to maximize engine</p>
+      </div>
+       <div class="mt-3">
+       <img src="<?php echo SITEURL;?>v2/img/Downpipe-png_geacsq.jpg" alt="" loading="lazy" class="img-wd-100">
+       </div>
+    </div>
+  
+
+  <div class="performedwrap mt-50 page_container fullMxWd">
+      <div class="pad15">
+         <h2>SPECIAL RAPID-COOLING CERAMIC COATING</h2>
+         <p>Reduce under-hood temperature and resistant and corrosion</p>
+      </div>
+       <div class="mt-3 d-flex">
+          <div class="col-50">
+          <img src="https://www.armytrix.com/cdn/800_530_100_ff_cdn/product-nissan-gtr-titanium/2017-nissan-gtr-r35-armytrix-titanium-exhaust-tuning-price-for-sale-08.jpg" alt="" loading="lazy" class="img-wd-100">
+           <h4 class="pad15 text-left">
+           Standard Downpipe<br/>
+          Deteriorate under high temperature which leads to pipe breakage.
+           </h4>
+          </div>
+          <div class="col-50 flexDirection">
+          <img src="https://www.armytrix.com/cdn/800_530_100_ff_cdn/product-nissan-gtr-titanium/2017-nissan-gtr-r35-armytrix-titanium-exhaust-tuning-price-for-sale-08.jpg" alt="" loading="lazy" class="img-wd-100">
+           <h4 class="pad15 text-left">
+           Standard Downpipe<br/>
+          Deteriorate under high temperature which leads to pipe breakage.
+           </h4>
+          </div>
+       </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
 
 <?php $this->Html->scriptStart(array('block' => 'scriptBottom')); ?>
 $(document).ready(function() {
