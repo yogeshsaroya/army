@@ -410,6 +410,51 @@ section#s4 {
     margin-top: 20px;
 }
 
+#v2_product .add-bx-sel {
+    text-align: left;
+    margin-top: 3rem;
+}
+#v2_product .add-bx-sel > div {
+    padding: 0;
+}
+#v2_product .new-pro-drdwn button {
+    width: 100%;
+    padding: 8px 12px;
+    text-align: left;
+    border: 2px solid #d9d5d5;
+    border-radius: 0;
+    height: 40px;
+    position: relative;
+}
+#v2_product .new-pro-drdwn button:before {
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    right: 10px;
+    height: 0;
+  width: 0;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-top: 10px solid #333;
+  position: relative;
+}
+#v2_product .snp-btn{
+    color: #fff;
+    background: #38D430;
+}
+#v2_product .input-number , #v2_product .snp-btn{
+    height: 40px;
+}
+.add-bx-snap {
+    padding-left: 20px;
+}
+.pad15 {
+    padding: 15px 0 0;
+}
+#v2_product .col-50.flexDirection .pad15{
+    padding: 0;
+    margin-left: 28%;
+}
 @media (min-width: 768px){
     .flexDirection{
         flex-direction: column-reverse;

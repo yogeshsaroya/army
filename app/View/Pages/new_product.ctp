@@ -155,6 +155,9 @@ if (isset($data1) && !empty($data1)) {
 
     </div>
 
+    <div class="page_container fullmxWd">
+       <img src="<?php echo SITEURL; ?>v2/img/3D.jpg" alt="" loading="lazy" class="img-wd-100">     
+    </div>
 
     <div class="page_container fullMxWd posRltv">
 
@@ -168,6 +171,7 @@ if (isset($data1) && !empty($data1)) {
 
       ?>
     </div>
+    
 
     <div class="performedwrap text-center mt-50 page_container fullMxWd">
       <div class="pad15">
@@ -198,14 +202,14 @@ if (isset($data1) && !empty($data1)) {
       </div>
       <div class="mt-3 d-flex">
         <div class="col-50">
-          <img src="https://www.armytrix.com/cdn/800_530_100_ff_cdn/product-nissan-gtr-titanium/2017-nissan-gtr-r35-armytrix-titanium-exhaust-tuning-price-for-sale-08.jpg" alt="" loading="lazy" class="img-wd-100">
+          <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865195/product/standard-downpipe_ryhk9h.png" alt="" loading="lazy" class="img-wd-100">
           <h4 class="pad15 text-left">
             Standard Downpipe<br />
             Deteriorate under high temperature which leads to pipe breakage.
           </h4>
         </div>
         <div class="col-50 flexDirection">
-          <img src="https://www.armytrix.com/cdn/800_530_100_ff_cdn/product-nissan-gtr-titanium/2017-nissan-gtr-r35-armytrix-titanium-exhaust-tuning-price-for-sale-08.jpg" alt="" loading="lazy" class="img-wd-100">
+          <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865193/product/ceramic-coated-bg_jdfzkd.png" alt="" loading="lazy" class="img-wd-100">
           <h4 class="pad15 text-left">
             Standard Downpipe<br />
             Deteriorate under high temperature which leads to pipe breakage.
@@ -213,6 +217,25 @@ if (isset($data1) && !empty($data1)) {
         </div>
       </div>
     </div>
+
+    <div class="page_container fullmxWd text-center mt-50">
+      <h2>METICULOUSLY CRAFTED FOR PRECISE FITMENT QUALITY IS OUR PRIDE IN WORKMANSHIP</h2>
+       <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865195/product/Meticulously-bg_joc6gw.jpg" alt="" loading="lazy" class="img-wd-100">  
+       <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865194/product/h-min_rggyro.jpg" alt="" loading="lazy" class="img-wd-100">  
+     
+    </div>
+
+    <div class="page_container fullmxWd text-center mt-50">
+      <h2>UTILIZING A RARE HIGH GRADE TITANIUM ENSURES THIS ACTION IS BUILT TO LAST</h2>
+       <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865194/product/horse_pwr_i5ungc.jpg" alt="" loading="lazy" class="img-wd-100">      
+    </div>
+
+    <div class="page_container fullmxWd text-center mt-50">
+      <h2>HIGH QUALITY TITANIUM ALLOY, LIGHTER WEIGHT</h2>
+      <p>More than 60% lighter than the exhaust device of original factory, car body weight reduced significantly</p>
+       <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865195/product/r8-titanium_polzql.jpg" alt="" loading="lazy" class="img-wd-100">      
+    </div>
+   
 </div>
 </div>
 </div>
