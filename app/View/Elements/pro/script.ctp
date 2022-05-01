@@ -140,6 +140,9 @@
           $('#ecu_id').val(pid);
           $('#ecu_id_q').val(cat_b_q);
           $('#ecu_id_p').val(p_amt);
+          var s = '<div class="proImg"><img src="'+full_img+'" alt="images" loading="lazy" /></div>'+
+'<ul class="tabBtn d-flex"><li><a href="#">NI35S-DDC</a></li><li><a href="#" class="stanSteel">STAINLESS STEEL</a></li></ul>'+
+'<p class="text-left">High-flow Performance De-catted Down-Pipe with Cat Simulator</p>';
           $('#ecu_pic_id').html('<a href="' + full_img + '" class="image-popup-vertical-fit"><img loading="lazy" alt="" src="' + data_img + '"></a>');
           $('#p_2').addClass('drp-btn-clr');
           $('#selc').append('<p class="selc_p_2">' + txt + '</p>');
