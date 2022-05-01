@@ -459,18 +459,31 @@ section#s4 {
     flex-wrap: wrap;
 }
 #v2_product .new-pro-drdwn .part_m{
-    width: 49%;
+    width: auto;
 }
 #v2_product .new-pro-drdwn .part_m + .part_m{
-    margin-left: auto;
+    margin-left: 10px;
 }
 #v2_product .new-pro-drdwn .part_m h4{
     display: inline-block;
-    padding: 7px 14px 7px;
+    padding: 10px 14px 9px;
     margin: 2px 0;
-    background: #252525;
-    color: #fff;
-    font-size: 12px;    
+    background: #ebebeb;
+    color: #333;
+    font-size: 12px;
+    border-radius: 4px;   
+}
+#v2_product .new-pro-drdwn .part_m h4.stainless_steel , .stainless_steel {
+    background: #ffb291 !important;    
+}
+#v2_product .new-pro-drdwn .part_m h4.titanium , .titanium{
+    background: #85ace7 !important;
+}
+#v2_product .new-pro-drdwn > ul > li a .clearfix{
+    width: 100%;
+}
+#v2_product button[disabled] .glyphicon{
+    opacity: 0.7;
 }
 #v2_product .snp-btn{
     color: #fff;
@@ -481,6 +494,14 @@ section#s4 {
     text-align: center;
     color: #333;
     background: #ffffff;
+}
+#v2_product .snp-btn:hover{
+    color: #fff;
+    background: #38D430;
+}
+.padMobile {
+    padding: 0;
+    margin-bottom: 60px;
 }
 #v2_product .input-number{
     border-left: 1px solid #e1dede !important;
