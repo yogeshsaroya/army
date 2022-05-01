@@ -570,7 +570,12 @@ section#s4 {
     left: 0;
     right: 0;
 }
-
+@media (min-width: 1300px){
+    #v2_product {
+        max-width: 1300px;
+        margin: auto;
+    }
+}
 @media (min-width: 768px){
     .flexDirection{
         flex-direction: column-reverse;
