@@ -17,8 +17,7 @@ class AppController extends Controller
 		$RstrictedCountry = $this->DATA->getrRstrictedCountry();
 		
 		$server_name = $_SERVER['SERVER_NAME'];
-		ec($_SERVER);die;
-
+		
 		$co =  $this->Session->read('arm_co');
 		if (empty($co)) {
 
@@ -47,7 +46,7 @@ class AppController extends Controller
 		$LabArr['des'] = 'Following the creed of providing the most sound, more power and true versatility, ARMYTRIX offer high-end performance valvetronic exhaust systems, ecu tuning and power box that are second to none. We foster a culture of innovation. ARMYTRIX not only creates products, ARMYTRIX creates experiences.';
 		$LabArr['keys'] = 'cat-back, sports exhaust, muffler, silencer, armytrix systems manifold, us, ferrari, lamborghini, maserati, porsche, benz, bmw, volkswagen, mclaren, mini cooper, audi, nissan gt-r r35, sport cat, cat, manifold, sports manifold, test pipes';
 
-		if($server_name != 'localhost'){
+		if($server_name == 'armytrix.com'){
 			if ($this->params['controller'] != 'crons') {
 				$url = Router::url(null, true);
 				$pos = strpos($url, 'www');
