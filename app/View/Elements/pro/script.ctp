@@ -1,3 +1,5 @@
+<?php echo $this->Html->css(["/v2/css-loader"], ['block' => 'cssTop']); ?>
+<div id="cssLoader"></div>
 <?php //$this->Html->scriptStart(array('block' => 'scriptBottom')); 
 ?>
 <script>
@@ -11,20 +13,22 @@
         var accessory_b_q = $('#accessory_b_q').val();
         if (cat_id != '' || ecu_id != '' || accessory_id != '') {
             var q = $('#ext_pro_q').val();
-            $('#preloader').show();
+            $("#cssLoader").html('<div id="loader" class="loader loader-default is-active"></div>');
             $.ajax({
                 type: 'POST',
                 url: '<?php echo SITEURL; ?>pages/add_to_cart',
                 data: 'cat_id=' + cat_id + '&cat_id_q=' + cat_id_q + '&ecu_id=' + ecu_id + '&ecu_id_q=' + ecu_id_q + '&accessory_id=' + accessory_id + '&accessory_b_q=' + accessory_b_q + '&get=exhaust',
                 success: function(data) {
                     $("#_my_cart").html(data);
+                    $("#chk_btn").html('<a href="<?php echo SITEURL;?>cart" class="cartBtn fullWidth">DONE, CHECKOUT</a>');
                     setTimeout(function() {
-                        $('#preloader').hide();
+                        $("#cssLoader").html('');
                     }, 500);
                 },
                 error: function(comment) {
                     $("#_my_cart").html(data);
                     setTimeout(function() {
+                        
                         $('#preloader').hide();
                     }, 500);
                 }
@@ -211,7 +215,7 @@
             var n = p1 + p2 + p3;
             $('#price').html("USD $" + n.toFixed(2));
             $('#total_amout').val(n);
-            pimg();
+            
         }
 
     });
