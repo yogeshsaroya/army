@@ -570,12 +570,7 @@ section#s4 {
     left: 0;
     right: 0;
 }
-@media (min-width: 1300px){
-    #v2_product {
-        max-width: 1300px;
-        margin: auto;
-    }
-}
+
 @media (min-width: 768px){
     .flexDirection{
         flex-direction: column-reverse;
@@ -589,6 +584,22 @@ section#s4 {
         padding: 0;
     
     }      
+    #v2_main #v2_product .padMobile .row .col-sm-6{
+        width: 48%;
+        margin-left: 0;;
+    }
+    #v2_main #v2_product .padMobile .row .col-sm-6 + .col-sm-6{
+        margin-left: 4%;
+    }
+    #v2_main #v2_product .padMobile .row.spaceCol .col-sm-6:nth-child(3){
+        margin-left: 0 !important;
+    }
+}
+@media (min-width: 1300px){
+    #v2_product {
+        max-width: 1300px;
+        margin: auto;
+    }
     #v2_main #v2_product .padMobile .row .col-sm-6{
         width: 47%;
         margin-left: 0;;
