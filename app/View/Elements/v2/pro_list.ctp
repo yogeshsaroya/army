@@ -52,11 +52,10 @@
 
 <div class="productBx" id="cat_pic_id">
 
-<!--
+
 <div class='proImg'><img src="https://www.armytrix.com/cdn/800_530_100_ff_cdn/product-nissan-gtr-titanium/2017-nissan-gtr-r35-armytrix-titanium-exhaust-tuning-price-for-sale-08.jpg" alt="images" loading="lazy" /></div>
-<ul class="tabBtn d-flex"><li><a href="#">NI35S-DDC</a></li><li><a href="#" class="stanSteel">STAINLESS STEEL</a></li></ul>
+<ul class="tabBtn d-flex"><li><span>NI35S-DDC</span></li><li><span class="stanSteel">STAINLESS STEEL</span></li></ul>
 <p class="text-left">High-flow Performance De-catted Down-Pipe with Cat Simulator</p>
--->
 
 </div>
 

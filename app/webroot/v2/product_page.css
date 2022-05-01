@@ -209,7 +209,7 @@ ul.controls li {
     margin: 20px 0;
 }
 
-.tabBtn a {
+.tabBtn span {
     display: inline-block;
     padding: 6px 12px;
     background: #ebebeb;
@@ -226,11 +226,11 @@ ul.controls li {
     margin-left: 10px;
 }
 
-.tabBtn a.titanim {
+.tabBtn span.titanim {
     background-color: #85ace7;
 }
 
-.tabBtn a.stanSteel {
+.tabBtn span.stanSteel {
     background-color: #ffb291;
 }
 
