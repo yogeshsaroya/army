@@ -79,15 +79,15 @@ if (isset($data1) && !empty($data1)) {
         </div>
       </div>
       <div class="row spaceCol">
-        <div class="col-sm-6"><?php echo $this->element('v2/pro_list', ['id' => 't1', 'pro_data' => $cat_back]); ?></div>
-        <div class="col-sm-6"><?php echo $this->element('v2/pro_list_pipe', ['id' => 't2', 'pro_data' => $catalytic]); ?></div>
-        <div class="col-sm-6"><?php echo $this->element('v2/pro_list_accessory', ['id' => 't3', 'pro_data' => $accessory]); ?></div>
+        <div class="col-sm-6"><?php echo $this->element('v2/pro_list', ['id' => 't1', 'pro_data' => $cat_back,'restricted'=>$restricted]); ?></div>
+        <div class="col-sm-6"><?php echo $this->element('v2/pro_list_pipe', ['id' => 't2', 'pro_data' => $catalytic,'restricted'=>$restricted]); ?></div>
+        <div class="col-sm-6"><?php echo $this->element('v2/pro_list_accessory', ['id' => 't3', 'pro_data' => $accessory,'restricted'=>$restricted]); ?></div>
       </div>
 
       <div class="row d-flex mt-3">
         <div class="col-sm-12">
+        <?php if (isset($restricted) && $restricted == 2) {?>
           <h3 class="usdPrice  text-left">SELECTED <span id="price">USD $00.00</span></h3>
-
           <input type="hidden" id="cat_id" value="">
           <input type="hidden" id="cat_id_q" value="1">
           <input type="hidden" id="cat_id_p" value="0">
@@ -99,18 +99,23 @@ if (isset($data1) && !empty($data1)) {
           <input type="hidden" id="accessory_id" value="">
           <input type="hidden" id="accessory_id_q" value="1">
           <input type="hidden" id="accessory_id_p" value="0">
-
           <input type="hidden" id="total_amout" value="0">
+          <?php } ?>
 
 
         </div>
         <div class="col-sm-6">
           <div id="chk_btn">
             <div id="e_err"></div>
-            <button class="cartBtn fullWidth" onclick="addcart();">ADD TO CART</button>
+            <?php if (isset($restricted) && $restricted == 1) { ?>
+              <a href="<?php echo SITEURL;?>contact?brand=1&model=1&motor=1" class="cartBtn fullWidth">QUOTE & PRICING INQUIRY</a>
+            <?php } elseif($restricted == 2) { ?>
+              <button class="cartBtn fullWidth" onclick="addcart();">ADD TO CART</button>
+            <?php } ?>
           </div>
         </div>
         <div class="col-sm-6">
+        <?php if (isset($restricted) && $restricted == 2) {?>
           <div class="card-btn">
             <ul>
               <li><span>Shipping:</span> <a> 3-5 days deliver to US and Europe. Other countries will take 5-7 days.</a></li>
@@ -119,21 +124,18 @@ if (isset($data1) && !empty($data1)) {
               <li><span>Payments: </span> <a><img loading="lazy" src="<?php echo SITEURL; ?>img/paypal-ac.png" alt="" /></a></li>
             </ul>
           </div>
+          <?php }?>
         </div>
       </div>
     </div>
   </div>
 
-
-
   <?php echo $this->element('pro/img_list', ['gallery' => $gallery]); ?>
-
-
 
   <?php if (!empty($data['Video'])) { ?>
     <div class="videoWrapperNw page_container fullMxWd">
       <?php foreach ($data['Video'] as $vlist) {
-        echo '<iframe id="home_bg_v" width="100%" height="500" loading="lazy" src="https://www.youtube.com/embed/' . $vlist['video'] . '?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        echo '<iframe id="home_bg_v" width="100%" height="600" loading="lazy" src="https://www.youtube.com/embed/' . $vlist['video'] . '?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
       } ?></div> <?php } ?>
 
   <div class="slide_images page_container fullMxWd">
@@ -193,7 +195,8 @@ if (isset($data1) && !empty($data1)) {
         </div>
       </div>
     </div>
-    <?php echo $this->element('pro/s2a');
+    <?php
+    echo $this->element('pro/s2a');
     echo $this->element('pro/s3');
     echo $this->element('pro/s4');
     ?>
@@ -241,20 +244,15 @@ if (isset($data1) && !empty($data1)) {
         </div>
       </div>
     </div>
-
-
     <?php echo $this->element('pro/s8'); ?>
-
     <div class="page_container fullmxWd">
       <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865200/product/3D_oo3xdl.webp" alt="" loading="lazy" class="img-wd-100">
     </div>
-
 
     <div class="page_container fullmxWd text-center mt-50">
       <h2>METICULOUSLY CRAFTED FOR PRECISE FITMENT QUALITY IS OUR PRIDE IN WORKMANSHIP</h2>
       <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865195/product/Meticulously-bg_joc6gw.webp" alt="" loading="lazy" class="img-wd-100">
       <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865194/product/h-min_rggyro.webp" alt="" loading="lazy" class="img-wd-100">
-
     </div>
 
     <div class="page_container fullmxWd text-center mt-50">
@@ -270,7 +268,7 @@ if (isset($data1) && !empty($data1)) {
     <div class="page_container fullmxWd text-center mt-50">
       <h2>CRYSTALLIZATION OF TECHNOLOGY AND ART</h2>
       <p>Multiple refined mechanical polishing contributes to craftsmanship level surface brightness.</p>
-      
+
       <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865194/product/cristallization_img_m95rzj.webp" alt="" loading="lazy" class="img-wd-100 mt-3">
     </div>
     <div class="page_container fullmxWd posRltv">
@@ -284,12 +282,8 @@ if (isset($data1) && !empty($data1)) {
       <h4 class="mdlTx bottomCenter">STAINLESS STEEL SERIES</h4>
       <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865197/product/shared-label-bg_bbhu5n.webp" alt="" loading="lazy" class="img-wd-100">
     </div>
-
-
-
 </div>
 </div>
 </div>
 </div>
-
 <?php echo $this->element('pro/script', ['data' => $data]); ?>

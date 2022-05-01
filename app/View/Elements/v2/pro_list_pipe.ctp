@@ -1,9 +1,8 @@
 <?php if (!empty($pro_data)) { ?>
     <div class="add-bx-sel">
         <h2>HEADER / DOWNPIPES</h2>
-        <div class="col-md-9 no-pad">
+        <div class="<?php echo ($restricted == 2 ? "col-md-9":"col-md-12"); ?> no-pad">
             <div class="add-bx-drop-dwn">
-
                 <div class="new-pro-drdwn">
                     <button class="" type="button" id="p_2">--- Cat-Back Valvetronic Mufflers Selection ---</button>
                     <ul class="" id="ecu_ul" style="display: none;">
@@ -34,7 +33,7 @@
             </div>
             <div class="drp-img" id="cat_pic_id"></div>
         </div>
-
+        <?php if ($restricted == 2) { ?>
         <div class="col-md-3">
             <div class="add-bx-snap">
                 <div class="center">
@@ -46,7 +45,7 @@
                 </div>
             </div>
         </div>
-
+        <?php } ?>
         <div class="clearfix"> </div>
     </div>
 

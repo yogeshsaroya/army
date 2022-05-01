@@ -11,16 +11,13 @@ class AppController extends Controller
 	function beforeFilter()
 	{
 		$aR['created'] = DATE;
-		$aR['RstrictedCountry'] = $restricted = 0;
+		$aR['RstrictedCountry'] = $restricted = 2;
 		$this->Session->write('arm_co', $aR);
 		$this->Session->delete('arm_co');
 		$RstrictedCountry = $this->DATA->getrRstrictedCountry();
-		
 		$server_name = $_SERVER['SERVER_NAME'];
-		
 		$co =  $this->Session->read('arm_co');
 		if (empty($co)) {
-
 			if ($server_name == 'localhost') {
 				$aR = unserialize(@file_get_contents('http://www.geoplugin.net/php.gp?ip=103.85.205.34'));
 			} else {
@@ -42,6 +39,7 @@ class AppController extends Controller
 			}
 		}
 		$this->set('restricted', $restricted);
+		
 		$LabArr = array();
 		$LabArr['des'] = 'Following the creed of providing the most sound, more power and true versatility, ARMYTRIX offer high-end performance valvetronic exhaust systems, ecu tuning and power box that are second to none. We foster a culture of innovation. ARMYTRIX not only creates products, ARMYTRIX creates experiences.';
 		$LabArr['keys'] = 'cat-back, sports exhaust, muffler, silencer, armytrix systems manifold, us, ferrari, lamborghini, maserati, porsche, benz, bmw, volkswagen, mclaren, mini cooper, audi, nissan gt-r r35, sport cat, cat, manifold, sports manifold, test pipes';
