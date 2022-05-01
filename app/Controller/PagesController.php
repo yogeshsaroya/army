@@ -483,11 +483,6 @@ class PagesController extends AppController
 						$this->OrderItem->saveMany($ord_list);
 					}
 					if ($this->data['payment_by'] == 'paypal') {
-						/*
-                    if ( $ord['region'] == 1 ){ $url  = $this->express_checkout_america( $ord['grand_total'],$o_id); }
-                    elseif ( $ord['region'] == 2 ){ $url  = $this->express_checkout_europe( $ord['gt_eur'],$o_id); }
-                    elseif ( $ord['region'] == 3 ){ $url  = $this->express_checkout( $ord['grand_total'],$o_id); }
-                    */
 						$url  = $this->express_checkout($ord['grand_total'], $o_id);
 						echo '<div class="alert alert-success">Please wait while redirecting to paypal...</div>';
 						echo "<script>$('#_do_chk').remove(); setTimeout(function(){ window.location.href ='" . $url . "'; }, 500);</script>";
@@ -496,31 +491,6 @@ class PagesController extends AppController
 						echo $s;
 						echo '<div class="alert alert-danger">Error. please try again</div>';
 						exit;
-						/*
-                    $e_money = 0;
-                    $twd = $this->DATA->currencyConverter('USD','TWD',1);
-                    if($twd > 0){ $e_money = round($this->data['grand_total'] * $twd); }
-                    else{ echo $s;  echo '<div class="alert alert-danger">Currency converter error. Please try again later</div>'; exit; }
-                    $e_no = '24707505';
-                    $e_pwd = 'q0cu72eu2laqery08qnl6vhppahczsqy';
-                    $e_cardno = base64_encode($this->data['cc']['ccv'].$this->data['cc']['month']['month'].$this->data['cc']['year']['year'].$this->data['cc']['number']);
-                    $str_check = md5($o_id.$e_no.$e_money.$e_pwd);
-                    $output_transaction = "e_orderno=$o_id&e_url=your response URL&e_no=$e_no&e_pwd=$e_pwd&e_storename=Armytrix&e_mode=12&E_Lang=UTF-8&e_Cur=NT&e_money=$e_money&e_cardno=$e_cardno&str_check=$str_check&e_name=".urlencode($this->data['cc']['name'])."&e_telm=".$this->data['cc']['phone']."&e_email=".$this->data['cc']['email']."&e_info=service";
-                    $process_result = $this->pmt_curl($output_transaction);
-                    $process_result = json_decode($process_result,true);
-                    $arr_next =array('tran'=>$output_transaction,'response'=>$process_result);
-                    $this->log($arr_next, 'log_pmt');
-                    if( isset($process_result['str_ok']) && $process_result['str_ok'] == 1 ){
-                        $this->Cart->deleteAll ( array ('Cart.id' => $cart_dis),false );
-                        $c_info = json_encode($process_result);
-                        $this->_cc_payment_successful($o_id,$c_info);
-                        $u = SITEURL."pages/order/success/".$o_id;
-                        echo "<script>setTimeout(function(){ window.location.href ='".$u."'; }, 500);</script>";
-                    }
-                    else{
-                        $u = SITEURL."pages/order/fail/".$o_id;
-                        echo "<script>setTimeout(function(){ window.location.href ='".$u."'; }, 500);</script>"; exit;
-                    } */
 					}
 				}
 			}
@@ -560,7 +530,7 @@ class PagesController extends AppController
 
 			$country_list = $this->CountryList->find('first', ['conditions' => ['CountryList.id' => $this->request->data['Order']['country_list_id']]]);
 			$new_pid = $new_cart_dis = null;
-			if (isset($country_list['CountryList']['region']) && in_array($country_list['CountryList']['region'], [5])) {
+			if (isset($country_list['CountryList']['region']) && in_array($country_list['CountryList']['region'], [2])) {
 				$cart_dis = explode(',', $this->data['cid']);
 				$c_data = $this->Cart->find('all', array('conditions' => array('Cart.id' => $cart_dis)));
 				if (!empty($c_data)) {
@@ -601,25 +571,13 @@ class PagesController extends AppController
 		$checkOutArr = $this->Session->read('checkOutArr');
 		$shipping = $this->Session->read('shipping');
 		$WebSetting = $this->WebSetting->find('first', array('WebSetting.id' => 1));
-
-		if (empty($checkOutArr) && empty($shipping)) {
-			$this->render('no_country');
-		}
+		
+		if (empty($checkOutArr) && empty($shipping)) { $this->render('no_country'); }
 		$country_list = $this->CountryList->find('first', ['conditions' => ['CountryList.id' => $shipping['Order']['country_list_id']]]);
-
-		if (empty($country_list)) {
-			$this->render('no_country');
-		}
+		if (empty($country_list)) { $this->render('no_country'); }
 		if (isset($country_list['CountryList']['region']) &&  isset($shipping['Order']['country_list_id']) && !empty($shipping['Order']['country_list_id'])) {
-			/*1. America region. CC + Paypal*/
-			//if ( $country_list['CountryList']['region'] == 1 ){ }
-			/*2. Europe region. Paypal */
-			//elseif ( $country_list['CountryList']['region'] == 2 ){  }
-			//elseif ( $country_list['CountryList']['region'] == 5 ){ $this->render('no_country'); }
-			/*3. Other region. Paypal */
-			//elseif ( isset($country_list['CountryList']['region']) && $country_list['CountryList']['region'] == 3 ){ }
-			if (in_array($country_list['CountryList']['region'], [3, 5])) {
-			} elseif ($country_list['CountryList']['region'] == 4) {
+			if (in_array($country_list['CountryList']['region'], [1])) {
+			} elseif ($country_list['CountryList']['region'] == 2) {
 				/*4. only send inquires */
 				$cart_dis = explode(',', $shipping['cid']);
 				$c_data = $this->Cart->find('all', array('conditions' => array('Cart.id' => $cart_dis)));
@@ -630,7 +588,7 @@ class PagesController extends AppController
 				$ord = [];
 				$token =  $this->DATA->getToken(16);
 				$ord['type'] = 2;
-				$ord['region'] = 4;
+				$ord['region'] = 2;
 				$ord['payment_by'] = 'inquiry';
 				$ord['note'] = @$checkOutArr['note'];
 				$ord['token'] = $token;

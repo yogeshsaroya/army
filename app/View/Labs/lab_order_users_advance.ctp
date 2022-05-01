@@ -5,11 +5,8 @@ foreach ($data as $list) { ?>
 <tr class="odd gradeX">
 <td class="center gnTxt"> <?php if($list['Order']['type'] == 1){ echo "Order"; } elseif($list['Order']['type'] == 2){ echo "Inquiry"; } ?> </td>
 <td class="center gnTxt"><?php 
-    if ($list['Order']['region'] == 1){ echo "America Region";}
-    elseif ($list['Order']['region'] == 2){ echo "Europe Region";}
-    elseif ($list['Order']['region'] == 3){ echo "Other Region";}
-    elseif ($list['Order']['region'] == 4){ echo "Inquires Only";}
-    elseif ($list['Order']['region'] == 5){ echo "None";}
+    if ($list['Order']['region'] == 1){ echo "Price";}
+    elseif ($list['Order']['region'] == 2){ echo "No Price";}
     ?></td>
     <td class="center gnTxt"><?php echo $list['Order']['order_number']; ?></td>
     <td class="center gnTxt"><?php echo $list['Order']['first_name']." ".$list['Order']['last_name']; ?></td>

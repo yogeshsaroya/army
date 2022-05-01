@@ -129,7 +129,7 @@ foreach ($d['OrderItem'] as $oList){ ?>
             </div>
           </div>
           <br><br>
-<?php if ( in_array($d['Order']['region'], [1,2,3]) ){?>          
+<?php if ( in_array($d['Order']['region'], [1,2]) ){?>          
 <div class="row">
 <div class="box">
             <div class="box-header with-border">

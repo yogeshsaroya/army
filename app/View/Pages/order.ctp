@@ -2,7 +2,7 @@
     echo $this->html->css(['od']);
     $order_status = $this->Lab->order_status();
 
-    if ( in_array($data['Order']['region'], [1,2,3] ) ){
+    if ( in_array($data['Order']['region'], [1] ) ){
     ?>
 <!-- Event snippet for Website sale conversion page -->
 <script>
@@ -113,14 +113,14 @@ if ( isset($data['OrderItem']) && !empty($data['OrderItem']) ){
 	<div class="footer-box">
 		<div class="bg-black">
 			<div class="container">
-				<p>© 2019 ARMYTRIX All Rights Reserved.</p>
+				<p>© <?php echo date('Y');?> ARMYTRIX All Rights Reserved.</p>
 			</div>
 		</div>
 
 	</div>
 
 </div>
-<?php }elseif ($data['Order']['region'] == 4){?>
+<?php }elseif ($data['Order']['region'] == 2){?>
 <div class="invoice-page">
 <div class="container">
 <div class="customer-details sec-pad text-center">

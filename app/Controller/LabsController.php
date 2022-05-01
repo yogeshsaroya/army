@@ -955,7 +955,7 @@ class LabsController extends AppController
 					$pa = array('ORDER_NUMBER' => $data['Order']['order_number'], 'STATUS' => @$order_status[$this->data['st']], 'NAME' => $data['Order']['first_name'], 'MESSAGE' => $this->data['msg'], 'BODY' => $body);
 					$this->DATA->AppMail($data['Order']['email'], 'OrderUpdated', $pa, DATE, 2);
 					if ($this->data['st'] == 3 && $data['Order']['region'] == 1) {
-						$this->DATA->AppMail('tracking@vividracing.com', 'OrderUpdated', $pa, DATE, 2);
+						//$this->DATA->AppMail('tracking@vividracing.com', 'OrderUpdated', $pa, DATE, 2);
 					}
 
 					echo $s;

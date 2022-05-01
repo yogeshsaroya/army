@@ -164,6 +164,9 @@ elseif( in_array($list['Product']['type'], array(2,3,5)) ){
                     </div>
                     <div class="col-md-4">
                       <div class="item-total-price">
+<input type="hidden" id="free_gift" value="">
+<input type="hidden" id="promo_code" value="">
+
                         <h3><?php if($list['Product']['quantity'] > 0){ echo "USD $".num_2($amount * $list['Cart']['quantity']);}?></h3>
                       </div>
                     </div>

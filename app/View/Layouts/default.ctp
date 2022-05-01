@@ -59,14 +59,16 @@
   <link rel="preload" href="<?php echo SITEURL; ?>css/bootstrap.min.css" as="style">
   <link rel="preload" href="<?php echo SITEURL; ?>bootstrap_3_3_6/css/ui.css" as="style">
 
-  <?php echo $this->Html->css(array('bootstrap.min', '/bootstrap_3_3_6/css/ui','theme', '/v2/style.css?v=' . rand(123, 98745) 
-  //'animate'
+  <?php echo $this->Html->css(array(
+    'bootstrap.min', '/bootstrap_3_3_6/css/ui', 'theme', '/v2/style.css?v=' . rand(123, 98745)
+    //'animate'
   ));
 
-  echo $this->Html->script(array('jquery.min.js', '/bootstrap_3_3_6/js/bootstrap.min.js', 'magnific/jquery.magnific-popup.min', 
-//  'bootstrap-notify.min'
-));
-  
+  echo $this->Html->script(array(
+    'jquery.min.js', '/bootstrap_3_3_6/js/bootstrap.min.js', 'magnific/jquery.magnific-popup.min',
+    //  'bootstrap-notify.min'
+  ));
+
   echo $this->fetch('cssTop');
   echo $this->fetch('script');
 

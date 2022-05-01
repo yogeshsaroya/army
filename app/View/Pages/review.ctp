@@ -41,70 +41,14 @@ $iso = $country_list['CountryList']['iso2'];
 $euro_price = $WebSetting['WebSetting']['euro_price'];
 $import_duty = $vat = $shipping_discount = 0;
 if ( $region == 1 ){
-    $shipping_discount = $WebSetting['WebSetting']['shipping_discount_usa'];
-}
-elseif ( $region == 2 ){
-$import_duty = $WebSetting['WebSetting']['import_duty'];
-$vat = $WebSetting['WebSetting']['vat'];
-$shipping_discount = $WebSetting['WebSetting']['shipping_discount_europe'];
-}
-elseif ( $region == 3 ){
     $shipping_discount = $WebSetting['WebSetting']['shipping_discount'];
-}
-?>
+}?>
 <div class="row">
 <div class="ful-frm-chk-out border-head-form"> 
 <div class="col-md-4">
 <div class="fourth-payment-method">
 <h4  class="title-heads"><span class="fa fa-check reviews"></span>PAYMENT METHOD</h4>        
 <div class="col-sm-12 no_pad">
-<?php if( IS_CC == 1 && in_array($country_list['CountryList']['region'], [1]) ){?>
-<div class="form-box-up" id="is_cc">
-<div class="form-check">
-<label class="form-check-label">
-<input class="form-check-input pmt_radio" name="payment_by" id="cc_name" value="cc" type="radio" required="required">
-
-<span class="set-img-icon"><img src="<?php echo SITEURL;?>bootstrap_3_3_6/img/card.png">
-Credit Card <?php if(CC_FEE > 0){?> <span class="sfee"> ( <?php echo CC_FEE;?>% Handling Fee )</span><?php }?></span>
-</label></div>
- </div>
-<!---end of second-radio--->
-
-<div class="credit-optn bnk-trns-add bnk-trns-add _r_info" id="cc_info" style="display: none;">
-<div class="col-sm-12">
- 
-<div class="form-box-up"><div class="form-group"> <span class="set-img-icon"><img alt="" src="<?php echo SITEURL."image/ssl.png"?>"> This page is secured with SSL Encryption</span></div></div>
-   
-<div class="form-box-up"><div class="form-group"><label for="crdit-nm">Name on Card</label>
-<input class="form-control" name="data[cc][name]"  required="required" type="text" autocomplete="off"></div></div> 
-
-<div class="form-box-up"><div class="form-group"><label for="crdit-nm">Email Address</label>
-<input class="form-control" name="data[cc][email]"  required="required" type="text" autocomplete="off"></div></div>
-
-<div class="form-box-up"><div class="form-group"><label for="crdit-nm">Mobile Number</label>
-<input class="form-control" name="data[cc][phone]"  required="required" type="text" autocomplete="off"></div></div>
-
-
-<div class="form-box-up"><div class="form-group"><label for="crdit-nm">Card Number</label>
-<input class="form-control" name="data[cc][number]"  required="required" type="text" maxlength="16"  autocomplete="off"></div></div>
-   
-<div class="form-box-up"><div class="form-group"><label for="crdit-nm">Expiration Date</label>
-<div class="col-xs-6 pad-left"><?php echo $this->Form->month('cc.month', array('class'=>'form-control','required'=>true,'label'=>false,'empty' => 'Month'));?></div>
-
-<div class="col-xs-6 pad-right"><?php echo $this->Form->input('cc.year', array('class'=>'form-control','required'=>true,'label'=>false, 'type' => 'date', 'maxYear' => date('y', strtotime('+ 10 years')), 'minYear' => date('y'), 'dateFormat' => 'Y','orderYear' => 'asc', 'empty' => 'Year'));?> </div>
-<div class="clearfix"></div>     
-</div>
-
-<div class="form-box-up">
-<div class="form-group"><label for="crdit-nm">Card Verification Number</label>
-<div class="pin-cd"><input class="form-control" name="data[cc][ccv]"  required="required" type="password" maxlength="3"  autocomplete="off"></div>
-</div>
-</div>    
-</div>   
-</div>
-<div class="clearfix"></div>
-</div>
-<?php }?>
 <div class="form-group">
 <?php if( IS_PP == 1){?>
  <div class="form-box-up pamt_opt">
@@ -235,24 +179,9 @@ echo $mat_type; }?>
 
 <td class="a-center wid_2"><?php 
 if ($list['Product']['discount'] > 0) { 
-    //echo "<strike class='text-danger'>".currency($list['Product']['price'],$euro_price,$region)."</strike>";
     echo new_currency($list['Product']['price'],$p1,$euro_price,$region);
-
 }
 else{ echo currency($list['Product']['price'],$euro_price,$region); } ?></td>
-
-<?php /*?>
-<td class="a-center wid_2"><?php 
-if ($list['Product']['discount'] > 0) {
-    echo "<strike class='text-danger'>".currency($list['Product']['price'],$euro_price,$region)."</strike>";
-    
-}
-else{ echo currency($list['Product']['price'],$euro_price,$region); } ?></td>
-
-
-<td class="a-center wid_3"><?php echo $list['Product']['discount'];?>% <?php echo ( $list['Product']['discount'] >0 ? 'Off':null );?></td>
-<?php */?>
-
 <td class="a-right wid_4"><span class="cart-price"><span class="price"><?php echo currency($p1 * $list['Cart']['quantity'],$euro_price,$region); ?></span></span></td>
 </tr>
 <?php }?>
@@ -268,7 +197,7 @@ if ( $region == 3 && $is_cateback > 0 ){
     }
     else{ $shipping_cost =  $discount = 0; }
 }
-/*$warranty_amt = num_2($final_warr);*/
+
 $warranty_amt = 0;
 $net_total = ($total + $shipping_cost ) - $discount;  
 $duty_amt = num_2($net_total * $import_duty / 100);
