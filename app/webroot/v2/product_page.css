@@ -70,7 +70,6 @@ div#v2_product .pad60 {
 
 #v2_main .videoWrapper {
     position: relative;
-    padding-bottom: 56.25%;
     padding-top: 0;
     height: 0;
 }
@@ -267,6 +266,9 @@ ul.controls li {
 .cartBtn + .cartBtn {
     margin-top: 10px;
     width: 100%;
+}
+.txtBx br {
+    display: none;
 }
 
 .cartBtn:hover {
