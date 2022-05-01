@@ -1,8 +1,8 @@
+<?php if(!empty($pro_data)){?>
 <div class="add-bx-sel">
     <h2>Armytron Accessory</h2>
     <div class="col-md-9 no-pad">
         <div class="add-bx-drop-dwn">
-
             <div class="new-pro-drdwn">
                 <button class="" type="button" id="p_3">--- Armytron Accessory Selctions ---</button>
                 <ul class="" id="tuning_ul" style="display: none;">
@@ -45,8 +45,7 @@
             </div>
         </div>
     </div>
-
     <div class="clearfix"> </div>
 </div>
-
 <div class="productBx" id="tuning_pic_id"></div>
+<?php }?>

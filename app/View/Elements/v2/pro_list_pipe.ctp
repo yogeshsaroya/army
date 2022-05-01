@@ -1,3 +1,4 @@
+<?php if(!empty($pro_data)){?>
 <div class="add-bx-sel">
     <h2>HEADER / DOWNPIPES</h2>
     <div class="col-md-9 no-pad">
@@ -50,3 +51,4 @@
 </div>
 
 <div class="productBx" id="ecu_pic_id"></div>
+<?php }?>

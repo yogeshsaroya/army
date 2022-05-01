@@ -1,3 +1,4 @@
+<?php if(!empty($pro_data)){?>
 <div class="add-bx-sel">
     <h2>CAT-BACK VALVETRONIC EXHAUST </h2>
     <div class="col-md-9 no-pad">
@@ -59,3 +60,4 @@
 
 </div>
 
+<?php }?>
