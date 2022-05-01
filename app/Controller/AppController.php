@@ -17,7 +17,7 @@ class AppController extends Controller
 		$RstrictedCountry = $this->DATA->getrRstrictedCountry();
 		
 		$server_name = $_SERVER['SERVER_NAME'];
-		ec($server_name);die;
+		ec($_SERVER);die;
 
 		$co =  $this->Session->read('arm_co');
 		if (empty($co)) {
