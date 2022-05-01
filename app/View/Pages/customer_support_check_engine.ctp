@@ -1,4 +1,4 @@
-<?php echo $this->Html->css(["cs-css"], ['block' => 'css']); ?>
+<?php echo $this->Html->css(["cs-css"], ['block' => 'cssTop']); ?>
 <?php if (!empty($style)) { echo $style; } ?>
 
 <div class="customer-support-wrapper cs-damage-step1">

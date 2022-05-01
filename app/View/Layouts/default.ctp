@@ -67,7 +67,7 @@
 //  'bootstrap-notify.min'
 ));
   
-  echo $this->fetch('css');
+  echo $this->fetch('cssTop');
   echo $this->fetch('script');
 
   echo $this->Js->writeBuffer(array('catch' => TRUE));

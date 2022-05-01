@@ -1,5 +1,5 @@
 
-<?php echo $this->Html->css(["cs-css"], ['block' => 'css']); ?>
+<?php echo $this->Html->css(["cs-css"], ['block' => 'cssTop']); ?>
 
 <div class="customer-support-wrapper cs-damage-step3-2">
 

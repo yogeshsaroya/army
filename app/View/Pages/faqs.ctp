@@ -1,5 +1,5 @@
 <?php 
-echo $this->Html->css(array('responsive','custom'), ['block' => 'css']); 
+echo $this->Html->css(array('responsive','custom'), ['block' => 'cssTop']); 
 echo $this->Html->script(array('modules','theme'), ['block' => 'scriptBottom']);
 ?>
 <style>

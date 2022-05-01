@@ -1,4 +1,5 @@
-<?php echo $this->Html->css(["/v2/product_page.css?v=" . rand(5646, 65465)], ['block' => 'css']); ?>
+<?php echo $this->Html->css(["/v2/product_page.css?v=" . rand(5646, 65465)], ['block' => 'cssTop']); ?>
+
 <?php
 $imgArr = [];
 if (isset($slider) && !empty($slider)) {

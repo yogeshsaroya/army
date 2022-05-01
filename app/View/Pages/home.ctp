@@ -1,4 +1,4 @@
-<?php echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme'], ['block' => 'css']); ?>
+<?php echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme'], ['block' => 'cssTop']); ?>
 <div id="v2_home">
     <?php if (!empty($data)) { ?>
         <div id="home_slider" class="your-class homePg">
