@@ -4,7 +4,7 @@ class DATAComponent extends Component {
     
     public function getrRstrictedCountry(){
         $tbl = ClassRegistry::init('CountryList');
-        $data = $tbl->find('list',[ 'conditions'=>[ 'CountryList.region'=>5,'CountryList.status'=>1 ],'fields'=>['CountryList.iso2','CountryList.short_name'] ] );
+        $data = $tbl->find('list',[ 'conditions'=>[ 'CountryList.region'=>2,'CountryList.status'=>1 ],'fields'=>['CountryList.iso2','CountryList.short_name'] ] );
         return $data;
     }
     
