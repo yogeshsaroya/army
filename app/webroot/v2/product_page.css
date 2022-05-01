@@ -68,7 +68,7 @@ div#v2_product .pad60 {
     width: 100%;
 }
 
-#v2_main .videoWrapper {
+#v2_main .videoWrapperNw {
     position: relative;
     padding-top: 0;
     height: 0;
@@ -582,11 +582,13 @@ section#s4 {
         padding: 0;
     
     }
-    #v2_main #v2_product .row>div.col-sm-6 + .col-sm-6{
-        margin-left: auto;
-    }
-    #v2_main #v2_product .row>div.col-sm-6{
+      
+    #v2_main #v2_product .padMobile .row .col-sm-6{
         width: 49%;
+        margin-left: 0;;
+    }
+    #v2_main #v2_product .padMobile .row .col-sm-6 + .col-sm-6{
+        margin-left: 2%;
     }
 }
 @media (max-width: 991px){
