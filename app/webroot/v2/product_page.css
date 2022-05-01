@@ -5,7 +5,6 @@
 
 #v2_product .new-pro-drdwn ul {
     position: absolute;
-    top: 100%;
     left: 0;
     z-index: 1000;
     display: none;
