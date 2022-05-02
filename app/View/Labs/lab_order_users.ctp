@@ -33,11 +33,11 @@
 						<div class="box-body">
 <div class="row">
 <div class="box-body col-xs-12">
-<div class="col-xs-3"><?php echo $this->Form->input('order_status',array('options'=>$this->Lab->order_status(),'default'=>@$q['s'], 'empty'=>' --Select Order Status -- ','label'=>false,'class'=>'form-control'));?></div>
-<div class="col-xs-3"><?php echo $this->Form->input('payment_by',array('options'=>$this->Lab->payment_by(),'default'=>@$q['p'],'empty'=>' --Select Payment Type -- ','label'=>false,'class'=>'form-control'));?></div>
+<div class="col-xs-3"><?php echo $this->Form->input('order_status',array('options'=>$this->Lab->order_status(),'default'=>(isset($q['s'])? $q['s'] : null), 'empty'=>' --Select Order Status -- ','label'=>false,'class'=>'form-control'));?></div>
+<div class="col-xs-3"><?php echo $this->Form->input('payment_by',array('options'=>$this->Lab->payment_by(),'default'=>(isset($q['p'])? $q['p'] : null),'empty'=>' --Select Payment Type -- ','label'=>false,'class'=>'form-control'));?></div>
 <div class="col-xs-5">
 <div class="input-group input-group-sm">
-<input type="number" class="form-control" id="total" value="<?php echo @$q['t'];?>" placeholder="# Total"><span class="input-group-btn"> <button type="button" class="btn btn-info btn-flat" id="t_filter">Filter!</button> </span>
+<input type="number" class="form-control" id="total" value="<?php echo (isset($q['t'])? $q['t'] : null);?>" placeholder="# Total"><span class="input-group-btn"> <button type="button" class="btn btn-info btn-flat" id="t_filter">Filter!</button> </span>
               </div>
 </div>
 </div>

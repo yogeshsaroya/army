@@ -14,6 +14,7 @@ class PagesController extends AppController
 		AppController::beforeFilter();
 		$this->Auth->allow();
 		$this->guest_id = $this->Cookie->read('guest_id');
+		$this->is_price =  $this->Session->read('arm_co');
 	}
 
 	/* new pages */
@@ -357,42 +358,6 @@ class PagesController extends AppController
 		}
 	}
 
-	public function express_checkout_america($amt = null, $oid = null)
-	{
-		try {
-			$this->AmericaPaypal->amount = $amt;
-			$this->AmericaPaypal->currencyCode = 'USD';
-			$this->AmericaPaypal->returnUrl = Router::url(array('controller' => 'payments', 'action' => 'payment_successful_america'), true);
-			$this->AmericaPaypal->cancelUrl = Router::url(array('controller' => 'payments', 'action' => 'payment_cancelled_america'), true);
-			$this->AmericaPaypal->orderDesc = 'ARMYTRIX - Automotive Weaponized';
-			$this->AmericaPaypal->itemName = $oid;
-			$this->AmericaPaypal->quantity = 1;
-			return $this->AmericaPaypal->expressCheckout();
-		} catch (Exception $e) {
-			echo '<script>$("#_do_chk").prop("disabled",false); setTimeout(function(){ $("#preloader").hide(); }, 1000);</script>';
-			echo '<div class="alert alert-danger">' . $e->getMessage() . '</div>';
-			die;
-		}
-	}
-
-	public function express_checkout_europe($amt = null, $oid = null)
-	{
-		try {
-			$this->EuropePaypal->amount = $amt;
-			$this->EuropePaypal->currencyCode = 'EUR';
-			$this->EuropePaypal->returnUrl = Router::url(array('controller' => 'payments', 'action' => 'payment_successful_europe'), true);
-			$this->EuropePaypal->cancelUrl = Router::url(array('controller' => 'payments', 'action' => 'payment_cancelled_europe'), true);
-			$this->EuropePaypal->orderDesc = 'ARMYTRIX - Automotive Weaponized';
-			$this->EuropePaypal->itemName = $oid;
-			$this->EuropePaypal->quantity = 1;
-			return $this->EuropePaypal->expressCheckout();
-		} catch (Exception $e) {
-			echo '<script>$("#_do_chk").prop("disabled",false); setTimeout(function(){ $("#preloader").hide(); }, 1000);</script>';
-			echo '<div class="alert alert-danger">' . $e->getMessage() . '</div>';
-			die;
-		}
-	}
-
 	public function pro_checkout()
 	{
 		$this->autoRender = FALSE;
@@ -401,7 +366,7 @@ class PagesController extends AppController
 				$s = '<script>$("#_do_chk").prop("disabled",false); setTimeout(function(){ $("#preloader").hide(); }, 1000);</script>';
 				$ord = array();
 
-				if (!in_array($this->data['payment_by'], array('paypal', 'cc'))) {
+				if (!in_array($this->data['payment_by'], array('paypal'))) {
 					echo $s;
 					echo '<div class="alert alert-danger">Please select Payment method.</div>';
 					exit;
@@ -491,7 +456,7 @@ class PagesController extends AppController
 						echo '<div class="alert alert-success">Please wait while redirecting to paypal...</div>';
 						echo "<script>$('#_do_chk').remove(); setTimeout(function(){ window.location.href ='" . $url . "'; }, 500);</script>";
 						exit;
-					} elseif ($this->data['payment_by'] == 'cc') {
+					} else{
 						echo $s;
 						echo '<div class="alert alert-danger">Error. please try again</div>';
 						exit;
@@ -500,6 +465,30 @@ class PagesController extends AppController
 			}
 			exit;
 		}
+	}
+
+	public function inq()
+	{
+	}
+	public function cart()
+	{
+		$this->set('title_for_layout', 'Shopping Cart');
+		if(isset($this->is_price['RstrictedCountry']) && $this->is_price['RstrictedCountry'] == 1){
+			$c_data = $this->Cart->find('all', ['conditions' => ['Cart.guest_id'=>$this->guest_id]]);
+			$cart_id = [];
+			if (!empty($c_data)) {
+				foreach ($c_data as $al) {
+					if (in_array($al['Product']['type'], [1, 2, 3, 5])) {
+						$cart_id[] = $al['Cart']['id'];
+					} 
+				}
+				if(!empty($cart_id)){
+					$this->Cart->deleteAll ( ['Cart.id' => $cart_id],false );
+				}
+			}
+		}
+		$all_pro = $this->Cart->find('all', array('recursive' => 2,'conditions' => array('Cart.guest_id'=>$this->guest_id)));
+		$this->set(compact('all_pro'));
 	}
 
 	public function do_checkout()
@@ -515,14 +504,6 @@ class PagesController extends AppController
 		}
 	}
 
-	public function inq()
-	{
-	}
-	public function cart()
-	{
-		$this->set('title_for_layout', 'Shopping Cart');
-	}
-
 	public function check_out()
 	{
 		if ($this->RequestHandler->isAjax() && !empty($this->data)) {
@@ -535,8 +516,7 @@ class PagesController extends AppController
 			$country_list = $this->CountryList->find('first', ['conditions' => ['CountryList.id' => $this->request->data['Order']['country_list_id']]]);
 			$new_pid = $new_cart_dis = null;
 			if (isset($country_list['CountryList']['region']) && in_array($country_list['CountryList']['region'], [2])) {
-				$cart_dis = explode(',', $this->data['cid']);
-				$c_data = $this->Cart->find('all', array('conditions' => array('Cart.guest_id'=>$this->guest_id, 'Cart.id' => $cart_dis)));
+				$c_data = $this->Cart->find('all', array('conditions' => array('Cart.guest_id'=>$this->guest_id)));
 				if (!empty($c_data)) {
 					foreach ($c_data as $al) {
 						if (in_array($al['Product']['type'], [1, 2, 3, 5])) {
@@ -577,20 +557,17 @@ class PagesController extends AppController
 		$shipping = $this->Session->read('shipping');
 		$WebSetting = $this->WebSetting->find('first', array('WebSetting.id' => 1));
 		
-		if (empty($checkOutArr) && empty($shipping)) {
-			$this->render('no_country');
-		}
+		if (empty($checkOutArr) && empty($shipping)) { $this->render('no_country'); }
 		$country_list = $this->CountryList->find('first', ['conditions' => ['CountryList.id' => $shipping['Order']['country_list_id']]]);
-		if (empty($country_list)) {
-			$this->render('no_country');
-		}
+		if (empty($country_list)) { $this->render('no_country'); }
 		if (isset($country_list['CountryList']['region']) &&  isset($shipping['Order']['country_list_id']) && !empty($shipping['Order']['country_list_id'])) {
-			$cart_dis = explode(',', $shipping['cid']);
+			
 			if (in_array($country_list['CountryList']['region'], [1])) {
-				$all_pro = $this->Cart->find('all', array('recursive' => 2,'conditions' => array('Cart.guest_id'=>$this->guest_id,'Cart.id' => $cart_dis)));
-			} elseif ($country_list['CountryList']['region'] == 2) {
+				$all_pro = $this->Cart->find('all', array('recursive' => 2,'conditions' => array('Cart.guest_id'=>$this->guest_id)));
+			} 
+			elseif ($country_list['CountryList']['region'] == 2) {
 				/* Remove other product if no-price */
-				$c_data = $this->Cart->find('all', array('conditions' => array('Cart.guest_id'=>$this->guest_id,'Cart.id' => $cart_dis)));
+				$c_data = $this->Cart->find('all', array('conditions' => array('Cart.guest_id'=>$this->guest_id)));
 				if (!empty($c_data)) {
 					foreach ($c_data as $al) {
 						if (in_array($al['Product']['type'], [1, 2, 3, 5])) {
@@ -605,13 +582,9 @@ class PagesController extends AppController
 				$shipping['cid'] = $shipping['pid'] = null;
 				if (!empty($new_cart_dis)) {
 					$shipping['cid'] = implode(',', $new_cart_dis);
-					$all_pro = $this->Cart->find('all', array('recursive' => 2,'conditions' => array('Cart.guest_id'=>$this->guest_id,'Cart.id' => $cart_dis)));
-				} else {
-					$this->render('no_country');
-				}
-				if (!empty($new_pid)) {
-					$shipping['pid'] = implode(',', $new_pid);
-				}
+					$all_pro = $this->Cart->find('all', array('recursive' => 2,'conditions' => array('Cart.guest_id'=>$this->guest_id)));
+				} else { $this->render('no_country'); }
+				if (!empty($new_pid)) { $shipping['pid'] = implode(',', $new_pid); }
 				$this->Session->write('shipping', $shipping);
 			} else {
 				$this->render('no_country');
@@ -619,61 +592,7 @@ class PagesController extends AppController
 		} else {
 			$this->render('no_country');
 		}
-		ec($all_pro);
-		die;
 		$this->set(compact('WebSetting', 'checkOutArr', 'shipping', 'country_list', 'all_pro'));
-	}
-
-
-
-	public function _cc_payment_successful($id = null, $t_info = null)
-	{
-		$this->autoRender = false;
-		if (!empty($id)) {
-			$getToken = $this->DATA->getToken(16);
-			$this->Order->bindModel(array('belongsTo' => array('User', 'World' => array('foreignKey' => 'shipping_country', 'fields' => array('id', 'name'))), 'hasMany' => array('OrderItem')));
-			$this->OrderItem->bindModel(array('belongsTo' => array('Product')));
-			$data = $this->Order->find('first', array('recursive' => 2, 'conditions' => array('Order.order_number' => $id, 'Order.transaction_id IS NULL')));
-			$list = null;
-			if (!empty($data['OrderItem'])) {
-				$n = 1;
-				foreach ($data['OrderItem'] as $o) {
-					$list .= $n . ": " . $o['Product']['title'];
-					if (!empty($o['Product']['part'])) {
-						$list .= " - " . $o['Product']['part'];
-					}
-					if (!empty($o['Product']['material'])) {
-						$list .= " (" . uc($o['Product']['material']) . ") ";
-					}
-					$list .= "<br>";
-					$n++;
-				}
-			}
-			if (!empty($data)) {
-				$pa = array(
-					'ORDER_NUMBER' => $data['Order']['order_number'], 'NAME' => $data['User']['first_name'],
-					'TOTAL_PRODUCT' => count($data['OrderItem']), 'SUB_TOTAL' => "$" . $data['Order']['total_amount'],
-					'SHIPPING_FEE' => "$" . $data['Order']['shipping_cost'], 'SERVICE_FEE' => "$" . $data['Order']['total_service_fee'],
-					'DISCOUNT' => "$" . $data['Order']['discount'], 'PAYMENT_BY' => 'cc', 'GT' => "$" . $data['Order']['grand_total']
-				);
-				if (!empty($data['Order']['note'])) {
-					$pa['MESSAGE'] =  "Message : " . $data['Order']['note'];
-				} else {
-					$pa['MESSAGE'] =  null;
-				}
-				if ($data['User']['role'] == 3) {
-					$pa['DEALER_DISCOUNT'] = "Dealer Discount : &" . $data['Order']['dealer_discount'];
-				} else {
-					$pa['DEALER_DISCOUNT']  = null;
-				}
-				$pa['PRODUCT'] = $list;
-				$pa['COUNTRY'] = @$data['World']['name'];
-				$arr = array('id' => $data['Order']['id'], 'transaction_id' => $getToken, 'transaction_info' => $t_info, 'payment_status' => 1, 'order_status_id' => 1);
-				$this->Order->save($arr);
-				$this->DATA->AppMail($data['User']['email'], 'OrderPlaced', $pa, $dateTime = DATE);
-				$this->DATA->AppMail(WEBMAIL, 'NewOrderPlaced', $pa, $dateTime = DATE);
-			}
-		}
 	}
 
 	public function order($id = null, $t = null)

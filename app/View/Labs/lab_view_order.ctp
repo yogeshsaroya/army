@@ -6,6 +6,7 @@
 
         <!-- Main content -->
         <section class="invoice">
+          
           <!-- title row -->
           <div class="row">
             <div class="col-xs-12">
@@ -95,6 +96,13 @@ foreach ($d['OrderItem'] as $oList){ ?>
             elseif($d['Order']['payment_by'] == 'cc'){ echo "Credit Card";}
             elseif($d['Order']['payment_by'] == 'inquiry'){ echo "Inquiry";}
             ?></b></p>
+
+<p class="lead">Payment Status: <b>
+  <?php if($d['Order']['payment_status'] == 1){ echo "<b class='text-success'>Success</b>";}
+  else{ echo "<b class='text-danger'>Failed</b>";}?></b></p>
+
+
+
 <?php if ( !empty($d['Order']['transaction_id']) ){?><p class="lead">Transaction ID:<b> <?php echo $d['Order']['transaction_id'];?></b></p><?php }?>            
 <p class="lead">VIN Number:<b> <?php echo strtoupper($d['Order']['vin_number']);?></b></p>            
 <p class="lead">Customer Message:</p><p class="text-muted well well-sm no-shadow" style="margin-top: 10px;"><?php echo $d['Order']['note'];?></p>
@@ -161,7 +169,7 @@ foreach ($d['OrderHistory'] as $hList){?>
 
 <div class="row">
 <div class="col-md-8">
-
+<?php if($d['Order']['payment_status'] == 1){?>
 <div class="box box-info">
 <div class="box-header with-border"><h3 class="box-title">Add Order Status</h3></div>
 <div class="alert alert-info"><strong>Alert</strong> On shipped, Quantity will be decreased. </div>
@@ -207,6 +215,7 @@ if ( !empty($arr) ){
 </div>
 <?php echo $this->Form->end();?>
 </div>
+<?php }?>
 </div>
 </div>
 <?php }?>

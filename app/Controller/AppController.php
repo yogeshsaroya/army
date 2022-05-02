@@ -83,20 +83,17 @@ class AppController extends Controller
 			$this->set('IsMobile', 'yes');
 		}
 		$this->set('LabArr', $LabArr);
-		/* if user is not log in */
-		$tid = null;
-		$tid = $this->Cookie->read('guest_id');
-		if (empty($tid)) {
+		$guest_id = $this->Cookie->read('guest_id');
+		if (empty($guest_id)) {
 			$tid_time = strtotime(date("Y-m-d H:i:s."));
 			$this->Cookie->write('guest_id', $tid_time, false, '60 hour');
 		}
-		$cnd = $cnd1 = $getAll = array();
-		if (!empty($tid)) {
-			$cnd = array('Cart.guest_id' => $tid, 'Cart.type' => 1);
-		}
+		
+		$cnd = $getAll = [];
+		if (!empty($guest_id)) { $cnd = array('Cart.guest_id' => $guest_id); }
 
-		if (isset($co['RstrictedCountry']) && $co['RstrictedCountry'] == 1) {
-			$dIds = array();
+		if (isset($co['RstrictedCountry']) && $co['RstrictedCountry'] == 1 && !empty($cnd)) {
+			$dIds = [];
 			$rAll = $this->Cart->find('all', array('recursive' => 2, 'conditions' => $cnd));
 			if (!empty($rAll)) {
 				foreach ($rAll as $rlist) {
@@ -105,14 +102,15 @@ class AppController extends Controller
 					}
 				}
 				if (!empty($dIds)) {
-					/* $this->Cart->deleteAll( array ( 'Cart.id IN' => $dIds), false );  */
+					 $this->Cart->deleteAll( ['Cart.id' => $dIds], false );  
 				}
 			}
 		}
 		if (!empty($cnd)) {
 			$getAll = $this->Cart->find('all', array('recursive' => 2, 'conditions' => $cnd));
 		}
-		$this->set(compact('getAll'));
+		$this->set(compact('getAll','guest_id'));
+		
 	}
 
 

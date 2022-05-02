@@ -25,6 +25,7 @@ td.a-right { width:auto;}
 .table-bordered { border: 0px solid #eee;}
 
 }
+#check-out-pg .title-heads{font-size: 24px;}
 
 </style>
 
@@ -46,7 +47,7 @@ if ( $region == 1 ){
 <div class="ful-frm-chk-out border-head-form"> 
 <div class="col-md-4">
 <div class="fourth-payment-method">
-<h4  class="title-heads"><span class="fa fa-check reviews"></span>PAYMENT METHOD</h4>        
+<h4  class="title-heads">PAYMENT METHOD</h4>        
 <div class="col-sm-12 no_pad">
 <div class="form-group">
 <?php if( IS_PP == 1){?>
@@ -69,7 +70,7 @@ if ( $region == 1 ){
 <!--end of second box--->
    <div class="col-md-8">
      <div class="fifth-order-review">        
-      <h4  class="title-heads"><span class="fa fa-check reviews"></span>ORDER REVIEW</h4>
+      <h4  class="title-heads">ORDER REVIEW</h4>
        <div class="prodct-rvew">
        <table class="aw-onestepcheckout-cart-table table table-bordered">
 <colgroup><col>
