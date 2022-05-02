@@ -3,7 +3,7 @@ App::uses('AppController', 'Controller');
 class PagesController extends AppController
 {
 	public $uses = array('User', 'Brand', 'Model', 'Motor', 'Product', 'ExhaustBrand', 'ExhaustModel', 'ExhaustProduct', 'Library', 'ItemDetail', 'QualityDetail', 'Cart', 'PromoCode', 'WebSetting', 'World', 'Shipping', 'Address', 'Order', 'OrderItem', 'OrderHistory', 'Language', 'String', 'Translation', 'CountryList');
-	public $components = array('Auth', 'Cookie', 'Session', 'RequestHandler', 'DATA', 'Paypal', 'AmericaPaypal', 'EuropePaypal');
+	public $components = array('Auth', 'Cookie', 'Session', 'RequestHandler', 'DATA', 'Paypal');
 	public $meta = array(
 		'des' => 'Following the creed of providing the most sound, more power and true versatility, ARMYTRIX offer high-end performance valvetronic exhaust systems, ecu tuning and power box that are second to none. We foster a culture of innovation. ARMYTRIX not only creates products, ARMYTRIX creates experiences.',
 		'keys' => 'cat-back, sports exhaust, muffler, silencer, armytrix systems manifold, us, ferrari, lamborghini, maserati, porsche, benz, bmw, volkswagen, mclaren, mini cooper, audi, nissan gt-r r35, sport cat, cat, manifold, sports manifold, test pipes'
@@ -171,48 +171,6 @@ class PagesController extends AppController
 			echo '<script>grecaptcha.reset();</script>';
 			exit;
 		}
-	}
-
-	public function pmt_curl($output_transaction = null)
-	{
-		die;
-		$process_result = null;
-		if (!empty($output_transaction)) {
-			ob_start();
-			$ch = curl_init('https://gomypay.asia/Shopping/creditpay.asp');
-			curl_setopt($ch, CURLOPT_VERBOSE, 1);
-			curl_setopt($ch, CURLOPT_POST, 1);
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $output_transaction);
-			curl_exec($ch);
-			curl_close($ch);
-			$process_result = ob_get_contents();
-			ob_end_clean();
-		}
-		return $process_result;
-	}
-
-	public function cc()
-	{
-		$this->autoRender = false;
-		$output_transaction = 'e_orderno=1478064324&e_url=your response URL&e_no=TEST_AD2&e_storename=Wecan&e_mode=12&E_Lang=UTF-8&e_Cur=NT&e_money=35&e_cardno=MTIzMDkxODQwMjQwMDcxNDQ3MjcwMzg=&str_check=e25f9396da9aa08c33c39d0aca5b39cd&e_name=wecan&e_telm=0989009457&e_info=service';
-		ec($output_transaction);
-		$process_result = $this->pmt_curl($output_transaction);
-		$process_result = json_decode($process_result, true);
-		ec($process_result);
-		die;
-	}
-
-	public function paypal_cc()
-	{
-		$this->autoRender = false;
-		$this->AmericaPaypal->amount = "01.00";
-		$this->AmericaPaypal->currencyCode = 'USD';
-		$this->AmericaPaypal->creditCardType = 'Visa';
-		$this->AmericaPaypal->creditCardNumber = '5496733576507707';
-		$this->AmericaPaypal->creditCardExpires = '012020';
-		$this->AmericaPaypal->creditCardCvv = '655';
-		$a = $this->AmericaPaypal->doDirectPayment();
-		ec($a);
 	}
 
 

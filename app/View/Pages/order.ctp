@@ -1,9 +1,6 @@
 <?php if(isset($id) && $id == 'success' ){
-    echo $this->html->css(['od']);
-    $order_status = $this->Lab->order_status();
-
-    if ( in_array($data['Order']['region'], [1] ) ){
-    ?>
+    echo $this->html->css(['od'],['block' => 'cssTop']);
+    $order_status = $this->Lab->order_status(); ?>
 <!-- Event snippet for Website sale conversion page -->
 <script>
   gtag('event', 'conversion', {
@@ -120,34 +117,7 @@ if ( isset($data['OrderItem']) && !empty($data['OrderItem']) ){
 	</div>
 
 </div>
-<?php }elseif ($data['Order']['region'] == 2){?>
-<div class="invoice-page">
-<div class="container">
-<div class="customer-details sec-pad text-center">
-<br>
-	Unfortunately, your region is not eligible for online orders, we have forwarded your information to our regional dealer, they will get back to you shortly!
-</div>
-
-<div class="product-dlts-box sec-pad">
-<hr></div>
-<div class="invoice-total-box sec-pad">
-<div class="row">
-<div class="col-sm-6"></div>
-
-</div>
-</div>
-		<!-- end of total box -->
-
-		
-
-	</div>
-	<!-- end of container -->
-
-	
-
-</div>
-
-<?php } }
+<?php  }
 elseif(isset($id) && $id == 'fail' ){?>
 
 <div class="col-md-12" id="msg_page">
