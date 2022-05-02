@@ -712,8 +712,8 @@ section#s4 {
     width: 100%;
     margin-top: 0;
 }
-#v2_product .col-50.flexDirection .col-50 {
-    margin-top: 60px;
+#v2_product .col-50.flexDirection  {
+    margin-top: 30px;
 }
 #v2_product .add-bx-sel > .col-md-9.no-pad {
     width: calc(100% - 110px);
@@ -732,6 +732,12 @@ section#s4 {
 }
 section#s3  , section#s2a{
     padding: 0;
+}
+#v2_product .col-50 .leftImg {
+    margin-right: 0;
+}
+#v2_product .col-50 .rightImg {
+    margin-left: 0;
 }
  
 }
