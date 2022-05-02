@@ -496,13 +496,15 @@ section#s4 {
     margin-left: -10px;
     margin-right: -10px;
 }
-
 #v2_product .new-pro-drdwn>ul>li {
     margin: 0 0 10px;
     padding: 0 0 10px;
     border-bottom: 2px solid #d9d5d5;
 }
+#v2_product .new-pro-drdwn>ul>li:hover {
+    background: #66c184 
 
+}
 #v2_product .new-pro-drdwn>ul>li:last-child {
     border: 0;
 }
@@ -540,13 +542,6 @@ section#s4 {
 #v2_product .new-pro-drdwn .part_m h4.titanium,
 .titanium  {
     background: #85ace7 !important;
-}
-
-#v2_product .new-pro-drdwn .part_m h4.titanium:hover,
-.titanium:hover ,
-#v2_product .new-pro-drdwn .part_m h4.stainless_steel:hover,
-.stainless_steel:hover , #v2_product .new-pro-drdwn .part_m h4:hover{
-    background: #38d430 !important;
 }
 #v2_product .new-pro-drdwn>ul>li a .clearfix {
     width: 100%;
@@ -633,6 +628,11 @@ section#s4 {
     font-size: 20px;
     line-height: 1.5;
     margin: 3rem 0;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+}
+#v2_main #s2a .smll-txt {
+    font-size: 100%;
 }
 #v2_product {
     max-width: 1150px;
