@@ -535,4 +535,25 @@ class CronsController extends AppController {
             }
         } else { echo "No email <hr> thank you  <br>"; }
     }
+
+    public function rm_tt(){
+        $data = $this->ItemDetail->find('all',['conditions'=>['ItemDetail.tt_slider !='=>'']]);
+        if(!empty($data)){
+            $tab_arr = [];
+            foreach($data as $list){
+                $tt_slider = explode(',', $list['ItemDetail']['tt_slider']);
+                $slider = explode(',', $list['ItemDetail']['slider']);
+                $arr = array_unique ( array_merge($slider,$tt_slider) );
+                $tab_arr[] = ['id'=>$list['ItemDetail']['id'],'slider'=>implode(',',$arr)];
+            }
+            if(!empty($tab_arr)){
+                //ec($tab_arr);
+                $this->ItemDetail->saveAll($tab_arr);
+                ec("Slider updated");
+            }
+            
+        }
+    }
+
+
 }
