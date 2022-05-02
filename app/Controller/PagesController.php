@@ -70,35 +70,25 @@ class PagesController extends AppController
 		);
 		$data = $this->ItemDetail->find('first', array('recursive' => 2, 'conditions' => array('ItemDetail.url' => $id, 'ItemDetail.status' => 1)));
 		if (!empty($data)) {
-			$Adata = $data;
-			$item_detail_id = $data['ItemDetail']['id'];
-
-			$cat_back_ids = explode(',', $Adata['ItemDetail']['cat_back_ids']);
-			$catalytic_ids = explode(',', $Adata['ItemDetail']['catalytic_ids']);
-			$accessory_ids = explode(',', $Adata['ItemDetail']['accessory_ids']);
+			$cat_back_ids = explode(',', $data['ItemDetail']['cat_back_ids']);
+			$catalytic_ids = explode(',', $data['ItemDetail']['catalytic_ids']);
+			$accessory_ids = explode(',', $data['ItemDetail']['accessory_ids']);
 			$cat_back = $this->Product->find('all', array(/* 'recursive'=>-1, */'conditions' => array('Product.id' => $cat_back_ids, 'Product.status' => 1)));
 			$catalytic = $this->Product->find('all', array(/* 'recursive'=>-1, */'conditions' => array('Product.id' => $catalytic_ids, 'Product.status' => 1)));
 			$accessory = $this->Product->find('all', array(/* 'recursive'=>-1, */'conditions' => array('Product.id' => $accessory_ids, 'Product.status' => 1)));
 
-			$meta_title = $data['ItemDetail']['meta_title'];
-			$this->set('title_for_layout', $meta_title);
+			$this->set('title_for_layout', $data['ItemDetail']['meta_title']);
 			$page_meta = array('des' => $data['ItemDetail']['meta_description'], 'key' => $data['ItemDetail']['meta_keywords']);
 
 			$sArr = explode(',', trim($data['ItemDetail']['slider']));
-			$sArr1 = explode(',', trim($data['ItemDetail']['tt_slider']));
-			if (!empty($sArr) && isset($sArr[0]) && !empty($sArr[0])) {
-				$sliderSS = $this->Library->find('all', array('conditions' => array('Library.id' => $sArr), 'order' => ['Library.pos' => 'ASC']/* 'order'=>array('FIELD(Library.id,' . $data['ItemDetail']['slider'] . ')') */));
+			if (isset($sArr[0]) && !empty($sArr[0])) {
+				$slider = $this->Library->find('all', array('conditions' => array('Library.id' => $sArr), 'order' => ['Library.pos' => 'ASC']/* 'order'=>array('FIELD(Library.id,' . $data['ItemDetail']['slider'] . ')') */));
 			}
-			if (!empty($sArr1) && isset($sArr1[0]) && !empty($sArr1[0])) {
-				$slidersTT = $this->Library->find('all', array('conditions' => array('Library.id' => $sArr1), 'order' => ['Library.pos' => 'ASC']));
-			}
-			$slider = array_merge($sliderSS, $slidersTT);
 			$gArr = explode(',', $data['ItemDetail']['gallery']);
-			$gallery = $this->Library->find('all', array('conditions' => array('Library.id' => $gArr), 'limit' => 5, 'order' => ['Library.pos' => 'ASC']));
-			$this->set(compact('page_meta', 'data', 'slider', 'gallery', 'cat_back', 'catalytic', 'accessory'));
-			if (!empty($type)) {
-				$this->render('n_product');
+			if (isset($gArr[0]) && !empty($gArr[0])) {
+				$gallery = $this->Library->find('all', array('conditions' => array('Library.id' => $gArr), 'limit' => 5, 'order' => ['Library.pos' => 'ASC']));
 			}
+			$this->set(compact('page_meta', 'data', 'slider', 'gallery', 'cat_back', 'catalytic', 'accessory'));
 		} else {
 			$this->layout = '404';
 		}
