@@ -491,11 +491,6 @@ section#s4 {
     padding-right: 15px;
 }
 
-#v2_main #v2_product .row {
-    margin-left: -10px;
-    margin-right: -10px;
-}
-
 #v2_product .new-pro-drdwn>ul>li {
     border-bottom: 1px solid #d9d5d5;
 }
@@ -646,6 +641,43 @@ section#s4 {
     margin: auto;
 }
 
+#v2_product .posAbsolute{
+    position: absolute;
+    top: 50%;
+    left: 6%;
+    right: 0;
+    z-index: 1;
+    transform: translateY(-50%);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 600px;
+    margin: auto;
+}
+}
+#v2_product #slideshow2_thumbs li > img{
+    max-width: 60px;
+}
+#v2_product .posAbsolute .head-arm{
+    font-size: 40px;
+    font-weight: bold;
+}
+#v2_product #slideshow2_thumbs{
+    margin-top: 20px;
+}
+#v2_product #slideshow2_thumbs li img {
+    max-width: 60px;
+    margin-bottom: 5px;
+}
+#v2_product #slideshow2_thumbs li{
+    padding: 0;
+    color: #000;
+}
+#v2_product #slideshow2_thumbs li:nth-child(2){
+    padding: 0 30px;
+}
+
 @media (min-width: 768px) {
     .flexDirection {
         flex-direction: column-reverse;
@@ -771,6 +803,9 @@ section#s4 {
         top: 10%;
         left: 0;
     }
+    #v2_product {
+        max-width: 767px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -848,6 +883,14 @@ section#s4 {
     #v2_main #s3 h4.clr-white {
         font-size: 14px;
     }
+    #v2_product .posAbsolute {
+        position: static;
+        transform: none;
+        margin-bottom: 30px;
+    }
+    #v2_product .posAbsolute .head-arm {
+        font-size: 35px;
+    }
 }
 
 @media (max-width: 580px) {
@@ -869,13 +912,16 @@ section#s4 {
         left: 8%;
     }
     #v2_main #s2a h2.clr-white {
-        font-size: 20px;
+        font-size: 16px;
     }
     #v2_main #s2a h4.clr-white,
     #v2_main #s3 h4.clr-white {
         font-size: 12px;
         line-height: 1.5;
-        margin: 1.5rem 0;
+        margin: 1.2rem 0;
+    }
+    #v2_main #s2a h4.clr-white{
+        font-size: 10px;
     }
     #v2_main #s3 h2.clr-white {
         font-size: 24px;
@@ -883,5 +929,16 @@ section#s4 {
     .s3-sec .textMdl,
     #s18 .mdlTx {
         left: 2%;
+    }
+    #v2_main #s2a .smll-txt {
+        font-size: 80%;
+    }
+    #v2_main #v2_product .abst_head.max-700 {
+        max-width: 360px;
+    }
+}
+@media (max-width: 420px){
+    #v2_main #v2_product .abst_head.max-700 {
+        max-width: 250px;
     }
 }

@@ -144,7 +144,18 @@ if (isset($data1) && !empty($data1)) {
     <div class="pad15">
       <h2> ARMYTRIX VALVE CONTROL TECHNOLOGY</h2>
     </div>
-    <div class="mt-3 mb-2">
+    <div class="mt-3 mb-2 posRltv">
+    <div class="models_switch posAbsolute">
+        <div class="page-titles"><h3 class="head-arm">3 Modes Switch</h3></div>
+        <div class="mid-sec ">
+          <ul id="slideshow2_thumbs" class="desoslide-thumbs-horizontal list-inline text-center">
+            <li><img loading="lazy" src="<?php echo SITEURL; ?>/v_4/images/mouse-icon1-02.png" alt="" /><br>Smart Mode</li>
+            <li class="color_green">
+              <a href="<?php echo SITEURL; ?>v_4/images/mouse-hover-b2.jpg"><img loading="lazy" src="<?php echo SITEURL; ?>v_4/images/mouse-icon1-hover.png" alt="" id="menuImg"></a><br>Neighbor Mode</li>
+            <li class="color_green"><a href="<?php echo SITEURL; ?>v_4/images/mouse-hover-b1.jpg"><img loading="lazy" src="<?php echo SITEURL; ?>v_4/images/mouse-icon3.png" alt="" id="menuImg1"></a><br> Beast Mode</li>
+          </ul>
+        </div>
+      </div>
       <img src="<?php echo SITEURL; ?>v2/img/mouse-hover-b1.jpg" alt="" loading="lazy" class="img-wd-100" />
     </div>
     <div class="text-left">
