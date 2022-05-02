@@ -1,5 +1,5 @@
 <?php if(!empty($pro_data)){?>
-<div class="add-bx-sel">
+<div class="add-bx-sel <?php echo ($restricted == 2 ? "w_h":"w_f"); ?>">
     <h2>CAT-BACK VALVETRONIC EXHAUST </h2>
     <div class="<?php echo ($restricted == 2 ? "col-md-9":"col-md-12"); ?> no-pad">
         <div class="add-bx-drop-dwn">
