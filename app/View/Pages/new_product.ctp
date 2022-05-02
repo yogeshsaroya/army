@@ -172,7 +172,7 @@ if (isset($data1) && !empty($data1)) {
     <div class="page_container" id="pro_4">
       <h2 class="text-center">ARMYTRIX APP SMART ASSISTANT</h2>
       <p class="text-left">The mobile APP of ARMYTRIX can connect to the OBDII device via Bluetooth, and be used to as a remote controller to easily control valve switch and provide you with real-time monitoring of variuos values of your car, such as rotate speed, speed, fuel, etc. The rpm value in Auto mode can be set to open valves.</p>
-      <div class="row mt-3">
+      <div class="row mt-3 mobile50">
         <div class="col-sm-3 text-center">
           <img src="https://res.cloudinary.com/armytrix/image/upload/v1651403044/product/product-app-1_sgfbbv.webp" loading="lazy" alt="App" />
         </div>

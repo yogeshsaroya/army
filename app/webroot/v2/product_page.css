@@ -393,7 +393,7 @@ ul.controls.noger-cont li img {
 
 div#v2_product .gray-bg1 {
     background: #949dac;
-    padding: 50px;
+    padding: 50px 10px;
 }
 
 .clr-white {
@@ -477,6 +477,10 @@ section#s4 {
     max-height: 250px;
     overflow-y: auto;
     background: #fff;
+    min-width: 350px;
+}
+.card-btn li span{
+    padding-right: 15px;
 }
 #v2_main .#v2_product .row {
     margin-left: -10px;
@@ -618,9 +622,132 @@ section#s4 {
         margin-left: 0 !important;
     }
 }
-@media (max-width: 991px){
-    .add-bx-snap {
-        padding-left: 0;
-        margin-top: 10px;
+@media (max-width: 1149px){
+    #v2_product {
+        max-width: 990px;
+        margin: auto;
     }
+}
+@media (max-width: 991px){
+    #v2_product .add-bx-sel {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .mt-50 {
+        margin-top: 6rem;
+    }
+    .performedwrap h2{
+        padding-bottom: 0;
+        margin-bottom: 15px;
+    }
+    #v2_main #v2_product h2,
+    #v2_main #v2_product p,
+    #v2_main #v2_product h4,
+    #v2_main #v2_product .pad15  ,
+    #v2_main #v2_product .padMobile{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    #v2_main #v2_product .padMobile h2 ,     #v2_main #v2_product .padMobile p{
+        padding-left: 0;
+        padding-right: 0;
+        
+    }
+    #v2_main #v2_product .abst_head.max-700{
+        left: 2%;
+    }
+    .s3-sec .textMdl , #s18 .mdlTx {
+        left: 5%;
+    }
+    #s8 h5 {
+        font-size: 19px;
+        font-family: 'Oswald', sans-serif;
+        padding: 10px;
+    }
+    div#v2_product .row.spaceCol h2 {
+        font-size: 20px;
+    }
+    .card-btn img {
+        max-height: 40px;
+    }
+    #v2_product .col-50.flexDirection .pad15 {
+        padding: 0;
+        margin-left: 15%;
+    }
+    #v2_product .col-50 .rightImg {
+        margin-left: -50px;
+    }
+    #v2_product .col-50 .leftImg {
+        margin-right: -50px;
+    }
+    .leftTop {
+        transform: none;
+        top: 10%;
+        left: 0;
+    }
+}
+@media (max-width: 767px){
+    #v2_main #v2_product .row>div {
+        width: 100%;
+    }
+    #v2_main #v2_product .mobile50{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #v2_main #v2_product .mobile50 .col-sm-3{
+        width: 50%;
+        margin-bottom: 20px;
+    }
+    #v2_product .col-50.flexDirection .pad15 {
+        padding: 0;
+        margin-left: 0;
+        margin-top: 15px;
+    }
+    #v2_product .col-50 {
+        width: 100%;
+        margin-top: 0;
+    }
+    #v2_product .col-50 {
+    width: 100%;
+    margin-top: 0;
+}
+#v2_product .col-50.flexDirection .col-50 {
+    margin-top: 60px;
+}
+#v2_product .add-bx-sel > .col-md-9.no-pad {
+    width: calc(100% - 110px);
+}
+#v2_product .add-bx-sel > .col-md-3 {
+    width: 110px;
+}
+#v2_product .input-number, #v2_product .snp-btn{
+    padding: 10px;
+}
+.mt-50 {
+    margin-top: 4rem;
+}
+.card-btn {
+    margin-top: 20px;
+}
+section#s3  , section#s2a{
+    padding: 0;
+}
+ 
+}
+@media (max-width: 580px){
+    #v2_product .box-squre {
+        max-width: 300px;
+        left: 10px;
+        top: 0;
+        margin: 0;
+    }
+    #s8 h5 {
+        font-size: 14px;
+        padding: 5px;
+    }
+    .bottomCenter {
+        bottom: 5%;
+    }
+
 }
