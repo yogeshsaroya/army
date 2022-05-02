@@ -260,8 +260,10 @@ if (isset($data1) && !empty($data1)) {
     <div class="page_container fullmxWd text-center mt-50" id="pro_12">
       <h2>CRYSTALLIZATION OF TECHNOLOGY AND ART</h2>
       <p>Multiple refined mechanical polishing contributes to craftsmanship level surface brightness.</p>
-
+     <div class="posRltv">
+     <h4 class="mdlTx topDeepLeft">TITANIUM SERIES</h4>
       <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865194/product/cristallization_img_m95rzj.webp" alt="" loading="lazy" class="img-wd-100 mt-3">
+    </div>
     </div>
     <div class="page_container fullmxWd posRltv" id="pro_13">
       <h4 class="mdlTx leftTop">STAINLESS STEEL SERIES</h4>
