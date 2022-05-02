@@ -3,7 +3,6 @@ echo $this->Html->css(array('checkout'));
 echo $this->html->script(array('jquery.form.min','/v/formValidation.min','/v/bootstrap.min'));
 $note = null;
 if(isset($checkOutArr['note'])){ $note = $checkOutArr['note']; }
-$getCountry = $this->Lab->getCountry();
 ?>
 <div id="preloader" style="display: none"> <div id="status">&nbsp;</div> </div>
 <style>
@@ -32,7 +31,7 @@ td.a-right { width:auto;}
 <div class="main_wrapper review_page" id="check-out-pg">
 <div class="row"> <div class="col-sm-12 main-heads"><h1>Armytrix - Checkout</h1><h3>Please enter your details below to complete your purchase.</h3></div>
 <div class="clearfix"></div></div>
-<?php if(isset($getAll) && !empty($getAll)){?>
+<?php if(isset($all_pro) && !empty($all_pro)){?>
 <div id="app_error" style="min-height: 30px"></div>
 <?php echo $this->Form->create(null,array('id'=>'reFrm','url' => array('controller' => 'pages', 'action' => 'pro_checkout')));
 $region = $country_list['CountryList']['region'];
@@ -95,7 +94,7 @@ $total = $is_cateback = 0;
 $scost = $cids = $pro_id = array();
 $accessory = $a_downpipe = $a_catback = $final_warr = 0;
 
-foreach ($getAll as $alist){
+foreach ($all_pro as $alist){
     if($alist['Product']['type'] == 4 && $alist['Product']['id'] != 97 ){ $scost[5][] = $alist['Cart']['quantity']; }
     elseif($alist['Product']['type'] == 4 && $alist['Product']['id'] == 97 ){ $scost[4][] = $alist['Cart']['quantity']; }
     
@@ -106,11 +105,11 @@ foreach ($getAll as $alist){
 
 /* Only Downpipe */
 if( $a_downpipe > 0 && $a_catback == 0 ){
-    foreach ($getAll as $alist){ if($alist['Product']['type'] == 3 ){ $final_warr = $final_warr + num_2( ($alist['Product']['price'] * 10 /100) * $alist['Cart']['quantity'] ); } }
+    foreach ($all_pro as $alist){ if($alist['Product']['type'] == 3 ){ $final_warr = $final_warr + num_2( ($alist['Product']['price'] * 10 /100) * $alist['Cart']['quantity'] ); } }
 }
 /* Only cat-back */
 elseif( $a_downpipe == 0 && $a_catback > 0 ){
-    foreach ($getAll as $alist){ 
+    foreach ($all_pro as $alist){ 
         if($alist['Product']['type'] == 2 ){ 
             if( num_2($alist['Product']['price']) <= 3800 ){ $final_warr = $final_warr + ($alist['Cart']['quantity'] * 199); }
             else{ $final_warr = $final_warr + ($alist['Cart']['quantity'] * 299); }
@@ -119,7 +118,7 @@ elseif( $a_downpipe == 0 && $a_catback > 0 ){
 }
 elseif( $a_downpipe > 0 && $a_catback > 0 ){
     $d_total = 0;
-    foreach ($getAll as $alist){
+    foreach ($all_pro as $alist){
         if($alist['Product']['type'] == 2 ){ $d_total = $d_total + num_2($alist['Cart']['quantity'] * $alist['Product']['price']); }
         elseif($alist['Product']['type'] == 3 ){ $d_total = $d_total + num_2($alist['Cart']['quantity'] * $alist['Product']['price']); }
     }
@@ -145,7 +144,7 @@ elseif ( isset($scost[5]) && !empty($scost[5]) ){
     $shipping_cost = 1 * $country_list['CountryList']['fedex_pack']; unset($scost); 
 }
 
-foreach ($getAll as $list){
+foreach ($all_pro as $list){
     if ( $shipping_discount > 0  ){ $discount = num_2($shipping_cost * $shipping_discount / 100); }
 	if($list['Product']['type'] == 2){ $is_cateback++; }
 	if($list['Product']['quantity'] > 0){
@@ -214,7 +213,7 @@ $gt_total = num_2($net_total + $duty_amt + $vat_amt + $warranty_amt);
 <tr><td  class="a-right" colspan="2">Shipping Fee Discount <?php /* echo num_2($shipping_discount); */ ?> (-)</td><td  class="a-right"><span class="price" id="_shipping_discount"><?php echo currency($discount,$euro_price,$region);?></span>    </td></tr>
 <?php } }?>
 
-<?php if($region == 2){?>
+<?php if($region == 3){?>
 <tr><td  class="a-right" colspan="2" id="p_imp_duty">Import duty <?php echo $import_duty;?>% (+)</td><td  class="a-right"><span class="price" id="_duty"><?php echo currency($duty_amt,$euro_price,$region);?></span>    </td></tr>
 <tr><td  class="a-right" colspan="2" id="p_vat">VAT <?php echo $vat;?>% (+)</td><td  class="a-right"><span class="price" id="_vat"><?php echo currency($vat_amt,$euro_price,$region);?></span>    </td></tr>
 <?php }?>

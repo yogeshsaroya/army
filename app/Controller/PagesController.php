@@ -13,6 +13,7 @@ class PagesController extends AppController
 	{
 		AppController::beforeFilter();
 		$this->Auth->allow();
+		$this->guest_id = $this->Cookie->read('guest_id');
 	}
 
 	/* new pages */
@@ -42,44 +43,46 @@ class PagesController extends AppController
 		$b = $this->Brand->find('list', array('order' => array('Brand.name' => 'ASC'), 'conditions' => array('Brand.id' => $bid)));
 		$this->set(compact('page_meta', 'b'));
 	}
-	public function motocycle_exhaust( $id = null )
+	public function motocycle_exhaust($id = null)
 	{
 		$this->set('title_for_layout', 'Valvetronic Exhaust System Weaponzied by ARMYTRIX');
 		$page_meta = [
 			'des' => 'Best Sounding Aftermarket Exhaust Upgrades. Titanium & Stainless Steel Turbo-back Cat-Back Valvetronic Exhaust Downpipes Tips Headers Decat Test Straight Exhaust Sound',
 			'key' => 'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
 		];
-		if(!empty($id)){
+		if (!empty($id)) {
 			$this->render('motocycle_exhaust_details');
 		}
 	}
-	
+
 
 	public function new_product($id = null, $type = null)
 	{
 		$slider = $sliderSS = $slidersTT = [];
 		$page_meta = $data = $gallery = $cat_back = $catalytic = null;
-		
-		$this->ItemDetail->bindModel([
-			'belongsTo' => ['Brand', 'Model', 'Motor'], 
-		'hasMany' => ['QualityDetail', 'Video' => ['limit'=>1,'order' => ['Video.pos' => 'ASC']]]]
-	);
+
+		$this->ItemDetail->bindModel(
+			[
+				'belongsTo' => ['Brand', 'Model', 'Motor'],
+				'hasMany' => ['QualityDetail', 'Video' => ['limit' => 1, 'order' => ['Video.pos' => 'ASC']]]
+			]
+		);
 		$data = $this->ItemDetail->find('first', array('recursive' => 2, 'conditions' => array('ItemDetail.url' => $id, 'ItemDetail.status' => 1)));
 		if (!empty($data)) {
 			$Adata = $data;
 			$item_detail_id = $data['ItemDetail']['id'];
-			
+
 			$cat_back_ids = explode(',', $Adata['ItemDetail']['cat_back_ids']);
 			$catalytic_ids = explode(',', $Adata['ItemDetail']['catalytic_ids']);
 			$accessory_ids = explode(',', $Adata['ItemDetail']['accessory_ids']);
 			$cat_back = $this->Product->find('all', array(/* 'recursive'=>-1, */'conditions' => array('Product.id' => $cat_back_ids, 'Product.status' => 1)));
 			$catalytic = $this->Product->find('all', array(/* 'recursive'=>-1, */'conditions' => array('Product.id' => $catalytic_ids, 'Product.status' => 1)));
 			$accessory = $this->Product->find('all', array(/* 'recursive'=>-1, */'conditions' => array('Product.id' => $accessory_ids, 'Product.status' => 1)));
-			
+
 			$meta_title = $data['ItemDetail']['meta_title'];
 			$this->set('title_for_layout', $meta_title);
 			$page_meta = array('des' => $data['ItemDetail']['meta_description'], 'key' => $data['ItemDetail']['meta_keywords']);
-			
+
 			$sArr = explode(',', trim($data['ItemDetail']['slider']));
 			$sArr1 = explode(',', trim($data['ItemDetail']['tt_slider']));
 			if (!empty($sArr) && isset($sArr[0]) && !empty($sArr[0])) {
@@ -88,12 +91,13 @@ class PagesController extends AppController
 			if (!empty($sArr1) && isset($sArr1[0]) && !empty($sArr1[0])) {
 				$slidersTT = $this->Library->find('all', array('conditions' => array('Library.id' => $sArr1), 'order' => ['Library.pos' => 'ASC']));
 			}
-			$slider = array_merge($sliderSS,$slidersTT);
+			$slider = array_merge($sliderSS, $slidersTT);
 			$gArr = explode(',', $data['ItemDetail']['gallery']);
-			$gallery = $this->Library->find('all', array('conditions' => array('Library.id' => $gArr),'limit'=>5,'order' => ['Library.pos' => 'ASC']));
-			$this->set(compact('page_meta', 'data', 'slider', 'gallery','cat_back', 'catalytic', 'accessory'));
-			if(!empty($type)){ $this->render('n_product'); }
-			
+			$gallery = $this->Library->find('all', array('conditions' => array('Library.id' => $gArr), 'limit' => 5, 'order' => ['Library.pos' => 'ASC']));
+			$this->set(compact('page_meta', 'data', 'slider', 'gallery', 'cat_back', 'catalytic', 'accessory'));
+			if (!empty($type)) {
+				$this->render('n_product');
+			}
 		} else {
 			$this->layout = '404';
 		}
@@ -449,7 +453,7 @@ class PagesController extends AppController
 				$ord['vin_number'] = trim($this->data['vin_number']);
 
 				$cart_dis = explode(',', $this->data['cid']);
-				$c_data = $this->Cart->find('all', array('conditions' => array('Cart.id' => $cart_dis)));
+				$c_data = $this->Cart->find('all', array('conditions' => array('Cart.guest_id'=>$this->guest_id,'Cart.id' => $cart_dis)));
 
 				if (empty($c_data)) {
 					echo $s;
@@ -532,7 +536,7 @@ class PagesController extends AppController
 			$new_pid = $new_cart_dis = null;
 			if (isset($country_list['CountryList']['region']) && in_array($country_list['CountryList']['region'], [2])) {
 				$cart_dis = explode(',', $this->data['cid']);
-				$c_data = $this->Cart->find('all', array('conditions' => array('Cart.id' => $cart_dis)));
+				$c_data = $this->Cart->find('all', array('conditions' => array('Cart.guest_id'=>$this->guest_id, 'Cart.id' => $cart_dis)));
 				if (!empty($c_data)) {
 					foreach ($c_data as $al) {
 						if (in_array($al['Product']['type'], [1, 2, 3, 5])) {
@@ -568,87 +572,56 @@ class PagesController extends AppController
 	public function review()
 	{
 		$this->set('title_for_layout', 'Review : Armytrix');
+		$all_pro = null;
 		$checkOutArr = $this->Session->read('checkOutArr');
 		$shipping = $this->Session->read('shipping');
 		$WebSetting = $this->WebSetting->find('first', array('WebSetting.id' => 1));
 		
-		if (empty($checkOutArr) && empty($shipping)) { $this->render('no_country'); }
+		if (empty($checkOutArr) && empty($shipping)) {
+			$this->render('no_country');
+		}
 		$country_list = $this->CountryList->find('first', ['conditions' => ['CountryList.id' => $shipping['Order']['country_list_id']]]);
-		if (empty($country_list)) { $this->render('no_country'); }
+		if (empty($country_list)) {
+			$this->render('no_country');
+		}
 		if (isset($country_list['CountryList']['region']) &&  isset($shipping['Order']['country_list_id']) && !empty($shipping['Order']['country_list_id'])) {
+			$cart_dis = explode(',', $shipping['cid']);
 			if (in_array($country_list['CountryList']['region'], [1])) {
+				$all_pro = $this->Cart->find('all', array('recursive' => 2,'conditions' => array('Cart.guest_id'=>$this->guest_id,'Cart.id' => $cart_dis)));
 			} elseif ($country_list['CountryList']['region'] == 2) {
-				/*4. only send inquires */
-				$cart_dis = explode(',', $shipping['cid']);
-				$c_data = $this->Cart->find('all', array('conditions' => array('Cart.id' => $cart_dis)));
-				if (empty($c_data)) {
-					$this->layout = '404';
-				}
-
-				$ord = [];
-				$token =  $this->DATA->getToken(16);
-				$ord['type'] = 2;
-				$ord['region'] = 2;
-				$ord['payment_by'] = 'inquiry';
-				$ord['note'] = @$checkOutArr['note'];
-				$ord['token'] = $token;
-				$ord['first_name'] = $shipping['Order']['first_name'];
-				$ord['last_name'] = $shipping['Order']['last_name'];
-				$ord['email'] = $shipping['Order']['email'];
-				$ord['phone'] = $shipping['Order']['phone'];
-				$ord['shipping_country'] = $shipping['Order']['shipping_country'];
-				$ord['shipping_state'] = $shipping['Order']['shipping_state'];
-				$ord['country_list_id'] = $shipping['Order']['country_list_id'];
-
-				$ord['card_ids'] = $shipping['cid'];
-
-				$ord_list = $order_item = [];
-				$amount = 0;
+				/* Remove other product if no-price */
+				$c_data = $this->Cart->find('all', array('conditions' => array('Cart.guest_id'=>$this->guest_id,'Cart.id' => $cart_dis)));
 				if (!empty($c_data)) {
-					foreach ($c_data as $cList) {
-						$cart_dis[] = $cList['Cart']['id'];
-						$pro_amt = $cList['Product']['price'] -  ($cList['Product']['price'] * $cList['Product']['discount'] / 100);
-						$ord_list[] = array('id' => null, 'order_id' => null, 'product_id' => $cList['Product']['id'], 'quantity' => $cList['Cart']['quantity'], 'amount' => $pro_amt, 'is_gift' => 0);
-						$amount = $amount + $pro_amt;
+					foreach ($c_data as $al) {
+						if (in_array($al['Product']['type'], [1, 2, 3, 5])) {
+							$this->Cart->id = $al['Cart']['id'];
+							$this->Cart->delete();
+						} else {
+							$new_cart_dis[] = $al['Cart']['id'];
+							$new_pid[] = $al['Cart']['product_id'];
+						}
 					}
 				}
-				$ord['total_amount'] = $amount;
-				$ord['grand_total'] = $amount;
-				$ord['od_info'] = null;
-				$ord['order_status_id'] = 1;
-
-				if ($this->Order->save($ord)) {
-					$oid = $this->Order->getLastInsertId();
-					$o_id = $country_list['CountryList']['iso2'] . "-" . date('mH', strtotime(DATE)) . $oid;
-					$oarr = array('id' => $oid, 'order_number' => $o_id);
-					$this->Order->save($oarr);
-					foreach ($ord_list as $l) {
-						$l['order_id'] = $oid;
-						$order_item[] = $l;
-					}
-					$OrderHistoryArr = array('id' => null, 'order_id' => $oid, 'order_status_id' => 1, 'comment' => 'Order # ' . $o_id . ' has been successfully placed');
-					$this->OrderHistory->save($OrderHistoryArr);
-					$this->OrderItem->saveMany($order_item);
-					$this->Cart->deleteAll(array('Cart.id' => $cart_dis), false);
-					$this->Session->delete('checkOutArr');
-					$this->Session->delete('shipping');
-
-					$body = $this->DATA->emOrderInquiry($oid, 1);
-					$pa = array('ORDER_NUMBER' => $o_id, 'NAME' => $ord['first_name'], 'BODY' => $body);
-					$this->DATA->AppMail('inquiry@armytrix.com', 'NewOrderInquiry', $pa, DATE, 2);
-
-					$u = SITEURL . "pages/order/success/" . $o_id;
-					$this->redirect($u);
+				$shipping['cid'] = $shipping['pid'] = null;
+				if (!empty($new_cart_dis)) {
+					$shipping['cid'] = implode(',', $new_cart_dis);
+					$all_pro = $this->Cart->find('all', array('recursive' => 2,'conditions' => array('Cart.guest_id'=>$this->guest_id,'Cart.id' => $cart_dis)));
+				} else {
+					$this->render('no_country');
 				}
-				$this->render('inq');
+				if (!empty($new_pid)) {
+					$shipping['pid'] = implode(',', $new_pid);
+				}
+				$this->Session->write('shipping', $shipping);
 			} else {
 				$this->render('no_country');
 			}
 		} else {
 			$this->render('no_country');
 		}
-
-		$this->set(compact('WebSetting', 'checkOutArr', 'shipping', 'country_list'));
+		ec($all_pro);
+		die;
+		$this->set(compact('WebSetting', 'checkOutArr', 'shipping', 'country_list', 'all_pro'));
 	}
 
 
@@ -797,15 +770,10 @@ class PagesController extends AppController
 						$this->Cart->save($arr);
 					}
 				} elseif ($this->data['type'] == 'update') {
-					$tid = null;
 					$getCart = $cnd = array();
 					/* if user is not log in */
-					$tid = $this->Cookie->read('guest_id');
-					if ($this->Auth->user('id') != "") {
-						$cnd = array('Cart.user_id' => ME, 'Cart.id' => $this->data['cid']);
-					} elseif (!empty($tid)) {
-						$cnd = array('Cart.guest_id' => $tid, 'Cart.id' => $this->data['cid']);
-					}
+					$cnd = array('Cart.guest_id'=>$this->guest_id, 'Cart.id' => $this->data['cid']);
+					
 					if (!empty($cnd)) {
 						$getCart = $this->Cart->find('first', array('recursive' => -1, 'conditions' => $cnd));
 					}
@@ -829,20 +797,16 @@ class PagesController extends AppController
 		$this->autoRender = false;
 		if ($this->RequestHandler->isAjax()) {
 			if (!empty($this->data)) {
-				$tid = null;
-				$tid = $this->Cookie->read('guest_id');
 				if ($this->data['get'] == 'product') {
 					$get_pro = $this->Product->find('first', array('conditions' => array('Product.id' => $this->data['pid'], 'Product.status' => 1)));
 					if (!empty($get_pro)) {
 						$c = $getCartData = array();
-						if (!empty($tid)) {
-							$c = array('Cart.guest_id' => $tid, 'Cart.product_id' => $this->data['pid'], 'Cart.type' => 1);
-						}
+						$c = array('Cart.guest_id'=>$this->guest_id, 'Cart.product_id' => $this->data['pid'], 'Cart.type' => 1);
 						if (!empty($c)) {
 							$getCartData = $this->Cart->find('first', array('conditions' => array($c)));
 						}
 						if (empty($getCartData)) {
-							$arr = array('product_id' => $this->data['pid'], 'guest_id' => $tid, 'quantity' => $this->data['q']);
+							$arr = array('product_id' => $this->data['pid'], 'guest_id' => $this->data['pid'], 'quantity' => $this->data['q']);
 							if (isset($this->data['size'])) {
 								$arr['size'] = $this->data['size'];
 							}
@@ -852,27 +816,16 @@ class PagesController extends AppController
 					}
 					$cnd = array();
 
-					if (!empty($tid)) {
-						$cnd = array('Cart.guest_id' => $tid, 'Cart.type' => 1);
-					}
+					
+					$cnd = array('Cart.guest_id'=>$this->guest_id, 'Cart.product_id' => $this->data['pid'], 'Cart.type' => 1);
+					
 					if (!empty($cnd)) {
 						$getAll = $this->Cart->find('all', array('recursive' => 2, 'conditions' => $cnd));
 					}
 					$this->set('getAll', $getAll);
 					$this->render('cart_list');
 					$ct = count($getAll);
-					//echo "<script>$('#cart-total').html('" . $ct . " item(s)');</script>";
-					//$title = str_replace("'", '', $get_pro['Product']['title']);
-					/*echo "<script>$.notify({ title: 'Success',
-                	message: 'You have added " . $title . " to your shopping cart!'},{placement: {from: \"bottom\",align: \"right\"},
-                	type: 'alert-pastel-info',allow_dismiss: true,delay:5000,animate: {enter: 'animated fadeInDown',exit: 'animated fadeOutUp'},
-                	template: '<div data-notify=\"container\" class=\"col-xs-11 col-sm-3 alert alert-{0}\" role=\"alert\">' +
-            		'<span data-notify=\"title\">{1}</span>' +
-            		'<span data-notify=\"message\">{2}</span>' +
-            	'</div>'});</script>"; */
-					if ($this->RequestHandler->isMobile()) {
-						//echo "<script> $('#mob_cart_img').html('<img alt=\"\" src=\"" . SITEURL . "ui/cart_1.png\">'); </script>";
-					}
+					
 				} elseif ($this->data['get'] == 'exhaust') {
 					$ti = null;
 					/* save cat-back product */
@@ -880,14 +833,12 @@ class PagesController extends AppController
 						$cat_pro = $this->Product->find('first', array('conditions' => array('Product.id' => $this->data['cat_id'], 'Product.status' => 1)));
 						if (!empty($cat_pro)) {
 							$c1 = $getCartData1 = array();
-							if (!empty($tid)) {
-								$c1 = array('Cart.guest_id' => $tid, 'Cart.product_id' => $this->data['cat_id'], 'Cart.type' => 1);
-							}
+							$c1 = array('Cart.guest_id'=>$this->guest_id, 'Cart.product_id' => $this->data['cat_id'], 'Cart.type' => 1);
 							if (!empty($c1)) {
 								$getCartData1 = $this->Cart->find('first', array('conditions' => array($c1)));
 							}
 							if (empty($getCartData1)) {
-								$arr = array('id' => null, 'product_id' => $this->data['cat_id'], 'guest_id' => $tid, 'quantity' => $this->data['cat_id_q']);
+								$arr = array('id' => null, 'product_id' => $this->data['cat_id'], 'guest_id' => $this->guest_id, 'quantity' => $this->data['cat_id_q']);
 								$this->request->data['Cart'] = $arr;
 								$this->Cart->save($this->request->data);
 								$ti .= '"' . $cat_pro['Product']['title'] . '"<br>';
@@ -899,14 +850,13 @@ class PagesController extends AppController
 						$cata_pro = $this->Product->find('first', array('conditions' => array('Product.id' => $this->data['ecu_id'], 'Product.status' => 1)));
 						if (!empty($cata_pro)) {
 							$c2 = $getCartData2 = array();
-							if (!empty($tid)) {
-								$c2 = array('Cart.guest_id' => $tid, 'Cart.product_id' => $this->data['ecu_id'], 'Cart.type' => 1);
-							}
+							$c2 = array('Cart.guest_id'=>$this->guest_id, 'Cart.product_id' => $this->data['ecu_id'], 'Cart.type' => 1);
+							
 							if (!empty($c2)) {
 								$getCartData2 = $this->Cart->find('first', array('conditions' => array($c2)));
 							}
 							if (empty($getCartData2)) {
-								$arr = array('id' => null, 'product_id' => $this->data['ecu_id'], 'guest_id' => $tid, 'quantity' => $this->data['ecu_id_q']);
+								$arr = array('id' => null, 'product_id' => $this->data['ecu_id'], 'guest_id' => $this->guest_id, 'quantity' => $this->data['ecu_id_q']);
 								$this->request->data['Cart'] = $arr;
 								$this->Cart->save($this->request->data);
 								$ti .= '"' . $cata_pro['Product']['title'] . '"<br>';
@@ -920,14 +870,13 @@ class PagesController extends AppController
 						if (!empty($t_pro)) {
 							$c3 = array();
 							$getCartData3 = 0;
-							if (!empty($tid)) {
-								$c3 = array('Cart.guest_id' => $tid, 'Cart.product_id' => $this->data['accessory_id'], 'Cart.type' => 1);
-							}
+							$c3 = array('Cart.guest_id'=>$this->guest_id, 'Cart.product_id' => $this->data['accessory_id'], 'Cart.type' => 1);
+							
 							if (!empty($c3)) {
 								$getCartData3 = $this->Cart->find('count', array('conditions' => array($c3)));
 							}
 							if ($getCartData3 == 0) {
-								$arr = array('id' => null, 'product_id' => $this->data['accessory_id'], 'guest_id' => $tid, 'quantity' => $this->data['accessory_b_q']);
+								$arr = array('id' => null, 'product_id' => $this->data['accessory_id'], 'guest_id' => $this->guest_id, 'quantity' => $this->data['accessory_b_q']);
 								$arrdata['Cart'] = $arr;
 								$this->Cart->save($arrdata);
 								$ti .= '"' . $t_pro['Product']['title'] . '"<br>';
@@ -935,18 +884,9 @@ class PagesController extends AppController
 						}
 					}
 					$ti = str_replace("'", '', $ti);
-					/* if (!empty($ti)) {
-						echo "<script>$.notify({ title: 'Success',
-                	message: 'You have added " . $ti . " to your shopping cart!'},{placement: {from: \"bottom\",align: \"right\"},
-                	type: 'alert-pastel-info',allow_dismiss: true,delay:5000,animate: {enter: 'animated fadeInDown',exit: 'animated fadeOutUp'},
-                	template: '<div data-notify=\"container\" class=\"col-xs-11 col-sm-3 alert alert-{0}\" role=\"alert\">' +
-            		'<span data-notify=\"title\">{1}</span> <span data-notify=\"message\">{2}</span> </div>'});</script>";
-					} */
-
 					$cnd = [];
-					if (!empty($tid)) {
-						$cnd = array('Cart.guest_id' => $tid, 'Cart.type' => 1);
-					}
+					$cnd = array('Cart.guest_id' =>$this->guest_id, 'Cart.type' => 1);
+					
 					if (!empty($cnd)) {
 						$getAll = $this->Cart->find('all', array('recursive' => 2, 'conditions' => $cnd));
 					}
@@ -954,10 +894,6 @@ class PagesController extends AppController
 					$this->set('getAll', $getAll);
 					$this->render('cart_list');
 					$ct = count($getAll);
-					//echo "<script>$('#cart-total').html('" . $ct . " item(s)');</script>";
-					if ($this->RequestHandler->isMobile()) {
-						//echo "<script> $('#mob_cart_img').html('<img alt=\"\" src=\"" . SITEURL . "ui/cart_1.png\">'); </script>";
-					}
 				}
 			}
 		}
@@ -2590,18 +2526,17 @@ class PagesController extends AppController
 	{
 		$this->autoRender = false;
 		if ($this->RequestHandler->isAjax() && !empty($this->data)) {
-			$getPro = $this->ItemDetail->find('first', array('recursive' => -1,'conditions' => [
-				'ItemDetail.language'=>'eng','ItemDetail.status'=>1,
-				'ItemDetail.brand_id' => $this->data['brand'],'ItemDetail.model_id' => $this->data['model'],'ItemDetail.motor_id' => $this->data['motor']]));
-			if( isset($getPro['ItemDetail']['url']) && !empty($getPro['ItemDetail']['url']) ){
-				echo "<script> window.location.href ='".SITEURL."product/".$getPro['ItemDetail']['url']."';</script>";
+			$getPro = $this->ItemDetail->find('first', array('recursive' => -1, 'conditions' => [
+				'ItemDetail.language' => 'eng', 'ItemDetail.status' => 1,
+				'ItemDetail.brand_id' => $this->data['brand'], 'ItemDetail.model_id' => $this->data['model'], 'ItemDetail.motor_id' => $this->data['motor']
+			]));
+			if (isset($getPro['ItemDetail']['url']) && !empty($getPro['ItemDetail']['url'])) {
+				echo "<script> window.location.href ='" . SITEURL . "product/" . $getPro['ItemDetail']['url'] . "';</script>";
 			}
-			
+
 			die;
 			die;
 		}
 		exit;
 	}
-
-
 }

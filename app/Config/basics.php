@@ -37,7 +37,7 @@ if(!empty($num)){
 
 function currency($amt = 0 , $eur = 0 , $region = null ){
     $str = null;
-    if ( $region == 2 ){ $str = "EUR €".num_2( $amt * $eur); }
+    if ( $region == 3 ){ $str = "EUR €".num_2( $amt * $eur); }
     else{  $str = "USD $".num_2($amt); }
     return $str;
 }
