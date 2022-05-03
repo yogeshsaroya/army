@@ -3118,28 +3118,10 @@ $exhaust = explode(',', $data['ItemDetail']['videos']);
   }
 
 
-  /*
-  window.onscroll = autoplay;
-
-  function autoplay(){
-      for (var i = vids.length - 1; i >= 0; i--) {
-          var currentYpos = window.pageYOffset || document.documentElement.scrollTop;
-          if ( currentYpos >= (vids[i].offsetTop - 300) && currentYpos <= (vids[i].offsetTop -300) + vids[i].offsetHeight ) {
-  			//console.log(vids[i]);
-  			if (vids[i].paused) { vids[i].play(); }
-  			
-  		}else{
-  			vids[i].pause();
-  		}
-  	}
-  }
-  */
+  
 
 
-  <
-  !-- - video autoplay-- >
-  <
-  !-- - mouse hover Icons section-- >
+  
   $(document).ready(function() {
     $("#menuImg").mouseover(function() {
       $("#slideshow2_thumbs li").removeClass('color_green');

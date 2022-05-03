@@ -70,7 +70,8 @@
   ));
 
   echo $this->fetch('cssTop');
-  echo $this->fetch('script');
+  echo $this->fetch('styleTop');
+  echo $this->fetch('scriptTop');
 
   echo $this->Js->writeBuffer(array('catch' => TRUE));
   echo $scripts_for_layout;

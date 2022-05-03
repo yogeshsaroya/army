@@ -1,21 +1,21 @@
  <!--start Diamond-like crisp line design sec-->
  <section id="s2a" class="min-ht ">
- <div class="container fullMxWd posRltv">
-   <div class="new_bg_img  img-tag-sec s2a-sec">
-     <img src="https://res.cloudinary.com/armytrix/image/upload/v1651225699/product/Product_20page-bg_kg3tdj.webp" alt="" loading="lazy" class="img-wd-100" />
-     <div class="abst_head head-title-size color-wht pad-50 left-20 max-700">
-       <h2 class="clr-white">Combination Of Intelligence</h2>
-       <h4 class="clr-white">Cutting-edge Interactive Valve Control technology<br>
-         Simply control valves with OEM driving mode select<br>
-         All for driving pleasure</h4>
+   <div class="container fullMxWd posRltv">
+     <div class="new_bg_img  img-tag-sec s2a-sec">
+       <img src="https://res.cloudinary.com/armytrix/image/upload/v1651225699/product/Product_20page-bg_kg3tdj.webp" alt="" loading="lazy" class="img-wd-100" />
+       <div class="abst_head head-title-size color-wht pad-50 left-20 max-700">
+         <h2 class="clr-white">Combination Of Intelligence</h2>
+         <h4 class="clr-white">Cutting-edge Interactive Valve Control technology<br>
+           Simply control valves with OEM driving mode select<br>
+           All for driving pleasure</h4>
 
-       <p class="smll-txt">* Compatible with Mercedes (2018+ W / LED Dashboard) models ONLY</p>
+         <p class="smll-txt">* Compatible with Mercedes (2018+ W / LED Dashboard) models ONLY</p>
+       </div>
      </div>
    </div>
-</div>
  </section>
- <!--start Diamond-like crisp line design sec-->
 
+ <?php $this->append('styleTop'); ?>
  <style>
    #s2a.min-ht .new_bg_img {
      min-height: auto
@@ -64,3 +64,4 @@
      }
    }
  </style>
+ <?php $this->end(); ?>

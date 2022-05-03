@@ -1,8 +1,6 @@
 <?php echo $this->Html->css(["/v2/css-loader"], ['block' => 'cssTop']); ?>
 <div id="cssLoader"></div>
-<?php //$this->Html->scriptStart(array('block' => 'scriptBottom')); 
-?>
-<script>
+<?php $this->Html->scriptStart(array('block' => 'scriptBottom')); ?>
     function addcart() {
         $('#e_err').html('');
         var cat_id = $('#cat_id').val();
@@ -51,6 +49,22 @@
     });
 
     $(document).ready(function() {
+        $("#m1").mouseover(function() {
+            $("#m2").removeClass('color_green');
+            $("#m1").addClass('color_green');
+            $("#menuImg").attr('src', '<?php echo SITEURL; ?>v_4/images/mouse-icon1-hover.png');
+            $("#menuImg1").attr('src', '<?php echo SITEURL; ?>v_4/images/mouse-icon3.png');
+            $("#modes_img").attr('src', 'https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651514055/product/mouse-hover-b2_tsorh4.webp');
+            
+        });
+        $("#m2").mouseover(function() {
+            $("#m1").removeClass('color_green');
+            $("#m2").addClass('color_green');
+            $("#menuImg").attr('src', '<?php echo SITEURL;?>v_4/images/mouse-icon1.png');
+            $("#menuImg1").attr('src', '<?php echo SITEURL;?>v_4/images/mouse-icon3-hover.png');
+            $("#modes_img").attr('src', 'https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651514055/product/mouse-hover-b1_nt16rs.webp');
+        });
+
         $("#p_1").click(function() {
             if ($('#cat_back_ul').css('display') == 'none') {
                 $('#cat_back_ul').show();
@@ -295,6 +309,4 @@
             e.preventDefault();
         }
     });
-    <?php //$this->Html->scriptEnd(); 
-    ?>
-</script>
+    <?php $this->Html->scriptEnd(); ?>

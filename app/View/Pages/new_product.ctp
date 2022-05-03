@@ -1,3 +1,6 @@
+<link rel="preload" as="image" href="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651514055/product/mouse-hover-b2_tsorh4.webp" />
+<link rel="preload" as="image" href="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651514055/product/mouse-hover-b1_nt16rs.webp" />
+
 <?php echo $this->Html->css(["/v2/product_page.css?v=" . rand(5646, 65465)], ['block' => 'cssTop']); ?>
 
 <?php
@@ -7,16 +10,16 @@ if (isset($slider) && !empty($slider)) {
     $imgArr[] = '"' . SITEURL . 'cdn/' . $sList['Library']['folder'] . "/" . $sList['Library']['file_name'] . '"';
   }
 }
-if (isset($data1) && !empty($data1)) {
+if (isset($data) && !empty($data)) {
 ?>
-  <?php $this->Html->scriptStart(['block' => 'script', 'type' => 'application/ld+json']); ?>
+  <?php $this->append('scriptTop'); ?>
+  <script type="application/ld+json">
   {
   "@context": "https://schema.org/",
   "@type": "Product",
-  "name": "<?php echo addslashes($data['ItemDetail']['name']); ?>",
+  "name": "<?php echo addslashes(preg_replace( "/\r|\n/", " ",$data['ItemDetail']['name'])); ?>",
   "image": [<?php echo implode(',', $imgArr); ?>],
-  "description": "<?php echo addslashes($data['ItemDetail']['meta_description']); ?>",
-
+  "description": "<?php echo addslashes(preg_replace( "/\r|\n/", " ", $data['ItemDetail']['meta_description'] )); ?>",
   "brand": {
   "@type": "Brand",
   "name": "Armytrix"
@@ -38,19 +41,18 @@ if (isset($data1) && !empty($data1)) {
   "ratingValue": "4.9",
   "reviewCount": "2875"
   }
-
   }
-  <?php $this->Html->scriptEnd(); ?>
+  </script>
+  <?php $this->end(); ?>
 <?php } ?>
 
 <div id="v2_product">
+<h1 class="text-center mt-3 mb-5"><?php echo $data['ItemDetail']['name']; ?> valvetronic exhaust system</h1>
+<?php echo $this->element('v2/product_slider', ['slider' => $slider]); ?>
+
   <div class="padMobile">
     <div class="page_container">
-      <h1 class="text-center mt-3 mb-5"><?php echo $data['ItemDetail']['name']; ?> valvetronic exhaust system</h1>
-
-      <?php echo $this->element('v2/product_slider', ['slider' => $slider]); ?>
-
-
+      
 
       <div class="row d-flex">
         <div class="col-sm-6">
@@ -144,19 +146,18 @@ if (isset($data1) && !empty($data1)) {
     <div class="pad15">
       <h2> ARMYTRIX VALVE CONTROL TECHNOLOGY</h2>
     </div>
-    <div class="mt-3 mb-2 posRltv">
+    <div class="mt-31 mb-2 posRltv">
     <div class="models_switch posAbsolute">
         <div class="page-titles"><h3 class="head-arm">3 Modes Switch</h3></div>
         <div class="mid-sec ">
           <ul id="slideshow2_thumbs" class="desoslide-thumbs-horizontal list-inline text-center">
             <li><img loading="lazy" src="<?php echo SITEURL; ?>/v_4/images/mouse-icon1-02.png" alt="" /><br>Smart Mode</li>
-            <li class="color_green">
-              <a href="<?php echo SITEURL; ?>v_4/images/mouse-hover-b2.jpg"><img loading="lazy" src="<?php echo SITEURL; ?>v_4/images/mouse-icon1-hover.png" alt="" id="menuImg"></a><br>Neighbor Mode</li>
-            <li class="color_green"><a href="<?php echo SITEURL; ?>v_4/images/mouse-hover-b1.jpg"><img loading="lazy" src="<?php echo SITEURL; ?>v_4/images/mouse-icon3.png" alt="" id="menuImg1"></a><br> Beast Mode</li>
+            <li id="m1" class="sw_modes color_green"><img loading="lazy" src="<?php echo SITEURL; ?>v_4/images/mouse-icon1-hover.png" alt="" id="menuImg"><br>Neighbor Mode</li>
+            <li id="m2" class="sw_modes"><img loading="lazy" src="<?php echo SITEURL; ?>v_4/images/mouse-icon3.png" alt="" id="menuImg1"><br> Beast Mode</li>
           </ul>
         </div>
       </div>
-      <img src="<?php echo SITEURL; ?>v2/img/mouse-hover-b1.jpg" alt="" loading="lazy" class="img-wd-100" />
+      <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651514055/product/mouse-hover-b2_tsorh4.webp" alt="" loading="lazy" class="img-wd-100" id="modes_img" />
     </div>
     <div class="text-left">
       <p>FREEDOM TO SWITCH BETWEEN LOUD AND QUIET WITH THE PUSH OF A BUTTON

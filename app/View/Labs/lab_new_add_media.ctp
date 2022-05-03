@@ -14,7 +14,7 @@
 #lib_details .breadcrumb {background-color: inherit;}
 #lib_details .active .thumbnail { border: 3px solid #000; }
 
-.box-body{height: 350px; overflow-y: auto;    overflow-x: hidden;}
+.box-body{height: 600px; overflow-y: auto;    overflow-x: hidden;}
 #lib_details .thumbnail { border: 1px solid #d3d3d3; height: 170px; }
 
 </style>
