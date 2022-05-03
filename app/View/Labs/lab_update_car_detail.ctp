@@ -61,9 +61,9 @@
             <li class="<?php if (isset($q['tab']) && $q['tab'] == 'videos') {
                           echo "active";
                         } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=videos"; ?>">Videos</a></li>
-            <li class="<?php if (isset($q['tab']) && $q['tab'] == 'quality') {
-                          echo "active";
-                        } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=quality"; ?>">Quality & Detail</a></li>
+            
+            
+
             <li class="<?php if (isset($q['tab']) && $q['tab'] == 'catback') {
                           echo "active";
                         } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=catback"; ?>">Catback</a></li>
@@ -74,6 +74,7 @@
                           echo "active";
                         } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=accessory"; ?>">Accessory</a></li>
             <?php /*?>
+  <li class="<?php if (isset($q['tab']) && $q['tab'] == 'quality') { echo "active"; } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=quality"; ?>">Quality & Detail</a></li>
   <li class="<?php if(isset($q['tab']) && $q['tab'] == 'tuning_box'){ echo "active";}?>"><a href="<?php echo SITEURL."lab/labs/update_car_detail/".$data['ItemDetail']['id']."?tab=tuning_box";?>" >Box</a></li>
   <li class="<?php if(isset($q['tab']) && $q['tab'] == 'shipping'){ echo "active";}?>"><a href="<?php echo SITEURL."lab/labs/update_car_detail/".$data['ItemDetail']['id']."?tab=shipping";?>" >Add Shipping</a></li>
   <li class="<?php if(isset($q['tab']) && $q['tab'] == 'manage_shipping'){ echo "active";}?>"><a href="<?php echo SITEURL."lab/labs/update_car_detail/".$data['ItemDetail']['id']."?tab=manage_shipping";?>" >Manage Shipping</a></li>

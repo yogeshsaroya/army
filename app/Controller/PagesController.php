@@ -65,7 +65,7 @@ class PagesController extends AppController
 		$this->ItemDetail->bindModel(
 			[
 				'belongsTo' => ['Brand', 'Model', 'Motor'],
-				'hasMany' => ['QualityDetail', 'Video' => ['limit' => 1, 'order' => ['Video.pos' => 'ASC']]]
+				'hasMany' => ['Video' => ['limit' => 15, 'order' => ['Video.pos' => 'ASC']]]
 			]
 		);
 		$data = $this->ItemDetail->find('first', array('recursive' => 2, 'conditions' => array('ItemDetail.url' => $id, 'ItemDetail.status' => 1)));
@@ -86,7 +86,7 @@ class PagesController extends AppController
 			}
 			$gArr = explode(',', $data['ItemDetail']['gallery']);
 			if (isset($gArr[0]) && !empty($gArr[0])) {
-				$gallery = $this->Library->find('all', array('conditions' => array('Library.id' => $gArr), 'limit' => 5, 'order' => ['Library.pos' => 'ASC']));
+				$gallery = $this->Library->find('all', array('conditions' => array('Library.id' => $gArr), 'limit' => 15, 'order' => ['Library.pos' => 'ASC']));
 			}
 			$this->set(compact('page_meta', 'data', 'slider', 'gallery', 'cat_back', 'catalytic', 'accessory'));
 			if(!empty($type)){
@@ -666,17 +666,18 @@ class PagesController extends AppController
 		$this->layout = false;
 		$this->autoRender = false;
 		if ($this->RequestHandler->isAjax()) {
+			$str = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart-check-fill" viewBox="0 0 16 16"><path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-1.646-7.646-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708z"/></svg>';
 			if (!empty($this->data)) {
 				if ($this->data['get'] == 'product') {
 					$get_pro = $this->Product->find('first', array('conditions' => array('Product.id' => $this->data['pid'], 'Product.status' => 1)));
 					if (!empty($get_pro)) {
 						$c = $getCartData = array();
-						$c = array('Cart.guest_id'=>$this->guest_id, 'Cart.product_id' => $this->data['pid'], 'Cart.type' => 1);
+						$c = array('Cart.guest_id'=>$this->guest_id);
 						if (!empty($c)) {
 							$getCartData = $this->Cart->find('first', array('conditions' => array($c)));
 						}
 						if (empty($getCartData)) {
-							$arr = array('product_id' => $this->data['pid'], 'guest_id' => $this->data['pid'], 'quantity' => $this->data['q']);
+							$arr = array('product_id' => $this->data['pid'], 'guest_id' => $this->guest_id, 'quantity' => $this->data['q']);
 							if (isset($this->data['size'])) {
 								$arr['size'] = $this->data['size'];
 							}
@@ -684,18 +685,14 @@ class PagesController extends AppController
 							$this->Cart->save($this->request->data);
 						}
 					}
-					$cnd = array();
-
-					
-					$cnd = array('Cart.guest_id'=>$this->guest_id, 'Cart.product_id' => $this->data['pid'], 'Cart.type' => 1);
-					
+					$cnd = array('Cart.guest_id'=>$this->guest_id);
 					if (!empty($cnd)) {
 						$getAll = $this->Cart->find('all', array('recursive' => 2, 'conditions' => $cnd));
 					}
 					$this->set('getAll', $getAll);
-					$this->render('cart_list');
-					$ct = count($getAll);
 					
+					echo "<script>$('#_cart_icon').html('$str');</script>";
+					$this->render('cart_list');
 				} elseif ($this->data['get'] == 'exhaust') {
 					$ti = null;
 					/* save cat-back product */
@@ -760,10 +757,10 @@ class PagesController extends AppController
 					if (!empty($cnd)) {
 						$getAll = $this->Cart->find('all', array('recursive' => 2, 'conditions' => $cnd));
 					}
-
+					echo "<script>$('#_cart_icon').html('$str');</script>";
 					$this->set('getAll', $getAll);
 					$this->render('cart_list');
-					$ct = count($getAll);
+					
 				}
 			}
 		}
