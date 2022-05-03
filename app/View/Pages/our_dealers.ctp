@@ -57,7 +57,7 @@
                            <div class="views-row views-row-1 <?php echo $c; ?> views-row-first">
                               <article class="node-202 node node-dealer node-teaser clearfix">
                                  <div>
-                                    <h2 class="node__title node-title"><a href="<?php echo SITEURL . "pages/view_dealer/" . $list['OurDealer']['id']; ?>" class="GnRespopAjax_cls" id="<?php echo $list['OurDealer']['id']; ?>"><?php echo $list['OurDealer']['title']; ?></a></h2>
+                                    <h2 class="node__title node-title our_dealer_title"><a href="<?php echo SITEURL . "pages/view_dealer/" . $list['OurDealer']['id']; ?>" class="GnRespopAjax_cls" id="<?php echo $list['OurDealer']['id']; ?>"><?php echo $list['OurDealer']['title']; ?></a></h2>
                      </div>
                                  <div id="node-dealer-teaser-group-dealer" class="group-dealer field-group-div">
                                     <div class="field field-name-field-dealer-address field-type-text field-label-hidden">

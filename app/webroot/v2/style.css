@@ -16,6 +16,10 @@ img {
     max-width: 100%;
 }
 
+#v2_main .our_dealer_title {
+    font-size: 12px;
+}
+
 #v2_main h1,
 #v2_header h1,
 #v2_footer h1,
@@ -137,6 +141,7 @@ header div svg:hover {
     display: flex;
     flex-wrap: wrap;
 }
+
 .cartWrap {
     display: flex;
     align-items: center;
@@ -1268,7 +1273,6 @@ video {
         right: 0;
         left: auto;
     }
-
     #v2_main #new-ui-add .col-sm-4-nw,
     #v2_main #frmTun .col-sm-4.text-left {
         max-width: 100%
@@ -1551,7 +1555,8 @@ video {
     #v2_main #new-ui-add #frmTun #get_info {
         margin: 0 auto;
     }
-    header>div, .lastFooter>div {
+    header>div,
+    .lastFooter>div {
         width: 98%;
         padding: 10px!important;
     }
@@ -1631,7 +1636,6 @@ video {
     .logoWrap {
         max-width: 150px;
     }
-    
     .cartBox span {
         margin-right: 5px;
         font-size: 8px;
