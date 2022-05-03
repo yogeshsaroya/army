@@ -1258,6 +1258,11 @@ video {
 }
 
 @media (max-width:767px) {
+    .cartHead,
+    .closeCartMenu {
+        right: 20px;
+        left: auto;
+    }
     #v2_main #new-ui-add .col-sm-4-nw,
     #v2_main #frmTun .col-sm-4.text-left {
         max-width: 100%
@@ -1553,7 +1558,8 @@ video {
     #v2_main .serVicesLinks .row>h2,
     #v2_main .serVicesLinks .row>h2>a {
         font-weight: bold;
-        font-size: 18px;
+        font-size: 16px;
+        letter-spacing: 0px;
     }
     #v2_main h1 {
         margin: 0 0 12px;
