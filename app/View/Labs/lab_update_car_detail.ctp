@@ -107,11 +107,6 @@
                   <div class="col-sm-10"><?php echo $this->Form->input('name', array('class' => 'form-control', 'placeholder' => 'Title', 'label' => false, 'required' => true)); ?></div>
                 </div>
 
-
-
-                <div class="form-group"><label for="inputName" class="col-sm-2 control-label">About</label>
-                  <div class="col-sm-10"><?php echo $this->Form->input('about_details', array('class' => 'form-control', 'placeholder' => 'About', 'label' => false, 'required' => false)); ?></div>
-                </div>
                 <div class="form-group"><label for="inputName" class="col-sm-2 control-label">Fitment</label>
                   <div class="col-sm-10"><?php echo $this->Form->input('fitment', array('class' => 'form-control', 'placeholder' => 'Fitment', 'label' => false, 'required' => false)); ?></div>
                 </div>
