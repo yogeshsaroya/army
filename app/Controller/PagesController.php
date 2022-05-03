@@ -509,41 +509,47 @@ class PagesController extends AppController
 		$WebSetting = $this->WebSetting->find('first', array('WebSetting.id' => 1));
 		
 		if (empty($checkOutArr) && empty($shipping)) { $this->render('no_country'); }
-		$country_list = $this->CountryList->find('first', ['conditions' => ['CountryList.id' => $shipping['Order']['country_list_id']]]);
-		if (empty($country_list)) { $this->render('no_country'); }
-		if (isset($country_list['CountryList']['region']) &&  isset($shipping['Order']['country_list_id']) && !empty($shipping['Order']['country_list_id'])) {
-			
-			if (in_array($country_list['CountryList']['region'], [1])) {
-				$all_pro = $this->Cart->find('all', array('recursive' => 2,'conditions' => array('Cart.guest_id'=>$this->guest_id)));
-			} 
-			elseif ($country_list['CountryList']['region'] == 2) {
-				/* Remove other product if no-price */
-				$c_data = $this->Cart->find('all', array('conditions' => array('Cart.guest_id'=>$this->guest_id)));
-				if (!empty($c_data)) {
-					foreach ($c_data as $al) {
-						if (in_array($al['Product']['type'], [1, 2, 3, 5])) {
-							$this->Cart->id = $al['Cart']['id'];
-							$this->Cart->delete();
-						} else {
-							$new_cart_dis[] = $al['Cart']['id'];
-							$new_pid[] = $al['Cart']['product_id'];
+		else{
+			$country_list = $this->CountryList->find('first', ['conditions' => ['CountryList.id' => $shipping['Order']['country_list_id']]]);
+			if (empty($country_list)) { $this->render('no_country'); }
+			if (isset($country_list['CountryList']['region']) &&  isset($shipping['Order']['country_list_id']) && !empty($shipping['Order']['country_list_id'])) 
+			{
+				
+				if (in_array($country_list['CountryList']['region'], [1])) {
+					$all_pro = $this->Cart->find('all', array('recursive' => 2,'conditions' => array('Cart.guest_id'=>$this->guest_id)));
+					$this->set(compact('WebSetting', 'checkOutArr', 'shipping', 'country_list', 'all_pro'));
+				} 
+				elseif ($country_list['CountryList']['region'] == 2) {
+					/* Remove other product if no-price */
+					$c_data = $this->Cart->find('all', array('conditions' => array('Cart.guest_id'=>$this->guest_id)));
+					if (!empty($c_data)) {
+						foreach ($c_data as $al) {
+							if (in_array($al['Product']['type'], [1, 2, 3, 5])) {
+								$this->Cart->id = $al['Cart']['id'];
+								$this->Cart->delete();
+							} else {
+								$new_cart_dis[] = $al['Cart']['id'];
+								$new_pid[] = $al['Cart']['product_id'];
+							}
 						}
 					}
+					$shipping['cid'] = $shipping['pid'] = null;
+					if (!empty($new_cart_dis)) {
+						$shipping['cid'] = implode(',', $new_cart_dis);
+						$all_pro = $this->Cart->find('all', array('recursive' => 2,'conditions' => array('Cart.guest_id'=>$this->guest_id)));
+					} else { $this->render('no_country'); }
+					if (!empty($new_pid)) { $shipping['pid'] = implode(',', $new_pid); }
+					$this->Session->write('shipping', $shipping);
+					$this->set(compact('WebSetting', 'checkOutArr', 'shipping', 'country_list', 'all_pro'));
+				} else {
+					$this->render('no_country');
 				}
-				$shipping['cid'] = $shipping['pid'] = null;
-				if (!empty($new_cart_dis)) {
-					$shipping['cid'] = implode(',', $new_cart_dis);
-					$all_pro = $this->Cart->find('all', array('recursive' => 2,'conditions' => array('Cart.guest_id'=>$this->guest_id)));
-				} else { $this->render('no_country'); }
-				if (!empty($new_pid)) { $shipping['pid'] = implode(',', $new_pid); }
-				$this->Session->write('shipping', $shipping);
 			} else {
 				$this->render('no_country');
 			}
-		} else {
-			$this->render('no_country');
 		}
-		$this->set(compact('WebSetting', 'checkOutArr', 'shipping', 'country_list', 'all_pro'));
+		
+		
 	}
 
 	public function order($id = null, $t = null)

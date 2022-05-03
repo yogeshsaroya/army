@@ -1,9 +1,10 @@
 <?php 
-echo $this->Html->css(array('checkout'));
+echo $this->Html->css(["checkout"], ['block' => 'cssTop']);
 echo $this->html->script(array('jquery.form.min','/v/formValidation.min','/v/bootstrap.min'));
 $note = null;
 if(isset($checkOutArr['note'])){ $note = $checkOutArr['note']; }
 ?>
+
 <div id="preloader" style="display: none"> <div id="status">&nbsp;</div> </div>
 <style>
 .a-right { text-align: right;}
