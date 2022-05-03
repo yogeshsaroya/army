@@ -6,6 +6,10 @@
 /app/webroot/cdn/*
 /app/webroot/cache/*
 /app/webroot/files/*
+/app/webroot/blog
+/app/webroot/report
+
+
 
 /app/tmp/cache/models/*
 /app/tmp/cache/persistent/*
