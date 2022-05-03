@@ -53,13 +53,10 @@
 								<div class="col-xs-3"><label>Motor Name</label>
 									<?php echo $this->Form->input('name', array('id' => 'name', 'label' => false, 'error' => false, 'div' => false, 'class' => 'form-control input-md')); ?>
 								</div>
-								<div class="col-xs-3">
-								<label>Motor Name</label>
-									<input type="button" class="btn btn-success pull-right" id="add_br" value="Save"></div>
 							</div>
 							<div class="clearfix"></div>
 							<div class="box-footer">
-								
+								<input type="button" class="btn btn-success pull-right" id="add_br" value="Save">
 							</div>
 						</div>
 						<!-- /.box-body -->
@@ -172,19 +169,6 @@
 		}
 	}
 
-	function add_lib(library_id, new_library_id, one) {
-		$.magnificPopup.open({
-			items: {
-				src: '<?php echo SITEURL . "lab/labs/add_media/"; ?>?library_id=' + library_id + '&new_library_id=' + new_library_id + '&one=' + one,
-				type: 'ajax'
-			},
-			closeMarkup: '<button class="mfp-close mfp-new-close" type="button" title="Close (Esc)"> </button>',
-			closeOnContentClick: false,
-			closeOnBgClick: false,
-			showCloseBtn: true,
-			enableEscapeKey: false,
-		});
-	}
 	$(document).ready(function() {
 
 		$('.number').keypress(function(event) {
@@ -218,15 +202,7 @@
 			var id = $.trim($('#id').val());
 			var brand_id = $.trim($('#brand_id').val());
 			var model_id = $.trim($('#model_id').val());
-			var library_id = $.trim($('#library_id').val());
-
-			var capacity = $.trim($('#capacity').val());
-			var power = $.trim($('#power').val());
-			var torque = $.trim($('#torque').val());
-			var v_max = $.trim($('#v_max').val());
-			var kmph = $.trim($('#kmph').val());
-
-
+			
 
 			if (brand_id == "") {
 				$('#brand_id').focus();
@@ -237,21 +213,6 @@
 			} else if (t == "") {
 				$('#name').focus();
 				$("#app_err").html('<div class="alert alert-danger" role="alert"> Please select motor name.</div>');
-			} else if (capacity == "") {
-				$('#capacity').focus();
-				$("#app_err").html('<div class="alert alert-danger" role="alert"> Please enter capacity.</div>');
-			} else if (power == "") {
-				$('#power').focus();
-				$("#app_err").html('<div class="alert alert-danger" role="alert"> Please enter power.</div>');
-			} else if (torque == "") {
-				$('#torque').focus();
-				$("#app_err").html('<div class="alert alert-danger" role="alert"> Please enter torque.</div>');
-			} else if (v_max == "") {
-				$('#v_max').focus();
-				$("#app_err").html('<div class="alert alert-danger" role="alert"> Please enter V Max.</div>');
-			} else if (kmph == "") {
-				$('#kmph').focus();
-				$("#app_err").html('<div class="alert alert-danger" role="alert"> Please enter time for 0-100km/h in sec.</div>');
 			} else {
 
 				$("#add_br").prop("disabled", true);
@@ -259,7 +220,7 @@
 				$.ajax({
 					type: 'POST',
 					url: '' + SITEURL + 'lab/labs/all_motor',
-					data: "name=" + t + "&brand_id=" + brand_id + "&model_id=" + model_id + "&id=" + id + "&capacity=" + capacity + "&power=" + power + "&torque=" + torque + "&v_max=" + v_max + "&kmph=" + kmph + "&library_id=" + library_id + "",
+					data : {name:t,brand_id:brand_id,model_id:model_id,id:id},
 					success: function(data) {
 						btnDefault('add_br', 'Save');
 						$("#app_err").html(data);

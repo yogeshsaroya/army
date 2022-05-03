@@ -1335,10 +1335,8 @@ class LabsController extends AppController
 				}
 				if ($d > 0) {
 					echo '<div class="alert alert-danger" role="alert"> This Motor name already exist.</div>';
-				} else {
-					$a = array('id' => $this->data['id'], 'brand_id' => $this->data['brand_id'], 'model_id' => $this->data['model_id'], 'name' => $this->data['name'], 'capacity' => $this->data['capacity'], 'power' => $this->data['power'], 'torque' => $this->data['torque'], 'v_max' => $this->data['v_max'], 'kmph' => $this->data['kmph'], 'library_id' => $this->data['library_id']);
+				} else { $a = array('id' => $this->data['id'], 'brand_id' => $this->data['brand_id'], 'model_id' => $this->data['model_id'], 'name' => $this->data['name'] );
 					$this->Motor->save($a);
-
 					if (!empty($item_arr)) {
 						$this->ItemDetail->save($item_arr);
 					}
