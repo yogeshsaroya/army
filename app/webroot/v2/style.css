@@ -137,6 +137,10 @@ header div svg:hover {
     display: flex;
     flex-wrap: wrap;
 }
+.cartWrap {
+    display: flex;
+    align-items: center;
+}
 
 .align-items-center {
     align-items: center;
@@ -269,6 +273,7 @@ header div svg:hover {
 .navbarSide {
     list-style: none;
     padding: 0;
+    line-height: 1.7;
 }
 
 .navbarSide li {
@@ -1260,9 +1265,10 @@ video {
 @media (max-width:767px) {
     .cartHead,
     .closeCartMenu {
-        right: 20px;
+        right: 0;
         left: auto;
     }
+
     #v2_main #new-ui-add .col-sm-4-nw,
     #v2_main #frmTun .col-sm-4.text-left {
         max-width: 100%
@@ -1545,6 +1551,10 @@ video {
     #v2_main #new-ui-add #frmTun #get_info {
         margin: 0 auto;
     }
+    header>div, .lastFooter>div {
+        width: 98%;
+        padding: 10px!important;
+    }
 }
 
 @media (max-width: 580px) {
@@ -1621,11 +1631,7 @@ video {
     .logoWrap {
         max-width: 150px;
     }
-    header>div,
-    .lastFooter>div {
-        width: 98%;
-        padding: 10px 0 !important;
-    }
+    
     .cartBox span {
         margin-right: 5px;
         font-size: 8px;
