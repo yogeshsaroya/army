@@ -5,7 +5,7 @@
 
 /app/webroot/cdn/*
 /app/webroot/cache/*
-/app/webroot/army_sound/*
+/app/webroot/files/*
 
 /app/tmp/cache/models/*
 /app/tmp/cache/persistent/*
