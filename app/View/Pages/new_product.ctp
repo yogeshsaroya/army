@@ -291,6 +291,7 @@ if (isset($data) && !empty($data)) {
       <h4 class="mdlTx bottomCenter">STAINLESS STEEL SERIES</h4>
       <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865197/product/shared-label-bg_bbhu5n.webp" alt="" loading="lazy" class="img-wd-100">
     </div>
+  </section>
 </div>
 </div>
 </div>

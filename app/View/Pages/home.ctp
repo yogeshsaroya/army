@@ -74,18 +74,24 @@
     </section>
     <section class="fullWidthImageWrap pad60">
         <div class="fullWidthImages posRltv">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865455/home/shop_ntocqa.webp" loading="lazy" alt="full Images">
-
+            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1650865455/home/shop_ntocqa.webp" loading="lazy" alt="full Images">
             <div class="contentWrap text-right bottom20">
                 <h2 class="clrWhite">SOUND KIT</h2>
-                <a href=" <?php echo SITEURL; ?>sound" class="linkBtn">DISCOVER MORE</a>
+                <a href=" <?php echo SITEURL; ?>performance" class="linkBtn">DISCOVER MORE</a>
             </div>
+        </div>
 
+        <div class="fullWidthImages posRltv">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1651590180/home/performance.webp" loading="lazy" alt="full Images">
+            <div class="contentWrap text-right bottom20">
+                <h2 class="clrWhite">PERFORMANCE</h2>
+                <a href=" <?php echo SITEURL; ?>performance" class="linkBtn">DISCOVER MORE</a>
+            </div>
         </div>
 
 
         <div class="fullWidthImages posRltv">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/v1651024830/home/Sound__kit_rl8zos.webp" loading="lazy" alt="full Images">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1651024830/home/Sound__kit_rl8zos.webp" loading="lazy" alt="full Images">
 
             <div class="contentWrap text-right bottom20">
                 <h2 class="clrWhite">APPAREL & ACCESSORIES</h2>
@@ -96,7 +102,7 @@
 
 
         <div class="fullWidthImages posRltv">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865452/home/test_evkqle.webp" loading="lazy" alt="full Images">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1650865452/home/test_evkqle.webp" loading="lazy" alt="full Images">
 
             <div class="contentWrap text-center top30">
                 <h2 class="clrWhite">WHAT DO THEY SAY ABOUT ARMYTRIX</h2>
@@ -115,7 +121,7 @@
         </div>
 
         <div class="posRltv">
-            <video width="100%" height="auto" id="video_5" playsinline autoplay loop muted >
+            <video width="100%" height="auto" id="video_5" playsinline autoplay loop muted>
                 <source src="https://res.cloudinary.com/armytrix/video/upload/v1650883576/home/armytrix-trailer.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -127,7 +133,7 @@
     <!-- auto play video-->
 
     <div class="fullWidthImages posRltv">
-        <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865453/home/main-end_liba2e.webp" loading="lazy" alt="">
+        <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1650865453/home/main-end_liba2e.webp" loading="lazy" alt="">
 
     </div>
 
@@ -143,14 +149,4 @@ $.getJSON('https://www.armytrix.com/blog/wp-json/featured/news', function(data) 
 var str = '';
 var n = 1;
 $(data['news']).each((index, element) => {
-if (n <= 3) { var imgList=element['featured_image']; var img='https://res.cloudinary.com/armytrix/image/upload/v1650885696/home/ARMYTRIX.webp' ; if (typeof imgList !="undefined" && imgList !=null) { img=imgList.medium_large; } str +='<div class="col-sm-4"><div class="blogBox text-left"><div class="imgWraps"><img src="' + img + '" alt=""></div>' + '<h4>' + element['title'] + '</h4><p><b>' + element['published_on'] + ' </b>: ' + element['description'] + '</p>' + '<a href="' + element['url'] + '" class="wholeBoxLink"></a></div></div>' ; } n=n + 1; }); $("#blogPost").html(str); $("#blogPost").removeClass('loadBox'); }); 
-    $('#home_slider').slick({
-        dots: true, 
-        infinite : true,
-        autoplay: true, 
-        autoplaySpeed: 10000, infinite: true, 
-        speed: 500, fade: true, 
-        cssEase: 'linear' , 
-        adaptiveHeight: false }); 
-}); 
-<?php $this->Html->scriptEnd(); ?>
+if (n <= 3) { var imgList=element['featured_image']; var img='https://res.cloudinary.com/armytrix/image/upload/v1650885696/home/ARMYTRIX.webp' ; if (typeof imgList !="undefined" && imgList !=null) { img=imgList.medium_large; } str +='<div class="col-sm-4"><div class="blogBox text-left"><div class="imgWraps"><img src="' + img + '" alt=""></div>' + '<h4>' + element['title'] + '</h4><p><b>' + element['published_on'] + ' </b>: ' + element['description'] + '</p>' + '<a href="' + element['url'] + '" class="wholeBoxLink"></a></div></div>' ; } n=n + 1; }); $("#blogPost").html(str); $("#blogPost").removeClass('loadBox'); }); $('#home_slider').slick({ dots: true, infinite : true, autoplay: true, autoplaySpeed: 10000, infinite: true, speed: 500, fade: true, cssEase: 'linear' , adaptiveHeight: false }); }); <?php $this->Html->scriptEnd(); ?>
