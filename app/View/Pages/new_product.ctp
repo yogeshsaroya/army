@@ -161,12 +161,14 @@ if (isset($data) && !empty($data)) {
       
     </div>
     <div class="text-left">
-      <p>FREEDOM TO SWITCH BETWEEN LOUD AND QUIET WITH THE PUSH OF A BUTTON
-        With the push of a button on your ARMYRIX remotes or smartphone application, you get to switch between modes upon your wish. </p>
-      <p>CUSTOMIZEABLE AUTOMATIC MODE GIVES YOU A WORRY-FREE DRIVE
-        The automatic mode will open/close the exhaust valves based on predetermined RPM range or turbo bar, so you don’t have to manually switch all the time – you can also customize your own automatic mode upon your preference! </p>
-      <p>GAIN MORE POWER, LOSE NO TORQUE
-        Depending on the cars, modifications, and tunes you have, opening valves allow the exhaust gas to flow more freely, as it does not have to pass through any muffler.
+      <p>FREEDOM TO SWITCH BETWEEN LOUD AND QUIET WITH THE PUSH OF A BUTTON</p>
+      <p>With the push of a button on your ARMYRIX remotes or smartphone application, you get to switch between modes upon your wish. </p>
+      <br><br>
+      <p>CUSTOMIZEABLE AUTOMATIC MODE GIVES YOU A WORRY-FREE DRIVE</p>
+      <p>The automatic mode will open/close the exhaust valves based on predetermined RPM range or turbo bar, so you don’t have to manually switch all the time – you can also customize your own automatic mode upon your preference! </p>
+      <br><br>
+      <p>GAIN MORE POWER, LOSE NO TORQUE</p>
+      <p>Depending on the cars, modifications, and tunes you have, opening valves allow the exhaust gas to flow more freely, as it does not have to pass through any muffler.
         And with the valves being closed, it can retain the back pressure at low rpm, and maintain the torque that is usually lost with straight piped exhaust systems. </p>
     </div>
   </div>
