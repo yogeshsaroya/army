@@ -54,7 +54,7 @@
             $("#m1").addClass('color_green');
             $("#menuImg").attr('src', '<?php echo SITEURL; ?>v_4/images/mouse-icon1-hover.png');
             $("#menuImg1").attr('src', '<?php echo SITEURL; ?>v_4/images/mouse-icon3.png');
-            $("#modes_img").attr('src', 'https://res.cloudinary.com/armytrix/image/upload/v1651592728/product/mouse-hover-b2_tsorh4_vjh0c3.webp');
+            $("#modes_img").attr('src', 'https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651592728/product/mouse-hover-b2_tsorh4_vjh0c3.webp');
             
         });
         $("#m2").mouseover(function() {
@@ -62,7 +62,7 @@
             $("#m2").addClass('color_green');
             $("#menuImg").attr('src', '<?php echo SITEURL;?>v_4/images/mouse-icon1.png');
             $("#menuImg1").attr('src', '<?php echo SITEURL;?>v_4/images/mouse-icon3-hover.png');
-            $("#modes_img").attr('src', 'https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651514055/product/mouse-hover-b1_nt16rs.webp');
+            $("#modes_img").attr('src', 'https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651574852/product/mouse-hover-b1_nt16rs.webp');
         });
 
         $("#p_1").click(function() {
@@ -111,11 +111,7 @@
             var cat_b_q = $('#cat_b_q').val();
             if (txt == 'Select') {
                 $('.selc_p_1').remove();
-                $('#p_1').html('<?php if ($data['ItemDetail']['id'] == 77) {
-                                    echo "--- Full Set Valvetronic Exhaust Selections ---";
-                                } else {
-                                    echo "--- Cat-Back Valvetronic Mufflers Selection ---";
-                                } ?>');
+                $('#p_1').html('--- Cat-Back Valvetronic Mufflers Selection ---');
                 $('#cat_id').val('');
                 $('#cat_id_q').val('');
                 $('#cat_id_p').val(0);

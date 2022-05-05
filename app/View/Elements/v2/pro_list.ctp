@@ -5,7 +5,7 @@
         <div class="add-bx-drop-dwn">
 
             <div class="new-pro-drdwn">
-                <button  type="button" id="p_1">--- Catalytic Converter Replacement Selections ---</button>
+                <button  type="button" id="p_1">--- Cat-Back Valvetronic Mufflers Selection ---</button>
                 <ul  id="cat_back_ul" style="display: none;">
                     <li id="c0" pid="none" p_amt="0" data_img="" full_img=""><a href="javascript:void(0);">Select</a></li>
                     <?php foreach ($pro_data as $cList) {

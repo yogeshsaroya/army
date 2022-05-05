@@ -1,4 +1,4 @@
-<link rel="preload" as="image" href="https://res.cloudinary.com/armytrix/image/upload/v1651592728/product/mouse-hover-b2_tsorh4_vjh0c3.webp" />
+<link rel="preload" as="image" href="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651592728/product/mouse-hover-b2_tsorh4_vjh0c3.webp" />
 <link rel="preload" as="image" href="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651514055/product/mouse-hover-b1_nt16rs.webp" />
 
 <?php echo $this->Html->css(["/v2/product_page.css?v=" . rand(5646, 65465)], ['block' => 'cssTop']); ?>
@@ -151,13 +151,14 @@ if (isset($data) && !empty($data)) {
         <div class="page-titles"><h3 class="head-arm">3 Modes Switch</h3></div>
         <div class="mid-sec ">
           <ul id="slideshow2_thumbs" class="desoslide-thumbs-horizontal list-inline text-center">
-            <li><img loading="lazy" src="<?php echo SITEURL; ?>/v_4/images/mouse-icon1-02.png" alt="" /><br>Smart Mode</li>
-            <li id="m1" class="sw_modes color_green"><img loading="lazy" src="<?php echo SITEURL; ?>v_4/images/mouse-icon1-hover.png" alt="" id="menuImg"><br>Neighbor Mode</li>
-            <li id="m2" class="sw_modes"><img loading="lazy" src="<?php echo SITEURL; ?>v_4/images/mouse-icon3.png" alt="" id="menuImg1"><br> Beast Mode</li>
+            <li><img src="<?php echo SITEURL; ?>/v_4/images/mouse-icon1-02.png" alt="" /><br>Smart Mode</li>
+            <li id="m1" class="sw_modes color_green"><img src="<?php echo SITEURL; ?>v_4/images/mouse-icon1-hover.png" alt="" id="menuImg"><br>Neighbor Mode</li>
+            <li id="m2" class="sw_modes"><img  src="<?php echo SITEURL; ?>v_4/images/mouse-icon3.png" alt="" id="menuImg1"><br> Beast Mode</li>
           </ul>
         </div>
       </div>
-      <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651514055/product/mouse-hover-b2_tsorh4.webp" alt="" loading="lazy" class="img-wd-100" id="modes_img" />
+      <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651574852/product/mouse-hover-b1_nt16rs.webp" alt="" class="img-wd-100" id="modes_img" />
+      
     </div>
     <div class="text-left">
       <p>FREEDOM TO SWITCH BETWEEN LOUD AND QUIET WITH THE PUSH OF A BUTTON
