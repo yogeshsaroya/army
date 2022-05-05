@@ -1097,4 +1097,36 @@ section#s4 {
 }
 
 
+/* Sound page */
+
+#sound_page p {
+    text-align: left;
+}
+
+#sound_header_video {
+    margin: 30px 0 100px 0;
+}
+
+#sound_page p {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#sound_page #modes_switch {
+    margin-top: 60px;
+}
+
+@media (max-width: 768px) {
+    #sound_page h2 {
+        font-size: 20px;
+    }
+    #sound_page p {
+        font-size: 12px;
+    }
+}
+
+
+/* End */
+
+
 /*end */

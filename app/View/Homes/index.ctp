@@ -1,106 +1,143 @@
-<link rel="stylesheet" type="text/css" href="<?php echo SITEURL;?>css/sound_style.css"/>
+<link rel="preload" as="image" href="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651592728/product/mouse-hover-b2_tsorh4_vjh0c3.webp" />
+<link rel="preload" as="image" href="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651514055/product/mouse-hover-b1_nt16rs.webp" />
 
-<section class="img-sec">
-<img src="<?php echo SITEURL;?>v/sound_kit1.png" class="img-100"/>
-<h1 class="h1head">ARMYTRIX OBDII VALVETRONIC REMOTE CONTROL MODULE</h1>
-
-<h2 class="head-sound-txt"><span class="clr-grn">SOUND KIT</span><br> FOR CARS</h2>
-<div class="line-txt"> <h2><small class="up">Interactive</small><br/> <small class="dwn">valve control*</small></h2> 
-<small style="color: #fff">* Selected Merecdes Models Only</small>
-</div>
-<?php /*?>
-<img src="<?php echo SITEURL;?>v/sound_kit2.png" class="img-100"/>
-<?php */?>
+<?php echo $this->Html->css(["/v2/product_page.css?v=" . rand(5646, 65465)], ['block' => 'cssTop']); ?>
+<div id="v2_product">
+  <div class="performedwrap text-center mt-50 page_container fullMxWd" id="sound_page">
+    <h1 class="text-center mt-3 mb-5">ARMYTRIX OBDII VALVETRONIC REMOTE CONTROL MODULE</h1>
+    <p>A simple key fob, a press of a button; you decide when and how you want to be heard.
+      We are giving the power back to the driver; one to rule them all. The APP supports both Android and iOS systems, across a multitude of platforms of smartphones, tablets and other mobile devices.
+      From designated device you can precisely gauge the performance of the vehicle at that exact moment.</p>
 
 
+    <!-- auto play video-->
+    <div class="auto-play-video" id="sound_header_video">
+      <div class="abst_head midlle bold_light">
+        <h2><a href="https://www.youtube.com/user/armytrix?sub_confirmation=1" class="inheritClr">Join Team Armytrix</a></h2>
+        <h3>It's Your Turn. Create Your Own Story.</h3>
+      </div>
+      <div class="posRltv">
+        <video id="sound_vid" width="100%" height="auto" poster="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651715500/video%20for%20sound%20kits/Sound-_landscape_ku8ipz.webp" 
+        playsinline autoplay loop muted>
+          <source src="https://res.cloudinary.com/armytrix/video/upload/v1651714752/video%20for%20sound%20kits/sound_kits_-_landscape_egzong.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+    <!-- auto play video-->
 
-</section>
-<!-- end of first sec -->
-<div class="fullscreen_block_ video-bg" id="tuning_box_page" style="min-height: 400px;">
-<?php /*?><div class="video-con"><img src="<?php echo SITEURL;?>v/ico_play_big.png"/></div> <?php */?>
-<div id="player"></div>
-  <div class="video-background">
-<?php if ( isset($IsMobile) ){}else{?> <div class="bg-imgs"></div><?php }?>
-<div class="cntnet-bx">
-<div class="sound-btn">
-  <center id="s_o">SOUND OFF</center> 
-</div>    
-</div>
-</div>
-</div>
-<div class="bg-blk"><h3 class="text-head">Our innovative Valvetronic technology brings about unprecedented versatility to car owners.
-Armed with our one-and-only INTERACTIVE VALVE CONTROL technology, simply switch
-between OEM driving modes, valves automatically Open/Close to match up performance spirit.
-Drivers now have more control over their drives than ever before.</h3></div>
 
-  <section class="key-job">
-    <img src="<?php echo SITEURL;?>v/sound_1-armytrix-img2.jpg" alt="Key Job" class="img-100"/>
-    <div class="keys">
-      <h2>Key Fob</h2>
+    <h2>VALVETRONIC EXHAUST-HOW IT WORKS</h2>
+    <p>The Valvetronic system gives you the freedom to switch between being quiet and being loud with the push of a button via the ARMYTRIX remotes or through the smartphone application.<br><br></p>
+    <p>You can also set the Valvetronic system to automatic mode which will open/close the exhaust valves based on predetermined RPM range or turbo bar, which is also customizable via the smartphone application.<br><br></p>
+    <p>Aside from obtaining the flexibility to adjust your exhaust sound, the Valvetronic system can also enhance the drivability of your car:
+      Depending on the cars, modifications, and tunes you have, opening valves allow the exhaust gas to flow more freely, as it does not have to pass through any muffler. And with the valve being closed, it can retain the back pressure at low rpm, and maintain the torque that is usually lost with valve-less straight pipe exhaust systems. </p>
+
+
+    <div class="mt-31 mb-2 posRltv" id="modes_switch">
+      <div class="models_switch posAbsolute">
+        <div class="page-titles">
+          <h3 class="head-arm">3 Modes Switch</h3>
+        </div>
+        <div class="mid-sec ">
+          <ul id="slideshow2_thumbs" class="desoslide-thumbs-horizontal list-inline text-center">
+            <li><img src="<?php echo SITEURL; ?>/v_4/images/mouse-icon1-02.png" alt="" /><br>Smart Mode</li>
+            <li id="m1" class="sw_modes color_green"><img src="<?php echo SITEURL; ?>v_4/images/mouse-icon1-hover.png" alt="" id="menuImg"><br>Neighbor Mode</li>
+            <li id="m2" class="sw_modes"><img src="<?php echo SITEURL; ?>v_4/images/mouse-icon3.png" alt="" id="menuImg1"><br> Beast Mode</li>
+          </ul>
+        </div>
+      </div>
+      <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651574852/product/mouse-hover-b1_nt16rs.webp" alt="" class="img-wd-100" id="modes_img" />
+
+    </div>
+    <div class="text-left">
+      <p>FREEDOM TO SWITCH BETWEEN LOUD AND QUIET WITH THE PUSH OF A BUTTON</p>
+      <p>With the push of a button on your ARMYRIX remotes or smartphone application, you get to switch between modes upon your wish. </p>
+      <br><br>
+      <p>CUSTOMIZEABLE AUTOMATIC MODE GIVES YOU A WORRY-FREE DRIVE</p>
+      <p>The automatic mode will open/close the exhaust valves based on predetermined RPM range or turbo bar, so you don’t have to manually switch all the time – you can also customize your own automatic mode upon your preference! </p>
+      <br><br>
+      <p>GAIN MORE POWER, LOSE NO TORQUE</p>
+      <p>Depending on the cars, modifications, and tunes you have, opening valves allow the exhaust gas to flow more freely, as it does not have to pass through any muffler.
+        And with the valves being closed, it can retain the back pressure at low rpm, and maintain the torque that is usually lost with straight piped exhaust systems. </p>
     </div>
 
-    <div class="keys jobs">
-      <h2>APP</h2>
+
+    <div class="performedwrap text-center mt-50 page_container fullMxWd" id="pro_3">
+      <div class="pad15">
+        <h2>ARMYTRIX VALVE CONTROL REMOTE</h2>
+      </div>
+      <div class="mt-3">
+        <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865425/product/product-fix-2_vasdds.webp" alt="" loading="lazy" class="img-wd-100">
+      </div>
     </div>
-  </section>
 
-  <div class="fullscreen_block_ video-bg" id="tuning_box_page" style="min-height: 400px;">
-<?php /*?><div class="video-con"><img src="<?php echo SITEURL;?>v/ico_play_big.png"/></div> <?php */?>
 
-<?php /*?>
-<iframe id="home_bg_v1" src="https://www.youtube.com/embed/HtXm8zuuXIw?controls=0&showinfo=0&autoplay=1&rel=0&vq=hd720&enablejsapi=1&loop=1" allowfullscreen="" frameborder="0">
-</iframe>
-<?php */?>
-<div id="player1"></div>
-  <div class="video-background"> 
-<?php if ( isset($IsMobile) ){}else{?><div class="bg-imgs"></div><?php }?>     
-<div class="cntnet-bx">
-<div class="sound-btn">  
-  <center id="s_o1">SOUND OFF</center> 
-</div>    
+
+    <div class="pad60" id="pro_4">
+      <h2 class="text-center">ARMYTRIX APP SMART ASSISTANT</h2>
+      <p class="text-left">The mobile APP of ARMYTRIX can connect to the OBDII device via Bluetooth, and be used to as a remote controller to easily control valve switch and provide you with real-time monitoring of variuos values of your car, such as rotate speed, speed, fuel, etc. The rpm value in Auto mode can be set to open valves.</p>
+      <div class="row mt-3 mobile50">
+        <div class="col-sm-3 text-center">
+          <img src="https://res.cloudinary.com/armytrix/image/upload/v1651403044/product/product-app-1_sgfbbv.webp" loading="lazy" alt="App" />
+        </div>
+        <div class="col-sm-3 text-center">
+          <img src="https://res.cloudinary.com/armytrix/image/upload/v1651403044/product/product-app2_aevq7p.webp" loading="lazy" alt="App" />
+        </div>
+        <div class="col-sm-3 text-center">
+          <img src="https://res.cloudinary.com/armytrix/image/upload/v1651403044/product/product-app-4_k65j7f.webp" loading="lazy" alt="App" />
+        </div>
+        <div class="col-sm-3 text-center">
+          <img src="https://res.cloudinary.com/armytrix/image/upload/v1651403044/product/product-app-1_sgfbbv.webp" loading="lazy" alt="App" />
+        </div>
+      </div>
+    </div>
+
+    <div class="pad60">
+    <h2 class="text-center">INTERACTIVE VALVE CONTROL TECHNOLOGY</h2>
+    <p class="text-left">Our innovative Valvetronic technology brings about unprecedented versatility to car owners. Armed with our one-and-only INTERACTIVE VALVE CONTROL technology, simply switch between OEM driving modes, valves automatically Open/Close to match up performance spirit. Drivers now have more control over their drives than ever before.<br><br></p>
+    <?php echo $this->element('pro/s2a'); ?>
+    </div>
+
+  </div>
 </div>
 </div>
 </div>
-
-<div class="bg-blk"><h3 class="text-head">A simple key fob, a press of a button; you decide when and how you want to be heard. We are giving
-the power back to the driver; one to rule them all. The APP supports both Android and iOS systems,
-across a multitude of platforms of smartphones, tablets and other mobile devices. From designated
-device you can precisely gauge the performance of the vehicle at that exact moment.</h3>
 </div>
 
 
-
-
-<script>      
-      var tag = document.createElement('script');
-      tag.src = "https://www.youtube.com/player_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+<?php echo $this->Html->css(["/v2/css-loader"], ['block' => 'cssTop']); ?>
+<div id="cssLoader"></div>
+<?php $this->Html->scriptStart(array('block' => 'scriptBottom')); ?>
 
     
-      var player;
-      var player1;
-      function onYouTubePlayerAPIReady() {
-        player = new YT.Player('player', {
-            playerVars: { autoplay: 1, loop: 1, controls: 0, rel: 0, modestbranding: 1, 'autoplay': 1, 'autohide':0,'wmode':'opaque',},
-            videoId: 'H7DdubppSWo',height: '100%',width: '100%',
-            events: {'onReady': onPlayerReady,  'onStateChange': onStateChange}
-            });
-
-        player1 = new YT.Player('player1', {playerVars: { 'autoplay': 1, 'controls': 0,'autohide':0,'wmode':'opaque','loop':1 },
-            videoId:'HtXm8zuuXIw',height: '100%',width: '100%',events: {'onReady': onPlayerReady1, 'onStateChange': onStateChange1}});
+    setInterval(function(){
+      if ( parseInt($('#sound_vid').get(0).currentTime) > 2 ){
+        var video=document.getElementById("sound_vid")
+          if(video.muted){ video.muted = false; } 
       }
-      
-      function onStateChange(state) { if (state.data === YT.PlayerState.ENDED) { player.playVideo(); } }
-      function onStateChange1(state) { if (state.data === YT.PlayerState.ENDED) { player1.playVideo(); } }
-  	
-      function onPlayerReady(event) { event.target.mute(); }
-      function onPlayerReady1(event) { event.target.mute(); }  
-  
-      function toggleSound() { if (player.isMuted()) { player.unMute(); $('#s_o').text('SOUND ON'); } else { player.mute(); $('#s_o').text('SOUND OFF'); } }
-      function toggleSound1() { if (player1.isMuted()) { player1.unMute(); $('#s_o1').text('SOUND ON'); } else { player1.mute(); $('#s_o1').text('SOUND OFF'); } }
-  
-    $('#s_o').on('click', function(){ toggleSound(); });
-    $('#s_o1').on('click', function(){ toggleSound1(); }); 
-  
-</script>
+    },500);
+
+
+    $(document).ready(function() {
+      $("#sound_vid").bind("contextmenu",function(){
+        return false;
+        });
+
+        $("#m1").mouseover(function() {
+            $("#m2").removeClass('color_green');
+            $("#m1").addClass('color_green');
+            $("#menuImg").attr('src', '<?php echo SITEURL; ?>v_4/images/mouse-icon1-hover.png');
+            $("#menuImg1").attr('src', '<?php echo SITEURL; ?>v_4/images/mouse-icon3.png');
+            $("#modes_img").attr('src', 'https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651592728/product/mouse-hover-b2_tsorh4_vjh0c3.webp');
+            
+        });
+        $("#m2").mouseover(function() {
+            $("#m1").removeClass('color_green');
+            $("#m2").addClass('color_green');
+            $("#menuImg").attr('src', '<?php echo SITEURL;?>v_4/images/mouse-icon1.png');
+            $("#menuImg1").attr('src', '<?php echo SITEURL;?>v_4/images/mouse-icon3-hover.png');
+            $("#modes_img").attr('src', 'https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651574852/product/mouse-hover-b1_nt16rs.webp');
+        });
+      });
+    <?php $this->Html->scriptEnd(); ?>

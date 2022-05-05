@@ -119,16 +119,12 @@
             <h2><a href="https://www.youtube.com/user/armytrix?sub_confirmation=1" class="inheritClr">Join Team Armytrix</a></h2>
             <h3>It's Your Turn. Create Your Own Story.</h3>
         </div>
-
         <div class="posRltv">
             <video width="100%" height="auto" id="video_5" playsinline autoplay loop muted>
                 <source src="https://res.cloudinary.com/armytrix/video/upload/v1650883576/home/armytrix-trailer.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-
         </div>
-
-
     </div>
     <!-- auto play video-->
 
