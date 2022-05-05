@@ -77,7 +77,7 @@
             <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1650865455/home/shop_ntocqa.webp" loading="lazy" alt="full Images">
             <div class="contentWrap text-right bottom20">
                 <h2 class="clrWhite">SOUND KIT</h2>
-                <a href=" <?php echo SITEURL; ?>performance" class="linkBtn">DISCOVER MORE</a>
+                <a href=" <?php echo SITEURL; ?>sound" class="linkBtn">DISCOVER MORE</a>
             </div>
         </div>
 
