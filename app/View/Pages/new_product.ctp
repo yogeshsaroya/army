@@ -137,7 +137,7 @@ if (isset($data) && !empty($data)) {
   <?php if (!empty($data['Video'])) { ?>
     <div class="videoWrapperNw page_container fullMxWd" id="pro_1">
       <?php foreach ($data['Video'] as $vlist) {
-        echo '<iframe id="home_bg_v" width="100%" height="600" loading="lazy" src="https://www.youtube.com/embed/' . $vlist['video'] . '?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        echo '<div class="video-responsive"><iframe id="home_bg_v" width="100%" height="600" loading="lazy" src="https://www.youtube.com/embed/' . $vlist['video'] . '?rel=0&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
       } ?>
     </div>
   <?php } ?>
