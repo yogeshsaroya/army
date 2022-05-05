@@ -108,7 +108,11 @@
             var qut = $(this).attr("qut");
             var txt = $("#" + this.id + "").html();
             var txt = $.strRemove("div", txt);
-            var cat_b_q = $('#cat_b_q').val();
+            var cat_b_q = 1;
+
+            var out_stock = '';
+            if (qut == 0) { out_stock = '<li><span class="out_stock">Out of Stock</span></li>'; }
+
             if (txt == 'Select') {
                 $('.selc_p_1').remove();
                 $('#p_1').html('--- Cat-Back Valvetronic Mufflers Selection ---');
@@ -127,10 +131,20 @@
                     $('#cat_id').val(pid);
                     $('#cat_id_q').val(cat_b_q);
                     $('#cat_id_p').val(p_amt);
-                    $('#cat_pic_id').html('<div class="proImg"><img src="'+full_img+'" alt="images" loading="lazy" /></div><ul class="tabBtn d-flex"><li><span>'+data_part+'</span></li><li><span class="stanSteel">'+data_material+'</span></li></ul><p class="text-left">'+data_abt+'</p>');
+                    $('#cat_pic_id').html('<div class="proImg"><img src="'+full_img+'" alt="images" loading="lazy" /></div><ul class="tabBtn d-flex"><li><span class="part_no">'+data_part+'</span></li><li><span class="'+data_material+'">'+data_material+'</span></li>'+out_stock+'</ul><p class="text-left">'+data_abt+'</p>');
                     $('#p_1').addClass('drp-btn-clr');
                     $('#selc').append('<p class="selc_p_1">' + txt + '</p>');
                     getset();
+                }else{
+                    $('.selc_p_1').remove();
+                    $('#p_1').html(txt);
+                    $('#cat_id').val('');
+                    $('#cat_id_q').val('');
+                    $('#cat_id_p').val(0);
+                    $('#cat_pic_id').html('<div class="proImg"><img src="'+full_img+'" alt="images" loading="lazy" /></div><ul class="tabBtn d-flex"><li><span class="part_no">'+data_part+'</span></li><li><span class="'+data_material+'">'+data_material+'</span></li>'+out_stock+'</ul><p class="text-left">'+data_abt+'</p>');
+                    $('#p_1').removeClass('drp-btn-clr');
+                    $('.selc_p_1').remove();
+                    getset(); 
                 }
             }
             $('#cat_back_ul').hide();
@@ -149,7 +163,10 @@
             var qut = $(this).attr("qut");
             var txt = $("#" + this.id + "").html();
             var txt = $.strRemove("div", txt);
-            var cat_b_q = $('#ecu_b_q').val();
+            var cat_b_q = 1;
+            var out_stock = '';
+            if (qut == 0) { out_stock = '<li><span class="out_stock">Out of Stock</span></li>'; }
+
             if (txt == 'Select') {
                 $('.selc_p_2').remove();
                 $('#p_2').html('--- Catalytic Converter Replacement Selections ---');
@@ -166,9 +183,18 @@
                     $('#ecu_id').val(pid);
                     $('#ecu_id_q').val(cat_b_q);
                     $('#ecu_id_p').val(p_amt);
-                    $('#ecu_pic_id').html('<div class="proImg"><img src="'+full_img+'" alt="images" loading="lazy" /></div><ul class="tabBtn d-flex"><li><span>'+data_part+'</span></li><li><span class="stanSteel">'+data_material+'</span></li></ul><p class="text-left">'+data_abt+'</p>');
+                    $('#ecu_pic_id').html('<div class="proImg"><img src="'+full_img+'" alt="images" loading="lazy" /></div><ul class="tabBtn d-flex"><li><span class="part_no">'+data_part+'</span></li><li><span class="'+data_material+'">'+data_material+'</span></li>'+out_stock+'</ul><p class="text-left">'+data_abt+'</p>');
                     $('#p_2').addClass('drp-btn-clr');
                     $('#selc').append('<p class="selc_p_2">' + txt + '</p>');
+                    getset();
+                }else{
+                    $('.selc_p_2').remove();
+                    $('#p_2').html(txt);
+                    $('#ecu_id').val('');
+                    $('#ecu_id_q').val('');
+                    $('#ecu_id_p').val(0);
+                    $('#ecu_pic_id').html('<div class="proImg"><img src="'+full_img+'" alt="images" loading="lazy" /></div><ul class="tabBtn d-flex"><li><span class="part_no">'+data_part+'</span></li><li><span class="'+data_material+'">'+data_material+'</span></li>'+out_stock+'</ul><p class="text-left">'+data_abt+'</p>');
+                    $('#p_2').removeClass('drp-btn-clr');
                     getset();
                 }
             }
@@ -189,8 +215,9 @@
             var qut = $(this).attr("qut");
             var txt = $("#" + this.id + "").html();
             var txt = $.strRemove("div", txt);
-            var cat_b_q = $('#accessory_b_q').val();
-
+            var cat_b_q = 1; 
+            var out_stock = '';
+            if (qut == 0) { out_stock = '<li><span class="out_stock">Out of Stock</span></li>'; }
 
             if (txt == 'Select') {
                 $('.selc_p_3').remove();
@@ -208,9 +235,18 @@
                     $('#accessory_id').val(pid);
                     $('#accessory_id_q').val(cat_b_q);
                     $('#accessory_id_p').val(p_amt);
-                    $('#tuning_pic_id').html('<div class="proImg"><img src="'+full_img+'" alt="images" loading="lazy" /></div><ul class="tabBtn d-flex"><li><span>'+data_part+'</span></li><li><span class="stanSteel">'+data_material+'</span></li></ul><p class="text-left">'+data_abt+'</p>');
+                    $('#tuning_pic_id').html('<div class="proImg"><img src="'+full_img+'" alt="images" loading="lazy" /></div><ul class="tabBtn d-flex"><li><span class="part_no">'+data_part+'</span></li><li><span class="'+data_material+'">'+data_material+'</span></li>'+out_stock+'</ul><p class="text-left">'+data_abt+'</p>');
                     $('#p_3').addClass('drp-btn-clr');
                     $('#selc').append('<p class="selc_p_3">' + txt + '</p>');
+                    getset();
+                }else{
+                    $('.selc_p_3').remove();
+                    $('#p_3').html(txt);
+                    $('#accessory_id').val('');
+                    $('#accessory_id_q').val('');
+                    $('#accessory_id_p').val(0);
+                    $('#tuning_pic_id').html('<div class="proImg"><img src="'+full_img+'" alt="images" loading="lazy" /></div><ul class="tabBtn d-flex"><li><span class="part_no">'+data_part+'</span></li><li><span class="'+data_material+'">'+data_material+'</span></li>'+out_stock+'</ul><p class="text-left">'+data_abt+'</p>');
+                    $('#p_3').removeClass('drp-btn-clr');
                     getset();
                 }
             }

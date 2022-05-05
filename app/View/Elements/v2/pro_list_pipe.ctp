@@ -1,7 +1,7 @@
 <?php if (!empty($pro_data)) { ?>
-    <div class="add-bx-sel <?php echo ($restricted == 2 ? "w_h":"w_f"); ?>">
+    <div class="add-bx-sel w_f">
         <h2>HEADER / DOWNPIPES</h2>
-        <div class="<?php echo ($restricted == 2 ? "col-md-9":"col-md-12"); ?> no-pad">
+        <div class="col-md-12 no-pad">
             <div class="add-bx-drop-dwn">
                 <div class="new-pro-drdwn">
                     <button class="" type="button" id="p_2">--- Catalytic Converter Replacement Selections ---</button>
@@ -33,19 +33,6 @@
             </div>
             <div class="drp-img" id="cat_pic_id"></div>
         </div>
-        <?php if ($restricted == 2) { ?>
-        <div class="col-md-3">
-            <div class="add-bx-snap">
-                <div class="center">
-                    <div class="input-group"> <span class="input-group-btn">
-                            <button type="button" class="btn btn-default btn-number snp-btn" disabled="disabled" data-type="minus" data-field="ecu[1]"> <span class="glyphicon glyphicon-minus"></span> </button></span>
-                        <input type="text" name="ecu[1]" class="form-control input-number" value="1" min="1" max="5" id="ecu_b_q" readonly="readonly">
-                        <span class="input-group-btn"><button type="button" class="btn btn-default btn-number snp-btn" data-type="plus" data-field="ecu[1]"> <span class="glyphicon glyphicon-plus"></span> </button></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <?php } ?>
         <div class="clearfix"> </div>
     </div>
 

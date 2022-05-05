@@ -246,12 +246,34 @@ ul.controls li {
     margin-left: 10px;
 }
 
-.tabBtn a.titanim {
-    background-color: #85ace7;
+#v2_product .tabBtn span {
+    display: inline-block;
+    padding: 10px 14px 9px;
+    margin: 2px 0;
+    font-size: 12px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: 900;
 }
 
-.tabBtn a.stanSteel {
-    background-color: #ffb291;
+span.out_stock {
+    background: #ff3232;
+    color: #ffff;
+}
+
+#v2_product .tabBtn span.titanim {
+    background: #ebebeb;
+    color: #333;
+}
+
+#v2_product .tabBtn span.stainless.steel {
+    background: #ffb291;
+    color: #333;
+}
+
+#v2_product .tabBtn span.part_no {
+    background: #ebebeb;
+    color: #333;
 }
 
 .text-left {
