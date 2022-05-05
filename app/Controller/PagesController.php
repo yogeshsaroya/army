@@ -677,11 +677,9 @@ class PagesController extends AppController
 				if ($this->data['get'] == 'product') {
 					$get_pro = $this->Product->find('first', array('conditions' => array('Product.id' => $this->data['pid'], 'Product.status' => 1)));
 					if (!empty($get_pro)) {
-						$c = $getCartData = array();
-						$c = array('Cart.guest_id'=>$this->guest_id);
-						if (!empty($c)) {
-							$getCartData = $this->Cart->find('first', array('conditions' => array($c)));
-						}
+						$c = $getCartData = [];
+						$c = array('Cart.guest_id'=>$this->guest_id, 'Cart.product_id' => $this->data['pid'], 'Cart.type' => 1);
+						if (!empty($c)) { $getCartData = $this->Cart->find('first', array('conditions' => array($c))); }
 						if (empty($getCartData)) {
 							$arr = array('product_id' => $this->data['pid'], 'guest_id' => $this->guest_id, 'quantity' => $this->data['q']);
 							if (isset($this->data['size'])) {
@@ -700,7 +698,6 @@ class PagesController extends AppController
 					echo "<script>$('#_cart_icon').html('$str');</script>";
 					$this->render('cart_list');
 				} elseif ($this->data['get'] == 'exhaust') {
-					$ti = null;
 					/* save cat-back product */
 					if (!empty($this->data['cat_id'])) {
 						$cat_pro = $this->Product->find('first', array('conditions' => array('Product.id' => $this->data['cat_id'], 'Product.status' => 1)));
@@ -714,7 +711,6 @@ class PagesController extends AppController
 								$arr = array('id' => null, 'product_id' => $this->data['cat_id'], 'guest_id' => $this->guest_id, 'quantity' => $this->data['cat_id_q']);
 								$this->request->data['Cart'] = $arr;
 								$this->Cart->save($this->request->data);
-								$ti .= '"' . $cat_pro['Product']['title'] . '"<br>';
 							}
 						}
 					}
@@ -732,7 +728,6 @@ class PagesController extends AppController
 								$arr = array('id' => null, 'product_id' => $this->data['ecu_id'], 'guest_id' => $this->guest_id, 'quantity' => $this->data['ecu_id_q']);
 								$this->request->data['Cart'] = $arr;
 								$this->Cart->save($this->request->data);
-								$ti .= '"' . $cata_pro['Product']['title'] . '"<br>';
 							}
 						}
 					}
@@ -752,11 +747,9 @@ class PagesController extends AppController
 								$arr = array('id' => null, 'product_id' => $this->data['accessory_id'], 'guest_id' => $this->guest_id, 'quantity' => $this->data['accessory_b_q']);
 								$arrdata['Cart'] = $arr;
 								$this->Cart->save($arrdata);
-								$ti .= '"' . $t_pro['Product']['title'] . '"<br>';
 							}
 						}
 					}
-					$ti = str_replace("'", '', $ti);
 					$cnd = [];
 					$cnd = array('Cart.guest_id' =>$this->guest_id, 'Cart.type' => 1);
 					

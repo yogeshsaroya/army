@@ -1,4 +1,4 @@
-<?php echo $this->element('pro_script');?>
+
 <div id="main_sec">
 	<style>
 body{background:#fff}
@@ -109,18 +109,7 @@ function add_pro(id){
 		$.ajax({type: 'POST',
 			url: '<?php echo SITEURL;?>pages/add_to_cart',
 			data:'pid='+id+'&q=1&get=product',
-			success: function(data) { $("#_my_cart").html(data); setTimeout(function(){ $('#preloader').hide(); }, 200); 
-
-			<?php if(!isset($IsMobile)){ ?>
-			var currentImg = $('#pic_'+id).find('a img');
-            var cart = $('#cart'); 
-            var imgclone = currentImg.clone().offset({ top:currentImg.offset().top, left:currentImg.offset().left })
-            .addClass('imgfly').css({'opacity':'0.9', 'position':'absolute', 'height':'200px', 'width':'200px', 'z-index':'1000'}).appendTo($('body'))
-            .animate({'top':cart.offset().top - 110,'left':cart.offset().left + 10,'width':55,'height':55}, 1000, 'easeInOutExpo'); 
-        	imgclone.animate({'width':0, 'height':0});
-        	<?php }?>
-
-			},
+			success: function(data) { $("#_my_cart").html(data); setTimeout(function(){ $('#preloader').hide(); }, 200); },
 			error: function(comment) { $("#_my_cart").html(data);  setTimeout(function(){ $('#preloader').hide(); }, 500);  }}); 
 		
 	}
