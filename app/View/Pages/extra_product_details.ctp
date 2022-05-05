@@ -1,13 +1,7 @@
-<?php 
-echo $this->html->css(array('animate'));
-echo $this->html->script(array('bootstrap-notify.min'));
-echo $this->element('pro_script');
-?>
 <link rel="stylesheet" href="<?php echo SITEURL;?>css/custom.css" type="text/css" media="all" />
 <link rel="stylesheet" href="<?php echo SITEURL;?>css/new_custom-for-audi.css" type="text/css" media="all" />
 <link type="text/css" rel="stylesheet" href="<?php echo SITEURL;?>css/lightslider.css" />
 <script src="<?php echo SITEURL;?>js/lightslider.js"></script>
-<script src="//use.fontawesome.com/294e29c753.js"></script>
 <script>$(document).ready(function(){
 	$( ".icon-tb" ).click(function() {
 		var $container = $("html,body"); var $scrollTo = $('.product_v_list');
@@ -56,13 +50,9 @@ echo $this->element('pro_script');
           
           <div id="add-cart-bx">
             <h2><?php echo $data['Product']['title'];?></h2>
-            <?php /*?><h3>2015-/3.0 v6 Turbo (M276 DE30AL) Saloon / Coupe / Estate</h3> <?php */?>
-
 <div class="costing-num"><h2 id="price">$<?php echo num_2($data['Product']['price']);?></h2></div>
 <div class="clearfix"> </div>
-
 <div class="add-bx-sel">
-
 <?php 
 $sizes = [];
 if( isset($data['Product']['sizes']) && !empty($data['Product']['sizes']) ){
@@ -105,12 +95,12 @@ if(!empty($sizes)){
 
 </div>
 <div class="clearfix"> </div>
-<div class="card-btn"> 
+<div class="card-btn" id="extra_pmt"> 
 <ul>
-	<li><span>Shipping:</span> <a> 3-5 days deliver to US and Europe. Other countries will take 5-7 days.</a></li>
-    <li><span>Shipment:</span> <a><img src="<?php echo SITEURL;?>img/shipment-card.jpg" /></a></li>
+	<li><span>Shipping:</span> 3-5 days deliver to US and Europe. Other countries will take 5-7 days.</li>
+    <li><span>Shipment:</span><img src="<?php echo SITEURL;?>img/shipment-card.jpg"  alt=""/></li>
     <li><span>Delivery: </span><a> Varies</a></li>
-    <li><span>Payments: </span> <a><img src="<?php echo SITEURL;?>img/paypal-ac.jpg" /></a></li>
+    <li><span>Payments: </span><img class="pmt_opt" alt="" src="<?php echo SITEURL;?>img/paypal-ac.jpg" /></li>
 
 </ul>
 </div>
@@ -145,18 +135,7 @@ function add_pro(id){
 		$.ajax({type: 'POST',
 			url: '<?php echo SITEURL;?>pages/add_to_cart',
 			data:'pid='+id+'&q='+q+'&get=product',
-			success: function(data) { $("#_my_cart").html(data); setTimeout(function(){ $('#preloader').hide(); }, 200); 
-
-			<?php if(!isset($IsMobile)){ ?>
-			var currentImg = $('.lslide.active').find('img');
-            var cart = $('#cart'); 
-            var imgclone = currentImg.clone().offset({ top:currentImg.offset().top, left:currentImg.offset().left })
-            .addClass('imgfly').css({'opacity':'0.9', 'position':'absolute', 'height':'200px', 'width':'200px', 'z-index':'1000'}).appendTo($('body'))
-            .animate({'top':cart.offset().top - 110,'left':cart.offset().left + 10,'width':55,'height':55}, 1000, 'easeInOutExpo'); 
-        	imgclone.animate({'width':0, 'height':0});
-        	<?php }?>
-        	
-			},
+			success: function(data) { $("#_my_cart").html(data); setTimeout(function(){ $('#preloader').hide(); }, 200); },
 			error: function(comment) { $("#_my_cart").html(data);  setTimeout(function(){ $('#preloader').hide(); }, 500);  }}); 
 	}
 }
@@ -174,18 +153,7 @@ function add_pro_size(id){
 			$.ajax({type: 'POST',
 				url: '<?php echo SITEURL;?>pages/add_to_cart',
 				data:'pid='+id+'&q='+q+'&size='+size+'&get=product',
-				success: function(data) { $("#_my_cart").html(data); setTimeout(function(){ $('#preloader').hide(); }, 200); 
-
-				<?php if(!isset($IsMobile)){ ?>
-				var currentImg = $('.lslide.active').find('img');
-	            var cart = $('#cart'); 
-	            var imgclone = currentImg.clone().offset({ top:currentImg.offset().top, left:currentImg.offset().left })
-	            .addClass('imgfly').css({'opacity':'0.9', 'position':'absolute', 'height':'200px', 'width':'200px', 'z-index':'1000'}).appendTo($('body'))
-	            .animate({'top':cart.offset().top - 110,'left':cart.offset().left + 10,'width':55,'height':55}, 1000, 'easeInOutExpo'); 
-	        	imgclone.animate({'width':0, 'height':0});
-	        	<?php }?>
-	        	
-				},
+				success: function(data) { $("#_my_cart").html(data); setTimeout(function(){ $('#preloader').hide(); }, 200); },
 				error: function(comment) { $("#_my_cart").html(data);  setTimeout(function(){ $('#preloader').hide(); }, 500);  }});
 			}
 	}
@@ -267,8 +235,4 @@ $(".input-number").keydown(function (e) {
             e.preventDefault();
         }
     });
-	
-
-
-
-</script>
+	</script>

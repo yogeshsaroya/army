@@ -12,6 +12,10 @@ body {
     line-height: 1.5;
 }
 
+#extra_pmt .pmt_opt {
+    height: 50px;
+}
+
 img {
     max-width: 100%;
 }
