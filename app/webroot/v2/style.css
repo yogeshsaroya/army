@@ -1733,6 +1733,7 @@ div#v2_product .slick-arrow {
     transform: translateY(-50%);
     background: url(../v2/img/arrowControls.png) no-repeat 0 center;
     background-size: 60px auto;
+    opacity: 0.5;
 }
 
 div#v2_product .slick-arrow.slick-next {
@@ -1740,6 +1741,7 @@ div#v2_product .slick-arrow.slick-next {
     background-size: 60px auto;
     left: auto;
     right: 0;
+    opacity: 0.5;
 }
 
 div#v2_product .slick-arrow:before {

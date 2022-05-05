@@ -59,6 +59,7 @@ div#v2_product .slick-arrow {
     background: url(../v2/img/arrowControls.png) no-repeat 0 center;
     background-size: 60px auto;
     z-index: 9;
+    opacity: 0.5;
 }
 
 div#v2_product .slick-arrow.slick-next {
@@ -66,6 +67,7 @@ div#v2_product .slick-arrow.slick-next {
     background-size: 60px auto;
     left: auto;
     right: -45px;
+    opacity: 0.5;
 }
 
 div#v2_product .slick-arrow:before,
