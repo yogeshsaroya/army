@@ -8,7 +8,7 @@
 	</style>
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
-		<h1> All Models </h1>
+		<h1> All Motors </h1>
 	</section>
 	<!-- Main content -->
 	<section class="content">
@@ -27,7 +27,7 @@
 														echo "Edit";
 													} else {
 														echo "Add New";
-													} ?> Model</h3>
+													} ?> Motor</h3>
 						</div>
 						<div class="box-body">
 							<?php

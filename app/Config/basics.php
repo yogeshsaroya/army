@@ -162,3 +162,11 @@ function getAge($dob = null) {
 function uc($str = null){
 	return ucwords(strtolower($str));
 }
+
+function getYears($f=2000, $t=2030){
+	$arr = [];
+	for($i=$f;$i<=$t;$i++){
+		$arr[$i]= $i;
+	}
+	return $arr;
+}

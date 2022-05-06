@@ -5,7 +5,8 @@ class LabsController extends AppController
 
 	var $uses = array('VideoSlider',
 		'User', 'Model', 'Brand', 'Motor', 'Product', 'EmailTemplate', 'World', 'Library', 'ExhaustBrand', 'ExhaustModel', 'ExhaustProduct', 'PromoCode',
-		'ItemDetail', 'QualityDetail', 'Shipping', 'DealerLevel', 'Order', 'OrderItem', 'OrderHistory', 'OrderMessage', 'Address', 'Vote', 'VoteOption', 'Language', 'String', 'Translation', 'CountryList'
+		'ItemDetail', 'QualityDetail', 'Shipping', 'DealerLevel', 'Order', 'OrderItem', 'OrderHistory', 'OrderMessage', 'Address', 'Vote', 'VoteOption', 'Language', 'String', 'Translation', 'CountryList',
+		'Motorcycle','MotorcycleMake' ,'MotorcycleModel','MotorcycleYear'
 	);
 	var $components = array('Auth', 'Session', 'Email', 'RequestHandler', 'Paginator', 'DATA', 'PhpExcel.PhpExcel');
 	var $helpers = array('Html', 'Form', 'Session', 'Paginator');
@@ -4370,6 +4371,282 @@ class LabsController extends AppController
 			$this->set(compact('language', 'lngStr'));
 		} else {
 			$this->layout = '404';
+		}
+	}
+
+	public function lab_motorcycle_make($id = null)
+	{
+		$this->set('title_for_layout', 'Motorcycle Make : ' . WEBTITLE);
+
+		if ($this->RequestHandler->isAjax() && !empty($this->data) ) {
+			$d = null;
+			if (empty($this->data['id'])) {
+				$d = $this->MotorcycleMake->find('count', array('conditions' => array('MotorcycleMake.name' => $this->data['name'])));
+			}
+			if ($d > 0) {
+				echo '<div class="alert alert-danger" role="alert"> This Motorcycle Make name already exist.</div>';
+			} else {
+				$array = array('id' => $this->data['id'], 'name' => $this->data['name']);
+				$this->MotorcycleMake->save($array);
+				echo '<div class="alert alert-success" role="alert"> Added</div>';
+				echo "<script>$('#add_br').remove(); setTimeout(function(){ window.location.href ='" . SITEURL . "lab/labs/motorcycle_make'; }, 1000);</script>";
+			}
+			exit;
+		}
+
+		if (isset($this->request->query['status']) && !empty($this->request->query['status'])) {
+			$list = $this->MotorcycleMake->find('first', array('conditions' => array('MotorcycleMake.id' => $this->request->query['status'])));
+			if (!empty($list)) {
+				$st = ($list['MotorcycleMake']['status'] == 1 ? 2 : 1);
+				$arr = array('id' => $list['MotorcycleMake']['id'], 'status' => $st);
+				$this->MotorcycleMake->save($arr);
+				$this->redirect(SITEURL . "lab/labs/motorcycle_make");
+			}
+		}
+
+		if (!empty($id)) {
+			$e = $this->MotorcycleMake->find('first', array('conditions' => array('MotorcycleMake.id' => $id)));
+			$this->set('e', $e);
+		}
+		$data = $this->MotorcycleMake->find('all', array('order' => array('MotorcycleMake.name' => 'ASC')));
+		$this->set('data', $data);
+	
+	}
+
+	public function lab_motorcycle_model($id = null)
+	{
+		$this->set('title_for_layout', 'Manage Motorcycle Models');
+
+		if ($this->RequestHandler->isAjax() && !empty($this->data) ) {
+
+			if (empty($this->data['brand_id'])) {
+				echo '<div class="alert alert-info" role="alert"> Please select brand name.</div>';
+			} elseif (empty($this->data['name'])) {
+				echo '<div class="alert alert-info" role="alert"> Please enter model name</div>';
+			} else {
+				$a = array('id' => $this->data['id'], 'motorcycle_make_id' => $this->data['brand_id'], 'name' => $this->data['name']);
+				$this->MotorcycleModel->save($a);
+				echo '<div class="alert alert-success" role="alert"> Added</div>';
+				echo "<script>setTimeout(function(){ window.location.href ='" . SITEURL . "lab/labs/motorcycle_model/" . $this->data['brand_id'] . "'; }, 1000);</script>";
+			}
+			exit;
+		}
+
+		if (isset($this->request->query['status']) && !empty($this->request->query['status'])) {
+			$list = $this->MotorcycleModel->find('first', array('conditions' => array('MotorcycleModel.id' => $this->request->query['status'])));
+			if (!empty($list)) {
+				$st = ($list['MotorcycleModel']['status'] == 1 ? 2 : 1);
+				$arr = array('id' => $list['MotorcycleModel']['id'], 'status' => $st);
+				$this->MotorcycleModel->save($arr);
+				$this->redirect(SITEURL . "lab/labs/motorcycle_model");
+			}
+		}
+
+		$this->MotorcycleModel->bindModel(array('belongsTo' => array('MotorcycleMake')));
+		$brand = $this->MotorcycleMake->find('list', array('conditions' => array('MotorcycleMake.status' => 1), 'order' => array('MotorcycleMake.name' => 'ASC'), 'fields' => array('id', 'name')));
+		$c = [];
+		if (!empty($id)) { $c = ['MotorcycleModel.motorcycle_make_id' => $id]; }
+		$this->paginate = array('limit' => 200, 'conditions' => $c, 'order' => array('MotorcycleModel.pos' => 'ASC'));
+		$model = $this->paginate('MotorcycleModel');
+
+		if (isset($_GET['edit']) && !empty($_GET['edit'])) {
+			$e = $this->MotorcycleModel->find('first', array('conditions' => array('MotorcycleModel.id' => $_GET['edit'])));
+			$this->set('e', $e);
+		}
+		$this->set(compact('brand', 'model', 'id'));
+	}
+	public function lab_mot_pos_mk()
+	{
+		$this->autoRender = false;
+		if ($this->RequestHandler->isAjax()) {
+			if (isset($this->data['model']) && !empty($this->data['model'])) {
+				$arr = [];
+				foreach ($this->data['model'] as $key => $val) {
+					$arr[] = ['id' => $val, 'pos' => $key];
+				}
+				if (!empty($arr)) {
+					$this->MotorcycleModel->saveAll($arr);
+				}
+			}
+		}
+	}
+
+	public function lab_motorcycle_year($id = null, $mid = null)
+	{
+		$this->set('title_for_layout', 'Manage Motorcycle Years');
+		if ($this->RequestHandler->isAjax() && !empty($this->data)) {
+			$d = 0;
+			if (empty($this->data['motorcycle_make_id'])) {
+				echo '<div class="alert alert-info" role="alert"> Please select Make.</div>';
+			} elseif (empty($this->data['motorcycle_model_id'])) {
+				echo '<div class="alert alert-info" role="alert"> Please select Model.</div>';
+			} elseif (empty($this->data['year_from'])) {
+				echo '<div class="alert alert-info" role="alert"> Please enter Year From</div>';
+			} 
+			else {
+				if (empty($this->data['id'])) {
+					$d = $this->MotorcycleYear->find('count', array('conditions' => array(
+						'MotorcycleYear.year_from' => $this->data['year_from'], 
+						'MotorcycleYear.year_to' => $this->data['year_to'], 
+					'MotorcycleYear.motorcycle_model_id' => $this->data['motorcycle_model_id'])));
+				}
+				if ($d > 0) {
+					echo '<div class="alert alert-danger" role="alert"> This Model year already exist.</div>';
+				} else { 
+					$a = array('id' => $this->data['id'], 'motorcycle_make_id' => $this->data['motorcycle_make_id'],'motorcycle_model_id' => $this->data['motorcycle_model_id'],'year_from' => $this->data['year_from'], 'year_to' => $this->data['year_to']);
+					$this->MotorcycleYear->save($a);
+					echo '<div class="alert alert-success" role="alert"> Added</div>';
+					echo "<script>$('#add_br').remove(); setTimeout(function(){ window.location.href ='" . SITEURL . "lab/labs/motorcycle_year/" . $this->data['motorcycle_make_id'] . "/" . $this->data['motorcycle_model_id'] . "'; }, 1000);</script>";
+				}
+			}
+			exit;
+		}
+
+		if (isset($this->request->query['status']) && !empty($this->request->query['status'])) {
+			$list = $this->MotorcycleYear->find('first', array('conditions' => array('MotorcycleYear.id' => $this->request->query['status'])));
+			if (!empty($list)) {
+				$st = ($list['MotorcycleYear']['status'] == 1 ? 2 : 1);
+				$arr = array('id' => $list['MotorcycleYear']['id'], 'status' => $st);
+				$this->MotorcycleYear->save($arr);
+				$this->redirect($this->referer());
+			}
+		}
+		if (isset($this->request->query['del']) && !empty($this->request->query['del'])) {
+			$list = $this->MotorcycleYear->find('first', array('conditions' => array('MotorcycleYear.id' => $this->request->query['del'])));
+			if (!empty($list)) {
+				$this->MotorcycleYear->id = $list['MotorcycleYear']['id'];
+				$this->MotorcycleYear->delete();
+			}
+			$this->redirect($this->referer());
+			
+		}
+		
+		$this->MotorcycleModel->bindModel(array('belongsTo' => array('MotorcycleMake')));
+		$this->MotorcycleYear->bindModel(array('belongsTo' => array('MotorcycleModel', 'MotorcycleMake')));
+
+		$brand = $this->MotorcycleMake->find('list', array('conditions' => array('MotorcycleMake.status' => 1), 'order' => array('MotorcycleMake.name' => 'ASC'), 'fields' => array('id', 'name')));
+		$c = array('MotorcycleModel.status' => 1);
+		if (!empty($id)) { $c[] = array('MotorcycleModel.motorcycle_make_id' => $id);}
+		$model_list = $this->MotorcycleModel->find('list', array('conditions' => $c, 'order' => array('MotorcycleModel.name' => 'ASC'), 'fields' => array('id', 'name')));
+
+		$c = array();
+		if (!empty($id)) {
+			$c[] = array('MotorcycleYear.motorcycle_make_id' => $id);
+		}
+		if (!empty($mid)) {
+			$c[] = array('MotorcycleYear.motorcycle_model_id' => $mid);
+		}
+		$this->paginate = array('maxLimit' => 500, 'limit' => 500, 'conditions' => $c, 'order' => array('MotorcycleYear.id' => 'DESC'));
+		$data = $this->paginate('MotorcycleYear');
+
+
+		if (isset($_GET['edit']) && !empty($_GET['edit'])) {
+			$e = $this->MotorcycleYear->find('first', array('conditions' => array('MotorcycleYear.id' => $_GET['edit'])));
+			$this->set('e', $e);
+		}
+
+		$this->set(compact('brand', 'id', 'model_list', 'mid', 'data'));
+
+		
+	}
+
+	public function lab_motorcycle_exhaust(){
+		$this->set('title_for_layout', 'Motorcycle Exhause Products : ' . WEBTITLE);
+
+		if (isset($this->request->query['del']) && !empty($this->request->query['del'])) {
+			$d = $this->Product->find('first', array('conditions' => array('Product.id' => $this->request->query['del'])));
+			if (!empty($d)) {
+				$this->Product->id = $d['Product']['id'];
+				$this->Product->delete();
+			}
+			$this->redirect(array('controller' => 'labs', 'action' => 'exhaust_product'));
+		}
+
+		if (isset($this->request->query['status']) && !empty($this->request->query['status'])) {
+			$d = $this->Product->find('first', array('conditions' => array('Product.id' => $this->request->query['status'])));
+			if (!empty($d)) {
+				$st = ($d['Product']['status'] == 1 ? 0 : 1);
+				$arr = ['id' => $d['Product']['id'], 'status' => $st];
+				$this->Product->save($arr);
+			}
+			$this->redirect(array('controller' => 'labs', 'action' => 'exhaust_product'));
+		}
+
+		$c = [];
+		$ec[] = ['Product.type' => 6];
+		$q = $this->request->query;
+		$make = $this->MotorcycleMake->find('list', array('order' => array('MotorcycleMake.name' => 'ASC'), 'fields' => array('id', 'name')));
+		if (isset($q['make']) && !empty($q['make'])) {
+			$c = ['MotorcycleModel.motorcycle_make_id' => $q['make']];
+			$ec[] = ['MotorcycleModel.motorcycle_make_id' => $q['make']];
+		}
+		$model_list = $this->MotorcycleModel->find('list', array('conditions' => $c, 'order' => array('MotorcycleModel.name' => 'ASC'), 'fields' => array('id', 'name')));
+		
+		if (isset($q['model']) && !empty($q['model'])) { $ec[] = array('Product.motorcycle_model_id' => $q['model']); }
+		if (isset($q['year']) && !empty($q['year'])) { $ec[] = array('Product.motorcycle_year_id' => $q['year']); }
+
+
+		$this->Product->bindModel(array('belongsTo' => array('Library', 'MotorcycleMake', 'MotorcycleModel', 'MotorcycleYear')));
+		$this->paginate = array(
+			'conditions' => $ec,
+			'maxLimit' => 30, 'limit' => 30, 'order' => array('Product.id' => 'DESC')
+		);
+		$data = $this->paginate('Product');
+		$paging = $this->params['paging'];
+		$this->set(compact('data', 'paging', 'make', 'model_list', 'q'));
+	}
+
+	public function lab_motorcycle_exhaust_product($brand_id = null, $model_id = null, $engine_id = null)
+	{
+		$this->set('title_for_layout', 'Add Exhause Product : ' . WEBTITLE);
+		$engList = null;
+		$c = array();
+
+		$brand = $this->Brand->find('list', array('order' => array('Brand.name' => 'ASC'), 'fields' => array('id', 'name')));
+		if (!empty($brand_id)) {
+			$c = array('Model.brand_id' => $brand_id);
+		}
+		$model_list = $this->Model->find('list', array('conditions' => $c, 'order' => array('Model.name' => 'ASC'), 'fields' => array('id', 'name')));
+		if (!empty($model_id)) {
+			$engList = $this->Motor->find('list', array('conditions' => array('Motor.model_id' => $model_id), 'order' => array('Motor.name' => 'ASC'), 'fields' => array('id', 'name')));
+		}
+
+		if (isset($this->request->query['edit'])) {
+			$this->Product->bindModel(array('belongsTo' => array('Library')));
+			$e = $this->Product->find('first', array('conditions' => array('Product.type' => array(2, 3, 5), 'Product.id' => $this->request->query['edit'])));
+			if (empty($e)) {
+				$this->layout = 'lab_404';
+			}
+			$this->set('e', $e);
+		}
+
+		$this->set(compact('brand', 'model_list', 'engList', 'brand_id', 'model_id', 'engine_id'));
+
+		if ($this->RequestHandler->isAjax()) {
+			if (!empty($this->data)) {
+
+				if (empty($this->data['Product']['library_id'])) {
+					echo '<div class="alert alert-danger fadeIn animated">Please select image.</div>';
+				} else {
+					$this->request->data['Product']['status'] = 1;
+					$this->Product->set($this->request->data);
+					if ($this->Product->validates()) {
+						$this->Product->save($this->data);
+						$this->Session->setFlash(__('Product has been successfully saved'), 'default', array('class' => 'alert alert-success'), 'msg');
+						echo '<script>location.reload();;</script>';
+					} else {
+						$str = null;
+						$errors = $this->Product->validationErrors;
+						if (!empty($errors)) {
+							foreach ($errors as $err) {
+								$str .= $err[0] . "<br>";
+							}
+							echo '<div class="alert alert-danger fadeIn animated">' . $str . '</div>';
+						}
+					}
+				}
+			}
+			exit;
 		}
 	}
 }
