@@ -71,7 +71,9 @@
 	
 	Router::connect('/product-tuning-box/*', array('controller' => 'pages', 'action' => 'product_tuning_box'));
 	Router::connect('/product-exhaust/*', array('controller' => 'pages', 'action' => 'product_exhaust'));
-	Router::connect('/motocycle-exhaust/*', array('controller' => 'pages', 'action' => 'motocycle_exhaust'));
+	Router::connect('/motocycle-exhaust/*', array('controller' => 'homes', 'action' => 'motocycle_exhaust'));
+	Router::connect('/motorcycle/*', array('controller' => 'homes', 'action' => 'motorcycle'));
+	
 	
 	Router::connect('/terms_and_conditions/*', array('controller' => 'pages', 'action' => 't_and_c'));
 	Router::connect('/faqs/*', array('controller' => 'pages', 'action' => 'faqs'));

@@ -38,6 +38,8 @@
                         <th><?php echo $this->Paginator->sort('Brand.name', 'Make/Model/Year', array('escape' => false)); ?></th>
                         <th><?php echo $this->Paginator->sort('Product.title', 'Title', array('escape' => false)); ?></th>
                         <th><?php echo $this->Paginator->sort('Product.part', 'Part', array('escape' => false)); ?></th>
+                        <th><?php echo $this->Paginator->sort('Product.full_part', 'Part - 2', array('escape' => false)); ?></th>
+                        
                         <th><?php echo $this->Paginator->sort('Product.price', 'Price', array('escape' => false)); ?></th>
                         <th><?php echo $this->Paginator->sort('Product.quantity', 'Order/Quantity', array('escape' => false)); ?></th>
                         <th><?php echo $this->Paginator->sort('Product.status', 'Action', array('escape' => false)); ?></th>
@@ -60,6 +62,7 @@
                         <td><?php echo $list['MotorcycleMake']['name']."/ ".$list['MotorcycleModel']['name']."/ ".$list['MotorcycleYear']['year_from']." - ".(!empty($list['MotorcycleYear']['year_from'])? $list['MotorcycleYear']['year_from'] : 'present');?></td>
                         <td><?php echo $list['Product']['title'];?></td>
                         <td><?php echo $list['Product']['part'];?></td>
+                        <td><?php echo $list['Product']['full_part'];?></td>
                         <td><?php echo "$".$list['Product']['price'];?></td>
                         <td><?php echo  $list['Product']['total_order']."/".$list['Product']['quantity'];?></td>
                         <td><?php echo $this->html->link('Edit','/lab/labs/motorcycle_exhaust_product/'.$list['Product']['motorcycle_make_id'].'/'.$list['Product']['motorcycle_model_id'].'/'.$list['Product']['motorcycle_year_id'].'?edit='.$list['Product']['id']);?>

@@ -107,7 +107,7 @@ $years = getYears();
 																	echo $this->html->link('Deactive', '/lab/labs/motorcycle_year?status=' . $list['MotorcycleYear']['id'], array('class' => 'text-red'));
 																} ?></tb>
 
-														<td class="center gnTxt"><a href="<?php echo SITEURL . "lab/labs/create_car_page/" . $list['MotorcycleYear']['id'] . "/" . $list['MotorcycleYear']['motorcycle_model_id'] . "/" . $list['MotorcycleYear']['motorcycle_make_id']; ?>" title="">Add Details</a></td>
+														<td class="center gnTxt"><a href="<?php echo SITEURL . "lab/labs/mk_motorcycle_page/" . $list['MotorcycleYear']['id'] . "/" . $list['MotorcycleYear']['motorcycle_model_id'] . "/" . $list['MotorcycleYear']['motorcycle_make_id']; ?>" title="">Add Page</a></td>
 
 													</tr>
 												<?php $n++;

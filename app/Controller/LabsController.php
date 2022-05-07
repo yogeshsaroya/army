@@ -1119,25 +1119,31 @@ class LabsController extends AppController
 		if ($this->request->is('ajax')) {
 			$s = "<script>$('#preloader').hide();</script>";
 			if (!empty($this->data)) {
-				if ($this->data['type'] == 'cat-back') {
-					$type = 2;
-					$f = 'cat_back_ids';
-				} elseif ($this->data['type'] == 'catalytic') {
-					$type = 3;
-					$f = 'catalytic_ids';
-				} elseif ($this->data['type'] == 'accessory') {
-					$type = 5;
-					$f = 'accessory_ids';
-				}
-
-				if (isset($type) && $f) {
-					$arr = array('id' => $this->data['pid'], $f => trim($this->data['ids']));
-
-					$this->ItemDetail->save($arr);
+				if( isset($this->data['tbl']) && $this->data['tbl'] == 'motorcycle' ){
+					$arr = array('id' => $this->data['pid'], 'product_ids'=> trim($this->data['ids']));
+					$this->Motorcycle->save($arr);
 					echo "<script>$.magnificPopup.close(); location.reload();</script>";
-				} else {
-					echo $s;
-					echo "<script>$.magnificPopup.close(); location.reload();</script>";
+
+				}else{
+					if ($this->data['type'] == 'cat-back') {
+						$type = 2;
+						$f = 'cat_back_ids';
+					} elseif ($this->data['type'] == 'catalytic') {
+						$type = 3;
+						$f = 'catalytic_ids';
+					} elseif ($this->data['type'] == 'accessory') {
+						$type = 5;
+						$f = 'accessory_ids';
+					}
+					if (isset($type) && $f) {
+						$arr = array('id' => $this->data['pid'], $f => trim($this->data['ids']));
+	
+						$this->ItemDetail->save($arr);
+						echo "<script>$.magnificPopup.close(); location.reload();</script>";
+					} else {
+						echo $s;
+						echo "<script>$.magnificPopup.close(); location.reload();</script>";
+					}
 				}
 			}
 		}
@@ -1675,9 +1681,6 @@ class LabsController extends AppController
 		}
 	}
 
-
-
-
 	public function lab_add_utube()
 	{
 		$this->autoRender = false;
@@ -1888,44 +1891,52 @@ class LabsController extends AppController
 		}
 	}
 
-	public function lab_change_positions_pic($id = null)
+	public function lab_change_positions_pic($id = null,$tbl_id = null)
 	{
 		$this->autoRender = false;
-		if ($id == 'ss') {
-			if ($this->RequestHandler->isAjax()) {
-				if (isset($this->data['ss']) && !empty($this->data['ss'])) {
-					$arr = [];
-					foreach ($this->data['ss'] as $key => $val) {
-						$arr[] = ['id' => $val, 'pos' => $key];
-					}
-					if (!empty($arr)) {
-						$this->Library->saveAll($arr);
-					}
+		if ($this->RequestHandler->isAjax()) {
+			if ($id == 'motorcycle' && !empty($tbl_id) ) {
+				$d = $this->Motorcycle->find('first', array('conditions' => array('Motorcycle.id' => $tbl_id)));
+				if(!empty($d)){
+				$arr = [];
+				foreach ($this->data['ss'] as $key => $val) { $arr[] = $val; }
+				if(!empty($arr)){
+					$tArr=['id'=>$d['Motorcycle']['id'],'slider'=>implode(',',$arr) ];
+					$this->Motorcycle->save($tArr);
 				}
 			}
-		} elseif ($id == 'tt') {
-			if ($this->RequestHandler->isAjax()) {
-				if (isset($this->data['tt']) && !empty($this->data['tt'])) {
-					$arr = [];
-					foreach ($this->data['tt'] as $key => $val) {
-						$arr[] = ['id' => $val, 'pos' => $key];
-					}
-					if (!empty($arr)) {
-						$this->Library->saveAll($arr);
-					}
-				}
+				
 			}
-		} elseif ($id == 'gal') {
-			if ($this->RequestHandler->isAjax()) {
-				if (isset($this->data['gal']) && !empty($this->data['gal'])) {
-					$arr = [];
-					foreach ($this->data['gal'] as $key => $val) {
-						$arr[] = ['id' => $val, 'pos' => $key];
+			if ($id == 'ss') {
+					if (isset($this->data['ss']) && !empty($this->data['ss'])) {
+						$arr = [];
+						foreach ($this->data['ss'] as $key => $val) {
+							$arr[] = ['id' => $val, 'pos' => $key];
+						}
+						if (!empty($arr)) {
+							$this->Library->saveAll($arr);
+						}
 					}
-					if (!empty($arr)) {
-						$this->Library->saveAll($arr);
+			} elseif ($id == 'tt') {
+					if (isset($this->data['tt']) && !empty($this->data['tt'])) {
+						$arr = [];
+						foreach ($this->data['tt'] as $key => $val) {
+							$arr[] = ['id' => $val, 'pos' => $key];
+						}
+						if (!empty($arr)) {
+							$this->Library->saveAll($arr);
+						}
 					}
-				}
+			} elseif ($id == 'gal') {
+					if (isset($this->data['gal']) && !empty($this->data['gal'])) {
+						$arr = [];
+						foreach ($this->data['gal'] as $key => $val) {
+							$arr[] = ['id' => $val, 'pos' => $key];
+						}
+						if (!empty($arr)) {
+							$this->Library->saveAll($arr);
+						}
+					}
 			}
 		}
 	}
@@ -3962,28 +3973,27 @@ class LabsController extends AppController
 			exit;
 		}
 	}
-	public function lab_add_media($id = null, $type = null, $for = null)
+	public function lab_add_media($id = null, $type = null, $for = null, $tbl= null)
 	{
 		if ($this->request->is('ajax')) {
 			$aj = 'yes';
 			$q = $this->request->query;
-			//$flist = $this->Library->find('list', array('group' => array('Library.folder'), 'fields' => array('id', 'folder')));
 			$flist = $this->Library->find('all',array('fields' => array('DISTINCT folder')));
-			$this->set(compact('flist', 'aj', 'id', 'type', 'q', 'for'));
+			$this->set(compact('flist', 'aj', 'id', 'type', 'q', 'for','tbl'));
 		} else { $this->layout = false; }
 	}
-	public function lab_get_folder_img($f = null, $type = null)
+	public function lab_get_folder_img($f = null, $type = null,$tbl= null)
 	{
 		$this->layout = false;
 		if (!empty($f)) {
 			$this->paginate = array(
 				'recursive' => -1, 'conditions' => array('Library.folder' => $f),
-				'limit' => 100,
+				'limit' => 500,
 				'order' => array('Library.created' => 'DESC')
 			);
 			$data = $this->paginate('Library');
 			$paging = $this->params['paging'];
-			$this->set(compact('data', 'paging', 'f', 'type'));
+			$this->set(compact('data', 'paging', 'f', 'type','tbl'));
 		}
 	}
 
@@ -4550,6 +4560,26 @@ class LabsController extends AppController
 		
 	}
 
+	public function lab_mk_motorcycle_page($eid = null, $mid = null, $bid = null)
+	{
+		$this->autoRender = false;
+		if (!empty($eid) && !empty($mid) && !empty($bid)) {
+			$i = $this->Motorcycle->find('first', array('conditions' => array('Motorcycle.motorcycle_year_id' => $bid, 'Motorcycle.motorcycle_model_id' => $mid, 'Motorcycle.motorcycle_make_id' => $eid)));
+
+			if (!empty($i)) {
+				$this->redirect(SITEURL . 'lab/labs/update_motorcycle/' . $i['Motorcycle']['id']);
+			} else {
+				$this->request->data['Motorcycle']['motorcycle_make_id'] = $bid;
+				$this->request->data['Motorcycle']['motorcycle_model_id'] = $mid;
+				$this->request->data['Motorcycle']['motorcycle_year_id'] = $eid;
+				$this->request->data['Motorcycle']['status'] = 0;
+				$this->Motorcycle->save($this->request->data);
+				$lid = $this->Motorcycle->getLastInsertId();
+				$this->redirect(SITEURL . 'lab/labs/update_motorcycle/' . $lid);
+			}
+		}
+	}
+
 	public function lab_motorcycle_exhaust(){
 		$this->set('title_for_layout', 'Motorcycle Exhause Products : ' . WEBTITLE);
 
@@ -4661,4 +4691,200 @@ class LabsController extends AppController
 		}
 		$this->set(compact('brand', 'model_list', 'years', 'make_id', 'model_id', 'year_id'));
 	}
+
+	public function lab_motorcycles(){
+		$this->set('title_for_layout', 'Motorcycles : ' . WEBTITLE);
+
+		if (isset($this->request->query['id']) && !empty($this->request->query['id'])) {
+			$d = $this->Motorcycle->find('first', array('conditions' => array('Motorcycle.id' => $this->request->query['id'])));
+			if (!empty($d)) {
+				$status = ($d['Motorcycle']['status'] == 1 ? 0 : 1);
+				$arr = array('id' => $d['Motorcycle']['id'], 'status' => $status);
+				$this->Motorcycle->save($arr);
+			}
+			$this->redirect($this->referer());
+		}
+		$years = $c = $ec = [];
+		$q = $this->request->query;
+		$make = $this->MotorcycleMake->find('list', array('order' => array('MotorcycleMake.name' => 'ASC'), 'fields' => array('id', 'name')));
+		if (isset($q['make']) && !empty($q['make'])) {
+			$c = array('MotorcycleModel.motorcycle_make_id' => $q['make']);
+			$ec[] = array('Motorcycle.motorcycle_make_id' => $q['make']);
+		}
+		$model_list = $this->MotorcycleModel->find('list', array('conditions' => $c, 'order' => array('MotorcycleModel.name' => 'ASC'), 'fields' => array('id', 'name')));
+		if (isset($q['model']) && !empty($q['model'])) {
+			$getYears = $this->MotorcycleYear->find('all', array('conditions' => array('MotorcycleYear.motorcycle_model_id' => $q['model']), 'order' => array('MotorcycleYear.year_from' => 'ASC')));
+			if(!empty($getYears)){
+				foreach($getYears as $y){
+					$years[$y['MotorcycleYear']['id']] = $y['MotorcycleYear']['year_from']." - ".(!empty($y['MotorcycleYear']['year_to'])? $y['MotorcycleYear']['year_to'] : 'present');
+				}
+			}
+			$ec[] = array('Motorcycle.motorcycle_model_id' => $q['model']);
+		}
+
+		if (isset($q['year']) && !empty($q['year'])) { $ec[] = array('Motorcycle.motorcycle_year_id' => $q['year']); }
+
+		$this->Motorcycle->bindModel(array('belongsTo' => array('MotorcycleMake', 'MotorcycleModel', 'MotorcycleYear')));
+		$this->paginate = array(
+			'recursive' => 2, 'conditions' => $ec,
+			'limit' => 100,
+			'order' => array('Motorcycle.created' => 'DESC')
+		);
+		$data = $this->paginate('Motorcycle');
+		$paging = $this->params['paging'];
+		$this->set(compact('data', 'q', 'ec', 'make', 'model_list', 'years', 'paging'));
+	}
+
+	public function lab_update_motorcycle($id = null) {
+		$this->set('title_for_layout', 'Update Motorcycle Page : ' . WEBTITLE);
+		
+		if (isset($this->data['Motorcycle']['id']) && !empty($this->data['Motorcycle']['id'])) {
+			$st = SITEURL . $this->request->url . "?" . http_build_query($this->request->query);
+			if (isset($this->data['Motorcycle']['url'])) {
+				$this->request->data['Motorcycle']['url'] = strtolower(Inflector::slug($this->data['Motorcycle']['url'], '-'));
+			}
+			if ($this->Motorcycle->save($this->data)) {
+				$this->Session->setFlash(__('Saved'), 'default', array('class' => 'alert alert-success'), 'msg');
+			} else {
+				$this->Session->setFlash(__('Not Saved. Please check SEO URL. it should be unique.'), 'default', array('class' => 'alert alert-danger'), 'msg');
+			}
+			$this->redirect($st);
+		}
+
+		$q = $this->request->query;
+		if (!empty($id)) {
+			$data = $sliders = [];
+			$this->Motorcycle->bindModel(array('hasMany' => array('Video' => ['order' => ['Video.pos' => 'ASC']]),'belongsTo' => array('MotorcycleMake', 'MotorcycleModel', 'MotorcycleYear')));
+			$data = $this->Motorcycle->find('first', array('recursive' => 2, 'conditions' => array('Motorcycle.id' => $id)));
+
+			if (isset($q['tab']) && $q['tab'] == 'images') {
+				if(!empty($data['Motorcycle']['slider'])){
+					$ids = explode(',', $data['Motorcycle']['slider']);
+					$or1 = array('FIELD(Library.id,' . $data['Motorcycle']['slider'] . ')');
+					$sliders = $this->Library->find('all', array('order'=>$or1,'conditions' => array('Library.id' => $ids)));
+				}
+			
+			}
+			if (empty($data)) {
+				$this->layout = 'lab_404';
+			}
+		}
+
+		$this->set(compact('data', 'q','sliders'));
+	}
+
+
+	public function lab_up_motorcycle()
+	{
+		$this->autoRender = false;
+		if ($this->request->is('ajax')) {
+			$d = $this->Motorcycle->find('first', array('conditions' => array('Motorcycle.id' => $this->data['id'])));
+			if ($this->data['type'] == 'del' && !empty($this->data['id']) && !empty($this->data['lid'])) {
+				if (!empty($d)) {
+					if ($this->data['dtype'] == 'slider') {
+						$f = explode(',', $d['Motorcycle']['slider']);
+						$array_to_remove = array($this->data['lid']);
+						$final_array = array_diff($f, $array_to_remove);
+						$final_array = implode(',', $final_array);
+						$final_array = trim($final_array, ',');
+						$arr = array('id' => $d['Motorcycle']['id'], 'slider' => $final_array);
+					} 
+					if (!empty($arr)) {
+						$this->Motorcycle->save($arr);
+					}
+				}
+			} elseif ($this->data['type'] == 'slider' && !empty($this->data['id'])) {
+				if (!empty($d)) {
+					if ($this->data['slider_for'] == 1) {
+						$f = explode(',', $d['Motorcycle']['slider']);
+						$n = explode(',', $this->data['slider']);
+						$r = array_merge($f, $n);
+						$r = array_unique($r);
+						$str = implode(',', $r);
+						$str = trim($str, ',');
+						$arr = array('id' => $d['Motorcycle']['id'], 'slider' => $str);
+						$this->Motorcycle->save($arr);
+					} elseif ($this->data['slider_for'] == 2) {
+						$f = explode(',', $d['Motorcycle']['tt_slider']);
+						$n = explode(',', $this->data['slider']);
+						$r = array_merge($f, $n);
+						$r = array_unique($r);
+						$str = implode(',', $r);
+						$str = trim($str, ',');
+						$arr = array('id' => $d['Motorcycle']['id'], 'tt_slider' => $str);
+						$this->Motorcycle->save($arr);
+					}
+				}
+			} elseif ($this->data['type'] == 'primary' && !empty($this->data['id'])) {
+				if (!empty($d)) {
+					if ($this->data['dtype'] == 'slider') {
+						$ids = explode(',', $d['Motorcycle']['slider']);
+						$key = array_search($this->data['lid'], $ids);
+						$f = $ids[0];
+						$ids[0] = $this->data['lid'];
+						$ids[$key] = $f;
+						$s = implode(',', $ids);
+						$arr = array('id' => $d['Motorcycle']['id'], 'slider' => $s);
+						$this->Motorcycle->save($arr);
+					}
+				}
+			} 
+		}
+	}
+
+	public function lab_motorcycle_videos()
+	{
+		$this->autoRender = false;
+		if (!empty($this->data)) {
+			$vi = trim($this->data['Motorcycle']['vid']);
+			if (empty($vi)) {
+				$this->Session->setFlash(__('Please enter valid Youtube ID/URL'), 'default', array('class' => 'alert alert-danger'), 'msg');
+			} else {
+				$d = $this->Motorcycle->find('first', array('conditions' => array('Motorcycle.id' => $this->data['Motorcycle']['id'])));
+				if (!empty($d)) {
+					$vid = null;
+					if (filter_var($this->data['Motorcycle']['vid'], FILTER_VALIDATE_URL)) {
+						$t = $this->DATA->parse_yturl($this->data['Motorcycle']['vid']);
+						if (empty($t)) {
+							$this->Session->setFlash(__('Invalide Youtube video URL.'), 'default', array('class' => 'alert alert-danger'), 'msg');
+							$this->redirect($this->referer());
+						} else {
+							$vid = $t;
+						}
+					} else {
+						$vid = $this->data['Motorcycle']['vid'];
+					}
+
+					if (!empty($vid)) {
+						$arr = array('motorcycle_id' => $d['Motorcycle']['id'], 'video' => $vid);
+						$this->Video->save($arr);
+						$this->Session->setFlash(__('Youtube video saved.'), 'default', array('class' => 'alert alert-success'), 'msg');
+					} else {
+						$this->Session->setFlash(__('Not saved'), 'default', array('class' => 'alert alert-danger'), 'msg');
+					}
+				}
+			}
+			$this->redirect($this->referer());
+		}
+	}
+
+	public function lab_add_motorcycle_product($id = null, $type = null)
+	{
+		if ($this->request->is('ajax')) {
+			$aj = 'yes';
+			$q = $this->request->query;
+			$i = $this->Motorcycle->find('first', array('conditions' => array('Motorcycle.id' => $id)));
+			if (!empty($i)) {
+				$list = $this->Product->find('all', array('conditions' => array(
+				'Product.type' =>[6,7], 
+				'Product.motorcycle_make_id' => $i['Motorcycle']['motorcycle_make_id'], 
+				'Product.motorcycle_model_id' => $i['Motorcycle']['motorcycle_model_id'], 
+				'Product.motorcycle_year_id' => $i['Motorcycle']['motorcycle_year_id'])));
+			}
+			$this->set(compact('aj', 'id', 'type', 'q', 'list', 'i'));
+		} else {
+			$this->layout = false;
+		}
+	}
+
 }

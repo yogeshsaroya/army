@@ -24,6 +24,27 @@ class HomesController extends AppController
         $this->set('page_meta', $page_meta);
     }
 
+    public function motocycle_exhaust($id = null)
+	{
+		$this->set('title_for_layout', 'Valvetronic Exhaust System Weaponzied by ARMYTRIX');
+		$page_meta = [
+			'des' => 'Best Sounding Aftermarket Exhaust Upgrades. Titanium & Stainless Steel Turbo-back Cat-Back Valvetronic Exhaust Downpipes Tips Headers Decat Test Straight Exhaust Sound',
+			'key' => 'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
+		];
+		if (!empty($id)) {
+			$this->render('motocycle_exhaust_details');
+		}
+	}
+
+    public function motorcycle($id = null)
+	{
+		$this->set('title_for_layout', 'Valvetronic Exhaust System Weaponzied by ARMYTRIX');
+		$page_meta = [
+			'des' => 'Best Sounding Aftermarket Exhaust Upgrades. Titanium & Stainless Steel Turbo-back Cat-Back Valvetronic Exhaust Downpipes Tips Headers Decat Test Straight Exhaust Sound',
+			'key' => 'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
+		];
+		
+	}
 
     public function performance()
     {

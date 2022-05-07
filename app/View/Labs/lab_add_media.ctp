@@ -15,7 +15,7 @@
 #lib_details .active .thumbnail { border: 3px solid #000; }
 
 .box-body{height: 600px; overflow-y: auto;    overflow-x: hidden;}
-#lib_details .thumbnail { border: 1px solid #d3d3d3; height: 170px; }
+#lib_details .thumbnail { border: 1px solid #d3d3d3; height: 175px; }
 </style>
 
 <div class="box box-primary edit_lib">
@@ -28,7 +28,10 @@
 if(isset($flist) && !empty($flist)){
 foreach ($flist as $v){?>
 
-<div class="col-sm-1 col-md-2 lib_folder" onclick="load('<?php echo $v['Library']['folder'];?>','<?php if(isset($q['one'])){ echo "s";}else{ echo "m";}?>');">
+<div class="col-sm-1 col-md-2 lib_folder" 
+onclick="load(
+	'<?php echo $v['Library']['folder'];?>','<?php if(isset($q['one'])){ echo 's'; }else{ echo 'm';}?>','<?php echo (!empty($tbl) ? $tbl : 'item_detail')?>'
+	)">
 <div class="thumbnail">
 <div class="caption"> <p> &nbsp; </p></div>
 <i class="fa fa-folder" aria-hidden="true"></i>
@@ -43,6 +46,7 @@ foreach ($flist as $v){?>
 <input type="hidden" value="<?php echo $id;?>" id="id">
 <input type="hidden" value="<?php echo $type;?>" id="type">
 <input type="hidden" value="<?php echo $for;?>" id="for">
+<input type="hidden" value="<?php echo $tbl;?>" id="tbl">
 
 <input type="hidden" value="<?php echo @$q['library_id'];?>" id="lid">
 <input type="hidden" value="<?php echo @$q['new_library_id'];?>" id="img_path">
@@ -70,12 +74,12 @@ function cls(){
 	
 	
 }
-function load(id,type){
+function load(id,type,tbl){
 	if(id !=''){
 	$( "#s_f" ).val('');
 	$('.lib_folder').show();
 	$.ajax({type: 'POST',
-		url: '<?php echo SITEURL."lab/labs/get_folder_img/";?>'+id+'/'+type,
+		url: '<?php echo SITEURL."lab/labs/get_folder_img/";?>'+id+'/'+type+'/'+tbl,
 		data: 'id='+id+'',
 		success: function(data) { $('#my_folder').hide(); $('#my_files').show(); $("#my_files").html(data); parent.$('#preloader').hide();},
 		error: function(comment) { $("#my_files").html(comment); parent.$('#preloader').hide(); }});

@@ -168,9 +168,14 @@ class LabHelper extends AppHelper {
 		if(isset($d['Library']['full_path'])){ return $d['Library']['full_path']; }
 	}
 	
-	public function getProduct($arr = null){
+	public function getProduct($arr = null, $tbl = null){
 		$p = ClassRegistry::init('Product');
-		$p->bindModel(array('belongsTo'=>array('Library','Brand','Model','Motor')));
+		if($tbl == 'motorcycle'){
+			$p->bindModel(array('belongsTo'=>array('Library','MotorcycleMake','MotorcycleModel','MotorcycleYear')));
+		}else{
+			$p->bindModel(array('belongsTo'=>array('Library','Brand','Model','Motor')));
+		}
+		
 		$d = $p->find('all',array('recursive'=>1,'conditions'=>array('Product.id'=>$arr)));
 		return $d;
 	}

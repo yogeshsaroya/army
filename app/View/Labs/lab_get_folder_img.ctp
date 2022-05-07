@@ -3,11 +3,12 @@
 <li><a href="javascript:void(0);"><?php echo uc($f);?></a></li>
 </ol>
 <?php if(isset($data) && !empty($data) ){ ?>
-<?php foreach($data as $list){ $main = show_image('cdn/'.$list['Library']['folder'],$list['Library']['file_name'],100,100,100,'cf',null);?>
+<?php foreach($data as $list){ $main = show_image('cdn/'.$list['Library']['folder'],$list['Library']['file_name'],300,200,100,'ff',null);?>
 <div class="col-sm-1 col-md-2 lib_folder" id="<?php echo $list['Library']['folder']."_".$list['Library']['id'];?>" onclick="select(<?php echo $list['Library']['id'];?>,'<?php echo $list['Library']['folder'];?>');"><div class="thumbnail">
-<div class="caption"> <p> &nbsp; </p></div>
+
 <img src="<?php echo $main;?>" title="" alt="">
- <div class="caption"> <p></p></div></div></div>
+
+</div></div>
 <?php }?>
 <?php }?>
 <div id="my_app_err"></div>
@@ -24,12 +25,21 @@ function up(arr,id,t){
 	
 }
 
-function save (str,pid,type,slider_for){
-	    $.ajax({type: 'POST',
-            url: '<?php echo SITEURL;?>lab/labs/up_details',
-            data: 'id='+pid+'&slider='+str+'&type='+type+'&slider_for='+slider_for,
+function save (str,pid,type,slider_for,tbl){
+	if(tbl == 'motorcycle'){
+		$.ajax({type: 'POST',
+            url: '<?php echo SITEURL;?>lab/labs/up_motorcycle',
+            data: {id:pid,slider:str,type:type,slider_for:slider_for,tbl:tbl},
             success: function(data) { $("#my_app_err").html(data); },
             error: function(comment) { $("#my_app_err").html(comment); }});
+	}else{
+		$.ajax({type: 'POST',
+            url: '<?php echo SITEURL;?>lab/labs/up_details',
+            data: {id:pid,slider:str,type:type,slider_for:slider_for,tbl:tbl},
+            success: function(data) { $("#my_app_err").html(data); },
+            error: function(comment) { $("#my_app_err").html(comment); }});
+	}
+	    
     	
 }
 function select(id,fl){
@@ -66,19 +76,20 @@ if( $('#'+fl+'_'+id).hasClass('active') == false){
 	var pid= $('#id').val();
 	var type= $('#type').val();
 	var slider_for= $('#for').val();
+	var tbl= $('#tbl').val();
 	var s= $.trim( parent.$('#slider').val() );
 	if( $('#'+fl+'_'+id).hasClass('active') == false){
 			$('#'+fl+'_'+id).addClass('active');
 			n_str = up(s,id,'add');
 			parent.$('#slider').val(n_str);
 			console.log(n_str);
-			save (n_str,pid,type,slider_for);
+			save (n_str,pid,type,slider_for,tbl);
 		}else{
 			$('#'+fl+'_'+id).removeClass('active');
 			n_str = up(s,id,'r');
 			parent.$('#slider').val(n_str);
 			console.log(n_str);
-			save (n_str,pid,type,slider_for);
+			save (n_str,pid,type,slider_for,tbl);
 			}
 	<?php }?>
 }
