@@ -69,16 +69,6 @@ if (isset($user_data['UserImage']) && !empty($user_data['UserImage'])) {
           <li><a href="<?php echo SITEURL . "lab/labs/archive"; ?>"><i class="fa fa-circle-o"></i>Archive</a></li>
         </ul>
       </li>
-
-      <li class="treeview" id="menu_make">
-        <a href="#"> <i class="fa fa-calculator"></i> <span>Car Make/Model/Engine</span> <i class="fa fa-angle-left pull-right"></i> </a>
-        <ul class="treeview-menu">
-          <li><a href="<?php echo SITEURL . "lab/labs/all_make"; ?>"><i class="fa fa-circle-o"></i>Make</a></li>
-          <li><a href="<?php echo SITEURL . "lab/labs/all_model"; ?>"><i class="fa fa-circle-o"></i>Model</a></li>
-          <li><a href="<?php echo SITEURL . "lab/labs/all_motor"; ?>"><i class="fa fa-circle-o"></i>Motor</a></li>
-        </ul>
-      </li>
-
       <?php /*?>
 <li class="treeview" id="menu_tuning">
 <a href="#"> <i class="fa fa-shirtsinbulk"></i> <span>Tuning Box</span> <i class="fa fa-angle-left pull-right"></i> </a>
@@ -87,25 +77,21 @@ if (isset($user_data['UserImage']) && !empty($user_data['UserImage'])) {
 <li><a href="<?php echo SITEURL."lab/labs/tuning_box";?>"><i class="fa fa-circle-o"></i>All</a></li>
 </ul> </li> <?php */ ?>
 
-      <li class="treeview" id="pro_settings">
-        <a href="#"><i class="fa fa-shopping-cart"></i> <span>Car Exhaust Product</span><i class="fa fa-angle-left pull-right"></i></a>
-        <ul class="treeview-menu">
-          <li><a href="<?php echo SITEURL . "lab/labs/add_exhaust_product"; ?>"> <i class="fa fa-circle-o"></i>Add New Product</a></li>
-          <li><a href="<?php echo SITEURL . "lab/labs/exhaust_product"; ?>"> <i class="fa fa-circle-o"></i>All Product</a></li>
-        </ul>
-      </li>
-
-
       <li class="treeview" id="slider_settings">
         <a href="#"><i class="fa fa-car"></i> <span>Cars</span><i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
+        <li><a href="<?php echo SITEURL . "lab/labs/all_make"; ?>"><i class="fa fa-circle-o"></i>Make</a></li>
+          <li><a href="<?php echo SITEURL . "lab/labs/all_model"; ?>"><i class="fa fa-circle-o"></i>Model</a></li>
+          <li><a href="<?php echo SITEURL . "lab/labs/all_motor"; ?>"><i class="fa fa-circle-o"></i>Motor</a></li>
+          <li><a href="<?php echo SITEURL . "lab/labs/exhaust_product"; ?>"> <i class="fa fa-circle-o"></i>Exhaust Product</a></li>
+          <li><a href="<?php echo SITEURL . "lab/labs/all_car_details"; ?>"> <i class="fa fa-circle-o"></i>All Cars</a></li>
           <?php /*?>
               <li><a href="<?php echo SITEURL."lab/labs/add_cars";?>" > <i class="fa fa-circle-o"></i>Add New Brand</a></li>
               <li><a href="<?php echo SITEURL."lab/labs/cars";?>" > <i class="fa fa-circle-o"></i>All Brand</a></li>
               <li><a href="<?php echo SITEURL."lab/labs/add_exhaust_model";?>" > <i class="fa fa-circle-o"></i>Add New Model</a></li>
               <li><a href="<?php echo SITEURL."lab/labs/exhaust_model";?>" > <i class="fa fa-circle-o"></i>All Model</a></li>
               <?php */ ?>
-          <li><a href="<?php echo SITEURL . "lab/labs/all_car_details"; ?>"> <i class="fa fa-circle-o"></i>All Car Details</a></li>
+          
           <?php /*?> <li><a href="<?php echo SITEURL."lab/labs/inventory";?>" > <i class="fa fa-circle-o"></i>Inventory</a></li> <?php */ ?>
 
         </ul>

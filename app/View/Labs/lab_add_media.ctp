@@ -26,13 +26,13 @@
 <?php 
 
 if(isset($flist) && !empty($flist)){
-foreach ($flist as $k=>$v){?>
+foreach ($flist as $v){?>
 
-<div class="col-sm-1 col-md-2 lib_folder" onclick="load('<?php echo $v;?>','<?php if(isset($q['one'])){ echo "s";}else{ echo "m";}?>');">
+<div class="col-sm-1 col-md-2 lib_folder" onclick="load('<?php echo $v['Library']['folder'];?>','<?php if(isset($q['one'])){ echo "s";}else{ echo "m";}?>');">
 <div class="thumbnail">
 <div class="caption"> <p> &nbsp; </p></div>
 <i class="fa fa-folder" aria-hidden="true"></i>
- <div class="caption"> <p><?php echo $v;?></p></div></div></div>
+ <div class="caption"> <p><?php echo $v['Library']['folder'];?></p></div></div></div>
 <?php }}?>
 </div>
 <div class="row" id="my_files"></div>                

@@ -155,7 +155,7 @@ class LabHelper extends AppHelper {
 		return $data;
 	}
 	public function producType(){
-		return array('2'=>'Cat-Back',3=>'Catalytic','5'=>'Accessory');
+		return array('2'=>'Cat-Back','3'=>'Catalytic','5'=>'Accessory');
 	}
 	
 	public function menuType(){ return array(1=>'Tuning Box',2=>'Cat Back Exhaust ', 3=>'Catalytic Converter'); }

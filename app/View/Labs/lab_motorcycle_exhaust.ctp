@@ -13,17 +13,16 @@
 						<div class="box-body">
 <div class="row">
 <div class="box-body col-xs-12">
-<div class="col-xs-4"><?php echo $this->Form->input('brand_id',array('id'=>'brand_id', 'options'=>$make,'default'=>@$q['brand'], 'empty'=>' --Select Make -- ','label'=>false,'class'=>'form-control'));?></div>
-<div class="col-xs-4"><?php echo $this->Form->input('model_id',array('id'=>'model_id','options'=>@$model_list,'default'=>@$q['model'],'empty'=>' --Select Model -- ','label'=>false,'class'=>'form-control'));?></div>
-<div class="col-xs-4"><?php echo $this->Form->input('motor_id',array('id'=>'motor_id','options'=>@$engList,'default'=>@$q['motor'],'empty'=>' --Select Year/Motor -- ','label'=>false,'class'=>'form-control'));?></div>
+<div class="col-xs-4"><?php echo $this->Form->input('brand_id',array('id'=>'brand_id', 'options'=>$make,'default'=>(isset($q['make'])? $q['make'] : null), 'empty'=>' --Select Make -- ','label'=>false,'class'=>'form-control'));?></div>
+<div class="col-xs-4"><?php echo $this->Form->input('model_id',array('id'=>'model_id','options'=>$model_list,'default'=>(isset($q['model'])?$q['model']:null),'empty'=>' --Select Model -- ','label'=>false,'class'=>'form-control'));?></div>
+<div class="col-xs-4"><?php echo $this->Form->input('motor_id',array('id'=>'motor_id','options'=>$years,'default'=>(isset($q['year'])? $q['year'] : null),'empty'=>' --Select Year/Motor -- ','label'=>false,'class'=>'form-control'));?></div>
 </div>
-<div class="box-body col-xs-6"><?php  echo $this->element('labs/page_filter');?></div>
+<div class="box-body col-xs-6"><?php  //echo $this->element('labs/page_filter');?></div>
 <div class="box-body col-xs-6 text-right">
 <div class="box-body"><div class="input-group margin" style="    text-align: right !important;display: block;">
     <?php echo $this->Html->link('Add New Product','/lab/labs/motorcycle_exhaust_product',['class'=>'btn btn-success btn-flat put-right']);?>
-</div></div>
+</div></div></div>
 
-</div>
 </div>
 </div>
 
@@ -36,7 +35,7 @@
 					<th><?php echo $this->Paginator->sort('Product.id', 'ID', array('escape' => false)); ?></th>
                         <th><?php echo $this->Paginator->sort('Product.library_id', 'Photo', array('escape' => false)); ?></th>
                         <th><?php echo $this->Paginator->sort('Product.type', 'Type', array('escape' => false)); ?></th>
-                        <th><?php echo $this->Paginator->sort('Brand.name', 'Make/Model/Motor', array('escape' => false)); ?></th>
+                        <th><?php echo $this->Paginator->sort('Brand.name', 'Make/Model/Year', array('escape' => false)); ?></th>
                         <th><?php echo $this->Paginator->sort('Product.title', 'Title', array('escape' => false)); ?></th>
                         <th><?php echo $this->Paginator->sort('Product.part', 'Part', array('escape' => false)); ?></th>
                         <th><?php echo $this->Paginator->sort('Product.price', 'Price', array('escape' => false)); ?></th>
@@ -56,21 +55,19 @@
                     <tr>
                         <td><?php echo $list['Product']['id'];?></td>
                         <td class="center gnTxt"><img src="<?php echo $imgg;?>" class="img-thumbnail" alt=""> </td>
-                        <td><?php if($list['Product']['type'] == 2){ echo "Cat-back";}
-                        elseif($list['Product']['type'] == 3){ echo "Catalytic";}
-                        elseif($list['Product']['type'] == 5){ echo "Accessory";}
-                        ?></td>
-                        <td><?php echo $list['Brand']['name']."/ ".$list['Model']['name']."/ ".$list['Motor']['name'];?></td>
+                        <td><?php if($list['Product']['type'] == 6){ echo "Full Set";}
+                        elseif($list['Product']['type'] == 7){ echo "Parts";}?></td>
+                        <td><?php echo $list['MotorcycleMake']['name']."/ ".$list['MotorcycleModel']['name']."/ ".$list['MotorcycleYear']['year_from']." - ".(!empty($list['MotorcycleYear']['year_from'])? $list['MotorcycleYear']['year_from'] : 'present');?></td>
                         <td><?php echo $list['Product']['title'];?></td>
                         <td><?php echo $list['Product']['part'];?></td>
                         <td><?php echo "$".$list['Product']['price'];?></td>
                         <td><?php echo  $list['Product']['total_order']."/".$list['Product']['quantity'];?></td>
-                        <td><?php echo $this->html->link('Edit','/lab/labs/add_exhaust_product/'.$list['Product']['brand_id'].'/'.$list['Product']['model_id'].'/'.$list['Product']['motor_id'].'?edit='.$list['Product']['id']);?>
+                        <td><?php echo $this->html->link('Edit','/lab/labs/motorcycle_exhaust_product/'.$list['Product']['motorcycle_make_id'].'/'.$list['Product']['motorcycle_model_id'].'/'.$list['Product']['motorcycle_year_id'].'?edit='.$list['Product']['id']);?>
                          | <?php 
-                        if($list['Product']['status'] == 1){ echo $this->html->link('Active','/lab/labs/exhaust_product?status='.$list['Product']['id'],array('class' => 'text-green')); }
-                        else{ echo $this->html->link('Deactive','/lab/labs/exhaust_product?status='.$list['Product']['id'],array('class' => 'text-red')); }
+                        if($list['Product']['status'] == 1){ echo $this->html->link('Active','/lab/labs/motorcycle_exhaust?status='.$list['Product']['id'],array('class' => 'text-green')); }
+                        else{ echo $this->html->link('Deactive','/lab/labs/motorcycle_exhaust?status='.$list['Product']['id'],array('class' => 'text-red')); }
                         ?></td>
-                        <td> <?php echo $this->html->link('Delete','/lab/labs/exhaust_product?del='.$list['Product']['id'],array('class' => 'text-red','confirm' => 'Do you want to delete this Product?')); ?></td>
+                        <td> <?php echo $this->html->link('Delete','/lab/labs/motorcycle_exhaust?del='.$list['Product']['id'],array('class' => 'text-red','confirm' => 'Do you want to delete this Product?')); ?></td>
                     </tr>
                    <?php $n++; }}else{?>
                    <td colspan="10">Your Product tab is empty</td>

@@ -170,3 +170,12 @@ function getYears($f=2000, $t=2030){
 	}
 	return $arr;
 }
+
+function getMotorProType(){
+	return ['6'=>'Full Set','7'=>'Parts'];
+}
+
+	
+function motorMaterial(){
+	return array('stainless steel + carbon'=>'Stainless Steel + Carbon','titanium'=>'Titanium');
+}

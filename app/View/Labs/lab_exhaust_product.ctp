@@ -13,14 +13,16 @@
 						<div class="box-body">
 <div class="row">
 <div class="box-body col-xs-12">
-<div class="col-xs-4"><?php echo $this->Form->input('brand_id',array('id'=>'brand_id', 'options'=>$brand,'default'=>@$q['brand'], 'empty'=>' --Select Make -- ','label'=>false,'class'=>'form-control'));?></div>
-<div class="col-xs-4"><?php echo $this->Form->input('model_id',array('id'=>'model_id','options'=>@$model_list,'default'=>@$q['model'],'empty'=>' --Select Model -- ','label'=>false,'class'=>'form-control'));?></div>
-<div class="col-xs-4"><?php echo $this->Form->input('motor_id',array('id'=>'motor_id','options'=>@$engList,'default'=>@$q['motor'],'empty'=>' --Select Year/Motor -- ','label'=>false,'class'=>'form-control'));?></div>
+<div class="col-xs-4"><?php echo $this->Form->input('brand_id',array('id'=>'brand_id', 'options'=>$brand,'default'=>(isset($q['brand'])?$q['brand'] : null), 'empty'=>' --Select Make -- ','label'=>false,'class'=>'form-control'));?></div>
+<div class="col-xs-4"><?php echo $this->Form->input('model_id',array('id'=>'model_id','options'=>$model_list,'default'=>(isset($q['model']) ? $q['model'] : null),'empty'=>' --Select Model -- ','label'=>false,'class'=>'form-control'));?></div>
+<div class="col-xs-4"><?php echo $this->Form->input('motor_id',array('id'=>'motor_id','options'=>$engList,'default'=>(isset($q['motor'])? $q['motor'] : null),'empty'=>' --Select Year/Motor -- ','label'=>false,'class'=>'form-control'));?></div>
 </div>
-<div class="box-body col-xs-12">              
-							<?php  echo $this->element('labs/page_filter');?>
-						</div>
-					</div>
+<div class="box-body col-xs-6"><?php  echo $this->element('labs/page_filter');?></div>
+<div class="box-body col-xs-6 text-right">
+<div class="box-body"><div class="input-group margin" style="    text-align: right !important;display: block;">
+    <?php echo $this->Html->link('Add New Product','/lab/labs/add_exhaust_product',['class'=>'btn btn-success btn-flat put-right']);?>
+</div></div></div>
+</div>
 </div>
 
 
