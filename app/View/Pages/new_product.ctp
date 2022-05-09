@@ -2,6 +2,12 @@
 <link rel="preload" as="image" href="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651514055/product/mouse-hover-b1_nt16rs.webp" />
 
 <?php echo $this->Html->css(["/v2/product_page.css?v=" . rand(5646, 65465)], ['block' => 'cssTop']); ?>
+<style>
+iframe .ytp-chrome-top.ytp-show-cards-title{
+    display: none !important;
+}
+
+</style>
 
 <?php
 $imgArr = [];
@@ -137,7 +143,7 @@ if (isset($data) && !empty($data)) {
   <?php if (!empty($data['Video'])) { ?>
     <div class="videoWrapperNw page_container fullMxWd" id="pro_1">
       <?php foreach ($data['Video'] as $vlist) {
-        echo '<div class="video-responsive"><iframe id="home_bg_v" width="100%" height="600" loading="lazy" src="https://www.youtube.com/embed/' . $vlist['video'] . '?rel=0&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
+        echo '<div class="video-responsive"><iframe id="home_bg_v" width="100%" height="600" loading="lazy" src="https://www.youtube-nocookie.com/embed/' . $vlist['video'] . '?controls=1&enablejsapi=1&modestbranding=1&showinfo=0&iv_load_policy=3&html5=1&fs=1&rel=0&hl=en&cc_lang_pref=en&cc_load_policy=1&start=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
       } ?>
     </div>
   <?php } ?>
