@@ -1,10 +1,10 @@
 <div class="content-wrapper">
 	<section class="content-header">
 		<h1>
-			<?php echo $langArr[$data['ItemDetail']['language']]; ?>
-			<a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['item_detail_id'] . "?tab=multilingual"; ?>">
+			<?php echo $langArr[$data['Motorcycle']['language']]; ?>
+			<a href="<?php echo SITEURL . "lab/labs/update_motorcycle/" . $data['Motorcycle']['motorcycle_id'] . "?tab=multilingual"; ?>">
 				<?php
-				echo $data['Brand']['name'] . "/" . $data['Model']['name'] . "/" . $data['Motor']['name'] . " > " . $data['ItemDetail']['name']; ?></a>
+				echo $data['MotorcycleMake']['name'] . "/" . $data['MotorcycleModel']['name'] . "/" . $data['MotorcycleYear']['year_to']." - ".(!empty($data['MotorcycleYear']['year_to'])? $data['MotorcycleYear']['year_to'] :  'present') . " > " . $data['Motorcycle']['title']; ?></a>
 		</h1>
 	</section>
 
@@ -15,34 +15,22 @@
 			<div class="col-md-12">
 				<div class="nav-tabs-custom">
 					<ul class="nav nav-tabs">
-						<li class="<?php echo (empty($q)? "active" : null);?>"><a href="<?php echo SITEURL . "lab/labs/lang_car_detail/" . $data['ItemDetail']['id'] . "/" . $lang; ?>">General</a></li>
+						<li class="<?php echo (empty($q)? "active" : null);?>"><a href="<?php echo SITEURL . "lab/labs/update_motorcycle_lang/" . $data['Motorcycle']['id'] . "/" . $lang; ?>">General</a></li>
 						
 					</ul>
 					<div class="tab-content">
 						<div class="active tab-pane">
 							<?php
 							if (empty($q)) {
-								echo $this->Form->create('ItemDetail', array('class' => 'form-horizontal'));
-								if (isset($data['ItemDetail']) && !empty($data['ItemDetail'])) {
-									$this->request->data['ItemDetail'] = $data['ItemDetail'];
+								echo $this->Form->create('Motorcycle', array('class' => 'form-horizontal'));
+								if (isset($data['Motorcycle']) && !empty($data['Motorcycle'])) {
+									$this->request->data['Motorcycle'] = $data['Motorcycle'];
 									echo $this->Form->hidden('id');
 								} ?>
 
 								<div class="form-group"><label for="inputName" class="col-sm-2 control-label">Title</label>
-									<div class="col-sm-10"><?php echo $this->Form->input('name', array('class' => 'form-control', 'placeholder' => 'Title', 'label' => false, 'required' => true)); ?></div>
+									<div class="col-sm-10"><?php echo $this->Form->input('title', array('class' => 'form-control', 'placeholder' => 'Title', 'label' => false, 'required' => true)); ?></div>
 								</div>
-
-								<div class="form-group"><label for="inputName" class="col-sm-2 control-label">Fitment</label>
-									<div class="col-sm-10"><?php echo $this->Form->input('fitment', array('class' => 'form-control', 'placeholder' => 'Fitment', 'label' => false, 'required' => false)); ?></div>
-								</div>
-								<div class="form-group"><label for="inputName" class="col-sm-2 control-label">Feature</label>
-									<div class="col-sm-10"><?php echo $this->Form->input('feature', array('class' => 'form-control', 'placeholder' => 'Feature', 'label' => false, 'required' => false)); ?></div>
-								</div>
-								<div class="form-group"><label for="inputName" class="col-sm-2 control-label">Note</label>
-									<div class="col-sm-10"><?php echo $this->Form->input('note', array('class' => 'form-control', 'placeholder' => 'Note', 'label' => false, 'required' => false)); ?></div>
-								</div>
-
-
 								<div class="form-group"><label for="inputName" class="col-sm-2 control-label">SEO URL</label>
 									<div class="col-sm-10"><?php echo $this->Form->input('url', array('class' => 'form-control', 'placeholder' => 'url', 'label' => false, 'required' => true)); ?></div>
 								</div>

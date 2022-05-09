@@ -4,11 +4,11 @@
     function addcart() {
         $('#e_err').html('');
         var cat_id = $('#cat_id').val();
-        var cat_id_q = $('#cat_id_q').val();
+        var cat_id_q = 1;
         var ecu_id = $('#ecu_id').val();
-        var ecu_id_q = $('#ecu_id_q').val();
+        var ecu_id_q = 1;
         var accessory_id = $('#accessory_id').val();
-        var accessory_b_q = $('#accessory_b_q').val();
+        var accessory_b_q = 1;
         if (cat_id != '' || ecu_id != '' || accessory_id != '') {
             var q = $('#ext_pro_q').val();
             $("#cssLoader").html('<div id="loader" class="loader loader-default is-active"></div>');

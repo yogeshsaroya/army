@@ -250,13 +250,11 @@ if (isset($data) && !empty($data)) {
         </div>
         <div class="col-50 flexDirection">
           <div class="rightImg"><img src="https://res.cloudinary.com/armytrix/image/upload/v1650865193/product/ceramic-coated-bg_jdfzkd.webp" alt="" loading="lazy" class="img-wd-100"></div>
-          <h4 class="pad15 text-left">
-            Standard Downpipe<br />
-            Deteriorate under high temperature which leads to pipe breakage.
-          </h4>
+          <h4 class="pad15 text-left">Ceramic Coated Downpipe<br />Prevents metal fatigue from high temperature.</h4>
         </div>
       </div>
     </div>
+    
     <?php echo $this->element('pro/s8'); ?>
     <div class="page_container fullmxWd" id="pro_8">
       <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865200/product/3D_oo3xdl.webp" alt="" loading="lazy" class="img-wd-100">

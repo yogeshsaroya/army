@@ -176,9 +176,9 @@ if (isset($user_data['UserImage']) && !empty($user_data['UserImage'])) {
       <li class="treeview" id="menu_settings">
         <a href="#"><i class="fa fa-cog"></i> <span>Settings</span><i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
-          <?php /*?>
-              <li><a href="<?php echo SITEURL."lab/labs/languages";?>" > <i class="fa fa-circle-o"></i>Languages</a></li>
-              <?php */ ?>
+          
+          <li><a href="<?php echo SITEURL."lab/labs/languages";?>" > <i class="fa fa-circle-o"></i>Languages</a></li>
+          
           <li><a href="<?php echo SITEURL . "lab/labs/home_slider"; ?>"> <i class="fa fa-circle-o"></i>Video Slider</a></li>
 
           <?php /*?><li><a href="<?php echo SITEURL . "lab/labs/new_releases"; ?>"> <i class="fa fa-circle-o"></i>New Releases</a></li><?php */?>

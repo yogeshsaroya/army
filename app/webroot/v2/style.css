@@ -44,7 +44,7 @@ img {
 #v2_header h2,
 #v2_footer h2 {
     font-size: 24px;
-    line-height: 1;
+    line-height: 1.4;
     letter-spacing: 1px;
     font-family: 'Oswald', sans-serif;
     margin: 0 0 15px;
@@ -64,8 +64,9 @@ img {
 #v2_header h4,
 #v2_footer h4 {
     font-size: 16px;
-    line-height: 1;
+    line-height: 1.4;
     letter-spacing: 0;
+    font-weight: 600;
     font-family: 'Roboto', sans-serif;
 }
 

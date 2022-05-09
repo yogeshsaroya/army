@@ -61,6 +61,9 @@
                         <li class="<?php if (isset($q['tab']) && $q['tab'] == 'product') {
                                         echo "active";
                                     } ?>"><a href="<?php echo SITEURL . "lab/labs/update_motorcycle/" . $data['Motorcycle']['id'] . "?tab=product"; ?>">Products</a></li>
+                        <li class="<?php if (isset($q['tab']) && $q['tab'] == 'multilingual') {
+                                        echo "active";
+                                    } ?>"><a href="<?php echo SITEURL . "lab/labs/update_motorcycle/" . $data['Motorcycle']['id'] . "?tab=multilingual"; ?>">Multilingual</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="active tab-pane">
@@ -180,14 +183,16 @@
                                                 <div class="thumbnail">
                                                     <img src="<?php echo $main; ?>" alt="" title="" class="margin">
                                                     <div class="caption">
-                                                        <p><a href="javascript:void(0);" onclick="del_pic(<?php echo $list['Library']['id'].','.$data['Motorcycle']['id'].','.'\'slider\''; ?>);" class="btn btn-primary" role="button">Delete</a>
+                                                        <p><a href="javascript:void(0);" onclick="del_pic(<?php echo $list['Library']['id'] . ',' . $data['Motorcycle']['id'] . ',' . '\'slider\''; ?>);" class="btn btn-primary" role="button">Delete</a>
                                                             <?php if ($n != 1) { ?>
-                                                                <a href="javascript:void(0);" onclick="prim(<?php echo $list['Library']['id'] . ',' . $data['Motorcycle']['id'].','.'\'slider\''; ?>);" class="btn btn-primary" role="button">Make Primary</a><?php } ?>
+                                                                <a href="javascript:void(0);" onclick="prim(<?php echo $list['Library']['id'] . ',' . $data['Motorcycle']['id'] . ',' . '\'slider\''; ?>);" class="btn btn-primary" role="button">Make Primary</a><?php } ?>
                                                         </p>
                                                     </div>
                                                 </div>
                                             </div>
-                                    <?php $n++; } } ?>
+                                    <?php $n++;
+                                        }
+                                    } ?>
                                     <div class="clearfix">
                                     </div>
                                 </div>
@@ -224,17 +229,21 @@
                                                     <tbody id="table_rows">
                                                         <?php
                                                         $arrList = explode(',', $data['Motorcycle']['product_ids']);
-                                                        $cList = $this->Lab->getProduct($arrList,'motorcycle');
+                                                        $cList = $this->Lab->getProduct($arrList, 'motorcycle');
                                                         if (!empty($cList)) {
                                                             foreach ($cList as $aList) {
                                                                 $full_path = 'cdn/' . $aList['Library']['folder'] . "/" . $aList['Library']['file_name'];
                                                                 $imgg  = new_show_image($full_path, 100, 100, 100, 'ff', null); ?>
                                                                 <tr class="odd gradeX">
                                                                     <td class="center gnTxt"><img src="<?php echo $imgg; ?>" class="img-thumbnail" alt=""> </td>
-                                                                    <td><?php if ($aList['Product']['type'] == 6) { echo "Full Set"; } elseif ($aList['Product']['type'] == 7) { echo "Parts"; } ?></td>
-                                                                    <td><?php echo $aList['MotorcycleMake']['name'] . "/ " . $aList['MotorcycleModel']['name'] . "/ " . $aList['MotorcycleYear']['year_from']." - ".(!empty($aList['MotorcycleYear']['year_from'])? $aList['MotorcycleYear']['year_from'] : 'present'); ?></td>
+                                                                    <td><?php if ($aList['Product']['type'] == 6) {
+                                                                            echo "Full Set";
+                                                                        } elseif ($aList['Product']['type'] == 7) {
+                                                                            echo "Parts";
+                                                                        } ?></td>
+                                                                    <td><?php echo $aList['MotorcycleMake']['name'] . "/ " . $aList['MotorcycleModel']['name'] . "/ " . $aList['MotorcycleYear']['year_from'] . " - " . (!empty($aList['MotorcycleYear']['year_from']) ? $aList['MotorcycleYear']['year_from'] : 'present'); ?></td>
                                                                     <td><?php echo $aList['Product']['title']; ?></td>
-                                                                    <td><?php echo $aList['Product']['part']."<br>".$aList['Product']['full_part']; ?></td>
+                                                                    <td><?php echo $aList['Product']['part'] . "<br>" . $aList['Product']['full_part']; ?></td>
                                                                     <td><?php echo "$" . $aList['Product']['price']; ?></td>
                                                                     <td><?php echo  $aList['Product']['total_order'] . "/" . $aList['Product']['quantity']; ?></td>
                                                                 </tr>
@@ -250,7 +259,96 @@
                                 </div>
                             </div>
                         </div>
-                    <?php }  ?>
+                    <?php } elseif (isset($q['tab']) && $q['tab'] == 'multilingual') {  ?>
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Create new page in other language</h3>
+                            </div>
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <?php echo $this->Form->input('lang', array('options' => $langArr, 'class' => 'form-control', 'label' => false, 'empty' => ' -- Select Language -- '));
+                                        echo $this->Form->hidden('cid', array('value' => $data['Motorcycle']['id'], 'id' => 'carde_id'));
+                                        ?>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <input type="button" class="btn bg-olive btn-flat " value="Create new page" id="gen_page">
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div id="lang_err"> </div>
+                            <div class="box-header">
+                                <h3 class="box-title">Manage multilingual page</h3>
+                            </div>
+                            <div class="box-body no-padding">
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Language</th>
+                                            <th>Created</th>
+                                            <th>Edit</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+
+                                        </tr>
+                                        <?php if (isset($allLangPage) && !empty($allLangPage)) {
+                                            $num = 1;
+                                            foreach ($allLangPage as $pList) { ?>
+                                                <tr>
+                                                    <td><?php echo $num; ?></td>
+                                                    <td><?php
+                                                        if (!empty($pList['Motorcycle']['url'])) {
+                                                            echo $this->html->link($langArr[$pList['Motorcycle']['language']], '/motorcycle/' . $pList['Motorcycle']['url'], array('target' => '_blank'));
+                                                        } else {
+                                                            echo $langArr[$pList['Motorcycle']['language']];
+                                                        } ?></td>
+                                                    <td><?php echo date('d/m/Y', strtotime($pList['Motorcycle']['created'])); ?></td>
+                                                    <td><?php echo $this->html->link('Edit', '/lab/labs/update_motorcycle_lang/' . $pList['Motorcycle']['id'] . "/" . $pList['Motorcycle']['language']);; ?></td>
+                                                    <td> <?php
+                                                            if ($pList['Motorcycle']['status'] == 1) {
+                                                                echo $this->html->link('Active', '/lab/labs/update_motorcycle/' . $data['Motorcycle']['id'] . '?lng_act=' . $pList['Motorcycle']['id'], array('class' => 'text-green', 'confirm' => 'Do you want to inactive this page?'));
+                                                            } elseif ($pList['Motorcycle']['status'] == 0) {
+                                                                echo $this->html->link('Inactive', '/lab/labs/update_motorcycle/' . $data['Motorcycle']['id'] . '?lng_act=' . $pList['Motorcycle']['id'], array('class' => 'text-red', 'confirm' => 'Do you want to active this page?'));
+                                                            }
+
+                                                            ?> </td>
+                                                    <td> <?php echo $this->html->link('Delete', '/lab/labs/update_motorcycle/' . $data['Motorcycle']['id'] . '?lng_del=' . $pList['Motorcycle']['id'], array('class' => 'text-red', 'confirm' => 'Do you want to delete this page?')); ?> </td>
+                                                </tr>
+                                        <?php $num++;
+                                            }
+                                        } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <script>
+                            $(document).ready(function() {
+                                $("#gen_page").click(function() {
+                                    var lang = $('#lang').val();
+                                    var cid = $('#carde_id').val();
+                                    if (lang != "" && cid != "") {
+                                        $('#preloader').show();
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: '<?php echo SITEURL; ?>lab/labs/gen_page',
+                                            data:{cid:cid,lang:lang,type:'motorcycle'},
+                                            success: function(data) {
+                                                $("#lang_err").html(data);
+                                                $('#preloader').hide();
+                                            },
+                                            error: function(comment) {
+                                                $("#lang_err").html(comment);
+                                                $('#preloader').hide();
+                                            }
+                                        });
+                                    }
+
+                                });
+                            });
+                        </script>
+                    <?php } ?>
                     </div>
                 </div>
             </div>
@@ -279,7 +377,12 @@
                     $.ajax({
                         type: 'POST',
                         url: '<?php echo SITEURL; ?>lab/labs/up_motorcycle/',
-                        data:{type:'primary',dtype:ty,lid:lid,id:id},
+                        data: {
+                            type: 'primary',
+                            dtype: ty,
+                            lid: lid,
+                            id: id
+                        },
                         success: function(data) {
                             $("#pic_err").html(data);
                             location.reload();
@@ -300,7 +403,12 @@
                     $.ajax({
                         type: 'POST',
                         url: '<?php echo SITEURL; ?>lab/labs/up_motorcycle/',
-                        data:{type:'del',dtype:ty,lid:lid,id:id},
+                        data: {
+                            type: 'del',
+                            dtype: ty,
+                            lid: lid,
+                            id: id
+                        },
                         success: function(data) {
                             $("#pic_err").html(data);
                             location.reload();
@@ -315,10 +423,10 @@
             }
 
 
-            function add_slider(id, type,tbl) {
+            function add_slider(id, type, tbl) {
                 $.magnificPopup.open({
                     items: {
-                        src: '<?php echo SITEURL . "lab/labs/add_media/"; ?>' + id + '/slider/' + type+'/'+tbl,
+                        src: '<?php echo SITEURL . "lab/labs/add_media/"; ?>' + id + '/slider/' + type + '/' + tbl,
                         type: 'ajax'
                     },
                     closeMarkup: '<button class="mfp-close mfp-new-close" type="button" title="Close (Esc)"> </button>',
@@ -328,7 +436,7 @@
                     enableEscapeKey: false,
                 });
             }
-          
+
 
             function del(i, v) {
                 if (i != "" && v != "") {
@@ -371,7 +479,7 @@ echo $this->Html->script(array('/lab_root/plugins/iCheck/icheck.min'));
 <script type="text/javascript">
     $(document).ready(function() {
         $(function() {
-          
+
 
             $("#sortable_ss").sortable({
                 opacity: 0.6,
@@ -381,7 +489,7 @@ echo $this->Html->script(array('/lab_root/plugins/iCheck/icheck.min'));
                     $(function() {
                         $.ajax({
                             type: 'POST',
-                            url: '<?php echo SITEURL; ?>lab/labs/change_positions_pic/motorcycle/<?php echo $data['Motorcycle']['id'];?>',
+                            url: '<?php echo SITEURL; ?>lab/labs/change_positions_pic/motorcycle/<?php echo $data['Motorcycle']['id']; ?>',
                             data: datastring,
                             success: function(data) {
                                 $("#ajax_req").html(data);

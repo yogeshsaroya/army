@@ -7,7 +7,7 @@ App::uses('Xml', 'Utility');
 class CronsController extends AppController
 {
 
-    var $uses = array('EmailServer', 'ItemDetail', 'Library', 'Motorcycle','Product');
+    var $uses = array('EmailServer', 'ItemDetail', 'Library', 'Motorcycle', 'Product');
     public $components = array('Cookie', 'Session', 'RequestHandler', 'Email', 'DATA');
     public $helpers = array('Html', 'Form', 'JqueryEngine', 'Session', 'Text', 'Time');
 
@@ -88,8 +88,10 @@ class CronsController extends AppController
             'conditions' => ['Motorcycle.status' => 1, 'Motorcycle.url IS NOT NULL'],
             'fields' => ['Motorcycle.id', 'Motorcycle.status', 'Motorcycle.url']
         ]);
-        $shopData = $this->Product->find('all', ['conditions' => ['Product.type' => 4, 'Product.status' => 1], 
-        'fields' => ['Product.id', 'Product.type','Product.status','Product.slug']]);
+        $shopData = $this->Product->find('all', [
+            'conditions' => ['Product.type' => 4, 'Product.status' => 1],
+            'fields' => ['Product.id', 'Product.type', 'Product.status', 'Product.slug']
+        ]);
         if (!empty($data)) {
             foreach ($data as $list) {
                 $lin = utf8_encode(SITEURL . "product/" . $list['ItemDetail']['url']);
@@ -126,11 +128,11 @@ class CronsController extends AppController
                 $writer->endElement();
             }
         }
-        
+
         $writer->endElement();
         $writer->endDocument();
-        
-        echo "SITEMAP added : ".SITEURL.'sitemap.xml';
+
+        echo "SITEMAP added : " . SITEURL . 'sitemap.xml';
     }
 
 
@@ -146,10 +148,11 @@ class CronsController extends AppController
         $writer->writeAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
         $writer->writeAttribute('xmlns:image', 'http://www.google.com/schemas/sitemap-image/1.1');
         $writer->writeAttribute('xsi:schemaLocation', 'http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd');
-        
+
         $data = $this->ItemDetail->find('all', ['conditions' => ['ItemDetail.status' => 1, 'ItemDetail.url IS NOT NULL', 'ItemDetail.language' => 'eng']]);
-        $motorData = $this->Motorcycle->find('all', ['conditions' => ['Motorcycle.status' => 1, 'Motorcycle.url IS NOT NULL'],
-            'fields' => ['Motorcycle.id', 'Motorcycle.status', 'Motorcycle.url','Motorcycle.slider']
+        $motorData = $this->Motorcycle->find('all', [
+            'conditions' => ['Motorcycle.status' => 1, 'Motorcycle.url IS NOT NULL'],
+            'fields' => ['Motorcycle.id', 'Motorcycle.status', 'Motorcycle.url', 'Motorcycle.slider']
         ]);
 
         if (!empty($motorData)) {
@@ -202,7 +205,7 @@ class CronsController extends AppController
 
         $writer->endElement();
         $writer->endDocument();
-        echo "SITEMAP added : ".SITEURL.'sitemap_image.xml';
+        echo "SITEMAP added : " . SITEURL . 'sitemap_image.xml';
     }
 
 
@@ -392,6 +395,101 @@ class CronsController extends AppController
                 $this->ItemDetail->saveAll($tab_arr);
                 ec("Slider updated");
             }
+        }
+    }
+
+    public function update_string()
+    {
+        $str = [
+            'FITMENT',
+            'FEATURE',
+            'NOTE',
+            'CAT-BACK VALVETRONIC EXHAUST',
+            'HEADER / DOWNPIPES',
+            'ARMYTRON ACCESSORY',
+            'Cat-Back Valvetronic Mufflers Selection',
+            'Catalytic Converter Replacement Selections',
+            'Armytron Accessory Selctions',
+            'QUOTE & PRICING INQUIRY',
+            'Select',
+            'DONE, CHECKOUT',
+            'SELECTED',
+            'Shipping',
+            'Please Select A Product',
+            '3-5 days deliver to US and Europe. Other countries will take 5-7 days.',
+            'Shipment',
+            'Delivery',
+            'Varies',
+            'Payments',
+            'ARMYTRIX VALVE CONTROL TECHNOLOGY',
+            '3 MODES SWITCH',
+            'Smart Mode',
+            'Neighbor Mode',
+            'Beast Mode',
+            'FREEDOM TO SWITCH BETWEEN LOUD AND QUIET WITH THE PUSH OF A BUTTON',
+            'With the push of a button on your ARMYRIX remotes or smartphone application, you get to switch between modes upon your wish.',
+            'CUSTOMIZEABLE AUTOMATIC MODE GIVES YOU A WORRY-FREE DRIVE',
+            'The automatic mode will open/close the exhaust valves based on predetermined RPM range or turbo bar, so you don’t have to manually switch all the time – you can also customize your own automatic mode upon your preference!',
+            'GAIN MORE POWER, LOSE NO TORQUE',
+            'Depending on the cars, modifications, and tunes you have, opening valves allow the exhaust gas to flow more freely, as it does not have to pass through any muffler. And with the valves being closed, it can retain the back pressure at low rpm, and maintain the torque that is usually lost with straight piped exhaust systems.',
+            'ARMYTRIX VALVE CONTROL REMOTE',
+            'ARMYTRIX APP SMART ASSISTANT',
+            'The mobile APP of ARMYTRIX can connect to the OBDII device via Bluetooth, and be used to as a remote controller to easily control valve switch and provide you with real-time monitoring of variuos values of your car, such as rotate speed, speed, fuel, etc. The rpm value in Auto mode can be set to open valves.',
+            'COMBINATION OF INTELLIGENCE',
+            'Cutting-Edge Interactive Valve Control Technology',
+            'Simply Control Valves With OEM Driving Mode Select',
+            'All For Driving Pleasure',
+            '* Compatible with Mercedes (2018+ W / LED Dashboard) models ONLY',
+            'PLUG AND PLAY',
+            'Exclusive OBDII Dongle Module',
+            'Reduce 30% Of Installation Time',
+            'No More Complex Wiring Work',
+            'UNLEASH THE ULTRA-HIGH DECIBEL OUTPUT',
+            'FOR ADRENALINE-FUELLED ENJOYMENT',
+            'DESIGNED TO PERFORM, DESTINED TO AMAZE',
+            'Highest standard multiple tests and verification evoke beast performance limit.',
+            'DOWNPIPE WITH CUTTING-EDGE FLEXIBLE PIPE TECHNOLOGY',
+            'Protect exhaust pipes from breakage and facilitate cooling to maximize engine',
+            'SPECIAL RAPID-COOLING CERAMIC COATING',
+            'Reduce under-hood temperature and resistant and corrosion',
+            'ERAMIC COATED DOWNPIPE',
+            'PREVENTS METAL FATIGUE FROM HIGH TEMPERATURE.',
+            'STANDARD DOWNPIPE',
+            'DETERIORATE UNDER HIGH TEMPERATURE WHICH LEADS TO PIPE BREAKAGE.',
+
+            'SIMULATION SOFTWARE FOR GAS FLOW',
+            'THERMAL ENERGY LEAKAGE OF A VARIETY OF DATA ANALYSIS',
+            '3D SCANS CAR UNDERBODY FOR REVERSE ENGINEERING TO COLLECT ALL HARDWARE DATA, RESULT IN RAPID PROTOTYPING WITH HIGH PRECISION',
+            'METICULOUSLY CRAFTED FOR PRECISE FITMENT QUALITY IS OUR PRIDE IN WORKMANSHIP',
+            'UTILIZING A RARE HIGH GRADE TITANIUM ENSURES THIS ACTION IS BUILT TO LAST',
+            'HIGH QUALITY TITANIUM ALLOY, LIGHTER WEIGHT',
+            'More than 60% lighter than the exhaust device of original factory, car body weight reduced significantly',
+
+            'CRYSTALLIZATION OF TECHNOLOGY AND ART',
+            'Multiple refined mechanical polishing contributes to craftsmanship level surface brightness.',
+            'TITANIUM SERIES',
+            'STAINLESS STEEL SERIES',
+            'SHRED LABELS SET NEW STANDARD',
+            'High standard T.I.G. hand welding provides the strongest and smoothest welds without welding slag',
+            'Very fine',
+            'Fine',
+            'Flawless',
+            'Qualified',
+            'Failed',
+            'Defective',
+            'Micro-Rough',
+            'Rough',
+            'Very Rough',
+        ];
+        $arr = [];
+        foreach ($str as $k => $v) {
+            $arr[] = ['id' => null, 'text' => trim($v)];
+        }
+        $this->loadModel('String');
+        if (!empty($arr)) {
+            ec($arr);
+            //$this->String->saveAll($arr);
+            ec("Strings updated");
         }
     }
 }

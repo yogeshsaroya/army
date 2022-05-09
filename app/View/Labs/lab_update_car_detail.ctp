@@ -81,6 +81,7 @@
   <li class="<?php if(isset($q['tab']) && $q['tab'] == 'import_shipping'){ echo "active";}?>"><a href="<?php echo SITEURL."lab/labs/update_car_detail/".$data['ItemDetail']['id']."?tab=import_shipping";?>" >Import/Export</a></li>
   <li class="<?php if(isset($q['tab']) && $q['tab'] == 'multilingual'){ echo "active";}?>"><a href="<?php echo SITEURL."lab/labs/update_car_detail/".$data['ItemDetail']['id']."?tab=multilingual";?>" >Multilingual</a></li>
   <?php */ ?>
+  <li class="<?php if(isset($q['tab']) && $q['tab'] == 'multilingual'){ echo "active";}?>"><a href="<?php echo SITEURL."lab/labs/update_car_detail/".$data['ItemDetail']['id']."?tab=multilingual";?>" >Multilingual</a></li>
           </ul>
           <div class="tab-content">
             <div class="active tab-pane">
@@ -97,12 +98,11 @@
 <div class="col-sm-10"><?php echo $this->Form->input('heading',array('class'=>'form-control','placeholder'=>'Heading','label'=>false,'required'=>false));?></div></div>
 
 <div class="form-group"><label for="inputName" class="col-sm-2 control-label">Description</label> <div class="col-sm-10"><?php echo $this->Form->input('description',array('class'=>'form-control','placeholder'=>'Description','label'=>false,'required'=>true));?></div></div>
-<?php */ ?>
 
                 <div class="form-group"><label for="inputName" class="col-sm-2 control-label">Video</label>
                   <div class="col-sm-10"><?php echo $this->Form->input('vid', array('class' => 'form-control', 'placeholder' => 'Heading', 'label' => false, 'required' => false, 'placeholder' => 'Youtube Video ID')); ?></div>
                 </div>
-
+<?php */ ?>
 
                 <div class="form-group"><label for="inputName" class="col-sm-2 control-label">Title</label>
                   <div class="col-sm-10"><?php echo $this->Form->input('name', array('class' => 'form-control', 'placeholder' => 'Title', 'label' => false, 'required' => true)); ?></div>
@@ -926,10 +926,7 @@ echo $this->Form->radio('tuning_box', $options, $attributes);?></div></div>
             });
           </script>
         <?php } elseif (isset($q['tab']) && $q['tab'] == 'multilingual') { ?>
-
           <div class="box">
-
-
             <div class="box-header with-border">
               <h3 class="box-title">Create new page in other language</h3>
             </div>
