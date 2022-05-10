@@ -1,7 +1,7 @@
 <link rel="preload" as="image" href="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651592728/product/mouse-hover-b2_tsorh4_vjh0c3.webp" />
 <link rel="preload" as="image" href="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651514055/product/mouse-hover-b1_nt16rs.webp" />
 
-<?php echo $this->Html->css(["/v2/product_page.css?v=" . rand(5646, 65465)], ['block' => 'cssTop']); ?>
+<?php echo $this->Html->css(["/v2/product_page"], ['block' => 'cssTop']); ?>
 <div id="v2_product">
   <div class="performedwrap text-center mt-50 page_container fullMxWd" id="sound_page">
     <h1 class="text-center mt-3 mb-5">ARMYTRIX OBDII VALVETRONIC REMOTE CONTROL MODULE</h1>

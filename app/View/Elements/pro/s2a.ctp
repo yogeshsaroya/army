@@ -4,11 +4,11 @@
      <div class="new_bg_img  img-tag-sec s2a-sec">
        <img src="https://res.cloudinary.com/armytrix/image/upload/v1651225699/product/Product_20page-bg_kg3tdj.webp" alt="" loading="lazy" class="img-wd-100" />
        <div class="abst_head head-title-size color-wht pad-50 left-20 max-700">
-         <h2 class="clr-white"><?php echo gs($txt,35);?></h2>
-         <h4 class="clr-white"><?php echo gs($txt,36);?><br>
-         <?php echo gs($txt,37);?><br>
-         <?php echo gs($txt,38);?></h4>
-         <p class="smll-txt"><?php echo gs($txt,39);?></p>
+         <h2 class="clr-white"><?php echo gs($txt, 35); ?></h2>
+         <h4 class="clr-white"><?php echo gs($txt, 36); ?><br>
+           <?php echo gs($txt, 37); ?><br>
+           <?php echo gs($txt, 38); ?></h4>
+         <p class="smll-txt"><?php echo gs($txt, 39); ?></p>
        </div>
      </div>
    </div>
@@ -42,8 +42,10 @@
 
    p.smll-txt {
      color: #fff;
-     font-size: 1.2vw;}
-#sound_page p.smll-txt{
+     font-size: 1.2vw;
+   }
+
+   #sound_page p.smll-txt {
      text-align: center;
    }
 

@@ -80,16 +80,16 @@ class CronsController extends AppController
         $writer->writeAttribute('xsi:schemaLocation', 'http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd');
 
         $data = $this->ItemDetail->find('all', [
-            'conditions' => ['ItemDetail.status' => 1, 'ItemDetail.url IS NOT NULL', 'ItemDetail.language' => 'eng'],
+            'conditions' => ['ItemDetail.status' => 1, 'ItemDetail.url !='=>''],
             'fields' => ['ItemDetail.id', 'ItemDetail.status', 'ItemDetail.url', 'ItemDetail.language']
         ]);
-
+        
         $motorData = $this->Motorcycle->find('all', [
-            'conditions' => ['Motorcycle.status' => 1, 'Motorcycle.url IS NOT NULL'],
+            'conditions' => ['Motorcycle.status' => 1, 'Motorcycle.url !='=>''],
             'fields' => ['Motorcycle.id', 'Motorcycle.status', 'Motorcycle.url']
         ]);
         $shopData = $this->Product->find('all', [
-            'conditions' => ['Product.type' => 4, 'Product.status' => 1],
+            'conditions' => ['Product.type' => 4, 'Product.status' => 1,'Product.slug !='=>''],
             'fields' => ['Product.id', 'Product.type', 'Product.status', 'Product.slug']
         ]);
         if (!empty($data)) {
