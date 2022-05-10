@@ -5,7 +5,7 @@ App::uses('AppController', 'Controller');
 class HomesController extends AppController
 {
 
-    public $uses = array('User', 'Brand', 'Model', 'Motor', 'Product', 'ExhaustBrand', 'ExhaustModel', 'ExhaustProduct', 'Library', 'ItemDetail', 'QualityDetail', 'Cart', 'PromoCode', 'WebSetting', 'World', 'Shipping', 'Address', 'Order', 'OrderItem', 'OrderHistory');
+    public $uses = array('User', 'Brand', 'Model', 'Motor', 'Product', 'ExhaustBrand', 'ExhaustModel', 'ExhaustProduct', 'Library', 'ItemDetail', 'QualityDetail', 'Cart', 'PromoCode', 'WebSetting', 'World', 'Shipping', 'Address', 'Order', 'OrderItem', 'OrderHistory','String');
     var $components = array('Auth', 'Session', 'Email', 'RequestHandler', 'Paginator', 'DATA');
     var $helpers = array('Html', 'Form', 'Session', 'Paginator', 'Lab');
     function beforeFilter()
@@ -21,7 +21,9 @@ class HomesController extends AppController
             'des' => 'ARMYTRIX OBDII Sound kits, the Innovative Valvetronic Technology Brings about Unprecedented Versatility to Car Owners.',
             'key' => 'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
         ];
-        $this->set('page_meta', $page_meta);
+        $string = $this->String->find('list',array('order'=>array('String.id'=>'ASC'),'fields'=>array('String.id','String.text')));
+		$txt = array('String'=>$string,'Translation'=>[]);
+        $this->set(compact('page_meta','txt'));
     }
 
     public function motocycle_exhaust($id = null)

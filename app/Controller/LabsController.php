@@ -1927,17 +1927,25 @@ class LabsController extends AppController
 				$this->Session->setFlash('Shipping cost for this state is arelady exist.', 'default', array('class' => 'alert alert-danger'), 'msg');
 			}
 		}
-		if (isset($this->data['ItemDetail']) && !empty($this->data['ItemDetail'])) {
+		if ($this->RequestHandler->isAjax() && !empty($this->data)) {
 			$st = SITEURL . $this->request->url . "?" . http_build_query($this->request->query);
 			if (isset($this->data['ItemDetail']['url'])) {
 				$this->request->data['ItemDetail']['url'] = strtolower(Inflector::slug($this->data['ItemDetail']['url'], '-'));
 			}
-			if ($this->ItemDetail->save($this->data)) {
-				$this->Session->setFlash(__('Saved'), 'default', array('class' => 'alert alert-success'), 'msg');
+			$this->ItemDetail->set($this->request->data);
+			if ($this->ItemDetail->validates()) {
+				$this->ItemDetail->save($this->request->data);
+				echo '<div class="alert alert-success" role="alert"> Added</div>';
+				echo "<script>setTimeout(function(){ window.location.href ='" . $st . "'; }, 500);</script>";
 			} else {
-				$this->Session->setFlash(__('Not Saved. Please check SEO URL. it should be unique.'), 'default', array('class' => 'alert alert-danger'), 'msg');
+				$str = null;
+				$errors = $this->ItemDetail->validationErrors;
+				if (!empty($errors)) {
+					foreach ($errors as $err) { $str .= $err[0] . "<br>"; }
+					echo '<script>btnState();</script><div class="alert alert-danger fadeIn animated">' . $str . '</div>';
+				}
 			}
-			$this->redirect($st);
+			exit;
 		}
 		$q = $this->request->query;
 		if (!empty($id)) {
@@ -4721,17 +4729,27 @@ class LabsController extends AppController
 	public function lab_update_motorcycle_lang($id = null, $lang = null)
 	{
 		$this->set('title_for_layout', 'Update Motorcycle Page : ' . WEBTITLE);
-		if (isset($this->data['Motorcycle']) && !empty($this->data['Motorcycle'])) {
+		if ($this->request->is('ajax') && isset($this->data['Motorcycle']) && !empty($this->data['Motorcycle'])) {
 			$st = SITEURL . $this->request->url . "?" . http_build_query($this->request->query);
 			if (isset($this->data['Motorcycle']['url'])) {
 				$this->request->data['Motorcycle']['url'] = strtolower(Inflector::slug($this->data['Motorcycle']['url'], '-'));
 			}
-			if ($this->Motorcycle->save($this->data)) {
-				$this->Session->setFlash(__('Saved'), 'default', array('class' => 'alert alert-success'), 'msg');
+			$this->Motorcycle->set($this->request->data);
+			if ($this->Motorcycle->validates()) {
+				$this->Motorcycle->save($this->request->data);
+				echo '<div class="alert alert-success" role="alert"> Added</div>';
+				echo "<script>setTimeout(function(){ window.location.href ='" . $st . "'; }, 500);</script>";
 			} else {
-				$this->Session->setFlash(__('Not Saved'), 'default', array('class' => 'alert alert-danger'), 'msg');
+				$str = null;
+				$errors = $this->Motorcycle->validationErrors;
+				if (!empty($errors)) {
+					foreach ($errors as $err) {
+						$str .= $err[0] . "<br>";
+					}
+					echo '<script>btnState();</script><div class="alert alert-danger fadeIn animated">' . $str . '</div>';
+				}
 			}
-			$this->redirect($st);
+			exit;
 		}
 		if (!empty($id) && !empty($lang)) {
 			$q = $this->request->query;
@@ -4929,21 +4947,26 @@ class LabsController extends AppController
 	public function lab_lang_car_detail($id = null, $lang = null)
 	{
 		$this->set('title_for_layout', 'Update Car Details : ' . WEBTITLE);
-
-		if (isset($this->data['ItemDetail']) && !empty($this->data['ItemDetail'])) {
-
+		if ($this->RequestHandler->isAjax() && !empty($this->data)) {
 			$st = SITEURL . $this->request->url . "?" . http_build_query($this->request->query);
-
 			if (isset($this->data['ItemDetail']['url'])) {
 				$this->request->data['ItemDetail']['url'] = strtolower(Inflector::slug($this->data['ItemDetail']['url'], '-'));
 			}
 
-			if ($this->ItemDetail->save($this->data)) {
-				$this->Session->setFlash(__('Saved'), 'default', array('class' => 'alert alert-success'), 'msg');
+			$this->ItemDetail->set($this->request->data);
+			if ($this->ItemDetail->validates()) {
+				$this->ItemDetail->save($this->request->data);
+				echo '<div class="alert alert-success" role="alert"> Added</div>';
+				echo "<script>setTimeout(function(){ window.location.href ='" . $st . "'; }, 500);</script>";
 			} else {
-				$this->Session->setFlash(__('Not Saved'), 'default', array('class' => 'alert alert-danger'), 'msg');
+				$str = null;
+				$errors = $this->ItemDetail->validationErrors;
+				if (!empty($errors)) {
+					foreach ($errors as $err) { $str .= $err[0] . "<br>"; }
+					echo '<script>btnState();</script><div class="alert alert-danger fadeIn animated">' . $str . '</div>';
+				}
 			}
-			$this->redirect($st);
+			exit;
 		}
 
 		if (!empty($id) && !empty($lang)) {

@@ -1,11 +1,11 @@
 <?php if(!empty($pro_data)){?>
 <div class="add-bx-sel w_f">
-    <h2>CAT-BACK VALVETRONIC EXHAUST </h2>
+    <h2><?php echo gs($txt,4);?></h2>
     <div class="col-md-12 no-pad">
         <div class="add-bx-drop-dwn">
 
             <div class="new-pro-drdwn">
-                <button  type="button" id="p_1">--- Cat-Back Valvetronic Mufflers Selection ---</button>
+                <button  type="button" id="p_1">--- <?php echo gs($txt,7);?> ---</button>
                 <ul  id="cat_back_ul" style="display: none;">
                     <li id="c0" pid="none" p_amt="0" data_img="" full_img=""><a href="javascript:void(0);">Select</a></li>
                     <?php foreach ($pro_data as $cList) {
@@ -45,15 +45,5 @@
     </div>
     <div class="clearfix"> </div>
 </div>
-
-<div class="productBx" id="cat_pic_id">
-
-<!--
-<div class='proImg'><img src="https://www.armytrix.com/cdn/800_530_100_ff_cdn/product-nissan-gtr-titanium/2017-nissan-gtr-r35-armytrix-titanium-exhaust-tuning-price-for-sale-08.jpg" alt="images" loading="lazy" /></div>
-<ul class="tabBtn d-flex"><li><span>NI35S-DDC</span></li><li><span class="stanSteel">STAINLESS STEEL</span></li></ul>
-<p class="text-left">High-flow Performance De-catted Down-Pipe with Cat Simulator</p>
--->
-
-</div>
-
+<div class="productBx" id="cat_pic_id"></div>
 <?php }?>

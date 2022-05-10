@@ -1,10 +1,10 @@
 <?php if (!empty($pro_data)) { ?>
     <div class="add-bx-sel w_f">
-        <h2>Armytron Accessory</h2>
+        <h2><?php echo gs($txt,6);?></h2>
         <div class="col-md-12 no-pad">
             <div class="add-bx-drop-dwn">
                 <div class="new-pro-drdwn">
-                    <button class="" type="button" id="p_3">--- Armytron Accessory Selctions ---</button>
+                    <button class="" type="button" id="p_3">--- <?php echo gs($txt,9);?> ---</button>
                     <ul class="" id="tuning_ul" style="display: none;">
                         <li id="c0" pid="none" p_amt="0" data_img="" full_img=""><a href="javascript:void(0);">Select</a></li>
                         <?php foreach ($pro_data as $cList) {

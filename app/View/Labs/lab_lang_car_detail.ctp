@@ -1,3 +1,5 @@
+<?php echo $this->Html->script(array('jquery.form.min'));
+echo $this->html->script(array('/v/formValidation.min', '/v/bootstrap.min')); ?>
 <div class="content-wrapper">
 	<section class="content-header">
 		<h1>
@@ -22,7 +24,7 @@
 						<div class="active tab-pane">
 							<?php
 							if (empty($q)) {
-								echo $this->Form->create('ItemDetail', array('class' => 'form-horizontal'));
+								echo $this->Form->create('ItemDetail', array('class' => 'form-horizontal','id'=>'proFrm'));
 								if (isset($data['ItemDetail']) && !empty($data['ItemDetail'])) {
 									$this->request->data['ItemDetail'] = $data['ItemDetail'];
 									echo $this->Form->hidden('id');
@@ -59,7 +61,8 @@
 								</div>
 								<div class="form-group">
 									<div class="col-sm-offset-2 col-sm-10">
-										<input type="submit" class="btn btn-success" value="Save">
+									<div id="app_err"></div>
+									<input type="button" class="btn btn-success" value="Save" id="add_br">
 									</div>
 								</div>
 
@@ -72,3 +75,40 @@
 		</div>
 	</section>
 </div>
+
+
+<script>
+window['btnState'] = function() {
+			$("#add_br").prop("disabled", false);
+			$("#add_br").val('Save');
+		};
+	$(document).ready(function() {
+		$('#proFrm')
+	    .formValidation({
+	        framework: 'bootstrap',
+	        icon: { },
+	        err: { },
+	        fields: { }
+	    })    .on('success.form.fv', function(e) {
+	        // Prevent form submission
+	        e.preventDefault();
+
+	        var $form = $(e.target),
+	            fv    = $form.data('formValidation');
+
+	        // Use Ajax to submit form data
+	        fv.defaultSubmit();
+	    });
+		$("#add_br").click(function() {
+			$("#app_err").html('');
+				$("#proFrm").ajaxForm({
+					target: '#app_err',
+					beforeSubmit: function() { $("#add_br").prop("disabled", true); $("#add_br").val('Please wait...'); },
+					success: function(response) { btnState(); },
+					error: function(response) {
+						btnState();
+					}
+				}).submit();
+		});
+	});
+</script>

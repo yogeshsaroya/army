@@ -100,7 +100,7 @@
     <div class="pad60">
     <h2 class="text-center">INTERACTIVE VALVE CONTROL TECHNOLOGY</h2>
     <p class="text-left">Our innovative Valvetronic technology brings about unprecedented versatility to car owners. Armed with our one-and-only INTERACTIVE VALVE CONTROL technology, simply switch between OEM driving modes, valves automatically Open/Close to match up performance spirit. Drivers now have more control over their drives than ever before.<br><br></p>
-    <?php echo $this->element('pro/s2a'); ?>
+    <?php echo $this->element('pro/s2a',['txt'=>$txt]); ?>
     </div>
 
   </div>

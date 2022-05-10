@@ -179,3 +179,9 @@ function getMotorProType(){
 function motorMaterial(){
 	return array('stainless steel + carbon'=>'Stainless Steel + Carbon','titanium'=>'Titanium');
 }
+
+function gs( $arr = null,$k = 1 ){
+	if(isset($arr['Translation'][$k]) && !empty($arr['Translation'][$k])){ return $arr['Translation'][$k]; }
+	elseif(isset($arr['String'][$k]) && !empty($arr['String'][$k])){ return $arr['String'][$k]; }
+	
+}

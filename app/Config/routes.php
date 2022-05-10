@@ -44,7 +44,7 @@
 	Router::connect('/warranty_registration/*', array('controller' => 'homes', 'action' => 'warranty_registration'));
 	
 	
-	Router::connect('/product/*', array('controller' => 'pages', 'action' => 'new_product'));
+	Router::connect('/product/*', array('controller' => 'pages', 'action' => 'product'));
 	Router::connect('/cart/*', array('controller' => 'pages', 'action' => 'cart'));
 	Router::connect('/shop/*', array('controller' => 'pages', 'action' => 'extra_product'));
 	Router::connect('/check_out/*', array('controller' => 'pages', 'action' => 'check_out'));

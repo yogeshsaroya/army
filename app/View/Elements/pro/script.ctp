@@ -32,7 +32,7 @@
                 }
             });
         } else {
-            $('#e_err').html('<p class="text_red">Please Select A Product</p>');
+            $('#e_err').html('<p class="text_red"><?php echo gs($txt,15);?></p>');
         }
     }
     $(document).click(function(e) {
@@ -115,7 +115,7 @@
 
             if (txt == 'Select') {
                 $('.selc_p_1').remove();
-                $('#p_1').html('--- Cat-Back Valvetronic Mufflers Selection ---');
+                $('#p_1').html('--- <?php echo gs($txt,7);?> ---');
                 $('#cat_id').val('');
                 $('#cat_id_q').val('');
                 $('#cat_id_p').val(0);
@@ -169,7 +169,7 @@
 
             if (txt == 'Select') {
                 $('.selc_p_2').remove();
-                $('#p_2').html('--- Catalytic Converter Replacement Selections ---');
+                $('#p_2').html('--- <?php echo gs($txt,8);?> ---');
                 $('#ecu_id').val('');
                 $('#ecu_id_q').val('');
                 $('#ecu_id_p').val(0);
@@ -221,7 +221,7 @@
 
             if (txt == 'Select') {
                 $('.selc_p_3').remove();
-                $('#p_3').html(' --- Armytron Accessory Selctions ---');
+                $('#p_3').html(' --- <?php echo gs($txt,9);?> ---');
                 $('#accessory_id').val('');
                 $('#accessory_id_q').val('');
                 $('#accessory_id_p').val(0);
