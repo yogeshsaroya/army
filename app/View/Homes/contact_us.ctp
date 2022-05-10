@@ -64,9 +64,9 @@ h1{font-size:32px}
 <div class="form-group"><?php  echo $this->Form->input('subject', array('type'=>'select','options'=>$this->Lab->getSubject(), 'class'=>'form-control','label' => 'Subject<sup>*</sup>','empty'=>'Select subject','required'=>true));?></div>
 <div class="form-group"><?php  echo $this->Form->input('hear', array('type'=>'select','options'=>$this->Lab->getHear(), 'class'=>'form-control','label' => 'How did you hear about us<sup>*</sup>','empty'=>'Select','required'=>true));?></div>                             
 
-<div class="form-group"><?php echo $this->Form->input('brand',array('options'=>$this->Lab->getbrand(),'empty'=>'Select Brand', 'class'=>'form-control','label'=>'Brand', 'required'=>true));?></div>
-<div class="form-group"><?php echo $this->Form->input('model',array('options'=>[],'empty'=>'Select Motor','class'=>'form-control','label'=>'Model', 'required'=>true));?></div>
-<div class="form-group"><?php echo $this->Form->input('engine',array('options'=>[],'empty'=>'Select Engine','class'=>'form-control','label'=>'Engine', 'required'=>true));?>
+<div class="form-group"><?php echo $this->Form->input('brand',array('options'=>$this->Lab->getbrand(),'default'=>(isset($q['brand']) && !empty($q['brand']) ? $q['brand'] : null), 'empty'=>'Select Brand', 'class'=>'form-control','label'=>'Brand', 'required'=>true));?></div>
+<div class="form-group"><?php echo $this->Form->input('model',array('options'=>$getModel,'default'=>(isset($q['model']) && !empty($q['model']) ? $q['model'] : null),'empty'=>'Select Motor','class'=>'form-control','label'=>'Model', 'required'=>true));?></div>
+<div class="form-group"><?php echo $this->Form->input('engine',array('options'=>$getMotor,'default'=>(isset($q['motor']) && !empty($q['motor']) ? $q['motor'] : null),'empty'=>'Select Engine','class'=>'form-control','label'=>'Engine', 'required'=>true));?>
 <p>Not listed above? Please click to visit our <a href="<?php echo SITEURL;?>homes/new_kit_request">new kit request page</a></p>
 </div>
 </div>

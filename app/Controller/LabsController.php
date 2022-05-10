@@ -1234,7 +1234,7 @@ class LabsController extends AppController
 		}
 
 		$this->Model->bindModel(array('belongsTo' => array('Brand')));
-		$brand = $this->Brand->find('list', array('conditions' => array('Brand.status' => 1), 'order' => array('Brand.name' => 'ASC'), 'fields' => array('id', 'name')));
+		$brand = $this->Brand->find('list', array('order' => array('Brand.name' => 'ASC'), 'fields' => array('id', 'name')));
 		$c = array();
 		if (!empty($id)) {
 			$c = array('Model.brand_id' => $id);
@@ -1291,7 +1291,7 @@ class LabsController extends AppController
 		$this->Model->bindModel(array('belongsTo' => array('Brand')));
 		$this->Motor->bindModel(array('belongsTo' => array('Model', 'Brand', 'Library')));
 
-		$brand = $this->Brand->find('list', array('conditions' => array('Brand.status' => 1), 'order' => array('Brand.name' => 'ASC'), 'fields' => array('id', 'name')));
+		$brand = $this->Brand->find('list', array('order' => array('Brand.name' => 'ASC'), 'fields' => array('id', 'name')));
 		$c = array('Model.status' => 1);
 		if (!empty($id)) {
 			$c[] = array('Model.brand_id' => $id);
@@ -4368,7 +4368,7 @@ class LabsController extends AppController
 		}
 
 		$this->MotorcycleModel->bindModel(array('belongsTo' => array('MotorcycleMake')));
-		$brand = $this->MotorcycleMake->find('list', array('conditions' => array('MotorcycleMake.status' => 1), 'order' => array('MotorcycleMake.name' => 'ASC'), 'fields' => array('id', 'name')));
+		$brand = $this->MotorcycleMake->find('list', array('order' => array('MotorcycleMake.name' => 'ASC'), 'fields' => array('id', 'name')));
 		$c = [];
 		if (!empty($id)) {
 			$c = ['MotorcycleModel.motorcycle_make_id' => $id];
@@ -4450,12 +4450,12 @@ class LabsController extends AppController
 		$this->MotorcycleModel->bindModel(array('belongsTo' => array('MotorcycleMake')));
 		$this->MotorcycleYear->bindModel(array('belongsTo' => array('MotorcycleModel', 'MotorcycleMake')));
 
-		$brand = $this->MotorcycleMake->find('list', array('conditions' => array('MotorcycleMake.status' => 1), 'order' => array('MotorcycleMake.name' => 'ASC'), 'fields' => array('id', 'name')));
-		$c = array('MotorcycleModel.status' => 1);
+		$brand = $this->MotorcycleMake->find('list', array('order' => array('MotorcycleMake.name' => 'ASC'), 'fields' => array('id', 'name')));
+		$c1 = [];
 		if (!empty($id)) {
-			$c[] = array('MotorcycleModel.motorcycle_make_id' => $id);
+			$c1[] = array('MotorcycleModel.motorcycle_make_id' => $id);
 		}
-		$model_list = $this->MotorcycleModel->find('list', array('conditions' => $c, 'order' => array('MotorcycleModel.name' => 'ASC'), 'fields' => array('id', 'name')));
+		$model_list = $this->MotorcycleModel->find('list', array('conditions' => $c1, 'order' => array('MotorcycleModel.name' => 'ASC'), 'fields' => array('id', 'name')));
 
 		$c = array();
 		if (!empty($id)) {

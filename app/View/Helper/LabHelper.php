@@ -314,12 +314,11 @@ class LabHelper extends AppHelper {
 	public function getbrand(){
 	    $brand = ClassRegistry::init('Brand');
 	    $itemDetail = ClassRegistry::init('ItemDetail');
-	    
-	    $bid = array();
-	    $b_list = $itemDetail->find('list',array('conditions'=>array('ItemDetail.status'=>1),'group'=>array('ItemDetail.brand_id'),'fields'=>array('ItemDetail.id','ItemDetail.brand_id')));
-	    if(!empty($b_list)){ foreach ($b_list as $k=>$l){ $bid[]=$l; } }
-	    
-	    $data = $brand->find('list',array('order'=>array('Brand.name'=>'ASC'),'conditions'=>array('Brand.id'=>$bid,'Brand.status'=>1)));
-       return $data;
+	    $b_list = $itemDetail->find('list',array('conditions'=>array('ItemDetail.status'=>1),'fields'=>array('ItemDetail.id','ItemDetail.brand_id')));
+		if(!empty($b_list)){ 
+			$b_list = array_unique($b_list);
+			$data = $brand->find('list',['order'=>['Brand.name'=>'ASC'],'conditions'=>['Brand.id'=>$b_list,'Brand.status'=>1]]);	
+			return $data;
+		}
 	}
 }?>

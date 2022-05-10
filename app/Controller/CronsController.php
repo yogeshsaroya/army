@@ -81,21 +81,21 @@ class CronsController extends AppController
 
         $data = $this->ItemDetail->find('all', [
             'conditions' => ['ItemDetail.status' => 1, 'ItemDetail.url !='=>''],
-            'fields' => ['ItemDetail.id', 'ItemDetail.status', 'ItemDetail.url', 'ItemDetail.language']
+            'fields' => ['ItemDetail.id', 'ItemDetail.status', 'ItemDetail.url', 'ItemDetail.language','ItemDetail.updated']
         ]);
         
         $motorData = $this->Motorcycle->find('all', [
             'conditions' => ['Motorcycle.status' => 1, 'Motorcycle.url !='=>''],
-            'fields' => ['Motorcycle.id', 'Motorcycle.status', 'Motorcycle.url']
+            'fields' => ['Motorcycle.id', 'Motorcycle.status', 'Motorcycle.url','Motorcycle.updated']
         ]);
         $shopData = $this->Product->find('all', [
             'conditions' => ['Product.type' => 4, 'Product.status' => 1,'Product.slug !='=>''],
-            'fields' => ['Product.id', 'Product.type', 'Product.status', 'Product.slug']
+            'fields' => ['Product.id', 'Product.type', 'Product.status', 'Product.slug','Product.updated']
         ]);
         if (!empty($data)) {
             foreach ($data as $list) {
                 $lin = utf8_encode(SITEURL . "product/" . $list['ItemDetail']['url']);
-                $url_date = date(DATE_W3C, strtotime(DATE));
+                $url_date = date(DATE_W3C, strtotime($list['ItemDetail']['updated']));
                 $writer->startElement('url');
                 $writer->writeElement('loc', $lin);
                 $writer->writeElement('lastmod', trim($url_date));
@@ -107,7 +107,7 @@ class CronsController extends AppController
         if (!empty($motorData)) {
             foreach ($motorData as $mList) {
                 $link = utf8_encode(SITEURL . "motorcycle/" . $mList['Motorcycle']['url']);
-                $url_date = date(DATE_W3C, strtotime(DATE));
+                $url_date = date(DATE_W3C, strtotime($mList['Motorcycle']['updated']));
                 $writer->startElement('url');
                 $writer->writeElement('loc', $link);
                 $writer->writeElement('lastmod', trim($url_date));
@@ -119,7 +119,7 @@ class CronsController extends AppController
         if (!empty($shopData)) {
             foreach ($shopData as $sList) {
                 $link = utf8_encode(SITEURL . "shop/" . $sList['Product']['slug']);
-                $url_date = date(DATE_W3C, strtotime(DATE));
+                $url_date = date(DATE_W3C, strtotime($sList['Product']['updated']));
                 $writer->startElement('url');
                 $writer->writeElement('loc', $link);
                 $writer->writeElement('lastmod', trim($url_date));
@@ -132,6 +132,10 @@ class CronsController extends AppController
         $writer->endElement();
         $writer->endDocument();
 
+        
+        if($_SERVER['SERVER_NAME'] == 'armytrix.com'){
+            $this->pmt_curl('https://www.google.com/ping?sitemap='.SITEURL.'sitemap.xml');
+        }
         echo "SITEMAP added : " . SITEURL . 'sitemap.xml';
     }
 
@@ -149,9 +153,9 @@ class CronsController extends AppController
         $writer->writeAttribute('xmlns:image', 'http://www.google.com/schemas/sitemap-image/1.1');
         $writer->writeAttribute('xsi:schemaLocation', 'http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd');
 
-        $data = $this->ItemDetail->find('all', ['conditions' => ['ItemDetail.status' => 1, 'ItemDetail.url IS NOT NULL', 'ItemDetail.language' => 'eng']]);
+        $data = $this->ItemDetail->find('all', ['conditions' => ['ItemDetail.status' => 1, 'ItemDetail.url !='=>'', 'ItemDetail.language' => 'eng']]);
         $motorData = $this->Motorcycle->find('all', [
-            'conditions' => ['Motorcycle.status' => 1, 'Motorcycle.url IS NOT NULL'],
+            'conditions' => ['Motorcycle.status' => 1, 'Motorcycle.url !='=>''],
             'fields' => ['Motorcycle.id', 'Motorcycle.status', 'Motorcycle.url', 'Motorcycle.slider']
         ]);
 
@@ -205,6 +209,10 @@ class CronsController extends AppController
 
         $writer->endElement();
         $writer->endDocument();
+
+        if($_SERVER['SERVER_NAME'] == 'armytrix.com'){
+            $this->pmt_curl('https://www.google.com/ping?sitemap='.SITEURL.'sitemap_image.xml');
+        }
         echo "SITEMAP added : " . SITEURL . 'sitemap_image.xml';
     }
 

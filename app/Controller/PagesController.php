@@ -34,15 +34,7 @@ class PagesController extends AppController
 			'des' => 'Best Sounding Aftermarket Exhaust Upgrades. Titanium & Stainless Steel Turbo-back Cat-Back Valvetronic Exhaust Downpipes Tips Headers Decat Test Straight Exhaust Sound',
 			'key' => 'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
 		];
-		$bid = array();
-		$b_list = $this->ItemDetail->find('list', array('conditions' => array('ItemDetail.status' => 1), 'group' => array('ItemDetail.brand_id'), 'fields' => array('ItemDetail.id', 'ItemDetail.brand_id')));
-		if (!empty($b_list)) {
-			foreach ($b_list as $k => $l) {
-				$bid[] = $l;
-			}
-		}
-		$b = $this->Brand->find('list', array('order' => array('Brand.name' => 'ASC'), 'conditions' => array('Brand.id' => $bid)));
-		$this->set(compact('page_meta', 'b'));
+		$this->set(compact('page_meta'));
 	}
 
 
@@ -71,27 +63,29 @@ class PagesController extends AppController
 			}
 
 			if (!empty($pid)) {
-				$allLang = $this->Language->find('list',['fields'=>['code','language']]);
-				if(!empty($allLang)){
+				$allLang = $this->Language->find('list', ['fields' => ['code', 'language']]);
+				if (!empty($allLang)) {
 					$this->ItemDetail->bindModel(['hasMany' => ['ProLang' => [
-						'className' => 'ItemDetail','foreignKey' => 'item_detail_id',
-						'conditions' => ['ProLang.status' => 1,'ProLang.url !=' => ''],
-						'fields' => ['ProLang.id', 'ProLang.language', 'ProLang.status', 'ProLang.url']]]], false);
-	
-					$this->ItemDetail->unbindModel(['hasMany'=>['Video']]);
+						'className' => 'ItemDetail', 'foreignKey' => 'item_detail_id',
+						'conditions' => ['ProLang.status' => 1, 'ProLang.url !=' => ''],
+						'fields' => ['ProLang.id', 'ProLang.language', 'ProLang.status', 'ProLang.url']
+					]]], false);
+
+					$this->ItemDetail->unbindModel(['hasMany' => ['Video']]);
 					$l_data = $this->ItemDetail->find('first', [
-						'recursive' => 1, 
+						'recursive' => 1,
 						'conditions' => ['ItemDetail.id' => $pid, 'ItemDetail.status' => 1],
-						'fields' => ['ItemDetail.id', 'ItemDetail.language', 'ItemDetail.status', 'ItemDetail.url'] ]);
-					if(!empty($l_data['ProLang'])){
+						'fields' => ['ItemDetail.id', 'ItemDetail.language', 'ItemDetail.status', 'ItemDetail.url']
+					]);
+					if (!empty($l_data['ProLang'])) {
 						$langArr[($l_data['ItemDetail']['language'] == 'eng' ? "English" : $l_data['ItemDetail']['language'])] = $l_data['ItemDetail']['url'];
-						foreach($l_data['ProLang'] as $l){
+						foreach ($l_data['ProLang'] as $l) {
 							$langArr[$allLang[$l['language']]] = $l['url'];
 						}
 					}
 				}
 			}
-			
+
 			$cat_back_ids = explode(',', $Adata['ItemDetail']['cat_back_ids']);
 			$catalytic_ids = explode(',', $Adata['ItemDetail']['catalytic_ids']);
 			$accessory_ids = explode(',', $Adata['ItemDetail']['accessory_ids']);
@@ -114,7 +108,7 @@ class PagesController extends AppController
 			$tran = $this->Translation->find('list', array('conditions' => array('Translation.code' => $data['ItemDetail']['language']), 'fields' => array('Translation.string_id', 'Translation.name')));
 			$txt = array('String' => $string, 'Translation' => $tran);
 
-			$this->set(compact('page_meta', 'data', 'Adata', 'txt', 'slider', 'gallery', 'cat_back', 'catalytic', 'accessory','langArr'));
+			$this->set(compact('page_meta', 'data', 'Adata', 'txt', 'slider', 'gallery', 'cat_back', 'catalytic', 'accessory', 'langArr'));
 		} else {
 			$this->layout = '404';
 		}
@@ -139,7 +133,7 @@ class PagesController extends AppController
 			if (isset($this->data['g-recaptcha-response']) && !empty($this->data['g-recaptcha-response'])) {
 				$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . DataSecret . "&response=" . $this->data['g-recaptcha-response'] . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
 				$arr = json_decode($response, true);
-				if (isset($arr['success'])) {
+				if (isset($arr['success']) && $arr['success'] == 1) {
 					$str = null;
 					if (!in_array("", $this->data['Request'])) {
 						$for = $this->DATA->getEngine($this->data['Request']['engine']);
@@ -265,6 +259,7 @@ class PagesController extends AppController
 
 	public function free()
 	{
+		$this->layout = '404';
 		$this->set('title_for_layout', 'Gifts - Armytrix Performance Upgrades');
 		$page_meta = array('des' => @$this->meta['des'], 'key' => $this->meta['keys']);
 		$this->set(compact('page_meta'));
@@ -792,71 +787,6 @@ class PagesController extends AppController
 		}
 	}
 
-	public function map()
-	{
-		$this->autoRender = false;
-		$writer = new XMLWriter();
-		$writer->openURI(WWW_ROOT . '/sitemap.xml');
-		// document head
-		$writer->startDocument('1.0', 'UTF-8');
-		$writer->setIndent(4);
-		$writer->startElement('urlset');
-		$writer->writeAttribute('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance');
-		$writer->writeAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
-		$writer->writeAttribute('xsi:schemaLocation', 'http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd');
-
-		$data = $this->ItemDetail->find('all', array('recursive' => -1, 'conditions' => array('ItemDetail.language' => 'eng', 'ItemDetail.status' => 1, 'ItemDetail.url IS NOT NULL')));
-		if (!empty($data)) {
-			foreach ($data as $list) {
-				$t = $s = 0;
-				$cat_back_ids = explode(',', $list['ItemDetail']['cat_back_ids']);
-				$catalytic_ids = explode(',', $list['ItemDetail']['catalytic_ids']);
-				$cat_back = $this->Product->find('all', array('recursive' => -1, 'conditions' => array('Product.id' => $cat_back_ids, 'Product.status' => 1)));
-				$catalytic = $this->Product->find('all', array('recursive' => -1, 'conditions' => array('Product.id' => $catalytic_ids, 'Product.status' => 1)));
-				if (!empty($cat_back)) {
-					foreach ($cat_back as $cList) {
-						if ($cList['Product']['material'] == 'titanium') {
-							$t++;
-						} elseif ($cList['Product']['material'] == 'stainless steel') {
-							$s++;
-						}
-					}
-				}
-				if (!empty($catalytic)) {
-					foreach ($catalytic as $c1List) {
-						if ($c1List['Product']['material'] == 'titanium') {
-							$t++;
-						} elseif ($c1List['Product']['material'] == 'stainless steel') {
-							$s++;
-						}
-					}
-				}
-
-				$lin = utf8_encode(SITEURL . "product/" . $list['ItemDetail']['url']);
-				$url_date = date(DATE_W3C, strtotime($list['ItemDetail']['created']));
-				$writer->startElement('url');
-				$writer->writeElement('loc', $lin);
-				$writer->writeElement('lastmod', trim($url_date));
-				$writer->writeElement('changefreq', 'always');
-				$writer->writeElement('priority', '0.8');
-				$writer->endElement();
-				if ($t > 0) {
-					$lin = utf8_encode(SITEURL . "product/" . $list['ItemDetail']['url'] . "/ti");
-					$url_date = date(DATE_W3C, strtotime($list['ItemDetail']['created']));
-					$writer->startElement('url');
-					$writer->writeElement('loc', $lin);
-					$writer->writeElement('lastmod', trim($url_date));
-					$writer->writeElement('changefreq', 'always');
-					$writer->writeElement('priority', '0.8');
-					$writer->endElement();
-				}
-			}
-		}
-		$writer->endElement();
-		$writer->endDocument();
-		echo SITEURL . 'sitemap.xml created';
-	}
-
 	public function t_and_c()
 	{
 		$this->set('title_for_layout', 'Terms and Conditions');
@@ -963,37 +893,32 @@ class PagesController extends AppController
 				$str2 = '<option value="">Select Engine</option>';
 				if (isset($this->data['get']) && $this->data['get'] == 'motor' && $this->data['type'] == 'brand' && isset($this->data['id'])) {
 					$mID = array();
-					$mList = $this->ItemDetail->find('list', array('conditions' => array('ItemDetail.status' => 1, 'OR' => array('ItemDetail.cat_back_ids IS NOT NULL', 'ItemDetail.catalytic_ids IS NOT NULL')), 'group' => array('ItemDetail.model_id'), 'fields' => array('ItemDetail.id', 'ItemDetail.model_id')));
+					$mList = $this->ItemDetail->find('list', ['conditions' => ['ItemDetail.status' => 1, 'ItemDetail.brand_id' => $this->data['id']], 'fields' => ['ItemDetail.id', 'ItemDetail.model_id']]);
 					if (!empty($mList)) {
-						foreach ($mList as $k => $l) {
-							$mID[] = $l;
+						$mList = array_unique($mList);
+						$getModel = $this->Model->find('list', ['conditions' => ['Model.id' => $mList, 'Model.brand_id' =>$this->data['id'], 'Model.status' => 1],'fields' => ['Model.id','Model.name']]);
+						if (!empty($getModel)) {
+							foreach ($getModel as $k=>$v) {
+								$ttt = str_replace("'", "\'", $v);
+								$str1 .= '<option value="'.$k.'">' . htmlspecialchars($ttt) . '</option>';
+							}
 						}
-					}
-					$result1 = $this->Model->find('all', array('conditions' => array('Model.id' => $mID, 'Model.brand_id' => $this->data['id'], 'Model.status' => 1)));
-					if (!empty($result1)) {
-						foreach ($result1 as $list) {
-							$ttt = str_replace("'", "\'", $list['Model']['name']);
-							$str1 .= '<option value="' . $list['Model']['id'] . '">' . htmlspecialchars($ttt) . '</option>';
-						}
-					}
-					echo "<script>$('#RequestModel').html('$str1');</script>";
+						echo "<script>$('#RequestModel').html('$str1');</script>";
+					} 
+					
 				} elseif (isset($this->data['get']) && $this->data['get'] == 'engine' && $this->data['type'] == 'motor' && isset($this->data['id'])) {
-					$q1 = array();
-					$mList = $this->ItemDetail->find('list', array('conditions' => array('ItemDetail.status' => 1, 'ItemDetail.model_id' => $this->data['id'], 'OR' => array('ItemDetail.cat_back_ids IS NOT NULL', 'ItemDetail.catalytic_ids IS NOT NULL')), 'group' => array('ItemDetail.motor_id'), 'fields' => array('ItemDetail.id', 'ItemDetail.motor_id')));
-					if (!empty($mList)) {
-						foreach ($mList as $k => $l) {
-							$q1[] = $l;
+					$pList = $this->ItemDetail->find('list', ['conditions' => ['ItemDetail.status' => 1, 'ItemDetail.model_id' => $this->data['id']],'fields' => ['ItemDetail.id', 'ItemDetail.motor_id']]);
+					if(!empty($pList)){
+                        $pList = array_unique($pList);
+                        $getMotor = $this->Motor->find('list',['conditions' => ['Motor.id' => $pList, 'Motor.model_id' => $this->data['id'], 'Motor.status' => 1]]);
+						if (!empty($getMotor)) {
+							foreach ($getMotor as $k=>$v) {
+								$ttt = str_replace("'", "\'", $v);
+								$str2 .= '<option value="'.$k.'">'.htmlspecialchars($ttt).'</option>';
+							}
 						}
-					}
-
-					$result1 = $this->Motor->find('all', array('conditions' => array('Motor.id' => $q1, 'Motor.model_id' => $this->data['id'], 'Motor.status' => 1)));
-					if (!empty($result1)) {
-						foreach ($result1 as $list) {
-							$ttt = str_replace("'", "\'", $list['Motor']['name']);
-							$str2 .= '<option value="' . $list['Motor']['id'] . '">' . htmlspecialchars($ttt) . '</option>';
-						}
-					}
-					echo "<script>$('#RequestEngine').html('$str2');</script>";
+						echo "<script>$('#RequestEngine').html('$str2');</script>";
+                    }
 				}
 			}
 		}
@@ -1505,8 +1430,6 @@ class PagesController extends AppController
 		}
 	}
 
-
-
 	public function get_tuning_search()
 	{
 
@@ -1653,7 +1576,7 @@ class PagesController extends AppController
 				if (isset($this->data['g-recaptcha-response']) && !empty($this->data['g-recaptcha-response'])) {
 					$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . DataSecret . "&response=" . $this->data['g-recaptcha-response'] . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
 					$arr = json_decode($response, true);
-					if (isset($arr['success'])) {
+					if (isset($arr['success']) && $arr['success'] == 1) {
 						$parameters = array(
 							'FNAME' => $this->data['fname'], 'LNAME' => $this->data['lname'],
 							'EMAIL' => $this->data['email'], 'PHONE' => $this->data['phone'], 'CITY' => $this->data['city'],

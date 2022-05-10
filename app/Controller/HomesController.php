@@ -5,7 +5,7 @@ App::uses('AppController', 'Controller');
 class HomesController extends AppController
 {
 
-    public $uses = array('User', 'Brand', 'Model', 'Motor', 'Product', 'ExhaustBrand', 'ExhaustModel', 'ExhaustProduct', 'Library', 'ItemDetail', 'QualityDetail', 'Cart', 'PromoCode', 'WebSetting', 'World', 'Shipping', 'Address', 'Order', 'OrderItem', 'OrderHistory','String');
+    public $uses = array('User', 'Brand', 'Model', 'Motor', 'Product', 'ExhaustBrand', 'ExhaustModel', 'ExhaustProduct', 'Library', 'ItemDetail', 'QualityDetail', 'Cart', 'PromoCode', 'WebSetting', 'World', 'Shipping', 'Address', 'Order', 'OrderItem', 'OrderHistory', 'String');
     var $components = array('Auth', 'Session', 'Email', 'RequestHandler', 'Paginator', 'DATA');
     var $helpers = array('Html', 'Form', 'Session', 'Paginator', 'Lab');
     function beforeFilter()
@@ -21,32 +21,31 @@ class HomesController extends AppController
             'des' => 'ARMYTRIX OBDII Sound kits, the Innovative Valvetronic Technology Brings about Unprecedented Versatility to Car Owners.',
             'key' => 'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
         ];
-        $string = $this->String->find('list',array('order'=>array('String.id'=>'ASC'),'fields'=>array('String.id','String.text')));
-		$txt = array('String'=>$string,'Translation'=>[]);
-        $this->set(compact('page_meta','txt'));
+        $string = $this->String->find('list', array('order' => array('String.id' => 'ASC'), 'fields' => array('String.id', 'String.text')));
+        $txt = array('String' => $string, 'Translation' => []);
+        $this->set(compact('page_meta', 'txt'));
     }
 
     public function motocycle_exhaust($id = null)
-	{
-		$this->set('title_for_layout', 'Valvetronic Exhaust System Weaponzied by ARMYTRIX');
-		$page_meta = [
-			'des' => 'Best Sounding Aftermarket Exhaust Upgrades. Titanium & Stainless Steel Turbo-back Cat-Back Valvetronic Exhaust Downpipes Tips Headers Decat Test Straight Exhaust Sound',
-			'key' => 'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
-		];
-		if (!empty($id)) {
-			$this->render('motocycle_exhaust_details');
-		}
-	}
+    {
+        $this->set('title_for_layout', 'Valvetronic Exhaust System Weaponzied by ARMYTRIX');
+        $page_meta = [
+            'des' => 'Best Sounding Aftermarket Exhaust Upgrades. Titanium & Stainless Steel Turbo-back Cat-Back Valvetronic Exhaust Downpipes Tips Headers Decat Test Straight Exhaust Sound',
+            'key' => 'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
+        ];
+        if (!empty($id)) {
+            $this->render('motocycle_exhaust_details');
+        }
+    }
 
     public function motorcycle($id = null)
-	{
-		$this->set('title_for_layout', 'Valvetronic Exhaust System Weaponzied by ARMYTRIX');
-		$page_meta = [
-			'des' => 'Best Sounding Aftermarket Exhaust Upgrades. Titanium & Stainless Steel Turbo-back Cat-Back Valvetronic Exhaust Downpipes Tips Headers Decat Test Straight Exhaust Sound',
-			'key' => 'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
-		];
-		
-	}
+    {
+        $this->set('title_for_layout', 'Valvetronic Exhaust System Weaponzied by ARMYTRIX');
+        $page_meta = [
+            'des' => 'Best Sounding Aftermarket Exhaust Upgrades. Titanium & Stainless Steel Turbo-back Cat-Back Valvetronic Exhaust Downpipes Tips Headers Decat Test Straight Exhaust Sound',
+            'key' => 'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
+        ];
+    }
 
     public function performance()
     {
@@ -82,7 +81,7 @@ class HomesController extends AppController
                 if (isset($this->data['g-recaptcha-response']) && !empty($this->data['g-recaptcha-response'])) {
                     $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . DataSecret . "&response=" . $this->data['g-recaptcha-response'] . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
                     $arr = json_decode($response, true);
-                    if (isset($arr['success'])) {
+                    if (isset($arr['success']) && $arr['success'] == 1) {
 
                         $parameters = array('WEB' => $this->data['User']['url'], 'EMAIL' => $this->data['User']['email']);
 
@@ -264,7 +263,7 @@ class HomesController extends AppController
             if (isset($this->data['g-recaptcha-response']) && !empty($this->data['g-recaptcha-response'])) {
                 $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . DataSecret . "&response=" . $this->data['g-recaptcha-response'] . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
                 $arr = json_decode($response, true);
-                if (isset($arr['success'])) {
+                if (isset($arr['success']) && $arr['success'] == 1) {
 
                     $forms = [
                         'id' => null, 'type' => 2, 'first_name' => $this->data['Request']['first_name'], 'last_name' => $this->data['Request']['last_name'],
@@ -308,7 +307,7 @@ class HomesController extends AppController
                     $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . DataSecret . "&response=" . $this->data['g-recaptcha-response'] . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
                     $arr = json_decode($response, true);
                     echo "<script>grecaptcha.reset();</script>";
-                    if (isset($arr['success'])) {
+                    if (isset($arr['success']) && $arr['success'] == 1) {
                         if (filter_var($this->data['Warranty']['email'], FILTER_VALIDATE_EMAIL)) {
                             $body = $this->DATA->email_structure();
                             $pa = array('DATE' => TODAYDATE, 'NAME' => $this->data['Warranty']['first_name'], 'COUNTRY' => $this->data['Warranty']['country'], 'EmailTemplateSkeleton' => $body);
@@ -316,7 +315,7 @@ class HomesController extends AppController
                                 $this->Warranty->save($this->request->data);
                                 $this->DATA->AppMail($this->data['Warranty']['email'], 'WarrantyUser', $pa, DATE, 2);
                                 $this->DATA->AppMail('inquiry@armytrix.com', 'WarrantyAdmin', $pa, DATE, 2);
-                                
+
                                 echo "<script> $('#wfrm_div').html('<div class=\'alert alert-success\'>Warranty registration form has been submitted..</div>'); $('#preloader').hide();$('html, body').animate({ scrollTop: $('#warranty_registration').offset().top - 200 }, 200);</script>";
                             } else {
                                 $str = null;
@@ -350,17 +349,37 @@ class HomesController extends AppController
             'des' => 'Please Fill out the Form and we\'ll get Back in Touch with You',
             'key' => 'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
         ];
-        $this->set('page_meta', $page_meta);
+        $q = $this->request->query;
+        $getModel = $getMotor = [];
+        if (isset($q['brand']) && !empty($q['brand'])) {
+            $mList = $this->ItemDetail->find('list', ['conditions' => ['ItemDetail.status' => 1, 'ItemDetail.brand_id' => $q['brand']], 'fields' => ['ItemDetail.id', 'ItemDetail.model_id']]);
+            if (!empty($mList)) {
+                $mList = array_unique($mList);
+                $getModel = $this->Model->find('list', ['conditions' => ['Model.id' => $mList, 'Model.brand_id' => $q['brand'], 'Model.status' => 1],'fields' => ['Model.id','Model.name']]);
+                if(!empty($getModel) && isset($q['model']) && !empty($q['model'])){
+                    $mids = [];
+                    foreach($getModel as $a=>$b){ $mids[] = $a; }
+                    $pList = $this->ItemDetail->find('list', ['conditions' => ['ItemDetail.status' => 1, 'ItemDetail.model_id' => $mids],'fields' => ['ItemDetail.id', 'ItemDetail.motor_id']]);
+                    if(!empty($pList)){
+                        $pList = array_unique($pList);
+                        $getMotor = $this->Motor->find('list',[
+                            'conditions' => ['Motor.id' => $pList, 'Motor.model_id' => $q['model'], 'Motor.status' => 1]
+                        ]);
+                    }
+                }
+                
+            }
+        }
 
 
+
+        $this->set(compact('page_meta', 'q','getModel','getMotor'));
         if ($this->RequestHandler->isAjax()) {
             if (!empty($this->data)) {
-
                 if (isset($this->data['g-recaptcha-response']) && !empty($this->data['g-recaptcha-response'])) {
                     $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . DataSecret . "&response=" . $this->data['g-recaptcha-response'] . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
                     $arr = json_decode($response, true);
-
-                    if (isset($arr['success'])) {
+                    if (isset($arr['success']) && $arr['success'] == 1) {
                         $for = $this->DATA->getEngine($this->data['Request']['engine']);
                         $forms = [
                             'id' => null, 'type' => 3,

@@ -1,17 +1,22 @@
-
-<?php 
-$img = 'https://res.cloudinary.com/armytrix/image/upload/v1650865426/product/armytrix-product-exhaust.webp';
-if( isset($IsMobile) ){
-$img = 'https://res.cloudinary.com/armytrix/image/upload/v1651024830/home/phone-product-exhaust-portrait_vwpvge.webp';
+<?php
+$img = 'https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1650865426/product/armytrix-product-exhaust.webp';
+if (isset($IsMobile)) {
+  $img = 'https://res.cloudinary.com/armytrix/image/upload/v1651024830/home/phone-product-exhaust-portrait_vwpvge.webp';
 }
-
+$b = $this->Lab->getbrand();
 ?>
+
+<?php $this->append('meta_data'); ?>
+<link rel="preload" as="image" href="<?php echo $img; ?>" />
+<?php $this->end(); ?>
+
 <div id="preloader" style="display: none;">
   <div id="status">&nbsp;</div>
 </div>
 <div class="fullscreen_block_new fulScreen" id="tuning_box_page" style="min-height: 400px;">
   <div class="fullScreen">
-    <img src="<?php echo $img;?>" loading="lazy" alt=""></div>
+    <img src="<?php echo $img; ?>" loading="lazy" alt="">
+  </div>
   <div class="tuning-box">
     <div class="clearfix"></div>
     <div class="container" id="new-ui-add">
@@ -24,7 +29,7 @@ $img = 'https://res.cloudinary.com/armytrix/image/upload/v1651024830/home/phone-
               <div class="container-fmr ma-box d-flex">
                 <div class="col-sm-8 no-pad col-sm-8-nw d-flex">
                   <div class="nowrap col-sm-4 box-frm arw-rt">
-                    <select class="lable_txt arw-rt" id="brand" name="brand">
+                    <select class="lable_txt arw-rt" id="RequestBrand" name="brand">
                       <option value="">Select Brand</option>
                       <?php
                       if (isset($b) && !empty($b)) {
@@ -35,12 +40,12 @@ $img = 'https://res.cloudinary.com/armytrix/image/upload/v1651024830/home/phone-
                     </select>
                   </div>
                   <div class="nowrap col-sm-4 box-frm arw-rt">
-                    <select class="lable_txt " id="model" name="model">
+                    <select class="lable_txt " id="RequestModel" name="model">
                       <option value="">Select Model</option>
                     </select>
                   </div>
                   <div class="nowrap col-sm-4 box-frm">
-                    <select class="lable_txt" id="motor" name="motor">
+                    <select class="lable_txt" id="RequestEngine" name="motor">
                       <option value="">Select Engine</option>
                     </select>
                   </div>
@@ -54,19 +59,11 @@ $img = 'https://res.cloudinary.com/armytrix/image/upload/v1651024830/home/phone-
                       <img src="<?php echo SITEURL; ?>bootstrap_3_3_6/img/logo-icon.png" loading="lazy" alt=""> WEAPONIZED</button>
                   </div>
                 </div>
-
                 <div class="clearfix"></div>
-
-                <!--end of first -box-->
-
-
-
             </form>
-
             <div id="app_error"> </div>
           </div>
           <div id="show_info" style="min-height: 268px;">
-
             <div class="clearfix"></div>
           </div>
         </div>
@@ -86,16 +83,20 @@ $img = 'https://res.cloudinary.com/armytrix/image/upload/v1651024830/home/phone-
       $("#get_info").val('WEAPONIZED');
     };
     $("#get_info").click(function() {
-      var brand = $.trim($('#brand').val());
-      var model = $.trim($('#model').val());
-      var motor = $.trim($('#motor').val());
+      var brand = $.trim($('#RequestBrand').val());
+      var model = $.trim($('#RequestModel').val());
+      var motor = $.trim($('#RequestEngine').val());
 
       if (brand != '' && model != '' && motor != '') {
         $('#preloader').show();
         $.ajax({
           type: 'POST',
           url: '<?php echo SITEURL; ?>pages/check_product',
-          data: {brand:brand,model:model,motor:motor},
+          data: {
+            brand: brand,
+            model: model,
+            motor: motor
+          },
           success: function(data) {
             $("#app_error").html(data);
             $('#preloader').hide();
@@ -105,64 +106,23 @@ $img = 'https://res.cloudinary.com/armytrix/image/upload/v1651024830/home/phone-
             $('#preloader').hide();
           }
         });
-        
-      }
 
-
-    });
-    $("#brand").change(function() {
-      $("#app_error").html('');
-
-      $('#model').removeClass('active-arw');
-      $('#motor').removeClass('active-arw');
-      $('#model').html('<option value="">Select Model</option>');
-      $('#motor').html('<option value="">Select Engine</option>');
-
-      var v = $.trim(this.value);
-      if (v != "") {
-        $('#preloader').show();
-        if (!$('#brand').hasClass('active-arw')) {
-          $('#brand').addClass('active-arw');
-        }
-        $.ajax({
-          type: 'POST',
-          url: '<?php echo SITEURL; ?>pages/get_exhaust',
-          data: 'id=' + v + '&type=brand&get=product',
-          success: function(data) {
-            $("#app_error").html(data);
-            $('#preloader').hide();
-          },
-          error: function(comment) {
-            $("#app_error").html(data);
-            $('#preloader').hide();
-          }
-        });
-      } else {
-        $('#brand').removeClass('active-arw');
       }
     });
 
 
 
-
-    $("#model").change(function() {
+    $("#RequestBrand").change(function() {
       $("#app_error").html('');
-
-
-      $('#motor').removeClass('active-arw');
-      $('#motor').html('<option value="">Select Engine</option>');
-
-
+      $('#RequestModel').html('<option value="">Select Model</option>');
+      $('#RequestEngine').html('<option value="">Select Engine</option>');
       var v = $.trim(this.value);
       if (v != "") {
         $('#preloader').show();
-        if (!$('#model').hasClass('active-arw')) {
-          $('#model').addClass('active-arw');
-        }
         $.ajax({
           type: 'POST',
-          url: '<?php echo SITEURL; ?>pages/get_exhaust',
-          data: 'id=' + v + '&brand=' + brand + '&type=model&get=product',
+          url: '<?php echo SITEURL; ?>pages/get_for',
+          data: 'id=' + v + '&type=brand&get=motor',
           success: function(data) {
             $("#app_error").html(data);
             $('#preloader').hide();
@@ -172,8 +132,28 @@ $img = 'https://res.cloudinary.com/armytrix/image/upload/v1651024830/home/phone-
             $('#preloader').hide();
           }
         });
-      } else {
-        $('#model').removeClass('active-arw');
+      }
+    });
+
+    $("#RequestModel").change(function() {
+      $("#app_error").html('');
+      $('#RequestEngine').html('<option value="">Select Engine</option>');
+      var v = $.trim(this.value);
+      if (v != "") {
+        $('#preloader').show();
+        $.ajax({
+          type: 'POST',
+          url: '<?php echo SITEURL; ?>pages/get_for',
+          data: 'id=' + v + '&type=motor&get=engine',
+          success: function(data) {
+            $("#app_error").html(data);
+            $('#preloader').hide();
+          },
+          error: function(comment) {
+            $("#app_error").html(data);
+            $('#preloader').hide();
+          }
+        });
       }
     });
 

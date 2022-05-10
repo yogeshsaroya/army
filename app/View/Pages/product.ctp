@@ -154,7 +154,7 @@ if (isset($data) && !empty($data)) {
           <div id="chk_btn">
             <div id="e_err"></div>
             <?php if (isset($restricted) && $restricted == 1) { ?>
-              <a href="<?php echo SITEURL; ?>contact?brand=1&model=1&motor=1" class="cartBtn fullWidth"><?php echo gs($txt, 10); ?></a>
+              <a href="<?php echo SITEURL.'contact?brand='.$data['ItemDetail']['brand_id'].'&model='.$data['ItemDetail']['model_id'].'&motor='.$data['ItemDetail']['motor_id']; ?>" class="cartBtn fullWidth"><?php echo gs($txt, 10); ?></a>
             <?php } elseif ($restricted == 2) { ?>
               <button class="cartBtn fullWidth" onclick="addcart();"><?php echo gs($txt, 78); ?></button>
             <?php } ?>
