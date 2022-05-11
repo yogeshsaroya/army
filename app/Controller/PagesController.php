@@ -526,13 +526,11 @@ class PagesController extends AppController
 		$shipping = $this->Session->read('shipping');
 		$WebSetting = $this->WebSetting->find('first', array('WebSetting.id' => 1));
 
-		if (empty($checkOutArr) && empty($shipping)) {
-			$this->render('no_country');
-		} else {
+		if (empty($checkOutArr) && empty($shipping)) { $this->render('no_country'); } 
+		else {
 			$country_list = $this->CountryList->find('first', ['conditions' => ['CountryList.id' => $shipping['Order']['country_list_id']]]);
-			if (empty($country_list)) {
-				$this->render('no_country');
-			}
+			if (empty($country_list)) { $this->render('no_country'); }
+			
 			if (isset($country_list['CountryList']['region']) &&  isset($shipping['Order']['country_list_id']) && !empty($shipping['Order']['country_list_id'])) {
 
 				if (in_array($country_list['CountryList']['region'], [1])) {

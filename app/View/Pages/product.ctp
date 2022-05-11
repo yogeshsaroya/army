@@ -1,7 +1,8 @@
+<?php echo $this->Html->css(["/v2/product_page.css?v=" . rand(5646, 65465)], ['block' => 'cssTop']); ?>
+<?php $this->append('meta_data'); ?>
 <link rel="preload" as="image" href="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651592728/product/mouse-hover-b2_tsorh4_vjh0c3.webp" />
 <link rel="preload" as="image" href="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651514055/product/mouse-hover-b1_nt16rs.webp" />
 
-<?php echo $this->Html->css(["/v2/product_page.css?v=" . rand(5646, 65465)], ['block' => 'cssTop']); ?>
 <style>
   iframe .ytp-chrome-top.ytp-show-cards-title {
     display: none !important;
@@ -44,7 +45,7 @@
   .justify-content-center .dropdown-menu li a {
     font-weight: 500;}
 </style>
-
+<?php $this->end(); ?>
 <?php
 $imgArr = [];
 if (isset($slider) && !empty($slider)) {

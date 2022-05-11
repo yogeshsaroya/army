@@ -18355,9 +18355,15 @@ footer .copyright {
     vertical-align: middle
 }
 
+@media only screen and (min-width: 761px) {
+    .main_wrapper {
+        width: 80%;
+    }
+}
+
 @media only screen and (min-width: 420px) and (max-width: 760px) {
     .main_wrapper {
-        width: 420px;
+        width: 90%;
         margin: 0 auto;
         text-align: left
     }

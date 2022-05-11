@@ -6,11 +6,6 @@
     margin-top: 30px
 }
 
-div#check-out-pg {
-    padding: 50px 30px;
-    font-size: 13px
-}
-
 div#check-out-pg a {
     letter-spacing: 0!important
 }
@@ -25,7 +20,7 @@ div#check-out-pg button {
 
 #check-out-pg span.plc-order {
     display: block;
-    font-size: 40px;
+    font-size: 25px;
     margin: 10px 10px 10px 10px;
 }
 
@@ -88,7 +83,7 @@ div#check-out-pg select {
     width: 2px;
     height: 100%;
     left: 0;
-    background: url(<?php echo SITEURL;?>image/column-separator.png) no-repeat center top
+    background: url(../image/column-separator.png) no-repeat center top
 }
 
 .ful-frm-chk-out .col-md-6:first-child:before {
@@ -299,10 +294,6 @@ span.grnd-total {
         padding-left: 0;
         padding-right: 7.5px
     }
-    div#check-out-pg {
-        padding: 0 20px;
-        font-size: 13px
-    }
 }
 
 @media (max-width:767px) {
@@ -377,4 +368,77 @@ small.help-block {
 select {
     background-color: #e2e3e4 !important;
     border: 0px solid #cdcdcd !important;
+}
+
+.checkout-btn {
+    background: #093 none repeat scroll 0 0;
+    color: #fff;
+    float: right;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 15px 45px;
+    text-transform: uppercase
+}
+
+.checkout-btn:hover {
+    background: #444 none repeat scroll 0 0 !important;
+    color: #fff;
+    transition: all 500ms ease-in-out 0
+}
+
+#check-out-pg label.control-label {
+    text-align: left;
+}
+
+.has-error .help-block {
+    color: #a94442;
+    text-align: left;
+}
+
+.btn_div {
+    padding-left: 22px;
+    padding-right: 15px;
+}
+
+@media (min-width: 992px) {
+    #check-out-pg .page_container {
+        width: 60%;
+        display: inline-block;
+        margin-top: 40px;
+    }
+}
+
+@media (min-width: 992px) {
+    #check-out-pg .page_container.review_page {
+        width: 75%;
+        display: inline-block;
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 991px) {
+    #check-out-pg .page_container {
+        width: 70%;
+        display: inline-block;
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    #check-out-pg .page_container {
+        width: 80%;
+        display: inline-block;
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 425px) {
+    #check-out-pg .page_container {
+        width: 95%;
+        display: inline-block;
+        margin-top: 40px;
+    }
+    .btn_div {
+        width: 100%;
+    }
 }

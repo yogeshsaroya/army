@@ -660,17 +660,16 @@
     text-transform: uppercase
   }
 
-  .checkout-btn {
-    overflow: hidden;
-    padding: 25px 0 !important
-  }
-
   .checkout-btn>a:hover {
     background: #444 none repeat scroll 0 0 !important;
     color: #fff;
     transition: all 500ms ease-in-out 0
   }
 
+  .checkout-btn {
+    overflow: hidden;
+    padding: 25px 0 !important
+  }
   textarea {
     width: 100%;
     height: auto !important

@@ -1,6 +1,6 @@
 <?php 
 echo $this->Html->css(["checkout"], ['block' => 'cssTop']);
-echo $this->html->script(array('jquery.form.min','/v/formValidation.min','/v/bootstrap.min'));
+echo $this->html->script(['jquery.form.min','/v/formValidation.min','/v/bootstrap.min'], ['block' => 'scriptTop']);
 $note = null;
 if(isset($checkOutArr['note'])){ $note = $checkOutArr['note']; }
 ?>
@@ -27,10 +27,11 @@ td.a-right { width:auto;}
 
 }
 #check-out-pg .title-heads{font-size: 24px;}
+#check-out-pg .review_page{text-align: left;}
 
 </style>
-
-<div class="main_wrapper review_page" id="check-out-pg">
+<div id="check-out-pg">
+<div class="page_container review_page">
 <div class="row"> <div class="col-sm-12 main-heads"><h1>Armytrix - Checkout</h1><h3>Please enter your details below to complete your purchase.</h3></div>
 <div class="clearfix"></div></div>
 <?php if(isset($all_pro) && !empty($all_pro)){?>
@@ -68,7 +69,7 @@ if ( $region == 1 ){
  <div class="clearfix"></div>     
 </div>
 </div>
-<!--end of second box--->
+
    <div class="col-md-8">
      <div class="fifth-order-review">        
       <h4  class="title-heads">ORDER REVIEW</h4>
@@ -305,6 +306,7 @@ $pro_ids = implode(',',$pro_id);?>
 </div>
 </div>   
 <div class="clearfix"></div>    
+</div></div>
 </div></div>
 <script>
 $(document).ready(function(){

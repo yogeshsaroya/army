@@ -1,12 +1,15 @@
 <?php
-echo $this->Html->css(array('checkout'));
-echo $this->Html->script(array('jquery.form.min'));
-echo $this->html->script(array('/v/formValidation.min','/v/bootstrap.min'));
+echo $this->Html->css(['checkout'], ['block' => 'cssTop']);
+echo $this->Html->script(['jquery.form.min','/v/formValidation.min','/v/bootstrap.min'], ['block' => 'scriptTop']);
 $getCountry = $this->Lab->getCountryNew();
 ?>
+<style>
+
+</style>
 <div id="preloader" style="display: none"> <div id="status">&nbsp;</div> </div>
 
-<div class="main_wrapper" id="check-out-pg">
+<div id="check-out-pg">
+<div class="page_container">
 <div class="row"> <div class="col-sm-12 main-heads"><h1>Armytrix - Checkout</h1><h3>Please enter your details below to complete your purchase.</h3></div>
 <div class="clearfix"></div></div>
 <?php if(isset($getAll) && !empty($getAll)){?>
@@ -18,7 +21,7 @@ if(isset($shipping['Order']) && !empty($shipping['Order'])){
 }
 
 ?>
-<div class="row">
+<div class="rows">
 <div class="ful-frm-chk-out border-head-form"> 
 <div class="col-md-12"> 
 <div class="first-billing-box">        
@@ -40,38 +43,28 @@ $pro_ids = implode(',',$pro_id);
 <input type="hidden" name="pid" id="pid" value="<?php echo $pro_ids;?>">
 
 <fieldset id="account" class="pad-right">          
-<div class="form-group required col-sm-3"><label class="control-label" for="input-firstname">First Name</label> 
+<div class="form-group required col-md-3"><label class="control-label" for="input-firstname">First Name</label> 
 <div class=""><?php echo $this->Form->input('Order.first_name',array('placeholder'=>'First name','label'=>false,'div'=>false, 'class'=>'form-control','required'=>"required"));?></div></div>
-<div class="form-group required col-sm-3"><label class="control-label" for="input-firstname">Last Name</label> 
+<div class="form-group required col-md-3"><label class="control-label" for="input-firstname">Last Name</label> 
 <div class=""><?php echo $this->Form->input('Order.last_name',array('placeholder'=>'Last name','label'=>false,'div'=>false, 'class'=>'form-control','required'=>"required"));?></div></div>
-<div class="form-group required col-sm-3"><label class="control-label" for="input-firstname">Email</label> 
+<div class="form-group required col-md-3"><label class="control-label" for="input-firstname">Email</label> 
 <div class=""><?php echo $this->Form->input('Order.email',array('type'=>'email','placeholder'=>'Email address','label'=>false,'div'=>false, 'class'=>'form-control','required'=>"required"));?></div></div>
-<div class="form-group required col-sm-3"><label class="control-label" for="input-firstname">Telephone</label> 
+<div class="form-group required col-md-3"><label class="control-label" for="input-firstname">Telephone</label> 
 <div class=""><?php echo $this->Form->input('Order.phone',array('placeholder'=>'Telephone','label'=>false,'div'=>false, 'class'=>'form-control','required'=>true));?></div></div>
-<div class="form-group required col-sm-3"><label class=" control-label" for="input-firstname">Country</label> 
+<div class="form-group required col-md-3"><label class=" control-label" for="input-firstname">Country</label> 
 <div class=""><?php echo $this->Form->input('Order.country_list_id',array('options'=> $getCountry,'label'=>false,'div'=>false,'empty'=>' --- Please Select --- ', 'class'=>'form-control','required'=>"required"));?></div></div>
-<div class="form-group required col-sm-3"><label class=" control-label" for="input-firstname">Region / State</label> 
+<div class="form-group required col-md-3"><label class=" control-label" for="input-firstname">Region / State</label> 
 <div class=""><?php echo $this->Form->input('Order.shipping_state',array('placeholder'=>'Region / State','label'=>false,'div'=>false, 'class'=>'form-control','required'=>"required"));?></div></div>
-
-
 </fieldset>
-
-
 <div class="clearfix"></div>
-
 <div id="_ch_err"></div>
-   
-<div class="submit-btn pull-right" id="rbtn_p">
-     <button id="_do_chk">
-      <span class="grnd-total"></span>
-      <span class="plc-order">Review Order</span>
-     </button>
+  
+<div class="pull-right btn_div">
+<button type="button" class="checkout-btn cartBtn" id="_do_chk">Review Order</button>
 </div>
- 
-</div></div>
-   
-<!---end of firstbox---->   
-   
+</div>
+</div>
+
 <div class="clearfix"></div>    
 </div>
 </div>
@@ -87,7 +80,7 @@ $pro_ids = implode(',',$pro_id);
 </div></div>
 <?php }?>
 </div>
-
+</div>
 
 
 <script>
