@@ -500,4 +500,18 @@ class CronsController extends AppController
             ec("Strings updated");
         }
     }
+
+    public function read_email()
+	{
+		$this->autoRender = false;
+		$this->loadModel('EmailServer');
+		$this->paginate = array('limit' => 500, 'order' => array('EmailServer.id' => 'desc'));
+		$data = $this->paginate("EmailServer");
+		if (!empty($data)) {
+			foreach ($data as $m) {
+				ec($m['EmailServer']['email_to'] . " : " . $m['EmailServer']['subject']);
+				ec($m['EmailServer']['message']);
+			}
+		}
+	}
 }

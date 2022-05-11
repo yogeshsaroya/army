@@ -525,6 +525,7 @@ class PagesController extends AppController
 		$checkOutArr = $this->Session->read('checkOutArr');
 		$shipping = $this->Session->read('shipping');
 		$WebSetting = $this->WebSetting->find('first', array('WebSetting.id' => 1));
+		//ec($checkOutArr); ec($shipping);
 
 		if (empty($checkOutArr) && empty($shipping)) { $this->render('no_country'); } 
 		else {
@@ -1611,19 +1612,7 @@ class PagesController extends AppController
 		$this->set(compact('page_meta', 'data'));
 	}
 
-	public function my_mail($id = null)
-	{
-		$this->autoRender = false;
-		$this->loadModel('EmailServer');
-		$this->paginate = array('limit' => 500, 'order' => array('EmailServer.id' => 'desc'));
-		$data = $this->paginate("EmailServer");
-		if (!empty($data)) {
-			foreach ($data as $m) {
-				ec($m['EmailServer']['email_to'] . " : " . $m['EmailServer']['subject']);
-				ec($m['EmailServer']['message']);
-			}
-		}
-	}
+	
 
 	public function customer_support()
 	{
