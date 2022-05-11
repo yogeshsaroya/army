@@ -1,3 +1,7 @@
+<?php
+echo $this->html->css(['/font-awesome/css/font-awesome.min.css'], ['block' => 'cssTop']);
+echo $this->html->script(['jquery.form.min', '/v/formValidation.min', '/v/bootstrap.min'], ['block' => 'scriptTop']);
+?>
 <script type="text/javascript">
       var onloadCallback = function() {
         grecaptcha.render('g-recaptcha', {
@@ -6,13 +10,7 @@
       };
     </script>
 <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
-<?php 
-if(isset($IsMobile)){
-    echo $this->html->css(array('theme','/font-awesome/css/font-awesome.min.css'));
-}
-echo $this->html->css(array('//fonts.googleapis.com/css?family=Titillium+Web'));
-echo $this->html->script(array('jquery.form.min', '/v/formValidation.min','/v/bootstrap.min'));
-?>
+
 <style>
 h1{font-size:32px}
 .sub_head{font-size:20px}
@@ -51,10 +49,10 @@ echo $this->Form->create('Request',array('id'=>'kit_req'));{?>
 <div class="form-group"> <?php echo $this->Form->input('last_name',array('type'=>'text', 'label'=>'Last Name<sup>*</sup>', 'class'=>'form-control','required'=>true ));?> </div>
 <div class="form-group"> <?php echo $this->Form->input('email',array('type'=>'email', 'label'=>'Your Email<sup>*</sup>', 'class'=>'form-control','required'=>true ));?> </div>
 <div class="form-group"><?php echo $this->Form->input('country',array('options'=>$this->Lab->country(),'empty'=>'Select Country', 'class'=>'form-control select_list','label'=>'Country<sup>*</sup>', 'required'=>true));?></div>
-<div class="form-group"><?php  echo $this->Form->input('year', array('type'=>'select','options'=>$this->Lab->getYears(), 'class'=>'form-control','label' => 'Year<sup>*</sup>','empty'=>' -- Select Year -- ','required'=>true));?></div>               
-<div class="form-group"><?php  echo $this->Form->input('make', array('type'=>'select','options'=>$bList, 'class'=>'form-control','label' => 'Make<sup>*</sup>','empty'=>' -- Choose Below -- ','required'=>true));?> </div>
+<div class="form-group"><?php echo $this->Form->input('vehicle_type', array('type' => 'select', 'options' => ['car' => 'Car', 'motorcycle' => 'Motorcycle'],'class' => 'form-control', 'label' => 'Vehicle Type <sup>*</sup>', 'empty' => 'Select', 'required' => true)); ?></div>
+<div class="form-group"><?php  echo $this->Form->input('make', array('class'=>'form-control','label' => 'Make<sup>*</sup>','required'=>true));?> </div>
 <div class="form-group"> <?php echo $this->Form->input('model',array('class'=>'form-control','label' => 'Model<sup>*</sup>','required'=>true));?> </div>  
-
+<div class="form-group"><?php  echo $this->Form->input('year', array('type'=>'select','options'=>$this->Lab->getYears(),'class'=>'form-control','label' => 'Year<sup>*</sup>','empty'=>' -- Select Year -- ','required'=>true));?></div>
 
 </div>
 <div class="col-md-6">

@@ -254,21 +254,17 @@ class HomesController extends AppController
             'key' => 'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
         ];
         $this->set('page_meta', $page_meta);
-
-        $bList = $this->Brand->find('list', array('order' => array('Brand.name' => 'ASC'), 'fields' => array('Brand.name', 'Brand.name')));
-        $bList['other / not listed'] = "-- Other / Not listed --";
-
-        $this->set('bList', $bList);
-        if ($this->RequestHandler->isAjax()) {
+        
+        if ($this->RequestHandler->isAjax() && !empty($this->data)) {
             if (isset($this->data['g-recaptcha-response']) && !empty($this->data['g-recaptcha-response'])) {
                 $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . DataSecret . "&response=" . $this->data['g-recaptcha-response'] . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
                 $arr = json_decode($response, true);
                 if (isset($arr['success']) && $arr['success'] == 1) {
 
-                    $forms = [
-                        'id' => null, 'type' => 2, 'first_name' => $this->data['Request']['first_name'], 'last_name' => $this->data['Request']['last_name'],
+                    $forms = ['id' => null, 'type' => 2, 'first_name' => $this->data['Request']['first_name'], 'last_name' => $this->data['Request']['last_name'],
                         'country' => $this->data['Request']['country'], 'state' => NULL, 'city' => NULL, 'zip' => NULL, 'email' => $this->data['Request']['email'],
-                        'mobile' => NULL, 'contact_for' => NULL, 'message' => $this->data['Request']['note'], 'subject' => NULL, 'source' => NULL,
+                        'mobile' => NULL, 'contact_for' => NULL, 'message' => $this->data['Request']['note'], 'subject' => NULL, 'source' => NULL,'vehicle_type'=>$this->data['Request']['vehicle_type'],
+                        'contact_for'=> $this->data['Request']['vehicle_type']." - ".$this->data['Request']['make']." / ".$this->data['Request']['model']."/ ".$this->data['Request']['year'],
                         'year' => $this->data['Request']['year'], 'make' => $this->data['Request']['make'], 'model' => $this->data['Request']['model']
                     ];
                     $this->DATA->form_data($forms);
@@ -423,8 +419,8 @@ class HomesController extends AppController
                             'zip' => $this->data['Request']['zip_code'], 'email' => $this->data['Request']['email'],
                             'mobile' => $this->data['Request']['phone'],'message' => $this->data['Request']['message'],
                             'subject' => $this->data['Request']['subject'], 'source' => $this->data['Request']['hear'],
-                            'vehicle_type'=>$this->data['Request']['vehicle_type'],
-                            'make' => $make,'model' => $model,'engine' => $engine ];
+                            'vehicle_type'=>$this->data['Request']['vehicle_type'],'make' => $make,'model' => $model,'engine' => $engine,
+                            'contact_for'=> $this->data['Request']['type']." / ".$make." / ".$model." ".$engine ];
                         $this->DATA->form_data($forms);
 
                         $parameters = array(
@@ -439,7 +435,7 @@ class HomesController extends AppController
                             'ZIP' => $this->data['Request']['zip_code'],
                             'SUBJECT' => $this->data['Request']['subject'],
                             'ABOUT' => $this->data['Request']['hear'],
-                            'FOR' => $make." / ".$model." / ".$engine."( ".$this->data['Request']['vehicle_type']." )",
+                            'FOR' => $this->data['Request']['vehicle_type']." - ".$make." / ".$model." / ".$engine,
                             'BRAND' => $make,'MODEL' => $model,'ENGINE' => $engine ,
                             'MSG' => $this->data['Request']['message']
                         );
