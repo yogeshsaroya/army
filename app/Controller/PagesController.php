@@ -2,7 +2,8 @@
 App::uses('AppController', 'Controller');
 class PagesController extends AppController
 {
-	public $uses = array('User', 'Brand', 'Model', 'Motor', 'Product', 'ExhaustBrand', 'ExhaustModel', 'ExhaustProduct', 'Library', 'ItemDetail', 'QualityDetail', 'Cart', 'PromoCode', 'WebSetting', 'World', 'Shipping', 'Address', 'Order', 'OrderItem', 'OrderHistory', 'Language', 'String', 'Translation', 'CountryList');
+	public $uses = array('User', 'Brand', 'Model', 'Motor', 'Product', 'Library', 'ItemDetail','Cart', 'PromoCode', 'WebSetting','Address', 'Order', 
+	'OrderItem', 'OrderHistory', 'Language', 'String','Translation', 'CountryList','Motorcycle','MotorcycleModel','MotorcycleYear');
 	public $components = array('Auth', 'Cookie', 'Session', 'RequestHandler', 'DATA', 'Paypal');
 	public $meta = array(
 		'des' => 'Following the creed of providing the most sound, more power and true versatility, ARMYTRIX offer high-end performance valvetronic exhaust systems, ecu tuning and power box that are second to none. We foster a culture of innovation. ARMYTRIX not only creates products, ARMYTRIX creates experiences.',
@@ -125,64 +126,6 @@ class PagesController extends AppController
 			echo "<script>$('#form-pop').remove(); $('.modal-backdrop').remove(); $('#frm_succ').show(); setTimeout(function(){ $('#frm_succ').fadeOut(); location.reload();}, 5000);</script>";
 		}
 	}
-
-	public function contact_pop()
-	{
-		$this->autoRender = false;
-		if ($this->RequestHandler->isAjax() && !empty($this->data)) {
-			if (isset($this->data['g-recaptcha-response']) && !empty($this->data['g-recaptcha-response'])) {
-				$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . DataSecret . "&response=" . $this->data['g-recaptcha-response'] . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
-				$arr = json_decode($response, true);
-				if (isset($arr['success']) && $arr['success'] == 1) {
-					$str = null;
-					if (!in_array("", $this->data['Request'])) {
-						$for = $this->DATA->getEngine($this->data['Request']['engine']);
-						$str .= "Client Type : " . $this->data['Request']['client_type'] . " <br><br>";
-						$str .= "First Name : " . $this->data['Request']['f_name'] . " <br><br>";
-						$str .= "Last Name : " . $this->data['Request']['l_name'] . " <br><br>";
-						$str .= "Country : " . $this->data['Request']['country'] . " <br><br>";
-						$str .= "City : " . $this->data['Request']['city'] . " <br><br>";
-						$str .= "Zip Code : " . $this->data['Request']['zip_code'] . " <br><br>";
-						$str .= "Phone : " . $this->data['Request']['phone'] . " <br><br>";
-						$str .= "Email : " . $this->data['Request']['email'] . " <br><br>";
-						$str .= "Brand : " . @$for['Brand']['name'] . " <br><br>";
-						$str .= "Model : " . @$for['Model']['name'] . " <br><br>";
-						$str .= "Engine : " . @$for['Motor']['name'] . " <br><br>";
-						$str .= "Message : " . $this->data['Request']['message'] . " <br><br>";
-						if (!empty($str)) {
-							$req = $this->data['Request']['client_type'] . " - " . @$for['Brand']['name'] . " / " . @$for['Model']['name'] . "/" . @$for['Motor']['name'] . ", " . $this->data['Request']['country'] . " / " . $this->data['Request']['city'];
-							$abc = $this->data['Request']['client_type'] . " - " . @$for['Brand']['name'] . " / " . @$for['Model']['name'] . "/" . @$for['Motor']['name'];
-							$forms = [
-								'id' => null, 'type' => 1, 'user_type' => $this->data['Request']['client_type'],
-								'first_name' => $this->data['Request']['f_name'], 'last_name' => $this->data['Request']['l_name'],
-								'country' => $this->data['Request']['country'], 'state' => null, 'city' => $this->data['Request']['city'],
-								'zip' => $this->data['Request']['zip_code'], 'email' => $this->data['Request']['email'],
-								'mobile' => $this->data['Request']['phone'], 'contact_for' => $abc,
-								'message' => $this->data['Request']['message'], 'subject' => null, 'source' => null, 'year' => null,
-								'make' => @$for['Brand']['name'], 'model' => @$for['Model']['name'], 'engine' => @$for['Motor']['name']
-							];
-							$this->DATA->form_data($forms);
-							$parameters = array('DETAILS' => $str, 'REQUEST' => $req);
-							$this->DATA->AppMail('inquiry@armytrix.com', 'RequestForQuote', $parameters, DATE);
-							echo '<div class="alert alert-success" role="alert">Your request for quote/locate dealer has been send.</div>';
-							echo "<script>$('#kit_req')[0].reset(); $('#sub_btn').prop('disabled',false); $('#sub_btn').val('Submit'); $('#sh_btn').fadeIn();$('#custom-content').fadeOut();$('#msg_info').modal('show'); </script>";
-						} else {
-							echo "<div class='alert alert-danger'>please fill required fields</div>";
-						}
-					} else {
-						echo "<div class='alert alert-danger'>please fill required fields</div>";
-					}
-				} else {
-					echo "<div class='alert alert-danger'>Please verify that you are not a robot.</div>";
-				}
-			} else {
-				echo "<div class='alert alert-danger'>Please verify that you are not a robot.</div>";
-			}
-			echo '<script>grecaptcha.reset();</script>';
-			exit;
-		}
-	}
-
 
 	public function view_dealer($id = null)
 	{
@@ -527,11 +470,14 @@ class PagesController extends AppController
 		$WebSetting = $this->WebSetting->find('first', array('WebSetting.id' => 1));
 		//ec($checkOutArr); ec($shipping);
 
-		if (empty($checkOutArr) && empty($shipping)) { $this->render('no_country'); } 
-		else {
+		if (empty($checkOutArr) && empty($shipping)) {
+			$this->render('no_country');
+		} else {
 			$country_list = $this->CountryList->find('first', ['conditions' => ['CountryList.id' => $shipping['Order']['country_list_id']]]);
-			if (empty($country_list)) { $this->render('no_country'); }
-			
+			if (empty($country_list)) {
+				$this->render('no_country');
+			}
+
 			if (isset($country_list['CountryList']['region']) &&  isset($shipping['Order']['country_list_id']) && !empty($shipping['Order']['country_list_id'])) {
 
 				if (in_array($country_list['CountryList']['region'], [1])) {
@@ -885,39 +831,66 @@ class PagesController extends AppController
 	public function get_for()
 	{
 		$this->autoRender = false;
-		if ($this->RequestHandler->isAjax()) {
-			if (!empty($this->data)) {
-				$a = null;
+		if ($this->RequestHandler->isAjax() && !empty($this->data)) {
+			if ($this->data['type'] == 'car') {
 				$str1 = '<option value="">Select Model</option>';
 				$str2 = '<option value="">Select Engine</option>';
-				if (isset($this->data['get']) && $this->data['get'] == 'motor' && $this->data['type'] == 'brand' && isset($this->data['id'])) {
-					$mID = array();
-					$mList = $this->ItemDetail->find('list', ['conditions' => ['ItemDetail.status' => 1, 'ItemDetail.brand_id' => $this->data['id']], 'fields' => ['ItemDetail.id', 'ItemDetail.model_id']]);
+				if (isset($this->data['make_id']) && !empty($this->data['make_id'])) {
+					$mList = $this->ItemDetail->find('list', ['conditions' => ['ItemDetail.status' => 1, 'ItemDetail.brand_id' => $this->data['make_id']], 'fields' => ['ItemDetail.id', 'ItemDetail.model_id']]);
 					if (!empty($mList)) {
 						$mList = array_unique($mList);
-						$getModel = $this->Model->find('list', ['conditions' => ['Model.id' => $mList, 'Model.brand_id' =>$this->data['id'], 'Model.status' => 1],'fields' => ['Model.id','Model.name']]);
+						$getModel = $this->Model->find('list', ['conditions' => ['Model.id' => $mList, 'Model.brand_id' => $this->data['make_id'], 'Model.status' => 1], 'fields' => ['Model.id', 'Model.name']]);
 						if (!empty($getModel)) {
-							foreach ($getModel as $k=>$v) {
+							foreach ($getModel as $k => $v) {
 								$ttt = str_replace("'", "\'", $v);
-								$str1 .= '<option value="'.$k.'">' . htmlspecialchars($ttt) . '</option>';
+								$str1 .= '<option value="' . $k . '">' . htmlspecialchars($ttt) . '</option>';
 							}
 						}
-						echo "<script>$('#RequestModel').html('$str1');</script>";
-					} 
-					
-				} elseif (isset($this->data['get']) && $this->data['get'] == 'engine' && $this->data['type'] == 'motor' && isset($this->data['id'])) {
-					$pList = $this->ItemDetail->find('list', ['conditions' => ['ItemDetail.status' => 1, 'ItemDetail.model_id' => $this->data['id']],'fields' => ['ItemDetail.id', 'ItemDetail.motor_id']]);
-					if(!empty($pList)){
-                        $pList = array_unique($pList);
-                        $getMotor = $this->Motor->find('list',['conditions' => ['Motor.id' => $pList, 'Motor.model_id' => $this->data['id'], 'Motor.status' => 1]]);
+						echo "<script>$('#".$this->data['target_id']."').html('$str1');</script>";
+					}
+				} elseif (isset($this->data['model_id']) && !empty($this->data['model_id'])) {
+					$pList = $this->ItemDetail->find('list', ['conditions' => ['ItemDetail.status' => 1, 'ItemDetail.model_id' => $this->data['model_id']], 'fields' => ['ItemDetail.id', 'ItemDetail.motor_id']]);
+					if (!empty($pList)) {
+						$pList = array_unique($pList);
+						$getMotor = $this->Motor->find('list', ['conditions' => ['Motor.id' => $pList, 'Motor.model_id' => $this->data['model_id'], 'Motor.status' => 1]]);
 						if (!empty($getMotor)) {
-							foreach ($getMotor as $k=>$v) {
+							foreach ($getMotor as $k => $v) {
 								$ttt = str_replace("'", "\'", $v);
-								$str2 .= '<option value="'.$k.'">'.htmlspecialchars($ttt).'</option>';
+								$str2 .= '<option value="' . $k . '">' . htmlspecialchars($ttt) . '</option>';
 							}
 						}
-						echo "<script>$('#RequestEngine').html('$str2');</script>";
-                    }
+						echo "<script>$('#".$this->data['target_id']."').html('$str2');</script>";
+					}
+				}
+			} elseif ($this->data['type'] == 'motorcycle') {
+				$str1 = '<option value="">Select Model</option>';
+				$str2 = '<option value="">Select Year</option>';
+				if (isset($this->data['make_id']) && !empty($this->data['make_id'])) {
+					$mList = $this->Motorcycle->find('list', ['conditions' => ['Motorcycle.status' => 1, 'Motorcycle.motorcycle_make_id' => $this->data['make_id']], 'fields' => ['Motorcycle.id', 'Motorcycle.motorcycle_model_id']]);
+					if (!empty($mList)) {
+						$mList = array_unique($mList);
+						$getModel = $this->MotorcycleModel->find('list', ['conditions' => ['MotorcycleModel.id' => $mList, 'MotorcycleModel.motorcycle_make_id' => $this->data['make_id'], 'MotorcycleModel.status' => 1], 'fields' => ['MotorcycleModel.id', 'MotorcycleModel.name']]);
+						if (!empty($getModel)) {
+							foreach ($getModel as $k => $v) {
+								$ttt = str_replace("'", "\'", $v);
+								$str1 .= '<option value="' . $k . '">' . htmlspecialchars($ttt) . '</option>';
+							}
+						}
+						echo "<script>$('#".$this->data['target_id']."').html('$str1');</script>";
+					}
+				}elseif (isset($this->data['model_id']) && !empty($this->data['model_id'])) {
+					$pList = $this->Motorcycle->find('list', ['conditions' => ['Motorcycle.status' => 1, 'Motorcycle.motorcycle_model_id' => $this->data['model_id']], 'fields' => ['Motorcycle.id', 'Motorcycle.motorcycle_year_id']]);
+					if (!empty($pList)) {
+						$pList = array_unique($pList);
+						$getYear = $this->MotorcycleYear->find('all', ['conditions' => ['MotorcycleYear.id' => $pList, 'MotorcycleYear.motorcycle_model_id' => $this->data['model_id'], 'MotorcycleYear.status' => 1]]);
+						if (!empty($getYear)) {
+							foreach ($getYear as $year) {
+								$ttt = $year['MotorcycleYear']['year_from']." - ".(!empty($year['MotorcycleYear']['year_to']) ? $year['MotorcycleYear']['year_to'] : 'persent');
+								$str2 .= '<option value="' .$year['MotorcycleYear']['id']. '">' . htmlspecialchars($ttt) . '</option>';
+							}
+						}
+						echo "<script>$('#".$this->data['target_id']."').html('$str2');</script>";
+					}
 				}
 			}
 		}
@@ -1565,39 +1538,6 @@ class PagesController extends AppController
 		}
 	}
 
-	public function contact()
-	{
-		$this->set('title_for_layout', 'Contact - Armytrix Performance Upgrades');
-		$page_meta = array('des' => @$this->meta['des'], 'key' => $this->meta['keys']);
-		$this->set(compact('page_meta'));
-		if ($this->RequestHandler->isAjax()) {
-			if (!empty($this->data)) {
-				if (isset($this->data['g-recaptcha-response']) && !empty($this->data['g-recaptcha-response'])) {
-					$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . DataSecret . "&response=" . $this->data['g-recaptcha-response'] . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
-					$arr = json_decode($response, true);
-					if (isset($arr['success']) && $arr['success'] == 1) {
-						$parameters = array(
-							'FNAME' => $this->data['fname'], 'LNAME' => $this->data['lname'],
-							'EMAIL' => $this->data['email'], 'PHONE' => $this->data['phone'], 'CITY' => $this->data['city'],
-							'STATE' => $this->data['state'], 'COUNTRY' => $this->data['country'], 'ZIP' => $this->data['zip'],
-							'SUBJECT' => $this->data['subject'], 'ABOUT' => $this->data['hear'], 'FOR' => $this->data['for'], 'MSG' => $this->data['message']
-						);
-						$this->DATA->AppMail('inquiry@armytrix.com', 'Contact', $parameters, $dateTime = DATE);
-						echo "<div class='alert alert-success'>Message sent.</div>";
-						echo "<script>$('#fformID')[0].reset();</script>";
-					} else {
-						echo "<div class='alert alert-danger'>Please verify that you are not a robot.</div>";
-					}
-				} else {
-					echo "<div class='alert alert-danger'>Please verify that you are not a robot.</div>";
-				}
-			}
-			echo '<script>grecaptcha.reset();</script>';
-			exit;
-		}
-	}
-
-
 	public function faqs()
 	{
 		$this->set('title_for_layout', 'TUNING WIKIPEDIA');
@@ -1612,7 +1552,7 @@ class PagesController extends AppController
 		$this->set(compact('page_meta', 'data'));
 	}
 
-	
+
 
 	public function customer_support()
 	{

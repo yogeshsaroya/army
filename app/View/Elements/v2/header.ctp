@@ -40,7 +40,7 @@
 <div class="sideNav leftSide">
 	<ul class="navbarSide">
 		<li><?php echo $this->Html->link('CAR EXHAUST', '/product-exhaust'); ?></li>
-		<li><?php echo $this->Html->link('MOTORCYCLE EXHAUST', '/motocycle-exhaust '); ?></li>
+		<li><?php echo $this->Html->link('MOTORCYCLE EXHAUST', '/motorcycle-exhaust '); ?></li>
 		<li class="mt-5"><?php echo $this->Html->link('CHECK CART', '/cart'); ?></li>
 
 		<li><?php echo $this->Html->link('Check your orders', '#od_st_modal', ['class' => 'popup-modal']); ?></li>

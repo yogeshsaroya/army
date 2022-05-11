@@ -116,13 +116,13 @@ $b = $this->Lab->getbrand();
       $("#app_error").html('');
       $('#RequestModel').html('<option value="">Select Model</option>');
       $('#RequestEngine').html('<option value="">Select Engine</option>');
-      var v = $.trim(this.value);
-      if (v != "") {
+      var id = $.trim(this.value);
+      if ( id != "") {
         $('#preloader').show();
         $.ajax({
           type: 'POST',
           url: '<?php echo SITEURL; ?>pages/get_for',
-          data: 'id=' + v + '&type=brand&get=motor',
+          data:{type:'car','make_id':id,target_id:'RequestModel'},
           success: function(data) {
             $("#app_error").html(data);
             $('#preloader').hide();
@@ -138,13 +138,13 @@ $b = $this->Lab->getbrand();
     $("#RequestModel").change(function() {
       $("#app_error").html('');
       $('#RequestEngine').html('<option value="">Select Engine</option>');
-      var v = $.trim(this.value);
-      if (v != "") {
+      var id = $.trim(this.value);
+      if ( id != "") {
         $('#preloader').show();
         $.ajax({
           type: 'POST',
           url: '<?php echo SITEURL; ?>pages/get_for',
-          data: 'id=' + v + '&type=motor&get=engine',
+          data:{type:'car','model_id':id,target_id:'RequestEngine'},
           success: function(data) {
             $("#app_error").html(data);
             $('#preloader').hide();

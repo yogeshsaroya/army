@@ -4342,6 +4342,16 @@ class LabsController extends AppController
 	{
 		$this->set('title_for_layout', 'Manage Motorcycle Models');
 
+		if (isset($this->request->query['status']) && !empty($this->request->query['status'])) {
+			$list = $this->MotorcycleModel->find('first', array('conditions' => array('MotorcycleModel.id' => $this->request->query['status'])));
+			if (!empty($list)) {
+				$st = ($list['MotorcycleModel']['status'] == 1 ? 2 : 1);
+				$arr = array('id' => $list['MotorcycleModel']['id'], 'status' => $st);
+				$this->MotorcycleModel->save($arr);
+				$this->redirect(SITEURL . "lab/labs/motorcycle_model");
+			}
+		}
+
 		if ($this->RequestHandler->isAjax() && !empty($this->data)) {
 
 			if (empty($this->data['brand_id'])) {
@@ -4356,16 +4366,7 @@ class LabsController extends AppController
 			}
 			exit;
 		}
-
-		if (isset($this->request->query['status']) && !empty($this->request->query['status'])) {
-			$list = $this->MotorcycleModel->find('first', array('conditions' => array('MotorcycleModel.id' => $this->request->query['status'])));
-			if (!empty($list)) {
-				$st = ($list['MotorcycleModel']['status'] == 1 ? 2 : 1);
-				$arr = array('id' => $list['MotorcycleModel']['id'], 'status' => $st);
-				$this->MotorcycleModel->save($arr);
-				$this->redirect(SITEURL . "lab/labs/motorcycle_model");
-			}
-		}
+			
 
 		$this->MotorcycleModel->bindModel(array('belongsTo' => array('MotorcycleMake')));
 		$brand = $this->MotorcycleMake->find('list', array('order' => array('MotorcycleMake.name' => 'ASC'), 'fields' => array('id', 'name')));

@@ -1,8 +1,7 @@
-<?php echo $this->Html->css(["/v2/product_page.css?v=" . rand(5646, 65465)], ['block' => 'cssTop']); ?>
+<?php echo $this->Html->css(["/v2/product_page"], ['block' => 'cssTop']); ?>
 <?php $this->append('meta_data'); ?>
 <link rel="preload" as="image" href="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651592728/product/mouse-hover-b2_tsorh4_vjh0c3.webp" />
 <link rel="preload" as="image" href="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651514055/product/mouse-hover-b1_nt16rs.webp" />
-
 <style>
   iframe .ytp-chrome-top.ytp-show-cards-title {
     display: none !important;
@@ -155,7 +154,7 @@ if (isset($data) && !empty($data)) {
           <div id="chk_btn">
             <div id="e_err"></div>
             <?php if (isset($restricted) && $restricted == 1) { ?>
-              <a href="<?php echo SITEURL.'contact?brand='.$data['ItemDetail']['brand_id'].'&model='.$data['ItemDetail']['model_id'].'&motor='.$data['ItemDetail']['motor_id']; ?>" class="cartBtn fullWidth"><?php echo gs($txt, 10); ?></a>
+              <a href="<?php echo SITEURL.'contact?vehicle_type=car&car_brand='.$data['ItemDetail']['brand_id'].'&car_model='.$data['ItemDetail']['model_id'].'&car_motor='.$data['ItemDetail']['motor_id']; ?>" class="cartBtn fullWidth"><?php echo gs($txt, 10); ?></a>
             <?php } elseif ($restricted == 2) { ?>
               <button class="cartBtn fullWidth" onclick="addcart();"><?php echo gs($txt, 78); ?></button>
             <?php } ?>

@@ -321,4 +321,15 @@ class LabHelper extends AppHelper {
 			return $data;
 		}
 	}
+
+	public function getMotorcycleMake(){
+	    $make = ClassRegistry::init('MotorcycleMake');
+	    $bike = ClassRegistry::init('Motorcycle');
+	    $b_list = $bike->find('list',array('conditions'=>array('Motorcycle.status'=>1),'fields'=>array('Motorcycle.id','Motorcycle.motorcycle_make_id')));
+		if(!empty($b_list)){ 
+			$b_list = array_unique($b_list);
+			$data = $make->find('list',['order'=>['MotorcycleMake.name'=>'ASC'],'conditions'=>['MotorcycleMake.id'=>$b_list,'MotorcycleMake.status'=>1]]);	
+			return $data;
+		}
+	}
 }?>

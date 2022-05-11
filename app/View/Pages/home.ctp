@@ -30,8 +30,8 @@
     <div class="serVicesLinks">
         <div class="container">
             <div class="row">
-                <h2 class="col-xs-6 text-center"><a href=" <?php echo SITEURL; ?>product-exhaust">CAR EXHAUST</a></h2>
-                <h2 class="col-xs-6 text-center"><a href=" <?php echo SITEURL; ?>motocycle-exhaust">MOTORCYCLE EXHAUST </a></h2>
+                <h2 class="col-xs-6 text-center"><a href="<?php echo SITEURL; ?>product-exhaust">CAR EXHAUST</a></h2>
+                <h2 class="col-xs-6 text-center"><a href="<?php echo SITEURL; ?>motorcycle-exhaust">MOTORCYCLE EXHAUST </a></h2>
             </div>
         </div>
     </div>

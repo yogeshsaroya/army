@@ -5,7 +5,7 @@ App::uses('AppController', 'Controller');
 class HomesController extends AppController
 {
 
-    public $uses = array('User', 'Brand', 'Model', 'Motor', 'Product', 'ExhaustBrand', 'ExhaustModel', 'ExhaustProduct', 'Library', 'ItemDetail', 'QualityDetail', 'Cart', 'PromoCode', 'WebSetting', 'World', 'Shipping', 'Address', 'Order', 'OrderItem', 'OrderHistory', 'String');
+    public $uses = array('User', 'Brand', 'Model', 'Motor', 'Product', 'Library', 'ItemDetail', 'Cart', 'WebSetting','String','Motorcycle','MotorcycleModel','MotorcycleYear');
     var $components = array('Auth', 'Session', 'Email', 'RequestHandler', 'Paginator', 'DATA');
     var $helpers = array('Html', 'Form', 'Session', 'Paginator', 'Lab');
     function beforeFilter()
@@ -26,7 +26,7 @@ class HomesController extends AppController
         $this->set(compact('page_meta', 'txt'));
     }
 
-    public function motocycle_exhaust($id = null)
+    public function motorcycle_exhaust($id = null)
     {
         $this->set('title_for_layout', 'Valvetronic Exhaust System Weaponzied by ARMYTRIX');
         $page_meta = [
@@ -291,8 +291,6 @@ class HomesController extends AppController
         }
     }
 
-
-
     public function warranty_registration()
     {
         $this->set('title_for_layout', 'Warranty Registration');
@@ -350,49 +348,83 @@ class HomesController extends AppController
             'key' => 'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
         ];
         $q = $this->request->query;
-        $getModel = $getMotor = [];
-        if (isset($q['brand']) && !empty($q['brand'])) {
-            $mList = $this->ItemDetail->find('list', ['conditions' => ['ItemDetail.status' => 1, 'ItemDetail.brand_id' => $q['brand']], 'fields' => ['ItemDetail.id', 'ItemDetail.model_id']]);
-            if (!empty($mList)) {
-                $mList = array_unique($mList);
-                $getModel = $this->Model->find('list', ['conditions' => ['Model.id' => $mList, 'Model.brand_id' => $q['brand'], 'Model.status' => 1],'fields' => ['Model.id','Model.name']]);
-                if(!empty($getModel) && isset($q['model']) && !empty($q['model'])){
-                    $mids = [];
-                    foreach($getModel as $a=>$b){ $mids[] = $a; }
-                    $pList = $this->ItemDetail->find('list', ['conditions' => ['ItemDetail.status' => 1, 'ItemDetail.model_id' => $mids],'fields' => ['ItemDetail.id', 'ItemDetail.motor_id']]);
-                    if(!empty($pList)){
-                        $pList = array_unique($pList);
-                        $getMotor = $this->Motor->find('list',[
-                            'conditions' => ['Motor.id' => $pList, 'Motor.model_id' => $q['model'], 'Motor.status' => 1]
-                        ]);
+        $getModel = $getMotor = $getMotorcycleModel = $getMotorcycleYear = [];
+        if (isset($q['vehicle_type']) ) {
+            if($q['vehicle_type'] == 'motorcycle'){
+                if (isset($q['make']) && !empty($q['make'])) {
+                    $mList = $this->Motorcycle->find('list', ['conditions' => ['Motorcycle.status' => 1, 'Motorcycle.motorcycle_make_id' => $q['make']], 'fields' => ['Motorcycle.id', 'Motorcycle.motorcycle_model_id']]);
+                    if (!empty($mList)) {
+                        $mList = array_unique($mList);
+                        $getMotorcycleModel = $this->MotorcycleModel->find('list', ['conditions' => ['MotorcycleModel.id' => $mList, 'MotorcycleModel.motorcycle_make_id' => $q['make'], 'MotorcycleModel.status' => 1],'fields' => ['MotorcycleModel.id','MotorcycleModel.name']]);
+                        if(!empty($getMotorcycleModel) && isset($q['model']) && !empty($q['model'])){
+                            $mids = [];
+                            foreach($getMotorcycleModel as $a=>$b){ $mids[] = $a; }
+                            $pList = $this->Motorcycle->find('list', ['conditions' => ['Motorcycle.status' => 1, 'Motorcycle.motorcycle_model_id' => $mids],'fields' => ['Motorcycle.id', 'Motorcycle.motorcycle_year_id']]);
+                            if(!empty($pList)){
+                                $pList = array_unique($pList);
+                                $getYear = $this->MotorcycleYear->find('all',[ 'conditions' => ['MotorcycleYear.id' => $pList, 'MotorcycleYear.motorcycle_model_id' => $q['model'], 'MotorcycleYear.status' => 1]]);
+                                if(!empty($getYear)){
+                                    foreach($getYear as $y ){
+                                        $getMotorcycleYear[$y['MotorcycleYear']['id']] = $y['MotorcycleYear']['year_from']." - ".(!empty($y['MotorcycleYear']['year_to']) ? $y['MotorcycleYear']['year_to'] : 'persent');
+                                    }
+                                }
+                                
+                            }
+                        }
+                        
                     }
-                }
-                
+                } 
+            }
+            elseif($q['vehicle_type'] == 'car'){
+                if (isset($q['car_brand']) && !empty($q['car_brand'])) {
+                    $mList = $this->ItemDetail->find('list', ['conditions' => ['ItemDetail.status' => 1, 'ItemDetail.brand_id' => $q['car_brand']], 'fields' => ['ItemDetail.id', 'ItemDetail.model_id']]);
+                    if (!empty($mList)) {
+                        $mList = array_unique($mList);
+                        $getModel = $this->Model->find('list', ['conditions' => ['Model.id' => $mList, 'Model.brand_id' => $q['car_brand'], 'Model.status' => 1],'fields' => ['Model.id','Model.name']]);
+                        if(!empty($getModel) && isset($q['car_model']) && !empty($q['car_model'])){
+                            $mids = [];
+                            foreach($getModel as $a=>$b){ $mids[] = $a; }
+                            $pList = $this->ItemDetail->find('list', ['conditions' => ['ItemDetail.status' => 1, 'ItemDetail.model_id' => $mids],'fields' => ['ItemDetail.id', 'ItemDetail.motor_id']]);
+                            if(!empty($pList)){
+                                $pList = array_unique($pList);
+                                $getMotor = $this->Motor->find('list',[
+                                    'conditions' => ['Motor.id' => $pList, 'Motor.model_id' => $q['car_model'], 'Motor.status' => 1]
+                                ]);
+                            }
+                        }
+                        
+                    }
+                } 
             }
         }
-
-
-
-        $this->set(compact('page_meta', 'q','getModel','getMotor'));
+        
+        $this->set(compact('page_meta', 'q','getModel','getMotor','getMotorcycleModel','getMotorcycleYear'));
         if ($this->RequestHandler->isAjax()) {
             if (!empty($this->data)) {
                 if (isset($this->data['g-recaptcha-response']) && !empty($this->data['g-recaptcha-response'])) {
                     $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . DataSecret . "&response=" . $this->data['g-recaptcha-response'] . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
                     $arr = json_decode($response, true);
                     if (isset($arr['success']) && $arr['success'] == 1) {
-                        $for = $this->DATA->getEngine($this->data['Request']['engine']);
-                        $forms = [
-                            'id' => null, 'type' => 3,
-                            'user_type' => $this->data['Request']['type'],
+                        $make = $model = $engine = null;
+                        if($this->data['Request']['vehicle_type'] == 'car'){
+                            $make = $this->data['car_make'];
+                            $model = $this->data['car_model'];
+                            $engine = $this->data['car_motor'];
+                        }
+                        elseif($this->data['Request']['vehicle_type'] == 'motorcycle'){
+                            $make = $this->data['make'];
+                            $model = $this->data['model'];
+                            $engine = $this->data['year'];
+                        }
+
+                        $forms = ['id' => null, 'type' => 3,'user_type' => $this->data['Request']['type'],
                             'first_name' => $this->data['Request']['f_name'], 'last_name' => $this->data['Request']['l_name'],
                             'country' => $this->data['Request']['country'], 'state' => $this->data['Request']['state'], 'city' => $this->data['Request']['city'],
                             'zip' => $this->data['Request']['zip_code'], 'email' => $this->data['Request']['email'],
-                            'mobile' => $this->data['Request']['phone'],
-                            'make' => @$for['Brand']['name'], 'model' => @$for['Model']['name'], 'engine' => @$for['Motor']['name'],
-                            'message' => $this->data['Request']['message'],
+                            'mobile' => $this->data['Request']['phone'],'message' => $this->data['Request']['message'],
                             'subject' => $this->data['Request']['subject'], 'source' => $this->data['Request']['hear'],
-                            'year' => null
-                        ];
+                            'vehicle_type'=>$this->data['Request']['vehicle_type'],
+                            'make' => $make,'model' => $model,'engine' => $engine ];
                         $this->DATA->form_data($forms);
 
                         $parameters = array(
@@ -407,10 +439,8 @@ class HomesController extends AppController
                             'ZIP' => $this->data['Request']['zip_code'],
                             'SUBJECT' => $this->data['Request']['subject'],
                             'ABOUT' => $this->data['Request']['hear'],
-                            'FOR' => @$for['Brand']['name'] . " / " . @$for['Model']['name'] . " / " . @$for['Motor']['name'],
-                            'BRAND' => @$for['Brand']['name'],
-                            'MODEL' => @$for['Model']['name'],
-                            'ENGINE' => @$for['Motor']['name'],
+                            'FOR' => $make." / ".$model." / ".$engine."( ".$this->data['Request']['vehicle_type']." )",
+                            'BRAND' => $make,'MODEL' => $model,'ENGINE' => $engine ,
                             'MSG' => $this->data['Request']['message']
                         );
                         $this->DATA->AppMail('inquiry@armytrix.com', 'ContactNew', $parameters, DATE);

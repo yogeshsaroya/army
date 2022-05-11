@@ -96,15 +96,6 @@ if (isset($user_data['UserImage']) && !empty($user_data['UserImage'])) {
 
         </ul>
       </li>
-
-      <li class="treeview" id="ext_pro">
-        <a href="#"><i class="fa fa-shopping-cart"></i> <span>Extra Product (shop)</span><i class="fa fa-angle-left pull-right"></i></a>
-        <ul class="treeview-menu">
-          <li><a href="<?php echo SITEURL . "lab/labs/add_extra_product"; ?>"> <i class="fa fa-circle-o"></i>Add New Product</a></li>
-          <li><a href="<?php echo SITEURL . "lab/labs/extra_product"; ?>"> <i class="fa fa-circle-o"></i>All Product</a></li>
-        </ul>
-      </li>
-
       <li class="treeview" id="menu_make">
         <a href="#"> <i class="fa fa-motorcycle"></i> <span>Motorcycle</span> <i class="fa fa-angle-left pull-right"></i> </a>
         <ul class="treeview-menu">
@@ -113,6 +104,15 @@ if (isset($user_data['UserImage']) && !empty($user_data['UserImage'])) {
           <li><a href="<?php echo SITEURL . "lab/labs/motorcycle_year"; ?>"><i class="fa fa-circle-o"></i>Year</a></li>
           <li><a href="<?php echo SITEURL . "lab/labs/motorcycle_exhaust"; ?>"><i class="fa fa-circle-o"></i>Exhaust</a></li>
           <li><a href="<?php echo SITEURL . "lab/labs/motorcycles"; ?>"><i class="fa fa-circle-o"></i>Motorcycles</a></li>
+        </ul>
+      </li>
+
+
+      <li class="treeview" id="ext_pro">
+        <a href="#"><i class="fa fa-shopping-cart"></i> <span>Extra Product (shop)</span><i class="fa fa-angle-left pull-right"></i></a>
+        <ul class="treeview-menu">
+          <li><a href="<?php echo SITEURL . "lab/labs/add_extra_product"; ?>"> <i class="fa fa-circle-o"></i>Add New Product</a></li>
+          <li><a href="<?php echo SITEURL . "lab/labs/extra_product"; ?>"> <i class="fa fa-circle-o"></i>All Product</a></li>
         </ul>
       </li>
 
