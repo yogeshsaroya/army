@@ -160,7 +160,7 @@ $(document).ready(function(){
    	});
 	
 
-	$('#you_frm').formValidation({
+	$('#you_frm1').formValidation({
         framework: 'bootstrap',
         icon: { }, err: { }, fields: { }
     })    .on('success.form.fv', function(e) {

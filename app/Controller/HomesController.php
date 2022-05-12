@@ -184,6 +184,7 @@ class HomesController extends AppController
     {
         $this->set('title_for_layout', 'SEMA - Armytrix Performance Upgrades');
         if ($this->RequestHandler->isAjax()) {
+            ec($_SERVER);die;
             if (isset($_SERVER['HTTP_SEC_FETCH_SITE']) && $_SERVER['HTTP_SEC_FETCH_SITE'] == 'same-origin') {
                 $li = null;
                 if (!empty($this->data)) {
