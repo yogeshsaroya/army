@@ -89,7 +89,7 @@ if (isset($IsMobile)) {
         bottom: 0;
         right: 0;
     }
-    #v2_motor_exh .overlay{height: 85vh;background: rgba(0, 0, 0, 0.1);}
+    #v2_motor_exh .overlay{height: 85vh;background: rgba(0, 0, 0, 0);}
     @media (max-width: 1024px) {
         section.motor_container {
             max-width: 80%;
