@@ -62,17 +62,55 @@
         display: inline-block;
     }
 
-    @media (max-width: 768px) {
-        section.motor_container { max-width: 90%; }
-        .motor_container p {max-width: 90%; }
-        #v2_motor_exh h2{ font-size: 22px; }
-        #v2_motor_exh h3{ font-size: 20px;}
-        #v2_motor_exh p { font-weight: 500; }
-        
+    .app_pic {
+        width: 60%;
+        display: inline-block;
     }
+
     @media (max-width: 1024px) {
-        section.motor_container { max-width: 80%; }
-        .motor_container p {max-width: 80%; }
+        section.motor_container {
+            max-width: 80%;
+        }
+
+        .motor_container p {
+            max-width: 80%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        section.motor_container {
+            max-width: 90%;
+        }
+
+        .motor_container p {
+            max-width: 90%;
+
+        }
+
+        #v2_motor_exh .pad60 {
+            margin-top: 10px;
+        }
+
+        #v2_motor_exh h2 {
+            font-size: 22px;
+        }
+
+        #v2_motor_exh h3 {
+            font-size: 20px;
+        }
+
+        #v2_motor_exh p {
+            font-weight: 500;
+        }
+
+        .app_pic {
+            width: 95%;
+        }
+    }
+    @media (max-width: 425px) {
+    .motor_container p {
+            text-align: justify;
+        }
     }
 </style>
 
@@ -111,7 +149,7 @@
             <div class="sub_head_3">
                 <h3>ARMYTRIX APP SMART ASSISTANT</h3>
                 <p>The mobile APP of ARMYTRIX can connect to the OBDII device via Bluetooth, and be used to as a remote controller to easily control valve switch and provide you with real-time monitoring of variuos values of your car, such as rotate speed, speed, fuel, etc. The rpm value in Auto mode can be set to open valves.</p>
-                <div class="row mt-3 mobile50">
+                <div class="row mt-3 mobile50 app_pic">
                     <div class="col-sm-6 text-center">
                         <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_300/v1651403044/product/product-app-1_sgfbbv.webp" loading="lazy" alt="App">
                     </div>
@@ -125,7 +163,7 @@
                 <h3>GAIN MORE POWER, LOSE NO TORQUE</h3>
                 <p>Depending on the modifications and tunes you have, opening valves allow the exhaust gas to flow more freely, And with the valves being closed, it can retain the backpressure at low rpm and maintain the torque that is usually lost with straight piped exhaust systems.</p>
             </div>
-            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_720/v1652323927/motorcycle/imagefor%20temp%20pages/bike_module_vfhnvr.webp" loading="lazy" alt="">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_980/v1652323927/motorcycle/imagefor%20temp%20pages/bike_module_vfhnvr.webp" loading="lazy" alt="">
             <div class="sub_head_5">
                 <h2 class="head_5">A Stunning Custom Motorcycle - Masterpiece by ROUGH CRAFTS <br> YAMAHA XSR900 with ARMYTRIX Valvetronic Exhaust</h2>
                 <h3 class="head_6">Tuning List</h3>
