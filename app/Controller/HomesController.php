@@ -5,7 +5,7 @@ App::uses('AppController', 'Controller');
 class HomesController extends AppController
 {
 
-    public $uses = array('User', 'Brand', 'Model', 'Motor', 'Product', 'Library', 'ItemDetail', 'Cart', 'WebSetting','String','Motorcycle','MotorcycleModel','MotorcycleYear');
+    public $uses = array('User', 'Brand', 'Model', 'Motor', 'Product', 'Library', 'ItemDetail', 'Cart', 'WebSetting', 'String', 'Motorcycle', 'MotorcycleModel', 'MotorcycleYear');
     var $components = array('Auth', 'Session', 'Email', 'RequestHandler', 'Paginator', 'DATA');
     var $helpers = array('Html', 'Form', 'Session', 'Paginator', 'Lab');
     function beforeFilter()
@@ -118,33 +118,36 @@ class HomesController extends AppController
             if (!empty($this->data)) {
 
                 if (isset($this->data['Youtube'])) {
-                    if (isset($_SERVER['HTTP_SEC_FETCH_SITE']) && $_SERVER['HTTP_SEC_FETCH_SITE'] == 'same-origin') {
-                        if (empty($this->data['Youtube']['images'])) {
-                            echo '<div class="alert alert-danger">Please upload images.</div>';
-                            die;
-                        } else {
-                            $s = $imgLink = null;
-                            foreach ($this->data['Youtube'] as $k => $v) {
-                                if ($k != 'images') {
-                                    $st = uc(str_replace("_", " ", $k));
-                                    $s .= '<p>' . $st . ': ' . $v . '</p>';
-                                }
+                    if (empty($this->data['Youtube']['images'])) {
+                        echo '<div class="alert alert-danger">Please upload images.</div>';
+                        die;
+                    } else {
+                        $s = $imgLink = null;
+                        foreach ($this->data['Youtube'] as $k => $v) {
+                            if (!in_array($k, ['images', 'token'])) {
+                                $st = uc(str_replace("_", " ", $k));
+                                $s .= '<p>' . $st . ': ' . $v . '</p>';
                             }
-                            $imgs = trim($this->data['Youtube']['images'], ',');
-                            $arr_img = explode(',', $imgs);
-                            if (!empty($arr_img)) {
-                                foreach ($arr_img as $k => $v) {
-                                    $ml = SITEURL . "cdn/youtube/" . $v;
-                                    $imgLink .= '<a href="' . $ml . '">' . $v . '</a><br> ';
-                                }
-                            }
-                            $s .= '<p>Images: ' . $imgLink . '</p>';
                         }
+                        $imgs = trim($this->data['Youtube']['images'], ',');
+                        $arr_img = explode(',', $imgs);
+                        if (!empty($arr_img)) {
+                            foreach ($arr_img as $k => $v) {
+                                $ml = SITEURL . "cdn/youtube/" . $v;
+                                $imgLink .= '<a href="' . $ml . '">' . $v . '</a><br> ';
+                            }
+                        }
+                        $s .= '<p>Images: ' . $imgLink . '</p>';
+                    }
+                    $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Ld1J-QfAAAAADZJPavReJhuGnaPKfgtX4HUqrx8&response=" . $this->data['Youtube']['token'] . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
+                    $arrResponse = json_decode($response, true);
+                    if ($arrResponse["success"] == '1' && $arrResponse["score"] >= 0.5) {
                         $parameters = array('TEXT' => $s);
                         $this->DATA->AppMail('marketing@armytrix.com', 'Youtube', $parameters, DATE);
                         echo "<script>$('#y_sfrm').html('<div class=\"alert alert-success\">Your form has been successfully submitted</div>');</script>";
                     } else {
-                        die('error');
+                        echo '<div class="alert alert-danger">Please try again</div>';
+                        die;
                     }
                 }
 
@@ -183,65 +186,68 @@ class HomesController extends AppController
     public function sema()
     {
         $this->set('title_for_layout', 'SEMA - Armytrix Performance Upgrades');
-        if ($this->RequestHandler->isAjax()) {
-            ec($_SERVER);die;
-            if (isset($_SERVER['HTTP_SEC_FETCH_SITE']) && $_SERVER['HTTP_SEC_FETCH_SITE'] == 'same-origin') {
-                $li = null;
-                if (!empty($this->data)) {
-                    if (isset($this->data['Sema'])) {
-                        if (empty($this->data['Sema']['images'])) {
-                            echo '<div class="alert alert-danger">Please upload images.</div>';
-                            die;
-                        } else {
-                            $s = $imgLink = null;
-                            foreach ($this->data['Sema'] as $k => $v) {
-                                if ($k != 'images') {
-                                    $st = uc(str_replace("_", " ", $k));
-                                    $s .= '<p>' . $st . ': ' . $v . '</p>';
-                                }
+        if ($this->RequestHandler->isAjax() && !empty($this->request->data)) {
+            $li = null;
+            if (!empty($this->data)) {
+                if (isset($this->data['Sema'])) {
+                    if (empty($this->data['Sema']['images'])) {
+                        echo '<div class="alert alert-danger">Please upload images.</div>';
+                        die;
+                    } else {
+                        $s = $imgLink = null;
+                        foreach ($this->data['Sema'] as $k => $v) {
+                            if (!in_array($k, ['images', 'token'])) {
+                                $st = uc(str_replace("_", " ", $k));
+                                $s .= '<p>' . $st . ': ' . $v . '</p>';
                             }
-                            $imgs = trim($this->data['Sema']['images'], ',');
-                            $arr_img = explode(',', $imgs);
-                            if (!empty($arr_img)) {
-                                foreach ($arr_img as $k => $v) {
-                                    $ml = SITEURL . "cdn/sema/" . $v;
-                                    $imgLink .= '<a href="' . $ml . '">' . $v . '</a><br> ';
-                                }
-                            }
-                            $s .= '<p>Images: ' . $imgLink . '</p>';
                         }
+                        $imgs = trim($this->data['Sema']['images'], ',');
+                        $arr_img = explode(',', $imgs);
+                        if (!empty($arr_img)) {
+                            foreach ($arr_img as $k => $v) {
+                                $ml = SITEURL . "cdn/sema/" . $v;
+                                $imgLink .= '<a href="' . $ml . '">' . $v . '</a><br> ';
+                            }
+                        }
+                        $s .= '<p>Images: ' . $imgLink . '</p>';
+                    }
+                    $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Ld1J-QfAAAAADZJPavReJhuGnaPKfgtX4HUqrx8&response=" . $this->data['Sema']['token'] . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
+                    $arrResponse = json_decode($response, true);
+                    if ($arrResponse["success"] == '1' && $arrResponse["score"] >= 0.5) {
                         $parameters = array('TEXT' => $s);
                         $this->DATA->AppMail('marketing@armytrix.com', 'Sema', $parameters, DATE);
                         echo "<script>$('#y_sfrm').html('<div class=\"alert alert-success\">Your form has been successfully submitted</div>');</script>";
+                    } else {
+                        echo '<div class="alert alert-danger">Please try again</div>';
+                        die;
                     }
-                    if (isset($this->data['Image']) && !empty($this->data['Image'])) {
-                        foreach ($this->data['Image']['pic'] as $list) {
-                            if (isset($list['name']) && !empty($list['name'])) {
-                                $file = $list['name'];
-                                $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
-                                $arr_ext = array('jpg', 'jpeg', 'gif', 'png');
-                                if (in_array($ext, $arr_ext)) {
-                                    $imagePath = 'cdn/sema/';
-                                    if (!file_exists($imagePath)) {
-                                        mkdir($imagePath, 0777, true);
+                }
+                if (isset($this->data['Image']) && !empty($this->data['Image'])) {
+                    foreach ($this->data['Image']['pic'] as $list) {
+                        if (isset($list['name']) && !empty($list['name'])) {
+                            $file = $list['name'];
+                            $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+                            $arr_ext = array('jpg', 'jpeg', 'gif', 'png');
+                            if (in_array($ext, $arr_ext)) {
+                                $imagePath = 'cdn/sema/';
+                                if (!file_exists($imagePath)) {
+                                    mkdir($imagePath, 0777, true);
+                                }
+                                $new_img = "sema_" . strtolower(rand(12345, 98765) . "." . $ext);
+                                try {
+                                    if (move_uploaded_file($list['tmp_name'], WWW_ROOT . $imagePath . $new_img)) {
+                                        $img  = show_image($imagePath, $new_img, 100, 100, 100, 'ff', $type = null, $img_tag = null);
+                                        $li = "<li img_name='$new_img'><img src='$img' alt=''></li>";
+                                        echo "<script>$('#id_utube').prepend(\"$li\");</script>";
                                     }
-                                    $new_img = "sema_" . strtolower(rand(12345, 98765) . "." . $ext);
-                                    try {
-                                        if (move_uploaded_file($list['tmp_name'], WWW_ROOT . $imagePath . $new_img)) {
-                                            $img  = show_image($imagePath, $new_img, 100, 100, 100, 'ff', $type = null, $img_tag = null);
-                                            $li = "<li img_name='$new_img'><img src='$img' alt=''></li>";
-                                            echo "<script>$('#id_utube').prepend(\"$li\");</script>";
-                                        }
-                                    } catch (Exception $e) {
-                                    }
+                                } catch (Exception $e) {
                                 }
                             }
                         }
                     }
                 }
-            } else {
-                die('error');
             }
+
             exit;
         }
     }
@@ -255,17 +261,18 @@ class HomesController extends AppController
             'key' => 'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
         ];
         $this->set('page_meta', $page_meta);
-        
+
         if ($this->RequestHandler->isAjax() && !empty($this->data)) {
             if (isset($this->data['g-recaptcha-response']) && !empty($this->data['g-recaptcha-response'])) {
                 $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . DataSecret . "&response=" . $this->data['g-recaptcha-response'] . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
                 $arr = json_decode($response, true);
                 if (isset($arr['success']) && $arr['success'] == 1) {
 
-                    $forms = ['id' => null, 'type' => 2, 'first_name' => $this->data['Request']['first_name'], 'last_name' => $this->data['Request']['last_name'],
+                    $forms = [
+                        'id' => null, 'type' => 2, 'first_name' => $this->data['Request']['first_name'], 'last_name' => $this->data['Request']['last_name'],
                         'country' => $this->data['Request']['country'], 'state' => NULL, 'city' => NULL, 'zip' => NULL, 'email' => $this->data['Request']['email'],
-                        'mobile' => NULL, 'contact_for' => NULL, 'message' => $this->data['Request']['note'], 'subject' => NULL, 'source' => NULL,'vehicle_type'=>$this->data['Request']['vehicle_type'],
-                        'contact_for'=> $this->data['Request']['vehicle_type']." - ".$this->data['Request']['make']." / ".$this->data['Request']['model']."/ ".$this->data['Request']['year'],
+                        'mobile' => NULL, 'contact_for' => NULL, 'message' => $this->data['Request']['note'], 'subject' => NULL, 'source' => NULL, 'vehicle_type' => $this->data['Request']['vehicle_type'],
+                        'contact_for' => $this->data['Request']['vehicle_type'] . " - " . $this->data['Request']['make'] . " / " . $this->data['Request']['model'] . "/ " . $this->data['Request']['year'],
                         'year' => $this->data['Request']['year'], 'make' => $this->data['Request']['make'], 'model' => $this->data['Request']['model']
                     ];
                     $this->DATA->form_data($forms);
@@ -346,56 +353,56 @@ class HomesController extends AppController
         ];
         $q = $this->request->query;
         $getModel = $getMotor = $getMotorcycleModel = $getMotorcycleYear = [];
-        if (isset($q['vehicle_type']) ) {
-            if($q['vehicle_type'] == 'motorcycle'){
+        if (isset($q['vehicle_type'])) {
+            if ($q['vehicle_type'] == 'motorcycle') {
                 if (isset($q['make']) && !empty($q['make'])) {
                     $mList = $this->Motorcycle->find('list', ['conditions' => ['Motorcycle.status' => 1, 'Motorcycle.motorcycle_make_id' => $q['make']], 'fields' => ['Motorcycle.id', 'Motorcycle.motorcycle_model_id']]);
                     if (!empty($mList)) {
                         $mList = array_unique($mList);
-                        $getMotorcycleModel = $this->MotorcycleModel->find('list', ['conditions' => ['MotorcycleModel.id' => $mList, 'MotorcycleModel.motorcycle_make_id' => $q['make'], 'MotorcycleModel.status' => 1],'fields' => ['MotorcycleModel.id','MotorcycleModel.name']]);
-                        if(!empty($getMotorcycleModel) && isset($q['model']) && !empty($q['model'])){
+                        $getMotorcycleModel = $this->MotorcycleModel->find('list', ['conditions' => ['MotorcycleModel.id' => $mList, 'MotorcycleModel.motorcycle_make_id' => $q['make'], 'MotorcycleModel.status' => 1], 'fields' => ['MotorcycleModel.id', 'MotorcycleModel.name']]);
+                        if (!empty($getMotorcycleModel) && isset($q['model']) && !empty($q['model'])) {
                             $mids = [];
-                            foreach($getMotorcycleModel as $a=>$b){ $mids[] = $a; }
-                            $pList = $this->Motorcycle->find('list', ['conditions' => ['Motorcycle.status' => 1, 'Motorcycle.motorcycle_model_id' => $mids],'fields' => ['Motorcycle.id', 'Motorcycle.motorcycle_year_id']]);
-                            if(!empty($pList)){
+                            foreach ($getMotorcycleModel as $a => $b) {
+                                $mids[] = $a;
+                            }
+                            $pList = $this->Motorcycle->find('list', ['conditions' => ['Motorcycle.status' => 1, 'Motorcycle.motorcycle_model_id' => $mids], 'fields' => ['Motorcycle.id', 'Motorcycle.motorcycle_year_id']]);
+                            if (!empty($pList)) {
                                 $pList = array_unique($pList);
-                                $getYear = $this->MotorcycleYear->find('all',[ 'conditions' => ['MotorcycleYear.id' => $pList, 'MotorcycleYear.motorcycle_model_id' => $q['model'], 'MotorcycleYear.status' => 1]]);
-                                if(!empty($getYear)){
-                                    foreach($getYear as $y ){
-                                        $getMotorcycleYear[$y['MotorcycleYear']['id']] = $y['MotorcycleYear']['year_from']." - ".(!empty($y['MotorcycleYear']['year_to']) ? $y['MotorcycleYear']['year_to'] : 'persent');
+                                $getYear = $this->MotorcycleYear->find('all', ['conditions' => ['MotorcycleYear.id' => $pList, 'MotorcycleYear.motorcycle_model_id' => $q['model'], 'MotorcycleYear.status' => 1]]);
+                                if (!empty($getYear)) {
+                                    foreach ($getYear as $y) {
+                                        $getMotorcycleYear[$y['MotorcycleYear']['id']] = $y['MotorcycleYear']['year_from'] . " - " . (!empty($y['MotorcycleYear']['year_to']) ? $y['MotorcycleYear']['year_to'] : 'persent');
                                     }
                                 }
-                                
                             }
                         }
-                        
                     }
-                } 
-            }
-            elseif($q['vehicle_type'] == 'car'){
+                }
+            } elseif ($q['vehicle_type'] == 'car') {
                 if (isset($q['car_brand']) && !empty($q['car_brand'])) {
                     $mList = $this->ItemDetail->find('list', ['conditions' => ['ItemDetail.status' => 1, 'ItemDetail.brand_id' => $q['car_brand']], 'fields' => ['ItemDetail.id', 'ItemDetail.model_id']]);
                     if (!empty($mList)) {
                         $mList = array_unique($mList);
-                        $getModel = $this->Model->find('list', ['conditions' => ['Model.id' => $mList, 'Model.brand_id' => $q['car_brand'], 'Model.status' => 1],'fields' => ['Model.id','Model.name']]);
-                        if(!empty($getModel) && isset($q['car_model']) && !empty($q['car_model'])){
+                        $getModel = $this->Model->find('list', ['conditions' => ['Model.id' => $mList, 'Model.brand_id' => $q['car_brand'], 'Model.status' => 1], 'fields' => ['Model.id', 'Model.name']]);
+                        if (!empty($getModel) && isset($q['car_model']) && !empty($q['car_model'])) {
                             $mids = [];
-                            foreach($getModel as $a=>$b){ $mids[] = $a; }
-                            $pList = $this->ItemDetail->find('list', ['conditions' => ['ItemDetail.status' => 1, 'ItemDetail.model_id' => $mids],'fields' => ['ItemDetail.id', 'ItemDetail.motor_id']]);
-                            if(!empty($pList)){
+                            foreach ($getModel as $a => $b) {
+                                $mids[] = $a;
+                            }
+                            $pList = $this->ItemDetail->find('list', ['conditions' => ['ItemDetail.status' => 1, 'ItemDetail.model_id' => $mids], 'fields' => ['ItemDetail.id', 'ItemDetail.motor_id']]);
+                            if (!empty($pList)) {
                                 $pList = array_unique($pList);
-                                $getMotor = $this->Motor->find('list',[
+                                $getMotor = $this->Motor->find('list', [
                                     'conditions' => ['Motor.id' => $pList, 'Motor.model_id' => $q['car_model'], 'Motor.status' => 1]
                                 ]);
                             }
                         }
-                        
                     }
-                } 
+                }
             }
         }
-        
-        $this->set(compact('page_meta', 'q','getModel','getMotor','getMotorcycleModel','getMotorcycleYear'));
+
+        $this->set(compact('page_meta', 'q', 'getModel', 'getMotor', 'getMotorcycleModel', 'getMotorcycleYear'));
         if ($this->RequestHandler->isAjax()) {
             if (!empty($this->data)) {
                 if (isset($this->data['g-recaptcha-response']) && !empty($this->data['g-recaptcha-response'])) {
@@ -403,25 +410,26 @@ class HomesController extends AppController
                     $arr = json_decode($response, true);
                     if (isset($arr['success']) && $arr['success'] == 1) {
                         $make = $model = $engine = null;
-                        if($this->data['Request']['vehicle_type'] == 'car'){
+                        if ($this->data['Request']['vehicle_type'] == 'car') {
                             $make = $this->data['car_make'];
                             $model = $this->data['car_model'];
                             $engine = $this->data['car_motor'];
-                        }
-                        elseif($this->data['Request']['vehicle_type'] == 'motorcycle'){
+                        } elseif ($this->data['Request']['vehicle_type'] == 'motorcycle') {
                             $make = $this->data['make'];
                             $model = $this->data['model'];
                             $engine = $this->data['year'];
                         }
 
-                        $forms = ['id' => null, 'type' => 3,'user_type' => $this->data['Request']['type'],
+                        $forms = [
+                            'id' => null, 'type' => 3, 'user_type' => $this->data['Request']['type'],
                             'first_name' => $this->data['Request']['f_name'], 'last_name' => $this->data['Request']['l_name'],
                             'country' => $this->data['Request']['country'], 'state' => $this->data['Request']['state'], 'city' => $this->data['Request']['city'],
                             'zip' => $this->data['Request']['zip_code'], 'email' => $this->data['Request']['email'],
-                            'mobile' => $this->data['Request']['phone'],'message' => $this->data['Request']['message'],
+                            'mobile' => $this->data['Request']['phone'], 'message' => $this->data['Request']['message'],
                             'subject' => $this->data['Request']['subject'], 'source' => $this->data['Request']['hear'],
-                            'vehicle_type'=>$this->data['Request']['vehicle_type'],'make' => $make,'model' => $model,'engine' => $engine,
-                            'contact_for'=> $this->data['Request']['type']." / ".$make." / ".$model." ".$engine ];
+                            'vehicle_type' => $this->data['Request']['vehicle_type'], 'make' => $make, 'model' => $model, 'engine' => $engine,
+                            'contact_for' => $this->data['Request']['type'] . " / " . $make . " / " . $model . " " . $engine
+                        ];
                         $this->DATA->form_data($forms);
 
                         $parameters = array(
@@ -436,8 +444,8 @@ class HomesController extends AppController
                             'ZIP' => $this->data['Request']['zip_code'],
                             'SUBJECT' => $this->data['Request']['subject'],
                             'ABOUT' => $this->data['Request']['hear'],
-                            'FOR' => $this->data['Request']['vehicle_type']." - ".$make." / ".$model." / ".$engine,
-                            'BRAND' => $make,'MODEL' => $model,'ENGINE' => $engine ,
+                            'FOR' => $this->data['Request']['vehicle_type'] . " - " . $make . " / " . $model . " / " . $engine,
+                            'BRAND' => $make, 'MODEL' => $model, 'ENGINE' => $engine,
                             'MSG' => $this->data['Request']['message']
                         );
                         $this->DATA->AppMail('inquiry@armytrix.com', 'ContactNew', $parameters, DATE);
