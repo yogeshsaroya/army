@@ -76,7 +76,20 @@ if (isset($IsMobile)) {
         width: 60%;
         display: inline-block;
     }
-
+    #vid_unmute {
+        display: flex;
+        line-height: 32px;
+        cursor: pointer;
+        position: absolute;
+        background: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        font-size: 16px;
+        z-index: 999;
+        padding: 5px 10px 5px 10px;
+        bottom: 0;
+        right: 0;
+    }
+    #v2_motor_exh .overlay{height: 85vh;background: rgba(0, 0, 0, 0.1);}
     @media (max-width: 1024px) {
         section.motor_container {
             max-width: 80%;
@@ -130,20 +143,7 @@ if (isset($IsMobile)) {
         }
     }
 
-    #vid_unmute {
-        display: flex;
-        line-height: 32px;
-        cursor: pointer;
-        position: absolute;
-        background: rgba(0, 0, 0, 0.7);
-        color: #fff;
-        font-size: 16px;
-        z-index: 999;
-        padding: 5px 10px 5px 10px;
-        bottom: 0;
-        right: 0;
-    }
-    #v2_motor_exh .overlay{height: 85vh;background: rgba(0, 0, 0, 0.1);}
+    
 </style>
 <?php $this->end(); ?>
 <div id="v2_motor_exh">
