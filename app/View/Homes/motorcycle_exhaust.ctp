@@ -106,6 +106,10 @@
         .app_pic {
             width: 95%;
         }
+        .video {
+        height: 80vh;
+        
+    }
     }
     @media (max-width: 425px) {
     .motor_container p {
