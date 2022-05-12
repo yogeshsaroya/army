@@ -287,7 +287,6 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Language</th>
-                                            <th>Created</th>
                                             <th>Edit</th>
                                             <th>Status</th>
                                             <th>Action</th>
@@ -304,7 +303,6 @@
                                                         } else {
                                                             echo $langArr[$pList['Motorcycle']['language']];
                                                         } ?></td>
-                                                    <td><?php echo date('d/m/Y', strtotime($pList['Motorcycle']['created'])); ?></td>
                                                     <td><?php echo $this->html->link('Edit', '/lab/labs/update_motorcycle_lang/' . $pList['Motorcycle']['id'] . "/" . $pList['Motorcycle']['language']);; ?></td>
                                                     <td> <?php
                                                             if ($pList['Motorcycle']['status'] == 1) {

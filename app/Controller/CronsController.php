@@ -229,10 +229,11 @@ class CronsController extends AppController
         $d2 = date('Y-m-d', strtotime("sunday", strtotime(DATE)));
         $f = date('m_d_Y', strtotime("previous monday", strtotime(DATE)));
         $t = date('m_d_Y', strtotime("sunday", strtotime(DATE)));
-        $data = $this->Form->find('all', ['order' => ['Form.id' => 'DESC'], 'conditions' => ['Form.type' => $type, 'DATE(Form.created) BETWEEN ? AND ?' => [$d1, $d2]]]);
+        $data = $this->Form->find('all', ['order' => ['Form.id' => 'DESC'],'conditions' => ['Form.type' => $type, 'DATE(Form.created) BETWEEN ? AND ?' => [$d1, $d2]]]);
+        
         if (!empty($data)) {
             if ($type == 1) {
-                $header_row = ['Date', 'User Type', 'First Name', 'Last Name', 'Country', 'City', 'Zip Code', 'Email', 'Phone', 'Brand', 'Model', 'Engine', 'Message'];
+                $header_row = ['Date', 'User Type', 'First Name', 'Last Name', 'Country', 'City', 'Zip Code', 'Email', 'Phone','Vehicle Type', 'Brand', 'Model', 'Engine', 'Message'];
                 $fname = 'product_' . $f . '_to_' . $t . '.csv';
                 $csv_file = fopen("report/" . $fname, 'w');
                 fprintf($csv_file, chr(0xEF) . chr(0xBB) . chr(0xBF));
@@ -242,7 +243,7 @@ class CronsController extends AppController
                     $row = [
                         date('Y-m-d', strtotime($record['Form']['created'])), $record['Form']['user_type'], $record['Form']['first_name'], $record['Form']['last_name'],
                         $record['Form']['country'], $record['Form']['city'], $record['Form']['zip'], $record['Form']['email'], $record['Form']['mobile'],
-                        $record['Form']['make'], $record['Form']['model'], $record['Form']['engine'],
+                        $record['Form']['vehicle_type'],$record['Form']['make'], $record['Form']['model'], $record['Form']['engine'],
                         trim(preg_replace("/\r|\n/", "! ", $record['Form']['message']))
                     ];
                     fputcsv($csv_file, $row, ',', '"');
@@ -250,7 +251,7 @@ class CronsController extends AppController
                 fclose($csv_file);
                 return $fname;
             } elseif ($type == 2) {
-                $header_row = ['Date', 'User Type', 'First Name', 'Last Name', 'Email', 'Country', 'Year', 'Make', 'Model', 'Other notes , Comments or Information'];
+                $header_row = ['Date', 'User Type', 'First Name', 'Last Name', 'Email', 'Country', 'Vehicle Type','Make', 'Model','Year', 'Other notes , Comments or Information'];
                 $fname = 'new_kit_request_' . $f . '_to_' . $t . '.csv';
                 $csv_file = fopen("report/" . $fname, 'w');
                 fprintf($csv_file, chr(0xEF) . chr(0xBB) . chr(0xBF));
@@ -259,14 +260,14 @@ class CronsController extends AppController
                     $row = [];
                     $row = [
                         date('Y-m-d', strtotime($record['Form']['created'])), $record['Form']['user_type'], $record['Form']['first_name'], $record['Form']['last_name'], $record['Form']['country'], $record['Form']['email'],
-                        $record['Form']['year'], $record['Form']['make'], $record['Form']['model'], trim(preg_replace("/\r|\n/", "! ", $record['Form']['message']))
+                        $record['Form']['vehicle_type'],$record['Form']['make'], $record['Form']['model'],$record['Form']['year'], trim(preg_replace("/\r|\n/", "! ", $record['Form']['message']))
                     ];
                     fputcsv($csv_file, $row, ',', '"');
                 }
                 fclose($csv_file);
                 return $fname;
             } elseif ($type == 3) {
-                $header_row = ['Date', 'User Type', 'First Name', 'Last Name', 'Phone', 'Email', 'Subject', 'How did you hear about us', 'City', 'State', 'Country', 'Zip Code', 'Brand', 'Model', 'Engine', 'Message'];
+                $header_row = ['Date', 'User Type', 'First Name', 'Last Name', 'Phone', 'Email', 'Subject', 'How did you hear about us', 'City', 'State', 'Country', 'Zip Code','Vehicle Type','Brand', 'Model', 'Engine', 'Message'];
                 $fname = 'contact_' . $f . '_to_' . $t . '.csv';
                 $csv_file = fopen("report/" . $fname, 'w');
                 fprintf($csv_file, chr(0xEF) . chr(0xBB) . chr(0xBF));
@@ -276,8 +277,7 @@ class CronsController extends AppController
                     $row = [
                         date('Y-m-d', strtotime($record['Form']['created'])), $record['Form']['user_type'], $record['Form']['first_name'], $record['Form']['last_name'], $record['Form']['email'], $record['Form']['mobile'],
                         $record['Form']['subject'], $record['Form']['source'], $record['Form']['city'], $record['Form']['state'], $record['Form']['country'], $record['Form']['zip'],
-                        $record['Form']['make'], $record['Form']['model'], $record['Form']['engine'],
-                        trim(preg_replace("/\r|\n/", "! ", $record['Form']['message']))
+                        $record['Form']['vehicle_type'],$record['Form']['make'], $record['Form']['model'], $record['Form']['engine'],trim(preg_replace("/\r|\n/", "! ", $record['Form']['message']))
                     ];
                     fputcsv($csv_file, $row, ',', '"');
                 }

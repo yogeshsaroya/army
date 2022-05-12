@@ -965,7 +965,6 @@ echo $this->Form->radio('tuning_box', $options, $attributes);?></div></div>
                   <tr>
                     <th>#</th>
                     <th>Language</th>
-                    <th>Created</th>
                     <th>Edit</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -982,7 +981,6 @@ echo $this->Form->radio('tuning_box', $options, $attributes);?></div></div>
                             } else {
                               echo $langArr[$pList['ItemDetail']['language']];
                             } ?></td>
-                        <td><?php echo date('d/m/Y', strtotime($pList['ItemDetail']['created'])); ?></td>
                         <td><?php echo $this->html->link('Edit', '/lab/labs/lang_car_detail/' . $pList['ItemDetail']['id'] . "/" . $pList['ItemDetail']['language']);; ?></td>
                         <td> <?php
                               if ($pList['ItemDetail']['status'] == 1) {
