@@ -2067,8 +2067,6 @@ class PagesController extends AppController
 		$subject = $data['subject'];
 		$fromName = $data['fromName'];
 
-		if (isset($_SERVER['HTTP_SEC_FETCH_SITE']) && $_SERVER['HTTP_SEC_FETCH_SITE'] == 'same-origin') {
-
 			if (isset($data['post']['field']) && !empty($data['post']['field'])) {
 				switch ($variant) {
 					case 1:
@@ -2198,9 +2196,6 @@ class PagesController extends AppController
 			} else {
 				die('error');
 			}
-		} else {
-			die('error');
-		}
 	}
 
 	private function send_email($message, $to, $subject, $fromName)
