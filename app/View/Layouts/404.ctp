@@ -114,96 +114,10 @@
         mainClass: 'my-mfp-zoom-in',
         closeMarkup: '<button class="mfp-close mfp-new-close" type="button" title="Close (Esc)">X</button>'
       });
-      $("#army_cont, .army_cont").click(function() {
-        $.magnificPopup.open({
-          items: {
-            src: '<?php echo SITEURL; ?>contact_for_product.php',
-            type: 'ajax'
-          },
-          closeMarkup: '<button class="mfp-close mfp-new-close" type="button" title="Close (Esc)"> X</button>',
-          closeOnContentClick: false,
-          closeOnBgClick: false,
-          showCloseBtn: true,
-          enableEscapeKey: false,
-        });
-      });
-      $("#other_prodcut").click(function() {
-        var url = $("#other_prodcut").attr("data_url");
-        $.magnificPopup.open({
-          items: {
-            src: url,
-            type: 'ajax'
-          },
-          closeMarkup: '<button class="mfp-close mfp-new-close" type="button" title="Close (Esc)"> X </button>',
-          closeOnContentClick: false,
-          closeOnBgClick: false,
-          showCloseBtn: true,
-          enableEscapeKey: false,
-        });
-      });
+
     });
   </script>
 
-  <?php
-
-  if ($this->params['controller'] == 'pages' && $this->params['action'] == 'home') {
-
-  ?>
-    <!-- Global site tag (gtag.js) - Google Ads: 982355893 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-982355893"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-      gtag('config', 'AW-982355893');
-    </script>
-    <?php }
-  if ($this->params['controller'] == 'pages' && $this->params['action'] == 'product') {
-    if (in_array($this->params['pass'][0], ['ford-mustang-gt-facelift', 'chevrolet-corvette-c8-stingray'])) { ?>
-      <!-- Global site tag (gtag.js) - Google Ads: 982355893 -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=AW-982355893"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-          dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'AW-982355893');
-      </script>
-  <?php }
-  } ?>
-  <!-- Facebook Pixel Code -->
-  <script>
-    ! function(f, b, e, v, n, t, s) {
-      if (f.fbq) return;
-      n = f.fbq = function() {
-        n.callMethod ?
-          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-      };
-      if (!f._fbq) f._fbq = n;
-      n.push = n;
-      n.loaded = !0;
-      n.version = '2.0';
-      n.queue = [];
-      t = b.createElement(e);
-      t.async = !0;
-      t.src = v;
-      s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s)
-    }(window, document, 'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '402589941109602');
-    fbq('track', 'PageView');
-  </script>
-  <noscript>
-    <img height="1" width="1" src="https://www.facebook.com/tr?id=402589941109602&ev=PageView
-&noscript=1" />
-  </noscript>
-  <!-- End Facebook Pixel Code -->
 </head>
 <?php
 if ($this->params['controller'] == 'homes') {

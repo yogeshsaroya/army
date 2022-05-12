@@ -40,9 +40,7 @@
                                             } ?>'>
   <?php if (isset($room_primary_image) && !empty($room_primary_image)) { ?>
     <meta property="og:image" content="<?php echo $room_primary_image; ?>" />
-  <?php } else { ?>
-    <meta property="og:image" content="" />
-  <?php } ?>
+  <?php }?>
   <meta property="og:locale" content="en_US">
   <link rel="canonical" href="<?php echo Router::url($this->here, true); ?>" />
   <link rel="shortcut icon" href="<?php echo SITEURL; ?>favicon.ico" type="image/x-icon" />
@@ -110,33 +108,7 @@
         mainClass: 'my-mfp-zoom-in',
         closeMarkup: '<button class="mfp-close mfp-new-close" type="button" title="Close (Esc)">X</button>'
       });
-      $("#army_cont, .army_cont").click(function() {
-        $.magnificPopup.open({
-          items: {
-            src: '<?php echo SITEURL; ?>contact_for_product.php',
-            type: 'ajax'
-          },
-          closeMarkup: '<button class="mfp-close mfp-new-close" type="button" title="Close (Esc)"> X</button>',
-          closeOnContentClick: false,
-          closeOnBgClick: false,
-          showCloseBtn: true,
-          enableEscapeKey: false,
-        });
-      });
-      $("#other_prodcut").click(function() {
-        var url = $("#other_prodcut").attr("data_url");
-        $.magnificPopup.open({
-          items: {
-            src: url,
-            type: 'ajax'
-          },
-          closeMarkup: '<button class="mfp-close mfp-new-close" type="button" title="Close (Esc)"> X </button>',
-          closeOnContentClick: false,
-          closeOnBgClick: false,
-          showCloseBtn: true,
-          enableEscapeKey: false,
-        });
-      });
+
     });
   </script>
 
@@ -203,7 +175,8 @@
 </head>
 <?php
 if ($this->params['controller'] == 'homes') {
-  if (in_array($this->params['action'], ['home'])) {
+  if (in_array($this->params['action'], ['home','motorcycle_exhaust'])) {
+      $tran_header = 'yes';
   }
 } elseif ($this->params['controller'] == 'pages') {
   if (in_array($this->params['action'], ['home', 'product_exhaust'])) {
