@@ -107,7 +107,7 @@
             width: 95%;
         }
         .video {
-        height: 80vh;
+        height: 70vh;
         
     }
     }
