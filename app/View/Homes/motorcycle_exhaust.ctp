@@ -55,7 +55,7 @@ if (isset($IsMobile)) {
     .sub_head_1,
     .sub_head_2,
     .sub_head_3 {
-        margin: 50px 0 ;
+        margin: 50px 0;
     }
 
     .sub_head_3 p {
@@ -163,7 +163,12 @@ if (isset($IsMobile)) {
     .ot_head {
         margin: 70px 0 20px 0;
     }
-    #v2_motor_exh .head_1, #v2_motor_exh .head_2{ margin:0 30px;}
+
+    #v2_motor_exh .head_1,
+    #v2_motor_exh .head_2 {
+        margin: 0 30px;
+    }
+
     @media (max-width: 1024px) {
         section.motor_container {
             max-width: 80%;
@@ -175,8 +180,16 @@ if (isset($IsMobile)) {
     }
 
     @media (max-width: 768px) {
-        #v2_motor_exh .head_1, #v2_motor_exh .head_2{ margin:50px 30px;}
-        #v2_motor_exh .head_1{ font-size: 27px;}
+
+        #v2_motor_exh .head_1,
+        #v2_motor_exh .head_2 {
+            margin: 50px 20px;
+        }
+
+        #v2_motor_exh .head_1 {
+            font-size: 27px;
+        }
+
         section.motor_container {
             max-width: 90%;
         }
@@ -211,15 +224,19 @@ if (isset($IsMobile)) {
             height: 70vh;
 
         }
-        .other_video {
-        margin: 20px 0 20px 0px;
-        position: relative;
 
-    }
+        .other_video {
+            margin: 20px 0 20px 0px;
+            position: relative;
+
+        }
     }
 
     @media (max-width: 425px) {
-        #v2_motor_exh .head_1{ font-size: 16px;}
+        #v2_motor_exh .head_1 {
+            font-size: 15px;
+        }
+
         .motor_container p {
             text-align: justify;
         }
@@ -371,30 +388,30 @@ if (isset($IsMobile)) {
 <?php //$this->Html->scriptStart(array('block' => 'scriptBottom')); 
 ?>
 <script>
+    /*
     $(window).scroll(function() {
         var bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
         var top_of_screen = $(window).scrollTop();
-        /* Video 1 */
+        
+        //Video 1
         var top_of_element = $("#home_slider").offset().top;
         var bottom_of_element = $("#home_slider").offset().top + $("#home_slider").outerHeight();
         var video = document.getElementById("sound_vid");
-        /* End */
+        
 
-        /* Video 2 */
+        //Video 2
         var top_of_element_2 = $("#sound_vid_2").offset().top;
         var bottom_of_element_2 = $("#sound_vid_2").offset().top + $("#sound_vid_2").outerHeight();
         var video_2 = document.getElementById("sound_vid_2");
-        /* End */
-
-        /* Video 3 */
+        
+        //Video 3
         var top_of_element_3 = $("#sound_vid_3").offset().top;
         var bottom_of_element_3 = $("#sound_vid_3").offset().top + $("#sound_vid_3").outerHeight();
         var video_3 = document.getElementById("sound_vid_3");
-        /* End */
-
+        
 
         if ((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)) {
-            if (video.muted === true) { }
+            if (video.muted === true) {}
         } else {
             if (video.muted === false) {
                 video.muted = true;
@@ -405,40 +422,37 @@ if (isset($IsMobile)) {
         if ((bottom_of_screen > top_of_element_2) && (top_of_screen < bottom_of_element_2)) {
             if (video_2.muted === true) {
                 video_2.play();
-                video_2.muted = false; 
-                $("#vid_2").html('<i class="fa fa-volume-up" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO MUTE');
-            }else{
+                //video_2.muted = false; $("#vid_2").html('<i class="fa fa-volume-up" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO MUTE');
+            } else {
                 $("#vid_2").html('<i class="fa fa-volume-off" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO UNMUTE');
             }
         } else {
             if (video_2.muted === false) {
                 video_2.pause();
-                video_2.muted = true;
-                $("#vid_2").html('<i class="fa fa-volume-off" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO UNMUTE');
-            }else{
-                $("#vid_2").html('<i class="fa fa-volume-up" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO MUTE');
+                //video_2.muted = true; $("#vid_2").html('<i class="fa fa-volume-off" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO UNMUTE');
+            } else {
+                //$("#vid_2").html('<i class="fa fa-volume-up" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO MUTE');
             }
         }
 
         if ((bottom_of_screen > top_of_element_3) && (top_of_screen < bottom_of_element_3)) {
             if (video_3.muted === true) {
                 video_3.play();
-                video_3.muted = false; 
-                $("#vid_3").html('<i class="fa fa-volume-up" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO MUTE');
-            }else{
-                $("#vid_3").html('<i class="fa fa-volume-off" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO UNMUTE');
+                //video_3.muted = false; $("#vid_3").html('<i class="fa fa-volume-up" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO MUTE');
+            } else {
+                //$("#vid_3").html('<i class="fa fa-volume-off" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO UNMUTE');
             }
         } else {
             if (video_3.muted === false) {
                 video_3.pause();
-                video_3.muted = true;
-                $("#vid_3").html('<i class="fa fa-volume-off" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO UNMUTE');
-            }else{
-                $("#vid_3").html('<i class="fa fa-volume-up" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO MUTE');
+                //video_3.muted = true; $("#vid_3").html('<i class="fa fa-volume-off" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO UNMUTE');
+            } else {
+                //$("#vid_3").html('<i class="fa fa-volume-up" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO MUTE');
             }
         }
 
     });
+    */
 
 
     $(document).ready(function() {
@@ -446,14 +460,18 @@ if (isset($IsMobile)) {
             var video1 = document.getElementById("sound_vid");
             var video2 = document.getElementById("sound_vid_2");
             var video3 = document.getElementById("sound_vid_3");
-            if(id == 'sound_vid'){ video2.muted = video3.muted = true; }
-            else if(id == 'sound_vid_2'){ video1.muted = video3.muted = true; }
-            else if(id == 'sound_vid_3'){ video1.muted = video2.muted = true; }
+            if (id == 'sound_vid') {
+                video2.muted = video3.muted = true;
+            } else if (id == 'sound_vid_2') {
+                video1.muted = video3.muted = true;
+            } else if (id == 'sound_vid_3') {
+                video1.muted = video2.muted = true;
+            }
         }
         $("#vid_unmute").click(function() {
             muteAll('sound_vid');
             var video1 = document.getElementById("sound_vid");
-            if (video1.muted === true ) {
+            if (video1.muted === true) {
                 video1.muted = false;
                 $("#vid_unmute").html('<i class="fa fa-volume-up" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO MUTE');
             } else {
@@ -465,7 +483,7 @@ if (isset($IsMobile)) {
         $("#vid_2").click(function() {
             muteAll('sound_vid_2');
             var video2 = document.getElementById("sound_vid_2");
-            if (video2.muted === true ) {
+            if (video2.muted === true) {
                 video2.play();
                 video2.muted = false;
                 $("#vid_2").html('<i class="fa fa-volume-up" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO MUTE');
@@ -479,12 +497,12 @@ if (isset($IsMobile)) {
         $("#vid_3").click(function() {
             muteAll('sound_vid_3');
             var video3 = document.getElementById("sound_vid_3");
-            if (video3.muted === true ) {
-                video3.play();
+            if (video3.muted === true) {
+               // video3.play();
                 video3.muted = false;
                 $("#vid_3").html('<i class="fa fa-volume-up" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO MUTE');
             } else {
-                video3.pause();
+                //video3.pause();
                 video3.muted = true;
                 $("#vid_3").html('<i class="fa fa-volume-off" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO UNMUTE');
             }
