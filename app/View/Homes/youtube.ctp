@@ -1,5 +1,5 @@
 <?php echo $this->html->script(['jquery.form.min', '/v/formValidation.min', '/v/bootstrap.min'], ['block' => 'scriptTop']); ?>
-<script src="https://www.google.com/recaptcha/api.js?render=6Ld1J-QfAAAAABDFhX7QPOULdXzrcCFSSQRu1V2b"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=<?php echo V3Sitekey;?>"></script>
 
 <div id="preloader" style="display: none;">
     <div id="status">&nbsp;</div>
@@ -432,7 +432,7 @@
             $("#u_err").html('');
             chk();
             grecaptcha.ready(function() {
-        grecaptcha.execute('6Ld1J-QfAAAAABDFhX7QPOULdXzrcCFSSQRu1V2b', {
+        grecaptcha.execute('<?php echo V3Sitekey;?>', {
           action: 'sema_frm'
         }).then(function(token) {
           $('#token').val(token);

@@ -26,16 +26,11 @@ class HomesController extends AppController
         $this->set(compact('page_meta', 'txt'));
     }
 
-    public function motorcycle_exhaust($id = null)
+    public function motorcycle_exhaust()
     {
-        $this->set('title_for_layout', 'Valvetronic Exhaust System Weaponzied by ARMYTRIX');
-        $page_meta = [
-            'des' => 'Best Sounding Aftermarket Exhaust Upgrades. Titanium & Stainless Steel Turbo-back Cat-Back Valvetronic Exhaust Downpipes Tips Headers Decat Test Straight Exhaust Sound',
-            'key' => 'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
-        ];
-        if (!empty($id)) {
-            $this->render('motocycle_exhaust_details');
-        }
+        $this->set('title_for_layout', 'WEAPONIZED YOUR MOTORCYLE BY THE ARMYTRIX EXHAUST SYSTEMS');
+        $page_meta = ['des' => 'Best Sounding Aftermarket Exhaust Upgrades. Titanium & Stainless Steel Turbo-back Cat-Back Valvetronic Exhaust Downpipes Tips Headers Decat Test Straight Exhaust Sound',];
+        
     }
 
     public function motorcycle($id = null)
@@ -139,7 +134,7 @@ class HomesController extends AppController
                         }
                         $s .= '<p>Images: ' . $imgLink . '</p>';
                     }
-                    $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Ld1J-QfAAAAADZJPavReJhuGnaPKfgtX4HUqrx8&response=" . $this->data['Youtube']['token'] . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
+                    $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".V3DataSecret."8&response=" . $this->data['Youtube']['token'] . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
                     $arrResponse = json_decode($response, true);
                     if ($arrResponse["success"] == '1' && $arrResponse["score"] >= 0.5) {
                         $parameters = array('TEXT' => $s);
@@ -211,7 +206,7 @@ class HomesController extends AppController
                         }
                         $s .= '<p>Images: ' . $imgLink . '</p>';
                     }
-                    $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Ld1J-QfAAAAADZJPavReJhuGnaPKfgtX4HUqrx8&response=" . $this->data['Sema']['token'] . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
+                    $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".V3DataSecret."8&response=" . $this->data['Sema']['token'] . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
                     $arrResponse = json_decode($response, true);
                     if ($arrResponse["success"] == '1' && $arrResponse["score"] >= 0.5) {
                         $parameters = array('TEXT' => $s);
