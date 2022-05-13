@@ -244,13 +244,11 @@ if (isset($IsMobile)) {
         .motor_container p {
             text-align: justify;
         }
-        #v2_motor_exh h2.head_3 {
-    margin: 50px 15px;
-    font-size: 15px;
-}
         #v2_motor_exh h2 {
-            font-size: 15px;
+            font-size: 14px;
         }
+        #v2_motor_exh .head_3 { margin: 50px 15px; font-size: 14px; }
+        
 
         #v2_main section {
             padding-bottom: 0;
