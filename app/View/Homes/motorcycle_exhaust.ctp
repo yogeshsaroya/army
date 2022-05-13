@@ -247,7 +247,7 @@ if (isset($IsMobile)) {
         #v2_motor_exh h2 {
             font-size: 14px;
         }
-        #v2_motor_exh h2.head_3 { margin: 50px 15px; font-size: 14px; }
+        #v2_motor_exh h2.head_3 { margin: 50px 15px; font-size: 12px; }
         
 
         #v2_main section {
