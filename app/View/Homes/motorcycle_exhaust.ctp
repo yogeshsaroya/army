@@ -187,7 +187,7 @@ if (isset($IsMobile)) {
         }
 
         #v2_motor_exh .head_1 {
-            font-size: 27px;
+            font-size: 25px;
         }
 
         section.motor_container {
@@ -234,7 +234,7 @@ if (isset($IsMobile)) {
 
     @media (max-width: 425px) {
         #v2_motor_exh .head_1 {
-            font-size: 15px;
+            font-size: 14px;
         }
         #v2_motor_exh .head_1,
         #v2_motor_exh .head_2 {
