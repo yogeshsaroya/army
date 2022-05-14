@@ -1,5 +1,5 @@
 <?php
-echo $this->html->css(['/font-awesome/css/font-awesome.min.css'], ['block' => 'cssTop']);
+echo $this->html->script(['https://kit.fontawesome.com/acae9edaf3.js'], ['block' => 'scriptTop']);
 $video = 'https://res.cloudinary.com/armytrix/video/upload/v1652249067/motorcycle/video%20for%20temp%20pages/XSR900-landscape_t4ugbq.mp4';
 $poster = 'https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652249017/motorcycle/video%20for%20temp%20pages/XSR900_landscape_edou9j.webp';
 $video1 = 'https://res.cloudinary.com/armytrix/video/upload/v1652430904/motorcycle/imagefor%20temp%20pages/RSV4_armytrix_exhaust-landsape_b5d4uk.mp4';
@@ -123,7 +123,7 @@ if (isset($IsMobile)) {
         line-height: 32px;
         cursor: pointer;
         position: absolute;
-        background: rgba(0, 0, 0, 0.7);
+        background: transparent;
         color: #fff;
         font-size: 16px;
         z-index: 999;
@@ -137,11 +137,13 @@ if (isset($IsMobile)) {
         background: rgba(0, 0, 0, 0);
     }
 
-    .fa-volume-up,
-    .fa-volume-off {
+    .fa{
         font-size: 33px;
     }
-
+    .fa_new {
+    font-size: 50px;
+    margin: 0 10px 5px 5px;
+}
     .video {
         font-weight: 800;
     }
@@ -266,6 +268,8 @@ if (isset($IsMobile)) {
             margin: 50px 0 10px 0;
         }
     }
+    
+    #play_3, #play_2 {display: none !important}
 </style>
 <?php $this->end(); ?>
 <div id="v2_motor_exh">
@@ -294,7 +298,11 @@ if (isset($IsMobile)) {
             <video id="sound_vid_2" poster="<?php echo $poster1; ?>" preload="none" playsinline loop muted autoplay>
                 <source src="<?php echo $video1; ?>" type="video/mp4">
             </video>
-            <div id="vid_2"><i class="fa fa-volume-off" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO UNMUTE </div>
+            <div id="vid_2">
+            <i class="fa_new fa-solid fa-circle-play" id="play_2" onclick="play('sound_vid_2','play_2');"></i>
+            &nbsp; &nbsp;
+            <i class="fa_new fa-solid fa-volume-xmark" id="sound_2" onclick="sound('sound_vid_2','sound_2');"></i>  
+            </div>
         </div>
     </section>
     <section class="motor_container">
@@ -370,10 +378,14 @@ if (isset($IsMobile)) {
             <h3>ARMYTRIX Slip-on Line Carbon Muffler</h3>
         </div>
         <div class="other_video">
-            <video id="sound_vid_3" poster="<?php echo $poster2; ?>" preload="none" playsinline loop muted autoplay>
+            <video id="sound_vid_3" poster="<?php echo $poster2; ?>" preload="none" playsinline loop muted>
                 <source src="<?php echo $video2; ?>" type="video/mp4">
             </video>
-            <div id="vid_3"><i class="fa fa-volume-off" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO UNMUTE</div>
+            <div id="vid_3">
+            <i class="fa_new fa-solid fa-circle-play" id="play_3" onclick="play('sound_vid_3','play_3');"></i>
+            &nbsp; &nbsp;
+            <i class="fa_new fa-solid fa-volume-xmark" id="sound_3" onclick="sound('sound_vid_3','sound_3');"></i>  
+        </div>
         </div>
         <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652429779/motorcycle/imagefor%20temp%20pages/KTM_1920_armytrix_exhaust-1_futdhl.webp" loading="lazy" alt=""></div>
         <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652429773/motorcycle/imagefor%20temp%20pages/KTM1920_armytrix_exhaust-2_utmhwj.webp" loading="lazy" alt=""></div>
@@ -383,7 +395,7 @@ if (isset($IsMobile)) {
 <?php //$this->Html->scriptStart(array('block' => 'scriptBottom')); 
 ?>
 <script>
-    /*
+    
     $(window).scroll(function() {
         var bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
         var top_of_screen = $(window).scrollTop();
@@ -406,52 +418,31 @@ if (isset($IsMobile)) {
         
 
         if ((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)) {
-            if (video.muted === true) {}
+            
         } else {
             if (video.muted === false) {
-                video.muted = true;
-                $("#vid_unmute").html('<i class="fa fa-volume-off" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO UNMUTE');
+               video.muted = true;
+               $("#vid_unmute").html('<i class="fa fa-volume-off" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO UNMUTE');
             }
         }
 
         if ((bottom_of_screen > top_of_element_2) && (top_of_screen < bottom_of_element_2)) {
-            if (video_2.muted === true) {
-                video_2.play();
-                //video_2.muted = false; $("#vid_2").html('<i class="fa fa-volume-up" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO MUTE');
-            } else {
-                $("#vid_2").html('<i class="fa fa-volume-off" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO UNMUTE');
-            }
+            if(video_2.paused ==  true){ video_2.play(); }
         } else {
-            if (video_2.muted === false) {
-                video_2.pause();
-                //video_2.muted = true; $("#vid_2").html('<i class="fa fa-volume-off" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO UNMUTE');
-            } else {
-                //$("#vid_2").html('<i class="fa fa-volume-up" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO MUTE');
-            }
+            if( video_2.paused == false ){ video_2.pause(); }
         }
 
         if ((bottom_of_screen > top_of_element_3) && (top_of_screen < bottom_of_element_3)) {
-            if (video_3.muted === true) {
-                video_3.play();
-                //video_3.muted = false; $("#vid_3").html('<i class="fa fa-volume-up" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO MUTE');
-            } else {
-                //$("#vid_3").html('<i class="fa fa-volume-off" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO UNMUTE');
-            }
+            if(video_3.paused ==  true){ video_3.play(); }
         } else {
-            if (video_3.muted === false) {
-                video_3.pause();
-                //video_3.muted = true; $("#vid_3").html('<i class="fa fa-volume-off" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO UNMUTE');
-            } else {
-                //$("#vid_3").html('<i class="fa fa-volume-up" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO MUTE');
-            }
+            if( video_3.paused == false ){ video_3.pause(); }
         }
 
     });
-    */
+    
 
-
-    $(document).ready(function() {
-        function muteAll(id) {
+    window['muteAll'] = function(id) {
+    
             var video1 = document.getElementById("sound_vid");
             var video2 = document.getElementById("sound_vid_2");
             var video3 = document.getElementById("sound_vid_3");
@@ -462,9 +453,25 @@ if (isset($IsMobile)) {
             } else if (id == 'sound_vid_3') {
                 video1.muted = video2.muted = true;
             }
-        }
+    }
+
+    window['play'] = function(id,icon) {
+        //muteAll(id);
+        var v = document.getElementById(id);
+        if (v.paused == true) { v.play(); $("#"+icon).removeClass('fa-solid fa-circle-play').addClass('fa-solid fa-circle-pause'); } 
+        else { v.pause(); $("#"+icon).removeClass('fa-solid fa-circle-pause').addClass('fa-solid fa-circle-play'); }
+    };
+    window['sound'] = function(id,icon) {
+        //muteAll(id);
+        var v = document.getElementById(id);
+        if (v.muted === true) { v.muted = false; $("#"+icon).removeClass('fa-solid fa-volume-xmark').addClass('fa-solid fa-volume-high'); } 
+        else { v.muted = true; $("#"+icon).removeClass('fa-solid fa-volume-high').addClass('fa-solid fa-volume-xmark'); }
+    };
+
+    $(document).ready(function() {
+
         $("#vid_unmute").click(function() {
-            muteAll('sound_vid');
+            //muteAll('sound_vid');
             var video1 = document.getElementById("sound_vid");
             if (video1.muted === true) {
                 video1.muted = false;
@@ -475,7 +482,7 @@ if (isset($IsMobile)) {
             }
         });
 
-        $("#vid_2").click(function() {
+        $("#vid_2111").click(function() {
             muteAll('sound_vid_2');
             var video2 = document.getElementById("sound_vid_2");
             if (video2.muted === true) {
@@ -489,7 +496,7 @@ if (isset($IsMobile)) {
             }
         });
 
-        $("#vid_3").click(function() {
+        $("#vid_3111").click(function() {
             muteAll('sound_vid_3');
             var video3 = document.getElementById("sound_vid_3");
             if (video3.muted === true) {

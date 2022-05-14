@@ -261,6 +261,7 @@
                         </div>
                     <?php } elseif (isset($q['tab']) && $q['tab'] == 'multilingual') {  ?>
                         <div class="box">
+                        <?php /* ?>
                             <div class="box-header with-border">
                                 <h3 class="box-title">Create new page in other language</h3>
                             </div>
@@ -278,6 +279,7 @@
                                 </div>
                             </div>
                             <div id="lang_err"> </div>
+                            <?php */ ?>
                             <div class="box-header">
                                 <h3 class="box-title">Manage multilingual page</h3>
                             </div>

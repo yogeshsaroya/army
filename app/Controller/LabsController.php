@@ -1870,6 +1870,14 @@ class LabsController extends AppController
 		}
 	}
 
+	private function _updateMultilingual($id = null){
+		if( !empty($id )){
+			$this->ItemDetail->bindModel(['hasMany'=>['CarPages'=>['className' => 'ItemDetail','foreignKey'=>'item_detail_id']]],false);
+			$getLanguage = $this->Language->find('all');
+			$data = $this->ItemDetail->find('first',['conditions' =>['ItemDetail.id' => $id]]);
+		}
+
+	}
 
 	public function lab_update_car_detail($id = null)
 	{
@@ -1935,6 +1943,7 @@ class LabsController extends AppController
 			$this->ItemDetail->set($this->request->data);
 			if ($this->ItemDetail->validates()) {
 				$this->ItemDetail->save($this->request->data);
+				$this->_updateMultilingual($this->data['ItemDetail']['id']);
 				echo '<div class="alert alert-success" role="alert"> Added</div>';
 				echo "<script>setTimeout(function(){ window.location.href ='" . $st . "'; }, 500);</script>";
 			} else {
