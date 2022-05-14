@@ -1,6 +1,5 @@
 <?php
 echo $this->html->css(['/font-awesome/css/font-awesome.min.css'], ['block' => 'cssTop']);
-
 $video = 'https://res.cloudinary.com/armytrix/video/upload/v1652249067/motorcycle/video%20for%20temp%20pages/XSR900-landscape_t4ugbq.mp4';
 $poster = 'https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652249017/motorcycle/video%20for%20temp%20pages/XSR900_landscape_edou9j.webp';
 $video1 = 'https://res.cloudinary.com/armytrix/video/upload/v1652430904/motorcycle/imagefor%20temp%20pages/RSV4_armytrix_exhaust-landsape_b5d4uk.mp4';
@@ -16,8 +15,8 @@ if (isset($IsMobile)) {
     $poster2 = 'https://res.cloudinary.com/armytrix/image/upload/v1652430677/motorcycle/imagefor%20temp%20pages/KTM1920_armytrix_exhaust-portrait_ahphpk.jpg';
 }
 ?>
-<?php $this->append('meta_data'); ?>
-<link rel="preload" as="image" href="<?php echo $poster; ?>" />
+<?php $this->append('meta_data');?>
+<link rel="preload" as="image" href="<?php echo $poster; ?>">
 <style>
     #v2_motor_exh .mg-tb-50 {
         margin: 50px 20px 50px 20px;
@@ -185,7 +184,12 @@ if (isset($IsMobile)) {
         #v2_motor_exh .head_2 {
             margin: 30px 15px;
         }
-        #v2_motor_exh h2.head_3 { margin: 50px 10px; font-size: 16px}
+
+        #v2_motor_exh h2.head_3 {
+            margin: 50px 10px;
+            font-size: 16px
+        }
+
         #v2_motor_exh .head_1 {
             font-size: 22px;
         }
@@ -236,29 +240,28 @@ if (isset($IsMobile)) {
         #v2_motor_exh .head_1 {
             font-size: 14px;
         }
+
         #v2_motor_exh .head_1,
         #v2_motor_exh .head_2 {
             margin: 30px 10px;
         }
-
         .motor_container p {
             text-align: justify;
         }
         #v2_motor_exh h2 {
             font-size: 14px;
         }
-        #v2_motor_exh h2.head_3 { margin: 50px 10px; font-size: 12px}
-        
-
+        #v2_motor_exh h2.head_3 {
+            margin: 50px 10px;
+            font-size: 12px
+        }
         #v2_main section {
             padding-bottom: 0;
 
         }
-
         #v2_motor_exh .pad60 {
             margin-top: 0px;
         }
-
         .motor_container .sub_head_5 {
             margin: 50px 0 10px 0;
         }
@@ -293,19 +296,13 @@ if (isset($IsMobile)) {
             </video>
             <div id="vid_2"><i class="fa fa-volume-off" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO UNMUTE </div>
         </div>
-
-
-
     </section>
-
     <section class="motor_container">
-
         <div class="page_container">
             <div class="sub_head_1">
                 <h3>FREEDOM TO SWITCH BETWEEN LOUD AND QUIET WITH THE PUSH OF A BUTTON</h3>
                 <p>With the push of a button on your ARMYRIX remotes or smartphone application, you get to switch between modes upon your wish.</p>
             </div>
-
             <div class="sub_head_2">
                 <h3>CUSTOMIZABLE AUTOMATIC MODE GIVES YOU A WORRY-FREE DRIVE</h3>
                 <p>The automatic mode will open/close the exhaust valves based on the predetermined RPM range, so you don’t have to manually switch all the time – you can also customize your own automatic mode upon your preference!</p>
@@ -350,13 +347,9 @@ if (isset($IsMobile)) {
                     <li>+ Wireless Remote Control Kits</li>
                     <li>+ Moblie APP smart assistant</li>
                 </ul>
-
             </div>
         </div>
-
     </section>
-
-
     <section class="fullWidthImageWrap pad60">
         <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652247709/motorcycle/imagefor%20temp%20pages/armytrix_xsr900-13_isqyup.webp" loading="lazy" alt=""></div>
         <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652247705/motorcycle/imagefor%20temp%20pages/armytrix_xsr900-15_yj6qwf.webp" loading="lazy" alt=""></div>
@@ -372,7 +365,6 @@ if (isset($IsMobile)) {
         <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652247713/motorcycle/imagefor%20temp%20pages/ROUGH_CRAFTS_XSR900_ARMYTRIX_exhaust_-6_o3nssr.webp" loading="lazy" alt=""></div>
         <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652247712/motorcycle/imagefor%20temp%20pages/ROUGH_CRAFTS_XSR900_ARMYTRIX_exhaust_-7_njwmiq.webp" loading="lazy" alt=""></div>
         <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652247713/motorcycle/imagefor%20temp%20pages/ROUGH_CRAFTS_XSR900_ARMYTRIX_exhaust_-8_xyeor1.webp" loading="lazy" alt=""></div>
-
         <div class="ot_head">
             <h2>2021 KTM Duke 1290 Super R ABS</h2>
             <h3>ARMYTRIX Slip-on Line Carbon Muffler</h3>
@@ -388,8 +380,6 @@ if (isset($IsMobile)) {
         <h2 class="mg-tb-50">Stay Tune for ARMYTRIX motorcycle Valvetronic Exhaust projects</h2>
     </section>
 </div>
-
-
 <?php //$this->Html->scriptStart(array('block' => 'scriptBottom')); 
 ?>
 <script>
@@ -503,7 +493,7 @@ if (isset($IsMobile)) {
             muteAll('sound_vid_3');
             var video3 = document.getElementById("sound_vid_3");
             if (video3.muted === true) {
-               // video3.play();
+                // video3.play();
                 video3.muted = false;
                 $("#vid_3").html('<i class="fa fa-volume-up" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO MUTE');
             } else {

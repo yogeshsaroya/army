@@ -51,31 +51,14 @@ echo $this->html->script(array('/v/formValidation.min', '/v/bootstrap.min')); ?>
       <div class="col-md-12">
         <div class="nav-tabs-custom">
           <ul class="nav nav-tabs">
-            <li class="<?php if (empty($q)) {
-                          echo "active";
-                        } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id']; ?>">General</a></li>
-            <li class="<?php if (isset($q['tab']) && $q['tab'] == 'data') {
-                          echo "active";
-                        } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=data"; ?>">Data</a></li>
-            <li class="<?php if (isset($q['tab']) && $q['tab'] == 'images') {
-                          echo "active";
-                        } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=images"; ?>">Images</a></li>
-            <li class="<?php if (isset($q['tab']) && $q['tab'] == 'videos') {
-                          echo "active";
-                        } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=videos"; ?>">Videos</a></li>
-            
-            
-
-            <li class="<?php if (isset($q['tab']) && $q['tab'] == 'catback') {
-                          echo "active";
-                        } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=catback"; ?>">Catback</a></li>
-            <li class="<?php if (isset($q['tab']) && $q['tab'] == 'catalytic') {
-                          echo "active";
-                        } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=catalytic"; ?>">DownPipe</a></li>
-            <li class="<?php if (isset($q['tab']) && $q['tab'] == 'accessory') {
-                          echo "active";
-                        } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=accessory"; ?>">Accessory</a></li>
+            <li class="<?php if (empty($q)) { echo "active"; } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id']; ?>">General</a></li>
+            <li class="<?php if (isset($q['tab']) && $q['tab'] == 'images') { echo "active"; } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=images"; ?>">Images</a></li>
+            <li class="<?php if (isset($q['tab']) && $q['tab'] == 'videos') { echo "active"; } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=videos"; ?>">Videos</a></li>
+            <li class="<?php if (isset($q['tab']) && $q['tab'] == 'catback') { echo "active"; } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=catback"; ?>">Catback</a></li>
+            <li class="<?php if (isset($q['tab']) && $q['tab'] == 'catalytic') { echo "active"; } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=catalytic"; ?>">DownPipe</a></li>
+            <li class="<?php if (isset($q['tab']) && $q['tab'] == 'accessory') { echo "active"; } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=accessory"; ?>">Accessory</a></li>
             <?php /*?>
+            <li class="<?php if (isset($q['tab']) && $q['tab'] == 'data') { echo "active";} ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=data"; ?>">Data</a></li>
   <li class="<?php if (isset($q['tab']) && $q['tab'] == 'quality') { echo "active"; } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=quality"; ?>">Quality & Detail</a></li>
   <li class="<?php if(isset($q['tab']) && $q['tab'] == 'tuning_box'){ echo "active";}?>"><a href="<?php echo SITEURL."lab/labs/update_car_detail/".$data['ItemDetail']['id']."?tab=tuning_box";?>" >Box</a></li>
   <li class="<?php if(isset($q['tab']) && $q['tab'] == 'shipping'){ echo "active";}?>"><a href="<?php echo SITEURL."lab/labs/update_car_detail/".$data['ItemDetail']['id']."?tab=shipping";?>" >Add Shipping</a></li>
