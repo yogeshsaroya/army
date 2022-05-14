@@ -418,7 +418,7 @@ if (isset($IsMobile)) {
         
 
         if ((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)) {
-            
+            //if (video.muted === true) { video.muted = false; $("#vid_unmute").html('<i class="fa fa-volume-up" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO MUTE'); }
         } else {
             if (video.muted === false) {
                video.muted = true;
