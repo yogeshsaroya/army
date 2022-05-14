@@ -1,7 +1,9 @@
 <?php
 echo $this->html->script(['https://kit.fontawesome.com/acae9edaf3.js'], ['block' => 'scriptTop']);
-$video = 'https://res.cloudinary.com/armytrix/video/upload/v1652249067/motorcycle/video%20for%20temp%20pages/XSR900-landscape_t4ugbq.mp4';
+//$video = 'https://res.cloudinary.com/armytrix/video/upload/v1652249067/motorcycle/video%20for%20temp%20pages/XSR900-landscape_t4ugbq.mp4';
+$video = 'https://res.cloudinary.com/armytrix/video/upload/v1652524145/test_video.mp4';
 $poster = 'https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652249017/motorcycle/video%20for%20temp%20pages/XSR900_landscape_edou9j.webp';
+
 $video1 = 'https://res.cloudinary.com/armytrix/video/upload/v1652430904/motorcycle/imagefor%20temp%20pages/RSV4_armytrix_exhaust-landsape_b5d4uk.mp4';
 $poster1 = 'https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,h_1080,w_1920/v1652430382/motorcycle/imagefor%20temp%20pages/RSV4_armytrix_exhaust-landsape_hnl8uf.webp';
 $video2 = 'https://res.cloudinary.com/armytrix/video/upload/v1652429793/motorcycle/imagefor%20temp%20pages/XTM1920-landscape_xrr8ex.mp4';
