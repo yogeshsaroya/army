@@ -1870,13 +1870,157 @@ class LabsController extends AppController
 		}
 	}
 
-	private function _updateMultilingual($id = null){
-		if( !empty($id )){
-			$this->ItemDetail->bindModel(['hasMany'=>['CarPages'=>['className' => 'ItemDetail','foreignKey'=>'item_detail_id']]],false);
-			$getLanguage = $this->Language->find('all');
-			$data = $this->ItemDetail->find('first',['conditions' =>['ItemDetail.id' => $id]]);
+	public function lab_gen_page()
+	{
+		$this->autoRender = false;
+		if ($this->request->is('ajax') && !empty($this->data)) {
+			if (isset($this->data['type']) && $this->data['type'] == 'motorcycle') {
+				$page = $this->Motorcycle->find('first', array('conditions' => array('Motorcycle.id' => $this->data['cid'])));
+				if (!empty($page)) {
+					$chk = $this->Motorcycle->find('first', array('conditions' => array('Motorcycle.motorcycle_id' => $this->data['cid'], 'Motorcycle.language' => $this->data['lang'])));
+					if (!empty($chk)) {
+						echo "<div class='alert alert-danger fadeIn animated'>Select language page already exists.</div>";
+					} else {
+						$pArr['id'] = null;
+						$pArr['status'] = 0;
+						$pArr['language'] = $this->data['lang'];
+						$pArr['motorcycle_id'] = $this->data['cid'];
+						$pArr['motorcycle_make_id'] = $page['Motorcycle']['motorcycle_make_id'];
+						$pArr['motorcycle_model_id'] = $page['Motorcycle']['motorcycle_model_id'];
+						$pArr['motorcycle_year_id'] = $page['Motorcycle']['motorcycle_year_id'];
+						$this->Motorcycle->save($pArr);
+						echo "<div class='alert alert-success fadeIn animated'>Created</div>";
+						echo '<script>location.reload();;</script>';
+					}
+				} else {
+					echo "<div class='alert alert-danger fadeIn animated'>Please try again later</div>";
+				}
+				exit;
+			} else {
+				$page = $this->ItemDetail->find('first', array('conditions' => array('ItemDetail.id' => $this->data['cid'])));
+				if (!empty($page)) {
+					$chk = $this->ItemDetail->find('first', array('conditions' => array('ItemDetail.item_detail_id' => $this->data['cid'], 'ItemDetail.language' => $this->data['lang'])));
+					if (!empty($chk)) {
+						echo "<div class='alert alert-danger fadeIn animated'>Select language page already exists.</div>";
+					} else {
+						$pArr['id'] = null;
+						$pArr['status'] = 0;
+						$pArr['language'] = $this->data['lang'];
+						$pArr['item_detail_id'] = $this->data['cid'];
+						$pArr['brand_id'] = $page['ItemDetail']['brand_id'];
+						$pArr['model_id'] = $page['ItemDetail']['model_id'];
+						$pArr['motor_id'] = $page['ItemDetail']['motor_id'];
+						$this->ItemDetail->save($pArr);
+						echo "<div class='alert alert-success fadeIn animated'>Created</div>";
+						echo '<script>location.reload();;</script>';
+					}
+				} else {
+					echo "<div class='alert alert-danger fadeIn animated'>Please try again later</div>";
+				}
+			}
 		}
+		exit;
+	}
 
+	private function _translateFitment($url = null, $str = null)
+	{
+		$txt = null;
+		if (!empty($str)) {
+			$Arr = explode("\n", trim($str));
+			$query = null;
+			if (!empty($Arr)) {
+				foreach ($Arr as $a => $b) {
+					$query .= '&q=' . urlencode($b);
+				}
+			}
+			$f_res = $this->DATA->fetch($url . $query);
+			if (!empty($f_res)) {
+				$f_res_arr = json_decode($f_res, true);
+				if (isset($f_res_arr['data']['translations']) && !empty($f_res_arr['data']['translations'])) {
+					foreach ($f_res_arr['data']['translations'] as $list) {
+						$txt .= $list['translatedText'] . "\n";
+					}
+				}
+			}
+		}
+		return $txt;
+	}
+
+
+	/* create/update  */
+	private function _updateMultilingual($id = null)
+	{
+		if (!empty($id)) {
+			$this->ItemDetail->bindModel(['hasMany' => ['CarPages' => ['className' => 'ItemDetail', 'foreignKey' => 'item_detail_id']]], false);
+			$data = $this->ItemDetail->find('first', ['conditions' => ['ItemDetail.id' => $id]]);
+
+			$this->ItemDetail->validator()->remove('title');
+			$this->ItemDetail->validator()->remove('description');
+			$this->ItemDetail->validator()->remove('url');
+
+			if (!empty($data)) {
+				if (empty($data['CarPages'])) {
+					$getLanguage = $this->Language->find('all');
+					if (!empty($getLanguage)) {
+						foreach ($getLanguage as $lang) {
+							$u = 'https://www.googleapis.com/language/translate/v2?key=' . G_KEY . '&source=en&target=' . $lang['Language']['code'];
+							$url = strtolower(Inflector::slug($data['ItemDetail']['url'] . "-" . $lang['Language']['language'], '-'));
+							$isPage = $this->ItemDetail->find('count', ['conditions' => ['ItemDetail.url' => $url]]);
+							if ($isPage == 0) {
+								$pArr = null;
+								$pArr['id'] = null;
+								$pArr['url'] = $url;
+								$pArr['status'] = 1;
+								$pArr['language'] = $lang['Language']['code'];
+								$pArr['item_detail_id'] = $data['ItemDetail']['id'];
+								$pArr['brand_id'] = $data['ItemDetail']['brand_id'];
+								$pArr['model_id'] = $data['ItemDetail']['model_id'];
+								$pArr['motor_id'] = $data['ItemDetail']['motor_id'];
+
+								/* Start */
+								$pArr['fitment'] = $this->_translateFitment($u, $data['ItemDetail']['fitment']);
+								$pArr['feature'] = $this->_translateFitment($u, $data['ItemDetail']['feature']);
+								$pArr['note'] = $this->_translateFitment($u, $data['ItemDetail']['note']);
+								/* note End */
+								$name = $this->DATA->fetch($u . '&q=' . urlencode($data['ItemDetail']['name']) . '&q=' . urlencode($data['ItemDetail']['meta_title']) . '&q=' . urlencode($data['ItemDetail']['meta_description']));
+								if (!empty($name)) {
+									$arrName = json_decode($name, true);
+								}
+
+								$pArr['name'] = (isset($arrName['data']['translations'][0]['translatedText']) ? $arrName['data']['translations'][0]['translatedText'] : null);
+								$pArr['meta_title'] = (isset($arrName['data']['translations'][1]['translatedText']) ? $arrName['data']['translations'][1]['translatedText'] : null);
+								$pArr['meta_description'] = (isset($arrName['data']['translations'][2]['translatedText']) ? $arrName['data']['translations'][2]['translatedText'] : null);
+								$this->ItemDetail->save($pArr);
+								$pArr = null;
+							}
+						}
+					}
+				} else {
+					foreach ($data['CarPages'] as $page) {
+						$u = 'https://www.googleapis.com/language/translate/v2?key=' . G_KEY . '&source=en&target=' . $page['language'];
+						$pArr = null;
+						$pArr['id'] = $page['id'];
+
+						/* Start */
+						$pArr['fitment'] = $this->_translateFitment($u, $data['ItemDetail']['fitment']);
+						$pArr['feature'] = $this->_translateFitment($u, $data['ItemDetail']['feature']);
+						$pArr['note'] = $this->_translateFitment($u, $data['ItemDetail']['note']);
+						/* note End */
+
+						$name = $this->DATA->fetch($u . '&q=' . urlencode($data['ItemDetail']['name']) . '&q=' . urlencode($data['ItemDetail']['meta_title']) . '&q=' . urlencode($data['ItemDetail']['meta_description']));
+						if (!empty($name)) {
+							$arrName = json_decode($name, true);
+						}
+
+						$pArr['name'] = (isset($arrName['data']['translations'][0]['translatedText']) ? $arrName['data']['translations'][0]['translatedText'] : null);
+						$pArr['meta_title'] = (isset($arrName['data']['translations'][1]['translatedText']) ? $arrName['data']['translations'][1]['translatedText'] : null);
+						$pArr['meta_description'] = (isset($arrName['data']['translations'][2]['translatedText']) ? $arrName['data']['translations'][2]['translatedText'] : null);
+						$this->ItemDetail->save($pArr);
+						$pArr = null;
+					}
+				}
+			}
+		}
 	}
 
 	public function lab_update_car_detail($id = null)
@@ -1950,7 +2094,9 @@ class LabsController extends AppController
 				$str = null;
 				$errors = $this->ItemDetail->validationErrors;
 				if (!empty($errors)) {
-					foreach ($errors as $err) { $str .= $err[0] . "<br>"; }
+					foreach ($errors as $err) {
+						$str .= $err[0] . "<br>";
+					}
 					echo '<script>btnState();</script><div class="alert alert-danger fadeIn animated">' . $str . '</div>';
 				}
 			}
@@ -4375,7 +4521,7 @@ class LabsController extends AppController
 			}
 			exit;
 		}
-			
+
 
 		$this->MotorcycleModel->bindModel(array('belongsTo' => array('MotorcycleMake')));
 		$brand = $this->MotorcycleMake->find('list', array('order' => array('MotorcycleMake.name' => 'ASC'), 'fields' => array('id', 'name')));
@@ -4891,69 +5037,6 @@ class LabsController extends AppController
 		}
 	}
 
-	public function lab_gen_page()
-	{
-		$this->autoRender = false;
-		if ($this->request->is('ajax') && !empty($this->data)) {
-			if (isset($this->data['type']) && $this->data['type'] == 'motorcycle') {
-				$page = $this->Motorcycle->find('first', array('conditions' => array('Motorcycle.id' => $this->data['cid'])));
-				if (!empty($page)) {
-					$chk = $this->Motorcycle->find('first', array('conditions' => array('Motorcycle.motorcycle_id' => $this->data['cid'], 'Motorcycle.language' => $this->data['lang'])));
-					if (!empty($chk)) {
-						echo "<div class='alert alert-danger fadeIn animated'>Select language page already exists.</div>";
-					} else {
-						$pArr['id'] = null;
-						$pArr['status'] = 0;
-						$pArr['language'] = $this->data['lang'];
-						$pArr['motorcycle_id'] = $this->data['cid'];
-						$pArr['motorcycle_make_id'] = $page['Motorcycle']['motorcycle_make_id'];
-						$pArr['motorcycle_model_id'] = $page['Motorcycle']['motorcycle_model_id'];
-						$pArr['motorcycle_year_id'] = $page['Motorcycle']['motorcycle_year_id'];
-						$this->Motorcycle->save($pArr);
-						echo "<div class='alert alert-success fadeIn animated'>Created</div>";
-						echo '<script>location.reload();;</script>';
-					}
-				} else {
-					echo "<div class='alert alert-danger fadeIn animated'>Please try again later</div>";
-				}
-				exit;
-			} else {
-				$page = $this->ItemDetail->find('first', array('conditions' => array('ItemDetail.id' => $this->data['cid'])));
-				if (!empty($page)) {
-					$chk = $this->ItemDetail->find('first', array('conditions' => array('ItemDetail.item_detail_id' => $this->data['cid'], 'ItemDetail.language' => $this->data['lang'])));
-					if (!empty($chk)) {
-						echo "<div class='alert alert-danger fadeIn animated'>Select language page already exists.</div>";
-					} else {
-
-						$pArr['id'] = null;
-						$pArr['status'] = 0;
-						$pArr['language'] = $this->data['lang'];
-						$pArr['item_detail_id'] = $this->data['cid'];
-						$pArr['brand_id'] = $page['ItemDetail']['brand_id'];
-						$pArr['model_id'] = $page['ItemDetail']['model_id'];
-						$pArr['motor_id'] = $page['ItemDetail']['motor_id'];
-
-						$pArr['videos'] = $page['ItemDetail']['videos'];
-						$pArr['power'] = $page['ItemDetail']['power'];
-
-						$pArr['torque'] = $page['ItemDetail']['torque'];
-						$pArr['weight'] = $page['ItemDetail']['weight'];
-						$pArr['installation_manual'] = $page['ItemDetail']['installation_manual'];
-						$pArr['vid'] = $page['ItemDetail']['vid'];
-						$this->ItemDetail->save($pArr);
-
-						echo "<div class='alert alert-success fadeIn animated'>Created</div>";
-						echo '<script>location.reload();;</script>';
-					}
-				} else {
-					echo "<div class='alert alert-danger fadeIn animated'>Please try again later</div>";
-				}
-			}
-		}
-		exit;
-	}
-
-
 	public function lab_lang_car_detail($id = null, $lang = null)
 	{
 		$this->set('title_for_layout', 'Update Car Details : ' . WEBTITLE);
@@ -4972,7 +5055,9 @@ class LabsController extends AppController
 				$str = null;
 				$errors = $this->ItemDetail->validationErrors;
 				if (!empty($errors)) {
-					foreach ($errors as $err) { $str .= $err[0] . "<br>"; }
+					foreach ($errors as $err) {
+						$str .= $err[0] . "<br>";
+					}
 					echo '<script>btnState();</script><div class="alert alert-danger fadeIn animated">' . $str . '</div>';
 				}
 			}

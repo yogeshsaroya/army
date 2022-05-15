@@ -38,8 +38,6 @@ class PagesController extends AppController
 		$this->set(compact('page_meta'));
 	}
 
-
-
 	public function product($id = null, $type = null)
 	{
 		$slider = $sliderSS = $slidersTT = [];
@@ -49,11 +47,8 @@ class PagesController extends AppController
 		$data = $this->ItemDetail->find('first', array('recursive' => 2, 'conditions' => array('ItemDetail.url' => $id, 'ItemDetail.status' => 1)));
 		$pid = null;
 		$langArr = [];
-		if ($data['ItemDetail']['language'] == 'eng') {
-			$pid = $data['ItemDetail']['id'];
-		} else {
-			$pid = $data['ItemDetail']['item_detail_id'];
-		}
+		if ($data['ItemDetail']['language'] == 'eng') { $pid = $data['ItemDetail']['id']; } 
+		else { $pid = $data['ItemDetail']['item_detail_id']; }
 		if (!empty($data)) {
 			if ($data['ItemDetail']['language'] == 'eng') {
 				$Adata = $data;

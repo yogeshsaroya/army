@@ -100,12 +100,11 @@ window['btnState'] = function() {
 
 
 		$("#add_br").click(function() {
+			btnState();
 			$("#app_err").html('');
-				$("#add_br").prop("disabled", true);
-				$("#add_br").val('Please wait...');
 				$("#proFrm").ajaxForm({
 					target: '#app_err',
-					beforeSubmit: function() {},
+					beforeSubmit: function() { $("#add_br").prop("disabled", true); $("#add_br").val('Please wait...'); },
 					success: function(response) { btnState(); },
 					error: function(response) {
 						btnState();

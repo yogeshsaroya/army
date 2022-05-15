@@ -125,6 +125,9 @@ echo $this->html->script(array('/v/formValidation.min', '/v/bootstrap.min')); ?>
 									<input type="button" class="btn btn-success" value="Save" id="add_br">
                   </div>
                 </div>
+                <div class="form-group"><div class="col-sm-offset-2 col-sm-10">
+                <div class="alert alert-danger text-bold">Note: On Save, It will take few sec to convert text into other languages for multilingual pages.</div></div>
+                </div>
 
                 <script>
                   
