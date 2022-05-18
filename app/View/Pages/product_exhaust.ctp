@@ -1,7 +1,9 @@
 <?php
-$img = 'https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1650865426/product/armytrix-product-exhaust.webp';
+$img = 'https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652852783/product/armytrix-product-exhaust_c9uhwj.webp';
+
 if (isset($IsMobile)) {
-  $img = 'https://res.cloudinary.com/armytrix/image/upload/v1651024830/home/phone-product-exhaust-portrait_vwpvge.webp';
+  $img = 'https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_720/v1652852841/product/phone-product-exhaust-portrait_vwpvge_yaauem.webp';
+  
 }
 $b = $this->Lab->getbrand();
 ?>

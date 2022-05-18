@@ -22,7 +22,8 @@
           &nbsp; &nbsp; TAP TO UNMUTE
         </div>
         <video id="sound_vid" width="100%" height="auto" poster="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651715500/video%20for%20sound%20kits/Sound-_landscape_ku8ipz.webp" playsinline autoplay loop muted>
-          <source src="https://res.cloudinary.com/armytrix/video/upload/v1651714752/video%20for%20sound%20kits/sound_kits_-_landscape_egzong.mp4" type="video/mp4" />
+        <source src="https://res.cloudinary.com/armytrix/video/upload/q_auto:good/v1652852723/video%20for%20sound%20kits/sound_kits_-_landscape_sfldum.webm" type="video/webm" />
+          <source src="https://res.cloudinary.com/armytrix/video/upload/q_auto:good/v1652852723/video%20for%20sound%20kits/sound_kits_-_landscape_sfldum.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>

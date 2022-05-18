@@ -185,3 +185,14 @@ function gs( $arr = null,$k = 1 ){
 	elseif(isset($arr['String'][$k]) && !empty($arr['String'][$k])){ return $arr['String'][$k]; }
 	
 }
+
+function getCloudinary($url = null,$a = null,$ext=null){
+	if(!empty($url)){
+		$file_ext = pathinfo($url, PATHINFO_EXTENSION);
+		$url = str_replace("https://res.cloudinary.com/armytrix/video/upload/","https://res.cloudinary.com/armytrix/video/upload/$a/",$url);
+		$url = str_replace("https://res.cloudinary.com/armytrix/image/upload/","https://res.cloudinary.com/armytrix/image/upload/$a/",$url);
+		$url = str_replace(".$file_ext",$ext,$url);
+	}
+	return $url;
+
+}

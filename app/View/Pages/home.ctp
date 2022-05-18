@@ -3,17 +3,20 @@
     <?php if (!empty($data)) { ?>
         <div id="home_slider" class="your-class homePg">
             <?php foreach ($data as $list) {
-                $video = $list['VideoSlider']['video_for_pc'];
-                $poster = $list['VideoSlider']['poster_for_pc'];
+                $video_webm = getCloudinary($list['VideoSlider']['video_for_pc'],'q_auto:best','.webm');
+                $video_mp4 = getCloudinary($list['VideoSlider']['video_for_pc'],'q_auto:best','.mp4');
+                $poster = getCloudinary($list['VideoSlider']['poster_for_pc'],'c_scale,q_auto:good,w_1920','.webp');
                 if (isset($IsMobile)) {
-                    $video = $list['VideoSlider']['video_for_mob'];
-                    $poster = $list['VideoSlider']['poster_for_mob'];
+                    $video_webm = getCloudinary($list['VideoSlider']['video_for_mob'],'q_auto:best','.webm');
+                    $video_mp4 = getCloudinary($list['VideoSlider']['video_for_mob'],'q_auto:best','.mp4');
+                    $poster = getCloudinary($list['VideoSlider']['poster_for_mob'],'c_scale,q_auto:good,w_720','.webp');
                 }
             ?>
                 <div>
                     <div class="video">
                         <video poster="<?php echo $poster; ?>" id="bgvid" preload="none" playsinline autoplay loop muted>
-                            <source src="<?php echo $video; ?>" type="video/mp4">
+                            <source src="<?php echo $video_webm; ?>" type="video/webm">
+                            <source src="<?php echo $video_mp4; ?>" type="video/mp4">
                         </video>
                         <div class="overlay">
                             <div class="contentWrap text-center">
@@ -74,7 +77,7 @@
     </section>
     <section class="fullWidthImageWrap pad60">
         <div class="fullWidthImages posRltv">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1650865455/home/shop_ntocqa.webp" loading="lazy" alt="full Images">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:good,w_1920/v1652852843/home/shop_luileo.webp" loading="lazy" alt="full Images">
             <div class="contentWrap text-right bottom20">
                 <h2 class="clrWhite">SOUND KIT</h2>
                 <a href=" <?php echo SITEURL; ?>sound" class="linkBtn">DISCOVER MORE</a>
@@ -82,7 +85,7 @@
         </div>
 
         <div class="fullWidthImages posRltv">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1651590180/home/performance.webp" loading="lazy" alt="full Images">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:good,w_1920/v1651590180/home/performance.webp" loading="lazy" alt="full Images">
             <div class="contentWrap text-right bottom20">
                 <h2 class="clrWhite">PERFORMANCE</h2>
                 <a href=" <?php echo SITEURL; ?>performance" class="linkBtn">DISCOVER MORE</a>
@@ -91,7 +94,7 @@
 
 
         <div class="fullWidthImages posRltv">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1651024830/home/Sound__kit_rl8zos.webp" loading="lazy" alt="full Images">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:good,w_1920/v1652852843/home/Sound__kit_snjzir.webp" loading="lazy" alt="full Images">
 
             <div class="contentWrap text-right bottom20">
                 <h2 class="clrWhite">APPAREL & ACCESSORIES</h2>
@@ -102,7 +105,7 @@
 
 
         <div class="fullWidthImages posRltv">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1650865452/home/test_evkqle.webp" loading="lazy" alt="full Images">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:good,w_1920/v1650865452/home/test_evkqle.webp" loading="lazy" alt="full Images">
 
             <div class="contentWrap text-center top30">
                 <h2 class="clrWhite">WHAT DO THEY SAY ABOUT ARMYTRIX</h2>
@@ -121,7 +124,8 @@
         </div>
         <div class="posRltv">
             <video width="100%" height="auto" id="video_5" playsinline autoplay loop muted>
-                <source src="https://res.cloudinary.com/armytrix/video/upload/v1650883576/home/armytrix-trailer.mp4" type="video/mp4">
+            <source src="https://res.cloudinary.com/armytrix/video/upload/q_auto:good/v1650883576/home/armytrix-trailer.webm" type="video/webm">
+                <source src="https://res.cloudinary.com/armytrix/video/upload/q_auto:good/v1650883576/home/armytrix-trailer.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
@@ -129,7 +133,7 @@
     <!-- auto play video-->
 
     <div class="fullWidthImages posRltv">
-        <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1650865453/home/main-end_liba2e.webp" loading="lazy" alt="">
+        <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:good,w_1920/v1650865453/home/main-end_liba2e.webp" loading="lazy" alt="">
 
     </div>
 
