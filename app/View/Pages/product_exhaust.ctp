@@ -1,10 +1,12 @@
 <?php
 $img = 'https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652852783/product/armytrix-product-exhaust_c9uhwj.webp';
+if (isset($IsMobile)) { $img = 'https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_720/v1652852841/product/phone-product-exhaust-portrait_vwpvge_yaauem.webp'; }
+/*
+$img = SITEURL.'v2/home/armytrix-product-exhaust_c9uhwj.webp';
+if (isset($IsMobile)) { $img = SITEURL.'v2/home/phone-product-exhaust-portrait_vwpvge_yaauem.webp'; }
+*/
 
-if (isset($IsMobile)) {
-  $img = 'https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_720/v1652852841/product/phone-product-exhaust-portrait_vwpvge_yaauem.webp';
-  
-}
+
 $b = $this->Lab->getbrand();
 ?>
 

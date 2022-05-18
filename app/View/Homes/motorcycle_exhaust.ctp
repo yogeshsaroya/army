@@ -10,7 +10,7 @@ $video1Webm = 'https://res.cloudinary.com/armytrix/video/upload/q_auto:best/v165
 $poster1 = 'https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,h_1080,w_1920/v1652759119/motorcycle/image/RSV4_armytrix_exhaust-landsape_itnjvr.webp';
 
 $video2 = 'https://res.cloudinary.com/armytrix/video/upload/q_auto:best/v1652853493/motorcycle/sound_kit/XTM1920-landscape_frj4zr.mp4';
-$video2Webm = 'https://res.cloudinary.com/armytrix/video/upload/q_auto:best/v1652853493/motorcycle/sound_kit/XTM1920-landscape_frj4zr.webb';
+$video2Webm = 'https://res.cloudinary.com/armytrix/video/upload/q_auto:best/v1652853493/motorcycle/sound_kit/XTM1920-landscape_frj4zr.webm';
 $poster2 = 'https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,h_1080,w_1920/v1652759119/motorcycle/image/KTM1920_armytrix_exhaust-landscape_hwrhvf.webp';
 if (isset($IsMobile)) {
     $video = 'https://res.cloudinary.com/armytrix/video/upload/q_auto:best/v1652853470/motorcycle/sound_kit/XSR900-portrait_ixw54k.mp4';

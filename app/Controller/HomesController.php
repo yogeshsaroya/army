@@ -30,6 +30,7 @@ class HomesController extends AppController
     {
         $this->set('title_for_layout', 'WEAPONIZED YOUR MOTORCYLE BY THE ARMYTRIX EXHAUST SYSTEMS');
         $page_meta = ['des' => 'Best Sounding Aftermarket Exhaust Upgrades. Titanium & Stainless Steel Turbo-back Cat-Back Valvetronic Exhaust Downpipes Tips Headers Decat Test Straight Exhaust Sound',];
+        //$this->render('motorcycle_exhaust_v2');
         
     }
 

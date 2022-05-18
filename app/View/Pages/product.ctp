@@ -223,7 +223,7 @@ if (isset($data) && !empty($data)) {
       <h2><?php echo gs($txt, 32); ?></h2>
     </div>
     <div class="mt-3">
-      <img src="https://res.cloudinary.com/armytrix/image/upload/q_auto:good/v1650865425/product/product-fix-2_vasdds.webp" alt="" loading="lazy" class="img-wd-100">
+      <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:good,w_1600/v1650865425/product/product-fix-2_vasdds.webp" alt="" loading="lazy" class="img-wd-100">
     </div>
   </div>
 
@@ -258,7 +258,7 @@ if (isset($data) && !empty($data)) {
         <p><?php echo gs($txt, 47); ?></p>
       </div>
       <div class="mt-3">
-        <img src="https://res.cloudinary.com/armytrix/image/upload/q_auto:good/v1650865195/product/dyno_hhd7oy.webp" alt="" loading="lazy" class="img-wd-100">
+        <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:good,w_1600/v1650865195/product/dyno_hhd7oy.webp" alt="" loading="lazy" class="img-wd-100">
       </div>
     </div>
 
@@ -295,7 +295,7 @@ if (isset($data) && !empty($data)) {
 
     <?php echo $this->element('pro/s8', ['txt' => $txt]); ?>
     <div class="page_container fullmxWd" id="pro_8">
-      <img src="https://res.cloudinary.com/armytrix/image/upload/q_auto:good/v1650865200/product/3D_oo3xdl.webp" alt="" loading="lazy" class="img-wd-100">
+      <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:good,w_1600/v1650865200/product/3D_oo3xdl.webp" alt="" loading="lazy" class="img-wd-100">
     </div>
 
     <div class="page_container fullmxWd text-center mt-50" id="pro_9">

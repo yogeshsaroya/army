@@ -26,6 +26,7 @@ class PagesController extends AppController
 		$this->loadModel('VideoSlider');
 		$data = $this->VideoSlider->find('all', ['order' => ['VideoSlider.position' => 'ASC']]);
 		$this->set(compact('page_meta', 'data'));
+		//$this->render('home_v2');
 	}
 
 	public function product_exhaust()
@@ -105,6 +106,7 @@ class PagesController extends AppController
 			$txt = array('String' => $string, 'Translation' => $tran);
 
 			$this->set(compact('page_meta', 'data', 'Adata', 'txt', 'slider', 'gallery', 'cat_back', 'catalytic', 'accessory', 'langArr'));
+			//$this->render('product_v2');
 		} else {
 			$this->layout = '404';
 		}
