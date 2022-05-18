@@ -2,8 +2,10 @@
 App::uses('AppController', 'Controller');
 class PagesController extends AppController
 {
-	public $uses = array('User', 'Brand', 'Model', 'Motor', 'Product', 'Library', 'ItemDetail','Cart', 'PromoCode', 'WebSetting','Address', 'Order', 
-	'OrderItem', 'OrderHistory', 'Language', 'String','Translation', 'CountryList','Motorcycle','MotorcycleModel','MotorcycleYear');
+	public $uses = array(
+		'User', 'Brand', 'Model', 'Motor', 'Product', 'Library', 'ItemDetail', 'Cart', 'PromoCode', 'WebSetting', 'Address', 'Order',
+		'OrderItem', 'OrderHistory', 'Language', 'String', 'Translation', 'CountryList', 'Motorcycle', 'MotorcycleModel', 'MotorcycleYear'
+	);
 	public $components = array('Auth', 'Cookie', 'Session', 'RequestHandler', 'DATA', 'Paypal');
 	public $meta = array(
 		'des' => 'Following the creed of providing the most sound, more power and true versatility, ARMYTRIX offer high-end performance valvetronic exhaust systems, ecu tuning and power box that are second to none. We foster a culture of innovation. ARMYTRIX not only creates products, ARMYTRIX creates experiences.',
@@ -48,8 +50,11 @@ class PagesController extends AppController
 		$data = $this->ItemDetail->find('first', array('recursive' => 2, 'conditions' => array('ItemDetail.url' => $id, 'ItemDetail.status' => 1)));
 		$pid = null;
 		$langArr = [];
-		if ($data['ItemDetail']['language'] == 'eng') { $pid = $data['ItemDetail']['id']; } 
-		else { $pid = $data['ItemDetail']['item_detail_id']; }
+		if ($data['ItemDetail']['language'] == 'eng') {
+			$pid = $data['ItemDetail']['id'];
+		} else {
+			$pid = $data['ItemDetail']['item_detail_id'];
+		}
 		if (!empty($data)) {
 			if ($data['ItemDetail']['language'] == 'eng') {
 				$Adata = $data;
@@ -843,7 +848,7 @@ class PagesController extends AppController
 								$str1 .= '<option value="' . $k . '">' . htmlspecialchars($ttt) . '</option>';
 							}
 						}
-						echo "<script>$('#".$this->data['target_id']."').html('$str1');</script>";
+						echo "<script>$('#" . $this->data['target_id'] . "').html('$str1');</script>";
 					}
 				} elseif (isset($this->data['model_id']) && !empty($this->data['model_id'])) {
 					$pList = $this->ItemDetail->find('list', ['conditions' => ['ItemDetail.status' => 1, 'ItemDetail.model_id' => $this->data['model_id']], 'fields' => ['ItemDetail.id', 'ItemDetail.motor_id']]);
@@ -856,7 +861,7 @@ class PagesController extends AppController
 								$str2 .= '<option value="' . $k . '">' . htmlspecialchars($ttt) . '</option>';
 							}
 						}
-						echo "<script>$('#".$this->data['target_id']."').html('$str2');</script>";
+						echo "<script>$('#" . $this->data['target_id'] . "').html('$str2');</script>";
 					}
 				}
 			} elseif ($this->data['type'] == 'motorcycle') {
@@ -873,20 +878,20 @@ class PagesController extends AppController
 								$str1 .= '<option value="' . $k . '">' . htmlspecialchars($ttt) . '</option>';
 							}
 						}
-						echo "<script>$('#".$this->data['target_id']."').html('$str1');</script>";
+						echo "<script>$('#" . $this->data['target_id'] . "').html('$str1');</script>";
 					}
-				}elseif (isset($this->data['model_id']) && !empty($this->data['model_id'])) {
+				} elseif (isset($this->data['model_id']) && !empty($this->data['model_id'])) {
 					$pList = $this->Motorcycle->find('list', ['conditions' => ['Motorcycle.status' => 1, 'Motorcycle.motorcycle_model_id' => $this->data['model_id']], 'fields' => ['Motorcycle.id', 'Motorcycle.motorcycle_year_id']]);
 					if (!empty($pList)) {
 						$pList = array_unique($pList);
 						$getYear = $this->MotorcycleYear->find('all', ['conditions' => ['MotorcycleYear.id' => $pList, 'MotorcycleYear.motorcycle_model_id' => $this->data['model_id'], 'MotorcycleYear.status' => 1]]);
 						if (!empty($getYear)) {
 							foreach ($getYear as $year) {
-								$ttt = $year['MotorcycleYear']['year_from']." - ".(!empty($year['MotorcycleYear']['year_to']) ? $year['MotorcycleYear']['year_to'] : 'persent');
-								$str2 .= '<option value="' .$year['MotorcycleYear']['id']. '">' . htmlspecialchars($ttt) . '</option>';
+								$ttt = $year['MotorcycleYear']['year_from'] . " - " . (!empty($year['MotorcycleYear']['year_to']) ? $year['MotorcycleYear']['year_to'] : 'persent');
+								$str2 .= '<option value="' . $year['MotorcycleYear']['id'] . '">' . htmlspecialchars($ttt) . '</option>';
 							}
 						}
-						echo "<script>$('#".$this->data['target_id']."').html('$str2');</script>";
+						echo "<script>$('#" . $this->data['target_id'] . "').html('$str2');</script>";
 					}
 				}
 			}
@@ -2064,52 +2069,11 @@ class PagesController extends AppController
 		$subject = $data['subject'];
 		$fromName = $data['fromName'];
 
-			if (isset($data['post']['field']) && !empty($data['post']['field'])) {
-				switch ($variant) {
-					case 1:
+		if (isset($data['post']['field']) && !empty($data['post']['field'])) {
+			switch ($variant) {
+				case 1:
 
-						if (filter_var($data['post']['field'][5], FILTER_VALIDATE_EMAIL)) {
-							$message = '<b>Message from ' . $data['post']['field'][0] . '</b>' . '<br />';
-							//$message .= '<b>Form name: </b>'.$data['post']['field'][0] . '<br />';
-							$message .= '<b>Name: </b>' . $data['post']['field'][1] . '<br />';
-							$message .= '<b>Shop name: </b>' . $data['post']['field'][2] . '<br />';
-							$message .= '<b>Shop address: </b>' . $data['post']['field'][3] . '<br />';
-							$message .= '<b>Phone number: </b>' . $data['post']['field'][4] . '<br />';
-							$message .= '<b>Email: </b>' . $data['post']['field'][5] . '<br />';
-							$message .= '<b>Purchase order number: </b>' . $data['post']['field'][6] . '<br />';
-							$message .= '<b>Purchase date: </b>' . $data['post']['field'][7] . '<br />';
-							$message .= '<b>Installation date: </b>' . $data['post']['field'][8] . '<br />';
-							$message .= '<b>Problem description: </b>' . $data['post']['field'][9] . '<br />';
-							$subject = $data['post']['field'][0];
-							$this->send_email($message, $to, $subject, $fromName);
-						} else {
-							die('error');
-						}
-
-
-						break;
-					case 2:
-						$message = '<b>Message from ' . $data['post']['field'][0] . '</b>' . '<br />';
-						//$message .= '<b>Form name: </b>'.$data['post']['field'][0] . '<br />';
-						$message .= '<b>Name: </b>' . $data['post']['field'][1] . '<br />';
-						$message .= '<b>Phone number: </b>' . $data['post']['field'][2] . '<br />';
-						$message .= '<b>Country: </b>' . $data['post']['field'][3] . '<br />';
-						$message .= '<b>Email: </b>' . $data['post']['field'][4] . '<br />';
-						$message .= '<b>Purchase date: </b>' . $data['post']['field'][5] . '<br />';
-						$message .= '<b>Installation date: </b>' . $data['post']['field'][6] . '<br />';
-						$message .= '<b>Car model: </b>' . $data['post']['field'][7] . '<br />';
-						$message .= '<b>Vin number: </b>' . $data['post']['field'][8] . '<br />';
-						$message .= '<b>Who is your installer: </b>' . $data['post']['field'][9] . '<br />';
-						$message .= '<b>Who sold you the system: </b>' . $data['post']['field'][10] . '<br />';
-						$message .= '<b>Problem description: </b>' . $data['post']['field'][11] . '<br />';
-
-						$subject = $data['post']['field'][0];
-
-						$this->send_email($message, $to, $subject, $fromName);
-
-						break;
-					case 3:
-
+					if (filter_var($data['post']['field'][5], FILTER_VALIDATE_EMAIL)) {
 						$message = '<b>Message from ' . $data['post']['field'][0] . '</b>' . '<br />';
 						//$message .= '<b>Form name: </b>'.$data['post']['field'][0] . '<br />';
 						$message .= '<b>Name: </b>' . $data['post']['field'][1] . '<br />';
@@ -2120,79 +2084,120 @@ class PagesController extends AppController
 						$message .= '<b>Purchase order number: </b>' . $data['post']['field'][6] . '<br />';
 						$message .= '<b>Purchase date: </b>' . $data['post']['field'][7] . '<br />';
 						$message .= '<b>Installation date: </b>' . $data['post']['field'][8] . '<br />';
-						$message .= '<b>Video link(URL): </b>' . $data['post']['field'][9] . '<br />';
-						$message .= '<b>Problem description: </b>' . $data['post']['field'][10] . '<br />';
-
-						$subject = $data['post']['field'][0];
-
-						$this->send_email($message, $to, $subject, $fromName);
-
-						break;
-					case 4:
-
-						$message = '<b>Message from ' . $data['post']['field'][0] . '</b>' . '<br />';
-						//$message .= '<b>Form name: </b>'.$data['post']['field'][0] . '<br />';
-						$message .= '<b>Name: </b>' . $data['post']['field'][1] . '<br />';
-						$message .= '<b>Phone number: </b>' . $data['post']['field'][2] . '<br />';
-						$message .= '<b>Country: </b>' . $data['post']['field'][3] . '<br />';
-						$message .= '<b>Email: </b>' . $data['post']['field'][4] . '<br />';
-						$message .= '<b>Purchase date: </b>' . $data['post']['field'][5] . '<br />';
-						$message .= '<b>Installation date: </b>' . $data['post']['field'][6] . '<br />';
-						$message .= '<b>Car model: </b>' . $data['post']['field'][7] . '<br />';
-						$message .= '<b>Vin number: </b>' . $data['post']['field'][8] . '<br />';
-						$message .= '<b>Who is your installer: </b>' . $data['post']['field'][9] . '<br />';
-						$message .= '<b>Who sold you the system: </b>' . $data['post']['field'][10] . '<br />';
-						$message .= '<b>Video link(URL): </b>' . $data['post']['field'][11] . '<br />';
-						$message .= '<b>Problem description: </b>' . $data['post']['field'][12] . '<br />';
-
-						$subject = $data['post']['field'][0];
-
-						$this->send_email($message, $to, $subject, $fromName);
-
-						break;
-						//valve control
-
-					case 5:
-
-						$message = '<b>Message from ' . $data['post']['field'][0] . '</b>' . '<br />';
-						//$message .= '<b>Form name: </b>'.$data['post']['field'][0] . '<br />';
-						$message .= '<b>Name: </b>' . $data['post']['field'][1] . '<br />';
-						$message .= '<b>Phone number: </b>' . $data['post']['field'][2] . '<br />';
-						$message .= '<b>Address: </b>' . $data['post']['field'][3] . '<br />';
-						$message .= '<b>Email: </b>' . $data['post']['field'][4] . '<br />';
-
-						$message .= '<b>Installer Name: </b>' . $data['post']['field'][5] . '<br />';
-						$message .= '<b>Installer Phone number: </b>' . $data['post']['field'][6] . '<br />';
-						$message .= '<b>Installer Address: </b>' . $data['post']['field'][7] . '<br />';
-						$message .= '<b>Installer Email: </b>' . $data['post']['field'][8] . '<br />';
-
-						$message .= '<b>Installation date: </b>' . $data['post']['field'][9] . '<br />';
-						$message .= '<b>Vin number: </b>' . $data['post']['field'][10] . '<br />';
-						$message .= '<b>Problem description: </b>' . $data['post']['field'][11] . '<br />';
-						$message .= '<b>Video link(URL): </b>' . $data['post']['field'][12] . '<br />';
-
+						$message .= '<b>Problem description: </b>' . $data['post']['field'][9] . '<br />';
 						$subject = $data['post']['field'][0];
 						$this->send_email($message, $to, $subject, $fromName);
+					} else {
+						die('error');
+					}
 
-						break;
-						//valve control
-					case 6:
 
-						$message = '<b>Message from ' . $data['post']['field'][0] . '</b>' . '<br />';
-						//$message .= '<b>Form name: </b>'.$data['post']['field'][0] . '<br />';
-						$message .= '<b>PI number: </b>' . $data['post']['field'][1] . '<br />';
-						$message .= '<b>Vin number: </b>' . $data['post']['field'][2] . '<br />';
-						$message .= '<b>Problem description: </b>' . $data['post']['field'][3] . '<br />';
-						$message .= '<b>Video link(URL): </b>' . $data['post']['field'][4] . '<br />';
+					break;
+				case 2:
+					$message = '<b>Message from ' . $data['post']['field'][0] . '</b>' . '<br />';
+					//$message .= '<b>Form name: </b>'.$data['post']['field'][0] . '<br />';
+					$message .= '<b>Name: </b>' . $data['post']['field'][1] . '<br />';
+					$message .= '<b>Phone number: </b>' . $data['post']['field'][2] . '<br />';
+					$message .= '<b>Country: </b>' . $data['post']['field'][3] . '<br />';
+					$message .= '<b>Email: </b>' . $data['post']['field'][4] . '<br />';
+					$message .= '<b>Purchase date: </b>' . $data['post']['field'][5] . '<br />';
+					$message .= '<b>Installation date: </b>' . $data['post']['field'][6] . '<br />';
+					$message .= '<b>Car model: </b>' . $data['post']['field'][7] . '<br />';
+					$message .= '<b>Vin number: </b>' . $data['post']['field'][8] . '<br />';
+					$message .= '<b>Who is your installer: </b>' . $data['post']['field'][9] . '<br />';
+					$message .= '<b>Who sold you the system: </b>' . $data['post']['field'][10] . '<br />';
+					$message .= '<b>Problem description: </b>' . $data['post']['field'][11] . '<br />';
 
-						$subject = $data['post']['field'][0];
-						$this->send_email($message, $to, $subject, $fromName);
+					$subject = $data['post']['field'][0];
 
-						break;
-				}
-			} else {
-				die('error');
+					$this->send_email($message, $to, $subject, $fromName);
+
+					break;
+				case 3:
+
+					$message = '<b>Message from ' . $data['post']['field'][0] . '</b>' . '<br />';
+					//$message .= '<b>Form name: </b>'.$data['post']['field'][0] . '<br />';
+					$message .= '<b>Name: </b>' . $data['post']['field'][1] . '<br />';
+					$message .= '<b>Shop name: </b>' . $data['post']['field'][2] . '<br />';
+					$message .= '<b>Shop address: </b>' . $data['post']['field'][3] . '<br />';
+					$message .= '<b>Phone number: </b>' . $data['post']['field'][4] . '<br />';
+					$message .= '<b>Email: </b>' . $data['post']['field'][5] . '<br />';
+					$message .= '<b>Purchase order number: </b>' . $data['post']['field'][6] . '<br />';
+					$message .= '<b>Purchase date: </b>' . $data['post']['field'][7] . '<br />';
+					$message .= '<b>Installation date: </b>' . $data['post']['field'][8] . '<br />';
+					$message .= '<b>Video link(URL): </b>' . $data['post']['field'][9] . '<br />';
+					$message .= '<b>Problem description: </b>' . $data['post']['field'][10] . '<br />';
+
+					$subject = $data['post']['field'][0];
+
+					$this->send_email($message, $to, $subject, $fromName);
+
+					break;
+				case 4:
+
+					$message = '<b>Message from ' . $data['post']['field'][0] . '</b>' . '<br />';
+					//$message .= '<b>Form name: </b>'.$data['post']['field'][0] . '<br />';
+					$message .= '<b>Name: </b>' . $data['post']['field'][1] . '<br />';
+					$message .= '<b>Phone number: </b>' . $data['post']['field'][2] . '<br />';
+					$message .= '<b>Country: </b>' . $data['post']['field'][3] . '<br />';
+					$message .= '<b>Email: </b>' . $data['post']['field'][4] . '<br />';
+					$message .= '<b>Purchase date: </b>' . $data['post']['field'][5] . '<br />';
+					$message .= '<b>Installation date: </b>' . $data['post']['field'][6] . '<br />';
+					$message .= '<b>Car model: </b>' . $data['post']['field'][7] . '<br />';
+					$message .= '<b>Vin number: </b>' . $data['post']['field'][8] . '<br />';
+					$message .= '<b>Who is your installer: </b>' . $data['post']['field'][9] . '<br />';
+					$message .= '<b>Who sold you the system: </b>' . $data['post']['field'][10] . '<br />';
+					$message .= '<b>Video link(URL): </b>' . $data['post']['field'][11] . '<br />';
+					$message .= '<b>Problem description: </b>' . $data['post']['field'][12] . '<br />';
+
+					$subject = $data['post']['field'][0];
+
+					$this->send_email($message, $to, $subject, $fromName);
+
+					break;
+					//valve control
+
+				case 5:
+
+					$message = '<b>Message from ' . $data['post']['field'][0] . '</b>' . '<br />';
+					//$message .= '<b>Form name: </b>'.$data['post']['field'][0] . '<br />';
+					$message .= '<b>Name: </b>' . $data['post']['field'][1] . '<br />';
+					$message .= '<b>Phone number: </b>' . $data['post']['field'][2] . '<br />';
+					$message .= '<b>Address: </b>' . $data['post']['field'][3] . '<br />';
+					$message .= '<b>Email: </b>' . $data['post']['field'][4] . '<br />';
+
+					$message .= '<b>Installer Name: </b>' . $data['post']['field'][5] . '<br />';
+					$message .= '<b>Installer Phone number: </b>' . $data['post']['field'][6] . '<br />';
+					$message .= '<b>Installer Address: </b>' . $data['post']['field'][7] . '<br />';
+					$message .= '<b>Installer Email: </b>' . $data['post']['field'][8] . '<br />';
+
+					$message .= '<b>Installation date: </b>' . $data['post']['field'][9] . '<br />';
+					$message .= '<b>Vin number: </b>' . $data['post']['field'][10] . '<br />';
+					$message .= '<b>Problem description: </b>' . $data['post']['field'][11] . '<br />';
+					$message .= '<b>Video link(URL): </b>' . $data['post']['field'][12] . '<br />';
+
+					$subject = $data['post']['field'][0];
+					$this->send_email($message, $to, $subject, $fromName);
+
+					break;
+					//valve control
+				case 6:
+
+					$message = '<b>Message from ' . $data['post']['field'][0] . '</b>' . '<br />';
+					//$message .= '<b>Form name: </b>'.$data['post']['field'][0] . '<br />';
+					$message .= '<b>PI number: </b>' . $data['post']['field'][1] . '<br />';
+					$message .= '<b>Vin number: </b>' . $data['post']['field'][2] . '<br />';
+					$message .= '<b>Problem description: </b>' . $data['post']['field'][3] . '<br />';
+					$message .= '<b>Video link(URL): </b>' . $data['post']['field'][4] . '<br />';
+
+					$subject = $data['post']['field'][0];
+					$this->send_email($message, $to, $subject, $fromName);
+
+					break;
 			}
+		} else {
+			die('error');
+		}
 	}
 
 	private function send_email($message, $to, $subject, $fromName)
