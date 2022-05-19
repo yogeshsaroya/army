@@ -1,5 +1,5 @@
 <link href="<?php echo SITEURL; ?>css/custom.css" rel="stylesheet" />
-<link href="<?php echo SITEURL; ?>flash_sale/css/mustang_flash_sale.css?v=<?php echo rand();?>" rel="stylesheet" />
+<link href="<?php echo SITEURL; ?>flash_sale/css/mustang_flash_sale.css" rel="stylesheet" />
 
 <link rel="stylesheet" href="<?php echo SITEURL;?>v_4/css/unite-gallery.css" type="text/css" media="all" />
 <script type='text/javascript' src='<?php echo SITEURL;?>v_4/js/unitegallery.min.js'></script>	

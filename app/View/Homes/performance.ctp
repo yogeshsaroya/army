@@ -1,4 +1,4 @@
-<?php echo $this->Html->css(["/v2/product_page.css?v=" . rand(5646, 65465)], ['block' => 'cssTop']); ?>
+<?php echo $this->Html->css(["/v2/product_page"], ['block' => 'cssTop']); ?>
 <div id="v2_performance">
   <div class="page_container">
     <section class="pad60">
