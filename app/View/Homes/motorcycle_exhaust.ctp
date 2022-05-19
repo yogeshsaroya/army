@@ -366,7 +366,7 @@ if (isset($IsMobile)) {
                     <li>ARMYTRIX Black Coating Header with de-catted pipe</li>
                     <li>ARMYTRIX Valvetronic Slip on system - Carbon muffler</li>
                     <li>+ Noise Damper (DB Killer)</li>
-                    <li>+ Silver Chrome ARMYTRIX End CAP</li>
+                    <li>+ Black Chrome ARMYTRIX End CAP</li>
                     <li>+ Wireless Remote Control Kits</li>
                     <li>+ Moblie APP smart assistant</li>
                 </ul>

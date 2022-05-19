@@ -43,6 +43,8 @@
   }
   .justify-content-center .dropdown-menu li a {
     font-weight: 500;}
+    .flags {text-align: left;}
+    .flags img {margin-right: 10px; max-width: 24px; width: 24px;}
 </style>
 <?php $this->end(); ?>
 <?php
@@ -95,9 +97,9 @@ if (isset($data) && !empty($data)) {
     <div class="justify-content-center">
       <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Change Language<span class="caret"></span></button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu flags">
           <?php foreach ($langArr as $a => $b) {
-            echo "<li><a href='" . SITEURL . "product/$b' title=''>$a</a></li>";
+            echo "<li><a href='" . SITEURL . "product/$b' title=''><img src='".SITEURL."v2/flags/".strtolower($a).".svg' width='24' clas='img-thumbnail'> $a</a></li>";
           } ?>
         </ul>
       </div>
