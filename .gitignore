@@ -3,6 +3,8 @@
 /app/Config/database.php
 /app/Config/bootstrap.php
 
+.htaccess
+
 /app/webroot/cdn/*
 /app/webroot/cache/*
 /app/webroot/files/*
