@@ -14,10 +14,10 @@
 
   .justify-content-center .dropdown {
     font-family: 'Oswald', sans-serif;
-    background: #000;
+    background: #fff;
     font-size: 14px;
   }
-
+.caret{color: #000;}
   .justify-content-center .caret {
     margin-left: 10px;
   }
@@ -36,15 +36,16 @@
     color: #fff;
   }
 
-  .justify-content-center .dropdown>.btn:hover,
-  .justify-content-center .open .dropdown-toggle.btn-primary {
-    background: #000;
-    color: #fff;
-  }
   .justify-content-center .dropdown-menu li a {
     font-weight: 500;}
-    .flags {text-align: left;}
+    .flags {text-align: left; background-color: #fff; right: 0; left: unset;}
     .flags img {margin-right: 10px; max-width: 24px; width: 24px;}
+
+    .flags li>a:hover {
+    text-decoration: none;
+    color: #000;
+}
+
 </style>
 <?php $this->end(); ?>
 <?php
@@ -95,8 +96,10 @@ if (isset($data) && !empty($data)) {
 
   <?php if (!empty($langArr)) { ?>
     <div class="justify-content-center">
-      <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Change Language<span class="caret"></span></button>
+      <div class="dropdown flags_menu">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+        <img src='<?php echo SITEURL;?>v2/flags/<?php echo $act_lng;?>.svg' width='24' clas='img-thumbnail'>
+        <span class="caret"></span></button>
         <ul class="dropdown-menu flags">
           <?php foreach ($langArr as $a => $b) {
             echo "<li><a href='" . SITEURL . "product/$b' title=''><img src='".SITEURL."v2/flags/".strtolower($a).".svg' width='24' clas='img-thumbnail'> $a</a></li>";

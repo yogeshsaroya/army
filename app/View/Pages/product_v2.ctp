@@ -96,7 +96,7 @@ if (isset($data) && !empty($data)) {
   <?php if (!empty($langArr)) { ?>
     <div class="justify-content-center">
       <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Change Language<span class="caret"></span></button>
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><?php echo gs($txt, 79); ?><span class="caret"></span></button>
         <ul class="dropdown-menu flags">
           <?php foreach ($langArr as $a => $b) {
             echo "<li><a href='" . SITEURL . "product/$b' title=''><img src='".SITEURL."v2/flags/".strtolower($a).".svg' width='24' clas='img-thumbnail'> $a</a></li>";

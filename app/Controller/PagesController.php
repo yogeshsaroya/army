@@ -109,8 +109,11 @@ class PagesController extends AppController
 			$string = $this->String->find('list', array('order' => array('String.id' => 'ASC'), 'fields' => array('String.id', 'String.text')));
 			$tran = $this->Translation->find('list', array('conditions' => array('Translation.code' => $data['ItemDetail']['language']), 'fields' => array('Translation.string_id', 'Translation.name')));
 			$txt = array('String' => $string, 'Translation' => $tran);
-
-			$this->set(compact('page_meta', 'data', 'Adata', 'txt', 'slider', 'gallery', 'cat_back', 'catalytic', 'accessory', 'langArr'));
+			$act_lng = 'english';
+			if( isset($allLang[ $data['ItemDetail']['language'] ] ) ){
+				$act_lng = strtolower($allLang[$data['ItemDetail']['language']]);
+			}
+			$this->set(compact('page_meta', 'data', 'Adata', 'txt', 'slider', 'gallery', 'cat_back', 'catalytic', 'accessory', 'langArr','act_lng'));
 			//$this->render('product_v2');
 		} else {
 			$this->layout = '404';
