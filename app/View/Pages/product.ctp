@@ -36,10 +36,10 @@
     color: #fff;
   }
 
-  .justify-content-center .dropdown-menu li a {
-    font-weight: 500;}
+  .justify-content-center .dropdown-menu li a { font-weight: 500;}
     .flags {text-align: left; background-color: #fff; right: 0; left: unset;}
     .flags img {margin-right: 10px; max-width: 24px; width: 24px;}
+    .img_flag {max-width: 24px; width: 24px;}
 
     .flags li>a:hover {
     text-decoration: none;
@@ -98,7 +98,7 @@ if (isset($data) && !empty($data)) {
     <div class="justify-content-center">
       <div class="dropdown flags_menu">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-        <img src='<?php echo SITEURL;?>v2/flags/<?php echo $act_lng;?>.svg' width='24' clas='img-thumbnail'>
+        <img src='<?php echo SITEURL;?>v2/flags/<?php echo $act_lng;?>.svg' width='24' class='img-thumbnail img_flag'>
         <span class="caret"></span></button>
         <ul class="dropdown-menu flags">
           <?php foreach ($langArr as $a => $b) {
