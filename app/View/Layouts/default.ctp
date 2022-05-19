@@ -57,8 +57,9 @@
   <link rel="preload" href="<?php echo SITEURL; ?>css/bootstrap.min.css" as="style">
   <link rel="preload" href="<?php echo SITEURL; ?>bootstrap_3_3_6/css/ui.css" as="style">
   <?php echo $this->Html->css(['bootstrap.min.css?v='.rand(123,321), '/bootstrap_3_3_6/css/ui', 'theme', '/v2/style']);
-  echo $this->Html->script(['jquery.min.js', '/bootstrap_3_3_6/js/bootstrap.min.js', 'magnific/jquery.magnific-popup.min']);
   echo $this->fetch('cssTop');
+   
+  echo $this->Html->script(['jquery.min.js', '/bootstrap_3_3_6/js/bootstrap.min.js', 'magnific/jquery.magnific-popup.min']);
   echo $this->fetch('styleTop');
   echo $this->fetch('scriptTop');
 
