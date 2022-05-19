@@ -134,7 +134,8 @@ class CronsController extends AppController
 
         
         if($_SERVER['SERVER_NAME'] == 'armytrix.com'){
-            $this->pmt_curl('https://www.google.com/ping?sitemap='.SITEURL.'sitemap.xml');
+            $r = $this->pmt_curl('https://www.google.com/ping?sitemap='.SITEURL.'sitemap.xml');
+            ec($r);
         }
         echo "SITEMAP added : " . SITEURL . 'sitemap.xml';
     }
@@ -211,7 +212,8 @@ class CronsController extends AppController
         $writer->endDocument();
 
         if($_SERVER['SERVER_NAME'] == 'armytrix.com'){
-            $this->pmt_curl('https://www.google.com/ping?sitemap='.SITEURL.'sitemap_image.xml');
+            $r = $this->pmt_curl('https://www.google.com/ping?sitemap='.SITEURL.'sitemap_image.xml');
+            ec($r);
         }
         echo "SITEMAP added : " . SITEURL . 'sitemap_image.xml';
     }
