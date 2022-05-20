@@ -5,11 +5,11 @@
             <?php foreach ($data as $list) {
                 $video_webm = getCloudinary($list['VideoSlider']['video_for_pc'],'q_auto:best','.webm');
                 $video_mp4 = getCloudinary($list['VideoSlider']['video_for_pc'],'q_auto:best','.mp4');
-                $poster = getCloudinary($list['VideoSlider']['poster_for_pc'],'c_scale,q_auto:good,w_1920','.webp');
+                $poster = getCloudinary($list['VideoSlider']['poster_for_pc'],'c_scale,q_auto:eco,w_1920','.webp');
                 if (isset($IsMobile)) {
                     $video_webm = getCloudinary($list['VideoSlider']['video_for_mob'],'q_auto:best','.webm');
                     $video_mp4 = getCloudinary($list['VideoSlider']['video_for_mob'],'q_auto:best','.mp4');
-                    $poster = getCloudinary($list['VideoSlider']['poster_for_mob'],'c_scale,q_auto:good,w_720','.webp');
+                    $poster = getCloudinary($list['VideoSlider']['poster_for_mob'],'c_scale,q_auto:eco,w_720','.webp');
                 }
             ?>
                 <div>
@@ -77,7 +77,7 @@
     </section>
     <section class="fullWidthImageWrap pad60">
         <div class="fullWidthImages posRltv">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:good,w_1920/v1652852843/home/shop_luileo.webp" loading="lazy" alt="full Images">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,w_1920/v1652852843/home/shop_luileo.webp" loading="lazy" alt="full Images">
             <div class="contentWrap text-right bottom20">
                 <h2 class="clrWhite">SOUND KIT</h2>
                 <a href=" <?php echo SITEURL; ?>sound" class="linkBtn">DISCOVER MORE</a>
@@ -85,7 +85,7 @@
         </div>
 
         <div class="fullWidthImages posRltv">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:good,w_1920/v1651590180/home/performance.webp" loading="lazy" alt="full Images">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,w_1920/v1651590180/home/performance.webp" loading="lazy" alt="full Images">
             <div class="contentWrap text-right bottom20">
                 <h2 class="clrWhite">PERFORMANCE</h2>
                 <a href=" <?php echo SITEURL; ?>performance" class="linkBtn">DISCOVER MORE</a>
@@ -94,7 +94,7 @@
 
 
         <div class="fullWidthImages posRltv">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:good,w_1920/v1652852843/home/Sound__kit_snjzir.webp" loading="lazy" alt="full Images">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,w_1920/v1652852843/home/Sound__kit_snjzir.webp" loading="lazy" alt="full Images">
 
             <div class="contentWrap text-right bottom20">
                 <h2 class="clrWhite">APPAREL & ACCESSORIES</h2>
@@ -105,7 +105,7 @@
 
 
         <div class="fullWidthImages posRltv">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:good,w_1920/v1650865452/home/test_evkqle.webp" loading="lazy" alt="full Images">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,w_1920/v1650865452/home/test_evkqle.webp" loading="lazy" alt="full Images">
 
             <div class="contentWrap text-center top30">
                 <h2 class="clrWhite">WHAT DO THEY SAY ABOUT ARMYTRIX</h2>
@@ -133,7 +133,7 @@
     <!-- auto play video-->
 
     <div class="fullWidthImages posRltv">
-        <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:good,w_1920/v1650865453/home/main-end_liba2e.webp" loading="lazy" alt="">
+        <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,w_1920/v1650865453/home/main-end_liba2e.webp" loading="lazy" alt="">
 
     </div>
 
