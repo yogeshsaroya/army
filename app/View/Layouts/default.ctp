@@ -112,12 +112,8 @@
 
     });
   </script>
-
-  <?php
-
-  if ($this->params['controller'] == 'pages' && $this->params['action'] == 'home') {
-
-  ?>
+<?php if( isset($server_name) && $server_name == 'armytrix.com'){?>
+  <?php if ($this->params['controller'] == 'pages' && $this->params['action'] == 'home') {?>
     <!-- Global site tag (gtag.js) - Google Ads: 982355893 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-982355893"></script>
     <script>
@@ -173,6 +169,7 @@
 &noscript=1" />
   </noscript>
   <!-- End Facebook Pixel Code -->
+  <?php } ?>
 </head>
 <?php
 if ($this->params['controller'] == 'homes') {
@@ -207,6 +204,17 @@ if ($this->params['controller'] == 'homes') {
     });
   </script>
   <?php echo $this->fetch('scriptBottom'); ?>
+<?php if( isset($server_name) && $server_name == 'armytrix.com'){?>
+  <script type="text/javascript">
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-41602684-1', 'armytrix.com');
+		  ga('send', 'pageview');
+</script>
+<?php } ?>
 </body>
 
 </html>

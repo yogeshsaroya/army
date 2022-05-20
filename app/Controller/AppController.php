@@ -10,12 +10,14 @@ class AppController extends Controller
 
 	function beforeFilter()
 	{
+		$server_name = null;
 		$aR['created'] = DATE;
 		$aR['RstrictedCountry'] = $restricted = 2;
 		$this->Session->write('arm_co', $aR);
 		$this->Session->delete('arm_co');
 		$RstrictedCountry = $this->DATA->getrRstrictedCountry();
 		$server_name = $_SERVER['SERVER_NAME'];
+		
 		$co =  $this->Session->read('arm_co');
 		if (empty($co)) {
 			if ($server_name == 'localhost') {
@@ -109,7 +111,7 @@ class AppController extends Controller
 		if (!empty($cnd)) {
 			$getAll = $this->Cart->find('all', array('recursive' => 2, 'conditions' => $cnd));
 		}
-		$this->set(compact('getAll','guest_id'));
+		$this->set(compact('getAll','guest_id','server_name'));
 		
 	}
 
