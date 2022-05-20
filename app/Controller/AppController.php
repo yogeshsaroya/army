@@ -16,7 +16,7 @@ class AppController extends Controller
 		$this->Session->write('arm_co', $aR);
 		$this->Session->delete('arm_co');
 		$RstrictedCountry = $this->DATA->getrRstrictedCountry();
-		$server_name = $_SERVER['SERVER_NAME'];
+		$server_name = $_SERVER['HTTP_HOST'];
 		
 		$co =  $this->Session->read('arm_co');
 		if (empty($co)) {
