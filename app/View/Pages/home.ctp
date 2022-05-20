@@ -80,7 +80,7 @@ if(isset($IsMobile)){ $w = 'w_720'; }
     </section>
     <section class="fullWidthImageWrap pad60">
         <div class="fullWidthImages posRltv">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,<?php echo $w;?>/v1652852843/home/shop_luileo.webp" loading="lazy" alt="full Images">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,<?php echo $w;?>/v1652852843/home/shop_luileo.webp" loading="lazy" alt="full Images" width="100%">
             <div class="contentWrap text-right bottom20">
                 <h2 class="clrWhite">SOUND KIT</h2>
                 <a href=" <?php echo SITEURL; ?>sound" class="linkBtn">DISCOVER MORE</a>
@@ -88,7 +88,7 @@ if(isset($IsMobile)){ $w = 'w_720'; }
         </div>
 
         <div class="fullWidthImages posRltv">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,<?php echo $w;?>/v1651590180/home/performance.webp" loading="lazy" alt="full Images">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,<?php echo $w;?>/v1651590180/home/performance.webp" loading="lazy" alt="full Images" width="100%">
             <div class="contentWrap text-right bottom20">
                 <h2 class="clrWhite">PERFORMANCE</h2>
                 <a href=" <?php echo SITEURL; ?>performance" class="linkBtn">DISCOVER MORE</a>
@@ -97,7 +97,7 @@ if(isset($IsMobile)){ $w = 'w_720'; }
 
 
         <div class="fullWidthImages posRltv">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,<?php echo $w;?>/v1652852843/home/Sound__kit_snjzir.webp" loading="lazy" alt="full Images">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,<?php echo $w;?>/v1652852843/home/Sound__kit_snjzir.webp" loading="lazy" alt="full Images" width="100%">
 
             <div class="contentWrap text-right bottom20">
                 <h2 class="clrWhite">APPAREL & ACCESSORIES</h2>
@@ -108,7 +108,7 @@ if(isset($IsMobile)){ $w = 'w_720'; }
 
 
         <div class="fullWidthImages posRltv">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,<?php echo $w;?>/v1650865452/home/test_evkqle.webp" loading="lazy" alt="full Images">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,<?php echo $w;?>/v1650865452/home/test_evkqle.webp" loading="lazy" alt="full Images" width="100%">
 
             <div class="contentWrap text-center top30">
                 <h2 class="clrWhite">WHAT DO THEY SAY ABOUT ARMYTRIX</h2>
