@@ -20,7 +20,6 @@ class CronsController extends AppController
 
     public function index()
     {
-        ec($_SERVER);
     }
 
     /**
@@ -133,8 +132,7 @@ class CronsController extends AppController
         $writer->endElement();
         $writer->endDocument();
 
-        
-        if($_SERVER['SERVER_NAME'] == 'armytrix.com'){
+        if( in_array($_SERVER['SERVER_NAME'],['armytrix.com','www.armytrix.com'])  ){
             $r = $this->pmt_curl('https://www.google.com/ping?sitemap='.SITEURL.'sitemap.xml');
             ec($r);
         }
@@ -212,7 +210,7 @@ class CronsController extends AppController
         $writer->endElement();
         $writer->endDocument();
 
-        if($_SERVER['SERVER_NAME'] == 'armytrix.com'){
+        if( in_array($_SERVER['SERVER_NAME'],['armytrix.com','www.armytrix.com'])  ){
             $r = $this->pmt_curl('https://www.google.com/ping?sitemap='.SITEURL.'sitemap_image.xml');
             ec($r);
         }

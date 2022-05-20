@@ -112,7 +112,7 @@
 
     });
   </script>
-<?php if( isset($server_name) && $server_name == 'armytrix.com'){?>
+<?php if( isset($server_name) && in_array($server_name,['armytrix.com','www.armytrix.com'])  ){?>
   <?php if ($this->params['controller'] == 'pages' && $this->params['action'] == 'home') {?>
     <!-- Global site tag (gtag.js) - Google Ads: 982355893 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-982355893"></script>
@@ -204,7 +204,7 @@ if ($this->params['controller'] == 'homes') {
     });
   </script>
   <?php echo $this->fetch('scriptBottom'); ?>
-<?php if( isset($server_name) && $server_name == 'armytrix.com'){?>
+<?php if( isset($server_name) && in_array($server_name,['armytrix.com','www.armytrix.com']) ){?>
   <script type="text/javascript">
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
