@@ -20,6 +20,7 @@ class CronsController extends AppController
 
     public function index()
     {
+        ec($_SERVER);
     }
 
     /**
