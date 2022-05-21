@@ -2,29 +2,29 @@
 echo $this->html->script(['https://kit.fontawesome.com/acae9edaf3.js'], ['block' => 'scriptTop']);
 $video = 'https://res.cloudinary.com/armytrix/video/upload/v1652864636/motorcycle/sound_kit/spec1_XSR900-landscape_ne1pmj.mp4';
 $videoWebm = 'https://res.cloudinary.com/armytrix/video/upload/v1652864636/motorcycle/sound_kit/spec1_XSR900-landscape_ne1pmj.webm';
-$poster = 'https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652759607/motorcycle/sound_kit/XSR900_landscape_ibf79u.webp';
+$poster = 'https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1920/v1652759607/motorcycle/sound_kit/XSR900_landscape_ibf79u.webp';
 
 
 $video1 = 'https://res.cloudinary.com/armytrix/video/upload/q_auto:best/v1652853495/motorcycle/sound_kit/RSV4_armytrix_exhaust-landsape_qyydgk.mp4';
 $video1Webm = 'https://res.cloudinary.com/armytrix/video/upload/q_auto:best/v1652853495/motorcycle/sound_kit/RSV4_armytrix_exhaust-landsape_qyydgk.webm';
-$poster1 = 'https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,h_1080,w_1920/v1652759119/motorcycle/image/RSV4_armytrix_exhaust-landsape_itnjvr.webp';
+$poster1 = 'https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,h_1080,w_1920/v1652759119/motorcycle/image/RSV4_armytrix_exhaust-landsape_itnjvr.webp';
 
 $video2 = 'https://res.cloudinary.com/armytrix/video/upload/q_auto:best/v1652853493/motorcycle/sound_kit/XTM1920-landscape_frj4zr.mp4';
 $video2Webm = 'https://res.cloudinary.com/armytrix/video/upload/q_auto:best/v1652853493/motorcycle/sound_kit/XTM1920-landscape_frj4zr.webm';
-$poster2 = 'https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,h_1080,w_1920/v1652759119/motorcycle/image/KTM1920_armytrix_exhaust-landscape_hwrhvf.webp';
+$poster2 = 'https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,h_1080,w_1920/v1652759119/motorcycle/image/KTM1920_armytrix_exhaust-landscape_hwrhvf.webp';
 if (isset($IsMobile)) {
     $video = 'https://res.cloudinary.com/armytrix/video/upload/q_auto:best/v1652853470/motorcycle/sound_kit/XSR900-portrait_ixw54k.mp4';
     $videoWebm = 'https://res.cloudinary.com/armytrix/video/upload/q_auto:best/v1652853470/motorcycle/sound_kit/XSR900-portrait_ixw54k.webm';
-    $poster = 'https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_720/v1652759607/motorcycle/sound_kit/XSR900_portrait_y1jddd.webp';
+    $poster = 'https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_720/v1652759607/motorcycle/sound_kit/XSR900_portrait_y1jddd.webp';
 
     
     $video1 = 'https://res.cloudinary.com/armytrix/video/upload/q_auto:best/v1652853492/motorcycle/sound_kit/RSV4_armytrix_exhaust-portrait_d2kb41.mp4';
     $video1Webm = 'https://res.cloudinary.com/armytrix/video/upload/q_auto:best/v1652853492/motorcycle/sound_kit/RSV4_armytrix_exhaust-portrait_d2kb41.webm';
-    $poster1 = 'https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_720/v1652759120/motorcycle/image/RSV4_armytrix_exhaust-portrait_hlpxzl.webp';
+    $poster1 = 'https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_720/v1652759120/motorcycle/image/RSV4_armytrix_exhaust-portrait_hlpxzl.webp';
 
     $video2 = 'https://res.cloudinary.com/armytrix/video/upload/q_auto:best/v1652853491/motorcycle/sound_kit/XTM192-portrait_mda97w.mp4';
     $video2Webm = 'https://res.cloudinary.com/armytrix/video/upload/q_auto:best/v1652853491/motorcycle/sound_kit/XTM192-portrait_mda97w.webm';
-    $poster2 = 'https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_720/v1652759118/motorcycle/image/KTM1920_armytrix_exhaust-portrait_igvdgu.webp';
+    $poster2 = 'https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_720/v1652759118/motorcycle/image/KTM1920_armytrix_exhaust-portrait_igvdgu.webp';
 }
 ?>
 <?php $this->append('meta_data');?>
@@ -52,8 +52,8 @@ if (isset($IsMobile)) {
     <section class="fullWidthImageWrap pad60">
         <h1 class="head_1">The first ever valvetronic motorcycle exhaust in the world</h1>
         <h2 class="head_2">APRILIA RSV4 RF 2017 with ARMYTRIX Full Evolution Line Valvetronic Exhaust System</h2>
-        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/c_scale,q_auto:best,w_1920/v1652759121/motorcycle/image/RSV4_armytrix_exhaust-2_cirlcn.webp" loading="lazy" alt=""></div>
-        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/c_scale,q_auto:best,w_1920/v1652759119/motorcycle/image/RSV4_armytrix_exhaust-landsape_itnjvr.webp" loading="lazy" alt=""></div>
+        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1920/fl_progressive,c_scale,q_auto:best,w_1920/v1652759121/motorcycle/image/RSV4_armytrix_exhaust-2_cirlcn.webp" loading="lazy" alt=""></div>
+        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1920/fl_progressive,c_scale,q_auto:best,w_1920/v1652759119/motorcycle/image/RSV4_armytrix_exhaust-landsape_itnjvr.webp" loading="lazy" alt=""></div>
 
         <div class="sec_1">
             <h2 class="head_3">MOTORCYCLE VALVETRONIC EXHAUST-HOW IT WORKS</h2>
@@ -86,10 +86,10 @@ if (isset($IsMobile)) {
                 <p>The mobile APP of ARMYTRIX can connect to the OBDII device via Bluetooth, and be used to as a remote controller to easily control valve switch and provide you with real-time monitoring of variuos values of your car, such as rotate speed, speed, fuel, etc. The rpm value in Auto mode can be set to open valves.</p>
                 <div class="row mt-3 mobile50 app_pic">
                     <div class="col-sm-6 text-center">
-                        <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/c_scale,q_auto:best,w_300/v1651403044/product/product-app-1_sgfbbv.webp" loading="lazy" alt="App">
+                        <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1920/fl_progressive,c_scale,q_auto:best,w_300/v1651403044/product/product-app-1_sgfbbv.webp" loading="lazy" alt="App">
                     </div>
                     <div class="col-sm-6 text-center">
-                        <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/c_scale,q_auto:best,w_300/v1651403044/product/product-app2_aevq7p.webp" loading="lazy" alt="App">
+                        <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1920/fl_progressive,c_scale,q_auto:best,w_300/v1651403044/product/product-app2_aevq7p.webp" loading="lazy" alt="App">
                     </div>
 
                 </div>
@@ -98,7 +98,7 @@ if (isset($IsMobile)) {
                 <h3>GAIN MORE POWER, LOSE NO TORQUE</h3>
                 <p>Depending on the modifications and tunes you have, opening valves allow the exhaust gas to flow more freely, And with the valves being closed, it can retain the backpressure at low rpm and maintain the torque that is usually lost with straight piped exhaust systems.</p>
             </div>
-            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/c_scale,q_auto:best,w_980/v1652417585/motorcycle/image/bike_module_vfhnvr.webp" loading="lazy" alt="">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1920/fl_progressive,c_scale,q_auto:best,w_980/v1652417585/motorcycle/image/bike_module_vfhnvr.webp" loading="lazy" alt="">
             
             <div class="sub_head_5">
                 <h2 class="head_5">A Stunning Custom Motorcycle - Masterpiece by ROUGH CRAFTS <br> YAMAHA XSR900 with ARMYTRIX Valvetronic Exhaust</h2>
@@ -126,20 +126,20 @@ if (isset($IsMobile)) {
         </div>
     </section>
     <section class="fullWidthImageWrap pad60">
-        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652760100/motorcycle/image/armytrix_xsr900-13_ymfngg.webp" loading="lazy" alt=""></div>
-        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652760101/motorcycle/image/armytrix_xsr900-15_phssjo.webp" loading="lazy" alt=""></div>
-        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652760101/motorcycle/image/armytrix_xsr900-16_jzzrlf.webp" loading="lazy" alt=""></div>
-        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652760100/motorcycle/image/armytrix_xsr900-12_c0tvuw.webp" loading="lazy" alt=""></div>
-        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652760100/motorcycle/image/armytrix_xsr900-11_rhbhdd.webp" loading="lazy" alt=""></div>
-        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652863609/motorcycle/image/ROUGH_CRAFTS_XSR900_ARMYTRIX_exhaust_-7_zvnr2i.webp" loading="lazy" alt=""></div>
-        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652863274/motorcycle/image/ROUGH_CRAFTS_XSR900_ARMYTRIX_exhaust_-9_nnc11e.webp" loading="lazy" alt=""></div>
-        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652760104/motorcycle/image/ROUGH_CRAFTS_XSR900_ARMYTRIX_exhaust_-2_wmtv3j.webp" loading="lazy" alt=""></div>
-        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652760104/motorcycle/image/ROUGH_CRAFTS_XSR900_ARMYTRIX_exhaust_-5_pnwlfh.webp" loading="lazy" alt=""></div>
-        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652760104/motorcycle/image/ROUGH_CRAFTS_XSR900_ARMYTRIX_exhaust_-3_wztd7u.webp" loading="lazy" alt=""></div>
-        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652760104/motorcycle/image/ROUGH_CRAFTS_XSR900_ARMYTRIX_exhaust_-5_pnwlfh.webp" loading="lazy" alt=""></div>
-        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652760103/motorcycle/image/ROUGH_CRAFTS_XSR900_ARMYTRIX_exhaust_-6_ul8pdm.webp" loading="lazy" alt=""></div>
-        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652863609/motorcycle/image/ROUGH_CRAFTS_XSR900_ARMYTRIX_exhaust_-7_zvnr2i.webp" loading="lazy" alt=""></div>
-        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652760104/motorcycle/image/ROUGH_CRAFTS_XSR900_ARMYTRIX_exhaust_-8_dvw4hj.webp" loading="lazy" alt=""></div>
+        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1920/v1652760100/motorcycle/image/armytrix_xsr900-13_ymfngg.webp" loading="lazy" alt=""></div>
+        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1920/v1652760101/motorcycle/image/armytrix_xsr900-15_phssjo.webp" loading="lazy" alt=""></div>
+        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1920/v1652760101/motorcycle/image/armytrix_xsr900-16_jzzrlf.webp" loading="lazy" alt=""></div>
+        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1920/v1652760100/motorcycle/image/armytrix_xsr900-12_c0tvuw.webp" loading="lazy" alt=""></div>
+        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1920/v1652760100/motorcycle/image/armytrix_xsr900-11_rhbhdd.webp" loading="lazy" alt=""></div>
+        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1920/v1652863609/motorcycle/image/ROUGH_CRAFTS_XSR900_ARMYTRIX_exhaust_-7_zvnr2i.webp" loading="lazy" alt=""></div>
+        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1920/v1652863274/motorcycle/image/ROUGH_CRAFTS_XSR900_ARMYTRIX_exhaust_-9_nnc11e.webp" loading="lazy" alt=""></div>
+        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1920/v1652760104/motorcycle/image/ROUGH_CRAFTS_XSR900_ARMYTRIX_exhaust_-2_wmtv3j.webp" loading="lazy" alt=""></div>
+        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1920/v1652760104/motorcycle/image/ROUGH_CRAFTS_XSR900_ARMYTRIX_exhaust_-5_pnwlfh.webp" loading="lazy" alt=""></div>
+        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1920/v1652760104/motorcycle/image/ROUGH_CRAFTS_XSR900_ARMYTRIX_exhaust_-3_wztd7u.webp" loading="lazy" alt=""></div>
+        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1920/v1652760104/motorcycle/image/ROUGH_CRAFTS_XSR900_ARMYTRIX_exhaust_-5_pnwlfh.webp" loading="lazy" alt=""></div>
+        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1920/v1652760103/motorcycle/image/ROUGH_CRAFTS_XSR900_ARMYTRIX_exhaust_-6_ul8pdm.webp" loading="lazy" alt=""></div>
+        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1920/v1652863609/motorcycle/image/ROUGH_CRAFTS_XSR900_ARMYTRIX_exhaust_-7_zvnr2i.webp" loading="lazy" alt=""></div>
+        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1920/v1652760104/motorcycle/image/ROUGH_CRAFTS_XSR900_ARMYTRIX_exhaust_-8_dvw4hj.webp" loading="lazy" alt=""></div>
         
         
         <div class="ot_head">
@@ -157,8 +157,8 @@ if (isset($IsMobile)) {
             <i class="fa_new fa-solid fa-volume-xmark" id="sound_3" onclick="sound('sound_vid_3','sound_3');"></i>  
         </div>
         </div>
-        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652759119/motorcycle/image/KTM_1920_armytrix_exhaust-1_ijdfm8.webp" loading="lazy" alt=""></div>
-        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1920/v1652759119/motorcycle/image/KTM1920_armytrix_exhaust-2_h7s4h7.webp" loading="lazy" alt=""></div>
+        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1920/v1652759119/motorcycle/image/KTM_1920_armytrix_exhaust-1_ijdfm8.webp" loading="lazy" alt=""></div>
+        <div class="fullWidthImages posRltv"><img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1920/v1652759119/motorcycle/image/KTM1920_armytrix_exhaust-2_h7s4h7.webp" loading="lazy" alt=""></div>
         <h2 class="mg-tb-50">Stay Tune for ARMYTRIX motorcycle Valvetronic Exhaust projects</h2>
     </section>
 </div>

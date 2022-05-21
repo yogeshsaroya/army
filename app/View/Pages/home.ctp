@@ -4,10 +4,10 @@ $this->end(); ?>
 
 <?php $this->append('meta_data');
 if (isset($data[0]['VideoSlider']['poster_for_pc']) && !empty($data[0]['VideoSlider']['poster_for_pc'])) {
-    $pre_image = getCloudinary($data[0]['VideoSlider']['poster_for_pc'], 'c_scale,q_auto:eco,w_1920', '.webp');
+    $pre_image = getCloudinary($data[0]['VideoSlider']['poster_for_pc'], 'fl_progressive,c_scale,q_auto:eco,w_1920', '.webp');
 }
 if (isset($IsMobile) && isset($data[0]['VideoSlider']['poster_for_mob']) && !empty($data[0]['VideoSlider']['poster_for_mob']) ) {
-    $pre_image = getCloudinary($data[0]['VideoSlider']['poster_for_mob'], 'c_scale,q_auto:eco,w_720', '.webp');
+    $pre_image = getCloudinary($data[0]['VideoSlider']['poster_for_mob'], 'fl_progressive,c_scale,q_auto:eco,w_720', '.webp');
 }
 if(isset($pre_image)){
 echo '<link rel="preload" as="image" href="'.$pre_image.'" />';
@@ -28,11 +28,11 @@ if (isset($IsMobile)) {
             <?php foreach ($data as $list) {
                 $video_webm = getCloudinary($list['VideoSlider']['video_for_pc'], 'q_auto:best', '.webm');
                 $video_mp4 = getCloudinary($list['VideoSlider']['video_for_pc'], 'q_auto:best', '.mp4');
-                $poster = getCloudinary($list['VideoSlider']['poster_for_pc'], 'c_scale,q_auto:eco,w_1920', '.webp');
+                $poster = getCloudinary($list['VideoSlider']['poster_for_pc'], 'fl_progressive,c_scale,q_auto:eco,w_1920', '.webp');
                 if (isset($IsMobile)) {
                     $video_webm = getCloudinary($list['VideoSlider']['video_for_mob'], 'q_auto:best', '.webm');
                     $video_mp4 = getCloudinary($list['VideoSlider']['video_for_mob'], 'q_auto:best', '.mp4');
-                    $poster = getCloudinary($list['VideoSlider']['poster_for_mob'], 'c_scale,q_auto:eco,w_720', '.webp');
+                    $poster = getCloudinary($list['VideoSlider']['poster_for_mob'], 'fl_progressive,c_scale,q_auto:eco,w_720', '.webp');
                 }
             ?>
                 <div>
@@ -100,7 +100,7 @@ if (isset($IsMobile)) {
     </section>
     <section class="fullWidthImageWrap pad60">
         <div class="fullWidthImages posRltv">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,<?php echo $w; ?>/v1652852843/home/shop_luileo.webp" loading="lazy" alt="full Images" <?php echo $img_w; ?>>
+            <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:eco,<?php echo $w; ?>/v1652852843/home/shop_luileo.webp" loading="lazy" alt="full Images" <?php echo $img_w; ?>>
             <div class="contentWrap text-right bottom20">
                 <h2 class="clrWhite">SOUND KIT</h2>
                 <a href=" <?php echo SITEURL; ?>sound" class="linkBtn">DISCOVER MORE</a>
@@ -108,7 +108,7 @@ if (isset($IsMobile)) {
         </div>
 
         <div class="fullWidthImages posRltv">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,<?php echo $w; ?>/v1651590180/home/performance.webp" loading="lazy" alt="full Images" <?php echo $img_w; ?>>
+            <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:eco,<?php echo $w; ?>/v1651590180/home/performance.webp" loading="lazy" alt="full Images" <?php echo $img_w; ?>>
             <div class="contentWrap text-right bottom20">
                 <h2 class="clrWhite">PERFORMANCE</h2>
                 <a href=" <?php echo SITEURL; ?>performance" class="linkBtn">DISCOVER MORE</a>
@@ -117,7 +117,7 @@ if (isset($IsMobile)) {
 
 
         <div class="fullWidthImages posRltv">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,<?php echo $w; ?>/v1652852843/home/Sound__kit_snjzir.webp" loading="lazy" alt="full Images" <?php echo $img_w; ?>>
+            <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:eco,<?php echo $w; ?>/v1652852843/home/Sound__kit_snjzir.webp" loading="lazy" alt="full Images" <?php echo $img_w; ?>>
 
             <div class="contentWrap text-right bottom20">
                 <h2 class="clrWhite">APPAREL & ACCESSORIES</h2>
@@ -128,7 +128,7 @@ if (isset($IsMobile)) {
 
 
         <div class="fullWidthImages posRltv">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,<?php echo $w; ?>/v1650865452/home/test_evkqle.webp" loading="lazy" alt="full Images" <?php echo $img_w; ?>>
+            <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:eco,<?php echo $w; ?>/v1650865452/home/test_evkqle.webp" loading="lazy" alt="full Images" <?php echo $img_w; ?>>
 
             <div class="contentWrap text-center top30">
                 <h2 class="clrWhite">WHAT DO THEY SAY ABOUT ARMYTRIX</h2>
@@ -156,7 +156,7 @@ if (isset($IsMobile)) {
     <!-- auto play video-->
 
     <div class="fullWidthImages posRltv">
-        <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,<?php echo $w; ?>/v1650865453/home/main-end_liba2e.webp" loading="lazy" alt="" <?php echo $img_w; ?>>
+        <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:eco,<?php echo $w; ?>/v1650865453/home/main-end_liba2e.webp" loading="lazy" alt="" <?php echo $img_w; ?>>
 
     </div>
 

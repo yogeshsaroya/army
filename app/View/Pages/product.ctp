@@ -1,7 +1,7 @@
 <?php echo $this->Html->css(["/v2/product_page"], ['block' => 'cssTop']); ?>
 <?php $this->append('meta_data'); ?>
-<link rel="preload" as="image" href="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651592728/product/mouse-hover-b2_tsorh4_vjh0c3.webp" />
-<link rel="preload" as="image" href="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651514055/product/mouse-hover-b1_nt16rs.webp" />
+<link rel="preload" as="image" href="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1600/v1651592728/product/mouse-hover-b2_tsorh4_vjh0c3.webp" />
+<link rel="preload" as="image" href="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1600/v1651514055/product/mouse-hover-b1_nt16rs.webp" />
 <style>
   iframe .ytp-chrome-top.ytp-show-cards-title {
     display: none !important;
@@ -208,7 +208,7 @@ if (isset($data) && !empty($data)) {
           </ul>
         </div>
       </div>
-      <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:best,w_1600/v1651574852/product/mouse-hover-b1_nt16rs.webp" alt="" class="img-wd-100" id="modes_img" />
+      <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1600/v1651574852/product/mouse-hover-b1_nt16rs.webp" alt="" class="img-wd-100" id="modes_img" />
 
     </div>
     <div class="text-left">
