@@ -62,7 +62,13 @@
   <link rel="preload" href="<?php echo SITEURL; ?>css/theme.css" as="style">
   <link rel="preload" href="<?php echo SITEURL; ?>/v2/style.css" as="style">
   
-  <?php echo $this->Html->css(['bootstrap.min','theme', '/v2/style']);
+  <?php 
+  echo $this->element('style/bootstrap');
+  echo $this->element('style/theme');
+  echo $this->element('style/style');
+
+
+
   echo $this->fetch('cssTop');
    
   echo $this->Html->script(['jquery.min.js', '/bootstrap_3_3_6/js/bootstrap.min.js', 'magnific/jquery.magnific-popup.min']);
