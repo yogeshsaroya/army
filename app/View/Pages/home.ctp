@@ -16,8 +16,10 @@ $this->end(); ?>
 
 <?php 
 $w = 'w_1920';
+$img_w = 'width="1920" height="1080"';
 if (isset($IsMobile)) {
     $w = 'w_720';
+    $img_w = 'width="720" height="480"';
 }
 ?>
 <div id="v2_home">
@@ -98,7 +100,7 @@ if (isset($IsMobile)) {
     </section>
     <section class="fullWidthImageWrap pad60">
         <div class="fullWidthImages posRltv">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,<?php echo $w; ?>/v1652852843/home/shop_luileo.webp" loading="lazy" alt="full Images" width="100%" height="auto">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,<?php echo $w; ?>/v1652852843/home/shop_luileo.webp" loading="lazy" alt="full Images" <?php echo $img_w; ?>>
             <div class="contentWrap text-right bottom20">
                 <h2 class="clrWhite">SOUND KIT</h2>
                 <a href=" <?php echo SITEURL; ?>sound" class="linkBtn">DISCOVER MORE</a>
@@ -106,7 +108,7 @@ if (isset($IsMobile)) {
         </div>
 
         <div class="fullWidthImages posRltv">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,<?php echo $w; ?>/v1651590180/home/performance.webp" loading="lazy" alt="full Images" width="100%" height="auto">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,<?php echo $w; ?>/v1651590180/home/performance.webp" loading="lazy" alt="full Images" <?php echo $img_w; ?>>
             <div class="contentWrap text-right bottom20">
                 <h2 class="clrWhite">PERFORMANCE</h2>
                 <a href=" <?php echo SITEURL; ?>performance" class="linkBtn">DISCOVER MORE</a>
@@ -115,7 +117,7 @@ if (isset($IsMobile)) {
 
 
         <div class="fullWidthImages posRltv">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,<?php echo $w; ?>/v1652852843/home/Sound__kit_snjzir.webp" loading="lazy" alt="full Images" width="100%" height="auto">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,<?php echo $w; ?>/v1652852843/home/Sound__kit_snjzir.webp" loading="lazy" alt="full Images" <?php echo $img_w; ?>>
 
             <div class="contentWrap text-right bottom20">
                 <h2 class="clrWhite">APPAREL & ACCESSORIES</h2>
@@ -126,7 +128,7 @@ if (isset($IsMobile)) {
 
 
         <div class="fullWidthImages posRltv">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,<?php echo $w; ?>/v1650865452/home/test_evkqle.webp" loading="lazy" alt="full Images" width="100%" height="auto">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,<?php echo $w; ?>/v1650865452/home/test_evkqle.webp" loading="lazy" alt="full Images" <?php echo $img_w; ?>>
 
             <div class="contentWrap text-center top30">
                 <h2 class="clrWhite">WHAT DO THEY SAY ABOUT ARMYTRIX</h2>
@@ -144,7 +146,7 @@ if (isset($IsMobile)) {
             <h3>It's Your Turn. Create Your Own Story.</h3>
         </div>
         <div class="posRltv">
-            <video width="100%" height="auto" id="video_5" playsinline autoplay loop muted>
+            <video <?php echo $img_w; ?> id="video_5" playsinline autoplay loop muted>
                 <source src="https://res.cloudinary.com/armytrix/video/upload/q_auto:good/v1650883576/home/armytrix-trailer.webm" type="video/webm">
                 <source src="https://res.cloudinary.com/armytrix/video/upload/q_auto:good/v1650883576/home/armytrix-trailer.mp4" type="video/mp4">
                 Your browser does not support the video tag.
