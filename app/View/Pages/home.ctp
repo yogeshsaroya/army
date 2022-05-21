@@ -156,7 +156,7 @@ if (isset($IsMobile)) {
     <!-- auto play video-->
 
     <div class="fullWidthImages posRltv">
-        <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,<?php echo $w; ?>/v1650865453/home/main-end_liba2e.webp" loading="lazy" alt="">
+        <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:eco,<?php echo $w; ?>/v1650865453/home/main-end_liba2e.webp" loading="lazy" alt="" <?php echo $img_w; ?>>
 
     </div>
 

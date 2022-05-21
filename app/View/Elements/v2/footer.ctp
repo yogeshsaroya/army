@@ -80,7 +80,7 @@
 				<p><?php echo DATE('Y')?>© <strong>ARMYTRIX CORPORATION</strong></p>
 			</div>
 			<div class="col-sm-4 text-center">
-				<a href="<?php echo SITEURL;?>" class="logoWrap"><img src="<?php echo SITEURL; ?>v2/img/logo_armytrix_main.png" alt="main logo" loading="lazy" width="100" height="100"></a>
+				<a href="<?php echo SITEURL;?>" class="logoWrap"><img src="<?php echo SITEURL; ?>v2/img/logo_armytrix_main.png" alt="main logo" loading="lazy" width="250" height="47"></a>
 			</div>
 			<div class="col-sm-4 text-center text-sm-right">
 				<p>FOR U.S. ORDERS CALL <a href="tel:4803463875">480-346-3875</a></p>
