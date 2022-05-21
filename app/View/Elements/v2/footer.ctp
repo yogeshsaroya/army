@@ -36,7 +36,7 @@
 			<li>
 				<a href="https://www.facebook.com/ARMYTRIX" target="blank">
 					<i>
-						<img src="<?php echo SITEURL; ?>v2/img/icon-Facebook.png" alt="" loading="lazy">
+						<img src="<?php echo SITEURL; ?>v2/img/icon-Facebook.png" alt="" loading="lazy" width="100%" height="auto">
 					</i>
 					<span>Facebook</span>
 				</a>
@@ -44,7 +44,7 @@
 			<li>
 				<a href="https://www.youtube.com/user/ARMYTRIX" target="blank">
 					<i>
-						<img src="<?php echo SITEURL; ?>v2/img/icon-youtube.png" alt="" loading="lazy">
+						<img src="<?php echo SITEURL; ?>v2/img/icon-youtube.png" alt="" loading="lazy" width="100%" height="auto">
 					</i>
 					<span>Youtube</span>
 				</a>
@@ -52,7 +52,7 @@
 			<li>
 				<a href="https://www.instagram.com/armytrix_official" target="blank">
 					<i>
-						<img src="<?php echo SITEURL; ?>v2/img/icon-instagram.png" alt="" loading="lazy">
+						<img src="<?php echo SITEURL; ?>v2/img/icon-instagram.png" alt="" loading="lazy" width="100%" height="auto">
 					</i>
 					<span>Instagram</span>
 				</a>
@@ -60,15 +60,15 @@
 			<li>
 				<a href="https://apps.apple.com/us/app/armytrix/id990665141" target="blank">
 					<i>
-						<img src="<?php echo SITEURL; ?>v2/img/icon-downloadApp.png" alt="Download App" loading="lazy">
+						<img src="<?php echo SITEURL; ?>v2/img/icon-downloadApp.png" alt="Download App" loading="lazy" width="100%" height="auto">
 					</i>
 					<span>Download App</span>
 				</a>
 			</li>
 			<li class="d-flex justfy-content-end">
-				<span><img src="https://res.cloudinary.com/armytrix/image/upload/v1650865451/home/paypal-logo_xs427c.webp" alt="pay pal" loading="lazy"></span>
-				<span><img src="https://res.cloudinary.com/armytrix/image/upload/v1650884862/home/fedex_blaw0r.webp" alt="fedEx" loading="lazy"></span>
-				<span><img src="https://res.cloudinary.com/armytrix/image/upload/v1650884559/home/dhl-logo_uzvlhp.webp" alt="DHL" loading="lazy"></span>
+				<span><img src="https://res.cloudinary.com/armytrix/image/upload/v1650865451/home/paypal-logo_xs427c.webp" alt="pay pal" loading="lazy" width="100%" height="auto"></span>
+				<span><img src="https://res.cloudinary.com/armytrix/image/upload/v1650884862/home/fedex_blaw0r.webp" alt="fedEx" loading="lazy" width="100%" height="auto"></span>
+				<span><img src="https://res.cloudinary.com/armytrix/image/upload/v1650884559/home/dhl-logo_uzvlhp.webp" alt="DHL" loading="lazy" width="100%" height="auto"></span>
 			</li>
 		</ul>
 	</div>
@@ -80,7 +80,7 @@
 				<p><?php echo DATE('Y')?>© <strong>ARMYTRIX CORPORATION</strong></p>
 			</div>
 			<div class="col-sm-4 text-center">
-				<a href="<?php echo SITEURL;?>" class="logoWrap"><img src="<?php echo SITEURL; ?>v2/img/logo_armytrix_main.png" alt="main logo" loading="lazy"></a>
+				<a href="<?php echo SITEURL;?>" class="logoWrap"><img src="<?php echo SITEURL; ?>v2/img/logo_armytrix_main.png" alt="main logo" loading="lazy" width="100%" height="auto"></a>
 			</div>
 			<div class="col-sm-4 text-center text-sm-right">
 				<p>FOR U.S. ORDERS CALL <a href="tel:4803463875">480-346-3875</a></p>
