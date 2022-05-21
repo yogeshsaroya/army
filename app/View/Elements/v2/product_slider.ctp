@@ -1,4 +1,7 @@
-<?php echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme'], ['block' => 'cssTop']); ?>
+<?php $this->append('styleTop');  
+echo $this->element('style/slick');
+$this->end(); ?>
+
 <div class="whiteHeader headSpac mx-640" id="product_slider">
     <?php
     if (isset($slider) && !empty($slider)) {
