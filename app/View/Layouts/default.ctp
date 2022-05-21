@@ -59,6 +59,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
 
   <link rel="preload" href="<?php echo SITEURL; ?>css/bootstrap.min.css" as="style">
+  <link rel="preload" href="<?php echo SITEURL; ?>css/theme.css" as="style">
+  <link rel="preload" href="<?php echo SITEURL; ?>/v2/style.css" as="style">
   
   <?php echo $this->Html->css(['bootstrap.min','theme', '/v2/style']);
   echo $this->fetch('cssTop');
