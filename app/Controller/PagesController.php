@@ -148,7 +148,13 @@ class PagesController extends AppController
 		];
 		$this->loadModel('OurDealer');
 		$data = $this->OurDealer->find('all', array('limit' => 100, 'conditions' => array('OurDealer.status' => 1), 'order' => array('OurDealer.title' => 'ASC')));
-		$co = $this->OurDealer->find('list', array('group' => array('OurDealer.country'), 'order' => array('OurDealer.country' => 'ASC'), 'fields' => array('id', 'country')));
+		$c_list = $this->OurDealer->find('all', array('order' => array('OurDealer.country' => 'ASC'), 'fields' => array('DISTINCT (OurDealer.country)')));
+		$co = [];
+		if(!empty($c_list)){
+			foreach($c_list as $list ){
+				$co[] = $list['OurDealer']['country'];
+			}
+		}
 		$this->set(compact('page_meta', 'data', 'co'));
 	}
 

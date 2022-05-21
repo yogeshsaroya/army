@@ -54,9 +54,13 @@
   <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
   <META HTTP-EQUIV="Expires" CONTENT="-1">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+
   <link rel="preload" href="<?php echo SITEURL; ?>css/bootstrap.min.css" as="style">
-  <link rel="preload" href="<?php echo SITEURL; ?>bootstrap_3_3_6/css/ui.css" as="style">
-  <?php echo $this->Html->css(['bootstrap.min', '/bootstrap_3_3_6/css/ui', 'theme', '/v2/style']);
+  
+  <?php echo $this->Html->css(['bootstrap.min','theme', '/v2/style']);
   echo $this->fetch('cssTop');
    
   echo $this->Html->script(['jquery.min.js', '/bootstrap_3_3_6/js/bootstrap.min.js', 'magnific/jquery.magnific-popup.min']);
