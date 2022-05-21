@@ -66,9 +66,9 @@
 				</a>
 			</li>
 			<li class="d-flex justfy-content-end">
-				<span><img src="https://res.cloudinary.com/armytrix/image/upload/v1650865451/home/paypal-logo_xs427c.webp" alt="pay pal" loading="lazy" width="100%" height="auto"></span>
-				<span><img src="https://res.cloudinary.com/armytrix/image/upload/v1650884862/home/fedex_blaw0r.webp" alt="fedEx" loading="lazy" width="100%" height="auto"></span>
-				<span><img src="https://res.cloudinary.com/armytrix/image/upload/v1650884559/home/dhl-logo_uzvlhp.webp" alt="DHL" loading="lazy" width="100%" height="auto"></span>
+				<span><img src="https://res.cloudinary.com/armytrix/image/upload/w_200,c_fill,g_auto/v1650865451/home/paypal-logo_xs427c.png" alt="pay pal" loading="lazy" width="100%" height="auto"></span>
+				<span><img src="https://res.cloudinary.com/armytrix/image/upload/w_200,c_fill,g_auto/v1650884862/home/fedex_blaw0r.webp" alt="fedEx" loading="lazy" width="100%" height="auto"></span>
+				<span><img src="https://res.cloudinary.com/armytrix/image/upload/w_200,c_fill,g_auto/v1650884559/home/dhl-logo_uzvlhp.webp" alt="DHL" loading="lazy" width="100%" height="auto"></span>
 			</li>
 		</ul>
 	</div>
