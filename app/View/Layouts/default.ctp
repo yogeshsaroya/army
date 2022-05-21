@@ -58,24 +58,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
 
-  <link rel="preload" href="<?php echo SITEURL; ?>css/bootstrap.min.css" as="style">
-  <link rel="preload" href="<?php echo SITEURL; ?>css/theme.css" as="style">
-  <link rel="preload" href="<?php echo SITEURL; ?>/v2/style.css" as="style">
-  
   <?php 
+  echo $this->fetch('meta_data');
+
   echo $this->element('style/bootstrap');
   echo $this->element('style/theme');
   echo $this->element('style/style');
-
-
-
+  echo $this->fetch('styleTop');
   echo $this->fetch('cssTop');
    
   echo $this->Html->script(['jquery.min.js', '/bootstrap_3_3_6/js/bootstrap.min.js', 'magnific/jquery.magnific-popup.min']);
-  echo $this->fetch('styleTop');
   echo $this->fetch('scriptTop');
-
-  echo $this->fetch('meta_data');
 
   echo $this->Js->writeBuffer(array('catch' => TRUE));
   echo $scripts_for_layout;

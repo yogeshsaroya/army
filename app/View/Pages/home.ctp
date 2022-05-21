@@ -1,3 +1,7 @@
+<?php $this->append('styleTop');  
+echo $this->element('style/slick');
+$this->end(); ?>
+
 <?php $this->append('meta_data');
 if (isset($data[0]['VideoSlider']['poster_for_pc']) && !empty($data[0]['VideoSlider']['poster_for_pc'])) {
     $pre_image = getCloudinary($data[0]['VideoSlider']['poster_for_pc'], 'c_scale,q_auto:eco,w_1920', '.webp');
@@ -10,7 +14,7 @@ echo '<link rel="preload" as="image" href="'.$pre_image.'" />';
 }
 $this->end(); ?>
 
-<?php echo $this->Html->css(["/v2/slick/slick", '/v2/slick/slick-theme'], ['block' => 'cssTop']);
+<?php 
 $w = 'w_1920';
 if (isset($IsMobile)) {
     $w = 'w_720';
