@@ -850,7 +850,11 @@ class PagesController extends AppController
 					$mList = $this->ItemDetail->find('list', ['conditions' => ['ItemDetail.status' => 1, 'ItemDetail.brand_id' => $this->data['make_id']], 'fields' => ['ItemDetail.id', 'ItemDetail.model_id']]);
 					if (!empty($mList)) {
 						$mList = array_unique($mList);
-						$getModel = $this->Model->find('list', ['conditions' => ['Model.id' => $mList, 'Model.brand_id' => $this->data['make_id'], 'Model.status' => 1], 'fields' => ['Model.id', 'Model.name']]);
+						$getModel = $this->Model->find('list', [
+							'conditions' => ['Model.id' => $mList, 'Model.brand_id' => $this->data['make_id'], 'Model.status' => 1], 
+						'fields' => ['Model.id', 'Model.name'],
+						'order'=>['Model.pos'=>'ASC']
+					]);
 						if (!empty($getModel)) {
 							foreach ($getModel as $k => $v) {
 								$ttt = str_replace("'", "\'", $v);
@@ -864,6 +868,7 @@ class PagesController extends AppController
 					if (!empty($pList)) {
 						$pList = array_unique($pList);
 						$getMotor = $this->Motor->find('list', ['conditions' => ['Motor.id' => $pList, 'Motor.model_id' => $this->data['model_id'], 'Motor.status' => 1]]);
+						
 						if (!empty($getMotor)) {
 							foreach ($getMotor as $k => $v) {
 								$ttt = str_replace("'", "\'", $v);
