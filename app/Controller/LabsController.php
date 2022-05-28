@@ -1176,7 +1176,7 @@ class LabsController extends AppController
 
 	public function lab_all_make($id = null)
 	{
-		$this->set('title_for_layout', 'All Model : ' . WEBTITLE);
+		$this->set('title_for_layout', 'Make : ' . WEBTITLE);
 
 		if (isset($this->request->query['status']) && !empty($this->request->query['status'])) {
 			$list = $this->Brand->find('first', array('conditions' => array('Brand.id' => $this->request->query['status'])));
@@ -1229,22 +1229,18 @@ class LabsController extends AppController
 				}
 				$arr = array('id' => $list['Model']['id'], 'status' => $st);
 				$this->Model->save($arr);
-				$this->redirect(SITEURL . "lab/labs/all_model");
+				//$this->redirect(SITEURL . "lab/labs/all_model");
+				$this->redirect($this->referer());
 			}
 		}
 
 		$this->Model->bindModel(array('belongsTo' => array('Brand')));
 		$brand = $this->Brand->find('list', array('order' => array('Brand.name' => 'ASC'), 'fields' => array('id', 'name')));
-		$c = array();
-		if (!empty($id)) {
-			$c = array('Model.brand_id' => $id);
-		}
-
-
+		$c = [];
+		if (!empty($id)) { $c = array('Model.brand_id' => $id); }
 		$this->paginate = array('limit' => 200, 'conditions' => $c, 'order' => array('Model.pos' => 'ASC'));
 		$model = $this->paginate('Model');
-
-
+		
 
 		if (isset($_GET['edit']) && !empty($_GET['edit'])) {
 			$e = $this->Model->find('first', array('conditions' => array('Model.id' => $_GET['edit'])));
@@ -1292,7 +1288,7 @@ class LabsController extends AppController
 		$this->Motor->bindModel(array('belongsTo' => array('Model', 'Brand', 'Library')));
 
 		$brand = $this->Brand->find('list', array('order' => array('Brand.name' => 'ASC'), 'fields' => array('id', 'name')));
-		$c = array('Model.status' => 1);
+		$c = [];
 		if (!empty($id)) {
 			$c[] = array('Model.brand_id' => $id);
 		}
@@ -1359,15 +1355,7 @@ class LabsController extends AppController
 		}
 	}
 
-	public function lab_delete_motor()
-	{
-		$this->autoRender = false;
-		if (!empty($this->data)) {
-
-			$this->Motor->id = $this->data['id'];
-			$this->Motor->delete();
-		}
-	}
+	
 
 	public function lab_delete_photo($id)
 	{
@@ -1718,23 +1706,7 @@ class LabsController extends AppController
 		}
 	}
 
-	public function lab_del_car($id = null)
-	{
-		$this->autoRender = false;
-		if (!empty($id)) {
 
-			$this->ItemDetail->bindModel(array('hasMany' => array('Shipping', 'QualityDetail')));
-			$d = $this->ItemDetail->find('first', array('conditions' => array('ItemDetail.id' => $id)));
-			if (!empty($d)) {
-				$this->ItemDetail->id = $d['ItemDetail']['id'];
-				$this->ItemDetail->delete();
-
-				$this->Shipping->deleteAll(array('Shipping.item_detail_id' => $d['ItemDetail']['id']), false);
-				$this->QualityDetail->deleteAll(array('QualityDetail.item_detail_id' => $d['ItemDetail']['id']), false);
-			}
-			$this->redirect($this->referer());
-		}
-	}
 
 	public function lab_all_car_details()
 	{
@@ -2109,19 +2081,11 @@ class LabsController extends AppController
 			$data = $this->ItemDetail->find('first', array('recursive' => 2, 'conditions' => array('ItemDetail.id' => $id)));
 			if (isset($q['tab']) && $q['tab'] == 'images') {
 				$ids = explode(',', $data['ItemDetail']['slider']);
-				$tt_ids = explode(',', $data['ItemDetail']['tt_slider']);
-				$gids = explode(',', $data['ItemDetail']['gallery']);
-				$or = $or1 = array();
-				if (!empty($data['ItemDetail']['slider'])) {
-					$or = array('FIELD(Library.id,' . $data['ItemDetail']['slider'] . ')');
-				}
-				if (!empty($data['ItemDetail']['tt_slider'])) {
-					$or1 = array('FIELD(Library.id,' . $data['ItemDetail']['tt_slider'] . ')');
-				}
-				$sliders = $this->Library->find('all', array('conditions' => array('Library.id' => $ids), /*'order'=>$or*/ 'order' => ['Library.pos' => 'ASC']));
-				//ec($sliders);die;
-				$slidersTT = $this->Library->find('all', array('conditions' => array('Library.id' => $tt_ids),/* 'order'=>$or1 */ 'order' => ['Library.pos' => 'ASC']));
-				$gallery = $this->Library->find('all', array('conditions' => array('Library.id' => $gids), 'order' => ['Library.pos' => 'ASC']));
+				$or = [];
+				if (!empty($data['ItemDetail']['slider'])) { $or = array('FIELD(Library.id,' . $data['ItemDetail']['slider'] . ')'); }
+				
+				$sliders = $this->Library->find('all', array('conditions' => array('Library.id' => $ids), 'order'=>$or ));
+				
 			}
 			if (isset($q['tab']) && in_array($q['tab'], array('shipping', 'manage_shipping'))) {
 				$cList = $this->World->find('list', array('conditions' => array('World.type' => 'co', 'World.status' => 1), 'order' => array('World.name' => 'ASC'), 'field' => array('id', 'name')));
@@ -5079,5 +5043,161 @@ class LabsController extends AppController
 
 			$this->set(compact('data', 'q', 'cList', 'sList', 'langArr', 'lang'));
 		}
+	}
+
+
+	public function lab_delete_motor()
+	{
+		$this->autoRender = false;
+		if (!empty($this->data)) {
+			$d = $this->ItemDetail->find('all', array('conditions' => array('ItemDetail.language'=>'eng','ItemDetail.motor_id' => $this->data['id'])));
+			$ids = [];
+			$st = 2;
+			if( !empty($d) ){
+				foreach($d  as $list ){
+					$ids[] = $list['ItemDetail']['id'];
+					if($list['ItemDetail']['status'] == 1 ){ $st = 1; }
+				}
+				if($st == 1 ){
+				 echo "<script> alert('Car motor record NOT deleted. Please delete or inactive related Car to delete this motor record.');</script>";
+				 exit;
+				}else{
+					$this->ItemDetail->deleteAll(array('ItemDetail.id' => $ids), false);
+					$this->ItemDetail->deleteAll(array('ItemDetail.item_detail_id' => $ids), false);
+					$this->Video->deleteAll(array('Video.item_detail_id' => $ids), false);
+					$this->Motor->id = $this->data['id']; $this->Motor->delete();
+					echo "<script> alert('Car motor record has been deleted'); location.reload();</script>";
+					exit;
+				}
+			}else{
+				$this->Motor->id = $this->data['id'];
+				$this->Motor->delete();
+				echo "<script> alert('Car Motor record has been deleted'); location.reload();</script>";
+				exit;
+			}
+		}
+		exit;
+	}
+
+
+	public function lab_del_car($id = null)
+	{
+		$this->autoRender = false;
+		if (!empty($id)) {
+			$this->ItemDetail->bindModel(array('hasMany' => array('Shipping', 'QualityDetail')));
+			$d = $this->ItemDetail->find('first', array('conditions' => array('ItemDetail.id' => $id)));
+			if (!empty($d)) {
+				$this->ItemDetail->id = $d['ItemDetail']['id'];
+				$this->ItemDetail->delete();
+				$this->ItemDetail->deleteAll(array('ItemDetail.item_detail_id' => $d['ItemDetail']['id']), false);
+				$this->Video->deleteAll(array('Video.item_detail_id' => $d['ItemDetail']['id']), false);
+			}
+			$this->redirect($this->referer());
+		}
+	}
+
+	public function lab_del_model()
+	{
+		$this->autoRender = false;
+		if (!empty($this->data)) {
+			$carIDS = $motorIDS = [];
+			$motorSt = $st = 2;
+			$getMotor = $this->Motor->find('all',['recursive'=>-1,'conditions'=>['Motor.model_id'=>$this->data['id']]]);
+			if(!empty($getMotor)){
+				foreach($getMotor as $mt){
+					$motorIDS[] = $mt['Motor']['id'];
+					if($mt['Motor']['status'] == 1 ){ $motorSt = 1; }
+					$d = $this->ItemDetail->find('all', array('conditions' => array('ItemDetail.language'=>'eng','ItemDetail.motor_id' => $mt['Motor']['id'])));
+					if( !empty($d) ){
+						foreach($d  as $list ){
+							$carIDS[] = $list['ItemDetail']['id'];
+							if($list['ItemDetail']['status'] == 1 ){ $st = 1; }
+						}
+					}
+				}
+				if($motorSt == 2 && $st == 2){
+					if(!empty($carIDS)){
+						$this->ItemDetail->deleteAll(array('ItemDetail.id' => $carIDS), false);
+						$this->ItemDetail->deleteAll(array('ItemDetail.item_detail_id' => $carIDS), false);
+						$this->Video->deleteAll(array('Video.item_detail_id' => $carIDS), false);
+					}
+					if(!empty($motorIDS)){
+						$this->Motor->deleteAll(array('Motor.id' => $motorIDS), false);
+					}
+					$this->Model->id = $this->data['id'];
+					$this->Model->delete();
+					echo "<script> alert('Car Model and related motor/car records has been deleted'); location.reload();</script>";
+					exit;
+				}else{
+					echo "<script> alert('Car Model record NOT deleted. Please delete or inactive related car motor and car record to delete this car model record.');</script>"; exit;
+				}
+			}else{
+				$this->Model->id = $this->data['id'];
+				$this->Model->delete();
+				echo "<script> alert('Car Model record has been deleted'); location.reload();</script>";
+				exit;
+			}
+			exit;
+		}
+		exit;
+	}
+
+
+	public function lab_del_brand(){
+		$this->autoRender = false;
+		if (!empty($this->data)) {
+			$carIDS = $motorIDS = $model_ids = [];
+			$motorSt = $st = $model_st = 2;
+			$this->Model->bindModel(['hasMany'=>['Motor']]);
+			$this->Motor->bindModel(['hasMany'=>['ItemDetail'=>['conditions'=>['ItemDetail.language'=>'eng']]]]);
+			$this->Motor->unbindModel(['belongsTo'=>['Library']]);
+			$getModel = $this->Model->find('all',['recursive'=>2,'conditions'=>['Model.brand_id'=>$this->data['id']]]);
+			
+			if(!empty($getModel)){
+				foreach($getModel as $list){
+					if($list['Model']['status'] == 1){ $model_st = 1; }
+					$model_ids[] = $list['Model']['id'];
+					if(!empty($list['Motor'])){
+						foreach($list['Motor'] as $mt){
+							if($mt['status'] == 1 ){ $motorSt =1;}
+							$motorIDS[] = $mt['id'];
+							if(!empty($mt['ItemDetail'])){
+								foreach($mt['ItemDetail'] as $car){
+									$carIDS[] = $car['id'];
+									if($car['status'] == 1 ){ $st = 1; }
+								}
+							}
+						}
+					}
+				}
+				if($model_st == 2 && $motorSt == 2 && $st == 2){
+					if(!empty($carIDS)){
+						$this->ItemDetail->deleteAll(array('ItemDetail.id' => $carIDS), false);
+						$this->ItemDetail->deleteAll(array('ItemDetail.item_detail_id' => $carIDS), false);
+						$this->Video->deleteAll(array('Video.item_detail_id' => $carIDS), false);
+					}
+					if(!empty($motorIDS)){
+						$this->Motor->deleteAll(array('Motor.id' => $motorIDS), false);
+					}
+					if(!empty($model_ids)){
+						$this->Model->deleteAll(array('Model.id' => $model_ids), false);
+					}
+					$this->Brand->id = $this->data['id']; 
+					$this->Brand->delete();
+					echo "<script> alert('Car make and related model/motor/car records has been deleted'); location.reload();</script>";
+
+				}else{
+					echo "<script> alert('Car Make record NOT deleted. Please delete or inactive related car model/motor and car record to delete this car make record.');</script>"; exit;
+				}
+
+			}else{
+				$this->Brand->id = $this->data['id'];
+				$this->Brand->delete();
+				echo "<script> alert('Car Brand record has been deleted'); location.reload();</script>";
+				exit;
+			}
+			exit;
+		}
+		exit;
 	}
 }

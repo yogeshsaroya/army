@@ -515,4 +515,38 @@ class CronsController extends AppController
 			}
 		}
 	}
+
+    public function fix_count(){
+        $this->loadModel('Models');
+        $this->loadModel('Motor');
+        $this->loadModel('ItemDetail');
+        
+
+        $getMotor = $this->Motor->find('list',['fields'=>['id','id']]);
+        if( !empty($getMotor)){
+            foreach($getMotor as $a=>$b){
+                $arr = array('id' => $b, 'updated' => DATE);
+				$this->Motor->save($arr);
+            }
+        }
+        $arr = [];
+        $getModel = $this->Models->find('list',['fields'=>['id','id']]);
+        if( !empty($getModel)){
+            foreach($getModel as $a=>$b){
+                $arr = array('id' => $b, 'updated' => DATE);
+				$this->Models->save($arr);
+            }
+
+        }
+        $arr = [];
+        $getItemDetail = $this->ItemDetail->find('list',['fields'=>['id','id']]);
+        if( !empty($getItemDetail)){
+            foreach($getItemDetail as $a=>$b){
+                $arr = array('id' => $b, 'updated' => DATE);
+				$this->ItemDetail->save($arr);
+            }
+            
+        }
+        
+    }
 }

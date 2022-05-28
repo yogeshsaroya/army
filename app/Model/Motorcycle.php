@@ -3,6 +3,8 @@ App::uses('Model', 'Model');
 
 class Motorcycle extends Model {
 	
+	public $belongsTo = ['MotorcycleYear' => ['counterCache' => 'motorcycle_count']];
+
 	public $validate = array(
 			'title' => array( 'rule'=> array('maxLength', 250), 'message' => 'Title cannot be left blank.', 'allowEmpty' => false ),
 			'url' => array( 'url' => array( 'rule' => 'notBlank', 'message' => 'URL cannot be left blank.'),

@@ -65,7 +65,7 @@
 
 					<div class="box box-success">
 						<div class="box-header">
-							<h3 class="box-title">All Make</h3>
+							<h3 class="box-title">All Motors</h3>
 						</div>
 						<div class="box-body">
 							<div class="row">
@@ -78,6 +78,7 @@
 												<th><?php echo $this->Paginator->sort('Motor.name', 'Motor', array('escape' => false)); ?></th>
 												<th><?php echo $this->Paginator->sort('Model.name', 'Model', array('escape' => false)); ?></th>
 												<th><?php echo $this->Paginator->sort('Brand.name', 'Make', array('escape' => false)); ?></th>
+												<th class="text-center"><?php echo $this->Paginator->sort('Motor.item_detail_count', 'Car #', array('escape' => false)); ?></th>
 												<th>Edit</th>
 												<th>Delete?</th>
 												<th><?php echo $this->Paginator->sort('Motor.status', 'Action', array('escape' => false)); ?></th>
@@ -92,8 +93,10 @@
 													<tr id="tr_<?php echo $list['Motor']['id']; ?>">
 														<td><?php echo $list['Motor']['id']; ?></td>
 														<td><?php echo $list['Motor']['name']; ?></td>
-														<td><?php echo $list['Model']['name']; ?></td>
-														<td><?php echo $list['Brand']['name']; ?></td>
+														<td> <?php echo $this->html->link($list['Model']['name'], '/lab/labs/all_model/'. $list['Motor']['brand_id']); ?></td>
+														<td> <?php echo $this->html->link($list['Brand']['name'], '/lab/labs/all_make');?></tb>
+
+														<td class="text-center"><?php echo $list['Motor']['item_detail_count']; ?></td>
 														<td> <?php echo $this->html->link('Edit', '/lab/labs/all_motor/' . $list['Motor']['brand_id'] . '/' . $list['Motor']['model_id'] . '?edit=' . $list['Motor']['id']); ?></td>
 														<td> <a href="javascript:void(0);" onclick="motor_del(<?php echo $list['Motor']['id']; ?>);">Delete</a></td>
 														<td> <?php
@@ -110,7 +113,7 @@
 												}
 											} else { ?>
 												<tr>
-													<td colspan="6">Your Motors tab is empty</td>
+													<td colspan="8">Your Motors tab is empty</td>
 												</tr>
 											<?php } ?>
 										</tbody>
@@ -154,16 +157,14 @@
 		var txt;
 		var r = confirm("Are you sure you want to delete Motor record?");
 		if (r == true) {
-			$("#tr_" + id).remove();
+			//$("#tr_" + id).remove();
 
 			$.ajax({
 				type: 'POST',
 				url: '' + SITEURL + 'lab/labs/delete_motor',
-				data: {
-					id: id
-				},
-				success: function(data) {},
-				error: function(comment) {}
+				data: { id: id },
+				success: function(data) { $("#ajax_req").html(data); },
+				error: function(comment) { $("#ajax_req").html(comment); }
 			});
 
 		}

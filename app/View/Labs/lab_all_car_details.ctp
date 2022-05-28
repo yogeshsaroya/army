@@ -62,7 +62,7 @@ if (!empty($data)) {
     		else{ $path = 'cdn/no_image_available.jpg'; }
     		$imgg = new_show_image($path,100,100,100,'ff',null); ?>
         <tr class="odd gradeX">
-        <td class="center gnTxt"><?php echo $n;?></td>
+        <td class="center gnTxt"><?php echo $list['ItemDetail']['id'];?></td>
         <td class="center gnTxt">
         <a href="<?php echo SITEURL."lab/labs/all_motor/".$list['Brand']['id']."/".$list['Model']['id']."?edit=".$list['Motor']['id'];?>" title="">
         <img src="<?php echo $imgg;?>" class="img-thumbnail" alt=""> </a>

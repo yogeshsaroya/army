@@ -359,11 +359,6 @@ th {
     animation-fill-mode: both
 }
 
-100% {
-    opacity: 1;
-    opacity: 1
-}
-
 .fadeIn {
     -webkit-animation-name: fadeIn;
     animation-name: fadeIn
@@ -1308,3 +1303,4 @@ pre {
     background: #c3c3c3;
     cursor: pointer;
 }
+.text-center{text-align: center !important;}

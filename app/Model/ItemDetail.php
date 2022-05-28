@@ -2,6 +2,8 @@
 App::uses('Model', 'Model');
 
 class ItemDetail extends Model {
+
+	public $belongsTo = ['Motor' => ['counterCache' => 'item_detail_count']];
 	
 	public $validate = array(
 			'title' => array( 'rule'=> array('maxLength', 250), 'message' => 'Title cannot be left blank.', 'allowEmpty' => false ),

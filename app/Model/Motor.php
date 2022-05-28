@@ -3,7 +3,7 @@ App::uses('Model', 'Model');
 
 class Motor extends Model {
 
-	public $belongsTo = array('Library');
+	public $belongsTo = ['Model' => ['counterCache' => 'motor_count']];
 	
 }
 

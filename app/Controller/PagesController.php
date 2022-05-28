@@ -100,12 +100,9 @@ class PagesController extends AppController
 
 			$sArr = explode(',', trim($Adata['ItemDetail']['slider']));
 			if (isset($sArr[0]) && !empty($sArr[0])) {
-				$slider = $this->Library->find('all', array('conditions' => array('Library.id' => $sArr), 'order' => ['Library.pos' => 'ASC']/* 'order'=>array('FIELD(Library.id,' . $data['ItemDetail']['slider'] . ')') */));
+				$slider = $this->Library->find('all', array('conditions' => array('Library.id' => $sArr), 'order'=>array('FIELD(Library.id,' . $data['ItemDetail']['slider'] . ')') ));
 			}
-			$gArr = explode(',', $Adata['ItemDetail']['gallery']);
-			if (isset($gArr[0]) && !empty($gArr[0])) {
-				$gallery = $this->Library->find('all', array('conditions' => array('Library.id' => $gArr), 'limit' => 15, 'order' => ['Library.pos' => 'ASC']));
-			}
+			
 			$string = $this->String->find('list', array('order' => array('String.id' => 'ASC'), 'fields' => array('String.id', 'String.text')));
 			$tran = $this->Translation->find('list', array('conditions' => array('Translation.code' => $data['ItemDetail']['language']), 'fields' => array('Translation.string_id', 'Translation.name')));
 			$txt = array('String' => $string, 'Translation' => $tran);
