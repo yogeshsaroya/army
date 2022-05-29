@@ -100,7 +100,9 @@ class PagesController extends AppController
 
 			$sArr = explode(',', trim($Adata['ItemDetail']['slider']));
 			if (isset($sArr[0]) && !empty($sArr[0])) {
-				$slider = $this->Library->find('all', array('conditions' => array('Library.id' => $sArr), 'order'=>array('FIELD(Library.id,' . $data['ItemDetail']['slider'] . ')') ));
+				$slider = $this->Library->find('all', array('conditions' => array('Library.id' => $sArr), 
+				'order'=>array('FIELD(Library.id,' . $Adata['ItemDetail']['slider'] . ')') 
+				));
 			}
 			
 			$string = $this->String->find('list', array('order' => array('String.id' => 'ASC'), 'fields' => array('String.id', 'String.text')));
