@@ -1792,14 +1792,20 @@ class LabsController extends AppController
 				}
 			}
 			if ($id == 'ss') {
+				
 				if (isset($this->data['ss']) && !empty($this->data['ss'])) {
-					$arr = [];
-					foreach ($this->data['ss'] as $key => $val) {
-						$arr[] = ['id' => $val, 'pos' => $key];
+					$d = $this->ItemDetail->find('first', array('conditions' => array('ItemDetail.id' => $this->data['id'])));	
+					if (!empty($d)) {
+						$arr = [];
+						foreach ($this->data['ss'] as $key => $val) {
+							$arr[] = $val;
+						}
+						if (!empty($arr)) {
+							$tArr = ['id' => $d['ItemDetail']['id'], 'slider' => implode(',', $arr)];
+							$this->ItemDetail->save($tArr);
+						}
 					}
-					if (!empty($arr)) {
-						$this->Library->saveAll($arr);
-					}
+
 				}
 			} elseif ($id == 'tt') {
 				if (isset($this->data['tt']) && !empty($this->data['tt'])) {

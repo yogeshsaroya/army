@@ -28,6 +28,9 @@ echo $this->html->script(array('/v/formValidation.min', '/v/bootstrap.min')); ?>
   #sortable .ui-sortable-handle {
     cursor: move;
   }
+  .ui-sortable-handle {
+    width: 250px;
+}
 </style>
 <div id="preloader_photo" class="img-phote-st" style="display: none">
   <div class="percent">0%</div>
@@ -1204,12 +1207,12 @@ echo $this->Html->script(array('/lab_root/plugins/iCheck/icheck.min'));
         opacity: 0.6,
         cursor: 'move',
         update: function() {
-          var datastring = $(this).sortable("serialize");
+          var d = $(this).sortable("serialize")+ "&id=<?php echo $data['ItemDetail']['id'];?>";
           $(function() {
             $.ajax({
               type: 'POST',
               url: '<?php echo SITEURL; ?>lab/labs/change_positions_pic/ss',
-              data: datastring,
+              data: d,
               success: function(data) {
                 $("#ajax_req").html(data);
               },
