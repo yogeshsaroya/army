@@ -124,6 +124,6 @@ class AppController extends Controller
 	}
 	function beforeRender()
 	{
-		//$this->_setErrorLayout();
+		$this->_setErrorLayout();
 	}
 }
