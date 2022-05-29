@@ -104,6 +104,13 @@ class PagesController extends AppController
 				'order'=>array('FIELD(Library.id,' . $Adata['ItemDetail']['slider'] . ')') 
 				));
 			}
+
+			$gArr = explode(',', $Adata['ItemDetail']['gallery']);
+			if (isset($gArr[0]) && !empty($gArr[0])) {
+				$gallery = $this->Library->find('all', array('conditions' => array('Library.id' => $gArr), 'limit' => 15, 
+				'order'=>array('FIELD(Library.id,' . $Adata['ItemDetail']['gallery'] . ')')
+			));
+			}
 			
 			$string = $this->String->find('list', array('order' => array('String.id' => 'ASC'), 'fields' => array('String.id', 'String.text')));
 			$tran = $this->Translation->find('list', array('conditions' => array('Translation.code' => $data['ItemDetail']['language']), 'fields' => array('Translation.string_id', 'Translation.name')));
