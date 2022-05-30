@@ -5108,20 +5108,35 @@ class LabsController extends AppController
 		if (!empty($this->data)) {
 			$carIDS = $motorIDS = [];
 			$motorSt = $st = 2;
-			$getMotor = $this->Motor->find('all',['recursive'=>-1,'conditions'=>['Motor.model_id'=>$this->data['id']]]);
+			$this->Motor->bindModel(['hasMany'=>['ItemDetail'=>['conditions'=>['ItemDetail.language'=>'eng']]]]);
+			$this->Motor->unbindModel(['belongsTo'=>['Library','Model']]);
+			$getMotor = $this->Motor->find('all',['recursive'=>2,'conditions'=>['Motor.model_id'=>$this->data['id']]]);
 			if(!empty($getMotor)){
 				foreach($getMotor as $mt){
 					$motorIDS[] = $mt['Motor']['id'];
 					if($mt['Motor']['status'] == 1 ){ $motorSt = 1; }
-					$d = $this->ItemDetail->find('all', array('conditions' => array('ItemDetail.language'=>'eng','ItemDetail.motor_id' => $mt['Motor']['id'])));
-					if( !empty($d) ){
-						foreach($d  as $list ){
-							$carIDS[] = $list['ItemDetail']['id'];
-							if($list['ItemDetail']['status'] == 1 ){ $st = 1; }
+					if(!empty($mt['ItemDetail'])){
+						foreach($mt['ItemDetail'] as $car){
+							$carIDS[] = $car['id'];
+							if($car['status'] == 1 ){ $st = 1; }
 						}
-					}
+					}else{ $st = 3; }
 				}
-				if($motorSt == 2 && $st == 2){
+				if($st == 3 ){
+					if(!empty($carIDS)){
+						$this->ItemDetail->deleteAll(array('ItemDetail.id' => $carIDS), false);
+						$this->ItemDetail->deleteAll(array('ItemDetail.item_detail_id' => $carIDS), false);
+						$this->Video->deleteAll(array('Video.item_detail_id' => $carIDS), false);
+					}
+					if(!empty($motorIDS)){
+						$this->Motor->deleteAll(array('Motor.id' => $motorIDS), false);
+					}
+					$this->Model->id = $this->data['id'];
+					$this->Model->delete();
+					echo "<script> alert('Car Model and related motor/car records has been deleted'); location.reload();</script>";
+					exit;
+				}
+				elseif($motorSt == 2 && $st == 2){
 					if(!empty($carIDS)){
 						$this->ItemDetail->deleteAll(array('ItemDetail.id' => $carIDS), false);
 						$this->ItemDetail->deleteAll(array('ItemDetail.item_detail_id' => $carIDS), false);
@@ -5137,13 +5152,13 @@ class LabsController extends AppController
 				}else{
 					echo "<script> alert('Car Model record NOT deleted. Please delete or inactive related car motor and car record to delete this car model record.');</script>"; exit;
 				}
-			}else{
+			}
+			else{
 				$this->Model->id = $this->data['id'];
 				$this->Model->delete();
 				echo "<script> alert('Car Model record has been deleted'); location.reload();</script>";
 				exit;
 			}
-			exit;
 		}
 		exit;
 	}
@@ -5172,11 +5187,28 @@ class LabsController extends AppController
 									$carIDS[] = $car['id'];
 									if($car['status'] == 1 ){ $st = 1; }
 								}
-							}
+							}else{ $st = 3; }
 						}
-					}
+					}else{ $motorSt =3;}
 				}
-				if($model_st == 2 && $motorSt == 2 && $st == 2){
+				
+				if($st == 3 || $motorSt == 3){
+					if(!empty($carIDS)){
+						$this->ItemDetail->deleteAll(array('ItemDetail.id' => $carIDS), false);
+						$this->ItemDetail->deleteAll(array('ItemDetail.item_detail_id' => $carIDS), false);
+						$this->Video->deleteAll(array('Video.item_detail_id' => $carIDS), false);
+					}
+					if(!empty($motorIDS)){
+						$this->Motor->deleteAll(array('Motor.id' => $motorIDS), false);
+					}
+					if(!empty($model_ids)){
+						$this->Model->deleteAll(array('Model.id' => $model_ids), false);
+					}
+					$this->Brand->id = $this->data['id']; 
+					$this->Brand->delete();
+					echo "<script> alert('Car make and related model/motor/car records has been deleted'); location.reload();</script>";
+				}
+				elseif($model_st == 2 && $motorSt == 2 && $st == 2){
 					if(!empty($carIDS)){
 						$this->ItemDetail->deleteAll(array('ItemDetail.id' => $carIDS), false);
 						$this->ItemDetail->deleteAll(array('ItemDetail.item_detail_id' => $carIDS), false);

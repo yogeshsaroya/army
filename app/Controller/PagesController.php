@@ -112,6 +112,7 @@ class PagesController extends AppController
 			));
 			}
 			
+			
 			$string = $this->String->find('list', array('order' => array('String.id' => 'ASC'), 'fields' => array('String.id', 'String.text')));
 			$tran = $this->Translation->find('list', array('conditions' => array('Translation.code' => $data['ItemDetail']['language']), 'fields' => array('Translation.string_id', 'Translation.name')));
 			$txt = array('String' => $string, 'Translation' => $tran);
