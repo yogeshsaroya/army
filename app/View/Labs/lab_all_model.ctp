@@ -114,7 +114,7 @@
 												}
 											} else { ?>
 												<tr>
-													<td colspan="7">Your model tab is empty</td>
+													<td colspan="8">Your model tab is empty</td>
 												</tr>
 											<?php } ?>
 										</tbody>

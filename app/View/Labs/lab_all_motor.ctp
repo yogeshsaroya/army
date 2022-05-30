@@ -113,7 +113,7 @@
 												}
 											} else { ?>
 												<tr>
-													<td colspan="8">Your Motors tab is empty</td>
+													<td colspan="9">Your Motors tab is empty</td>
 												</tr>
 											<?php } ?>
 										</tbody>
