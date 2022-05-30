@@ -5120,23 +5120,9 @@ class LabsController extends AppController
 							$carIDS[] = $car['id'];
 							if($car['status'] == 1 ){ $st = 1; }
 						}
-					}else{ $st = 3; }
-				}
-				if($st == 3 ){
-					if(!empty($carIDS)){
-						$this->ItemDetail->deleteAll(array('ItemDetail.id' => $carIDS), false);
-						$this->ItemDetail->deleteAll(array('ItemDetail.item_detail_id' => $carIDS), false);
-						$this->Video->deleteAll(array('Video.item_detail_id' => $carIDS), false);
 					}
-					if(!empty($motorIDS)){
-						$this->Motor->deleteAll(array('Motor.id' => $motorIDS), false);
-					}
-					$this->Model->id = $this->data['id'];
-					$this->Model->delete();
-					echo "<script> alert('Car Model and related motor/car records has been deleted'); location.reload();</script>";
-					exit;
 				}
-				elseif($motorSt == 2 && $st == 2){
+				if($st == 2){
 					if(!empty($carIDS)){
 						$this->ItemDetail->deleteAll(array('ItemDetail.id' => $carIDS), false);
 						$this->ItemDetail->deleteAll(array('ItemDetail.item_detail_id' => $carIDS), false);
@@ -5187,28 +5173,12 @@ class LabsController extends AppController
 									$carIDS[] = $car['id'];
 									if($car['status'] == 1 ){ $st = 1; }
 								}
-							}else{ $st = 3; }
+							}
 						}
-					}else{ $motorSt =3;}
+					}
 				}
 				
-				if($st == 3 || $motorSt == 3){
-					if(!empty($carIDS)){
-						$this->ItemDetail->deleteAll(array('ItemDetail.id' => $carIDS), false);
-						$this->ItemDetail->deleteAll(array('ItemDetail.item_detail_id' => $carIDS), false);
-						$this->Video->deleteAll(array('Video.item_detail_id' => $carIDS), false);
-					}
-					if(!empty($motorIDS)){
-						$this->Motor->deleteAll(array('Motor.id' => $motorIDS), false);
-					}
-					if(!empty($model_ids)){
-						$this->Model->deleteAll(array('Model.id' => $model_ids), false);
-					}
-					$this->Brand->id = $this->data['id']; 
-					$this->Brand->delete();
-					echo "<script> alert('Car make and related model/motor/car records has been deleted'); location.reload();</script>";
-				}
-				elseif($model_st == 2 && $motorSt == 2 && $st == 2){
+				if($st == 2){
 					if(!empty($carIDS)){
 						$this->ItemDetail->deleteAll(array('ItemDetail.id' => $carIDS), false);
 						$this->ItemDetail->deleteAll(array('ItemDetail.item_detail_id' => $carIDS), false);
