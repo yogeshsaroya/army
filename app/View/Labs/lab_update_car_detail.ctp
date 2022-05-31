@@ -1168,12 +1168,12 @@ echo $this->Html->script(array('/lab_root/plugins/iCheck/icheck.min'));
         opacity: 0.6,
         cursor: 'move',
         update: function() {
-          var datastring = $(this).sortable("serialize");
+          var d = $(this).sortable("serialize")+ "&id=<?php echo $data['ItemDetail']['id'];?>";
           $(function() {
             $.ajax({
               type: 'POST',
               url: '<?php echo SITEURL; ?>lab/labs/change_positions_pic/gal',
-              data: datastring,
+              data: d,
               success: function(data) {
                 $("#ajax_req").html(data);
               },

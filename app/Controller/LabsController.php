@@ -1792,7 +1792,6 @@ class LabsController extends AppController
 				}
 			}
 			if ($id == 'ss') {
-				
 				if (isset($this->data['ss']) && !empty($this->data['ss'])) {
 					$d = $this->ItemDetail->find('first', array('conditions' => array('ItemDetail.id' => $this->data['id'])));	
 					if (!empty($d)) {
@@ -1805,7 +1804,6 @@ class LabsController extends AppController
 							$this->ItemDetail->save($tArr);
 						}
 					}
-
 				}
 			} elseif ($id == 'tt') {
 				if (isset($this->data['tt']) && !empty($this->data['tt'])) {
@@ -1819,12 +1817,14 @@ class LabsController extends AppController
 				}
 			} elseif ($id == 'gal') {
 				if (isset($this->data['gal']) && !empty($this->data['gal'])) {
-					$arr = [];
-					foreach ($this->data['gal'] as $key => $val) {
-						$arr[] = ['id' => $val, 'pos' => $key];
-					}
-					if (!empty($arr)) {
-						$this->Library->saveAll($arr);
+					$d = $this->ItemDetail->find('first', array('conditions' => array('ItemDetail.id' => $this->data['id'])));	
+					if (!empty($d)) {
+						$arr = [];
+						foreach ($this->data['gal'] as $key => $val) { $arr[] = $val; }
+						if (!empty($arr)) {
+							$tArr = ['id' => $d['ItemDetail']['id'], 'gallery' => implode(',', $arr)];
+							$this->ItemDetail->save($tArr);
+						}
 					}
 				}
 			}
@@ -2087,10 +2087,12 @@ class LabsController extends AppController
 			$data = $this->ItemDetail->find('first', array('recursive' => 2, 'conditions' => array('ItemDetail.id' => $id)));
 			if (isset($q['tab']) && $q['tab'] == 'images') {
 				$ids = explode(',', $data['ItemDetail']['slider']);
-				$or = [];
+				$gids = explode(',', $data['ItemDetail']['gallery']);
+				$or = $or1 = [];
 				if (!empty($data['ItemDetail']['slider'])) { $or = array('FIELD(Library.id,' . $data['ItemDetail']['slider'] . ')'); }
-				
+				if (!empty($data['ItemDetail']['gallery'])) { $or1 = array('FIELD(Library.id,' . $data['ItemDetail']['gallery'] . ')'); }
 				$sliders = $this->Library->find('all', array('conditions' => array('Library.id' => $ids), 'order'=>$or ));
+				$gallery = $this->Library->find('all', array('conditions' => array('Library.id' => $gids), 'order' =>$or1));
 				
 			}
 			if (isset($q['tab']) && in_array($q['tab'], array('shipping', 'manage_shipping'))) {
