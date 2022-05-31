@@ -3,12 +3,11 @@
 <style>
 @media only screen and (max-width: 760px),(min-device-width: 768px) and (max-device-width: 1024px) {
 #lab_table td:nth-of-type(1):before{content:"ID"}
-#lab_table td:nth-of-type(2):before{content:"Image"}
-#lab_table td:nth-of-type(3):before{content:"Make/Model"}
-#lab_table td:nth-of-type(4):before{content:"Title"}
-#lab_table td:nth-of-type(5):before{content:"Status"}
-#lab_table td:nth-of-type(6):before{content:"Created"}
-#lab_table td:nth-of-type(7):before{content:"Action"}
+#lab_table td:nth-of-type(2):before{content:"Make/Model"}
+#lab_table td:nth-of-type(3):before{content:"Title"}
+#lab_table td:nth-of-type(4):before{content:"Status"}
+#lab_table td:nth-of-type(5):before{content:"Created"}
+#lab_table td:nth-of-type(6):before{content:"Action"}
 
 }
 
@@ -41,7 +40,6 @@
 <thead>
 					<tr role="row">
 						<th><?php echo $this->Paginator->sort('ItemDetail.id', 'ID', array('escape' => false)); ?></th>
-						<th><?php echo $this->Paginator->sort('ItemDetail.image', 'Image', array('escape' => false)); ?></th>
 						<th><?php echo $this->Paginator->sort('ItemDetail.exhaust_model_id', 'Make/Model', array('escape' => false)); ?></th>
                         <th><?php echo $this->Paginator->sort('ItemDetail.title', 'Title', array('escape' => false)); ?></th>
                         <th><?php echo $this->Paginator->sort('ItemDetail.status', 'Status', array('escape' => false)); ?></th>
@@ -55,19 +53,9 @@
 <?php
 if (!empty($data)) {
 	$n = 1;
-    foreach ($data as $list) {
-    	
-    	if(isset($list['Motor']['Library']['full_path']) && !empty($list['Motor']['Library']['full_path'])){
-    		$path = 'cdn/'.$list['Motor']['Library']['full_path'];  }
-    		else{ $path = 'cdn/no_image_available.jpg'; }
-    		$imgg = new_show_image($path,100,100,100,'ff',null); ?>
+    foreach ($data as $list) { ?>
         <tr class="odd gradeX">
         <td class="center gnTxt"><?php echo $list['ItemDetail']['id'];?></td>
-        <td class="center gnTxt">
-        <a href="<?php echo SITEURL."lab/labs/all_motor/".$list['Brand']['id']."/".$list['Model']['id']."?edit=".$list['Motor']['id'];?>" title="">
-        <img src="<?php echo $imgg;?>" class="img-thumbnail" alt=""> </a>
-        </td>
-        
         <td class="center gnTxt"><?php echo $list['Brand']['name']."/".$list['Model']['name']."/<br>".substr($list['Motor']['name'],0,15);?></td>
         <td class="center gnTxt"><a href="<?php echo SITEURL."product/".$list['ItemDetail']['url'];?>" title="" target="_blank"><?php echo $list['ItemDetail']['name'];?></a></td>
         <td class="center gnTxt"><a href="<?php echo SITEURL."lab/labs/all_car_details?id=".$list['ItemDetail']['id'];?>" title=""><?php if($list['ItemDetail']['status'] == 1){ echo "<p class='text-green'>Active</p>";}else{ echo "<p class='text-red'>Deactivate</p>";}?></a></td>
