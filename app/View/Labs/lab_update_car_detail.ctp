@@ -28,9 +28,10 @@ echo $this->html->script(array('/v/formValidation.min', '/v/bootstrap.min')); ?>
   #sortable .ui-sortable-handle {
     cursor: move;
   }
+
   .ui-sortable-handle {
     width: 250px;
-}
+  }
 </style>
 <div id="preloader_photo" class="img-phote-st" style="display: none">
   <div class="percent">0%</div>
@@ -54,12 +55,27 @@ echo $this->html->script(array('/v/formValidation.min', '/v/bootstrap.min')); ?>
       <div class="col-md-12">
         <div class="nav-tabs-custom">
           <ul class="nav nav-tabs">
-            <li class="<?php if (empty($q)) { echo "active"; } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id']; ?>">General</a></li>
-            <li class="<?php if (isset($q['tab']) && $q['tab'] == 'images') { echo "active"; } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=images"; ?>">Images</a></li>
-            <li class="<?php if (isset($q['tab']) && $q['tab'] == 'videos') { echo "active"; } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=videos"; ?>">Videos</a></li>
-            <li class="<?php if (isset($q['tab']) && $q['tab'] == 'catback') { echo "active"; } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=catback"; ?>">Catback</a></li>
-            <li class="<?php if (isset($q['tab']) && $q['tab'] == 'catalytic') { echo "active"; } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=catalytic"; ?>">DownPipe</a></li>
-            <li class="<?php if (isset($q['tab']) && $q['tab'] == 'accessory') { echo "active"; } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=accessory"; ?>">Accessory</a></li>
+            <li class="<?php if (empty($q)) {
+                          echo "active";
+                        } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id']; ?>">General</a></li>
+            <li class="<?php if (isset($q['tab']) && $q['tab'] == 'slider') {
+                          echo "active";
+                        } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=slider"; ?>">Slider</a></li>
+            <li class="<?php if (isset($q['tab']) && $q['tab'] == 'gallery') {
+                          echo "active";
+                        } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=gallery"; ?>">Gallery</a></li>
+            <li class="<?php if (isset($q['tab']) && $q['tab'] == 'videos') {
+                          echo "active";
+                        } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=videos"; ?>">Videos</a></li>
+            <li class="<?php if (isset($q['tab']) && $q['tab'] == 'catback') {
+                          echo "active";
+                        } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=catback"; ?>">Catback</a></li>
+            <li class="<?php if (isset($q['tab']) && $q['tab'] == 'catalytic') {
+                          echo "active";
+                        } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=catalytic"; ?>">DownPipe</a></li>
+            <li class="<?php if (isset($q['tab']) && $q['tab'] == 'accessory') {
+                          echo "active";
+                        } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=accessory"; ?>">Accessory</a></li>
             <?php /*?>
             <li class="<?php if (isset($q['tab']) && $q['tab'] == 'data') { echo "active";} ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=data"; ?>">Data</a></li>
   <li class="<?php if (isset($q['tab']) && $q['tab'] == 'quality') { echo "active"; } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=quality"; ?>">Quality & Detail</a></li>
@@ -69,28 +85,19 @@ echo $this->html->script(array('/v/formValidation.min', '/v/bootstrap.min')); ?>
   <li class="<?php if(isset($q['tab']) && $q['tab'] == 'import_shipping'){ echo "active";}?>"><a href="<?php echo SITEURL."lab/labs/update_car_detail/".$data['ItemDetail']['id']."?tab=import_shipping";?>" >Import/Export</a></li>
   <li class="<?php if(isset($q['tab']) && $q['tab'] == 'multilingual'){ echo "active";}?>"><a href="<?php echo SITEURL."lab/labs/update_car_detail/".$data['ItemDetail']['id']."?tab=multilingual";?>" >Multilingual</a></li>
   <?php */ ?>
-  <li class="<?php if(isset($q['tab']) && $q['tab'] == 'multilingual'){ echo "active";}?>"><a href="<?php echo SITEURL."lab/labs/update_car_detail/".$data['ItemDetail']['id']."?tab=multilingual";?>" >Multilingual</a></li>
+            <li class="<?php if (isset($q['tab']) && $q['tab'] == 'multilingual') {
+                          echo "active";
+                        } ?>"><a href="<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=multilingual"; ?>">Multilingual</a></li>
           </ul>
           <div class="tab-content">
             <div class="active tab-pane">
               <?php
               if (empty($q)) {
-                echo $this->Form->create('ItemDetail', array('class' => 'form-horizontal','id'=>'proFrm'));
+                echo $this->Form->create('ItemDetail', array('class' => 'form-horizontal', 'id' => 'proFrm'));
                 if (isset($data['ItemDetail']) && !empty($data['ItemDetail'])) {
                   $this->request->data['ItemDetail'] = $data['ItemDetail'];
                   echo $this->Form->hidden('id');
                 } ?>
-
-                <?php /* ?>
-<div class="form-group"><label for="inputName" class="col-sm-2 control-label">Heading</label>
-<div class="col-sm-10"><?php echo $this->Form->input('heading',array('class'=>'form-control','placeholder'=>'Heading','label'=>false,'required'=>false));?></div></div>
-
-<div class="form-group"><label for="inputName" class="col-sm-2 control-label">Description</label> <div class="col-sm-10"><?php echo $this->Form->input('description',array('class'=>'form-control','placeholder'=>'Description','label'=>false,'required'=>true));?></div></div>
-
-                <div class="form-group"><label for="inputName" class="col-sm-2 control-label">Video</label>
-                  <div class="col-sm-10"><?php echo $this->Form->input('vid', array('class' => 'form-control', 'placeholder' => 'Heading', 'label' => false, 'required' => false, 'placeholder' => 'Youtube Video ID')); ?></div>
-                </div>
-<?php */ ?>
 
                 <div class="form-group"><label for="inputName" class="col-sm-2 control-label">Title</label>
                   <div class="col-sm-10"><?php echo $this->Form->input('name', array('class' => 'form-control', 'placeholder' => 'Title', 'label' => false, 'required' => true)); ?></div>
@@ -124,45 +131,51 @@ echo $this->html->script(array('/v/formValidation.min', '/v/bootstrap.min')); ?>
 
                 <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
-                  <div id="app_err"></div>
-									<input type="button" class="btn btn-success" value="Save" id="add_br">
+                    <div id="app_err"></div>
+                    <input type="button" class="btn btn-success" value="Save" id="add_br">
                   </div>
                 </div>
-                <div class="form-group"><div class="col-sm-offset-2 col-sm-10">
-                <div class="alert alert-danger text-bold">Note: On Save, It will take few sec to convert text into other languages for multilingual pages.</div></div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <div class="alert alert-danger text-bold">Note: On Save, It will take few sec to convert text into other languages for multilingual pages.</div>
+                  </div>
                 </div>
 
                 <script>
-                  
-window['btnState'] = function() {
-			$("#add_br").prop("disabled", false);
-			$("#add_br").val('Save');
-		};
-	$(document).ready(function() {
-		$('#proFrm')
-	    .formValidation({
-	        framework: 'bootstrap',
-	        icon: { },
-	        err: { },
-	        fields: { }
-	    })    .on('success.form.fv', function(e) {
-	        e.preventDefault();
-	        var $form = $(e.target),
-	            fv    = $form.data('formValidation');
-	        fv.defaultSubmit();
-	    });
-		$("#add_br").click(function() {
-			$("#app_err").html('');
-				$("#proFrm").ajaxForm({
-					target: '#app_err',
-					beforeSubmit: function() { $("#add_br").prop("disabled", true); $("#add_br").val('Please wait...'); },
-					success: function(response) { btnState(); },
-					error: function(response) {
-						btnState();
-					}
-				}).submit();
-		});
-	});
+                  window['btnState'] = function() {
+                    $("#add_br").prop("disabled", false);
+                    $("#add_br").val('Save');
+                  };
+                  $(document).ready(function() {
+                    $('#proFrm')
+                      .formValidation({
+                        framework: 'bootstrap',
+                        icon: {},
+                        err: {},
+                        fields: {}
+                      }).on('success.form.fv', function(e) {
+                        e.preventDefault();
+                        var $form = $(e.target),
+                          fv = $form.data('formValidation');
+                        fv.defaultSubmit();
+                      });
+                    $("#add_br").click(function() {
+                      $("#app_err").html('');
+                      $("#proFrm").ajaxForm({
+                        target: '#app_err',
+                        beforeSubmit: function() {
+                          $("#add_br").prop("disabled", true);
+                          $("#add_br").val('Please wait...');
+                        },
+                        success: function(response) {
+                          btnState();
+                        },
+                        error: function(response) {
+                          btnState();
+                        }
+                      }).submit();
+                    });
+                  });
                 </script>
 
 
@@ -188,26 +201,6 @@ window['btnState'] = function() {
                 <div class="form-group"><label for="inputName" class="col-sm-2 control-label">Installation Manual</label>
                   <div class="col-sm-10"><?php echo $this->Form->input('installation_manual', array('type' => 'text', 'class' => 'form-control', 'placeholder' => 'Installation Manual', 'label' => false, 'required' => false)); ?></div>
                 </div>
-                <?php /*?>
-<div class="form-group" id="c_radio_btn"><label for="inputName" class="col-sm-2 control-label">Titanium</label>
-<div class="col-sm-10"><?php $options = array('1' => 'Available', '0' => '  Not available'); $attributes = array('legend' => false,'class'=>'flat-red','default'=>1);
-echo $this->Form->radio('titanium', $options, $attributes);?></div></div>
-<div class="form-group" id="c_radio_btn"><label for="inputName" class="col-sm-2 control-label">Stainless Steel</label>
-<div class="col-sm-10"><?php $options = array('1' => 'Available', '0' => '  Not available'); $attributes = array('legend' => false,'class'=>'flat-red','default'=>1);
-echo $this->Form->radio('stainless_steel', $options, $attributes);?></div></div>
-<div class="form-group" id="c_radio_btn"><label for="inputName" class="col-sm-2 control-label">DP</label>
-<div class="col-sm-10"><?php $options = array('1' => 'Available', '0' => '  Not available'); $attributes = array('legend' => false,'class'=>'flat-red','default'=>1);
-echo $this->Form->radio('dp', $options, $attributes);?></div></div>
-<div class="form-group" id="c_radio_btn"><label for="inputName" class="col-sm-2 control-label">Cat Back</label>
-<div class="col-sm-10"><?php $options = array('1' => 'Available', '0' => '  Not available'); $attributes = array('legend' => false,'class'=>'flat-red','default'=>1);
-echo $this->Form->radio('cat_back', $options, $attributes);?></div></div>
-<div class="form-group" id="c_radio_btn"><label for="inputName" class="col-sm-2 control-label">ECU Tuning</label>
-<div class="col-sm-10"><?php $options = array('1' => 'Available', '0' => '  Not available'); $attributes = array('legend' => false,'class'=>'flat-red','default'=>1);
-echo $this->Form->radio('ecu_tuning', $options, $attributes);?></div></div>
-<div class="form-group" id="c_radio_btn"><label for="inputName" class="col-sm-2 control-label">Tuning Box</label>
-<div class="col-sm-10"><?php $options = array('1' => 'Available', '0' => '  Not available'); $attributes = array('legend' => false,'class'=>'flat-red','default'=>1);
-echo $this->Form->radio('tuning_box', $options, $attributes);?></div></div>
-<?php */ ?>
                 <br><br>
                 <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
@@ -356,281 +349,271 @@ echo $this->Form->radio('tuning_box', $options, $attributes);?></div></div>
               }
             </script>
             <div id="pic_err"></div>
-          <?php } elseif (isset($q['tab']) && $q['tab'] == 'images') {
-                $sArr = array();
-
-          ?>
+          <?php } elseif (isset($q['tab']) && $q['tab'] == 'gallery') { ?>
             <div class="box box-success">
-              <div class="box-header with-border">
-                <h3 class="box-title">Add New Images</h3>
-              </div>
+              
               <div class="box-body">
-
                 <div class="row"></div>
-
-                <div class="col-md-2"><input type="button" class="btn btn-success" value="Product Slider" onclick="add_slider(<?php echo $data['ItemDetail']['id']; ?>,1);"></div>
-                <div class="col-md-2"><input type="button" class="btn btn-success" value="Gallery" onclick="add_gallery(<?php echo $data['ItemDetail']['id']; ?>);"></div>
-                <input type="hidden" value="" id="slider">
+                <div class="col-md-12"><input type="button" class="btn btn-success pull-right" value="Add Image" onclick="add_gallery(<?php echo $data['ItemDetail']['id']; ?>);"></div>
                 <input type="hidden" value="" id="gallery">
               </div>
             </div>
-            <!-- /.box-body -->
-          </div>
 
-          <div class="box box-default">
-            <div class="box-header with-border">
-              <h3 class="box-title">Product Slider</h3>
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+
+            <div class="clearfix"></div>
+            <div class="box box-info">
+              <div class="box-header">
+                <h3 class="box-title">Gallery</h3>
               </div>
-            </div>
-            <div class="box-body" style="display: block;">
-              <div class="row" id="sortable_ss">
+              <div class="row" id="sortable_gal">
                 <?php
-                if (isset($sliders) && !empty($sliders)) {
-                  $n = 1;
-                  foreach ($sliders as $list) {
-                    $main = show_image('cdn/' . $list['Library']['folder'], $list['Library']['file_name'], 150, 150, 100, 'cf', null);
-                ?>
-                    <div class="col-sm-2 col-md-3 ui-sortable-handle" id="ss_<?php echo $list['Library']['id']; ?>">
-                      <div class="thumbnail">
-                        <img src="<?php echo $main; ?>" alt="" title="" class="margin">
-                        <div class="caption">
-                          <p><a href="javascript:void(0);" onclick="del_pic(<?php echo $list['Library']['id'] . ",'" . $data['ItemDetail']['id'] . "','slider'"; ?>);" class="btn btn-primary" role="button">Delete</a>
-                            <?php if ($n != 1) { ?>
-                              <a href="javascript:void(0);" onclick="prim(<?php echo $list['Library']['id'] . ",'" . $data['ItemDetail']['id'] . "','slider'"; ?>);" class="btn btn-primary" role="button">Make Primary</a><?php } ?>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                <?php $n++;
-                  }
-                } ?>
-                <div class="clearfix">
-                </div>
-              </div>
-            </div>
-          </div>
-          <br><br><br>
-          <div class="clearfix"></div>
-
-          
-          <br><br><br>
-          <div class="clearfix"></div>
-
-
-          <div class="box box-info">
-            <div class="box-header">
-              <h3 class="box-title">Gallery</h3>
-            </div>
-
-            <div class="row" id="sortable_gal">
-              <?php
                 if (isset($gallery) && !empty($gallery)) {
                   foreach ($gallery as $list) {
                     $main = show_image('cdn/' . $list['Library']['folder'], $list['Library']['file_name'], 150, 150, 100, 'cf', null);
-              ?>
-                  <div class="col-sm-2 col-md-3 ui-sortable-handle" id="gal_<?php echo $list['Library']['id']; ?>">
-                    <div class="thumbnail">
-                      <img src="<?php echo $main; ?>" alt="" title="" class="margin">
-                      <div class="caption">
-                        <p><a href="javascript:void(0);" onclick="del_pic(<?php echo $list['Library']['id'] . ",'" . $data['ItemDetail']['id'] . "','gallery'"; ?>);" class="btn btn-primary" role="button">Delete</a>
+                ?>
+                    <div class="col-sm-2 col-md-3 ui-sortable-handle" id="gal_<?php echo $list['Library']['id']; ?>">
+                      <div class="thumbnail">
+                        <img src="<?php echo $main; ?>" alt="" title="" class="margin">
+                        <div class="caption">
+                          <p><a href="javascript:void(0);" onclick="del_pic(<?php echo $list['Library']['id'] . ",'" . $data['ItemDetail']['id'] . "','gallery'"; ?>);" class="btn btn-primary" role="button">Delete</a>
+                        </div>
+                      </div>
+                    </div>
+                <?php }
+                } ?>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+            <div id="pic_err"></div>
+          <?php } elseif (isset($q['tab']) && $q['tab'] == 'slider') { ?>
+            <div class="box box-success">
+              
+              <div class="box-body">
+                <div class="row"></div>
+                <div class="col-md-12"><input type="button" class="btn btn-success pull-right" value="Add Image" onclick="add_slider(<?php echo $data['ItemDetail']['id']; ?>,1);"></div>
+                <input type="hidden" value="" id="slider">
+
+              </div>
+            </div>
+            <div class="box box-default">
+              <div class="box-header with-border">
+                <h3 class="box-title">Product Slider</h3>
+              </div>
+              <div class="box-body">
+                <div class="row" id="sortable_ss">
+                  <?php
+                  if (isset($sliders) && !empty($sliders)) {
+                    $n = 1;
+                    foreach ($sliders as $list) {
+                      $main = show_image('cdn/' . $list['Library']['folder'], $list['Library']['file_name'], 150, 150, 100, 'cf', null);
+                  ?>
+                      <div class="col-sm-2 col-md-3 ui-sortable-handle" id="ss_<?php echo $list['Library']['id']; ?>">
+                        <div class="thumbnail">
+                          <img src="<?php echo $main; ?>" alt="" title="" class="margin">
+                          <div class="caption">
+                            <p><a href="javascript:void(0);" onclick="del_pic(<?php echo $list['Library']['id'] . ",'" . $data['ItemDetail']['id'] . "','slider'"; ?>);" class="btn btn-primary" role="button">Delete</a>
+                              <?php if ($n != 1) { ?>
+                                <a href="javascript:void(0);" onclick="prim(<?php echo $list['Library']['id'] . ",'" . $data['ItemDetail']['id'] . "','slider'"; ?>);" class="btn btn-primary" role="button">Make Primary</a><?php } ?>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                  <?php $n++;
+                    }
+                  } ?>
+                  <div class="clearfix">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="pic_err"></div>
+
+          <?php } elseif (isset($q['tab']) && $q['tab'] == 'catback') { ?>
+            <div class="active tab-pane">
+              <div class="box box-success">
+                <div class="box box-success">
+                  <div class="box-header">
+                    <h3 class="box-title">Cat Back exhaust system</h3>
+                    <a class="btn btn-app" href="javascript:void(0);" onclick="add_cat(<?php echo $data['ItemDetail']['id']; ?>,'cat-back')"><i class="fa fa-plus-square"></i> Add New Cat-Back </a>
+                  </div>
+                  <div class="box-body">
+                    <div class="row">
+                      <div class="col-sm-12" id="lab_table">
+                        <table class="table table-bordered table-hover dataTable" id="example2" role="grid" aria-describedby="example2_info">
+                          <thead>
+                            <tr role="row">
+                              <th>Image</th>
+                              <th>Type</th>
+                              <th>Make/Model/Motor</th>
+                              <th>Title</th>
+                              <th>Part</th>
+                              <th>Price</th>
+                              <th>Order/Quantity</th>
+                            </tr>
+                          </thead>
+                          <tbody id="table_rows">
+                            <?php
+                            $arrList = explode(',', $data['ItemDetail']['cat_back_ids']);
+                            $cList = $this->Lab->getProduct($arrList);
+                            if (!empty($cList)) {
+                              foreach ($cList as $aList) {
+                                $full_path = 'cdn/' . $aList['Library']['folder'] . "/" . $aList['Library']['file_name'];
+                                $imgg  = new_show_image($full_path, 100, 100, 100, 'ff', null); ?>
+                                <tr class="odd gradeX">
+                                  <td class="center gnTxt"><img src="<?php echo $imgg; ?>" class="img-thumbnail" alt=""> </td>
+                                  <td><?php if ($aList['Product']['type'] == 2) {
+                                        echo "Cat-back";
+                                      } elseif ($aList['Product']['type'] == 3) {
+                                        echo "Catalytic";
+                                      } elseif ($aList['Product']['type'] == 1) {
+                                        echo "Tuning Box";
+                                      } ?></td>
+                                  <td><?php echo $aList['Brand']['name'] . "/ " . $aList['Model']['name'] . "/ " . $aList['Motor']['name']; ?></td>
+                                  <td><?php echo $aList['Product']['title']; ?></td>
+                                  <td><?php echo $aList['Product']['part']; ?></td>
+                                  <td><?php echo "$" . $aList['Product']['price']; ?></td>
+                                  <td><?php echo  $aList['Product']['total_order'] . "/" . $aList['Product']['quantity']; ?></td>
+                                </tr>
+                              <?php }
+                            } else { ?> <tr class="odd gradeX">
+                                <td colspan="7" class="center gnTxt">Empty</td>
+                              </tr> <?php } ?>
+                          </tbody>
+                        </table>
                       </div>
                     </div>
                   </div>
-              <?php }
-                } ?>
-              <div class="clearfix"></div>
-            </div>
-          </div>
-          <div id="pic_err"></div>
-
-        <?php } elseif (isset($q['tab']) && $q['tab'] == 'catback') { ?>
-          <div class="active tab-pane">
-            <div class="box box-success">
-              <div class="box box-success">
-                <div class="box-header">
-                  <h3 class="box-title">Cat Back exhaust system</h3>
-                  <a class="btn btn-app" href="javascript:void(0);" onclick="add_cat(<?php echo $data['ItemDetail']['id']; ?>,'cat-back')"><i class="fa fa-plus-square"></i> Add New Cat-Back </a>
-                </div>
-                <div class="box-body">
-                  <div class="row">
-                    <div class="col-sm-12" id="lab_table">
-                      <table class="table table-bordered table-hover dataTable" id="example2" role="grid" aria-describedby="example2_info">
-                        <thead>
-                          <tr role="row">
-                            <th>Image</th>
-                            <th>Type</th>
-                            <th>Make/Model/Motor</th>
-                            <th>Title</th>
-                            <th>Part</th>
-                            <th>Price</th>
-                            <th>Order/Quantity</th>
-                          </tr>
-                        </thead>
-                        <tbody id="table_rows">
-                          <?php
-                          $arrList = explode(',', $data['ItemDetail']['cat_back_ids']);
-                          $cList = $this->Lab->getProduct($arrList);
-                          if (!empty($cList)) {
-                            foreach ($cList as $aList) {
-                              $full_path = 'cdn/' . $aList['Library']['folder'] . "/" . $aList['Library']['file_name'];
-                              $imgg  = new_show_image($full_path, 100, 100, 100, 'ff', null); ?>
-                              <tr class="odd gradeX">
-                                <td class="center gnTxt"><img src="<?php echo $imgg; ?>" class="img-thumbnail" alt=""> </td>
-                                <td><?php if ($aList['Product']['type'] == 2) {
-                                      echo "Cat-back";
-                                    } elseif ($aList['Product']['type'] == 3) {
-                                      echo "Catalytic";
-                                    } elseif ($aList['Product']['type'] == 1) {
-                                      echo "Tuning Box";
-                                    } ?></td>
-                                <td><?php echo $aList['Brand']['name'] . "/ " . $aList['Model']['name'] . "/ " . $aList['Motor']['name']; ?></td>
-                                <td><?php echo $aList['Product']['title']; ?></td>
-                                <td><?php echo $aList['Product']['part']; ?></td>
-                                <td><?php echo "$" . $aList['Product']['price']; ?></td>
-                                <td><?php echo  $aList['Product']['total_order'] . "/" . $aList['Product']['quantity']; ?></td>
-                              </tr>
-                            <?php }
-                          } else { ?> <tr class="odd gradeX">
-                              <td colspan="7" class="center gnTxt">Empty</td>
-                            </tr> <?php } ?>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-        <?php } elseif (isset($q['tab']) && $q['tab'] == 'catalytic') { ?>
-          <div class="active tab-pane">
-            <div class="box box-success">
+          <?php } elseif (isset($q['tab']) && $q['tab'] == 'catalytic') { ?>
+            <div class="active tab-pane">
               <div class="box box-success">
-                <div class="box-header">
-                  <h3 class="box-title">Catalytic system</h3>
-                  <a class="btn btn-app" href="javascript:void(0);" onclick="add_cat(<?php echo $data['ItemDetail']['id']; ?>,'catalytic')"><i class="fa fa-plus-square"></i> Add New Catalytic </a>
-                </div>
-                <div class="box-body">
-                  <div class="row">
-                    <div class="col-sm-12" id="lab_table">
-                      <table class="table table-bordered table-hover dataTable" id="example2" role="grid" aria-describedby="example2_info">
-                        <thead>
-                          <tr role="row">
-                            <th>Image</th>
-                            <th>Type</th>
-                            <th>Make/Model/Motor</th>
-                            <th>Title</th>
-                            <th>Part</th>
-                            <th>Price</th>
-                            <th>Order/Quantity</th>
-                          </tr>
-                        </thead>
-                        <tbody id="table_rows">
-                          <?php
-                          $arrList = explode(',', $data['ItemDetail']['catalytic_ids']);
-                          $cList = $this->Lab->getProduct($arrList);
-                          if (!empty($cList)) {
-                            foreach ($cList as $aList) {
-                              $full_path = 'cdn/' . $aList['Library']['folder'] . "/" . $aList['Library']['file_name'];
-                              $imgg  = new_show_image($full_path, 100, 100, 100, 'ff', null); ?>
-                              <tr class="odd gradeX">
-                                <td class="center gnTxt"><img src="<?php echo $imgg; ?>" class="img-thumbnail" alt=""> </td>
-                                <td><?php if ($aList['Product']['type'] == 2) {
-                                      echo "Cat-back";
-                                    } elseif ($aList['Product']['type'] == 3) {
-                                      echo "Catalytic";
-                                    } elseif ($aList['Product']['type'] == 1) {
-                                      echo "Tuning Box";
-                                    } ?></td>
-                                <td><?php echo $aList['Brand']['name'] . "/ " . $aList['Model']['name'] . "/ " . $aList['Motor']['name']; ?></td>
-                                <td><?php echo $aList['Product']['title']; ?></td>
-                                <td><?php echo $aList['Product']['part']; ?></td>
-                                <td><?php echo "$" . $aList['Product']['price']; ?></td>
-                                <td><?php echo  $aList['Product']['total_order'] . "/" . $aList['Product']['quantity']; ?></td>
-                              </tr>
-                            <?php }
-                          } else { ?> <tr class="odd gradeX">
-                              <td colspan="7" class="center gnTxt">Empty</td>
-                            </tr> <?php } ?>
-                        </tbody>
-                      </table>
-                    </div>
+                <div class="box box-success">
+                  <div class="box-header">
+                    <h3 class="box-title">Catalytic system</h3>
+                    <a class="btn btn-app" href="javascript:void(0);" onclick="add_cat(<?php echo $data['ItemDetail']['id']; ?>,'catalytic')"><i class="fa fa-plus-square"></i> Add New Catalytic </a>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        <?php } elseif (isset($q['tab']) && $q['tab'] == 'accessory') { ?>
-
-          <div class="active tab-pane">
-            <div class="box box-success">
-              <div class="box box-success">
-                <div class="box-header">
-                  <h3 class="box-title">Accessory</h3>
-                  <a class="btn btn-app" href="javascript:void(0);" onclick="add_cat(<?php echo $data['ItemDetail']['id']; ?>,'accessory')"><i class="fa fa-plus-square"></i> Add New Accessory </a>
-                </div>
-                <div class="box-body">
-                  <div class="row">
-                    <div class="col-sm-12" id="lab_table">
-                      <table class="table table-bordered table-hover dataTable" id="example2" role="grid" aria-describedby="example2_info">
-                        <thead>
-                          <tr role="row">
-                            <th>Image</th>
-                            <th>Type</th>
-                            <th>Make/Model/Motor</th>
-                            <th>Title</th>
-                            <th>Part</th>
-                            <th>Price</th>
-                            <th>Order/Quantity</th>
-                          </tr>
-                        </thead>
-                        <tbody id="table_rows">
-                          <?php
-                          $arrList = explode(',', $data['ItemDetail']['accessory_ids']);
-                          $cList = $this->Lab->getProduct($arrList);
-                          if (!empty($cList)) {
-                            foreach ($cList as $aList) {
-
-                              $full_path = 'cdn/no_image_available.jpg';
-
-                              if (isset($aList['Library']['file_name']) && !empty($aList['Library']['file_name'])) {
+                  <div class="box-body">
+                    <div class="row">
+                      <div class="col-sm-12" id="lab_table">
+                        <table class="table table-bordered table-hover dataTable" id="example2" role="grid" aria-describedby="example2_info">
+                          <thead>
+                            <tr role="row">
+                              <th>Image</th>
+                              <th>Type</th>
+                              <th>Make/Model/Motor</th>
+                              <th>Title</th>
+                              <th>Part</th>
+                              <th>Price</th>
+                              <th>Order/Quantity</th>
+                            </tr>
+                          </thead>
+                          <tbody id="table_rows">
+                            <?php
+                            $arrList = explode(',', $data['ItemDetail']['catalytic_ids']);
+                            $cList = $this->Lab->getProduct($arrList);
+                            if (!empty($cList)) {
+                              foreach ($cList as $aList) {
                                 $full_path = 'cdn/' . $aList['Library']['folder'] . "/" . $aList['Library']['file_name'];
-                              }
-
-                              $imgg = new_show_image($full_path, 100, 100, 100, 'ff', null);
-
-                          ?>
-                              <tr class="odd gradeX">
-                                <td class="center gnTxt"><img src="<?php echo $imgg; ?>" class="img-thumbnail" alt=""> </td>
-                                <td><?php if ($aList['Product']['type'] == 2) {
-                                      echo "Cat-back";
-                                    } elseif ($aList['Product']['type'] == 3) {
-                                      echo "Catalytic";
-                                    } elseif ($aList['Product']['type'] == 5) {
-                                      echo "Accessory";
-                                    } ?></td>
-                                <td><?php echo $aList['Brand']['name'] . "/ " . $aList['Model']['name'] . "/ " . $aList['Motor']['name']; ?></td>
-                                <td><?php echo $aList['Product']['title']; ?></td>
-                                <td><?php echo $aList['Product']['part']; ?></td>
-                                <td><?php echo "$" . $aList['Product']['price']; ?></td>
-                                <td><?php echo  $aList['Product']['total_order'] . "/" . $aList['Product']['quantity']; ?></td>
-                              </tr>
-                            <?php }
-                          } else { ?> <tr class="odd gradeX">
-                              <td colspan="7" class="center gnTxt">Empty</td>
-                            </tr> <?php } ?>
-                        </tbody>
-                      </table>
+                                $imgg  = new_show_image($full_path, 100, 100, 100, 'ff', null); ?>
+                                <tr class="odd gradeX">
+                                  <td class="center gnTxt"><img src="<?php echo $imgg; ?>" class="img-thumbnail" alt=""> </td>
+                                  <td><?php if ($aList['Product']['type'] == 2) {
+                                        echo "Cat-back";
+                                      } elseif ($aList['Product']['type'] == 3) {
+                                        echo "Catalytic";
+                                      } elseif ($aList['Product']['type'] == 1) {
+                                        echo "Tuning Box";
+                                      } ?></td>
+                                  <td><?php echo $aList['Brand']['name'] . "/ " . $aList['Model']['name'] . "/ " . $aList['Motor']['name']; ?></td>
+                                  <td><?php echo $aList['Product']['title']; ?></td>
+                                  <td><?php echo $aList['Product']['part']; ?></td>
+                                  <td><?php echo "$" . $aList['Product']['price']; ?></td>
+                                  <td><?php echo  $aList['Product']['total_order'] . "/" . $aList['Product']['quantity']; ?></td>
+                                </tr>
+                              <?php }
+                            } else { ?> <tr class="odd gradeX">
+                                <td colspan="7" class="center gnTxt">Empty</td>
+                              </tr> <?php } ?>
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        <?php } elseif (isset($q['tab']) && $q['tab'] == 'shipping') {
+
+          <?php } elseif (isset($q['tab']) && $q['tab'] == 'accessory') { ?>
+
+            <div class="active tab-pane">
+              <div class="box box-success">
+                <div class="box box-success">
+                  <div class="box-header">
+                    <h3 class="box-title">Accessory</h3>
+                    <a class="btn btn-app" href="javascript:void(0);" onclick="add_cat(<?php echo $data['ItemDetail']['id']; ?>,'accessory')"><i class="fa fa-plus-square"></i> Add New Accessory </a>
+                  </div>
+                  <div class="box-body">
+                    <div class="row">
+                      <div class="col-sm-12" id="lab_table">
+                        <table class="table table-bordered table-hover dataTable" id="example2" role="grid" aria-describedby="example2_info">
+                          <thead>
+                            <tr role="row">
+                              <th>Image</th>
+                              <th>Type</th>
+                              <th>Make/Model/Motor</th>
+                              <th>Title</th>
+                              <th>Part</th>
+                              <th>Price</th>
+                              <th>Order/Quantity</th>
+                            </tr>
+                          </thead>
+                          <tbody id="table_rows">
+                            <?php
+                            $arrList = explode(',', $data['ItemDetail']['accessory_ids']);
+                            $cList = $this->Lab->getProduct($arrList);
+                            if (!empty($cList)) {
+                              foreach ($cList as $aList) {
+
+                                $full_path = 'cdn/no_image_available.jpg';
+
+                                if (isset($aList['Library']['file_name']) && !empty($aList['Library']['file_name'])) {
+                                  $full_path = 'cdn/' . $aList['Library']['folder'] . "/" . $aList['Library']['file_name'];
+                                }
+
+                                $imgg = new_show_image($full_path, 100, 100, 100, 'ff', null);
+
+                            ?>
+                                <tr class="odd gradeX">
+                                  <td class="center gnTxt"><img src="<?php echo $imgg; ?>" class="img-thumbnail" alt=""> </td>
+                                  <td><?php if ($aList['Product']['type'] == 2) {
+                                        echo "Cat-back";
+                                      } elseif ($aList['Product']['type'] == 3) {
+                                        echo "Catalytic";
+                                      } elseif ($aList['Product']['type'] == 5) {
+                                        echo "Accessory";
+                                      } ?></td>
+                                  <td><?php echo $aList['Brand']['name'] . "/ " . $aList['Model']['name'] . "/ " . $aList['Motor']['name']; ?></td>
+                                  <td><?php echo $aList['Product']['title']; ?></td>
+                                  <td><?php echo $aList['Product']['part']; ?></td>
+                                  <td><?php echo "$" . $aList['Product']['price']; ?></td>
+                                  <td><?php echo  $aList['Product']['total_order'] . "/" . $aList['Product']['quantity']; ?></td>
+                                </tr>
+                              <?php }
+                            } else { ?> <tr class="odd gradeX">
+                                <td colspan="7" class="center gnTxt">Empty</td>
+                              </tr> <?php } ?>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <?php } elseif (isset($q['tab']) && $q['tab'] == 'shipping') {
                 echo $this->Html->script(array('jquery.form.min'));
                 echo $this->html->script(array('/v/formValidation.min', '/v/bootstrap.min'));
 
@@ -644,287 +627,287 @@ echo $this->Form->radio('tuning_box', $options, $attributes);?></div></div>
                 echo $this->Form->hidden('type1', array('value' => 2));
                 echo $this->Form->hidden('type2', array('value' => 3));
                 echo $this->Form->hidden('type3', array('value' => 1));
-        ?>
+          ?>
 
 
-          <div class="box box-default">
-            <div class="box-body">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group"><label>Country </label>
-                    <?php echo $this->Form->input('country', array('id' => 'country_id', 'options' => @$cList, 'empty' => ' --Select Country-- ', 'default' => @$q['cid'], 'label' => false, 'error' => false, 'div' => false, 'class' => 'form-control', 'required' => true)); ?></div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group"><label>State </label>
-                    <?php echo $this->Form->input('state', array('id' => 'state', 'options' => @$sList, 'empty' => ' --Select State-- ', 'label' => false, 'error' => false, 'div' => false, 'class' => 'form-control', 'required' => true)); ?></div>
-                  <!-- /.form-group -->
-                </div>
+            <div class="box box-default">
+              <div class="box-body">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group"><label>Country </label>
+                      <?php echo $this->Form->input('country', array('id' => 'country_id', 'options' => @$cList, 'empty' => ' --Select Country-- ', 'default' => @$q['cid'], 'label' => false, 'error' => false, 'div' => false, 'class' => 'form-control', 'required' => true)); ?></div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group"><label>State </label>
+                      <?php echo $this->Form->input('state', array('id' => 'state', 'options' => @$sList, 'empty' => ' --Select State-- ', 'label' => false, 'error' => false, 'div' => false, 'class' => 'form-control', 'required' => true)); ?></div>
+                    <!-- /.form-group -->
+                  </div>
 
 
-                <!-- /.col -->
-                <div class="col-md-6">
+                  <!-- /.col -->
+                  <div class="col-md-6">
 
-                  <div class="box box-danger">
-                    <div class="box-header with-border">
-                      <h3 class="box-title">Shipping cost for Cat Back Exhaust</h3>
+                    <div class="box box-danger">
+                      <div class="box-header with-border">
+                        <h3 class="box-title">Shipping cost for Cat Back Exhaust</h3>
+                      </div>
+                      <div class="box-body">
+                        <div class="row">
+                          <div class="col-xs-5">
+                            <div class="form-group"><label>For Customer</label><?php echo $this->Form->input('Shipping.type1.for_customer', array('type' => 'number', 'class' => 'form-control', 'label' => false, 'required' => true, 'min' => 1, 'max' => 500)); ?></div>
+                          </div>
+                          <div class="col-xs-5">
+                            <div class="form-group"><label>For Dealer</label><?php echo $this->Form->input('Shipping.type1.for_dealer', array('type' => 'number', 'class' => 'form-control', 'label' => false, 'required' => true, 'min' => 1, 'max' => 500)); ?></div>
+                          </div>
+
+                        </div>
+                      </div>
                     </div>
-                    <div class="box-body">
-                      <div class="row">
-                        <div class="col-xs-5">
-                          <div class="form-group"><label>For Customer</label><?php echo $this->Form->input('Shipping.type1.for_customer', array('type' => 'number', 'class' => 'form-control', 'label' => false, 'required' => true, 'min' => 1, 'max' => 500)); ?></div>
-                        </div>
-                        <div class="col-xs-5">
-                          <div class="form-group"><label>For Dealer</label><?php echo $this->Form->input('Shipping.type1.for_dealer', array('type' => 'number', 'class' => 'form-control', 'label' => false, 'required' => true, 'min' => 1, 'max' => 500)); ?></div>
-                        </div>
+                  </div>
 
+
+                  <div class="col-md-6">
+
+                    <div class="box box-info">
+                      <div class="box-header with-border">
+                        <h3 class="box-title">Shipping cost for Catalytic Converter</h3>
+                      </div>
+                      <div class="box-body">
+                        <div class="row">
+                          <div class="col-xs-5">
+                            <div class="form-group"><label>For Customer</label><?php echo $this->Form->input('Shipping.type2.for_customer', array('type' => 'number', 'class' => 'form-control', 'label' => false, 'required' => true, 'min' => 1, 'max' => 500)); ?></div>
+                          </div>
+                          <div class="col-xs-5">
+                            <div class="form-group"><label>For Dealer</label><?php echo $this->Form->input('Shipping.type2.for_dealer', array('type' => 'number', 'class' => 'form-control', 'label' => false, 'required' => true, 'min' => 1, 'max' => 500)); ?></div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-6">
+
+                    <div class="box box-primary">
+                      <div class="box-header with-border">
+                        <h3 class="box-title">Shipping cost for Tuning Box</h3>
+                      </div>
+                      <div class="box-body">
+                        <div class="row">
+                          <div class="col-xs-5">
+                            <div class="form-group"><label>For Customer</label><?php echo $this->Form->input('Shipping.type3.for_customer', array('type' => 'number', 'class' => 'form-control', 'label' => false, 'required' => true, 'min' => 1, 'max' => 500)); ?></div>
+                          </div>
+                          <div class="col-xs-5">
+                            <div class="form-group"><label>For Dealer</label><?php echo $this->Form->input('Shipping.type3.for_dealer', array('type' => 'number', 'class' => 'form-control', 'label' => false, 'required' => true, 'min' => 1, 'max' => 500)); ?></div>
+                          </div>
+
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-
-
-                <div class="col-md-6">
-
-                  <div class="box box-info">
-                    <div class="box-header with-border">
-                      <h3 class="box-title">Shipping cost for Catalytic Converter</h3>
-                    </div>
-                    <div class="box-body">
-                      <div class="row">
-                        <div class="col-xs-5">
-                          <div class="form-group"><label>For Customer</label><?php echo $this->Form->input('Shipping.type2.for_customer', array('type' => 'number', 'class' => 'form-control', 'label' => false, 'required' => true, 'min' => 1, 'max' => 500)); ?></div>
-                        </div>
-                        <div class="col-xs-5">
-                          <div class="form-group"><label>For Dealer</label><?php echo $this->Form->input('Shipping.type2.for_dealer', array('type' => 'number', 'class' => 'form-control', 'label' => false, 'required' => true, 'min' => 1, 'max' => 500)); ?></div>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="col-md-6">
-
-                  <div class="box box-primary">
-                    <div class="box-header with-border">
-                      <h3 class="box-title">Shipping cost for Tuning Box</h3>
-                    </div>
-                    <div class="box-body">
-                      <div class="row">
-                        <div class="col-xs-5">
-                          <div class="form-group"><label>For Customer</label><?php echo $this->Form->input('Shipping.type3.for_customer', array('type' => 'number', 'class' => 'form-control', 'label' => false, 'required' => true, 'min' => 1, 'max' => 500)); ?></div>
-                        </div>
-                        <div class="col-xs-5">
-                          <div class="form-group"><label>For Dealer</label><?php echo $this->Form->input('Shipping.type3.for_dealer', array('type' => 'number', 'class' => 'form-control', 'label' => false, 'required' => true, 'min' => 1, 'max' => 500)); ?></div>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <!-- /.row -->
               </div>
-              <!-- /.row -->
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer">
+              <!-- /.box-body -->
               <div class="box-footer">
-                <button type="submit" class="btn btn-info pull-right">Save</button>
+                <div class="box-footer">
+                  <button type="submit" class="btn btn-info pull-right">Save</button>
+                </div>
               </div>
             </div>
-          </div>
-          <?php echo $this->Form->end(); ?>
-          <script type="text/javascript">
-            $(document).ready(function() {
-              $('#shFrm')
-                .formValidation({
-                  framework: 'bootstrap',
-                  icon: {},
-                  err: {},
-                  fields: {}
-                }).on('success.form.fv', function(e) {
-                  // Prevent form submission
-                  e.preventDefault();
+            <?php echo $this->Form->end(); ?>
+            <script type="text/javascript">
+              $(document).ready(function() {
+                $('#shFrm')
+                  .formValidation({
+                    framework: 'bootstrap',
+                    icon: {},
+                    err: {},
+                    fields: {}
+                  }).on('success.form.fv', function(e) {
+                    // Prevent form submission
+                    e.preventDefault();
 
-                  var $form = $(e.target),
-                    fv = $form.data('formValidation');
+                    var $form = $(e.target),
+                      fv = $form.data('formValidation');
 
-                  // Use Ajax to submit form data
-                  fv.defaultSubmit();
+                    // Use Ajax to submit form data
+                    fv.defaultSubmit();
+                  });
+
+                $("#country_id").change(function() {
+                  window.location.href = '<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=shipping"; ?>&cid=' + this.value;
                 });
-
-              $("#country_id").change(function() {
-                window.location.href = '<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=shipping"; ?>&cid=' + this.value;
               });
-            });
-          </script>
-        <?php } elseif (isset($q['tab']) && $q['tab'] == 'manage_shipping') { ?>
+            </script>
+          <?php } elseif (isset($q['tab']) && $q['tab'] == 'manage_shipping') { ?>
 
-          <div class="box box-danger">
-            <div class="box-header with-border">
-              <h3 class="box-title">Country and State</h3>
-            </div>
-            <div class="box-body">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group"><label>Country </label>
-                    <?php echo $this->Form->input('country', array('id' => 'country_id', 'options' => @$cList, 'empty' => ' --Select Country-- ', 'default' => @$q['cid'], 'label' => false, 'error' => false, 'div' => false, 'class' => 'form-control', 'required' => true)); ?></div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group"><label>State </label>
-                    <?php echo $this->Form->input('state', array('id' => 'state', 'options' => @$sList, 'empty' => ' --Select State-- ', 'default' => @$q['sid'], 'label' => false, 'error' => false, 'div' => false, 'class' => 'form-control', 'required' => true)); ?></div>
-                  <!-- /.form-group -->
-                </div>
-              </div>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <?php if (isset($sData) && !empty($sData)) { ?>
-            <div class="box box-info">
+            <div class="box box-danger">
               <div class="box-header with-border">
-                <h3 class="box-title">All Shipping Cost</h3>
+                <h3 class="box-title">Country and State</h3>
               </div>
               <div class="box-body">
-                <div class="row" id="lab_table">
-                  <table class="table table-bordered table-hover dataTable" id="example2" role="grid" aria-describedby="example2_info">
-                    <thead>
-                      <tr role="row">
-                        <th>Type</th>
-                        <th>Country</th>
-                        <th>State</th>
-                        <th>Brand</th>
-                        <th>Dealer Cost</th>
-                        <th>Customer Cost</th>
-                        <th>Edit</th>
-                      </tr>
-                    </thead>
-                    <tbody id="table_rows">
-                      <?php if (!empty($sData)) {
-                        $menuType = $this->Lab->menuType();
-                        foreach ($sData as $sList) { ?>
-                          <tr>
-                            <td class="center gnTxt"><?php echo @$menuType[$sList['Shipping']['type']]; ?></td>
-                            <td class="center gnTxt"><?php echo $sList['Country']['name']; ?></td>
-                            <td class="center gnTxt"><?php echo $sList['State']['name']; ?></td>
-                            <td class="center gnTxt"><?php echo $sList['Brand']['name']; ?></td>
-
-
-
-                            <td class="center gnTxt"><?php echo $sList['Shipping']['for_dealer']; ?></td>
-                            <td class="center gnTxt"><?php echo $sList['Shipping']['for_customer']; ?></td>
-                            <td class="center gnTxt"><a href="<?php echo SITEURL . "lab/labs/updated_shipping/" . $sList['Shipping']['id']; ?>" class="GnResPopAjax_act" title="">Edit</a></td>
-                          </tr>
-                        <?php }
-                      } else { ?>
-                        <td colspan="7">Your Shipping cost tab is empty</td>
-                      <?php } ?>
-                    </tbody>
-                  </table>
-                  <div class="col-sm-7">
-                    <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
-                      <ul class="pagination">
-                        <?php
-                        echo $this->Paginator->prev('Previous', array('tag' => 'li'), null, array('class' => 'paginate_button previous disabled'));
-                        echo $this->Paginator->numbers(array('modulus' => 1, 'first' => 2, 'last' => 2, 'separator' => '', 'tag' => 'li', 'ellipsis' => false, 'class' => 'paginate_button'));
-                        echo $this->Paginator->next('Next', array('tag' => 'li'), null, array('class' => 'paginate_button previous disabled')); ?>
-                      </ul>
-                    </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group"><label>Country </label>
+                      <?php echo $this->Form->input('country', array('id' => 'country_id', 'options' => @$cList, 'empty' => ' --Select Country-- ', 'default' => @$q['cid'], 'label' => false, 'error' => false, 'div' => false, 'class' => 'form-control', 'required' => true)); ?></div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group"><label>State </label>
+                      <?php echo $this->Form->input('state', array('id' => 'state', 'options' => @$sList, 'empty' => ' --Select State-- ', 'default' => @$q['sid'], 'label' => false, 'error' => false, 'div' => false, 'class' => 'form-control', 'required' => true)); ?></div>
+                    <!-- /.form-group -->
                   </div>
                 </div>
               </div>
               <!-- /.box-body -->
             </div>
-          <?php } ?>
-          <script type="text/javascript">
-            $(document).ready(function() {
-
-              $("#country_id").change(function() {
-                window.location.href = '<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=manage_shipping"; ?>&cid=' + this.value;
-              });
-              $("#state").change(function() {
-                window.location.href = '<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=manage_shipping"; ?>&cid=' + $("#country_id").val() + '&sid=' + this.value;
-              });
-
-            });
-          </script>
-        <?php } elseif (isset($q['tab']) && $q['tab'] == 'import_shipping') { ?>
-          <div class="box box-info">
-            <div class="box-header with-border">
-              <h3 class="box-title">Import shipping costs</h3>
-            </div>
-            <div class="box-body">
-              <div class="row">
+            <?php if (isset($sData) && !empty($sData)) { ?>
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">All Shipping Cost</h3>
+                </div>
                 <div class="box-body">
-                  <div class="col-md-6">
-                    <div class=" ">
-                      <?php echo $this->Form->create('Shipping', array('type' => 'file', 'url' => array('controller' => 'labs', 'action' => 'up_xls'),)); ?>
-                      <div class="box-body">
-                        <div class="form-group"><label for="exampleInputFile">File input</label>
-                          <?php echo $this->Form->file('file', array('multiple' => 'multiple', 'accept' => 'application/vnd.ms-excel')); ?>
-                        </div>
+                  <div class="row" id="lab_table">
+                    <table class="table table-bordered table-hover dataTable" id="example2" role="grid" aria-describedby="example2_info">
+                      <thead>
+                        <tr role="row">
+                          <th>Type</th>
+                          <th>Country</th>
+                          <th>State</th>
+                          <th>Brand</th>
+                          <th>Dealer Cost</th>
+                          <th>Customer Cost</th>
+                          <th>Edit</th>
+                        </tr>
+                      </thead>
+                      <tbody id="table_rows">
+                        <?php if (!empty($sData)) {
+                          $menuType = $this->Lab->menuType();
+                          foreach ($sData as $sList) { ?>
+                            <tr>
+                              <td class="center gnTxt"><?php echo @$menuType[$sList['Shipping']['type']]; ?></td>
+                              <td class="center gnTxt"><?php echo $sList['Country']['name']; ?></td>
+                              <td class="center gnTxt"><?php echo $sList['State']['name']; ?></td>
+                              <td class="center gnTxt"><?php echo $sList['Brand']['name']; ?></td>
+
+
+
+                              <td class="center gnTxt"><?php echo $sList['Shipping']['for_dealer']; ?></td>
+                              <td class="center gnTxt"><?php echo $sList['Shipping']['for_customer']; ?></td>
+                              <td class="center gnTxt"><a href="<?php echo SITEURL . "lab/labs/updated_shipping/" . $sList['Shipping']['id']; ?>" class="GnResPopAjax_act" title="">Edit</a></td>
+                            </tr>
+                          <?php }
+                        } else { ?>
+                          <td colspan="7">Your Shipping cost tab is empty</td>
+                        <?php } ?>
+                      </tbody>
+                    </table>
+                    <div class="col-sm-7">
+                      <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+                        <ul class="pagination">
+                          <?php
+                          echo $this->Paginator->prev('Previous', array('tag' => 'li'), null, array('class' => 'paginate_button previous disabled'));
+                          echo $this->Paginator->numbers(array('modulus' => 1, 'first' => 2, 'last' => 2, 'separator' => '', 'tag' => 'li', 'ellipsis' => false, 'class' => 'paginate_button'));
+                          echo $this->Paginator->next('Next', array('tag' => 'li'), null, array('class' => 'paginate_button previous disabled')); ?>
+                        </ul>
                       </div>
-                      <div id="text_err"></div>
-                      <div class="box-footer"><button type="button" class="btn btn-primary" id="bt">Submit</button></div>
-                      <?php echo $this->Form->end(); ?>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.box-body -->
+              </div>
+            <?php } ?>
+            <script type="text/javascript">
+              $(document).ready(function() {
+
+                $("#country_id").change(function() {
+                  window.location.href = '<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=manage_shipping"; ?>&cid=' + this.value;
+                });
+                $("#state").change(function() {
+                  window.location.href = '<?php echo SITEURL . "lab/labs/update_car_detail/" . $data['ItemDetail']['id'] . "?tab=manage_shipping"; ?>&cid=' + $("#country_id").val() + '&sid=' + this.value;
+                });
+
+              });
+            </script>
+          <?php } elseif (isset($q['tab']) && $q['tab'] == 'import_shipping') { ?>
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Import shipping costs</h3>
+              </div>
+              <div class="box-body">
+                <div class="row">
+                  <div class="box-body">
+                    <div class="col-md-6">
+                      <div class=" ">
+                        <?php echo $this->Form->create('Shipping', array('type' => 'file', 'url' => array('controller' => 'labs', 'action' => 'up_xls'),)); ?>
+                        <div class="box-body">
+                          <div class="form-group"><label for="exampleInputFile">File input</label>
+                            <?php echo $this->Form->file('file', array('multiple' => 'multiple', 'accept' => 'application/vnd.ms-excel')); ?>
+                          </div>
+                        </div>
+                        <div id="text_err"></div>
+                        <div class="box-footer"><button type="button" class="btn btn-primary" id="bt">Submit</button></div>
+                        <?php echo $this->Form->end(); ?>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="box box-success">
-            <div class="box-header with-border">
-              <h3 class="box-title">Export shipping cost</h3>
-            </div>
-            <div class="box-body">
-              <div class="row">
-                <div class="box-body">
-                  <div class="col-md-6">
-                    <div class=" ">
-                      <div id="text_err"></div>
-                      <div class="box-footer"><button type="button" class="btn btn-primary" id="exp">Export</button></div>
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <h3 class="box-title">Export shipping cost</h3>
+              </div>
+              <div class="box-body">
+                <div class="row">
+                  <div class="box-body">
+                    <div class="col-md-6">
+                      <div class=" ">
+                        <div id="text_err"></div>
+                        <div class="box-footer"><button type="button" class="btn btn-primary" id="exp">Export</button></div>
 
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <script>
-            $(document).ready(function() {
-              $("#exp").click(function() {
-                window.location = '<?php echo SITEURL . "lab/labs/new_xls/" . $data['ItemDetail']['id']; ?>';
+            <script>
+              $(document).ready(function() {
+                $("#exp").click(function() {
+                  window.location = '<?php echo SITEURL . "lab/labs/new_xls/" . $data['ItemDetail']['id']; ?>';
+                });
+
+                $("#bt").click(function() {
+
+                  var status = $('#text_err');
+                  $("#ShippingUpXlsForm").ajaxForm({
+                    target: '#text_err',
+                    beforeSend: function() {
+                      $('#preloader_photo').show();
+                      $('#preloader_photo .percent').html('0%');
+                    },
+                    uploadProgress: function(event, position, total, percentComplete) {
+                      if (percentComplete < 100) {
+                        var percentVal = percentComplete + '%';
+                        $('#preloader_photo .percent').html(percentVal);
+                      } else {
+                        $('#preloader_photo .percent').html('Wait');
+                      }
+                    },
+                    complete: function(xhr) {
+                      $('#preloader_photo').hide();
+                    },
+                  }).submit();
+
+                });
               });
-
-              $("#bt").click(function() {
-
-                var status = $('#text_err');
-                $("#ShippingUpXlsForm").ajaxForm({
-                  target: '#text_err',
-                  beforeSend: function() {
-                    $('#preloader_photo').show();
-                    $('#preloader_photo .percent').html('0%');
-                  },
-                  uploadProgress: function(event, position, total, percentComplete) {
-                    if (percentComplete < 100) {
-                      var percentVal = percentComplete + '%';
-                      $('#preloader_photo .percent').html(percentVal);
-                    } else {
-                      $('#preloader_photo .percent').html('Wait');
-                    }
-                  },
-                  complete: function(xhr) {
-                    $('#preloader_photo').hide();
-                  },
-                }).submit();
-
-              });
-            });
-          </script>
-        <?php } elseif (isset($q['tab']) && $q['tab'] == 'multilingual') { ?>
-          <div class="box">
-          <?php /* ?>
+            </script>
+          <?php } elseif (isset($q['tab']) && $q['tab'] == 'multilingual') { ?>
+            <div class="box">
+              <?php /* ?>
             <div class="box-header with-border">
               <h3 class="box-title">Create new page in other language</h3>
             </div>
@@ -944,205 +927,205 @@ echo $this->Form->radio('tuning_box', $options, $attributes);?></div></div>
             <div id="lang_err"> </div>
             <?php */ ?>
 
-            <div class="box-header">
-              <h3 class="box-title">Manage multilingual page</h3>
+              <div class="box-header">
+                <h3 class="box-title">Manage multilingual page</h3>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body no-padding">
+                <table class="table table-striped">
+                  <tbody>
+                    <tr>
+                      <th>#</th>
+                      <th>Language</th>
+                      <th>Edit</th>
+                      <th>Status</th>
+                      <th>Action</th>
+
+                    </tr>
+                    <?php if (isset($allLangPage) && !empty($allLangPage)) {
+                      $num = 1;
+                      foreach ($allLangPage as $pList) { ?>
+                        <tr>
+                          <td><?php echo $num; ?></td>
+                          <td><?php
+                              if (!empty($pList['ItemDetail']['url'])) {
+                                echo $this->html->link($langArr[$pList['ItemDetail']['language']], '/product/' . $pList['ItemDetail']['url'], array('target' => '_blank'));
+                              } else {
+                                echo $langArr[$pList['ItemDetail']['language']];
+                              } ?></td>
+                          <td><?php echo $this->html->link('Edit', '/lab/labs/lang_car_detail/' . $pList['ItemDetail']['id'] . "/" . $pList['ItemDetail']['language']);; ?></td>
+                          <td> <?php
+                                if ($pList['ItemDetail']['status'] == 1) {
+                                  echo $this->html->link('Active', '/lab/labs/update_car_detail/' . $data['ItemDetail']['id'] . '?lng_act=' . $pList['ItemDetail']['id'], array('class' => 'text-green', 'confirm' => 'Do you want to inactive this page?'));
+                                } elseif ($pList['ItemDetail']['status'] == 0) {
+                                  echo $this->html->link('Inactive', '/lab/labs/update_car_detail/' . $data['ItemDetail']['id'] . '?lng_act=' . $pList['ItemDetail']['id'], array('class' => 'text-red', 'confirm' => 'Do you want to active this page?'));
+                                }
+
+                                ?> </td>
+                          <td> <?php echo $this->html->link('Delete', '/lab/labs/update_car_detail/' . $data['ItemDetail']['id'] . '?lng_del=' . $pList['ItemDetail']['id'], array('class' => 'text-red', 'confirm' => 'Do you want to delete this page?')); ?> </td>
+                        </tr>
+                    <?php $num++;
+                      }
+                    } ?>
+
+
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.box-body -->
             </div>
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-              <table class="table table-striped">
-                <tbody>
-                  <tr>
-                    <th>#</th>
-                    <th>Language</th>
-                    <th>Edit</th>
-                    <th>Status</th>
-                    <th>Action</th>
+            <script>
+              $(document).ready(function() {
+                $("#gen_page").click(function() {
+                  var lang = $('#lang').val();
+                  var cid = $('#carde_id').val();
+                  if (lang != "" && cid != "") {
+                    $('#preloader').show();
+                    $.ajax({
+                      type: 'POST',
+                      url: '<?php echo SITEURL; ?>lab/labs/gen_page',
+                      data: "cid=" + cid + "&lang=" + lang + "",
+                      success: function(data) {
+                        $("#lang_err").html(data);
+                        $('#preloader').hide();
+                      },
+                      error: function(comment) {
+                        $("#lang_err").html(comment);
+                        $('#preloader').hide();
+                      }
+                    });
+                  }
 
-                  </tr>
-                  <?php if (isset($allLangPage) && !empty($allLangPage)) {
-                    $num = 1;
-                    foreach ($allLangPage as $pList) { ?>
-                      <tr>
-                        <td><?php echo $num; ?></td>
-                        <td><?php
-                            if (!empty($pList['ItemDetail']['url'])) {
-                              echo $this->html->link($langArr[$pList['ItemDetail']['language']], '/product/' . $pList['ItemDetail']['url'], array('target' => '_blank'));
-                            } else {
-                              echo $langArr[$pList['ItemDetail']['language']];
-                            } ?></td>
-                        <td><?php echo $this->html->link('Edit', '/lab/labs/lang_car_detail/' . $pList['ItemDetail']['id'] . "/" . $pList['ItemDetail']['language']);; ?></td>
-                        <td> <?php
-                              if ($pList['ItemDetail']['status'] == 1) {
-                                echo $this->html->link('Active', '/lab/labs/update_car_detail/' . $data['ItemDetail']['id'] . '?lng_act=' . $pList['ItemDetail']['id'], array('class' => 'text-green', 'confirm' => 'Do you want to inactive this page?'));
-                              } elseif ($pList['ItemDetail']['status'] == 0) {
-                                echo $this->html->link('Inactive', '/lab/labs/update_car_detail/' . $data['ItemDetail']['id'] . '?lng_act=' . $pList['ItemDetail']['id'], array('class' => 'text-red', 'confirm' => 'Do you want to active this page?'));
-                              }
-
-                              ?> </td>
-                        <td> <?php echo $this->html->link('Delete', '/lab/labs/update_car_detail/' . $data['ItemDetail']['id'] . '?lng_del=' . $pList['ItemDetail']['id'], array('class' => 'text-red', 'confirm' => 'Do you want to delete this page?')); ?> </td>
-                      </tr>
-                  <?php $num++;
-                    }
-                  } ?>
-
-
-                </tbody>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <script>
-            $(document).ready(function() {
-              $("#gen_page").click(function() {
-                var lang = $('#lang').val();
-                var cid = $('#carde_id').val();
-                if (lang != "" && cid != "") {
-                  $('#preloader').show();
-                  $.ajax({
-                    type: 'POST',
-                    url: '<?php echo SITEURL; ?>lab/labs/gen_page',
-                    data: "cid=" + cid + "&lang=" + lang + "",
-                    success: function(data) {
-                      $("#lang_err").html(data);
-                      $('#preloader').hide();
-                    },
-                    error: function(comment) {
-                      $("#lang_err").html(comment);
-                      $('#preloader').hide();
-                    }
-                  });
-                }
-
+                });
               });
-            });
-          </script>
-        <?php } ?>
-        </div><!-- /.tab-pane -->
-      </div><!-- /.tab-content -->
-    </div><!-- /.nav-tabs-custom -->
-</div><!-- /.col -->
+            </script>
+          <?php } ?>
+          </div><!-- /.tab-pane -->
+        </div><!-- /.tab-content -->
+      </div><!-- /.nav-tabs-custom -->
+    </div><!-- /.col -->
 
 
-<script>
-  function add_cat(id, type) {
-    $.magnificPopup.open({
-      items: {
-        src: '<?php echo SITEURL; ?>lab/labs/add_product/' + id + '/' + type,
-        type: 'ajax'
-      },
-      closeMarkup: '<button class="mfp-close mfp-new-close" type="button" title="Close (Esc)"> </button>',
-      closeOnContentClick: false,
-      closeOnBgClick: false,
-      showCloseBtn: true,
-      enableEscapeKey: false,
-    });
-  }
+    <script>
+      function add_cat(id, type) {
+        $.magnificPopup.open({
+          items: {
+            src: '<?php echo SITEURL; ?>lab/labs/add_product/' + id + '/' + type,
+            type: 'ajax'
+          },
+          closeMarkup: '<button class="mfp-close mfp-new-close" type="button" title="Close (Esc)"> </button>',
+          closeOnContentClick: false,
+          closeOnBgClick: false,
+          showCloseBtn: true,
+          enableEscapeKey: false,
+        });
+      }
 
-  function prim(lid, id, ty) {
+      function prim(lid, id, ty) {
 
-    if (lid != "" && id != "" && ty != "") {
-      $('#preloader').show();
-      $.ajax({
-        type: 'POST',
-        url: '<?php echo SITEURL; ?>lab/labs/primary_img/',
-        data: 'type=primary&dtype=' + ty + '&lid=' + lid + '&id=' + id + '',
-        success: function(data) {
-          $("#pic_err").html(data);
-          location.reload();
-        },
-        error: function(comment) {
-          $("#pic_err").html(comment);
-          location.reload();
+        if (lid != "" && id != "" && ty != "") {
+          $('#preloader').show();
+          $.ajax({
+            type: 'POST',
+            url: '<?php echo SITEURL; ?>lab/labs/primary_img/',
+            data: 'type=primary&dtype=' + ty + '&lid=' + lid + '&id=' + id + '',
+            success: function(data) {
+              $("#pic_err").html(data);
+              location.reload();
+            },
+            error: function(comment) {
+              $("#pic_err").html(comment);
+              location.reload();
+            }
+          });
         }
-      });
-    }
 
-  }
+      }
 
-  function del_pic(lid, id, ty) {
+      function del_pic(lid, id, ty) {
 
-    if (lid != "" && id != "" && ty != "") {
-      $('#preloader').show();
-      $.ajax({
-        type: 'POST',
-        url: '<?php echo SITEURL; ?>lab/labs/up_details/',
-        data: 'type=del&dtype=' + ty + '&lid=' + lid + '&id=' + id + '',
-        success: function(data) {
-          $("#pic_err").html(data);
-          location.reload();
-        },
-        error: function(comment) {
-          $("#pic_err").html(comment);
-          location.reload();
+        if (lid != "" && id != "" && ty != "") {
+          $('#preloader').show();
+          $.ajax({
+            type: 'POST',
+            url: '<?php echo SITEURL; ?>lab/labs/up_details/',
+            data: 'type=del&dtype=' + ty + '&lid=' + lid + '&id=' + id + '',
+            success: function(data) {
+              $("#pic_err").html(data);
+              location.reload();
+            },
+            error: function(comment) {
+              $("#pic_err").html(comment);
+              location.reload();
+            }
+          });
         }
-      });
-    }
 
-  }
+      }
 
-  function add_gallery(id) {
-    $.magnificPopup.open({
-      items: {
-        src: '<?php echo SITEURL . "lab/labs/add_media/"; ?>' + id + '/galery',
-        type: 'ajax'
-      },
-      closeMarkup: '<button class="mfp-close mfp-new-close" type="button" title="Close (Esc)"> </button>',
-      closeOnContentClick: false,
-      closeOnBgClick: false,
-      showCloseBtn: true,
-      enableEscapeKey: false,
-    });
-  }
+      function add_gallery(id) {
+        $.magnificPopup.open({
+          items: {
+            src: '<?php echo SITEURL . "lab/labs/add_media/"; ?>' + id + '/galery',
+            type: 'ajax'
+          },
+          closeMarkup: '<button class="mfp-close mfp-new-close" type="button" title="Close (Esc)"> </button>',
+          closeOnContentClick: false,
+          closeOnBgClick: false,
+          showCloseBtn: true,
+          enableEscapeKey: false,
+        });
+      }
 
-  function add_slider(id, type) {
-    $.magnificPopup.open({
-      items: {
-        src: '<?php echo SITEURL . "lab/labs/add_media/"; ?>' + id + '/slider/' + type,
-        type: 'ajax'
-      },
-      closeMarkup: '<button class="mfp-close mfp-new-close" type="button" title="Close (Esc)"> </button>',
-      closeOnContentClick: false,
-      closeOnBgClick: false,
-      showCloseBtn: true,
-      enableEscapeKey: false,
-    });
-  }
+      function add_slider(id, type) {
+        $.magnificPopup.open({
+          items: {
+            src: '<?php echo SITEURL . "lab/labs/add_media/"; ?>' + id + '/slider/' + type,
+            type: 'ajax'
+          },
+          closeMarkup: '<button class="mfp-close mfp-new-close" type="button" title="Close (Esc)"> </button>',
+          closeOnContentClick: false,
+          closeOnBgClick: false,
+          showCloseBtn: true,
+          enableEscapeKey: false,
+        });
+      }
 
-  function add_q_images(id) {
-    $.magnificPopup.open({
-      items: {
-        src: '<?php echo SITEURL . "lab/labs/add_media/"; ?>' + id + '/q_images',
-        type: 'ajax'
-      },
-      closeMarkup: '<button class="mfp-close mfp-new-close" type="button" title="Close (Esc)"> </button>',
-      closeOnContentClick: false,
-      closeOnBgClick: false,
-      showCloseBtn: true,
-      enableEscapeKey: false,
-    });
-  }
+      function add_q_images(id) {
+        $.magnificPopup.open({
+          items: {
+            src: '<?php echo SITEURL . "lab/labs/add_media/"; ?>' + id + '/q_images',
+            type: 'ajax'
+          },
+          closeMarkup: '<button class="mfp-close mfp-new-close" type="button" title="Close (Esc)"> </button>',
+          closeOnContentClick: false,
+          closeOnBgClick: false,
+          showCloseBtn: true,
+          enableEscapeKey: false,
+        });
+      }
 
-  function del(i, v) {
-    if (i != "" && v != "") {
-      $('#preloader').show();
-      $.ajax({
-        type: 'POST',
-        url: '<?php echo SITEURL; ?>lab/labs/api_car/',
-        data: 'type=del&i=' + i + '&v=' + v + '&tab=videos',
-        success: function(data) {
-          $("#cover").html(data);
-          $('#preloader').hide();
-        },
-        error: function(comment) {
-          $("#cover").html(comment);
-          $('#preloader').hide();
+      function del(i, v) {
+        if (i != "" && v != "") {
+          $('#preloader').show();
+          $.ajax({
+            type: 'POST',
+            url: '<?php echo SITEURL; ?>lab/labs/api_car/',
+            data: 'type=del&i=' + i + '&v=' + v + '&tab=videos',
+            success: function(data) {
+              $("#cover").html(data);
+              $('#preloader').hide();
+            },
+            error: function(comment) {
+              $("#cover").html(comment);
+              $('#preloader').hide();
+            }
+          });
         }
-      });
-    }
-  }
-</script>
+      }
+    </script>
 
-</section><!-- /.content -->
+  </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
 <?php
 
@@ -1168,7 +1151,7 @@ echo $this->Html->script(array('/lab_root/plugins/iCheck/icheck.min'));
         opacity: 0.6,
         cursor: 'move',
         update: function() {
-          var d = $(this).sortable("serialize")+ "&id=<?php echo $data['ItemDetail']['id'];?>";
+          var d = $(this).sortable("serialize") + "&id=<?php echo $data['ItemDetail']['id']; ?>";
           $(function() {
             $.ajax({
               type: 'POST',
@@ -1207,7 +1190,7 @@ echo $this->Html->script(array('/lab_root/plugins/iCheck/icheck.min'));
         opacity: 0.6,
         cursor: 'move',
         update: function() {
-          var d = $(this).sortable("serialize")+ "&id=<?php echo $data['ItemDetail']['id'];?>";
+          var d = $(this).sortable("serialize") + "&id=<?php echo $data['ItemDetail']['id']; ?>";
           $(function() {
             $.ajax({
               type: 'POST',

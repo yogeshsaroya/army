@@ -2085,15 +2085,17 @@ class LabsController extends AppController
 			$allLangPage = $langArr = $sData = $slidersTT = $sliders = $gallery = $cList = $sList = array();
 			$this->ItemDetail->bindModel(array('hasMany' => array('QualityDetail', 'Video' => ['order' => ['Video.pos' => 'ASC']]), 'belongsTo' => array('Brand', 'Model', 'Motor')));
 			$data = $this->ItemDetail->find('first', array('recursive' => 2, 'conditions' => array('ItemDetail.id' => $id)));
-			if (isset($q['tab']) && $q['tab'] == 'images') {
-				$ids = explode(',', $data['ItemDetail']['slider']);
+			if (isset($q['tab']) && $q['tab'] == 'gallery') {
 				$gids = explode(',', $data['ItemDetail']['gallery']);
-				$or = $or1 = [];
-				if (!empty($data['ItemDetail']['slider'])) { $or = array('FIELD(Library.id,' . $data['ItemDetail']['slider'] . ')'); }
+				$or1 = [];
 				if (!empty($data['ItemDetail']['gallery'])) { $or1 = array('FIELD(Library.id,' . $data['ItemDetail']['gallery'] . ')'); }
-				$sliders = $this->Library->find('all', array('conditions' => array('Library.id' => $ids), 'order'=>$or ));
 				$gallery = $this->Library->find('all', array('conditions' => array('Library.id' => $gids), 'order' =>$or1));
-				
+			}
+			if (isset($q['tab']) && $q['tab'] == 'slider') {
+				$ids = explode(',', $data['ItemDetail']['slider']);
+				$or = [];
+				if (!empty($data['ItemDetail']['slider'])) { $or = array('FIELD(Library.id,' . $data['ItemDetail']['slider'] . ')'); }
+				$sliders = $this->Library->find('all', array('conditions' => array('Library.id' => $ids), 'order'=>$or ));
 			}
 			if (isset($q['tab']) && in_array($q['tab'], array('shipping', 'manage_shipping'))) {
 				$cList = $this->World->find('list', array('conditions' => array('World.type' => 'co', 'World.status' => 1), 'order' => array('World.name' => 'ASC'), 'field' => array('id', 'name')));
