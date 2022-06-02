@@ -403,6 +403,24 @@ class HomesController extends AppController
         
         if ($this->RequestHandler->isAjax()) {
             if (!empty($this->data)) {
+                
+                if( empty($this->data['Request']['type']) && empty($this->data['Request']['f_name']) && empty($this->data['Request']['l_name']) &&
+                empty($this->data['Request']['email']) && empty($this->data['Request']['cemail']) && empty($this->data['Request']['phone']) &&
+                empty($this->data['Request']['city']) && empty($this->data['Request']['state']) && empty($this->data['Request']['zip_code']) &&
+                empty($this->data['Request']['country']) && empty($this->data['Request']['subject']) && empty($this->data['Request']['hear']) && 
+                empty($this->data['Request']['vehicle_type']) &&  empty($this->data['Request']['message']) ){
+                    echo "<div class='alert alert-danger'>Please fill all required fields</div>";
+                    echo '<script>grecaptcha.reset();</script>'; exit;
+                }
+                if( $this->data['Request']['vehicle_type'] == 'car' && empty($this->data['Request']['brand']) &&  empty($this->data['Request']['model']) &&  empty($this->data['Request']['engine'])){
+                    echo "<div class='alert alert-danger'>Please select car brand, model and engine.</div>";
+                    echo '<script>grecaptcha.reset();</script>'; exit;
+                }
+                elseif( $this->data['Request']['vehicle_type'] == 'motorcycle' && empty($this->data['Request']['motor_make']) && empty($this->data['Request']['motor_model']) &&  empty($this->data['Request']['motor_years'])){
+                    echo "<div class='alert alert-danger'>Please select motorcycle make, model and year.</div>";
+                    echo '<script>grecaptcha.reset();</script>'; exit;
+                }
+
                 if (isset($this->data['g-recaptcha-response']) && !empty($this->data['g-recaptcha-response'])) {
                     $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . DataSecret . "&response=" . $this->data['g-recaptcha-response'] . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
                     $arr = json_decode($response, true);
@@ -429,6 +447,7 @@ class HomesController extends AppController
                             'contact_for' => $this->data['Request']['type'] . " / " . $make . " / " . $model . " " . $engine,
                             'info'=>json_encode($_SERVER)
                         ];
+                        
                         $this->DATA->form_data($forms);
 
                         $parameters = array(
