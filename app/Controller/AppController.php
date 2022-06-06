@@ -23,7 +23,10 @@ class AppController extends Controller
 			if ($server_name == 'localhost') {
 				$aR = unserialize(@file_get_contents('http://www.geoplugin.net/php.gp?ip=103.85.205.34'));
 			} else {
-				$aR = unserialize(@file_get_contents('http://www.geoplugin.net/php.gp?ip=' . $_SERVER['REMOTE_ADDR']));
+				if ( !is_bot($_SERVER['HTTP_USER_AGENT']) ) {
+					$aR = unserialize(@file_get_contents('http://www.geoplugin.net/php.gp?ip=' . $_SERVER['REMOTE_ADDR']));	 
+				}
+				
 			}
 			if (!empty($aR)) { $aR['created'] = DATE; }
 			if (isset($aR['geoplugin_countryCode']) && array_key_exists($aR['geoplugin_countryCode'], $RstrictedCountry)) {
