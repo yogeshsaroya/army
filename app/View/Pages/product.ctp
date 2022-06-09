@@ -228,7 +228,7 @@ if (isset($data) && !empty($data)) {
       <h2><?php echo gs($txt, 32); ?></h2>
     </div>
     <div class="mt-3">
-      <img src="https://res.cloudinary.com/armytrix/image/upload/c_scale,q_auto:good,w_1600/v1650865425/product/product-fix-2_vasdds.webp" alt="" loading="lazy" class="img-wd-100">
+      <img src="https://res.cloudinary.com/armytrix/image/upload/fl_lossy,c_scale,q_auto,w_1600/v1650865425/product/product-fix-2_vasdds.webp" alt="" loading="lazy" class="img-wd-100">
     </div>
   </div>
 
@@ -239,16 +239,16 @@ if (isset($data) && !empty($data)) {
       <p class="text-left"><?php echo gs($txt, 34); ?></p>
       <div class="row mt-3 mobile50">
         <div class="col-sm-3 text-center">
-          <img src="https://res.cloudinary.com/armytrix/image/upload/q_auto:good/v1651403044/product/product-app-1_sgfbbv.webp" loading="lazy" alt="App" />
+          <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1600/v1651403044/product/product-app-1_sgfbbv.webp" loading="lazy" alt="App" />
         </div>
         <div class="col-sm-3 text-center">
-          <img src="https://res.cloudinary.com/armytrix/image/upload/q_auto:good/v1651403044/product/product-app2_aevq7p.webp" loading="lazy" alt="App" />
+          <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1600/v1651403044/product/product-app2_aevq7p.webp" loading="lazy" alt="App" />
         </div>
         <div class="col-sm-3 text-center">
-          <img src="https://res.cloudinary.com/armytrix/image/upload/q_auto:good/v1651403044/product/product-app-4_k65j7f.webp" loading="lazy" alt="App" />
+          <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1600/v1651403044/product/product-app-4_k65j7f.webp" loading="lazy" alt="App" />
         </div>
         <div class="col-sm-3 text-center">
-          <img src="https://res.cloudinary.com/armytrix/image/upload/q_auto:good/v1651403044/product/product-app-1_sgfbbv.webp" loading="lazy" alt="App" />
+          <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1600/v1651403044/product/product-app-1_sgfbbv.webp" loading="lazy" alt="App" />
         </div>
       </div>
     </div>
@@ -273,7 +273,7 @@ if (isset($data) && !empty($data)) {
         <p><?php echo gs($txt, 48); ?></p>
       </div>
       <div class="mt-3">
-        <img src="https://res.cloudinary.com/armytrix/image/upload/q_auto:good/v1651403215/product/Downpipe-png_geacsq_hna3s2.webp" alt="" loading="lazy" class="img-wd-100">
+        <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1600/v1651403215/product/Downpipe-png_geacsq_hna3s2.webp" alt="" loading="lazy" class="img-wd-100">
       </div>
     </div>
 
@@ -285,14 +285,14 @@ if (isset($data) && !empty($data)) {
       <div class="mt-3 d-flex">
         <div class="col-50">
           <div class="leftImg">
-            <img src="https://res.cloudinary.com/armytrix/image/upload/q_auto:good/v1650865195/product/standard-downpipe_ryhk9h.webp" alt="" loading="lazy" class="img-wd-100">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1600/v1650865195/product/standard-downpipe_ryhk9h.webp" alt="" loading="lazy" class="img-wd-100">
           </div>
           <h4 class="pad15 text-left">
             <?php echo gs($txt, 54); ?><br /><?php echo gs($txt, 55); ?>
           </h4>
         </div>
         <div class="col-50 flexDirection">
-          <div class="rightImg"><img src="https://res.cloudinary.com/armytrix/image/upload/q_auto:good/v1650865193/product/ceramic-coated-bg_jdfzkd.webp" alt="" loading="lazy" class="img-wd-100"></div>
+          <div class="rightImg"><img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1600/v1650865193/product/ceramic-coated-bg_jdfzkd.webp" alt="" loading="lazy" class="img-wd-100"></div>
           <h4 class="pad15 text-left"><?php echo gs($txt, 52); ?><br /><?php echo gs($txt, 53); ?></h4>
         </div>
       </div>
@@ -305,38 +305,38 @@ if (isset($data) && !empty($data)) {
 
     <div class="page_container fullmxWd text-center mt-50" id="pro_9">
       <h2><?php echo gs($txt, 59); ?></h2>
-      <img src="https://res.cloudinary.com/armytrix/image/upload/q_auto:good/v1650865195/product/Meticulously-bg_joc6gw.webp" alt="" loading="lazy" class="img-wd-100">
-      <img src="https://res.cloudinary.com/armytrix/image/upload/q_auto:good/v1650865194/product/h-min_rggyro.webp" alt="" loading="lazy" class="img-wd-100">
+      <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1600/v1650865195/product/Meticulously-bg_joc6gw.webp" alt="" loading="lazy" class="img-wd-100">
+      <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1600/v1650865194/product/h-min_rggyro.webp" alt="" loading="lazy" class="img-wd-100">
     </div>
 
     <div class="page_container fullmxWd text-center mt-50" id="pro_10">
       <h2><?php echo gs($txt, 60); ?></h2>
-      <img src="https://res.cloudinary.com/armytrix/image/upload/q_auto:good/v1650865194/product/horse_pwr_i5ungc.webp" alt="" loading="lazy" class="img-wd-100">
+      <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1600/v1650865194/product/horse_pwr_i5ungc.webp" alt="" loading="lazy" class="img-wd-100">
     </div>
 
     <div class="page_container fullmxWd text-center mt-50" id="pro_11">
       <h2><?php echo gs($txt, 61); ?></h2>
       <p><?php echo gs($txt, 62); ?></p>
-      <img src="https://res.cloudinary.com/armytrix/image/upload/q_auto:good/v1650865195/product/r8-titanium_polzql.webp" alt="" loading="lazy" class="img-wd-100 mt-3">
+      <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1600/v1650865195/product/r8-titanium_polzql.webp" alt="" loading="lazy" class="img-wd-100 mt-3">
     </div>
     <div class="page_container fullmxWd text-center mt-50" id="pro_12">
       <h2><?php echo gs($txt, 63); ?></h2>
       <p><?php echo gs($txt, 64); ?></p>
       <div class="posRltv">
         <h4 class="mdlTx topDeepLeft"><?php echo gs($txt, 65); ?></h4>
-        <img src="https://res.cloudinary.com/armytrix/image/upload/q_auto:good/v1650865194/product/cristallization_img_m95rzj.webp" alt="" loading="lazy" class="img-wd-100 mt-3">
+        <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1600/v1650865194/product/cristallization_img_m95rzj.webp" alt="" loading="lazy" class="img-wd-100 mt-3">
       </div>
     </div>
     <div class="page_container fullmxWd posRltv" id="pro_13">
       <h4 class="mdlTx leftTop"><?php echo gs($txt, 66); ?></h4>
-      <img src="https://res.cloudinary.com/armytrix/image/upload/q_auto:good/v1650865193/product/cristilizzation_fge103.webp" alt="" loading="lazy" class="img-wd-100 ">
+      <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1600/v1650865193/product/cristilizzation_fge103.webp" alt="" loading="lazy" class="img-wd-100 ">
     </div>
     <?php echo $this->element('pro/s18', ['txt' => $txt]); ?>
 
 
     <div class="page_container fullmxWd posRltv mt-50" id="pro_15">
       <h4 class="mdlTx bottomCenter"><?php echo gs($txt, 66); ?></h4>
-      <img src="https://res.cloudinary.com/armytrix/image/upload/q_auto:good/v1650865197/product/shared-label-bg_bbhu5n.webp" alt="" loading="lazy" class="img-wd-100">
+      <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1600/v1650865197/product/shared-label-bg_bbhu5n.webp" alt="" loading="lazy" class="img-wd-100">
     </div>
   </section>
 </div>

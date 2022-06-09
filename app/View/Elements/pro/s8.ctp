@@ -7,8 +7,8 @@
   </div>
 <div class="fullMxWd posRltv mt-3">
 <video width="100%" height="auto" preload="none" playsinline autoplay loop muted  class="_autoplay_vid" id="video_3" 
-poster="https://res.cloudinary.com/armytrix/image/upload/v1651224953/product/videos/3d-bg_v9tllh.jpg">
-  <source src="https://res.cloudinary.com/armytrix/video/upload/v1651224912/product/videos/3d_kpukcf.mp4" type="video/mp4">
+poster="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1600/v1651224953/product/videos/3d-bg_v9tllh.jpg">
+  <source src="https://res.cloudinary.com/armytrix/video/upload/fl_progressive,c_scale,q_auto:best,w_1600/v1651224912/product/videos/3d_kpukcf.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 <div class="box-squre"><h5><?php echo gs($txt,58);?></h5></div>
