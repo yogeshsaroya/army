@@ -3,7 +3,7 @@
     <h2><?php echo gs($txt,67);?></h2>
     <p><?php echo gs($txt,68);?></p>
     <div class="posRlt">
-        <img src="https://res.cloudinary.com/armytrix/image/upload/v1650865195/product/Titanium-10_gee03y.webp" loading="lazy" alt="Modern minimalist design" class="img-wd-100" />
+        <img src="https://res.cloudinary.com/armytrix/image/upload/fl_lossy,fl_progressive,c_scale,q_auto:best,w_1600/v1650865195/product/Titanium-10_gee03y.webp" loading="lazy" alt="Modern minimalist design" class="img-wd-100" />
         <h4 class="mdlTx"><?php echo gs($txt,65);?></h4>
     </div>
     <div class="abst-btm dot-with">
