@@ -1,7 +1,7 @@
 <?php echo $this->Html->css(["/v2/product_page"], ['block' => 'cssTop']); ?>
 <?php $this->append('meta_data'); ?>
-<link rel="preload" as="image" href="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1600/v1651592728/product/mouse-hover-b2_tsorh4_vjh0c3.webp" />
-<link rel="preload" as="image" href="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1600/v1651514055/product/mouse-hover-b1_nt16rs.webp" />
+<link rel="preload" as="image" href="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto,w_1600/v1651592728/product/mouse-hover-b2_tsorh4_vjh0c3.webp" />
+<link rel="preload" as="image" href="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto,w_1600/v1651514055/product/mouse-hover-b1_nt16rs.webp" />
 <?php $this->end(); ?>
 
 <div id="v2_product">
@@ -21,9 +21,9 @@
           </svg>
           &nbsp; &nbsp; TAP TO UNMUTE
         </div>
-        <video id="sound_vid" width="100%" height="auto" poster="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1600/v1651715500/video%20for%20sound%20kits/Sound-_landscape_ku8ipz.webp" playsinline autoplay loop muted>
-        <source src="https://res.cloudinary.com/armytrix/video/upload/q_auto:good/v1652852723/video%20for%20sound%20kits/sound_kits_-_landscape_sfldum.webm" type="video/webm" />
-          <source src="https://res.cloudinary.com/armytrix/video/upload/q_auto:good/v1652852723/video%20for%20sound%20kits/sound_kits_-_landscape_sfldum.mp4" type="video/mp4" />
+        <video id="sound_vid" width="100%" height="auto" poster="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto,w_1600/v1651715500/video%20for%20sound%20kits/Sound-_landscape_ku8ipz.webp" playsinline autoplay loop muted>
+        <source src="https://res.cloudinary.com/armytrix/video/upload/q_auto/v1652852723/video%20for%20sound%20kits/sound_kits_-_landscape_sfldum.webm" type="video/webm" />
+          <source src="https://res.cloudinary.com/armytrix/video/upload/q_auto/v1652852723/video%20for%20sound%20kits/sound_kits_-_landscape_sfldum.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -51,7 +51,7 @@
           </ul>
         </div>
       </div>
-      <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1600/v1651574852/product/mouse-hover-b1_nt16rs.webp" alt="" class="img-wd-100" id="modes_img" />
+      <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto,w_1600/v1651574852/product/mouse-hover-b1_nt16rs.webp" alt="" class="img-wd-100" id="modes_img" />
     </div>
 
     <div class="text-left">
@@ -128,7 +128,7 @@ $(document).ready(function() {
     $("#m1").addClass('color_green');
     $("#menuImg").attr('src', '<?php echo SITEURL; ?>v_4/images/mouse-icon1-hover.png');
     $("#menuImg1").attr('src', '<?php echo SITEURL; ?>v_4/images/mouse-icon3.png');
-    $("#modes_img").attr('src', 'https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1600/v1651592728/product/mouse-hover-b2_tsorh4_vjh0c3.webp');
+    $("#modes_img").attr('src', 'https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto,w_1600/v1651592728/product/mouse-hover-b2_tsorh4_vjh0c3.webp');
   });
 
   $("#m2").mouseover(function() {
@@ -136,7 +136,7 @@ $(document).ready(function() {
     $("#m2").addClass('color_green');
     $("#menuImg").attr('src', '<?php echo SITEURL; ?>v_4/images/mouse-icon1.png');
     $("#menuImg1").attr('src', '<?php echo SITEURL; ?>v_4/images/mouse-icon3-hover.png');
-    $("#modes_img").attr('src', 'https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto:best,w_1600/v1651574852/product/mouse-hover-b1_nt16rs.webp');
+    $("#modes_img").attr('src', 'https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto,w_1600/v1651574852/product/mouse-hover-b1_nt16rs.webp');
   });
 });
 <?php $this->Html->scriptEnd(); ?>

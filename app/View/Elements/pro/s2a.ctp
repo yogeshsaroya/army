@@ -2,7 +2,7 @@
  <section id="s2a" class="min-ht ">
    <div class="container fullMxWd posRltv">
      <div class="new_bg_img  img-tag-sec s2a-sec">
-       <img src="https://res.cloudinary.com/armytrix/image/upload/fl_lossy,fl_progressive,c_scale,q_auto:best,w_1600/v1651225699/product/Product_20page-bg_kg3tdj.webp" alt="" loading="lazy" class="img-wd-100" />
+       <img src="https://res.cloudinary.com/armytrix/image/upload/fl_lossy,fl_progressive,c_scale,q_auto,w_1600/v1651225699/product/Product_20page-bg_kg3tdj.webp" alt="" loading="lazy" class="img-wd-100" />
        <div class="abst_head head-title-size color-wht pad-50 left-20 max-700">
          <h2 class="clr-white"><?php echo gs($txt, 35); ?></h2>
          <h4 class="clr-white"><?php echo gs($txt, 36); ?><br>

@@ -37,7 +37,7 @@
                 <?php if(!empty($data)) {  $n=1; foreach($data as $list){?>
                     <tr id="img_<?php echo $list['VideoSlider']['id'];?>">
                     <td><?php echo $list['VideoSlider']['id'];?></td>
-                        <td><img src="<?php echo getCloudinary($list['VideoSlider']['poster_for_pc'],'fl_progressive,c_scale,q_auto:good,w_150','.webp');?>" alt="" width="150"></td>
+                        <td><img src="<?php echo getCloudinary($list['VideoSlider']['poster_for_pc'],'fl_progressive,c_scale,q_auto,w_150','.webp');?>" alt="" width="150"></td>
                         <td><?php echo $list['VideoSlider']['heading'];?></td>
                         <td><?php echo $list['VideoSlider']['url'];?></td>
                         <td> <?php echo $this->html->link('Edit','/lab/labs/manage_slider/'.$list['VideoSlider']['id']);?></tb>

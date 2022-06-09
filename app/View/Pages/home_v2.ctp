@@ -3,13 +3,13 @@
     <?php if (!empty($data)) { ?>
         <div id="home_slider" class="your-class homePg">
             <?php foreach ($data as $list) {
-                $video_webm = getCloudinary($list['VideoSlider']['video_for_pc'],'q_auto:best','.webm');
-                $video_mp4 = getCloudinary($list['VideoSlider']['video_for_pc'],'q_auto:best','.mp4');
-                $poster = getCloudinary($list['VideoSlider']['poster_for_pc'],'c_scale,q_auto:good,w_1920','.webp');
+                $video_webm = getCloudinary($list['VideoSlider']['video_for_pc'],'q_auto','.webm');
+                $video_mp4 = getCloudinary($list['VideoSlider']['video_for_pc'],'q_auto','.mp4');
+                $poster = getCloudinary($list['VideoSlider']['poster_for_pc'],'c_scale,q_auto,w_1920','.webp');
                 if (isset($IsMobile)) {
-                    $video_webm = getCloudinary($list['VideoSlider']['video_for_mob'],'q_auto:best','.webm');
-                    $video_mp4 = getCloudinary($list['VideoSlider']['video_for_mob'],'q_auto:best','.mp4');
-                    $poster = getCloudinary($list['VideoSlider']['poster_for_mob'],'c_scale,q_auto:good,w_720','.webp');
+                    $video_webm = getCloudinary($list['VideoSlider']['video_for_mob'],'q_auto','.webm');
+                    $video_mp4 = getCloudinary($list['VideoSlider']['video_for_mob'],'q_auto','.mp4');
+                    $poster = getCloudinary($list['VideoSlider']['poster_for_mob'],'c_scale,q_auto,w_720','.webp');
                 }
             ?>
                 <div>
