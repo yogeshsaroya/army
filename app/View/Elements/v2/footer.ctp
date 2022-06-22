@@ -12,7 +12,7 @@
 			<div class="col-sm-3 linkSpace">
 				<h3><a href="<?php echo SITEURL;?>contact" class="inheritClr">CONTACT</a></h3>
 				<h3><a href="<?php echo SITEURL;?>exhaust" class="inheritClr">ABOUT US</a></h3>
-				<h3><a href="<?php echo SITEURL;?>blog" class="inheritClr">BLOG</a></h3>
+				<h3><a href="<?php echo SITEURL;?>blog/" class="inheritClr">BLOG</a></h3>
 			</div>
 			<!-- end of colom -->
 
