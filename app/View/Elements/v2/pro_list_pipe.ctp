@@ -13,7 +13,8 @@
                         ?>
                             <li class="<?php if ($cList['Product']['quantity'] == 0) {
                                             echo 'disable-itm';
-                                        } ?>" qut="<?php echo $cList['Product']['quantity']; ?>" id="<?php echo $cList['Product']['id']; ?>" pid="<?php echo $cList['Product']['id']; ?>" p_amt="<?php echo $cList['Product']['price']; ?>" data_img="<?php echo $cImg; ?>" full_img="<?php echo SITEURL . $p; ?>" data_part="<?php echo $cList['Product']['part']; ?>" data_material="<?php echo $cList['Product']['material']; ?>" data_abt="<?php echo addslashes($cList['Product']['description']); ?>"><a href="javascript:void(0);">
+                                        } ?>" qut="<?php echo $cList['Product']['quantity']; ?>" id="<?php echo $cList['Product']['id']; ?>" pid="<?php echo $cList['Product']['id']; ?>" p_amt="<?php echo $cList['Product']['price']; ?>" data_img="<?php echo $cImg; ?>" full_img="<?php echo SITEURL . $p; ?>" data_part="<?php echo $cList['Product']['part']; ?>" data_material="<?php echo $cList['Product']['material']; ?>" data_abt="<?php echo addslashes($cList['Product']['description']); ?>">
+                                        <a href="javascript:void(0);" rel="nofollow">
                                     <div class="part_m">
                                         <h4><?php echo $cList['Product']['part']; ?></h4>
                                     </div>

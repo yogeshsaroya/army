@@ -11,7 +11,7 @@
 			</svg>
 		</div>
 		<div class="logoWrap text-center">
-			<a href="<?php echo SITEURL; ?>"><img src="<?php echo SITEURL; ?>v2/img/logo_armytrix.png" alt="" width="250" height="38"></a>
+			<a href="<?php echo SITEURL; ?>" title="logo" aria-label="logo" ><img src="<?php echo SITEURL; ?>v2/img/logo_armytrix.png" alt="" width="250" height="38"></a>
 		</div>
 
 		<div class="ml-auto cartBox d-flex align-items-center">

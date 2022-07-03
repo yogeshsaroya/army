@@ -23,7 +23,7 @@
                         data_material="<?php echo $cList['Product']['material']; ?>" 
                         data_abt="<?php echo addslashes($cList['Product']['description']); ?>" 
                         
-                        ><a href="javascript:void(0);">
+                        ><a href="javascript:void(0);" rel="nofollow">
                                 <div class="part_m">
                                     <h4><?php echo $cList['Product']['part']; ?></h4>
                                 </div>

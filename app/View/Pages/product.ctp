@@ -97,12 +97,12 @@ if (isset($data) && !empty($data)) {
   <?php if (!empty($langArr)) { ?>
     <div class="justify-content-center">
       <div class="dropdown flags_menu">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-        <img src='<?php echo SITEURL;?>v2/flags/<?php echo $act_lng;?>.svg' width='24' class='img-thumbnail img_flag'>
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-label="dropdown">
+        <img src='<?php echo SITEURL;?>v2/flags/<?php echo $act_lng;?>.svg' width='24' class='img-thumbnail img_flag' alt="flag">
         <span class="caret"></span></button>
         <ul class="dropdown-menu flags">
           <?php foreach ($langArr as $a => $b) {
-            echo "<li><a href='" . SITEURL . "product/$b' title=''><img src='".SITEURL."v2/flags/".strtolower($a).".svg' width='24' clas='img-thumbnail'> $a</a></li>";
+            echo "<li><a href='" . SITEURL . "product/$b' title=''><img src='".SITEURL."v2/flags/".strtolower($a).".svg' width='24' clas='img-thumbnail' alt='flag'> $a</a></li>";
           } ?>
         </ul>
       </div>
