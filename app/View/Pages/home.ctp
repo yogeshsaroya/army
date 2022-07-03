@@ -99,6 +99,15 @@ if (isset($IsMobile)) {
         </div>
     </section>
     <section class="fullWidthImageWrap pad60">
+
+    <div class="fullWidthImages posRltv">
+            <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto,<?php echo $w; ?>/v1656640831/motorcycle/image/Aprilia_RSV4_armytrix_valvetronic_exhaust_-_3_cnih3x.webp" loading="lazy" alt="full Images" <?php echo $img_w; ?>>
+            <div class="contentWrap text-right bottom20">
+                <h2 class="clrWhite">VALVE CONTROL KIT</h2>
+                <a href=" <?php echo SITEURL; ?>motorcycle-exhaust" class="linkBtn">DISCOVER MORE</a>
+            </div>
+        </div>
+
         <div class="fullWidthImages posRltv">
             <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto,<?php echo $w; ?>/v1652852843/home/shop_luileo.webp" loading="lazy" alt="full Images" <?php echo $img_w; ?>>
             <div class="contentWrap text-right bottom20">

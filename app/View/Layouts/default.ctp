@@ -158,6 +158,11 @@ if ($this->params['controller'] == 'homes') {
     $tran_header = 'yes';
   }
 }
+elseif ($this->params['controller'] == 'motorcycles') {
+  if (in_array($this->params['action'], ['motocycle_exhaust'])) {
+    $tran_header = 'yes';
+  }
+}
 
 ?>
 
