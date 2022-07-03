@@ -2032,7 +2032,7 @@ class PagesController extends AppController
 				$nextstepimage2 = 'damage-step2-g5743.png';
 				$style = "<style>";
 				$style .= "
-					.cs-damage-subimage {margin: 25px auto;width: 500px;}
+					.cs-damage-subimage {margin: 25px auto;width: auto;}
 					.cs-damage-step1 .customer-support-subtitle {text-align: left;width: 435px;margin: 0 auto;line-height: 25px;}
 					.cs-damage-step1 .customer-support-page {width:40%;}
 					.cs-damage-step1 .customer-support-title2 { color: #4d4d4d;font-size: 26px;font-weight: bold; margin-top: 20px;}
