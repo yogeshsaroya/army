@@ -6,7 +6,7 @@
                 <div class="new-pro-drdwn">
                     <button class="" type="button" id="p_3">--- <?php echo gs($txt,9);?> ---</button>
                     <ul class="" id="tuning_ul" style="display: none;">
-                        <li id="c0" pid="none" p_amt="0" data_img="" full_img=""><a href="javascript:void(0);">Select</a></li>
+                        <li id="c0" pid="none" p_amt="0" data_img="" full_img=""><a href="javascript:void(0);" rel="nofollow">Select</a></li>
                         <?php foreach ($pro_data as $cList) {
                             $p = 'cdn/' . $cList['Library']['full_path'];
                             $cImg = new_show_image($p, 100, 100, 100, 'ff', null);
