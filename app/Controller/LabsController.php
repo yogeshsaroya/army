@@ -4790,9 +4790,101 @@ class LabsController extends AppController
 		$this->set(compact('data', 'q', 'ec', 'make', 'model_list', 'years', 'paging'));
 	}
 
+	/* create/update  */
+	private function _updateMotorMultilingual($id = null)
+	{
+		if (!empty($id)) {
+			$this->Motorcycle->bindModel(['hasMany' => ['MotorcyclePages' => ['className' => 'Motorcycle', 'foreignKey' => 'motorcycle_id']]], false);
+			$data = $this->Motorcycle->find('first', ['conditions' => ['Motorcycle.id' => $id]]);
+
+			$this->Motorcycle->validator()->remove('title');
+			$this->Motorcycle->validator()->remove('url');
+
+			if (!empty($data)) {
+				if (empty($data['MotorcyclePages'])) {
+					$getLanguage = $this->Language->find('all');
+					if (!empty($getLanguage)) {
+						foreach ($getLanguage as $lang) {
+							$u = 'https://www.googleapis.com/language/translate/v2?key=' . G_KEY . '&source=en&target=' . $lang['Language']['code'];
+							$url = strtolower(Inflector::slug($data['Motorcycle']['url'] . "-" . $lang['Language']['language'], '-'));
+							$isPage = $this->Motorcycle->find('count', ['conditions' => ['Motorcycle.url' => $url]]);
+							if ($isPage == 0) {
+								$pArr = null;
+								$pArr['id'] = null;
+								$pArr['url'] = $url;
+								$pArr['status'] = 1;
+								$pArr['language'] = $lang['Language']['code'];
+								$pArr['motorcycle_id'] = $data['Motorcycle']['id'];
+								$pArr['motorcycle_make_id'] = $data['Motorcycle']['motorcycle_make_id'];
+								$pArr['motorcycle_model_id'] = $data['Motorcycle']['motorcycle_model_id'];
+								$pArr['motorcycle_year_id'] = $data['Motorcycle']['motorcycle_year_id'];
+
+								$name = $this->DATA->fetch($u . '&q=' . urlencode($data['Motorcycle']['title']) . '&q=' . urlencode($data['Motorcycle']['meta_title']) . '&q=' . urlencode($data['Motorcycle']['meta_description']));
+								if (!empty($name)) {
+									$arrName = json_decode($name, true);
+								}
+
+								$pArr['title'] = (isset($arrName['data']['translations'][0]['translatedText']) ? $arrName['data']['translations'][0]['translatedText'] : null);
+								$pArr['meta_title'] = (isset($arrName['data']['translations'][1]['translatedText']) ? $arrName['data']['translations'][1]['translatedText'] : null);
+								$pArr['meta_description'] = (isset($arrName['data']['translations'][2]['translatedText']) ? $arrName['data']['translations'][2]['translatedText'] : null);
+								$this->Motorcycle->save($pArr);
+								$pArr = null;
+							}
+						}
+					}
+				} else {
+					foreach ($data['MotorcyclePages'] as $page) {
+						$u = 'https://www.googleapis.com/language/translate/v2?key=' . G_KEY . '&source=en&target=' . $page['language'];
+						$pArr = null;
+						$pArr['id'] = $page['id'];
+					
+						$name = $this->DATA->fetch($u . '&q=' . urlencode($data['Motorcycle']['title']) . '&q=' . urlencode($data['Motorcycle']['meta_title']) . '&q=' . urlencode($data['Motorcycle']['meta_description']));
+						if (!empty($name)) {
+							$arrName = json_decode($name, true);
+						}
+
+						$pArr['title'] = (isset($arrName['data']['translations'][0]['translatedText']) ? $arrName['data']['translations'][0]['translatedText'] : null);
+						$pArr['meta_title'] = (isset($arrName['data']['translations'][1]['translatedText']) ? $arrName['data']['translations'][1]['translatedText'] : null);
+						$pArr['meta_description'] = (isset($arrName['data']['translations'][2]['translatedText']) ? $arrName['data']['translations'][2]['translatedText'] : null);
+						$this->Motorcycle->save($pArr);
+						$pArr = null;
+					}
+				}
+			}
+		}
+	}
+
 	public function lab_update_motorcycle($id = null)
 	{
 		$this->set('title_for_layout', 'Update Motorcycle Page : ' . WEBTITLE);
+		$q = $this->request->query;
+
+		/* Sabve General data */
+		if ($this->RequestHandler->isAjax() && isset($this->data['Motorcycle']['id']) && !empty($this->data['Motorcycle']['id'])) {
+			$st = SITEURL . $this->request->url . "?" . http_build_query($this->request->query);
+			if (isset($this->data['Motorcycle']['url'])) {
+				$this->request->data['Motorcycle']['url'] = strtolower(Inflector::slug($this->data['Motorcycle']['url'], '-'));
+			}
+			$this->Motorcycle->set($this->request->data);
+			if ($this->Motorcycle->validates()) {
+				$this->Motorcycle->save($this->request->data);
+				$this->_updateMotorMultilingual($this->data['Motorcycle']['id']);
+				echo '<div class="alert alert-success" role="alert"> Saved</div>';
+				echo "<script>setTimeout(function(){ window.location.href ='" . $st . "'; }, 500);</script>";
+			} else {
+				$str = null;
+				$errors = $this->Motorcycle->validationErrors;
+				if (!empty($errors)) {
+					foreach ($errors as $err) {
+						$str .= $err[0] . "<br>";
+					}
+					echo '<script>btnState();</script><div class="alert alert-danger fadeIn animated">' . $str . '</div>';
+				}
+			}
+			exit;
+		}
+		/* End */
+
 		if (!empty($id) && isset($this->request->query['lng_del']) && !empty($this->request->query['lng_del'])) {
 			$f = $this->Motorcycle->find('first', array('conditions' => array('Motorcycle.id' => $this->request->query['lng_del'])));
 			if (!empty($f)) {
@@ -4811,33 +4903,29 @@ class LabsController extends AppController
 			$this->redirect('/lab/labs/update_motorcycle/' . $id . '?tab=multilingual');
 		}
 
+		
 
-		if (isset($this->data['Motorcycle']['id']) && !empty($this->data['Motorcycle']['id'])) {
-			$st = SITEURL . $this->request->url . "?" . http_build_query($this->request->query);
-			if (isset($this->data['Motorcycle']['url'])) {
-				$this->request->data['Motorcycle']['url'] = strtolower(Inflector::slug($this->data['Motorcycle']['url'], '-'));
-			}
-			if ($this->Motorcycle->save($this->data)) {
-				$this->Session->setFlash(__('Saved'), 'default', array('class' => 'alert alert-success'), 'msg');
-			} else {
-				$this->Session->setFlash(__('Not Saved. Please check SEO URL. it should be unique.'), 'default', array('class' => 'alert alert-danger'), 'msg');
-			}
-			$this->redirect($st);
-		}
-
-		$q = $this->request->query;
+		
 		if (!empty($id)) {
 			$data = $sliders = [];
 			$this->Motorcycle->bindModel(array('hasMany' => array('Video' => ['order' => ['Video.pos' => 'ASC']]), 'belongsTo' => array('MotorcycleMake', 'MotorcycleModel', 'MotorcycleYear')));
 			$data = $this->Motorcycle->find('first', array('recursive' => 2, 'conditions' => array('Motorcycle.id' => $id)));
 
-			if (isset($q['tab']) && $q['tab'] == 'images') {
+			if (isset($q['tab']) && $q['tab'] == 'slider') {
 				if (!empty($data['Motorcycle']['slider'])) {
 					$ids = explode(',', $data['Motorcycle']['slider']);
 					$or1 = array('FIELD(Library.id,' . $data['Motorcycle']['slider'] . ')');
 					$sliders = $this->Library->find('all', array('order' => $or1, 'conditions' => array('Library.id' => $ids)));
 				}
-			} elseif (isset($q['tab']) &&  $q['tab'] == 'multilingual') {
+			}
+			if (isset($q['tab']) && $q['tab'] == 'gallery') {
+				if (!empty($data['Motorcycle']['gallery'])) {
+					$ids = explode(',', $data['Motorcycle']['gallery']);
+					$or1 = array('FIELD(Library.id,' . $data['Motorcycle']['gallery'] . ')');
+					$sliders = $this->Library->find('all', array('order' => $or1, 'conditions' => array('Library.id' => $ids)));
+				}
+			}
+			 elseif (isset($q['tab']) &&  $q['tab'] == 'multilingual') {
 				$lgcode = [];
 				$langArr = $this->Language->find('list', array('fields' => array('Language.code', 'Language.language'), 'conditions' => array('Language.status' => 1)));
 				if (!empty($langArr)) {
@@ -4901,6 +4989,7 @@ class LabsController extends AppController
 	{
 		$this->autoRender = false;
 		if ($this->request->is('ajax')) {
+			
 			$d = $this->Motorcycle->find('first', array('conditions' => array('Motorcycle.id' => $this->data['id'])));
 			if ($this->data['type'] == 'del' && !empty($this->data['id']) && !empty($this->data['lid'])) {
 				if (!empty($d)) {
@@ -4927,18 +5016,24 @@ class LabsController extends AppController
 						$str = trim($str, ',');
 						$arr = array('id' => $d['Motorcycle']['id'], 'slider' => $str);
 						$this->Motorcycle->save($arr);
-					} elseif ($this->data['slider_for'] == 2) {
-						$f = explode(',', $d['Motorcycle']['tt_slider']);
+					} 
+				}
+			}
+			elseif ($this->data['type'] == 'gallery' && !empty($this->data['id'])) {
+				if (!empty($d)) {
+					if ($this->data['slider_for'] == 1) {
+						$f = explode(',', $d['Motorcycle']['gallery']);
 						$n = explode(',', $this->data['slider']);
 						$r = array_merge($f, $n);
 						$r = array_unique($r);
 						$str = implode(',', $r);
 						$str = trim($str, ',');
-						$arr = array('id' => $d['Motorcycle']['id'], 'tt_slider' => $str);
+						$arr = array('id' => $d['Motorcycle']['id'], 'gallery' => $str);
 						$this->Motorcycle->save($arr);
-					}
+					} 
 				}
-			} elseif ($this->data['type'] == 'primary' && !empty($this->data['id'])) {
+			}
+			 elseif ($this->data['type'] == 'primary' && !empty($this->data['id'])) {
 				if (!empty($d)) {
 					if ($this->data['dtype'] == 'slider') {
 						$ids = explode(',', $d['Motorcycle']['slider']);

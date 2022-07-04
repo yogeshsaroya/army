@@ -30,9 +30,8 @@ echo $this->Form->hidden('library_id',array('id'=>'library_id'));
 <div class="col-sm-2 form-group"><label for="">Pre Order</label><?php echo $this->Form->input('preorder', array('options'=>['0'=>'No','1'=>'Yes'],'label' => false, 'error' => false, 'div' => false, 'class' => 'form-control input-md','required'=>false));?></div>
 <div class="col-sm-2 form-group"><label for="">Quantity</label><?php echo $this->Form->input('quantity', array('maxlength'=>'6','label' => false, 'error' => false, 'div' => false, 'class' => 'form-control input-md','required'=>true));?></div>
 <div class="col-sm-2 form-group"><label for="">Armytrix Weight</label><?php echo $this->Form->input('weight', array('label' => false, 'error' => false, 'div' => false, 'class' => 'form-control input-md','required'=>false));?></div>
-<div class="col-sm-2 form-group"><label for="">Main Pipe Diameter</label><?php echo $this->Form->input('main_pipe_diameter', array('label' => false, 'error' => false, 'div' => false, 'class' => 'form-control input-md','required'=>false));?></div>
 <div class="col-sm-2 form-group"><label for="">OEM Weight</label><?php echo $this->Form->input('oem_weight', array('label' => false, 'error' => false, 'div' => false, 'class' => 'form-control input-md','required'=>false));?></div>
-<div class="col-sm-2 form-group"><label for="">OEM Pipe Diameter</label><?php echo $this->Form->input('oem_pipe_diameter', array('label' => false, 'error' => false, 'div' => false, 'class' => 'form-control input-md','required'=>false));?></div>
+<div class="col-sm-2 form-group"><label for="">Box Size</label><?php echo $this->Form->input('box_size', array('options'=>getYears(1,9),'empty'=>' --Select Box Size-- ','label' => false, 'error' => false, 'div' => false, 'class' => 'form-control input-md','required'=>true));?></div>
 <div class="col-sm-2 form-group"><label>Type</label> <?php echo $this->Form->input('type', array('options'=>getMotorProType(),'empty'=>' --Select Product Type-- ','label' => false, 'error' => false, 'div' => false, 'class' => 'form-control input-md','required'=>true));?></div>
 <div class="clearfix"></div>
 </div>

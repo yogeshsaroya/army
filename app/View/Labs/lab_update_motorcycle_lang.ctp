@@ -44,9 +44,7 @@ echo $this->html->script(array('/v/formValidation.min', '/v/bootstrap.min')); ?>
 								<div class="form-group"><label for="inputName" class="col-sm-2 control-label">Meta Description</label>
 									<div class="col-sm-10"><?php echo $this->Form->input('meta_description', array('type' => 'text', 'class' => 'form-control', 'placeholder' => 'Meta Description', 'label' => false)); ?></div>
 								</div>
-								<div class="form-group"><label for="inputName" class="col-sm-2 control-label">Meta Keywords</label>
-									<div class="col-sm-10"><?php echo $this->Form->input('meta_keywords', array('type' => 'text', 'class' => 'form-control', 'placeholder' => 'Meta Keywords', 'label' => false)); ?></div>
-								</div>
+								
 								<div class="form-group">
 									<div class="col-sm-offset-2 col-sm-10">
 										<div id="app_err"></div>
