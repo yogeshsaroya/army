@@ -25,24 +25,6 @@ class HomesController extends AppController
         $txt = array('String' => $string, 'Translation' => []);
         $this->set(compact('page_meta', 'txt'));
     }
-
-    public function motorcycle_exhaust()
-    {
-        $this->set('title_for_layout', 'WEAPONIZED YOUR MOTORCYLE BY THE ARMYTRIX EXHAUST SYSTEMS');
-        $page_meta = ['des' => 'Best Sounding Aftermarket Exhaust Upgrades. Titanium & Stainless Steel Turbo-back Cat-Back Valvetronic Exhaust Downpipes Tips Headers Decat Test Straight Exhaust Sound',];
-        //$this->render('motorcycle_exhaust_v2');
-        
-    }
-
-    public function motorcycle($id = null)
-    {
-        $this->set('title_for_layout', 'Valvetronic Exhaust System Weaponzied by ARMYTRIX');
-        $page_meta = [
-            'des' => 'Best Sounding Aftermarket Exhaust Upgrades. Titanium & Stainless Steel Turbo-back Cat-Back Valvetronic Exhaust Downpipes Tips Headers Decat Test Straight Exhaust Sound',
-            'key' => 'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
-        ];
-    }
-
     public function performance()
     {
         $this->set('title_for_layout', 'ARMYTRIX PERFORMANCE ENGINEERING');

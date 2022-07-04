@@ -89,17 +89,17 @@ $b = $this->Lab->getMotorcycleMake();
     $("#get_info").click(function() {
       var brand = $.trim($('#RequestBrand').val());
       var model = $.trim($('#RequestModel').val());
-      var motor = $.trim($('#RequestEngine').val());
+      var year = $.trim($('#RequestEngine').val());
 
-      if (brand != '' && model != '' && motor != '') {
+      if (brand != '' && model != '' && year != '') {
         $('#preloader').show();
         $.ajax({
           type: 'POST',
-          url: '<?php echo SITEURL; ?>pages/check_product',
+          url: '<?php echo SITEURL; ?>motorcycles/check_product',
           data: {
             brand: brand,
             model: model,
-            motor: motor
+            year: year
           },
           success: function(data) {
             $("#app_error").html(data);
@@ -119,14 +119,14 @@ $b = $this->Lab->getMotorcycleMake();
     $("#RequestBrand").change(function() {
       $("#app_error").html('');
       $('#RequestModel').html('<option value="">Select Model</option>');
-      $('#RequestEngine').html('<option value="">Select Engine</option>');
+      $('#RequestEngine').html('<option value="">Select Year</option>');
       var id = $.trim(this.value);
       if ( id != "") {
         $('#preloader').show();
         $.ajax({
           type: 'POST',
           url: '<?php echo SITEURL; ?>pages/get_for',
-          data:{type:'car','make_id':id,target_id:'RequestModel'},
+          data:{type:'motorcycle','make_id':id,target_id:'RequestModel'},
           success: function(data) {
             $("#app_error").html(data);
             $('#preloader').hide();
@@ -141,14 +141,14 @@ $b = $this->Lab->getMotorcycleMake();
 
     $("#RequestModel").change(function() {
       $("#app_error").html('');
-      $('#RequestEngine').html('<option value="">Select Engine</option>');
+      $('#RequestEngine').html('<option value="">Select Year</option>');
       var id = $.trim(this.value);
       if ( id != "") {
         $('#preloader').show();
         $.ajax({
           type: 'POST',
           url: '<?php echo SITEURL; ?>pages/get_for',
-          data:{type:'car','model_id':id,target_id:'RequestEngine'},
+          data:{type:'motorcycle','model_id':id,target_id:'RequestEngine'},
           success: function(data) {
             $("#app_error").html(data);
             $('#preloader').hide();

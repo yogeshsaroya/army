@@ -2294,9 +2294,6 @@ class PagesController extends AppController
 			if (isset($getPro['ItemDetail']['url']) && !empty($getPro['ItemDetail']['url'])) {
 				echo "<script> window.location.href ='" . SITEURL . "product/" . $getPro['ItemDetail']['url'] . "';</script>";
 			}
-
-			die;
-			die;
 		}
 		exit;
 	}
