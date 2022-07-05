@@ -7,7 +7,7 @@ class LabsController extends AppController
 		'VideoSlider',
 		'User', 'Model', 'Brand', 'Motor', 'Product', 'EmailTemplate', 'World', 'Library', 'ExhaustBrand', 'ExhaustModel', 'ExhaustProduct', 'PromoCode',
 		'ItemDetail', 'QualityDetail', 'Shipping', 'DealerLevel', 'Order', 'OrderItem', 'OrderHistory', 'OrderMessage', 'Address', 'Vote', 'VoteOption', 'Language', 'String', 'Translation', 'CountryList',
-		'Motorcycle', 'MotorcycleMake', 'MotorcycleModel', 'MotorcycleYear'
+		'Motorcycle', 'MotorcycleMake', 'MotorcycleModel', 'MotorcycleYear','MotorcycleShipping'
 	);
 	var $components = array('Auth', 'Session', 'Email', 'RequestHandler', 'Paginator', 'DATA', 'PhpExcel.PhpExcel');
 	var $helpers = array('Html', 'Form', 'Session', 'Paginator');
@@ -3346,9 +3346,17 @@ class LabsController extends AppController
 
 	public function lab_shipping()
 	{
-		$this->set('title_for_layout', 'Regions and Shipping : ' . WEBTITLE);
+		$this->set('title_for_layout', 'Regions/Zone : ' . WEBTITLE);
 		$this->paginate = array('conditions' => array('CountryList.status' => 1), 'maxLimit' => 300, 'limit' => 300, 'order' => array('CountryList.short_name' => 'ASC'));
 		$data = $this->paginate('CountryList');
+		$this->set(compact('data'));
+	}
+
+	public function lab_motorcycles_shipping()
+	{
+		$this->set('title_for_layout', 'Motorcycles Shipping : ' . WEBTITLE);
+		$this->paginate = array('maxLimit' => 300, 'limit' => 300, 'order' => array('MotorcycleShipping.zone' => 'ASC'));
+		$data = $this->paginate('MotorcycleShipping');
 		$this->set(compact('data'));
 	}
 

@@ -17,6 +17,7 @@
 <div class="form-group"><?php echo $this->Form->input('owrc',array('type'=>'number','min'=>0,'max'=>'999','class'=>'form-control','required'=>true)); ?></div>
 <div class="form-group"><?php echo $this->Form->input('fedex_pack',array('type'=>'number','min'=>0,'max'=>'999','class'=>'form-control','required'=>true)); ?></div>
 <div class="form-group"><?php echo $this->Form->input('region',array('options'=>['1'=>'Price - can order','2'=>'No Price - can not order'], 'empty'=>' Select Region ', 'class'=>'form-control','required'=>true)); ?></div>
+<div class="form-group"><?php echo $this->Form->input('zone',array('options'=>$this->Lab->getZone(), 'empty'=>' Select Zone ', 'class'=>'form-control','required'=>false)); ?></div>
 
 <div class="box-footer">
 <div class="form-group ">

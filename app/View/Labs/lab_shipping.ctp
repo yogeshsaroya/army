@@ -13,6 +13,7 @@
 #lab_table td:nth-of-type(6):before{content:"Status"}
 #lab_table td:nth-of-type(7):before{content:"Action"}
 }
+.center{text-align: center !important}
 </style>
 
 <div class="content-wrapper" style="min-height: 916px;">
@@ -43,14 +44,15 @@
 						<thead>
 						
 <tr role="row">
-    <th><?php echo $this->Paginator->sort('CountryList.id', '#ID', array('escape' => false)); ?></th>
-    <th><?php echo $this->Paginator->sort('CountryList.region', 'Region', array('escape' => false)); ?></th>
+    <th class="center"><?php echo $this->Paginator->sort('CountryList.id', '#ID', array('escape' => false)); ?></th>
+    <th class="center"><?php echo $this->Paginator->sort('CountryList.region', 'Region', array('escape' => false)); ?></th>
+	<th class="center"><?php echo $this->Paginator->sort('CountryList.zone', 'Zone (motorcycle)', array('escape' => false)); ?></th>
     <th><?php echo $this->Paginator->sort('CountryList.short_name', 'Country Name', array('escape' => false)); ?></th>
-    <th><?php echo $this->Paginator->sort('CountryList.catback', 'Cat-Back', array('escape' => false)); ?></th>
-    <th><?php echo $this->Paginator->sort('CountryList.down_pipe', 'Down Pipe', array('escape' => false)); ?></th>
-    <th><?php echo $this->Paginator->sort('CountryList.owrc', 'OWRC', array('escape' => false)); ?></th>
-    <th><?php echo $this->Paginator->sort('CountryList.fedex_pack', 'Fedex Pack', array('escape' => false)); ?></th>
-    <th>Action</th>
+    <th class="center"><?php echo $this->Paginator->sort('CountryList.catback', 'Cat-Back', array('escape' => false)); ?></th>
+    <th class="center"><?php echo $this->Paginator->sort('CountryList.down_pipe', 'Down Pipe', array('escape' => false)); ?></th>
+    <th class="center"><?php echo $this->Paginator->sort('CountryList.owrc', 'OWRC', array('escape' => false)); ?></th>
+    <th class="center"><?php echo $this->Paginator->sort('CountryList.fedex_pack', 'Fedex Pack', array('escape' => false)); ?></th>
+    <th class="center">Action</th>
 </tr>
 </thead>
 <tbody id="table_rows">
@@ -63,7 +65,8 @@ if (!empty($data)) {
     if ($list['CountryList']['region'] == 1){ echo "Price";}
     elseif ($list['CountryList']['region'] == 2){ echo "No Price";}
     ?></td>
-    <td class="center gnTxt"><?php echo $list['CountryList']['short_name']; ?></td>
+	<td class="center gnTxt"> <?php echo strtoupper($list['CountryList']['zone']); ?></td>
+    <td class="gnTxt"><?php echo $list['CountryList']['short_name']; ?></td>
     <td class="center"> <?php echo "$".num_2($list['CountryList']['catback']); ?> </td>
     <td class="center"> <?php echo "$".num_2($list['CountryList']['down_pipe']); ?> </td>
     <td class="center"> <?php echo "$".num_2($list['CountryList']['owrc']); ?> </td>

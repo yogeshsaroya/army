@@ -41,7 +41,8 @@ if (isset($user_data['UserImage']) && !empty($user_data['UserImage'])) {
 
       <?php /*?><li class="treeview"><a href="<?php echo SITEURL."lab/labs/vote";?>"><i class="fa fa-dashboard"></i> <span>Vote</span></a></li><?php */ ?>
 
-      <li class="treeview"><a href="<?php echo SITEURL . "lab/labs/shipping"; ?>"><i class="fa fa-truck"></i> <span>Shipping</span></a></li>
+      <li class="treeview"><a href="<?php echo SITEURL . "lab/labs/shipping"; ?>"><i class="fa fa-car"></i> <span>Regions/Zone</span></a></li>
+      <li class="treeview"><a href="<?php echo SITEURL . "lab/labs/motorcycles_shipping"; ?>"><i class="fa fa-motorcycle"></i> <span>Motorcycles Shipping</span></a></li>
       <li class="treeview"><a href="<?php echo SITEURL . "lab/labs/warranty"; ?>"><i class="fa fa-support"></i> <span>Warranty</span></a></li>
       <?php /* ?>
 <li class="treeview" id="menu_user">

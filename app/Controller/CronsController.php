@@ -7,7 +7,7 @@ App::uses('Xml', 'Utility');
 class CronsController extends AppController
 {
 
-    var $uses = array('EmailServer', 'ItemDetail', 'Library', 'Motorcycle', 'Product');
+    var $uses = array('EmailServer', 'ItemDetail', 'Library', 'Motorcycle', 'Product','MotorcycleShipping');
     public $components = array('Cookie', 'Session', 'RequestHandler', 'Email', 'DATA');
     public $helpers = array('Html', 'Form', 'JqueryEngine', 'Session', 'Text', 'Time');
 
@@ -554,5 +554,56 @@ class CronsController extends AppController
         $aR = unserialize(@file_get_contents('http://www.geoplugin.net/php.gp?ip=' . $_SERVER['REMOTE_ADDR']));
         ec($aR);
         exit;
+    }
+
+
+    public function update_motorcycle_shipping()
+    {
+        $arr = $box = $zone = [];
+        $row = $row1 = 1;
+        if (($handle = fopen("doc/motorcycle_shipping.csv", "r")) !== FALSE) {
+            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+                if ($row == 1) {
+                    if (!empty($data)) {
+                        foreach ($data as $k => $v) {
+                            if ($k > 0) {
+                                $zone[] = $v;
+                            }
+                        }
+                    }
+                }
+                $row++;
+            }
+            fclose($handle);
+        }
+
+        if (($handle = fopen("doc/motorcycle_shipping.csv", "r")) !== FALSE) {
+            while (($data1 = fgetcsv($handle, 1000, ",")) !== FALSE) {
+                if ($row1 > 1) {
+                    if (!empty($data1)) {
+                            foreach($data1 as $k1=>$v1){
+                            if($k1 > 0){ 
+                                $box[ $zone[$k1-1]][] = $v1; 
+                            }
+                        }
+                    }
+                }
+              $row1++;
+            }
+            fclose($handle);
+        }
+        
+            foreach($box as $k=>$v){
+                foreach($v as $c=>$d){
+                        $arr[] = ['id'=>null,'zone'=>$k,'box_size'=>$c+1,'price'=>$d];
+                    }        
+            }
+        if (!empty($arr)) {
+            //ec($arr);die;
+            ec( count($arr) );
+            $this->MotorcycleShipping->deleteAll(array('MotorcycleShipping.box_size >' => 0), false);
+            $this->MotorcycleShipping->saveAll($arr);
+            echo "Saved";
+        }
     }
 }

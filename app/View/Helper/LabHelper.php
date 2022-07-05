@@ -332,4 +332,16 @@ class LabHelper extends AppHelper {
 			return $data;
 		}
 	}
+
+	public function getZone(){
+		$arr = [];
+		$tbl = ClassRegistry::init('MotorcycleShipping');
+		$zone = $tbl->find('all', ['fields' => ['DISTINCT MotorcycleShipping.zone'],'order'=>['MotorcycleShipping.zone'=>'ASC']]);
+		if(!empty($zone)){
+			foreach($zone as $list){
+				$arr[$list['MotorcycleShipping']['zone']] = strtoupper($list['MotorcycleShipping']['zone']);
+			}
+		}
+		return $arr;
+	}
 }?>
