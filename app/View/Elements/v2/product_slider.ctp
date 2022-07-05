@@ -7,7 +7,7 @@ $this->end(); ?>
     if (isset($slider) && !empty($slider)) {
         foreach ($slider as $sList) {
             $p = 'cdn/' . $sList['Library']['folder'] . "/" . $sList['Library']['file_name'];
-            $main = new_show_image($p, 800, 530, 100, 'cf', null);
+            $main = new_show_image($p, $width, $height, 100, 'ff', null);
             echo '<div class="prodctBg"><img src="' . $main . '" loading="lazy" alt=""></div>';
         }
     } ?>

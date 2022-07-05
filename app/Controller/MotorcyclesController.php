@@ -28,18 +28,6 @@ class MotorcyclesController extends AppController
         
     }
 
-
-    
-
-    public function product($id = null)
-    {
-        $this->set('title_for_layout', 'Valvetronic Exhaust System Weaponzied by ARMYTRIX');
-        $page_meta = [
-            'des' => 'Best Sounding Aftermarket Exhaust Upgrades. Titanium & Stainless Steel Turbo-back Cat-Back Valvetronic Exhaust Downpipes Tips Headers Decat Test Straight Exhaust Sound',
-            'key' => 'armytrix, exhaust, akrapovic, magnaflow, borla, supersprint,  remus, fiexhaust, ipe, milltek, цена, السعر, precio, preis, prix, обзор, مراجعة, Überprüfung, revisión, глушитель'
-        ];
-    }
-
 	public function motorcycle_exhaust()
 	{
 		$this->set('title_for_layout', 'WEAPONIZED YOUR MOTORCYLE BY THE ARMYTRIX EXHAUST SYSTEMS');
@@ -63,6 +51,89 @@ class MotorcyclesController extends AppController
 			}
 		}
 		exit;
+	}
+
+	public function product($id = null, $type = null)
+	{
+		$slider = $page_meta = $data = $gallery = $products = null;
+
+		$this->Motorcycle->bindModel(['belongsTo' => ['MotorcycleMake', 'MotorcycleModel', 'MotorcycleYear'], 'hasMany' => ['Video' => ['limit' => 15, 'order' => ['Video.pos' => 'ASC']]]], false);
+		$data = $this->Motorcycle->find('first', array('recursive' => 2, 'conditions' => array('Motorcycle.url' => $id, 'Motorcycle.status' => 1)));
+		$pid = null;
+		$langArr = [];
+		if ($data['Motorcycle']['language'] == 'eng') {
+			$pid = $data['Motorcycle']['id'];
+		} else {
+			$pid = $data['Motorcycle']['motorcycle_id'];
+		}
+		if (!empty($data)) {
+			if ($data['Motorcycle']['language'] == 'eng') {
+				$Adata = $data;
+				$item_detail_id = $data['Motorcycle']['id'];
+			} else {
+				$Adata = $this->Motorcycle->find('first', array('recursive' => 2, 'conditions' => array('Motorcycle.id' => $data['Motorcycle']['motorcycle_id'], 'Motorcycle.status' => 1)));
+				$item_detail_id = $data['Motorcycle']['motorcycle_id'];
+			}
+
+			if (!empty($pid)) {
+				$allLang = $this->Language->find('list', ['fields' => ['code', 'language']]);
+				if (!empty($allLang)) {
+					$this->Motorcycle->bindModel(['hasMany' => ['ProLang' => [
+						'className' => 'Motorcycle', 'foreignKey' => 'motorcycle_id',
+						'conditions' => ['ProLang.status' => 1, 'ProLang.url !=' => ''],
+						'fields' => ['ProLang.id', 'ProLang.language', 'ProLang.status', 'ProLang.url']
+					]]], false);
+
+					$this->Motorcycle->unbindModel(['hasMany' => ['Video']]);
+					$l_data = $this->Motorcycle->find('first', [
+						'recursive' => 1,
+						'conditions' => ['Motorcycle.id' => $pid, 'Motorcycle.status' => 1],
+						'fields' => ['Motorcycle.id', 'Motorcycle.language', 'Motorcycle.status', 'Motorcycle.url']
+					]);
+					if (!empty($l_data['ProLang'])) {
+						$langArr[($l_data['Motorcycle']['language'] == 'eng' ? "English" : $l_data['Motorcycle']['language'])] = $l_data['Motorcycle']['url'];
+						foreach ($l_data['ProLang'] as $l) {
+							$langArr[$allLang[$l['language']]] = $l['url'];
+						}
+					}
+				}
+			}
+
+			$product_ids = explode(',', $Adata['Motorcycle']['product_ids']);
+			
+			$products = $this->Product->find('all', array('conditions' => array('Product.id' => $product_ids, 'Product.status' => 1)));
+			
+
+			$this->set('title_for_layout', $data['Motorcycle']['meta_title']);
+			$page_meta = array('des' => $data['Motorcycle']['meta_description'], 'key' => null);
+
+			$sArr = explode(',', trim($Adata['Motorcycle']['slider']));
+			if (isset($sArr[0]) && !empty($sArr[0])) {
+				$slider = $this->Library->find('all', array('conditions' => array('Library.id' => $sArr), 
+				'order'=>array('FIELD(Library.id,' . $Adata['Motorcycle']['slider'] . ')') 
+				));
+			}
+
+			$gArr = explode(',', $Adata['Motorcycle']['gallery']);
+			if (isset($gArr[0]) && !empty($gArr[0])) {
+				$gallery = $this->Library->find('all', array('conditions' => array('Library.id' => $gArr), 'limit' => 15, 
+				'order'=>array('FIELD(Library.id,' . $Adata['Motorcycle']['gallery'] . ')')
+			));
+			}
+			
+			
+			$string = $this->String->find('list', array('order' => array('String.id' => 'ASC'), 'fields' => array('String.id', 'String.text')));
+			$tran = $this->Translation->find('list', array('conditions' => array('Translation.code' => $data['Motorcycle']['language']), 'fields' => array('Translation.string_id', 'Translation.name')));
+			$txt = array('String' => $string, 'Translation' => $tran);
+			$act_lng = 'english';
+			if( isset($allLang[ $data['Motorcycle']['language'] ] ) ){
+				$act_lng = strtolower($allLang[$data['Motorcycle']['language']]);
+			}
+			$this->set(compact('page_meta', 'data', 'Adata', 'txt', 'slider', 'gallery', 'products','langArr','act_lng'));
+			//$this->render('product_v2');
+		} else {
+			$this->layout = '404';
+		}
 	}
 
 }

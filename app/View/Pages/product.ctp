@@ -110,7 +110,7 @@ if (isset($data) && !empty($data)) {
   <?php } ?>
 
 
-  <?php echo $this->element('v2/product_slider', ['slider' => $slider]); ?>
+  <?php echo $this->element('v2/product_slider', ['slider' => $slider,'width'=>800,'height'=>530]); ?>
   <div class="padMobile">
     <div class="page_container">
       <div class="row d-flex">
