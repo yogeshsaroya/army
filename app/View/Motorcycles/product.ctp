@@ -358,34 +358,102 @@ echo $this->html->script(['https://kit.fontawesome.com/acae9edaf3.js'], ['block'
         display: none !important
     }
 
- 
 
-@media (min-width: 768px) {
-    #v2_motor_exh .container {
-        width: 750px;
-    }
-}
 
-@media (min-width: 992px) {
-    #v2_motor_exh .container {
-        width: 970px;
+    @media (min-width: 768px) {
+        #v2_motor_exh .container {
+            width: 750px;
+        }
     }
-}
 
-@media (min-width: 1200px) {
-    #v2_motor_exh .container {
-        width: 1170px;
+    @media (min-width: 992px) {
+        #v2_motor_exh .container {
+            width: 970px;
+        }
     }
-}
-#v2_motor_exh .container {
-    width: 100% !important;
-    padding: 0;
-}
+
+    @media (min-width: 1200px) {
+        #v2_motor_exh .container {
+            width: 1170px;
+        }
+    }
+
+    #v2_motor_exh .container {
+        width: 100% !important;
+        padding: 0;
+    }
+
+    #v2_motor_exh h1.mt-3.text-center {
+        padding-top: 3rem !important;
+    }
+
+    #v2_motor_exh .tabBtn.stainless.steel {
+        background: #ff6624;
+        color: #fff;
+    }
+
+    #v2_motor_exh .tabBtn.titanium {
+        background: #0c59cf;
+        color: #fff;
+    }
+
+    #v2_motor_exh .tabBtn {
+        display: inline-block;
+        padding: 10px 14px 9px;
+        margin: 2px 0;
+        font-size: 12px;
+        border-radius: 4px;
+        text-transform: uppercase;
+        font-weight: 900;
+    }
+
+    #v2_motor_exh input[type="button"] {
+        display: inline-block;
+        margin: 0;
+        border-radius: 0;
+        border: none;
+        font-size: 13px !important;
+        line-height: 20px !important;
+        height: 40px;
+        color: #fff;
+        padding: 0 30px;
+        border-radius: 3px;
+        -webkit-appearance: none;
+        text-transform: uppercase;
+        font-weight: 900;
+    }
+
+    .pd {
+        padding-bottom: 20px;
+    }
+
+    .pro_box {
+        padding: 10px 0 10px 0;
+    }
+
+    .hr_red {
+        padding: 20px 0 20px 0;
+    }
+
+    .video-responsive {
+        overflow: hidden;
+        padding-bottom: 56.25%;
+        position: relative;
+        height: 0
+    }
+
+    .video-responsive iframe {
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        position: absolute
+    }
 </style>
 <?php $this->end(); ?>
 <div id="v2_motor_exh">
 
-    <h1 class="text-center mt-3 mb-5"><?php echo $data['Motorcycle']['title']; ?></h1>
+    <h1 class="text-center mt-3 mb-5"><?php echo $data['Motorcycle']['title']; ?> ARMYTRIX VALVETRONIC EXHAUST SYSTEM</h1>
 
     <?php if (!empty($langArr)) { ?>
         <div class="justify-content-center">
@@ -413,55 +481,128 @@ echo $this->html->script(['https://kit.fontawesome.com/acae9edaf3.js'], ['block'
                 </div>
             <?php } ?>
 
+            <div class="videoWrapperNw page_container fullMxWd">
 
-            <?php if (!empty($Adata['Video'])) { ?>
-                <div class="videoWrapperNw page_container fullMxWd" id="pro_1">
-                    <?php $a= 1; 
-                    foreach ($Adata['Video'] as $vlist) {
-                        if($a > 1){
-                        echo '<div class="video-responsive"><iframe id="home_bg_v" width="100%" height="600" loading="lazy" src="https://www.youtube-nocookie.com/embed/' . $vlist['video'] . '?controls=1&enablejsapi=1&modestbranding=1&showinfo=0&iv_load_policy=3&html5=1&fs=1&rel=0&hl=en&cc_lang_pref=en&cc_load_policy=1&start=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
-                        }
-                    $a++; } ?>
-                </div>
-            <?php } ?>
+                <div class="row pro_box">
+                    <div class="col-md-6"> <img src="https://comoto.imgix.net/facet_set/image/4250/akrapovic_slip_on_exhausts_750x750__2_.jpg?w=130&dpr=2.625&auto=format%2Ccompress&h=130&fit=fill&bg=fff" alt="" loading="lazy" width="100%" height="auto"> </div>
+                    <div class="col-md-6 text-left">
+                        <h2>ARMYTRIX VALVETRONIC EXHAUST SYSTEM</h2>
+                        <h3>YAMAHA R1 (2015-2022)</h3>
+                        <div class="pd"></div>
+                        <div><span class="tabBtn stainless steel">STAINLESS STEEL / CARBON</span> # YAR1C-11c5</div>
+                        <div>Valvetronic Slip on system - Carbon muffler<br>
+                            + Noise Damper (DB Killer) <br>
+                            + Silver Chrome ARMYTRIX End CAP<br>
+                            + Wireless Remote Control Kits <br>
+                            + Moblie APP smart assistant</div>
+                        <div class="pd"></div>
+                        <div><span class="tabBtn titanium">TITANIUM</span> # YAR1C-11c5</div>
+                        <div>Titanium polished Header with de-catted pipe</div>
+                        <div class="pd"></div>
+                        <div>$198.00</div><input type="button" value="Add To Cart" class="btn btn-success ful-wd-btn" />
+                        <div class="pd"></div>
+                        <div>ARMYTRIX Weight: 5.2 kg</div>
+                        <div>OEM Weight : 10.9 kg</div>
+                        <div class="pd"></div>
 
-            <?php echo $this->element('pro/img_list', ['gallery' => $gallery]); ?>
-
-
-
-            <div class="sub_head_1">
-                <h2 class="mg-tb-50">The first ever valvetronic motorcycle exhaust in the world</h2>
-                <br>
-                <h3>FREEDOM TO SWITCH BETWEEN LOUD AND QUIET WITH THE PUSH OF A BUTTON</h3>
-                <p>With the push of a button on your ARMYRIX remotes or smartphone application, you get to switch between modes upon your wish.</p>
-            </div>
-            <div class="sub_head_2">
-                <h3>CUSTOMIZABLE AUTOMATIC MODE GIVES YOU A WORRY-FREE DRIVE</h3>
-                <p>The automatic mode will open/close the exhaust valves based on the predetermined RPM range, so you don’t have to manually switch all the time – you can also customize your own automatic mode upon your preference!</p>
-            </div>
-            <div class="sub_head_3">
-                <h3>ARMYTRIX APP SMART ASSISTANT</h3>
-                <p>The mobile APP of ARMYTRIX can connect to the OBDII device via Bluetooth, and be used to as a remote controller to easily control valve switch and provide you with real-time monitoring of variuos values of your car, such as rotate speed, speed, fuel, etc. The rpm value in Auto mode can be set to open valves.</p>
-                <div class="row mt-3 mobile50 app_pic">
-                    <div class="col-sm-6 text-center">
-                        <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto,w_1920/fl_progressive,c_scale,q_auto,w_300/v1651403044/product/product-app-1_sgfbbv.webp" loading="lazy" alt="App">
+                        <div>Exclusive system features a catalytic converter related fault codes clearing<br>
+                            No more check engine light<br>
+                            Plug-n-Play module<br>
+                            Reduction of Installation Time by 30% compared to traditional cable wires<br>
+                            App Controlled Valve System via OBDII Port</div>
+                        <div class="pd"></div>
                     </div>
-                    <div class="col-sm-6 text-center">
-                        <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto,w_1920/fl_progressive,c_scale,q_auto,w_300/v1651403044/product/product-app2_aevq7p.webp" loading="lazy" alt="App">
-                    </div>
-
                 </div>
-            </div>
-            <div class="sub_head_4">
-                <h3>GAIN MORE POWER, LOSE NO TORQUE</h3>
-                <p>Depending on the modifications and tunes you have, opening valves allow the exhaust gas to flow more freely, And with the valves being closed, it can retain the backpressure at low rpm and maintain the torque that is usually lost with straight piped exhaust systems.</p>
-            </div>
-            <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto,w_1920/fl_progressive,c_scale,q_auto,w_980/v1652417585/motorcycle/image/bike_module_vfhnvr.webp" loading="lazy" alt="">
+                <hr>
 
+                <div class="row pro_box">
+                    <div class="col-md-6"> <img src="https://comoto.imgix.net/facet_set/image/4250/akrapovic_slip_on_exhausts_750x750__2_.jpg?w=130&dpr=2.625&auto=format%2Ccompress&h=130&fit=fill&bg=fff" alt="" loading="lazy" width="100%" height="auto"> </div>
+                    <div class="col-md-6 text-left">
+                        <h2>ARMYTRIX VALVETRONIC EXHAUST SYSTEM</h2>
+                        <h3>YAMAHA R1 (2015-2022)</h3>
+                        <div class="pd"></div>
+                        <div><span class="tabBtn stainless steel">STAINLESS STEEL / CARBON</span> # YAR1C-11c5</div>
+                        <div>Valvetronic Slip on system - Carbon muffler<br>
+                            + Noise Damper (DB Killer) <br>
+                            + Silver Chrome ARMYTRIX End CAP<br>
+                            + Wireless Remote Control Kits <br>
+                            + Moblie APP smart assistant</div>
+                        <div class="pd"></div>
+                        <div><span class="tabBtn titanium">TITANIUM</span> # YAR1C-11c5</div>
+                        <div>Titanium polished Header with de-catted pipe</div>
+                        <div class="pd"></div>
+                        <div>$198.00</div><input type="button" value="Add To Cart" class="btn btn-success ful-wd-btn" />
+                        <div class="pd"></div>
+                        <div>ARMYTRIX Weight: 5.2 kg</div>
+                        <div>OEM Weight : 10.9 kg</div>
+                        <div class="pd"></div>
+
+                        <div>Exclusive system features a catalytic converter related fault codes clearing<br>
+                            No more check engine light<br>
+                            Plug-n-Play module<br>
+                            Reduction of Installation Time by 30% compared to traditional cable wires<br>
+                            App Controlled Valve System via OBDII Port</div>
+                        <div class="pd"></div>
+                    </div>
+                </div>
+
+
+            </div>
 
         </div>
-        <br><br><br><br>
-    </section>
+
+        <hr class="hr_red">
+
+
+        <?php if (!empty($Adata['Video'])) { ?>
+            <div class="videoWrapperNw page_container fullMxWd" id="pro_1">
+                <?php $a = 1;
+                foreach ($Adata['Video'] as $vlist) {
+                    if ($a > 1) {
+                        echo '<div class="video-responsive"><iframe id="home_bg_v" width="100%" height="600" loading="lazy" src="https://www.youtube-nocookie.com/embed/' . $vlist['video'] . '?controls=1&enablejsapi=1&modestbranding=1&showinfo=0&iv_load_policy=3&html5=1&fs=1&rel=0&hl=en&cc_lang_pref=en&cc_load_policy=1&start=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
+                    }
+                    $a++;
+                } ?>
+            </div>
+        <?php } ?>
+
+        <?php echo $this->element('pro/img_list', ['gallery' => $gallery]); ?>
+
+
+
+        <div class="sub_head_1">
+            <h2 class="mg-tb-50"><?php echo gs($txt, 79); ?></h2>
+            <br>
+            <h3><?php echo gs($txt, 80); ?></h3>
+            <p><?php echo gs($txt, 81); ?></p>
+        </div>
+        <div class="sub_head_2">
+            <h3><?php echo gs($txt, 82); ?></h3>
+            <p><?php echo gs($txt, 83); ?></p>
+        </div>
+        <div class="sub_head_3">
+            <h3><?php echo gs($txt, 84); ?></h3>
+            <p><?php echo gs($txt, 85); ?></p>
+            <div class="row mt-3 mobile50 app_pic">
+                <div class="col-sm-6 text-center">
+                    <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto,w_1920/fl_progressive,c_scale,q_auto,w_300/v1651403044/product/product-app-1_sgfbbv.webp" loading="lazy" alt="App">
+                </div>
+                <div class="col-sm-6 text-center">
+                    <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto,w_1920/fl_progressive,c_scale,q_auto,w_300/v1651403044/product/product-app2_aevq7p.webp" loading="lazy" alt="App">
+                </div>
+
+            </div>
+        </div>
+        <div class="sub_head_4">
+            <h3><?php echo gs($txt, 86); ?></h3>
+            <p><?php echo gs($txt, 87); ?></p>
+        </div>
+        <img src="https://res.cloudinary.com/armytrix/image/upload/fl_progressive,c_scale,q_auto,w_1920/fl_progressive,c_scale,q_auto,w_980/v1652417585/motorcycle/image/bike_module_vfhnvr.webp" loading="lazy" alt="">
+
+
+</div>
+<br><br><br><br>
+</section>
 
 </div>
 <?php //$this->Html->scriptStart(array('block' => 'scriptBottom')); 
