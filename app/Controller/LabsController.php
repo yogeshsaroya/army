@@ -4700,10 +4700,10 @@ class LabsController extends AppController
 				if (empty($this->data['Product']['library_id'])) {
 					echo '<div class="alert alert-danger fadeIn animated">Please select image.</div>';
 				} else {
-					if (!empty($this->request->data['Product']['id'])) {
-						$this->request->data['Product']['status'] = 1;
-					}
-					if ($this->request->data['Product']['type'] == 7) {
+					
+					$this->request->data['Product']['type'] = 6;
+					
+					if ($this->request->data['Product']['product_type'] == 2) {
 						$this->request->data['Product']['full_part'] = $this->request->data['Product']['full_material'] = $this->request->data['Product']['full_details'] = null;
 					}
 

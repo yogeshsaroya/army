@@ -101,9 +101,12 @@ class MotorcyclesController extends AppController
 
 			$product_ids = explode(',', $Adata['Motorcycle']['product_ids']);
 			
+			
+			$this->Product->unbindModel(['belongsTo' => ['Brand','Model','Motor']],false);
+			$this->Product->bindModel(['belongsTo' => ['MotorcycleMake','MotorcycleModel','MotorcycleYear']],false);
+
 			$products = $this->Product->find('all', array('conditions' => array('Product.id' => $product_ids, 'Product.status' => 1)));
 			
-
 			$this->set('title_for_layout', $data['Motorcycle']['meta_title']);
 			$page_meta = array('des' => $data['Motorcycle']['meta_description'], 'key' => null);
 

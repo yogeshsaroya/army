@@ -14,6 +14,7 @@ echo $this->Form->create('Product',array('type' => 'file','id'=>'proFrm'));
 $v = $id = $mid = null;
 if(isset($e['Product']) && !empty($e['Product'])){  $this->request->data['Product'] = $e['Product']; }
 echo $this->Form->hidden('id',array('id'=>'id'));
+echo $this->Form->hidden('type');
 echo $this->Form->hidden('library_id',array('id'=>'library_id'));
 ?>
 
@@ -32,17 +33,18 @@ echo $this->Form->hidden('library_id',array('id'=>'library_id'));
 <div class="col-sm-2 form-group"><label for="">Armytrix Weight</label><?php echo $this->Form->input('weight', array('label' => false, 'error' => false, 'div' => false, 'class' => 'form-control input-md','required'=>false));?></div>
 <div class="col-sm-2 form-group"><label for="">OEM Weight</label><?php echo $this->Form->input('oem_weight', array('label' => false, 'error' => false, 'div' => false, 'class' => 'form-control input-md','required'=>false));?></div>
 <div class="col-sm-2 form-group"><label for="">Box Size</label><?php echo $this->Form->input('box_size', array('options'=>getYears(1,9),'empty'=>' --Select Box Size-- ','label' => false, 'error' => false, 'div' => false, 'class' => 'form-control input-md','required'=>true));?></div>
-<div class="col-sm-2 form-group"><label>Type</label> <?php echo $this->Form->input('type', array('options'=>getMotorProType(),'empty'=>' --Select Product Type-- ','label' => false, 'error' => false, 'div' => false, 'class' => 'form-control input-md','required'=>true));?></div>
+<div class="col-sm-2 form-group"><label for="">Active</label><?php echo $this->Form->input('status', array('options'=>['1'=>'Active','0'=>'Inactive'],'empty'=>' --Select Status -- ','label' => false, 'error' => false, 'div' => false, 'class' => 'form-control input-md','required'=>true));?></div>
+<div class="col-sm-2 form-group"><label>Type</label> <?php echo $this->Form->input('product_type', array('options'=>getMotorProType(),'empty'=>' --Select Product Type-- ','label' => false, 'error' => false, 'div' => false, 'class' => 'form-control input-md','required'=>true));?></div>
 <div class="clearfix"></div>
 </div>
 
-<div class="row" id="part_1" style="<?php echo(isset($this->request->data['Product']['type']) && in_array($this->request->data['Product']['type'],[6,7]) ? "display: block;":"display: none;") ?>">
+<div class="row" id="part_1" style="<?php echo(isset($this->request->data['Product']['product_type']) && in_array($this->request->data['Product']['product_type'],[1,2]) ? "display: block;":"display: none;") ?>">
 <hr>
 <div class="col-sm-6 form-group"><?php echo $this->Form->input('part', array('label'=>'Part Number','class' => 'form-control input-md','required'=>false));?></div>
 <div class="col-sm-6 form-group"><?php echo $this->Form->input('material', array('lable'=>'Material','options'=>motorMaterial(),'empty'=>' --Select Material-- ','class' => 'form-control input-md','required'=>false));?></div>
 <div class="col-sm-12 form-group"><?php echo $this->Form->input('details', array('type'=>'textarea','rows'=>2,'label' => 'Product Detail','class' => 'form-control input-md','required'=>false));?></div>
 </div>
-<div class="row" id="part_2"  style="<?php echo(isset($this->request->data['Product']['type']) && in_array($this->request->data['Product']['type'],[6]) ? "display: block;":"display: none;") ?>">
+<div class="row" id="part_2"  style="<?php echo(isset($this->request->data['Product']['product_type']) && in_array($this->request->data['Product']['product_type'],[2]) ? "display: block;":"display: none;") ?>">
 <hr>
 <div class="col-sm-6 form-group"><?php echo $this->Form->input('full_part', array('label'=>'Part Number - 2','class' => 'form-control input-md','required'=>false));?></div>
 <div class="col-sm-6 form-group"><?php echo $this->Form->input('full_material', array('lable'=>'Material - 2','options'=>motorMaterial(),'empty'=>' --Select Material-- ','class' => 'form-control input-md','required'=>false));?></div>
@@ -145,7 +147,7 @@ $(document).ready(function(){
 		var model_id = $( "#model_id" ).val(); 
 	window.location.href = '<?php echo SITEURL;?>lab/labs/motorcycle_exhaust_product/'+brand_id+'/'+model_id+'/'+this.value; });
 	
-	$( "#ProductType" ).change(function() { 
+	$( "#ProductProductType" ).change(function() { 
 		if( this.value == 6 ){ $("#part_1").show(); $("#part_2").show(); }
 		else if( this.value == 7 ){ $("#part_1").show(); $("#part_2").hide(); }
 	});

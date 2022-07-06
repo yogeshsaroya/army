@@ -153,69 +153,10 @@ echo $this->html->script(['https://kit.fontawesome.com/acae9edaf3.js'], ['block'
     }
 
     section.motor_container {
-        max-width: 60%;
+        max-width: 80%;
         display: inline-block
     }
 
-    .video {
-        width: 100vw;
-        height: 85vh;
-        object-fit: cover
-    }
-
-    .other_video video {
-        width: 100%;
-        max-height: 100%
-    }
-
-    .other_video {
-        margin: 30px 0 100px;
-        position: relative
-    }
-
-    section.motor_container {
-        max-width: 60%;
-        display: inline-block
-    }
-
-    .app_pic {
-        width: 60%;
-        display: inline-block
-    }
-
-    #vid_unmute {
-        display: flex;
-        line-height: 32px;
-        cursor: pointer;
-        position: absolute;
-        background: rgba(0, 0, 0, 0.7);
-        color: #fff;
-        font-size: 16px;
-        z-index: 999;
-        padding: 5px 10px;
-        bottom: 0;
-        right: 0
-    }
-
-    .other_video #vid_2,
-    #vid_3 {
-        display: flex;
-        line-height: 32px;
-        cursor: pointer;
-        position: absolute;
-        background: transparent;
-        color: #fff;
-        font-size: 16px;
-        z-index: 999;
-        padding: 5px 10px;
-        bottom: 0;
-        right: 0
-    }
-
-    #v2_motor_exh .overlay {
-        height: 85vh;
-        background: rgba(0, 0, 0, 0)
-    }
 
     .fa {
         font-size: 33px
@@ -226,22 +167,6 @@ echo $this->html->script(['https://kit.fontawesome.com/acae9edaf3.js'], ['block'
         margin: 0 10px 5px 5px
     }
 
-    .video {
-        font-weight: 800
-    }
-
-    div#vid_unmute {
-        min-width: 190px
-    }
-
-    #v2_motor_exh .overlay_1,
-    #v2_motor_exh .overlay_2 {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        z-index: 5;
-        background: rgba(0, 0, 0, 0.3)
-    }
 
     .ot_head {
         margin: 70px 0 20px
@@ -306,15 +231,7 @@ echo $this->html->script(['https://kit.fontawesome.com/acae9edaf3.js'], ['block'
             width: 95%
         }
 
-        .video,
-        #v2_motor_exh .overlay {
-            height: 70vh
-        }
 
-        .other_video {
-            margin: 20px 0;
-            position: relative
-        }
     }
 
     @media (max-width: 425px) {
@@ -353,12 +270,6 @@ echo $this->html->script(['https://kit.fontawesome.com/acae9edaf3.js'], ['block'
         }
     }
 
-    #play_3,
-    #play_2 {
-        display: none !important
-    }
-
-
 
     @media (min-width: 768px) {
         #v2_motor_exh .container {
@@ -384,7 +295,7 @@ echo $this->html->script(['https://kit.fontawesome.com/acae9edaf3.js'], ['block'
     }
 
     #v2_motor_exh h1.mt-3.text-center {
-        padding-top: 3rem !important;
+        padding: 3rem 20px 0 20px;
     }
 
     #v2_motor_exh .tabBtn.stainless.steel {
@@ -427,6 +338,10 @@ echo $this->html->script(['https://kit.fontawesome.com/acae9edaf3.js'], ['block'
         padding-bottom: 20px;
     }
 
+    .pd_100 {
+        padding-bottom: 100px;
+    }
+
     .pro_box {
         padding: 10px 0 10px 0;
     }
@@ -449,6 +364,31 @@ echo $this->html->script(['https://kit.fontawesome.com/acae9edaf3.js'], ['block'
         width: 100%;
         position: absolute
     }
+
+    .pro_img {
+        padding-right: 20px;
+    }
+
+    .mx-640 {
+        padding: 20px 0 20px;
+        max-width: 720px;
+
+        margin: auto;
+    }
+
+    .fullWidthImages>img,
+    img {
+        width: auto;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .pro_price {
+        font-weight: 900;
+        margin-bottom: 5px;
+    }
+    .pro-details div{font-weight: 600;}
+    .part_type { margin-bottom: 10px;}
 </style>
 <?php $this->end(); ?>
 <div id="v2_motor_exh">
@@ -471,7 +411,7 @@ echo $this->html->script(['https://kit.fontawesome.com/acae9edaf3.js'], ['block'
     <?php } ?>
     <section class="motor_container">
         <div class="page_container">
-            <?php echo $this->element('v2/product_slider', ['slider' => $slider, 'width' => 1080, 'height' => 750]); ?>
+            <?php echo $this->element('v2/product_slider', ['slider' => $slider, 'width' => 720, 'height' => 750]); ?>
 
             <?php if (!empty($Adata['Video'][0])) { ?>
                 <div class="videoWrapperNw page_container fullMxWd" id="pro_1">
@@ -482,78 +422,49 @@ echo $this->html->script(['https://kit.fontawesome.com/acae9edaf3.js'], ['block'
             <?php } ?>
 
             <div class="videoWrapperNw page_container fullMxWd">
+                <div class="pd_100"></div>
 
-                <div class="row pro_box">
-                    <div class="col-md-6"> <img src="https://comoto.imgix.net/facet_set/image/4250/akrapovic_slip_on_exhausts_750x750__2_.jpg?w=130&dpr=2.625&auto=format%2Ccompress&h=130&fit=fill&bg=fff" alt="" loading="lazy" width="100%" height="auto"> </div>
-                    <div class="col-md-6 text-left">
-                        <h2>ARMYTRIX VALVETRONIC EXHAUST SYSTEM</h2>
-                        <h3>YAMAHA R1 (2015-2022)</h3>
-                        <div class="pd"></div>
-                        <div><span class="tabBtn stainless steel">STAINLESS STEEL / CARBON</span> # YAR1C-11c5</div>
-                        <div>Valvetronic Slip on system - Carbon muffler<br>
-                            + Noise Damper (DB Killer) <br>
-                            + Silver Chrome ARMYTRIX End CAP<br>
-                            + Wireless Remote Control Kits <br>
-                            + Moblie APP smart assistant</div>
-                        <div class="pd"></div>
-                        <div><span class="tabBtn titanium">TITANIUM</span> # YAR1C-11c5</div>
-                        <div>Titanium polished Header with de-catted pipe</div>
-                        <div class="pd"></div>
-                        <div>$198.00</div><input type="button" value="Add To Cart" class="btn btn-success ful-wd-btn" />
-                        <div class="pd"></div>
-                        <div>ARMYTRIX Weight: 5.2 kg</div>
-                        <div>OEM Weight : 10.9 kg</div>
-                        <div class="pd"></div>
+                <?php if (!empty($products)) {
+                    foreach ($products as $product) {
+                        $p = 'cdn/' . $product['Library']['full_path'];
+                        $cImg = new_show_image($p, 500, 500, 100, 'ff', null);
+                ?>
+                        <div class="row pro_box">
+                            <div class="col-md-7"> <img src="<?php echo $cImg; ?>" class="pro_img" alt="" loading="lazy" width="100%" height="auto"> </div>
+                            <div class="col-md-5 text-left">
+                                <div class="pro-details vertical-center">
+                                    <h2>ARMYTRIX VALVETRONIC EXHAUST SYSTEM</h2>
+                                    <h3><?php echo $product['Product']['title']; ?></h3>
+                                    <div class="pd"></div>
 
-                        <div>Exclusive system features a catalytic converter related fault codes clearing<br>
-                            No more check engine light<br>
-                            Plug-n-Play module<br>
-                            Reduction of Installation Time by 30% compared to traditional cable wires<br>
-                            App Controlled Valve System via OBDII Port</div>
-                        <div class="pd"></div>
-                    </div>
-                </div>
-                <hr>
+                                    <div class="part_type"><span class="tabBtn <?php echo strtolower($product['Product']['material']); ?>"><?php echo strtoupper($product['Product']['material']); ?></span> # <?php echo $product['Product']['part']; ?></div>
+                                    <div><?php echo nl2br($product['Product']['details']); ?></div>
+                                    <div class="pd"></div>
 
-                <div class="row pro_box">
-                    <div class="col-md-6"> <img src="https://comoto.imgix.net/facet_set/image/4250/akrapovic_slip_on_exhausts_750x750__2_.jpg?w=130&dpr=2.625&auto=format%2Ccompress&h=130&fit=fill&bg=fff" alt="" loading="lazy" width="100%" height="auto"> </div>
-                    <div class="col-md-6 text-left">
-                        <h2>ARMYTRIX VALVETRONIC EXHAUST SYSTEM</h2>
-                        <h3>YAMAHA R1 (2015-2022)</h3>
-                        <div class="pd"></div>
-                        <div><span class="tabBtn stainless steel">STAINLESS STEEL / CARBON</span> # YAR1C-11c5</div>
-                        <div>Valvetronic Slip on system - Carbon muffler<br>
-                            + Noise Damper (DB Killer) <br>
-                            + Silver Chrome ARMYTRIX End CAP<br>
-                            + Wireless Remote Control Kits <br>
-                            + Moblie APP smart assistant</div>
-                        <div class="pd"></div>
-                        <div><span class="tabBtn titanium">TITANIUM</span> # YAR1C-11c5</div>
-                        <div>Titanium polished Header with de-catted pipe</div>
-                        <div class="pd"></div>
-                        <div>$198.00</div><input type="button" value="Add To Cart" class="btn btn-success ful-wd-btn" />
-                        <div class="pd"></div>
-                        <div>ARMYTRIX Weight: 5.2 kg</div>
-                        <div>OEM Weight : 10.9 kg</div>
-                        <div class="pd"></div>
+                                    <?php if ($product['Product']['product_type'] == 2) { ?>
+                                        <div class="part_type"><span class="tabBtn <?php echo strtolower($product['Product']['full_material']); ?>"><?php echo strtoupper($product['Product']['full_material']); ?></span> # <?php echo $product['Product']['full_part']; ?></div>
+                                        <div><?php echo nl2br($product['Product']['full_details']); ?></div> <div class="pd"></div>
+                                    <?php }
+                                    if (isset($restricted) && $restricted == 1) { ?>
+                                        <div class="pro_price"><?php echo $this->Number->currency($product['Product']['price'], 'USD'); ?></div>
+                                        <input type="button" value="Add To Cart" class="btn btn-success ful-wd-btn" /><div class="pd"></div>
+                                    <?php }else{ ?><a href="<?php echo SITEURL . 'contact?vehicle_type=motorcycle&make=' . $data['Motorcycle']['motorcycle_make_id'] . '&model=' . $data['Motorcycle']['motorcycle_model_id'] . '&year=' . $data['Motorcycle']['motorcycle_year_id']; ?>" class="btn btn-success ful-wd-btn"><?php echo gs($txt, 10); ?></a><?php } ?>
+                                    <hr>
 
-                        <div>Exclusive system features a catalytic converter related fault codes clearing<br>
-                            No more check engine light<br>
-                            Plug-n-Play module<br>
-                            Reduction of Installation Time by 30% compared to traditional cable wires<br>
-                            App Controlled Valve System via OBDII Port</div>
-                        <div class="pd"></div>
-                    </div>
-                </div>
+                                    <div>ARMYTRIX Weight : <?php echo $product['Product']['weight']; ?></div>
+                                    <div>OEM Weight : <?php echo $product['Product']['oem_weight']; ?></div>
+                                    <div class="pd"></div>
 
-
+                                    <div><?php echo nl2br($product['Product']['description']); ?></div><div class="pd"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                <?php }
+                } ?>
             </div>
-
         </div>
-
-        <hr class="hr_red">
-
-
+        <p class="hr_red"></p>
         <?php if (!empty($Adata['Video'])) { ?>
             <div class="videoWrapperNw page_container fullMxWd" id="pro_1">
                 <?php $a = 1;
@@ -608,140 +519,8 @@ echo $this->html->script(['https://kit.fontawesome.com/acae9edaf3.js'], ['block'
 <?php //$this->Html->scriptStart(array('block' => 'scriptBottom')); 
 ?>
 <script>
-    $(window).scroll(function() {
-        var bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
-        var top_of_screen = $(window).scrollTop();
-
-        //Video 1
-        var top_of_element = $("#home_slider").offset().top;
-        var bottom_of_element = $("#home_slider").offset().top + $("#home_slider").outerHeight();
-        var video = document.getElementById("sound_vid");
 
 
-        //Video 2
-        var top_of_element_2 = $("#sound_vid_2").offset().top;
-        var bottom_of_element_2 = $("#sound_vid_2").offset().top + $("#sound_vid_2").outerHeight();
-        var video_2 = document.getElementById("sound_vid_2");
-
-        //Video 3
-        var top_of_element_3 = $("#sound_vid_3").offset().top;
-        var bottom_of_element_3 = $("#sound_vid_3").offset().top + $("#sound_vid_3").outerHeight();
-        var video_3 = document.getElementById("sound_vid_3");
-
-
-        if ((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)) {
-            //if (video.muted === true) { video.muted = false; $("#vid_unmute").html('<i class="fa fa-volume-up" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO MUTE'); }
-        } else {
-            if (video.muted === false) {
-                video.muted = true;
-                $("#vid_unmute").html('<i class="fa fa-volume-off" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO UNMUTE');
-            }
-        }
-
-        if ((bottom_of_screen > top_of_element_2) && (top_of_screen < bottom_of_element_2)) {
-            if (video_2.paused == true) {
-                video_2.play();
-            }
-        } else {
-            if (video_2.paused == false) {
-                video_2.pause();
-            }
-        }
-
-        if ((bottom_of_screen > top_of_element_3) && (top_of_screen < bottom_of_element_3)) {
-            if (video_3.paused == true) {
-                video_3.play();
-            }
-        } else {
-            if (video_3.paused == false) {
-                video_3.pause();
-            }
-        }
-
-    });
-
-
-    window['muteAll'] = function(id) {
-
-        var video1 = document.getElementById("sound_vid");
-        var video2 = document.getElementById("sound_vid_2");
-        var video3 = document.getElementById("sound_vid_3");
-        if (id == 'sound_vid') {
-            video2.muted = video3.muted = true;
-        } else if (id == 'sound_vid_2') {
-            video1.muted = video3.muted = true;
-        } else if (id == 'sound_vid_3') {
-            video1.muted = video2.muted = true;
-        }
-    }
-
-    window['play'] = function(id, icon) {
-        //muteAll(id);
-        var v = document.getElementById(id);
-        if (v.paused == true) {
-            v.play();
-            $("#" + icon).removeClass('fa-solid fa-circle-play').addClass('fa-solid fa-circle-pause');
-        } else {
-            v.pause();
-            $("#" + icon).removeClass('fa-solid fa-circle-pause').addClass('fa-solid fa-circle-play');
-        }
-    };
-    window['sound'] = function(id, icon) {
-        //muteAll(id);
-        var v = document.getElementById(id);
-        if (v.muted === true) {
-            v.muted = false;
-            $("#" + icon).removeClass('fa-solid fa-volume-xmark').addClass('fa-solid fa-volume-high');
-        } else {
-            v.muted = true;
-            $("#" + icon).removeClass('fa-solid fa-volume-high').addClass('fa-solid fa-volume-xmark');
-        }
-    };
-
-    $(document).ready(function() {
-
-        $("#vid_unmute").click(function() {
-            //muteAll('sound_vid');
-            var video1 = document.getElementById("sound_vid");
-            if (video1.muted === true) {
-                video1.muted = false;
-                $("#vid_unmute").html('<i class="fa fa-volume-up" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO MUTE');
-            } else {
-                video1.muted = true;
-                $("#vid_unmute").html('<i class="fa fa-volume-off" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO UNMUTE');
-            }
-        });
-
-        $("#vid_2111").click(function() {
-            muteAll('sound_vid_2');
-            var video2 = document.getElementById("sound_vid_2");
-            if (video2.muted === true) {
-                video2.play();
-                video2.muted = false;
-                $("#vid_2").html('<i class="fa fa-volume-up" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO MUTE');
-            } else {
-                video2.pause();
-                video2.muted = true;
-                $("#vid_2").html('<i class="fa fa-volume-off" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO UNMUTE');
-            }
-        });
-
-        $("#vid_3111").click(function() {
-            muteAll('sound_vid_3');
-            var video3 = document.getElementById("sound_vid_3");
-            if (video3.muted === true) {
-                // video3.play();
-                video3.muted = false;
-                $("#vid_3").html('<i class="fa fa-volume-up" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO MUTE');
-            } else {
-                //video3.pause();
-                video3.muted = true;
-                $("#vid_3").html('<i class="fa fa-volume-off" aria-hidden="true"></i> &nbsp; &nbsp; TAP TO UNMUTE');
-            }
-        });
-
-
-    });
 </script>
 <?php //$this->Html->scriptEnd(); 
 ?>

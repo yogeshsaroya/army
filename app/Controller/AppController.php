@@ -30,7 +30,7 @@ class AppController extends Controller
 			}
 			if (!empty($aR)) { $aR['created'] = DATE; }
 			if (isset($aR['geoplugin_countryCode']) && array_key_exists($aR['geoplugin_countryCode'], $RstrictedCountry)) {
-				/* fix exits then No-Price*/
+				/* if exits then No-Price*/
 				$aR['RstrictedCountry'] = $restricted = 1;
 				$this->Session->write('arm_co', $aR);
 				$co = $aR;
