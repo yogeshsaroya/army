@@ -456,7 +456,7 @@ class PagesController extends AppController
 		$shipping = $this->Session->read('shipping');
 		$WebSetting = $this->WebSetting->find('first', array('WebSetting.id' => 1));
 		$this->Product->bindModel(['belongsTo' => ['MotorcycleMake','MotorcycleModel','MotorcycleYear']],false);
-		ec($checkOutArr); ec($shipping); die;
+		//ec($checkOutArr); ec($shipping); die;
 
 		if (empty($checkOutArr) && empty($shipping)) {
 			$this->render('no_country');
@@ -489,22 +489,17 @@ class PagesController extends AppController
 					/* End */
 
 				$all_pro = $this->Cart->find('all', array('recursive' => 2, 'conditions' => array('Cart.guest_id' => $this->guest_id)));
-				
+				$shipping['cid'] = $shipping['pid'] = null;
 				if (!empty($all_pro)) {
-					$shipping['cid'] = $shipping['pid'] = null;
-					if (!empty($new_cart_dis)) {
-						$shipping['cid'] = implode(',', $new_cart_dis);
-						
-					} else {
-						$this->render('no_country');
+					foreach($all_pro as $al ){
+						$new_cart_dis[] = $al['Cart']['id']; 
+						$new_pid[] = $al['Cart']['product_id'];
 					}
-					if (!empty($new_pid)) {
-						$shipping['pid'] = implode(',', $new_pid);
-					}
+					if (!empty($new_cart_dis)) { $shipping['cid'] = implode(',', $new_cart_dis); }
+					if (!empty($new_pid)) { $shipping['pid'] = implode(',', $new_pid); }
 					$this->Session->write('shipping', $shipping);
 					$this->set(compact('WebSetting', 'checkOutArr', 'shipping', 'country_list', 'all_pro'));
-					
-				} else { $this->render('no_country'); }
+				}
 			} else { $this->render('no_country'); }
 		}
 	}

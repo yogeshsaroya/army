@@ -2,9 +2,7 @@
 echo $this->Html->css(["checkout"], ['block' => 'cssTop']);
 echo $this->html->script(['jquery.form.min', '/v/formValidation.min', '/v/bootstrap.min'], ['block' => 'scriptTop']);
 $note = null;
-if (isset($checkOutArr['note'])) {
-    $note = $checkOutArr['note'];
-}
+if (isset($checkOutArr['note'])) { $note = $checkOutArr['note']; }
 ?>
 
 <div id="preloader" style="display: none">
@@ -45,13 +43,11 @@ tr.pd_list { border-bottom: 1px solid #f2f2f2; }
             <div id="app_error" style="min-height: 30px"></div>
             <?php echo $this->Form->create(null, array('id' => 'reFrm', 'url' => array('controller' => 'pages', 'action' => 'pro_checkout')));
             $region = $country_list['CountryList']['region'];
+            $bike_region = $country_list['CountryList']['bike_region'];
             $region_id = $country_list['CountryList']['id'];
             $iso = $country_list['CountryList']['iso2'];
-            $euro_price = $WebSetting['WebSetting']['euro_price'];
-            $import_duty = $vat = $shipping_discount = 0;
-            if ($region == 1) {
-                $shipping_discount = $WebSetting['WebSetting']['shipping_discount'];
-            } ?>
+            $shipping_discount = (float)$WebSetting['WebSetting']['shipping_discount'];
+            ?>
             <div class="row">
                 <div class="ful-frm-chk-out border-head-form">
                     <div class="col-md-4">
@@ -91,20 +87,16 @@ tr.pd_list { border-bottom: 1px solid #f2f2f2; }
                                         <tr>
                                             <th class="name">Product Name</th>
                                             <th class="qty a-center">Qty</th>
-
                                             <th class="qty a-center">Price</th>
-                                            <?php /*?>
-<th class="qty a-center">Discount %</th>
-<?php */ ?>
                                             <th class="total a-right">Subtotal</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $shipping_cost = $discount = $warranty_amt = 0;
-                                        $total = $is_cateback = 0;
-                                        $scost = $cids = $pro_id = array();
-                                        $accessory = $a_downpipe = $a_catback = $final_warr = 0;
+                                        $bike_shipping_cost = $shipping_cost = $discount = $warranty_amt = $total = $is_cateback = 0;
+                                        $accessory = $a_downpipe = $a_catback = $final_warr = $a_bike = 0;
+                                        $scost = $cids = $pro_id = [];
+                                        
 
                                         foreach ($all_pro as $alist) {
                                             if ($alist['Product']['type'] == 4 && $alist['Product']['id'] != 97) {
@@ -121,8 +113,17 @@ tr.pd_list { border-bottom: 1px solid #f2f2f2; }
                                                 $scost[2][] = $alist['Cart']['quantity'];
                                                 $a_catback = $a_catback + $alist['Cart']['quantity'];
                                             }
+                                            elseif ($alist['Product']['type'] == 6) {
+                                                $scost[6][] = $alist['Cart']['quantity'];
+                                                $a_bike = $a_bike + $alist['Cart']['quantity'];
+                                                if( isset($country_list['CountryList']['zone']) && !empty($country_list['CountryList']['zone']) && isset($alist['Product']['box_size']) && !empty($alist['Product']['box_size']) ){
+                                                    $b_c = $this->Lab->getBikeShipping($country_list['CountryList']['zone'], $alist['Product']['box_size']);
+                                                    $bike_shipping_cost = $bike_shipping_cost + ( $b_c * $alist['Cart']['quantity']);
+                                                }
+                                            }
                                         }
-
+                                        
+                                        
                                         /* Only Downpipe */
                                         if ($a_downpipe > 0 && $a_catback == 0) {
                                             foreach ($all_pro as $alist) {
@@ -157,12 +158,7 @@ tr.pd_list { border-bottom: 1px solid #f2f2f2; }
                                             }
                                         }
 
-                                        /*
- * 2 - Cat-back
- * 3 - Down-pipe
- * 
- * */
-
+                                        /* * 2 - Cat-back * 3 - Down-pipe *  * */
                                         if (isset($scost[2]) && !empty($scost[2])) {
                                             $pro_qty = array_sum($scost[2]);
                                             $shipping_cost = $pro_qty * $country_list['CountryList']['catback'];
@@ -180,14 +176,14 @@ tr.pd_list { border-bottom: 1px solid #f2f2f2; }
                                             $shipping_cost = 1 * $country_list['CountryList']['fedex_pack'];
                                             unset($scost);
                                         }
+                                        $shipping_cost = $shipping_cost + $bike_shipping_cost; 
+                                        if ($shipping_discount > 0) {
+                                            $discount = num_2($shipping_cost * $shipping_discount / 100);
+                                        }
 
                                         foreach ($all_pro as $list) {
-                                            if ($shipping_discount > 0) {
-                                                $discount = num_2($shipping_cost * $shipping_discount / 100);
-                                            }
-                                            if ($list['Product']['type'] == 2) {
-                                                $is_cateback++;
-                                            }
+                                            
+                                            if ($list['Product']['type'] == 2) { $is_cateback++; }
                                             if ($list['Product']['quantity'] > 0) {
                                                 $p1 = $list['Product']['price'];
                                                 if ($list['Product']['discount'] > 0) {
@@ -199,11 +195,13 @@ tr.pd_list { border-bottom: 1px solid #f2f2f2; }
                                                 $pro_id[] = $list['Product']['id'];
                                             }
                                             $url = 'javascript:void(0);';
-                                            if ($list['Product']['type'] == 1) {
-                                                $url = SITEURL . "collections/products/" . $list['Product']['slug'];;
-                                            } elseif ($list['Product']['type'] == 4) {
+                                            if ($list['Product']['type'] == 4) {
                                                 $url = SITEURL . "shop/" . $list['Product']['slug'];
-                                            } elseif (in_array($list['Product']['type'], array(2, 3, 5))) {
+                                            } elseif ($list['Product']['type'] == 6) {
+                                                $getBikeURL = $this->Lab->getMotorcycleURL($list['Product']['motorcycle_make_id'], $list['Product']['motorcycle_model_id'], $list['Product']['motorcycle_year_id']);
+                                                $url = SITEURL . "motorcycle/" . $getBikeURL;
+                                            } 
+                                            elseif (in_array($list['Product']['type'], array(2, 3, 5))) {
                                                 $getCarURL = $this->Lab->getCarURL($list['Product']['brand_id'], $list['Product']['model_id'], $list['Product']['motor_id']);
                                                 $url = SITEURL . "product/" . $getCarURL;
                                             }
@@ -211,7 +209,10 @@ tr.pd_list { border-bottom: 1px solid #f2f2f2; }
                                             <tr class="pd_list">
                                                 <td class="w30">
                                                     <h3 class="product-name"><a href="<?php echo $url; ?>" title="" target="_blank">
-                                                    <?php echo $list['Product']['title'] . (!empty($list['Cart']['size']) ? " " . $list['Cart']['size'] : null); ?></a> </h3>
+                                                    <?php echo $list['Product']['title'] . (!empty($list['Cart']['size']) ? " " . $list['Cart']['size'] : null); ?></a> 
+                                                <?php /* if ($list['Product']['type'] == 6) { ec("Zone : ".$country_list['CountryList']['zone']." -  BoxSize : ".$list['Product']['box_size']); } */?>
+                                                
+                                                </h3>
                                                     <?php if (!empty($list['Product']['part'])) {  
                                                         if ($list['Product']['type'] == 6) { ?> 
                                                             <div> 
@@ -219,7 +220,6 @@ tr.pd_list { border-bottom: 1px solid #f2f2f2; }
                                                                 <?php if ($list['Product']['material'] == 'stainless steel + carbon') { echo '<div class="grid-right-sec abtpro stainless_steel"><span>stainless steel + carbon</span></div>'; } 
                                                                 elseif ($list['Product']['material'] == 'titanium') { echo '<div class="grid-right-sec abtpro titanium"><span>Titanium</span></div>'; } ?>
                                                                 </div>
-
                                                                 <?php if ($list['Product']['product_type'] == 1) {?>
                                                                 <div class="pt_20"> 
                                                                 <div class="grid-right-sec abtpro"><span><?php echo $list['Product']['full_part']; ?></span></div>
@@ -238,11 +238,11 @@ tr.pd_list { border-bottom: 1px solid #f2f2f2; }
 
                                                 <td class="a-center wid_2"><?php
                                                                             if ($list['Product']['discount'] > 0) {
-                                                                                echo new_currency($list['Product']['price'], $p1, $euro_price, $region);
+                                                                                echo new_currency($list['Product']['price'], $p1);
                                                                             } else {
-                                                                                echo currency($list['Product']['price'], $euro_price, $region);
+                                                                                echo currency($list['Product']['price']);
                                                                             } ?></td>
-                                                <td class="a-right wid_4"><span class="cart-price"><span class="price"><?php echo currency($p1 * $list['Cart']['quantity'], $euro_price, $region); ?></span></span></td>
+                                                <td class="a-right wid_4"><span class="cart-price"><span class="price"><?php echo currency($p1 * $list['Cart']['quantity']); ?></span></span></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
@@ -262,44 +262,29 @@ tr.pd_list { border-bottom: 1px solid #f2f2f2; }
 
                                             $warranty_amt = 0;
                                             $net_total = ($total + $shipping_cost) - $discount;
-                                            $duty_amt = num_2($net_total * $import_duty / 100);
-                                            $vat_amt = num_2($net_total * $vat / 100);
-                                            $gt_total = num_2($net_total + $duty_amt + $vat_amt + $warranty_amt);
+                                            $gt_total = num_2($net_total + $warranty_amt);
                                             ?>
                                             <td class="a-right" colspan="2">Subtotal</td>
-                                            <td class="a-right"><span class="price" id="_total_amount"><?php echo currency($total, $euro_price, $region); ?></span> </td>
+                                            <td class="a-right"><span class="price" id="_total_amount"><?php echo currency($total); ?></span> </td>
                                         </tr>
 
                                         <?php if ($shipping_cost == 0) { ?>
                                             <tr>
                                                 <td class="a-right" colspan="2">Free Shipping </td>
-                                                <td class="a-right"><span class="price" id="_shipping_discount"><?php echo currency(0, $euro_price, $region); ?></span> </td>
+                                                <td class="a-right"><span class="price" id="_shipping_discount"><?php echo currency(0); ?></span> </td>
                                             </tr>
                                         <?php } else { ?>
                                             <tr>
                                                 <td class="a-right" colspan="2">Shipping (+)</td>
-                                                <td class="a-right"><span class="price" id="_shipping_cost"><?php echo currency($shipping_cost, $euro_price, $region);; ?></span> </td>
+                                                <td class="a-right"><span class="price" id="_shipping_cost"><?php echo currency($shipping_cost);; ?></span> </td>
                                             </tr>
                                             <?php if ($shipping_discount > 0) { ?>
                                                 <tr>
                                                     <td class="a-right" colspan="2">Shipping Fee Discount <?php /* echo num_2($shipping_discount); */ ?> (-)</td>
-                                                    <td class="a-right"><span class="price" id="_shipping_discount"><?php echo currency($discount, $euro_price, $region); ?></span> </td>
+                                                    <td class="a-right"><span class="price" id="_shipping_discount"><?php echo currency($discount); ?></span> </td>
                                                 </tr>
                                         <?php }
                                         } ?>
-
-                                        <?php if ($region == 3) { ?>
-                                            <tr>
-                                                <td class="a-right" colspan="2" id="p_imp_duty">Import duty <?php echo $import_duty; ?>% (+)</td>
-                                                <td class="a-right"><span class="price" id="_duty"><?php echo currency($duty_amt, $euro_price, $region); ?></span> </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="a-right" colspan="2" id="p_vat">VAT <?php echo $vat; ?>% (+)</td>
-                                                <td class="a-right"><span class="price" id="_vat"><?php echo currency($vat_amt, $euro_price, $region); ?></span> </td>
-                                            </tr>
-                                        <?php } ?>
-
-
                                         <tr>
                                             <td class="a-right" colspan="2">
                                                 <div class="form-group "><label>
@@ -307,14 +292,14 @@ tr.pd_list { border-bottom: 1px solid #f2f2f2; }
                                                         <i class="fa fa-question-circle" aria-hidden="true" data-toggle="tooltip" title="An additional warranty of one year can be purchased upon selecting this option"></i>
                                                     </label></div>
                                             </td>
-                                            <td class="a-right"><span class="price" id="_warranty"><?php echo currency($warranty_amt, $euro_price, $region); ?></span>
+                                            <td class="a-right"><span class="price" id="_warranty"><?php echo currency($warranty_amt); ?></span>
                                             </td>
                                         </tr>
 
 
                                         <tr>
                                             <td class="a-right" colspan="2"><strong>Grand Total</strong></td>
-                                            <td class="a-right"><strong><span class="price" id="_ngt"><?php echo currency($gt_total, $euro_price, $region); ?></span></strong></td>
+                                            <td class="a-right"><strong><span class="price" id="_ngt"><?php echo currency($gt_total); ?></span></strong></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -344,20 +329,20 @@ tr.pd_list { border-bottom: 1px solid #f2f2f2; }
                                         <input type="hidden" name="shipping_cost" id="shipping_cost" value="<?php echo num_2($shipping_cost); ?>">
                                         <input type="hidden" name="discount" id="discount" value="<?php echo $discount; ?>">
                                         <input type="hidden" name="shipping_discount" id="shipping_discount" value="<?php echo $shipping_discount; ?>">
-                                        <input type="hidden" name="import_duty" id="import_duty" value="<?php echo $duty_amt; ?>">
-                                        <input type="hidden" name="vat" id="vat" value="<?php echo $vat_amt; ?>">
+                                        <input type="hidden" name="import_duty" id="import_duty" value="0">
+                                        <input type="hidden" name="vat" id="vat" value="0">
+                                        <input type="hidden" name="eur" id="eur" value="0">
 
                                         <input type="hidden" name="warranty_extension" id="warranty_extension" value="<?php echo num_2($warranty_amt); ?>">
                                         <input type="hidden" name="est_warranty_extension" id="est_extension" value="<?php echo num_2($final_warr); ?>">
-
-
-                                        <input type="hidden" name="eur" id="eur" value="<?php echo $euro_price; ?>">
+                                        
                                         <input type="hidden" name="grand_total" id="grand_total" value="<?php echo num_2($gt_total); ?>">
 
                                         <input type="hidden" name="cid" id="cid" value="<?php echo $plist; ?>">
                                         <input type="hidden" name="pid" id="pid" value="<?php echo $pro_ids; ?>">
 
                                         <input type="hidden" name="region" id="region" value="<?php echo $region; ?>">
+                                        <input type="hidden" name="bike_region" id="bike_region" value="<?php echo $bike_region; ?>">
                                         <input type="hidden" name="iso" id="iso" value="<?php echo $iso; ?>">
                                         <input type="hidden" name="first_name" value="<?php echo $shipping['Order']['first_name']; ?>">
                                         <input type="hidden" name="last_name" value="<?php echo $shipping['Order']['last_name']; ?>">
@@ -386,7 +371,7 @@ tr.pd_list { border-bottom: 1px solid #f2f2f2; }
 
                                         <div class="submit-btn pull-right">
                                             <button id="_do_chk">
-                                                <span class="grnd-total"><span class="set-txxt">Grand Total</span> <span class="totl-value" id="_gt"><?php echo currency($gt_total, $euro_price, $region); ?></span></span>
+                                                <span class="grnd-total"><span class="set-txxt">Grand Total</span> <span class="totl-value" id="_gt"><?php echo currency($gt_total); ?></span></span>
                                                 <span class="plc-order">Place Order</span>
                                             </button>
                                         </div>
@@ -513,6 +498,7 @@ tr.pd_list { border-bottom: 1px solid #f2f2f2; }
                 <div class="promoblock_wrapper">
                     <div class="promo_text_block">
                         <div class="promo_text_block_wrapper">
+                        <br><br>
                             <center>
                                 <h1>Your shopping cart is empty!</h1>
                             </center>

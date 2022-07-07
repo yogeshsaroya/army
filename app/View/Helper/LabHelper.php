@@ -134,8 +134,9 @@ class LabHelper extends AppHelper {
 	
 	public function payment_by(){
 		return  array('paypal'=>'PayPal','wire'=>'Bank Transfer','cc'=>'Credit Card');
-				}
+	}
 	
+				
 	public function getCarURL($make = null, $model=null, $year = null){
 		$d = ClassRegistry::init('ItemDetail');
 		$url = null;
@@ -350,5 +351,19 @@ class LabHelper extends AppHelper {
 			}
 		}
 		return $arr;
+	}
+
+	public function getBikeShipping($zone = null, $box_size = null)
+	{
+		$fee = 0;
+		if (!empty($zone) && !empty($box_size)) {
+			
+			$tbl = ClassRegistry::init('MotorcycleShipping');
+			$data = $tbl->find('first', ['conditions' => ['MotorcycleShipping.zone'=>$zone,'MotorcycleShipping.box_size'=>$box_size]]);
+			if (isset($data['MotorcycleShipping']['price']) && !empty($data['MotorcycleShipping']['price'])) {
+				$fee = (float)$data['MotorcycleShipping']['price'];
+			}
+		}
+		return $fee;
 	}
 }?>

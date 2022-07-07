@@ -35,22 +35,15 @@ if(!empty($num)){
 }
 }
 
-function currency($amt = 0 , $eur = 0 , $region = null ){
-    $str = null;
-    if ( $region == 3 ){ $str = "EUR €".num_2( $amt * $eur); }
-    else{  $str = "USD $".num_2($amt); }
+function currency($amt = 0 ){
+    $str = "USD $".num_2($amt);
     return $str;
 }
 
-function new_currency($amt = 0, $new_amt = 0 , $eur = 0 , $region = null ){
+function new_currency($amt = 0, $new_amt = 0){
     $str = null;
-    if ( $amt == $new_amt ){
-        if ( $region == 2 ){ $str = "EUR €".num_2( $amt * $eur); }
-        else{  $str = "USD $".num_2($amt); }
-    }else{
-        if ( $region == 2 ){ $str = 'EUR <strike class="text-danger">€'.num_2( $amt * $eur).'</strike> €'.num_2( $new_amt * $eur); }
-        else{ $str = 'USD <strike class="text-danger">$'.num_2( $amt).'</strike> $'.num_2( $new_amt); }
-    }
+    if ( $amt == $new_amt ){ $str = "USD $".num_2($amt);  }
+	else{ $str = 'USD <strike class="text-danger">$'.num_2( $amt).'</strike> $'.num_2( $new_amt);  }
     return $str;
 }
 
