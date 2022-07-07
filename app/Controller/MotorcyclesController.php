@@ -17,7 +17,7 @@ class MotorcyclesController extends AppController
 		AppController::beforeFilter();
 		$this->Auth->allow();
 		$this->guest_id = $this->Cookie->read('guest_id');
-		$this->is_price =  $this->Session->read('arm_co');
+		$this->get_region =  $this->Session->read('set_region');
 	}
 
 	public function motorcycle_valvetronic_exhaust()
@@ -55,18 +55,26 @@ class MotorcyclesController extends AppController
 
 	public function product($id = null, $type = null)
 	{
+		$restricted = 2;
 		$slider = $page_meta = $data = $gallery = $products = null;
 
+		if(isset($this->get_region['country_code']) && !empty($this->get_region['country_code'])){
+			$region_arr = $this->DATA->getRegion($this->get_region['country_code']);
+			if(isset($region_arr['CountryList']['bike_region']) && in_array($region_arr['CountryList']['bike_region'],[1,2])){
+				$restricted = $region_arr['CountryList']['bike_region'];
+			}
+		}
 		$this->Motorcycle->bindModel(['belongsTo' => ['MotorcycleMake', 'MotorcycleModel', 'MotorcycleYear'], 'hasMany' => ['Video' => ['limit' => 15, 'order' => ['Video.pos' => 'ASC']]]], false);
 		$data = $this->Motorcycle->find('first', array('recursive' => 2, 'conditions' => array('Motorcycle.url' => $id, 'Motorcycle.status' => 1)));
 		$pid = null;
 		$langArr = [];
-		if ($data['Motorcycle']['language'] == 'eng') {
-			$pid = $data['Motorcycle']['id'];
-		} else {
-			$pid = $data['Motorcycle']['motorcycle_id'];
-		}
 		if (!empty($data)) {
+			if ($data['Motorcycle']['language'] == 'eng') {
+				$pid = $data['Motorcycle']['id'];
+			} else {
+				$pid = $data['Motorcycle']['motorcycle_id'];
+			}
+			
 			if ($data['Motorcycle']['language'] == 'eng') {
 				$Adata = $data;
 				$item_detail_id = $data['Motorcycle']['id'];
@@ -132,8 +140,7 @@ class MotorcyclesController extends AppController
 			if( isset($allLang[ $data['Motorcycle']['language'] ] ) ){
 				$act_lng = strtolower($allLang[$data['Motorcycle']['language']]);
 			}
-			$this->set(compact('page_meta', 'data', 'Adata', 'txt', 'slider', 'gallery', 'products','langArr','act_lng'));
-			//$this->render('product_v2');
+			$this->set(compact('page_meta', 'data', 'Adata', 'txt', 'slider', 'gallery', 'products','langArr','act_lng','restricted'));
 		} else {
 			$this->layout = '404';
 		}

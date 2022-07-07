@@ -11,17 +11,7 @@
 echo $this->Form->hidden('id');   ?>
 <div class="form-group"> <?php echo $this->Form->input('description',array('class'=>'form-control')); ?> </div>
 <div class="form-group"> <?php echo $this->Form->input('keyword',array('class'=>'form-control')); ?> </div>
-
-<div class="form-group"> <?php echo $this->Form->input('euro_price',array('class'=>'form-control','label'=>'Euro Price ( 1 USD )','required'=>true,'min'=>0)); ?> </div>
-
-<div class="form-group"> <?php echo $this->Form->input('shipping_discount_usa',array('class'=>'form-control','label'=>'Shipping Fee Discount % (America Region)','required'=>true,'min'=>0)); ?> </div>
-<div class="form-group"> <?php echo $this->Form->input('shipping_discount_europe',array('class'=>'form-control','label'=>'Shipping Fee Discount % (Europe Region)','required'=>true,'min'=>0)); ?> </div>
-<div class="form-group"> <?php echo $this->Form->input('shipping_discount',array('class'=>'form-control','label'=>'Shipping Fee Discount % (Other Region)','required'=>true,'min'=>0)); ?> </div>
-
-<div class="form-group"> <?php echo $this->Form->input('import_duty',array('class'=>'form-control','label'=>'Import Duty % (Europe region only)','required'=>true,'min'=>0)); ?> </div>
-<div class="form-group"> <?php echo $this->Form->input('vat',array('class'=>'form-control','label'=>'VAT % (Europe region only)','required'=>true,'min'=>0)); ?> </div>
-
-
+<div class="form-group"> <?php echo $this->Form->input('shipping_discount',array('class'=>'form-control','label'=>'Shipping Fee Discount % (For all kind of shipping fee)','required'=>true,'min'=>0)); ?> </div>
 <div class="form-group"> <?php echo $this->Form->input('email',array('class'=>'form-control')); ?> </div>
 <div class="form-group"> <?php echo $this->Form->input('mobile',array('class'=>'form-control')); ?> </div>
 <div class="form-group"> <?php echo $this->Form->input('facebook_link',array('class'=>'form-control')); ?> </div>

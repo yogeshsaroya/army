@@ -140,14 +140,21 @@ class LabHelper extends AppHelper {
 		$d = ClassRegistry::init('ItemDetail');
 		$url = null;
 		if(!empty($make) && !empty($model) && !empty($year)){
-			$data = $d->find('first',array('recursive'=>-1,'conditions'=>array('ItemDetail.brand_id'=>$make,'ItemDetail.model_id'=>$model,'ItemDetail.motor_id'=>$year,'ItemDetail.status'=>1)));
-			
-			if(!empty($data)){
-				$url = $data['ItemDetail']['url'];
-			}
+			$data = $d->find('first',array('recursive'=>-1,'conditions'=>array('ItemDetail.brand_id'=>$make,'ItemDetail.model_id'=>$model,'ItemDetail.motor_id'=>$year,'ItemDetail.status'=>1,'ItemDetail.language'=>'eng')));
+			if(!empty($data)){ $url = $data['ItemDetail']['url']; }
 		}
 		return $url;
 	}
+	public function getMotorcycleURL($make = null, $model=null, $year = null){
+		$d = ClassRegistry::init('Motorcycle');
+		$url = null;
+		if(!empty($make) && !empty($model) && !empty($year)){
+			$data = $d->find('first',array('recursive'=>-1,'conditions'=>array('Motorcycle.motorcycle_make_id'=>$make,'Motorcycle.motorcycle_model_id'=>$model,'Motorcycle.motorcycle_year_id'=>$year,'Motorcycle.status'=>1,'Motorcycle.language'=>'eng')));
+			if(!empty($data)){ $url = $data['Motorcycle']['url']; }
+		}
+		return $url;
+	}
+
 	public function dealerType(){
 		$d = ClassRegistry::init('DealerLevel');
 		$data = $d->find('list');

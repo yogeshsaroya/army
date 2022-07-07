@@ -1,3 +1,135 @@
+
+<style>
+.in-stock-pro>h3::before {
+    background-size: 100% auto;
+    content: "";
+    height: 20px;
+    left: 10px;
+    position: absolute;
+    width: 20px;
+    background-image: url(<?php echo SITEURL; ?>img/right-icon.png);
+  }
+  .no-pad{margin:0 auto;padding:0}
+.cart-section{float:none}
+.fw_content_padding.pad-none{padding:0!important}
+.shoping-cart-head h2{font-size:32px;text-transform:uppercase;font-weight:500}
+.shoping-cart-head .contiune-shop{font-size:16px;font-weight:300;margin-top:10px;position:relative;text-align:right;text-transform:lowercase}
+.contiune-shop>a{color:#000!important;font-weight:300!important}
+.shoping-cart-head{border-bottom:medium dotted;margin-bottom:20px;overflow:hidden;padding:10px 0}
+.item-main-heading{overflow:hidden;padding:16px 0}
+.item-rmve>li{display:inline-block;vertical-align:middle}
+.item-quantity .btn-snp{background:#1a9b58 none repeat scroll 0 0;height:40px;color:#fff!important}
+.item-price,.item-quantity,.item-total-price{text-align:center;padding:30px 0}
+.main-head{text-align:center}
+.item-quantity .btn-default.disabled,.item-quantity .btn-default[disabled],fieldset[disabled] .btn-default,.item-quantity .btn-default.disabled:hover,.btn-default[disabled]:hover,fieldset[disabled] .btn-default:hover,.item-quantity .btn-default.disabled:focus,.btn-default[disabled]:focus,fieldset[disabled] .btn-default:focus,.item-quantity .btn-default.disabled:active,.btn-default[disabled]:active,fieldset[disabled] .btn-default:active,.item-quantity .btn-default.disabled.active,.btn-default.active[disabled],fieldset[disabled] .btn-default.active{background:#1a9b58 none repeat scroll 0 0;color:#fff!important}
+.item-quantity .form-control{text-align:center;height:40px;border:none!important;background:#e2e3e4 none repeat scroll 0 0;cursor:inherit}
+.item-quantity{margin:auto;max-width:140px!important}
+.main-head>h3,.item-head>h3{color:#adaeb1;font-size:16px;font-weight:400;text-transform:uppercase}
+.item-head-details>a,.item-head-details>a>h2{font-size:20px;text-transform:uppercase}
+.item-head-details>h3{font-size:12px;font-weight:300;line-height:22px;text-transform:uppercase}
+.item-rmve a{color:#000;font-size:15px;text-decoration:underline;text-transform:capitalize}
+.item-rmve i{padding:0 8px;vertical-align:middle}
+.item-rmve{margin-top:40px}
+.item-head-details>h2{font-size:20px;margin-bottom:5px}
+.item-quantity .in-stock-pro{margin-top:15px}
+.out-stock-pro>h3{font-size:18px;font-weight:300;margin:auto;position:relative;text-align:center;text-transform:capitalize;color:red}
+.in-stock-pro>h3{font-size:18px;font-weight:300;margin:auto;position:relative;text-align:center;text-transform:capitalize}
+.item-price>h3,.item-total-price>h3{font-size:15px;font-weight:400}
+.item-details li{overflow:hidden;padding:20px 0}
+.free-gift-section .item-quantity .btn-snp{background:#999 none repeat scroll 0 0}
+.free-gift-section .item-head-details>h2{font-size:20px!important;font-weight:500}
+.free-gift-section .item-list{overflow:hidden;padding:30px 0}
+.free-gift-section .input-group-btn{display:none!important}
+.item-quantity{padding:20px 0!important}
+.Note-section h2{font-size:32px;font-weight:500;padding:20px 0;text-transform:uppercase;margin:15px 0 0}
+.coupon-code-bx .input-text{background:#ccc}
+.Note-section{border-top:medium dotted}
+.Note-section textarea{border:0;background:#ccc;padding:15px}
+.free-gift-section .input-group-btn{display:none!important}
+.checkout-section{overflow:hidden;padding:15px 0}
+.checkout-section h2{font-size:26px;font-weight:300;margin-bottom:20px;text-align:center;text-transform:uppercase}
+.checkout-section h2 span{font-size:26px;font-weight:500}
+.recommended-product .carousel-control.right,.recommended-product .carousel-control.left{background-image:none!important}
+.slide-cursor span{background-image:url(img/slide_controls.png);cursor:pointer;display:block;height:60px;margin-top:-16px;opacity:1;position:absolute;top:50%;transition:opacity .35s linear 0;width:32px;z-index:99}
+.slide-cursor .prev-img{background-position:left center;left:10px}
+.slide-cursor .nxt-img{background-position:right center;right:10px}
+.slide-cursor span:hover{opacity:1}
+.input-text{float:left;overflow:hidden;width:70%!important;background:#e2e3e4 none repeat scroll 0 0;border:none;background:#e2e3e4 none repeat scroll 0 0;border:medium none!important;border-radius:0;box-sizing:border-box;color:#222;display:block;font-size:13px;height:40px;line-height:20px;margin:0 0 7px;outline:medium none;padding:9px 20px 11px 18px !important;text-shadow:none}
+.payment-total>h3{font-size:20px;font-weight:400;margin-bottom:22px;text-transform:capitalize}
+.price-txt h3,.price-num h3{font-size:16px;font-weight:400;text-transform:uppercase}
+.total-amt .price-txt h3,.total-amt .price-num h3{font-size:18px;font-weight:500}
+.button{border-radius:0!important;float:right;width:25%;border:medium none;border-radius:3px;color:#fff;display:inline-block;font-size:13px!important;font-weight:900;height:40px;line-height:20px!important;margin:0;text-transform:uppercase;background:#093}
+.price-num>h3{text-align:right}
+.price-txt h3{text-align:left}
+.sub-total-price{overflow:hidden;padding-bottom:10px!important}
+.total-amt{border-top:2px solid gray;padding-top:20px!important}
+.checkout-btn>a{background:#093 none repeat scroll 0 0;color:#fff;float:right;font-size:16px;font-weight:400;padding:15px 45px;text-transform:uppercase}
+.checkout-btn>a:hover{background:#444 none repeat scroll 0 0!important;color:#fff;transition:all 500ms ease-in-out 0}
+.checkout-btn{overflow:hidden;padding:25px 0!important}
+textarea{width:100%;height:auto!important}
+.item-list label{cursor:pointer;display:block;font-size:1.35em;font-weight:300;height:40px;margin:0 auto;padding:0;position:absolute;width:100%;z-index:111}
+.item-list .check{background:#999 none repeat scroll 0 0;border:1px solid #999;border-radius:50%;bottom:0;display:block;height:30px;left:0;margin:auto;position:absolute;top:-40px;transition:border .25s linear 0;width:30px;z-index:5}
+.card-item input[type="radio"]:checked~.check::before{background:url(image/checked-pg.png) no-repeat center center!important;background-size:22px auto!important}
+.item-list .check::before{border-radius:100%;content:"";display:block;height:100%;left:0;margin:auto;position:absolute;top:0;width:100%}
+.mneyyy{display:none!important}
+#mneyy{display:none!important}
+#mney{display:none!important}
+.free-gift-section .item-list img{margin:-40px auto auto;text-align:center}
+.card-item>li{padding:0!important}
+#main_sec .checkout-btn>a{color:#fff!important}
+@media (max-width:580px) {
+.free-gift-section .item-list img{margin:0 auto!important;text-align:center}
+.shoping-cart-head h2{font-size:22px!important;text-align:center;text-transform:uppercase}
+.shoping-cart-head .contiune-shop{text-align:center}
+.item-head-details{margin-top:24px;text-align:center!important}
+.item-quantity .form-control{height:40px;background:#E2E3E4;border:none!important}
+.item-rmve{margin-top:12px;text-align:center!important}
+.item-details li{padding:0}
+.item-rmve>li{padding:0!important}
+.item-rmve i{padding:0 5px!important;vertical-align:middle}
+.item-rmve a{font-size:12px!important;font-weight:400!important}
+.item-price,.item-quantity,.item-total-price{padding:15px 0;text-align:center}
+.item-quantity{padding:0!important}
+.shoping-cart-head h2{font-size:22px!important}
+.free-gift-section .item-list{overflow:hidden;padding:0}
+.checkout-section h2{font-size:20px}
+.checkout-section h2 span{font-size:20px}
+.payment-total{margin-top:20px}
+.button{padding:8px 10px!important}
+.checkout-btn{text-align:center}
+.checkout-btn>a{color:#fff!important;float:none;letter-spacing:0!important}
+.free-gift-section .item-head-details>h2{font-size:16px!important}
+.payment-total .left-price{float:left!important}
+.payment-total .right-price{float:right!important}
+.payment-total>h3{text-align:center}
+}
+@media (min-width:581px) and (max-width:991px) {
+.shoping-cart-head .col-md-10{float:left!important}
+.shoping-cart-head h2{text-transform:uppercase;padding:0;margin:0 auto}
+.card-item .col-md-4{float:left;width:33%}
+.item-rmve{margin-top:0}
+.item-head-details{text-align:center}
+.payment-total .left-price{float:left!important}
+.payment-total .right-price{float:right!important}
+.item-quantity .form-control{background:#e2e3e4 none repeat scroll 0 0;border:medium none!important;height:40px}
+.item-price,.item-quantity,.item-total-price{padding:0!important}
+}
+@media (min-width:992px) and (max-width:1199px) {
+.item-quantity .btn-snp{padding:6px 8px!important}
+.in-stock-pro>h3::before{left:0!important}
+.item-rmve a{font-size:12px}
+.item-details li{padding:15px 0}
+.item-rmve i{padding:0 5px;vertical-align:middle}
+}
+@media (max-width:900px) {
+.checkout-btn>a{color:#fff!important}
+}
+@media (min-width:300px) and (max-width:786px) {
+.item-main-heading{display:none}
+.item-price>h3,.item-total-price>h3,.item-head-details>h3{margin:0}
+}
+  
+</style>
 <div id="preloader" style="display: none">
   <div id="status">&nbsp;</div>
 </div>
@@ -64,11 +196,8 @@
                     $amount = $list['Product']['price'] -  ($list['Product']['price'] * $list['Product']['discount'] / 100);
 
                     $pImg = new_show_image('cdn/no_image_available.jpg', 300, 150, 100, 'ff', null);
-                    if ($list['Product']['type'] == 2) {
-                      $is_cateback++;
-                    } elseif ($list['Product']['type'] == 3) {
-                      $is_pipe++;
-                    }
+                    if ($list['Product']['type'] == 2) { $is_cateback++; } 
+                    elseif ($list['Product']['type'] == 3) { $is_pipe++; }
 
                     if ($list['Product']['type'] == 1) {
                       $ima = json_decode($list['Product']['images'], true);
@@ -103,49 +232,57 @@
                       $url = SITEURL . "product/" . $list['Product']['slug'];;
                     } elseif ($list['Product']['type'] == 4) {
                       $url = SITEURL . "shop/" . $list['Product']['slug'];
-                    } elseif (in_array($list['Product']['type'], array(2, 3, 5))) {
+                    } elseif (in_array($list['Product']['type'], [2, 3, 5])) {
                       $getCarURL = $this->Lab->getCarURL($list['Product']['brand_id'], $list['Product']['model_id'], $list['Product']['motor_id']);
                       $url = SITEURL . "product/" . $getCarURL;
+                    } elseif (in_array($list['Product']['type'], [6])) {
+                      $getCarURL = $this->Lab->getMotorcycleURL($list['Product']['motorcycle_make_id'], $list['Product']['motorcycle_model_id'], $list['Product']['motorcycle_year_id']);
+                      $url = SITEURL . "motorcycle/" . $getCarURL;
                     }
                   ?>
                     <li>
                       <div class="col-md-6">
                         <div class="item-list">
                           <div class="col-md-5">
-                            <a href="<?php echo $url; ?>" title="" target="_blank">
-                              <img src="<?php echo $pImg; ?>" title="" alt=""></a>
-
-                          </div>
+                            <a href="<?php echo $url; ?>" title="" target="_blank"><img src="<?php echo $pImg; ?>" title="" alt=""></a></div>
                           <div class="col-md-61">
                             <div class="item-head-details">
-
-                              <?php if ($list['Product']['type'] != 4) { ?>
-                                <a href="<?php echo $url; ?>" title="" target="_blank">
-                                  <h2><?php echo @$list['Product']['Brand']['name'] . "/" . @$list['Product']['Model']['name'] . "/" . @$list['Product']['Motor']['name']; ?></h2>
-                                </a>
-                                <h3>
-
-                                  <?php echo $list['Product']['title']; ?>
+                              <?php 
+                              if ($list['Product']['type'] == 6) { ?>
+                              <a href="<?php echo $url; ?>" title="" target="_blank"><h2><?php echo @$list['Product']['MotorcycleMake']['name'] . "/" . @$list['Product']['MotorcycleModel']['name'] . "/" . @$list['Product']['MotorcycleYear']['year_from']." - ".(!empty($list['Product']['MotorcycleYear']['year_to']) ? $list['Product']['MotorcycleYear']['year_to'] : 'present'); ?></h2></a>
+                                <h3><?php echo $list['Product']['title']; ?></h3>
+                              <?php }elseif ( in_array($list['Product']['type'],[2,3,5])) { ?>
+                                <a href="<?php echo $url; ?>" title="" target="_blank"><h2><?php echo @$list['Product']['Brand']['name'] . "/" . @$list['Product']['Model']['name'] . "/" . @$list['Product']['Motor']['name']; ?></h2></a>
+                                <h3><?php echo $list['Product']['title']; ?></h3>
                                 <?php } else { ?>
-                                  <a href="<?php echo $url; ?>" title="" target="_blank">
-                                    <h2><?php echo $list['Product']['title'];
-                                        echo (!empty($list['Cart']['size']) ? " " . $list['Cart']['size'] : null); ?></h2>
-                                  </a>
+                                  <a href="<?php echo $url; ?>" title="" target="_blank"><h2><?php echo $list['Product']['title']; echo (!empty($list['Cart']['size']) ? " " . $list['Cart']['size'] : null); ?></h2></a>
                                 <?php } ?>
-                                </h3>
-                                <?php if (!empty($list['Product']['part'])) {  ?>
-                                  <div class="grid-right-sec abtpro"><span><?php echo $list['Product']['part']; ?></span></div>
 
-                                  <?php $mat_type = null;
-                                  if ($list['Product']['material'] == 'stainless steel') {
-                                    $mat_type = '<div class="grid-right-sec abtpro stainless_steel"><span>Stainless steel</span></div>';
-                                  } elseif ($list['Product']['material'] == 'titanium') {
-                                    $mat_type = '<div class="grid-right-sec abtpro titanium"><span>Titanium</span></div>';
-                                  }
-                                  echo $mat_type;
+                                <?php if (!empty($list['Product']['part'])) {  
+                                  if ($list['Product']['type'] == 6) { ?>
+                                    <div> 
+                                      <div class="grid-right-sec abtpro"><span><?php echo $list['Product']['part']; ?></span></div>
+                                      <?php if ($list['Product']['material'] == 'stainless steel + carbon') { echo '<div class="grid-right-sec abtpro stainless_steel"><span>stainless steel + carbon</span></div>'; } 
+                                      elseif ($list['Product']['material'] == 'titanium') { echo '<div class="grid-right-sec abtpro titanium"><span>Titanium</span></div>'; } ?>
+                                    </div>
+
+                                    <?php if ($list['Product']['product_type'] == 1) {?>
+                                    <div> 
+                                      <div class="grid-right-sec abtpro"><span><?php echo $list['Product']['full_part']; ?></span></div>
+                                      <?php if ($list['Product']['full_material'] == 'stainless steel + carbon') { echo '<div class="grid-right-sec abtpro stainless_steel"><span>stainless steel + carbon</span></div>'; } 
+                                      elseif ($list['Product']['full_material'] == 'titanium') { echo '<div class="grid-right-sec abtpro titanium"><span>Titanium</span></div>'; } ?>
+                                    </div>
+                                    <?php }?>
+                                    
+                                  <?php } else{?> 
+                                    <div class="grid-right-sec abtpro"><span><?php echo $list['Product']['part']; ?></span></div> 
+                                    <?php $mat_type = null;
+                                      if ($list['Product']['material'] == 'stainless steel') { $mat_type = '<div class="grid-right-sec abtpro stainless_steel"><span>Stainless steel</span></div>'; } 
+                                      elseif ($list['Product']['material'] == 'titanium') { $mat_type = '<div class="grid-right-sec abtpro titanium"><span>Titanium</span></div>'; }
+                                      echo $mat_type;  
+                                      } 
+                                      } 
                                   ?>
-
-                                <?php } ?>
 
                                 <ul class="item-rmve">
                                   <li><a href="javascript:void(0);" onclick="rm(<?php echo $list['Cart']['id']; ?>,1);">remove item</a></li>
@@ -289,664 +426,6 @@
   </div>
 </div>
 
-<style>
-  .no-pad {
-    margin: 0 auto;
-    padding: 0
-  }
-
-  .cart-section {
-    float: none
-  }
-
-  .fw_content_padding.pad-none {
-    padding: 0 !important
-  }
-
-  .shoping-cart-head h2 {
-    font-size: 32px;
-    text-transform: uppercase;
-    font-weight: 500
-  }
-
-  .shoping-cart-head .contiune-shop {
-    font-size: 16px;
-    font-weight: 300;
-    margin-top: 10px;
-    position: relative;
-    text-align: right;
-    text-transform: lowercase
-  }
-
-  .contiune-shop>a {
-    color: #000 !important;
-    font-weight: 300 !important
-  }
-
-  .shoping-cart-head {
-    border-bottom: medium dotted;
-    margin-bottom: 20px;
-    overflow: hidden;
-    padding: 10px 0
-  }
-
-  .item-main-heading {
-    overflow: hidden;
-    padding: 16px 0
-  }
-
-  .item-rmve>li {
-    display: inline-block;
-    vertical-align: middle
-  }
-
-  .item-quantity .btn-snp {
-    background: #1a9b58 none repeat scroll 0 0;
-    height: 40px;
-    color: #fff !important
-  }
-
-  .item-price,
-  .item-quantity,
-  .item-total-price {
-    text-align: center;
-    padding: 30px 0
-  }
-
-  .main-head {
-    text-align: center
-  }
-
-  .item-quantity .btn-default.disabled,
-  .item-quantity .btn-default[disabled],
-  fieldset[disabled] .btn-default,
-  .item-quantity .btn-default.disabled:hover,
-  .btn-default[disabled]:hover,
-  fieldset[disabled] .btn-default:hover,
-  .item-quantity .btn-default.disabled:focus,
-  .btn-default[disabled]:focus,
-  fieldset[disabled] .btn-default:focus,
-  .item-quantity .btn-default.disabled:active,
-  .btn-default[disabled]:active,
-  fieldset[disabled] .btn-default:active,
-  .item-quantity .btn-default.disabled.active,
-  .btn-default.active[disabled],
-  fieldset[disabled] .btn-default.active {
-    background: #1a9b58 none repeat scroll 0 0;
-    color: #fff !important
-  }
-
-  .item-quantity .form-control {
-    text-align: center;
-    height: 40px;
-    border: none !important;
-    background: #e2e3e4 none repeat scroll 0 0;
-    cursor: inherit
-  }
-
-  .item-quantity {
-    margin: auto;
-    max-width: 140px !important
-  }
-
-  .main-head>h3,
-  .item-head>h3 {
-    color: #adaeb1;
-    font-size: 16px;
-    font-weight: 400;
-    text-transform: uppercase
-  }
-
-  .item-head-details>a,
-  .item-head-details>a>h2 {
-    font-size: 20px;
-    text-transform: uppercase
-  }
-
-  .item-head-details>h3 {
-    font-size: 12px;
-    font-weight: 300;
-    line-height: 22px;
-    text-transform: uppercase
-  }
-
-  .item-rmve a {
-    color: #000;
-    font-size: 15px;
-    text-decoration: underline;
-    text-transform: capitalize
-  }
-
-  .item-rmve i {
-    padding: 0 8px;
-    vertical-align: middle
-  }
-
-  .item-rmve {
-    margin-top: 40px
-  }
-
-  .item-head-details>h2 {
-    font-size: 20px;
-    margin-bottom: 5px
-  }
-
-  .item-quantity .in-stock-pro {
-    margin-top: 15px
-  }
-
-  .out-stock-pro>h3 {
-    font-size: 18px;
-    font-weight: 300;
-    margin: auto;
-    position: relative;
-    text-align: center;
-    text-transform: capitalize;
-    color: red
-  }
-
-  .in-stock-pro>h3 {
-    font-size: 18px;
-    font-weight: 300;
-    margin: auto;
-    position: relative;
-    text-align: center;
-    text-transform: capitalize
-  }
-
-  .in-stock-pro>h3::before {
-    background-image: url(<?php echo SITEURL; ?>img/right-icon.png);
-    background-size: 100% auto;
-    content: "";
-    height: 20px;
-    left: 10px;
-    position: absolute;
-    width: 20px
-  }
-
-  .item-price>h3,
-  .item-total-price>h3 {
-    font-size: 15px;
-    font-weight: 400
-  }
-
-  .item-details li {
-    overflow: hidden;
-    padding: 20px 0
-  }
-
-  .free-gift-section .item-quantity .btn-snp {
-    background: #999 none repeat scroll 0 0
-  }
-
-  .free-gift-section .item-head-details>h2 {
-    font-size: 20px !important;
-    font-weight: 500
-  }
-
-  .free-gift-section .item-list {
-    overflow: hidden;
-    padding: 30px 0
-  }
-
-  free-gift-section ..input-group-btn {
-    display: none !important
-  }
-
-  .item-quantity {
-    padding: 20px 0 !important
-  }
-
-  .Note-section h2 {
-    font-size: 32px;
-    font-weight: 500;
-    padding: 20px 0;
-    text-transform: uppercase;
-    margin: 15px 0 0;
-  }
-
-  .coupon-code-bx .input-text {
-    background: #ccc;
-  }
-
-  .Note-section {
-    border-top: medium dotted
-  }
-
-  .Note-section textarea {
-    border: 0;
-    background: #ccc;
-    padding: 15px;
-  }
-
-  .free-gift-section .input-group-btn {
-    display: none !important
-  }
-
-  .checkout-section {
-    overflow: hidden;
-    padding: 15px 0
-  }
-
-  .checkout-section h2 {
-    font-size: 26px;
-    font-weight: 300;
-    margin-bottom: 20px;
-    text-align: center;
-    text-transform: uppercase
-  }
-
-  .checkout-section h2 span {
-    font-size: 26px;
-    font-weight: 500
-  }
-
-  .recommended-product .carousel-control.right,
-  .recommended-product .carousel-control.left {
-    background-image: none !important
-  }
-
-  .slide-cursor span {
-    background-image: url(img/slide_controls.png);
-    cursor: pointer;
-    display: block;
-    height: 60px;
-    margin-top: -16px;
-    opacity: 1;
-    position: absolute;
-    top: 50%;
-    transition: opacity .35s linear 0;
-    width: 32px;
-    z-index: 99
-  }
-
-  .slide-cursor .prev-img {
-    background-position: left center;
-    left: 10px
-  }
-
-  .slide-cursor .nxt-img {
-    background-position: right center;
-    right: 10px
-  }
-
-  .slide-cursor span:hover {
-    opacity: 1
-  }
-
-  .input-text {
-    float: left;
-    overflow: hidden;
-    width: 70% !important;
-    background: #e2e3e4 none repeat scroll 0 0;
-    border: none;
-    background: #e2e3e4 none repeat scroll 0 0;
-    border: medium none !important;
-    border-radius: 0;
-    box-sizing: border-box;
-    color: #222;
-    display: block;
-    font-size: 13px;
-    height: 40px;
-    line-height: 20px;
-    margin: 0 0 7px;
-    outline: medium none;
-    padding: 9px 20px 11px 18px !important;
-    text-shadow: none
-  }
-
-  .payment-total>h3 {
-    font-size: 20px;
-    font-weight: 400;
-    margin-bottom: 22px;
-    text-transform: capitalize
-  }
-
-  .price-txt h3,
-  .price-num h3 {
-    font-size: 16px;
-    font-weight: 400;
-    text-transform: uppercase
-  }
-
-  .total-amt .price-txt h3,
-  .total-amt .price-num h3 {
-    font-size: 18px;
-    font-weight: 500
-  }
-
-  .button {
-    border-radius: 0 !important;
-    float: right;
-    width: 25%;
-    border: medium none;
-    border-radius: 3px;
-    color: #fff;
-    display: inline-block;
-    font-size: 13px !important;
-    font-weight: 900;
-    height: 40px;
-    line-height: 20px !important;
-    margin: 0;
-    text-transform: uppercase;
-    background: #093
-  }
-
-  .price-num>h3 {
-    text-align: right
-  }
-
-  .price-txt h3 {
-    text-align: left
-  }
-
-  .sub-total-price {
-    overflow: hidden;
-    padding-bottom: 10px !important
-  }
-
-  .total-amt {
-    border-top: 2px solid gray;
-    padding-top: 20px !important
-  }
-
-  .checkout-btn>a {
-    background: #093 none repeat scroll 0 0;
-    color: #fff;
-    float: right;
-    font-size: 16px;
-    font-weight: 400;
-    padding: 15px 45px;
-    text-transform: uppercase
-  }
-
-  .checkout-btn>a:hover {
-    background: #444 none repeat scroll 0 0 !important;
-    color: #fff;
-    transition: all 500ms ease-in-out 0
-  }
-
-  .checkout-btn {
-    overflow: hidden;
-    padding: 25px 0 !important
-  }
-  textarea {
-    width: 100%;
-    height: auto !important
-  }
-
-  .item-list label {
-    cursor: pointer;
-    display: block;
-    font-size: 1.35em;
-    font-weight: 300;
-    height: 40px;
-    margin: 0 auto;
-    padding: 0;
-    position: absolute;
-    width: 100%;
-    z-index: 111
-  }
-
-  .item-list .check {
-    background: #999 none repeat scroll 0 0;
-    border: 1px solid #999;
-    border-radius: 50%;
-    bottom: 0;
-    display: block;
-    height: 30px;
-    left: 0;
-    margin: auto;
-    position: absolute;
-    top: -40px;
-    transition: border .25s linear 0;
-    width: 30px;
-    z-index: 5
-  }
-
-  .card-item input[type="radio"]:checked~.check::before {
-    background: url(image/checked-pg.png) no-repeat center center !important;
-    background-size: 22px auto !important
-  }
-
-  .item-list .check::before {
-    border-radius: 100%;
-    content: "";
-    display: block;
-    height: 100%;
-    left: 0;
-    margin: auto;
-    position: absolute;
-    top: 0;
-    width: 100%
-  }
-
-  .mneyyy {
-    display: none !important
-  }
-
-  #mneyy {
-    display: none !important
-  }
-
-  #mney {
-    display: none !important
-  }
-
-  .free-gift-section .item-list img {
-    margin: -40px auto auto;
-    text-align: center
-  }
-
-  .card-item>li {
-    padding: 0 !important
-  }
-
-  #main_sec .checkout-btn>a {
-    color: #fff !important
-  }
-
-  @media (max-width:580px) {
-    .free-gift-section .item-list img {
-      margin: 0 auto !important;
-      text-align: center
-    }
-
-    .shoping-cart-head h2 {
-      font-size: 22px !important;
-      text-align: center;
-      text-transform: uppercase
-    }
-
-    .shoping-cart-head .contiune-shop {
-      text-align: center
-    }
-
-    .item-head-details {
-      margin-top: 24px;
-      text-align: center !important
-    }
-
-    .item-quantity .form-control {
-      height: 40px;
-      background: #E2E3E4;
-      border: none !important
-    }
-
-    .item-rmve {
-      margin-top: 12px;
-      text-align: center !important
-    }
-
-    .item-details li {
-      padding: 0
-    }
-
-    .item-rmve>li {
-      padding: 0 !important
-    }
-
-    .item-rmve i {
-      padding: 0 5px !important;
-      vertical-align: middle
-    }
-
-    .item-rmve a {
-      font-size: 12px !important;
-      font-weight: 400 !important
-    }
-
-    .item-price,
-    .item-quantity,
-    .item-total-price {
-      padding: 15px 0;
-      text-align: center
-    }
-
-    .item-quantity {
-      padding: 0 !important
-    }
-
-    .shoping-cart-head h2 {
-      font-size: 22px !important
-    }
-
-    .free-gift-section .item-list {
-      overflow: hidden;
-      padding: 0
-    }
-
-    .checkout-section h2 {
-      font-size: 20px
-    }
-
-    .checkout-section h2 span {
-      font-size: 20px
-    }
-
-    .payment-total {
-      margin-top: 20px
-    }
-
-    .button {
-      padding: 8px 10px !important
-    }
-
-    .checkout-btn {
-      text-align: center
-    }
-
-    .checkout-btn>a {
-      color: #fff !important;
-      float: none;
-      letter-spacing: 0 !important
-    }
-
-    .free-gift-section .item-head-details>h2 {
-      font-size: 16px !important
-    }
-
-    .payment-total .left-price {
-      float: left !important
-    }
-
-    .payment-total .right-price {
-      float: right !important
-    }
-
-    .payment-total>h3 {
-      text-align: center
-    }
-  }
-
-  @media (min-width:581px) and (max-width:991px) {
-    .shoping-cart-head .col-md-10 {
-      float: left !important
-    }
-
-    .shoping-cart-head h2 {
-      text-transform: uppercase;
-      padding: 0;
-      margin: 0 auto
-    }
-
-    .card-item .col-md-4 {
-      float: left;
-      width: 33%
-    }
-
-    .item-rmve {
-      margin-top: 0
-    }
-
-    .item-head-details {
-      text-align: center
-    }
-
-    .payment-total .left-price {
-      float: left !important
-    }
-
-    .payment-total .right-price {
-      float: right !important
-    }
-
-    .item-quantity .form-control {
-      background: #e2e3e4 none repeat scroll 0 0;
-      border: medium none !important;
-      height: 40px
-    }
-
-    .item-price,
-    .item-quantity,
-    .item-total-price {
-      padding: 0 !important
-    }
-  }
-
-  @media (min-width:992px) and (max-width:1199px) {
-    .item-quantity .btn-snp {
-      padding: 6px 8px !important
-    }
-
-    .in-stock-pro>h3::before {
-      left: 0 !important
-    }
-
-    .item-rmve a {
-      font-size: 12px
-    }
-
-    .item-details li {
-      padding: 15px 0
-    }
-
-    .item-rmve i {
-      padding: 0 5px;
-      vertical-align: middle
-    }
-  }
-
-  @media (max-width:900px) {
-    .checkout-btn>a {
-      color: #fff !important
-    }
-  }
-
-  @media (min-width:300px) and (max-width:786px) {
-
-    .item-main-heading {
-      display: none
-    }
-
-    .item-price>h3,
-    .item-total-price>h3,
-    .item-head-details>h3 {
-      margin: 0;
-    }
-
-  }
-</style>
 <script>
   //plugin bootstrap minus and plus
   //http://jsfiddle.net/laelitenetwork/puJ6G/

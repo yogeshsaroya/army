@@ -11,45 +11,45 @@ class AppController extends Controller
 	function beforeFilter()
 	{
 		$server_name = null;
-		$aR['created'] = DATE;
-		$aR['RstrictedCountry'] = $restricted = 2;
-		$this->Session->write('arm_co', $aR);
-		$this->Session->delete('arm_co');
-		$RstrictedCountry = $this->DATA->getrRstrictedCountry();
 		$server_name = $_SERVER['SERVER_NAME'];
-		
-		$co =  $this->Session->read('arm_co');
-		if (empty($co)) {
-			if ($server_name == 'localhost') {
-				$aR = unserialize(@file_get_contents('http://www.geoplugin.net/php.gp?ip=103.85.205.34'));
-			} else {
-				if ( !is_bot($_SERVER['HTTP_USER_AGENT']) ) {
-					$aR = unserialize(@file_get_contents('http://www.geoplugin.net/php.gp?ip=' . $_SERVER['REMOTE_ADDR']));	 
-				}
-				
-			}
-			if (!empty($aR)) { $aR['created'] = DATE; }
-			if (isset($aR['geoplugin_countryCode']) && array_key_exists($aR['geoplugin_countryCode'], $RstrictedCountry)) {
-				/* if exits then No-Price*/
-				$aR['RstrictedCountry'] = $restricted = 1;
-				$this->Session->write('arm_co', $aR);
-				$co = $aR;
-			}
-		} else {
-			if (isset($co['created']) && !empty($co['created'])) {
-				$exp_tim = date("Y-m-d H:i:s", strtotime("+1 hour", strtotime($co['created'])));
+
+		//$this->Session->delete('set_region');
+		$get_region =  $this->Session->read('set_region');
+		if (isset($get_region['ip']) && $get_region['ip'] !=  $_SERVER['REMOTE_ADDR']) {
+			$this->Session->delete('set_region');
+			$get_region = null;
+		}
+
+		if (!empty($get_region)) {
+			if (isset($get_region['created']) && !empty($get_region['created'])) {
+				$exp_tim = date("Y-m-d H:i:s", strtotime("+6 hour", strtotime($get_region['created'])));
 				if (strtotime(DATE) > strtotime($exp_tim)) {
-					$this->Session->delete('arm_co');
+					$this->Session->delete('set_region');
+					$get_region = null;
 				}
 			}
 		}
-		$this->set('restricted', $restricted);
-		
-		$LabArr = array();
-		$LabArr['des'] = 'Following the creed of providing the most sound, more power and true versatility, ARMYTRIX offer high-end performance valvetronic exhaust systems, ecu tuning and power box that are second to none. We foster a culture of innovation. ARMYTRIX not only creates products, ARMYTRIX creates experiences.';
-		$LabArr['keys'] = 'cat-back, sports exhaust, muffler, silencer, armytrix systems manifold, us, ferrari, lamborghini, maserati, porsche, benz, bmw, volkswagen, mclaren, mini cooper, audi, nissan gt-r r35, sport cat, cat, manifold, sports manifold, test pipes';
+		if (empty($get_region)) {
+			if (!is_bot($_SERVER['HTTP_USER_AGENT'])) {
+				if ($server_name == 'localhost') {
+					$aR['geoplugin_countryCode'] = 'IN';
+				} else {
+					$aR = unserialize(@file_get_contents('http://www.geoplugin.net/php.gp?ip=' . $_SERVER['REMOTE_ADDR']));
+				}
+			}
+			$get_region['ip'] = $_SERVER['REMOTE_ADDR'];
+			$get_region['created'] = DATE;
+			$get_region['country_code'] = null;
+			$get_region['geo_data'] = null;
+			if (isset($aR['geoplugin_countryCode'])) {
+				$get_region['country_code'] = $aR['geoplugin_countryCode'];
+				$get_region['geo_data'] = $aR;
+			}
+			$this->Session->write('set_region', $get_region);
+		}
 
-		if( in_array($server_name,['armytrix.com','www.armytrix.com'])  ){
+		/* Redirect to www and https */
+		if (in_array($server_name, ['armytrix.com', 'www.armytrix.com'])) {
 			if ($this->params['controller'] != 'crons') {
 				$url = Router::url(null, true);
 				$pos = strpos($url, 'www');
@@ -84,38 +84,58 @@ class AppController extends Controller
 				}
 			}
 		}
-		if ($this->RequestHandler->isMobile()) {
-			$this->set('IsMobile', 'yes');
-		}
-		$this->set('LabArr', $LabArr);
+
 		$guest_id = $this->Cookie->read('guest_id');
 		if (empty($guest_id)) {
 			$tid_time = strtotime(date("Y-m-d H:i:s."));
 			$this->Cookie->write('guest_id', $tid_time, false, '60 hour');
 		}
-		
-		$cnd = $getAll = [];
-		if (!empty($guest_id)) { $cnd = array('Cart.guest_id' => $guest_id); }
 
-		if (isset($co['RstrictedCountry']) && $co['RstrictedCountry'] == 1 && !empty($cnd)) {
-			$dIds = [];
+		/* Get Cart items and update based on region */
+		$cnd = $getAll = [];
+		if (!empty($guest_id)) {
+			$cnd = array('Cart.guest_id' => $guest_id);
+		}
+
+		/*check region and remove product from cart if its in No Price region*/
+		if (!empty($cnd) && isset($get_region['country_code']) && !empty($get_region['country_code'])) {
+			$rm_cars = $rm_biles = [];
 			$rAll = $this->Cart->find('all', array('recursive' => 2, 'conditions' => $cnd));
+			
 			if (!empty($rAll)) {
-				foreach ($rAll as $rlist) {
-					if (isset($rlist['Product']['type']) && in_array($rlist['Product']['type'], array(1, 2, 3, 5))) {
-						$dIds[] = $rlist['Cart']['id'];
+				$region_arr = $this->DATA->getRegion($get_region['country_code']);
+				if (isset($region_arr['CountryList']['region']) && $region_arr['CountryList']['region'] == 2) {
+					foreach ($rAll as $rlist) {
+						if (isset($rlist['Product']['type']) && in_array($rlist['Product']['type'], [2,3,5] )) {
+							$rm_cars[] = $rlist['Cart']['id'];
+						}
 					}
+					if (!empty($rm_cars)) { $this->Cart->deleteAll(['Cart.id' => $rm_cars], false); }	
 				}
-				if (!empty($dIds)) {
-					 $this->Cart->deleteAll( ['Cart.id' => $dIds], false );  
+				if (isset($region_arr['CountryList']['bike_region']) && $region_arr['CountryList']['bike_region'] == 2) {
+					foreach ($rAll as $rlist) {
+						if (isset($rlist['Product']['type']) && in_array($rlist['Product']['type'], [6] )) {
+							$rm_biles[] = $rlist['Cart']['id'];
+						}
+					}
+					if (!empty($rm_biles)) { $this->Cart->deleteAll(['Cart.id' => $rm_biles], false); }	
 				}
 			}
 		}
+
 		if (!empty($cnd)) {
 			$getAll = $this->Cart->find('all', array('recursive' => 2, 'conditions' => $cnd));
 		}
-		$this->set(compact('getAll','guest_id','server_name'));
-		
+		/* end */
+
+		$LabArr = [];
+		$LabArr['des'] = 'Following the creed of providing the most sound, more power and true versatility, ARMYTRIX offer high-end performance valvetronic exhaust systems, ecu tuning and power box that are second to none. We foster a culture of innovation. ARMYTRIX not only creates products, ARMYTRIX creates experiences.';
+		$LabArr['keys'] = 'cat-back, sports exhaust, muffler, silencer, armytrix systems manifold, us, ferrari, lamborghini, maserati, porsche, benz, bmw, volkswagen, mclaren, mini cooper, audi, nissan gt-r r35, sport cat, cat, manifold, sports manifold, test pipes';
+
+		if ($this->RequestHandler->isMobile()) {
+			$this->set('IsMobile', 'yes');
+		}
+		$this->set(compact('getAll', 'guest_id', 'server_name', 'LabArr', 'get_region'));
 	}
 
 

@@ -41,8 +41,19 @@ if (isset($user_data['UserImage']) && !empty($user_data['UserImage'])) {
 
       <?php /*?><li class="treeview"><a href="<?php echo SITEURL."lab/labs/vote";?>"><i class="fa fa-dashboard"></i> <span>Vote</span></a></li><?php */ ?>
 
-      <li class="treeview"><a href="<?php echo SITEURL . "lab/labs/shipping"; ?>"><i class="fa fa-car"></i> <span>Regions/Zone</span></a></li>
-      <li class="treeview"><a href="<?php echo SITEURL . "lab/labs/motorcycles_shipping"; ?>"><i class="fa fa-motorcycle"></i> <span>Motorcycles Shipping</span></a></li>
+<li class="treeview" id="menu_shipping">
+  <a href="#">
+    <i class="fa fa-truck"></i> <span>Shippings</span>
+    <i class="fa fa-angle-left pull-right"></i>
+  </a>
+  <ul class="treeview-menu">
+    <li><a href="<?php echo SITEURL . "lab/labs/regions"; ?>"><i class="fa fa-globe"></i> <span>Regions & Zones</span></a></li>
+    <li><a href="<?php echo SITEURL . "lab/labs/car_shipping"; ?>"><i class="fa fa-car"></i> <span>Car Products Shipping</span></a></li>
+    <li><a href="<?php echo SITEURL . "lab/labs/motorcycles_shipping"; ?>"><i class="fa fa-motorcycle"></i> <span>Motorcycles Products Shipping</span></a></li>
+  </ul>
+</li>
+
+      
       <li class="treeview"><a href="<?php echo SITEURL . "lab/labs/warranty"; ?>"><i class="fa fa-support"></i> <span>Warranty</span></a></li>
       <?php /* ?>
 <li class="treeview" id="menu_user">

@@ -17,7 +17,8 @@ class PagesController extends AppController
 		AppController::beforeFilter();
 		$this->Auth->allow();
 		$this->guest_id = $this->Cookie->read('guest_id');
-		$this->is_price =  $this->Session->read('arm_co');
+		$this->get_region =  $this->Session->read('set_region');
+		
 	}
 
 	/* new pages */
@@ -43,19 +44,27 @@ class PagesController extends AppController
 
 	public function product($id = null, $type = null)
 	{
+		$restricted = 2;
 		$slider = $sliderSS = $slidersTT = [];
 		$page_meta = $data = $gallery = $cat_back = $catalytic = null;
 
+		if(isset($this->get_region['country_code']) && !empty($this->get_region['country_code'])){
+			$region_arr = $this->DATA->getRegion($this->get_region['country_code']);
+			if(isset($region_arr['CountryList']['region']) && in_array($region_arr['CountryList']['region'],[1,2])){
+				$restricted = $region_arr['CountryList']['region'];
+			}
+		}
+		
 		$this->ItemDetail->bindModel(['belongsTo' => ['Brand', 'Model', 'Motor'], 'hasMany' => ['Video' => ['limit' => 15, 'order' => ['Video.pos' => 'ASC']]]], false);
 		$data = $this->ItemDetail->find('first', array('recursive' => 2, 'conditions' => array('ItemDetail.url' => $id, 'ItemDetail.status' => 1)));
 		$pid = null;
 		$langArr = [];
-		if ($data['ItemDetail']['language'] == 'eng') {
-			$pid = $data['ItemDetail']['id'];
-		} else {
-			$pid = $data['ItemDetail']['item_detail_id'];
-		}
 		if (!empty($data)) {
+			if ($data['ItemDetail']['language'] == 'eng') {
+				$pid = $data['ItemDetail']['id'];
+			} else {
+				$pid = $data['ItemDetail']['item_detail_id'];
+			}
 			if ($data['ItemDetail']['language'] == 'eng') {
 				$Adata = $data;
 				$item_detail_id = $data['ItemDetail']['id'];
@@ -120,7 +129,7 @@ class PagesController extends AppController
 			if( isset($allLang[ $data['ItemDetail']['language'] ] ) ){
 				$act_lng = strtolower($allLang[$data['ItemDetail']['language']]);
 			}
-			$this->set(compact('page_meta', 'data', 'Adata', 'txt', 'slider', 'gallery', 'cat_back', 'catalytic', 'accessory', 'langArr','act_lng'));
+			$this->set(compact('page_meta', 'data', 'Adata', 'txt', 'slider', 'gallery', 'cat_back', 'catalytic', 'accessory', 'langArr','act_lng','restricted'));
 			//$this->render('product_v2');
 		} else {
 			$this->layout = '404';
@@ -403,23 +412,103 @@ class PagesController extends AppController
 	public function cart()
 	{
 		$this->set('title_for_layout', 'Shopping Cart');
-		if (isset($this->is_price['RstrictedCountry']) && $this->is_price['RstrictedCountry'] == 1) {
-			$c_data = $this->Cart->find('all', ['conditions' => ['Cart.guest_id' => $this->guest_id]]);
-			$cart_id = [];
-			if (!empty($c_data)) {
-				foreach ($c_data as $al) {
-					if (in_array($al['Product']['type'], [1, 2, 3, 5])) {
-						$cart_id[] = $al['Cart']['id'];
+
+		if(isset($this->get_region['country_code']) && !empty($this->get_region['country_code'])){
+			$region_arr = $this->DATA->getRegion($this->get_region['country_code']);
+			if(isset($region_arr['CountryList']['region']) && in_array($region_arr['CountryList']['region'],[1,2])){
+				$restricted = $region_arr['CountryList']['region'];
+			}
+		}
+
+		if(isset($this->get_region['country_code']) && !empty($this->get_region['country_code'])){
+			$rm_cars = $rm_biles = [];
+			$rAll = $this->Cart->find('all', array('recursive' => 2, 'conditions' => array('Cart.guest_id' => $this->guest_id)));
+			if (!empty($rAll)) {
+				$region_arr = $this->DATA->getRegion($this->get_region['country_code']);
+				if (isset($region_arr['CountryList']['region']) && $region_arr['CountryList']['region'] == 2) {
+					foreach ($rAll as $rlist) {
+						if (isset($rlist['Product']['type']) && in_array($rlist['Product']['type'], [2,3,5] )) {
+							$rm_cars[] = $rlist['Cart']['id'];
+						}
 					}
+					if (!empty($rm_cars)) { $this->Cart->deleteAll(['Cart.id' => $rm_cars], false); }	
 				}
-				if (!empty($cart_id)) {
-					$this->Cart->deleteAll(['Cart.id' => $cart_id], false);
+				if (isset($region_arr['CountryList']['bike_region']) && $region_arr['CountryList']['bike_region'] == 2) {
+					foreach ($rAll as $rlist) {
+						if (isset($rlist['Product']['type']) && in_array($rlist['Product']['type'], [6] )) {
+							$rm_biles[] = $rlist['Cart']['id'];
+						}
+					}
+					if (!empty($rm_biles)) { $this->Cart->deleteAll(['Cart.id' => $rm_biles], false); }	
 				}
 			}
 		}
+		$this->Product->bindModel(['belongsTo' => ['MotorcycleMake','MotorcycleModel','MotorcycleYear']],false);
 		$all_pro = $this->Cart->find('all', array('recursive' => 2, 'conditions' => array('Cart.guest_id' => $this->guest_id)));
 		$this->set(compact('all_pro'));
 	}
+
+	public function review()
+	{
+		$this->set('title_for_layout', 'Review : Armytrix');
+		$all_pro = null;
+		$checkOutArr = $this->Session->read('checkOutArr');
+		$shipping = $this->Session->read('shipping');
+		$WebSetting = $this->WebSetting->find('first', array('WebSetting.id' => 1));
+		$this->Product->bindModel(['belongsTo' => ['MotorcycleMake','MotorcycleModel','MotorcycleYear']],false);
+		ec($checkOutArr); ec($shipping); die;
+
+		if (empty($checkOutArr) && empty($shipping)) {
+			$this->render('no_country');
+		} else {
+			/* if no-price country*/
+			$country_list = $this->CountryList->find('first', ['conditions' => ['CountryList.id' => $shipping['Order']['country_list_id']]]);
+			
+			if (isset($shipping['Order']['country_list_id']) && !empty($shipping['Order']['country_list_id'])) {
+				/* Remove product is not in Price region */
+					$rAll = $this->Cart->find('all', array('recursive' => 2, 'conditions' => array('Cart.guest_id' => $this->guest_id)));
+					if (!empty($rAll)) {
+						$rm_cars = $rm_biles = [];
+						if (isset($country_list['CountryList']['region']) && $country_list['CountryList']['region'] == 2) {
+							foreach ($rAll as $rlist) {
+								if (isset($rlist['Product']['type']) && in_array($rlist['Product']['type'], [2,3,5] )) {
+									$rm_cars[] = $rlist['Cart']['id'];
+								}
+							}
+							if (!empty($rm_cars)) { $this->Cart->deleteAll(['Cart.id' => $rm_cars], false); }	
+						}
+						if (isset($country_list['CountryList']['bike_region']) && $country_list['CountryList']['bike_region'] == 2) {
+							foreach ($rAll as $rlist) {
+								if (isset($rlist['Product']['type']) && in_array($rlist['Product']['type'], [6] )) {
+									$rm_biles[] = $rlist['Cart']['id'];
+								}
+							}
+							if (!empty($rm_biles)) { $this->Cart->deleteAll(['Cart.id' => $rm_biles], false); }	
+						}
+					}
+					/* End */
+
+				$all_pro = $this->Cart->find('all', array('recursive' => 2, 'conditions' => array('Cart.guest_id' => $this->guest_id)));
+				
+				if (!empty($all_pro)) {
+					$shipping['cid'] = $shipping['pid'] = null;
+					if (!empty($new_cart_dis)) {
+						$shipping['cid'] = implode(',', $new_cart_dis);
+						
+					} else {
+						$this->render('no_country');
+					}
+					if (!empty($new_pid)) {
+						$shipping['pid'] = implode(',', $new_pid);
+					}
+					$this->Session->write('shipping', $shipping);
+					$this->set(compact('WebSetting', 'checkOutArr', 'shipping', 'country_list', 'all_pro'));
+					
+				} else { $this->render('no_country'); }
+			} else { $this->render('no_country'); }
+		}
+	}
+
 
 	public function do_checkout()
 	{
@@ -477,63 +566,6 @@ class PagesController extends AppController
 		$checkOutArr = $this->Session->read('checkOutArr');
 		$WebSetting = $this->WebSetting->find('first', array('WebSetting.id' => 1));
 		$this->set(compact('WebSetting', 'checkOutArr', 'shipping'));
-	}
-
-	public function review()
-	{
-		$this->set('title_for_layout', 'Review : Armytrix');
-		$all_pro = null;
-		$checkOutArr = $this->Session->read('checkOutArr');
-		$shipping = $this->Session->read('shipping');
-		$WebSetting = $this->WebSetting->find('first', array('WebSetting.id' => 1));
-		//ec($checkOutArr); ec($shipping);
-
-		if (empty($checkOutArr) && empty($shipping)) {
-			$this->render('no_country');
-		} else {
-			$country_list = $this->CountryList->find('first', ['conditions' => ['CountryList.id' => $shipping['Order']['country_list_id']]]);
-			if (empty($country_list)) {
-				$this->render('no_country');
-			}
-
-			if (isset($country_list['CountryList']['region']) &&  isset($shipping['Order']['country_list_id']) && !empty($shipping['Order']['country_list_id'])) {
-
-				if (in_array($country_list['CountryList']['region'], [1])) {
-					$all_pro = $this->Cart->find('all', array('recursive' => 2, 'conditions' => array('Cart.guest_id' => $this->guest_id)));
-					$this->set(compact('WebSetting', 'checkOutArr', 'shipping', 'country_list', 'all_pro'));
-				} elseif ($country_list['CountryList']['region'] == 2) {
-					/* Remove other product if no-price */
-					$c_data = $this->Cart->find('all', array('conditions' => array('Cart.guest_id' => $this->guest_id)));
-					if (!empty($c_data)) {
-						foreach ($c_data as $al) {
-							if (in_array($al['Product']['type'], [1, 2, 3, 5])) {
-								$this->Cart->id = $al['Cart']['id'];
-								$this->Cart->delete();
-							} else {
-								$new_cart_dis[] = $al['Cart']['id'];
-								$new_pid[] = $al['Cart']['product_id'];
-							}
-						}
-					}
-					$shipping['cid'] = $shipping['pid'] = null;
-					if (!empty($new_cart_dis)) {
-						$shipping['cid'] = implode(',', $new_cart_dis);
-						$all_pro = $this->Cart->find('all', array('recursive' => 2, 'conditions' => array('Cart.guest_id' => $this->guest_id)));
-					} else {
-						$this->render('no_country');
-					}
-					if (!empty($new_pid)) {
-						$shipping['pid'] = implode(',', $new_pid);
-					}
-					$this->Session->write('shipping', $shipping);
-					$this->set(compact('WebSetting', 'checkOutArr', 'shipping', 'country_list', 'all_pro'));
-				} else {
-					$this->render('no_country');
-				}
-			} else {
-				$this->render('no_country');
-			}
-		}
 	}
 
 	public function order($id = null, $t = null)

@@ -148,8 +148,8 @@ $(document).ready(function(){
 	window.location.href = '<?php echo SITEURL;?>lab/labs/motorcycle_exhaust_product/'+brand_id+'/'+model_id+'/'+this.value; });
 	
 	$( "#ProductProductType" ).change(function() { 
-		if( this.value == 6 ){ $("#part_1").show(); $("#part_2").show(); }
-		else if( this.value == 7 ){ $("#part_1").show(); $("#part_2").hide(); }
+		if( this.value == 1 ){ $("#part_1").show(); $("#part_2").show(); }
+		else if( this.value == 2 ){ $("#part_1").show(); $("#part_2").hide(); }
 	});
 	
 	

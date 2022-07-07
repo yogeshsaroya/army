@@ -3344,17 +3344,87 @@ class LabsController extends AppController
 	}
 
 
-	public function lab_shipping()
+	public function lab_regions()
 	{
-		$this->set('title_for_layout', 'Regions/Zone : ' . WEBTITLE);
+		$this->set('title_for_layout', 'Regions and Zones : ' . WEBTITLE);
 		$this->paginate = array('conditions' => array('CountryList.status' => 1), 'maxLimit' => 300, 'limit' => 300, 'order' => array('CountryList.short_name' => 'ASC'));
 		$data = $this->paginate('CountryList');
 		$this->set(compact('data'));
 	}
 
+	public function lab_edit_regions($id = null)
+	{
+		if (!empty($id)) {
+			$this->set('title_for_layout', 'Edit Region and Zone :' . WEBTITLE);
+			$this->CountryList->id = $id;
+			if ($this->request->is('get')) {
+				$e = $this->CountryList->read();
+				if (!empty($e)) {
+					$this->request->data = $e;
+				} else {
+					$this->redirect(array('controller' => 'labs', 'action' => 'regions'));
+				}
+			} else {
+
+				if ($this->CountryList->save($this->request->data)) {
+					$this->Session->setFlash(__('Record has been updated.'), 'default', array('class' => 'alert alert-success'), 'msg');
+				} else {
+					$this->Session->setFlash(__('Record has been not updated.'), 'default', array('class' => 'alert alert-danger'), 'msg');
+				}
+			}
+		} else {
+			if (!empty($this->request->data)) {
+				if ($this->CountryList->save($this->request->data)) {
+					$this->Session->setFlash('Record has been save successfully', 'default', array('class' => 'alert alert-success'), 'msg');
+				} else {
+					$this->Session->setFlash('Not able to save', 'default', array('class' => 'alert alert-danger'), 'msg');
+				}
+			}
+		}
+	}
+
+	public function lab_car_shipping()
+	{
+		$this->set('title_for_layout', 'Car Products Shipping : ' . WEBTITLE);
+		$this->paginate = array('conditions' => array('CountryList.status' => 1), 'maxLimit' => 300, 'limit' => 300, 'order' => array('CountryList.short_name' => 'ASC'));
+		$data = $this->paginate('CountryList');
+		$this->set(compact('data'));
+	}
+
+	public function lab_edit_car_shipping($id = null)
+	{
+		if (!empty($id)) {
+			$this->set('title_for_layout', 'Edit Car Product Shipping Fee :' . WEBTITLE);
+			$this->CountryList->id = $id;
+			if ($this->request->is('get')) {
+				$e = $this->CountryList->read();
+				if (!empty($e)) {
+					$this->request->data = $e;
+				} else {
+					$this->redirect(array('controller' => 'labs', 'action' => 'shipping'));
+				}
+			} else {
+
+				if ($this->CountryList->save($this->request->data)) {
+					$this->Session->setFlash(__('Record has been updated.'), 'default', array('class' => 'alert alert-success'), 'msg');
+				} else {
+					$this->Session->setFlash(__('Record has been not updated.'), 'default', array('class' => 'alert alert-danger'), 'msg');
+				}
+			}
+		} else {
+			if (!empty($this->request->data)) {
+				if ($this->CountryList->save($this->request->data)) {
+					$this->Session->setFlash('Record has been save successfully', 'default', array('class' => 'alert alert-success'), 'msg');
+				} else {
+					$this->Session->setFlash('Not able to save', 'default', array('class' => 'alert alert-danger'), 'msg');
+				}
+			}
+		}
+	}
+
 	public function lab_motorcycles_shipping()
 	{
-		$this->set('title_for_layout', 'Motorcycles Shipping : ' . WEBTITLE);
+		$this->set('title_for_layout', 'Motorcycles Products Shipping : ' . WEBTITLE);
 		$this->paginate = array('maxLimit' => 300, 'limit' => 300, 'order' => array('MotorcycleShipping.zone' => 'ASC'));
 		$data = $this->paginate('MotorcycleShipping');
 		$this->set(compact('data'));
@@ -3396,39 +3466,11 @@ class LabsController extends AppController
 		}
 	}
 
-	public function lab_edit_shipping($id = null)
-	{
-		if (!empty($id)) {
-			$this->set('title_for_layout', 'Edit Shipping fee :' . WEBTITLE);
-			$this->CountryList->id = $id;
-			if ($this->request->is('get')) {
-				$e = $this->CountryList->read();
-				if (!empty($e)) {
-					$this->request->data = $e;
-				} else {
-					$this->redirect(array('controller' => 'labs', 'action' => 'shipping'));
-				}
-			} else {
-
-				if ($this->CountryList->save($this->request->data)) {
-					$this->Session->setFlash(__('Record has been updated.'), 'default', array('class' => 'alert alert-success'), 'msg');
-				} else {
-					$this->Session->setFlash(__('Record has been not updated.'), 'default', array('class' => 'alert alert-danger'), 'msg');
-				}
-			}
-		} else {
-			if (!empty($this->request->data)) {
-				if ($this->CountryList->save($this->request->data)) {
-					$this->Session->setFlash('Record has been save successfully', 'default', array('class' => 'alert alert-success'), 'msg');
-				} else {
-					$this->Session->setFlash('Not able to save', 'default', array('class' => 'alert alert-danger'), 'msg');
-				}
-			}
-		}
-	}
+	
 
 	public function lab_country($id = null)
 	{
+		exit;
 		$this->set('title_for_layout', 'Manage Country : ' . WEBTITLE);
 		$this->set('id', $id);
 

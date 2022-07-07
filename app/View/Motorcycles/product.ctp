@@ -1,12 +1,11 @@
 <?php
 echo $this->html->script(['https://kit.fontawesome.com/acae9edaf3.js'], ['block' => 'scriptTop']);
-
 ?>
-
 <?php $this->append('meta_data'); ?>
-
 <?php $this->end(); ?>
-
+<div id="preloader" style="display: none;">
+    <div id="status">&nbsp;</div>
+</div>
 <?php $this->append('styleTop'); ?>
 <style>
     iframe .ytp-chrome-top.ytp-show-cards-title {
@@ -387,14 +386,19 @@ echo $this->html->script(['https://kit.fontawesome.com/acae9edaf3.js'], ['block'
         font-weight: 900;
         margin-bottom: 5px;
     }
-    .pro-details div{font-weight: 600;}
-    .part_type { margin-bottom: 10px;}
+
+    .pro-details div {
+        font-weight: 600;
+    }
+
+    .part_type {
+        margin-bottom: 10px;
+    }
+    .btn.btn-secondary{background-color: #c3c3c3; cursor: not-allowed; color: #000;}
 </style>
 <?php $this->end(); ?>
 <div id="v2_motor_exh">
-
     <h1 class="text-center mt-3 mb-5"><?php echo $data['Motorcycle']['title']; ?> ARMYTRIX VALVETRONIC EXHAUST SYSTEM</h1>
-
     <?php if (!empty($langArr)) { ?>
         <div class="justify-content-center">
             <div class="dropdown flags_menu">
@@ -412,23 +416,17 @@ echo $this->html->script(['https://kit.fontawesome.com/acae9edaf3.js'], ['block'
     <section class="motor_container">
         <div class="page_container">
             <?php echo $this->element('v2/product_slider', ['slider' => $slider, 'width' => 720, 'height' => 750]); ?>
-
             <?php if (!empty($Adata['Video'][0])) { ?>
                 <div class="videoWrapperNw page_container fullMxWd" id="pro_1">
-                    <?php
-                    echo '<div class="video-responsive"><iframe id="home_bg_v" width="100%" height="600" loading="lazy" src="https://www.youtube-nocookie.com/embed/' . $Adata['Video'][0]['video'] . '?controls=1&enablejsapi=1&modestbranding=1&showinfo=0&iv_load_policy=3&html5=1&fs=1&rel=0&hl=en&cc_lang_pref=en&cc_load_policy=1&start=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
-                    ?>
+                    <?php echo '<div class="video-responsive"><iframe id="home_bg_v" width="100%" height="600" loading="lazy" src="https://www.youtube-nocookie.com/embed/' . $Adata['Video'][0]['video'] . '?controls=1&enablejsapi=1&modestbranding=1&showinfo=0&iv_load_policy=3&html5=1&fs=1&rel=0&hl=en&cc_lang_pref=en&cc_load_policy=1&start=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'; ?>
                 </div>
             <?php } ?>
-
             <div class="videoWrapperNw page_container fullMxWd">
                 <div class="pd_100"></div>
-
                 <?php if (!empty($products)) {
                     foreach ($products as $product) {
                         $p = 'cdn/' . $product['Library']['full_path'];
-                        $cImg = new_show_image($p, 500, 500, 100, 'ff', null);
-                ?>
+                        $cImg = new_show_image($p, 500, 500, 100, 'ff', null); ?>
                         <div class="row pro_box">
                             <div class="col-md-7"> <img src="<?php echo $cImg; ?>" class="pro_img" alt="" loading="lazy" width="100%" height="auto"> </div>
                             <div class="col-md-5 text-left">
@@ -441,21 +439,32 @@ echo $this->html->script(['https://kit.fontawesome.com/acae9edaf3.js'], ['block'
                                     <div><?php echo nl2br($product['Product']['details']); ?></div>
                                     <div class="pd"></div>
 
-                                    <?php if ($product['Product']['product_type'] == 2) { ?>
+                                    <?php if ($product['Product']['product_type'] == 1) { ?>
                                         <div class="part_type"><span class="tabBtn <?php echo strtolower($product['Product']['full_material']); ?>"><?php echo strtoupper($product['Product']['full_material']); ?></span> # <?php echo $product['Product']['full_part']; ?></div>
-                                        <div><?php echo nl2br($product['Product']['full_details']); ?></div> <div class="pd"></div>
+                                        <div><?php echo nl2br($product['Product']['full_details']); ?></div>
+                                        <div class="pd"></div>
                                     <?php }
                                     if (isset($restricted) && $restricted == 1) { ?>
-                                        <div class="pro_price"><?php echo $this->Number->currency($product['Product']['price'], 'USD'); ?></div>
-                                        <input type="button" value="Add To Cart" class="btn btn-success ful-wd-btn" /><div class="pd"></div>
-                                    <?php }else{ ?><a href="<?php echo SITEURL . 'contact?vehicle_type=motorcycle&make=' . $data['Motorcycle']['motorcycle_make_id'] . '&model=' . $data['Motorcycle']['motorcycle_model_id'] . '&year=' . $data['Motorcycle']['motorcycle_year_id']; ?>" class="btn btn-success ful-wd-btn"><?php echo gs($txt, 10); ?></a><?php } ?>
+                                    <!-- Add to cart-->
+                                        <div class="pro_price">
+                                            <?php 
+                                            if ($product['Product']['discount'] > 0) {
+                                                $amount = $product['Product']['price'] -  ($product['Product']['price'] * $product['Product']['discount'] / 100);
+                                                echo $p_price = "<strike>".$this->Number->currency($product['Product']['price'], 'USD') . "</strike> <spam class='text-danger'>" . $this->Number->currency($amount, 'USD') . "</spam>";
+                                              } else { echo $this->Number->currency($product['Product']['price'], 'USD'); }
+                                            
+                                             ?></div>
+                                        <input type="button" value="Add To Cart" class="btn btn-success ful-wd-btn" onclick="add_pro(<?php echo $product['Product']['id']; ?>)" id="shop_<?php echo $product['Product']['id']; ?>" />
+                                        <div class="pd"></div>
+                                    <?php } else { ?><a href="<?php echo SITEURL . 'contact?vehicle_type=motorcycle&make=' . $data['Motorcycle']['motorcycle_make_id'] . '&model=' . $data['Motorcycle']['motorcycle_model_id'] . '&year=' . $data['Motorcycle']['motorcycle_year_id']; ?>" class="btn btn-success ful-wd-btn"><?php echo gs($txt, 10); ?></a><?php } ?>
                                     <hr>
 
                                     <div>ARMYTRIX Weight : <?php echo $product['Product']['weight']; ?></div>
                                     <div>OEM Weight : <?php echo $product['Product']['oem_weight']; ?></div>
                                     <div class="pd"></div>
 
-                                    <div><?php echo nl2br($product['Product']['description']); ?></div><div class="pd"></div>
+                                    <div><?php echo nl2br($product['Product']['description']); ?></div>
+                                    <div class="pd"></div>
                                 </div>
                             </div>
                         </div>
@@ -519,8 +528,36 @@ echo $this->html->script(['https://kit.fontawesome.com/acae9edaf3.js'], ['block'
 <?php //$this->Html->scriptStart(array('block' => 'scriptBottom')); 
 ?>
 <script>
+    function check_out(){
+        window.location.href ='<?php echo SITEURL;?>cart';
 
+    }
+    function add_pro(id) {
+        if (id != '') {
+            $('#preloader').show();
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo SITEURL; ?>pages/add_to_cart',
+                data: 'pid=' + id + '&q=1&get=product',
+                success: function(data) {
+                    $("#_my_cart").html(data);
+                    setTimeout(function() {
+                        //removeClass('btn-success ful-wd-btn').addClass('btn-secondary').prop("disabled",true);
+                        
+                        $("#shop_"+id).val('DONE, CHECKOUT').attr("onclick",'check_out()').off("click");
+                        $('#preloader').hide();
+                    }, 200);
+                },
+                error: function(comment) {
+                    $("#_my_cart").html(data);
+                    setTimeout(function() {
+                        $('#preloader').hide();
+                    }, 500);
+                }
+            });
 
+        }
+    }
 </script>
 <?php //$this->Html->scriptEnd(); 
 ?>

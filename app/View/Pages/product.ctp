@@ -137,7 +137,7 @@ if (isset($data) && !empty($data)) {
 
       <div class="row d-flex mt-3">
         <div class="col-sm-12">
-          <?php if (isset($restricted) && $restricted == 2) { ?>
+          <?php if (isset($restricted) && $restricted == 1) { ?>
             <h3 class="usdPrice  text-left"><?php echo gs($txt, 13); ?> <span id="price">USD $00.00</span></h3>
             <input type="hidden" id="cat_id" value="">
             <input type="hidden" id="cat_id_q" value="1">
@@ -158,15 +158,15 @@ if (isset($data) && !empty($data)) {
         <div class="col-sm-6">
           <div id="chk_btn">
             <div id="e_err"></div>
-            <?php if (isset($restricted) && $restricted == 1) { ?>
+            <?php if (isset($restricted) && $restricted == 2) { ?>
               <a href="<?php echo SITEURL.'contact?vehicle_type=car&car_brand='.$data['ItemDetail']['brand_id'].'&car_model='.$data['ItemDetail']['model_id'].'&car_motor='.$data['ItemDetail']['motor_id']; ?>" class="cartBtn fullWidth"><?php echo gs($txt, 10); ?></a>
-            <?php } elseif ($restricted == 2) { ?>
+            <?php } elseif ($restricted == 1) { ?>
               <button class="cartBtn fullWidth" onclick="addcart();"><?php echo gs($txt, 78); ?></button>
             <?php } ?>
           </div>
         </div>
         <div class="col-sm-6">
-          <?php if (isset($restricted) && $restricted == 2) { ?>
+          <?php if (isset($restricted) && $restricted == 1) { ?>
             <div class="card-btn">
               <ul>
                 <li><span><?php echo gs($txt, 14); ?>:</span> <a> <?php echo gs($txt, 15); ?></a></li>
