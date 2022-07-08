@@ -24,7 +24,7 @@ echo $this->html->script(['https://kit.fontawesome.com/acae9edaf3.js'], ['block'
 div#v2_motor_exh .slick-arrow{position:absolute;top:50%;height:60px;width:40px;left:-45px;transform:translateY(-50%);background:url(../v2/img/arrowControls.png) no-repeat 0 center;background-size:60px auto;z-index:9;opacity:.5}
 div#v2_motor_exh .slick-arrow.slick-next{background:url(../v2/img/arrowControls.png) no-repeat right center;background-size:60px auto;left:auto;right:-45px;opacity:.5}
 .mx-640{max-width:100%;padding:0;margin:auto}
-#v2_motor_exh .mg-tb-50{margin:50px 20px}
+#v2_motor_exh .mg-tb-50{margin:40px 0}
 #v2_motor_exh .pad60{margin-top:60px}
 #v2_motor_exh p{font-size:14px;font-weight:700}
 .motor_container .sub_head_4,.motor_container .sub_head_5{margin:100px 0 50px}
