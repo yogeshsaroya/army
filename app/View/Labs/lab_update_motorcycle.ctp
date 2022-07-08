@@ -44,7 +44,7 @@ echo $this->html->script(array('/v/formValidation.min', '/v/bootstrap.min')); ?>
                             echo "javascript:void(0);";
                         } ?>" target="_blank">
                 <?php
-                echo $data['MotorcycleMake']['name'] . "/" . $data['MotorcycleModel']['name'] . "/" . $data['MotorcycleYear']['year_from'] . " - " . (!empty($data['MotorcycleYear']['year_from']) ? $data['MotorcycleYear']['year_from'] : 'persent') . " > " . $data['Motorcycle']['title']; ?></a></h1>
+                echo $data['MotorcycleMake']['name'] . "/" . $data['MotorcycleModel']['name'] . "/" . $data['MotorcycleYear']['year_from'] . " - " . (!empty($data['MotorcycleYear']['year_from']) ? $data['MotorcycleYear']['year_from'] : 'present') . " > " . $data['Motorcycle']['title']; ?></a></h1>
     </section>
 
     <section class="content">

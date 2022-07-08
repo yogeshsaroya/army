@@ -350,7 +350,7 @@ class HomesController extends AppController
                                 $getYear = $this->MotorcycleYear->find('all', ['conditions' => ['MotorcycleYear.id' => $pList, 'MotorcycleYear.motorcycle_model_id' => $q['model'], 'MotorcycleYear.status' => 1]]);
                                 if (!empty($getYear)) {
                                     foreach ($getYear as $y) {
-                                        $getMotorcycleYear[$y['MotorcycleYear']['id']] = $y['MotorcycleYear']['year_from'] . " - " . (!empty($y['MotorcycleYear']['year_to']) ? $y['MotorcycleYear']['year_to'] : 'persent');
+                                        $getMotorcycleYear[$y['MotorcycleYear']['id']] = $y['MotorcycleYear']['year_from'] . " - " . (!empty($y['MotorcycleYear']['year_to']) ? $y['MotorcycleYear']['year_to'] : 'present');
                                     }
                                 }
                             }

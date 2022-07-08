@@ -55,7 +55,7 @@ if ( !empty($data['Order']['tracking']) && !empty($data['Order']['tracking_numbe
 if ( isset($data['OrderItem']) && !empty($data['OrderItem']) ){
     foreach ( $data['OrderItem'] as $list){
         $pImg = new_show_image('cdn/no_image_available.jpg',300,150,100,'ff',null);
-        if( in_array($list['Product']['type'], [1,2,3,5]) && isset($list['Product']['Library']['full_path']) && !empty($list['Product']['Library']['full_path'])){
+        if( in_array($list['Product']['type'], [2,3,5,6]) && isset($list['Product']['Library']['full_path']) && !empty($list['Product']['Library']['full_path'])){
             $pImg = new_show_image('cdn/'.$list['Product']['Library']['full_path'],300,150,100,'ff',null); }
             elseif($list['Product']['type'] == 4){
                 $abc = explode(',',$list['Product']['extra_photos']);
@@ -65,8 +65,11 @@ if ( isset($data['OrderItem']) && !empty($data['OrderItem']) ){
                 else{ $pImg = new_show_image('cdn/no_image_available.jpg',300,150,100,'ff',null); }
             }
             
-            if ( in_array($list['Product']['type'], [1,2,3,5] ) ){ 
+            if ( in_array($list['Product']['type'], [2,3,5] ) ){ 
                 echo '<div class="row flex-box align-cnter"> <div class="col-sm-6"> <img src="'.$pImg.'" alt="product image"> </div> <div class="col-sm-6"> <div class="prodt-dtls"><h3>'.$list['Product']['Brand']['name'].' '.$list['Product']['Model']['name'].' '.$list['Product']['Motor']['name'].'</h3><p> '.$list['Product']['title'].' </p></div> </div></div><hr>';
+            }
+            elseif ( in_array($list['Product']['type'], [6] ) ){ 
+                echo '<div class="row flex-box align-cnter"> <div class="col-sm-6"> <img src="'.$pImg.'" alt="product image"> </div> <div class="col-sm-6"> <div class="prodt-dtls"><h3>'.$list['Product']['MotorcycleMake']['name'].' '.$list['Product']['MotorcycleModel']['name'].' '.$list['Product']['MotorcycleYear']['year_from'].' - '.(!empty($list['Product']['MotorcycleYear']['year_to'])? $list['Product']['MotorcycleYear']['year_to'] : 'present').'</h3><p> '.$list['Product']['title'].' </p></div> </div></div><hr>';
             }
             elseif ( in_array($list['Product']['type'], [4] ) ){ 
                 echo '<div class="row flex-box align-cnter"> <div class="col-sm-6"> <img src="'.$pImg.'" alt="product image"> </div> <div class="col-sm-6"> <div class="prodt-dtls"><h3>'.$list['Product']['title'].' '.$list['size'].'</h3><p>  </p></div> </div> </div><hr>';
@@ -82,8 +85,6 @@ if ( isset($data['OrderItem']) && !empty($data['OrderItem']) ){
 <div class="flex-box flex-unwrap invoice-total"> <div class="txt-bx">Subtotal (+)</div> <div class="price-boxx">USD $<?php echo num_2($data['Order']['total_amount']);?></div> </div>
 <div class="flex-box flex-unwrap invoice-total"> <div class="txt-bx">Shipping Cost (+)</div> <div class="price-boxx">USD $<?php echo num_2($data['Order']['shipping_cost']);?></div> </div>
 <div class="flex-box flex-unwrap invoice-total"> <div class="txt-bx">Shipping Fee Discount (-)</div> <div class="price-boxx">USD $<?php echo num_2($data['Order']['discount']);?></div> </div>
-<div class="flex-box flex-unwrap invoice-total"> <div class="txt-bx">Import duty (+)</div> <div class="price-boxx">USD $<?php echo num_2($data['Order']['import_duty']);?></div> </div>
-<div class="flex-box flex-unwrap invoice-total"> <div class="txt-bx">VAT (+)</div> <div class="price-boxx">USD $<?php echo num_2($data['Order']['vat']);?></div> </div>
 <div class="flex-box flex-unwrap invoice-total"> <div class="txt-bx">Warranty Extension (+)</div> <div class="price-boxx">USD $<?php echo num_2($data['Order']['warranty_extension']);?></div> </div>
 <div class="flex-box flex-unwrap invoice-total"> <div class="txt-bx"><b>Grand Total	</b></div> <div class="price-boxx">USD $<?php echo num_2($data['Order']['grand_total']);?></div> </div>
 </div>

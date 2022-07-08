@@ -451,19 +451,22 @@ class DATAComponent extends Component {
 	    if ( $type == 1 ){ $order_type = 'inquiry'; }
 	    elseif ( $type == 2 ){ $order_type = 'order'; }
 	    
-	    $tbl = ClassRegistry::init('Order');
+		$tbl = ClassRegistry::init('Order');
 	    $tbl1 = ClassRegistry::init('OrderItem');
+		$pro_tbl = ClassRegistry::init('Product');
 	    $tbl->bindModel(array('hasMany'=>array('OrderItem')));
 	    $tbl1->bindModel(array('belongsTo'=>array('Product')));
+		$pro_tbl->bindModel(['belongsTo' => ['MotorcycleMake','MotorcycleModel','MotorcycleYear']],false);
 	    
 	    $tr = $body = null;
 	    $data = $tbl->find('first',array('recursive'=>3,'conditions'=>array('Order.id'=>$id)));
 	    if ( !empty($data) ){
 	        if ( isset($data['OrderItem']) && !empty($data['OrderItem']) ){
 	            foreach ( $data['OrderItem'] as $list){
-	                $pImg = new_show_image('cdn/no_image_available.jpg',300,150,100,'ff',null);
-	                if( in_array($list['Product']['type'], [1,2,3,5]) && isset($list['Product']['Library']['full_path']) && !empty($list['Product']['Library']['full_path'])){
-	                    $pImg = new_show_image('cdn/'.$list['Product']['Library']['full_path'],300,150,100,'ff',null); }
+						$pImg = new_show_image('cdn/no_image_available.jpg',300,150,100,'ff',null);
+						if( in_array($list['Product']['type'], [2,3,5,6]) && isset($list['Product']['Library']['full_path']) && !empty($list['Product']['Library']['full_path'])){
+							$pImg = new_show_image('cdn/'.$list['Product']['Library']['full_path'],300,150,100,'ff',null); 
+						}
 	                    elseif($list['Product']['type'] == 4){
 	                        $abc = explode(',',$list['Product']['extra_photos']);
 	                        $get_path = null;
@@ -472,7 +475,8 @@ class DATAComponent extends Component {
 	                        else{ $pImg = new_show_image('cdn/no_image_available.jpg',300,150,100,'ff',null); }
 	                    }
 	                    
-	                    if ( in_array($list['Product']['type'], [1,2,3,5] ) ){ $tr.='<tr><td style="width: 40%"><img src="'.$pImg.'" alt="product image" style="max-width: 100%" /></td><td><div> <h2 style="line-height: 1.2; font-size: 20px; margin-bottom: 20px;">'.$list['Product']['Brand']['name'].' '.$list['Product']['Model']['name'].' '.$list['Product']['Motor']['name'].'</h2><p> '.$list['Product']['title'].' </p></div></td></tr>'; }
+	                    if ( in_array($list['Product']['type'], [2,3,5] ) ){ $tr.='<tr><td style="width: 40%"><img src="'.$pImg.'" alt="product image" style="max-width: 100%" /></td><td><div> <h2 style="line-height: 1.2; font-size: 20px; margin-bottom: 20px;">'.$list['Product']['Brand']['name'].' '.$list['Product']['Model']['name'].' '.$list['Product']['Motor']['name'].'</h2><p> '.$list['Product']['title'].' </p></div></td></tr>'; }
+						elseif ( in_array($list['Product']['type'], [6] ) ){ $tr.='<tr><td style="width: 40%"><img src="'.$pImg.'" alt="product image" style="max-width: 100%" /></td><td><div> <h2 style="line-height: 1.2; font-size: 20px; margin-bottom: 20px;">'.$list['Product']['MotorcycleMake']['name'].' '.$list['Product']['MotorcycleModel']['name'].' '.$list['Product']['MotorcycleYear']['year_from'].' - '.(!empty($list['Product']['MotorcycleYear']['year_to']) ? $list['Product']['MotorcycleYear']['year_to'] : 'present').'</h2><p> '.$list['Product']['title'].' </p></div></td></tr>'; }
 	                    elseif ( in_array($list['Product']['type'], [4] ) ){ $tr.='<tr><td style="width: 40%"><img src="'.$pImg.'" alt="product image" style="max-width: 100%" /></td><td><div> <h2 style="line-height: 1.2; font-size: 20px; margin-bottom: 20px;">'.$list['Product']['title'].' '.$list['size'].'</h2><p> </p></div></td></tr>'; }
 	            }
 	        }
@@ -505,8 +509,6 @@ class DATAComponent extends Component {
 <tr><td style="padding: 5px; width: 150px">Subtotal (+)</td><td style="text-align: right; color: #00aa00; padding: 5px">USD $'.num_2($data['Order']['total_amount']).'</td></tr>
 <tr><td style="padding: 5px; width: 150px">Shipping Cost (+)</td><td style="text-align: right; color: #00aa00; padding: 5px">USD $'.num_2($data['Order']['shipping_cost']).'</td></tr>
 <tr><td style="padding: 5px; width: 150px">Shipping Fee Discount (-)</td><td style="width: 100px; text-align: right; color: #00aa00; padding: 5px">USD $'.num_2($data['Order']['discount']).'</td></tr>
-<tr><td style="padding: 5px; width: 150px">Import duty (+)</td><td style="text-align: right; color: #00aa00; padding: 5px">USD $'.num_2($data['Order']['import_duty']).'</td></tr>
-<tr><td style="padding: 5px; width: 150px">VAT (+)</td><td style="width: 100px; text-align: right; color: #00aa00; padding: 5px">USD $'.num_2($data['Order']['vat']).'</td></tr>
 <tr><td style="padding: 5px; width: 150px">Warranty Extension (+)</td><td style="width: 100px; text-align: right; color: #00aa00; padding: 5px">USD $'.num_2($data['Order']['warranty_extension']).'</td></tr>
 <tr><td style="padding: 5px; width: 150px">Grand Total</td><td style="text-align: right; color: #00aa00; padding: 5px">USD $'.num_2($data['Order']['grand_total']).'</td></tr>
 </table></td></tr></table></td></tr><tr><td><a href="'.SITEURL.'contact" style="color: inherit;"><div style="text-align: center; padding-left: 80px; background: url('.SITEURL.'v/em/msg-icon.png) no-repeat left center; max-width: 250px; margin: 15px auto;">
@@ -519,27 +521,31 @@ class DATAComponent extends Component {
 	public function em($id = null) {
 	    $tbl = ClassRegistry::init('Order');
 	    $tbl1 = ClassRegistry::init('OrderItem');
+		$pro_tbl = ClassRegistry::init('Product');
 	    $tbl->bindModel(array('hasMany'=>array('OrderItem')));
 	    $tbl1->bindModel(array('belongsTo'=>array('Product')));
+		$pro_tbl->bindModel(['belongsTo' => ['MotorcycleMake','MotorcycleModel','MotorcycleYear']],false);
 	    
 	    $tr = $body = null;
 	    $data = $tbl->find('first',array('recursive'=>3,'conditions'=>array('Order.id'=>$id)));
-	    if ( !empty($data) ){
+		if ( !empty($data) ){
 	        if ( isset($data['OrderItem']) && !empty($data['OrderItem']) ){
 	            foreach ( $data['OrderItem'] as $list){
 	                $pImg = new_show_image('cdn/no_image_available.jpg',300,150,100,'ff',null);
-	                if( in_array($list['Product']['type'], [1,2,3,5]) && isset($list['Product']['Library']['full_path']) && !empty($list['Product']['Library']['full_path'])){
-	                    $pImg = new_show_image('cdn/'.$list['Product']['Library']['full_path'],300,150,100,'ff',null); }
-	                    elseif($list['Product']['type'] == 4){
+	                if( in_array($list['Product']['type'], [1,2,3,5,6]) && isset($list['Product']['Library']['full_path']) && !empty($list['Product']['Library']['full_path'])){
+	                    $pImg = new_show_image('cdn/'.$list['Product']['Library']['full_path'],300,150,100,'ff',null); 
+					}
+	                elseif($list['Product']['type'] == 4){
 	                        $abc = explode(',',$list['Product']['extra_photos']);
 	                        $get_path = null;
 	                        if(isset($abc[0]) && !empty($abc[0])){ $get_path = $this->getImage($abc[0]); }
 	                        if(isset($get_path)){ $pImg = new_show_image('cdn/'.$get_path,300,150,100,'ff',null); }
 	                        else{ $pImg = new_show_image('cdn/no_image_available.jpg',300,150,100,'ff',null); }
-	                    }
+	                }
 	                    
-	                    if ( in_array($list['Product']['type'], [1,2,3,5] ) ){ $tr.='<tr><td style="width: 40%"><img src="'.$pImg.'" alt="product image" style="max-width: 100%" /></td><td><div> <h2 style="line-height: 1.2; font-size: 20px; margin-bottom: 20px;">'.$list['Product']['Brand']['name'].' '.$list['Product']['Model']['name'].' '.$list['Product']['Motor']['name'].'</h2><p> '.$list['Product']['title'].' </p></div></td></tr>'; }
-	                    elseif ( in_array($list['Product']['type'], [4] ) ){ $tr.='<tr><td style="width: 40%"><img src="'.$pImg.'" alt="product image" style="max-width: 100%" /></td><td><div> <h2 style="line-height: 1.2; font-size: 20px; margin-bottom: 20px;">'.$list['Product']['title'].' '.$list['size'].'</h2><p> </p></div></td></tr>'; }
+	                if ( in_array($list['Product']['type'], [2,3,5] ) ){ $tr.='<tr><td style="width: 40%"><img src="'.$pImg.'" alt="product image" style="max-width: 100%" /></td><td><div> <h2 style="line-height: 1.2; font-size: 20px; margin-bottom: 20px;">'.$list['Product']['Brand']['name'].' '.$list['Product']['Model']['name'].' '.$list['Product']['Motor']['name'].'</h2><p> '.$list['Product']['title'].' </p></div></td></tr>'; }
+					elseif ( in_array($list['Product']['type'], [6] ) ){ $tr.='<tr><td style="width: 40%"><img src="'.$pImg.'" alt="product image" style="max-width: 100%" /></td><td><div> <h2 style="line-height: 1.2; font-size: 20px; margin-bottom: 20px;">'.$list['Product']['MotorcycleMake']['name'].' '.$list['Product']['MotorcycleModel']['name'].' '.$list['Product']['MotorcycleYear']['year_from'].' - '.(!empty($list['Product']['MotorcycleYear']['year_to']) ? $list['Product']['MotorcycleYear']['year_to'] : 'present').'</h2><p> '.$list['Product']['title'].' </p></div></td></tr>'; }
+	                elseif ( in_array($list['Product']['type'], [4] ) ){ $tr.='<tr><td style="width: 40%"><img src="'.$pImg.'" alt="product image" style="max-width: 100%" /></td><td><div> <h2 style="line-height: 1.2; font-size: 20px; margin-bottom: 20px;">'.$list['Product']['title'].' '.$list['size'].'</h2><p> </p></div></td></tr>'; }
 	            }
 	        }
 	        
@@ -572,8 +578,6 @@ class DATAComponent extends Component {
 <tr><td style="padding: 5px; width: 150px">Subtotal (+)</td><td style="text-align: right; color: #00aa00; padding: 5px">USD $'.num_2($data['Order']['total_amount']).'</td></tr>
 <tr><td style="padding: 5px; width: 150px">Shipping Cost (+)</td><td style="text-align: right; color: #00aa00; padding: 5px">USD $'.num_2($data['Order']['shipping_cost']).'</td></tr>
 <tr><td style="padding: 5px; width: 150px">Shipping Fee Discount (-)</td><td style="width: 100px; text-align: right; color: #00aa00; padding: 5px">USD $'.num_2($data['Order']['discount']).'</td></tr>
-<tr><td style="padding: 5px; width: 150px">Import duty (+)</td><td style="text-align: right; color: #00aa00; padding: 5px">USD $'.num_2($data['Order']['import_duty']).'</td></tr>
-<tr><td style="padding: 5px; width: 150px">VAT (+)</td><td style="width: 100px; text-align: right; color: #00aa00; padding: 5px">USD $'.num_2($data['Order']['vat']).'</td></tr>
 <tr><td style="padding: 5px; width: 150px">Warranty Extension (+)</td><td style="width: 100px; text-align: right; color: #00aa00; padding: 5px">USD $'.num_2($data['Order']['warranty_extension']).'</td></tr>
 <tr><td style="padding: 5px; width: 150px">Grand Total</td><td style="text-align: right; color: #00aa00; padding: 5px">USD $'.num_2($data['Order']['grand_total']).'</td></tr>
 </table></td></tr></table></td></tr><tr><td><a href="'.SITEURL.'contact" style="color: inherit;"><div style="text-align: center; padding-left: 80px; background: url('.SITEURL.'v/em/msg-icon.png) no-repeat left center; max-width: 250px; margin: 15px auto;">

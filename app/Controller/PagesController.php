@@ -323,17 +323,14 @@ class PagesController extends AppController
 				$ord['card_ids'] = $this->data['cid'];
 				$ord['payment_by'] = $this->data['payment_by'];
 				$ord['region'] = $this->data['region'];
-				$ord['eur'] = $this->data['eur'];
+				$ord['bike_region'] = $this->data['bike_region'];
 				$ord['note'] = trim($this->data['note']);
 				$ord['token'] = $token;
 				$ord['total_amount'] = $this->data['total_amount'];
 				$ord['shipping_cost'] = $this->data['shipping_cost'];
 				$ord['discount'] = $this->data['discount'];
-				$ord['import_duty'] = $this->data['import_duty'];
-				$ord['vat'] = $this->data['vat'];
 				$ord['warranty_extension'] = $this->data['warranty_extension'];
 				$ord['grand_total'] = $this->data['grand_total'];
-				$ord['gt_eur'] = num_2($this->data['eur'] * $this->data['grand_total']);
 				$ord['shipping_discount'] = $this->data['shipping_discount']; /* % of discount */
 				$ord['first_name'] = $this->data['first_name'];
 				$ord['last_name'] = $this->data['last_name'];
@@ -554,7 +551,7 @@ class PagesController extends AppController
 			$this->Session->write('shipping', $shipping);
 			$u = SITEURL . "pages/review/";
 			echo "<script> window.location.href ='" . $u . "'; </script>";
-			exit;
+			exit; 
 		}
 		$this->set('title_for_layout', 'Check Out : Armytrix');
 		$shipping = $this->Session->read('shipping');
@@ -568,12 +565,10 @@ class PagesController extends AppController
 		$this->set('title_for_layout', 'Order status : ARMYTRIX - Automotive Weaponized');
 		$this->Order->bindModel(array('hasMany' => array('OrderItem')), false);
 		$this->OrderItem->bindModel(array('belongsTo' => array('Product')), false);
+		$this->Product->bindModel(['belongsTo' => ['MotorcycleMake','MotorcycleModel','MotorcycleYear']],false);
 		$data = $this->Order->find('first', ['recursive' => 3, 'conditions' => ['Order.order_number' => $t]]);
-		if (!empty($data)) {
-			$this->set(compact('id', 't', 'data'));
-		} else {
-			$this->layout = '404';
-		}
+		if (!empty($data)) { $this->set(compact('id', 't', 'data')); } 
+		else { $this->layout = '404'; }
 	}
 
 	public function check_promo()
@@ -935,7 +930,7 @@ class PagesController extends AppController
 						$getYear = $this->MotorcycleYear->find('all', ['conditions' => ['MotorcycleYear.id' => $pList, 'MotorcycleYear.motorcycle_model_id' => $this->data['model_id'], 'MotorcycleYear.status' => 1]]);
 						if (!empty($getYear)) {
 							foreach ($getYear as $year) {
-								$ttt = $year['MotorcycleYear']['year_from'] . " - " . (!empty($year['MotorcycleYear']['year_to']) ? $year['MotorcycleYear']['year_to'] : 'persent');
+								$ttt = $year['MotorcycleYear']['year_from'] . " - " . (!empty($year['MotorcycleYear']['year_to']) ? $year['MotorcycleYear']['year_to'] : 'present');
 								$str2 .= '<option value="' . $year['MotorcycleYear']['id'] . '">' . htmlspecialchars($ttt) . '</option>';
 							}
 						}

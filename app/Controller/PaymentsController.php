@@ -63,6 +63,7 @@ class PaymentsController extends AppController {
 	                            }else{ die('error, please contact to support'); } 
 	                        }
                             else{
+								$data = $this->Order->find('first',array('recursive'=>1,'conditions'=>array('Order.order_number'=>$p_detail['L_NAME0'])));
                                 $arr = array('id'=>$data['Order']['id'],'transaction_id'=>$saleTran['TRANSACTIONID'],'transaction_info'=>json_encode($p_detail),'payment_status'=>2,'order_status_id'=>8);
                                 
                                 if(isset($p_detail['SHIPTONAME'])){ $arr['shipping_company'] = $p_detail['SHIPTONAME']; }

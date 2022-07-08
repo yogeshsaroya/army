@@ -57,7 +57,7 @@ if (!empty($data)) {
     foreach ($data as $list) { ?>
         <tr class="odd gradeX">
         <td class="center gnTxt"><?php echo $n;?></td>
-        <td class="center gnTxt"><?php echo $list['MotorcycleMake']['name']."/".$list['MotorcycleModel']['name']." - ".$list['MotorcycleYear']['year_from']." - ".(!empty($list['MotorcycleYear']['year_to']) ? $list['MotorcycleYear']['year_to'] : 'persent');?></td>
+        <td class="center gnTxt"><?php echo $list['MotorcycleMake']['name']."/".$list['MotorcycleModel']['name']." - ".$list['MotorcycleYear']['year_from']." - ".(!empty($list['MotorcycleYear']['year_to']) ? $list['MotorcycleYear']['year_to'] : 'present');?></td>
         <td class="center gnTxt"><a href="<?php echo SITEURL."motorcycle/".$list['Motorcycle']['url'];?>" title="" target="_blank"><?php echo $list['Motorcycle']['title'];?></a></td>
         <td class="center gnTxt"><a href="<?php echo SITEURL."lab/labs/motorcycles?id=".$list['Motorcycle']['id'];?>" title=""><?php if($list['Motorcycle']['status'] == 1){ echo "<p class='text-green'>Active</p>";}else{ echo "<p class='text-red'>Deactivate</p>";}?></a></td>
         <td class="center gnTxt"><?php echo date('M d,Y',strtotime($list['Motorcycle']['created']));?></td>

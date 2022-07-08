@@ -210,7 +210,7 @@ tr.pd_list { border-bottom: 1px solid #f2f2f2; }
                                                 <td class="w30">
                                                     <h3 class="product-name"><a href="<?php echo $url; ?>" title="" target="_blank">
                                                     <?php echo $list['Product']['title'] . (!empty($list['Cart']['size']) ? " " . $list['Cart']['size'] : null); ?></a> 
-                                                <?php /* if ($list['Product']['type'] == 6) { ec("Zone : ".$country_list['CountryList']['zone']." -  BoxSize : ".$list['Product']['box_size']); } */?>
+                                                <?php if ($list['Product']['type'] == 6) { ec("Zone : ".$country_list['CountryList']['zone']." -  BoxSize : ".$list['Product']['box_size']); } ?>
                                                 
                                                 </h3>
                                                     <?php if (!empty($list['Product']['part'])) {  
