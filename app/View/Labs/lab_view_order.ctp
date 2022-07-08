@@ -74,8 +74,14 @@ foreach ($d['OrderItem'] as $oList){ ?>
 <tr>
               <td><?php echo $oList['Product']['title'].' '.$oList['size'];
               if( in_array($oList['Product']['type'], array(2,3,5)) ){
-              echo " <b>( Part no : ".$oList['Product']['part'].") - ".$oList['Product']['material']." </b><br>";
+              echo " <b>( Part Number : ".$oList['Product']['part'].") - ".strtoupper($oList['Product']['material'])." </b><br>";
               echo $oList['Product']['Brand']['name']."/".$oList['Product']['Model']['name']."/".$oList['Product']['Motor']['name'];}
+              else if( in_array($oList['Product']['type'], array(6)) ){
+                echo " <b>( Part Number : ".$oList['Product']['part'].") - ".strtoupper($oList['Product']['material'])." </b><br>";
+                if(!empty($oList['Product']['full_part'])){
+                  echo " <b>( Other Part Number : ".$oList['Product']['full_part'].") - ".strtoupper($oList['Product']['full_material'])." </b><br>";
+                }
+                echo $oList['Product']['MotorcycleMake']['name']."/".$oList['Product']['MotorcycleModel']['name']."/".$oList['Product']['MotorcycleYear']['year_from']." - ".(!empty($oList['Product']['MotorcycleYear']['year_from']) ? $oList['Product']['MotorcycleYear']['year_from'] : "present");}
               ?></td>
               <td class="text-center"><?php echo $oList['quantity'];?></td>
               <td class="text-center"><?php echo "$".$oList['amount'];?></td>

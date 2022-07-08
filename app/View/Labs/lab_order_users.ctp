@@ -1,5 +1,7 @@
-<!-- DATA TABLES -->
-<link href="<?php echo SITEURL."lab_root/";?>plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+<?php 
+$regions = regions();
+?>
+
 <style>
 
 
@@ -58,13 +60,15 @@
 						
 <tr role="row">
 	<th><?php echo $this->Paginator->sort('Order.type', 'Type', array('escape' => false)); ?></th>
-	<th><?php echo $this->Paginator->sort('Order.region', 'Region', array('escape' => false)); ?></th>
+	<th><?php echo $this->Paginator->sort('Order.region', 'Region (car)', array('escape' => false)); ?></th>
+	<th><?php echo $this->Paginator->sort('Order.bike_region', 'Region (motorcycle)', array('escape' => false)); ?></th>
     <th><?php echo $this->Paginator->sort('Order.order_number', 'Order Number', array('escape' => false)); ?></th>
     <th><?php echo $this->Paginator->sort('Order.first_name', '	Customer', array('escape' => false)); ?></th>
-    <th><?php echo $this->Paginator->sort('Order.order_status_id', 'Status', array('escape' => false)); ?></th>
+    <th><?php echo $this->Paginator->sort('Order.order_status_id', 'Order Status', array('escape' => false)); ?></th>
     <th><?php echo $this->Paginator->sort('Order.payment_by', 'Payment By', array('escape' => false)); ?></th>
     <th><?php echo $this->Paginator->sort('Order.grand_total', 'Total', array('escape' => false)); ?></th>
-    <th><?php echo $this->Paginator->sort('Order.shipping_country', 'Country', array('escape' => false)); ?></th>
+	<th><?php echo $this->Paginator->sort('Order.payment_status', 'Payment Status', array('escape' => false)); ?></th>
+	<th><?php echo $this->Paginator->sort('Order.shipping_country', 'Country', array('escape' => false)); ?></th>
     <th><?php echo $this->Paginator->sort('Order.created', 'Created', array('escape' => false)); ?></th>
     <th>Action</th>
     <th>Hide</th>
@@ -77,11 +81,8 @@ if (!empty($data)) {
     foreach ($data as $list) { ?>
 <tr class="odd gradeX">
 <td class="center gnTxt"> <?php if($list['Order']['type'] == 1){ echo "Order"; } elseif($list['Order']['type'] == 2){ echo "Inquiry"; } ?> </td>
-<td class="center gnTxt"><?php 
-    if ($list['Order']['region'] == 1){ echo "Price";}
-    elseif ($list['Order']['region'] == 2){ echo "No Price";}
-    
-    ?></td>
+<td class="center gnTxt"><?php if (in_array($list['Order']['region'],[1,2])){ echo $regions[$list['Order']['region']];}?></td>
+<td class="center gnTxt"><?php if (in_array($list['Order']['bike_region'],[1,2])){ echo $regions[$list['Order']['bike_region']];}?></td>
     <td class="center gnTxt"><?php echo $list['Order']['order_number']; ?></td>
     <td class="center gnTxt"><?php echo $list['Order']['first_name']." ".$list['Order']['last_name']; ?></td>
     <td class="center gnTxt"> <?php
@@ -94,6 +95,7 @@ if (!empty($data)) {
     elseif($list['Order']['payment_by'] == 'cc'){ echo "Credit Card";} ?> </td>
     
     <td class="center"> <?php echo "$".num_2($list['Order']['grand_total'],2); ?> </td>
+	<td class="center"> <?php echo ($list['Order']['payment_status'] == 1 ? 'Success' : 'Failed'); ?> </td>
     <td class="center"> <?php echo $list['Order']['shipping_country']; ?> </td>
     <td class="center"> <?php echo date('M d,y',strtotime($list['Order']['created'])); ?> </td>
     <td class="center"> 

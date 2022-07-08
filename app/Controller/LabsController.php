@@ -721,8 +721,9 @@ class LabsController extends AppController
 	public function lab_shipping_label($id = null)
 	{
 		$this->layout = false;
-		$this->OrderItem->bindModel(array('belongsTo' => array('Product' => array())));
-		$this->Order->bindModel(array('hasMany' => array('OrderItem', 'OrderHistory' => array('order' => array('id' => 'DESC')))));
+		$this->OrderItem->bindModel(array('belongsTo' => array('Product' => array())),false);
+		$this->Order->bindModel(array('hasMany' => array('OrderItem', 'OrderHistory' => array('order' => array('id' => 'DESC')))),false);
+		$this->Product->bindModel(['belongsTo' => ['MotorcycleMake','MotorcycleModel','MotorcycleYear']],false);
 		$data = $this->Order->find('first', array('recursive' => 3, 'conditions' => array('Order.id' => $id)));
 		if (!empty($data)) {
 			$this->set('d', $data);
@@ -885,6 +886,7 @@ class LabsController extends AppController
 		$this->set('title_for_layout', 'Order details : ' . WEBTITLE);
 		$this->OrderItem->bindModel(array('belongsTo' => array('Product' => array())));
 		$this->Order->bindModel(array('hasMany' => array('OrderItem', 'OrderHistory' => array('order' => array('id' => 'DESC')))));
+		$this->Product->bindModel(['belongsTo' => ['MotorcycleMake','MotorcycleModel','MotorcycleYear']],false);
 		$data = $this->Order->find('first', array('recursive' => 3, 'conditions' => array('Order.id' => $id)));
 		if (!empty($data)) {
 			$this->set('d', $data);

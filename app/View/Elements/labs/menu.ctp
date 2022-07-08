@@ -75,10 +75,10 @@ if (isset($user_data['UserImage']) && !empty($user_data['UserImage'])) {
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li><a href="<?php echo SITEURL . "lab/labs/order_users"; ?>"><i class="fa fa-circle-o"></i>Customers</a></li>
+          <li><a href="<?php echo SITEURL . "lab/labs/order_users"; ?>"><i class="fa fa-circle-o"></i>All</a></li>
           <?php /*?><li><a href="<?php echo SITEURL."lab/labs/order_dealers";?>"><i class="fa fa-circle-o"></i>Dealers</a></li>
               	<li><a href="<?php echo SITEURL."lab/labs/all_message";?>"><i class="fa fa-circle-o"></i>Message</a></li><?php */ ?>
-          <li><a href="<?php echo SITEURL . "lab/labs/archive"; ?>"><i class="fa fa-circle-o"></i>Archive</a></li>
+          <li><a href="<?php echo SITEURL . "lab/labs/archive"; ?>"><i class="fa fa-circle-o"></i>Archived</a></li>
         </ul>
       </li>
       <?php /*?>
