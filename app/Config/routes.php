@@ -39,10 +39,11 @@
 	Router::connect('/password/*', array('controller' => 'accounts', 'action' => 'password'));
 	Router::connect('/newsletter/*', array('controller' => 'accounts', 'action' => 'newsletter'));
 	Router::connect('/wishlist/*', array('controller' => 'accounts', 'action' => 'wishlist'));
-	Router::connect('/order/*', array('controller' => 'accounts', 'action' => 'order'));
+	
 	Router::connect('/search/*', array('controller' => 'pages', 'action' => 'search'));
 	Router::connect('/warranty_registration/*', array('controller' => 'homes', 'action' => 'warranty_registration'));
 	
+	Router::connect('/order/*', array('controller' => 'pages', 'action' => 'order'));
 	
 	Router::connect('/product/*', array('controller' => 'pages', 'action' => 'product'));
 	Router::connect('/cart/*', array('controller' => 'pages', 'action' => 'cart'));
