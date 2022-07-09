@@ -445,7 +445,7 @@ class PagesController extends AppController
 		$this->set(compact('all_pro'));
 	}
 
-	public function review()
+	public function review($page = null)
 	{
 		$this->set('title_for_layout', 'Review : Armytrix');
 		$all_pro = null;
@@ -496,6 +496,9 @@ class PagesController extends AppController
 					if (!empty($new_pid)) { $shipping['pid'] = implode(',', $new_pid); }
 					$this->Session->write('shipping', $shipping);
 					$this->set(compact('WebSetting', 'checkOutArr', 'shipping', 'country_list', 'all_pro'));
+					if(!empty($page)){
+						$this->render('new_review');	
+					}
 				}
 			} else { $this->render('no_country'); }
 		}

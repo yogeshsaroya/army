@@ -122,8 +122,6 @@ tr.pd_list { border-bottom: 1px solid #f2f2f2; }
                                                 }
                                             }
                                         }
-                                        
-                                        
                                         /* Only Downpipe */
                                         if ($a_downpipe > 0 && $a_catback == 0) {
                                             foreach ($all_pro as $alist) {
@@ -208,7 +206,8 @@ tr.pd_list { border-bottom: 1px solid #f2f2f2; }
                                         ?>
                                             <tr class="pd_list">
                                                 <td class="w30">
-                                                    <h3 class="product-name"><a href="<?php echo $url; ?>" title="" target="_blank">
+                                                    <h3 class="product-name">
+                                                        <a href="<?php echo $url; ?>" title="" target="_blank">
                                                     <?php echo $list['Product']['title'] . (!empty($list['Cart']['size']) ? " " . $list['Cart']['size'] : null); ?></a> 
                                                 <?php if ($list['Product']['type'] == 6) { ec("Zone : ".$country_list['CountryList']['zone']." -  BoxSize : ".$list['Product']['box_size']); } ?>
                                                 
@@ -237,11 +236,9 @@ tr.pd_list { border-bottom: 1px solid #f2f2f2; }
                                                 <td class="a-center"><?php echo $list['Cart']['quantity']; ?></td>
 
                                                 <td class="a-center wid_2"><?php
-                                                                            if ($list['Product']['discount'] > 0) {
-                                                                                echo new_currency($list['Product']['price'], $p1);
-                                                                            } else {
-                                                                                echo currency($list['Product']['price']);
-                                                                            } ?></td>
+                                                                            if ($list['Product']['discount'] > 0) { echo new_currency($list['Product']['price'], $p1); } 
+                                                                            else { echo currency($list['Product']['price']); } ?>
+                                                                            </td>
                                                 <td class="a-right wid_4"><span class="cart-price"><span class="price"><?php echo currency($p1 * $list['Cart']['quantity']); ?></span></span></td>
                                             </tr>
                                         <?php } ?>
@@ -312,16 +309,10 @@ tr.pd_list { border-bottom: 1px solid #f2f2f2; }
                                     <div class="coupen-bx">
 
                                         <div class="form-group"><label for="cmnts">Comments</label> <textarea class="form-control" id="note" rows="6" name='note' placeholder="If you have any question regarding to the custom value declaration of the goods you've purchased, please contact sales@armytrix.com or leave message in your order message board. Otherwise we will ship the goods value as it is."><?php echo $note; ?></textarea></div>
-                                        <div class="form-group <?php if ($a_downpipe > 0 || $a_catback > 0) {
-                                                                    echo 'required';
-                                                                } ?>"><label for="vin" class="control-label">VIN Number</label> <input type="text" name="vin_number" class="form-control" <?php if ($a_downpipe > 0 || $a_catback > 0) {
-                                                                                                                                                                                                                                                            echo 'required="required"';
-                                                                                                                                                                                                                                                        } ?> maxlength="17"></div>
+                                        <div class="form-group <?php if ($a_downpipe > 0 || $a_catback > 0) { echo 'required';} ?>"><label for="vin" class="control-label">VIN Number</label> <input type="text" name="vin_number" class="form-control" <?php if ($a_downpipe > 0 || $a_catback > 0) {echo 'required="required"';} ?> maxlength="17"></div>
                                         <div class="form-group "><label><input type="checkbox" required="required" name="tnc" id='tnc' value="1"> I have read and agree to <a href="<?php echo SITEURL . "terms_and_conditions"; ?>" target="_blank"><b>the Armytrix Online Store Terms & Conditions. </b></a></label></div>
                                         <div class="form-group "><label><input type="checkbox" required="required" name="tnc2" id='tnc2' value="1"> I have read and understand the return policy from the Armytrix Online Store Terms & Conditions, I will be refunded in full to my original form of payment, excluding the cost of delivery, cost of returning product(s), and cost of 5% PayPal refund processing fee.</label></div>
-                                        <div class="form-group "><label><input type="checkbox" required="required" name="tnc3" id='tnc3' value="1"> I have verified that the product(s) selected is comaptible with my car model. I understand and agree that in the event that I wish to cancel my order because the product(s) turned out to be incompatible, there will be a 5% refund charge by PayPal
-
-                                            </label></div>
+                                        <div class="form-group "><label><input type="checkbox" required="required" name="tnc3" id='tnc3' value="1"> I have verified that the product(s) selected is comaptible with my car model. I understand and agree that in the event that I wish to cancel my order because the product(s) turned out to be incompatible, there will be a 5% refund charge by PayPal</label></div>
                                         <div class="clearfix"></div>
                                         <?php $plist = implode(',', $cids);
                                         $pro_ids = implode(',', $pro_id); ?>

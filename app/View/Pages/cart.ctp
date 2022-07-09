@@ -195,10 +195,11 @@ textarea{width:100%;height:auto!important}
 
                     $amount = $list['Product']['price'] -  ($list['Product']['price'] * $list['Product']['discount'] / 100);
 
-                    $pImg = new_show_image('cdn/no_image_available.jpg', 300, 150, 100, 'ff', null);
+                    
                     if ($list['Product']['type'] == 2) { $is_cateback++; } 
                     elseif ($list['Product']['type'] == 3) { $is_pipe++; }
 
+                    $pImg = new_show_image('cdn/no_image_available.jpg', 300, 150, 100, 'ff', null);
                     if ($list['Product']['type'] == 1) {
                       $ima = json_decode($list['Product']['images'], true);
                       if (isset($ima[0]) && !empty($ima[0])) {
