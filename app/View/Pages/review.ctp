@@ -111,6 +111,7 @@ if (isset($checkOutArr['note'])) {
     .part_no {
         margin-bottom: 10px;
     }
+    .font-italic.mb-4{margin: 1.5rem 0 0 0; }
     h3.card-title { text-align: left;}
     @media (min-width: 992px) and (max-width: 1245px) {
         .fifth-order-review .grid-right-sec {
@@ -536,8 +537,8 @@ if (isset($checkOutArr['note'])) {
 
                     </div>
                     <div class="col-lg-6">
-                        <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary </div>
-                        <div class="p-4">
+                        <div class="bg-light px-4 py-3 text-uppercase font-weight-bold">Order summary </div>
+                        <div>
                             <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
                             <ul class="list-unstyled mb-4">
                                 <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><span class="price" id="_total_amount"><?php echo currency($total); ?></span></li>
