@@ -75,13 +75,19 @@ if (isset($checkOutArr['note'])) {
     }
 
     .pro_box_new {
-        margin-bottom: 40px;
-        margin-top: 40px;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        width: 100%;
+        background-color: #fff;
     }
 
-    .pro_box_new .card {
-        min-height: 620px;
-        max-height: auto;
+    .pro_box_new .pro_dt {
+        margin: 20px 0;
+
+    }
+
+    .card {
+        flex-direction: initial;
     }
 
     .card-img-top {
@@ -93,6 +99,7 @@ if (isset($checkOutArr['note'])) {
         margin-right: auto;
         display: block;
     }
+
     #new_review .page_container {
         max-width: 1300px;
         width: 100%;
@@ -100,7 +107,11 @@ if (isset($checkOutArr['note'])) {
         margin-right: auto;
         margin-left: auto;
     }
-.part_no{margin-bottom: 10px;}
+
+    .part_no {
+        margin-bottom: 10px;
+    }
+
     @media (min-width: 992px) and (max-width: 1245px) {
         .fifth-order-review .grid-right-sec {
             display: initial;
@@ -125,13 +136,18 @@ if (isset($checkOutArr['note'])) {
         #new_review .page_container {
             max-width: 97%
         }
+
         .pro_box_new {
-        margin-bottom: 15px;
-        margin-top: 15px;
-    }
+            margin-bottom: 15px;
+            margin-top: 15px;
+        }
     }
 
-
+    @media (min-width: 768px) {
+        .pro_box_new .col-md-6 {
+            float: left;
+        }
+    }
 </style>
 <div id="preloader" style="display: none">
     <div id="status">&nbsp;</div>
@@ -241,133 +257,131 @@ if (isset($checkOutArr['note'])) {
                 }
 
                 ?>
-                <div class="row">
+                <section style="background-color: #eee;">
 
-                    <section style="background-color: #eee;">
+                    <div class="row justify-content-center fifth-order-review">
+                        <?php
+                        $n = 1;
+                        foreach ($all_pro as $list) {
 
-                        <div class="row justify-content-center fifth-order-review">
-                            <?php
-                            $n = 1;
-                            foreach ($all_pro as $list) {
-
-                                if ($list['Product']['type'] == 2) {
-                                    $is_cateback++;
+                            if ($list['Product']['type'] == 2) {
+                                $is_cateback++;
+                            }
+                            if ($list['Product']['quantity'] > 0) {
+                                $p1 = $list['Product']['price'];
+                                if ($list['Product']['discount'] > 0) {
+                                    $p1 = $list['Product']['price'] -  ($list['Product']['price'] * $list['Product']['discount'] / 100);
                                 }
-                                if ($list['Product']['quantity'] > 0) {
-                                    $p1 = $list['Product']['price'];
-                                    if ($list['Product']['discount'] > 0) {
-                                        $p1 = $list['Product']['price'] -  ($list['Product']['price'] * $list['Product']['discount'] / 100);
-                                    }
-                                    $amt = num_2($list['Cart']['quantity'] * $p1);
-                                    $total += $amt;
-                                    $cids[] = $list['Cart']['id'];
-                                    $pro_id[] = $list['Product']['id'];
-                                }
-                                $url = 'javascript:void(0);';
-                                if ($list['Product']['type'] == 4) {
-                                    $url = SITEURL . "shop/" . $list['Product']['slug'];
-                                } elseif ($list['Product']['type'] == 6) {
-                                    $getBikeURL = $this->Lab->getMotorcycleURL($list['Product']['motorcycle_make_id'], $list['Product']['motorcycle_model_id'], $list['Product']['motorcycle_year_id']);
-                                    $url = SITEURL . "motorcycle/" . $getBikeURL;
-                                } elseif (in_array($list['Product']['type'], array(2, 3, 5))) {
-                                    $getCarURL = $this->Lab->getCarURL($list['Product']['brand_id'], $list['Product']['model_id'], $list['Product']['motor_id']);
-                                    $url = SITEURL . "product/" . $getCarURL;
-                                }
+                                $amt = num_2($list['Cart']['quantity'] * $p1);
+                                $total += $amt;
+                                $cids[] = $list['Cart']['id'];
+                                $pro_id[] = $list['Product']['id'];
+                            }
+                            $url = 'javascript:void(0);';
+                            if ($list['Product']['type'] == 4) {
+                                $url = SITEURL . "shop/" . $list['Product']['slug'];
+                            } elseif ($list['Product']['type'] == 6) {
+                                $getBikeURL = $this->Lab->getMotorcycleURL($list['Product']['motorcycle_make_id'], $list['Product']['motorcycle_model_id'], $list['Product']['motorcycle_year_id']);
+                                $url = SITEURL . "motorcycle/" . $getBikeURL;
+                            } elseif (in_array($list['Product']['type'], array(2, 3, 5))) {
+                                $getCarURL = $this->Lab->getCarURL($list['Product']['brand_id'], $list['Product']['model_id'], $list['Product']['motor_id']);
+                                $url = SITEURL . "product/" . $getCarURL;
+                            }
 
-                                $pImg = new_show_image('cdn/no_image_available.jpg', 500, 500, 100, 'ff', null);
-                                if ($list['Product']['type'] == 1) {
-                                    $ima = json_decode($list['Product']['images'], true);
-                                    if (isset($ima[0]) && !empty($ima[0])) {
-                                        $pImg = new_show_image('cdn/cdnimg/' . $ima[0], 500, 500, 100, 'ff', null);
-                                    }
-                                } elseif ($list['Product']['type'] == 4) {
-                                    $abc = explode(',', $list['Product']['extra_photos']);
-                                    $get_path = null;
-                                    if (isset($abc[0]) && !empty($abc[0])) {
-                                        $get_path = $this->Lab->getImage($abc[0]);
-                                    }
-                                    if (isset($get_path)) {
-                                        $pImg = new_show_image('cdn/' . $get_path, 500, 500, 100, 'ff', null);
-                                    } else {
-                                        $pImg = new_show_image('cdn/no_image_available.jpg', 500, 500, 100, 'ff', null);
-                                    }
+                            $pImg = new_show_image('cdn/no_image_available.jpg', 500, 500, 100, 'ff', null);
+                            if ($list['Product']['type'] == 1) {
+                                $ima = json_decode($list['Product']['images'], true);
+                                if (isset($ima[0]) && !empty($ima[0])) {
+                                    $pImg = new_show_image('cdn/cdnimg/' . $ima[0], 500, 500, 100, 'ff', null);
+                                }
+                            } elseif ($list['Product']['type'] == 4) {
+                                $abc = explode(',', $list['Product']['extra_photos']);
+                                $get_path = null;
+                                if (isset($abc[0]) && !empty($abc[0])) {
+                                    $get_path = $this->Lab->getImage($abc[0]);
+                                }
+                                if (isset($get_path)) {
+                                    $pImg = new_show_image('cdn/' . $get_path, 500, 500, 100, 'ff', null);
                                 } else {
-                                    if (isset($list['Product']['Library']['full_path']) && !empty($list['Product']['Library']['full_path'])) {
-                                        $pImg = new_show_image('cdn/' . $list['Product']['Library']['full_path'], 500, 500, 100, 'ff', null);
-                                    }
+                                    $pImg = new_show_image('cdn/no_image_available.jpg', 500, 500, 100, 'ff', null);
                                 }
+                            } else {
+                                if (isset($list['Product']['Library']['full_path']) && !empty($list['Product']['Library']['full_path'])) {
+                                    $pImg = new_show_image('cdn/' . $list['Product']['Library']['full_path'], 500, 500, 100, 'ff', null);
+                                }
+                            }
 
-                            ?>
-                                <div class="col-xl-6 col-lg-6 col-sm-6 pro_box_new">
-                                    <div class="card text-black">
+                        ?>
+                            <div class="col-xl-4col-lg-6col-sm-6 pro_box_new">
+                                <div class="card11 text-black">
+                                    <div class="col-md-6 pro_img">
                                         <i class="fa fa-hashtag fa-lg pt-3 pb-1 px-3"><?php echo $n; ?></i>
-                                        <a href="<?php echo $url; ?>" title="" target="_blank">
-                                            <img src="<?php echo $pImg; ?>" class="card-img-top" alt="" height="200px" />
-                                        </a>
-                                        <div class="card-body">
-                                            <div class="text-center">
-                                                <h3 class="card-title"><?php echo $list['Product']['title'] . (!empty($list['Cart']['size']) ? " " . $list['Cart']['size'] : null); ?></h3>
-                                                <p class="text-muted mb-4"></p>
-                                            </div>
-                                            <div>
-                                                <?php if (!empty($list['Product']['part'])) {
-                                                    if ($list['Product']['type'] == 6) { ?>
+                                        <a href="<?php echo $url; ?>" title="" target="_blank"><img src="<?php echo $pImg; ?>" class="card-img-top" alt="" height="200px" /></a>
+                                    </div>
+                                    <div class="col-md-6 pro_dt">
+                                        <div class="text-center">
+                                            <h3 class="card-title"><?php echo $list['Product']['title'] . (!empty($list['Cart']['size']) ? " " . $list['Cart']['size'] : null); ?></h3>
+                                            <p class="text-muted mb-4"></p>
+                                        </div>
+                                        <div>
+                                            <?php if (!empty($list['Product']['part'])) {
+                                                if ($list['Product']['type'] == 6) { ?>
 
-                                                        <div class="d-flex justify-content-between part_no"><span>Part Number </span><span>
-                                                                <div class="grid-right-sec abtpro"><span><?php echo $list['Product']['part']; ?></span></div>
+                                                    <div class="d-flex justify-content-between part_no"><span>Part Number </span><span>
+                                                            <div class="grid-right-sec abtpro"><span><?php echo $list['Product']['part']; ?></span></div>
+                                                        </span></div>
+                                                    <div class="d-flex justify-content-between"><span>Material Type </span><?php if ($list['Product']['material'] == 'stainless steel + carbon') {
+                                                                                                                                echo '<div class="grid-right-sec abtpro stainless_steel"><span>stainless steel + carbon</span></div>';
+                                                                                                                            } elseif ($list['Product']['material'] == 'titanium') {
+                                                                                                                                echo '<div class="grid-right-sec abtpro titanium"><span>Titanium</span></div>';
+                                                                                                                            } ?></div>
+
+                                                    <?php if ($list['Product']['product_type'] == 1) { ?>
+                                                        <hr>
+                                                        <div class="d-flex justify-content-between part_no"><span>Part Number #2 </span><span>
+                                                                <div class="grid-right-sec abtpro"><span><?php echo $list['Product']['full_part']; ?></span></div>
                                                             </span></div>
-                                                        <div class="d-flex justify-content-between"><span>Material Type </span><?php if ($list['Product']['material'] == 'stainless steel + carbon') {
-                                                                                                                                    echo '<div class="grid-right-sec abtpro stainless_steel"><span>stainless steel + carbon</span></div>';
-                                                                                                                                } elseif ($list['Product']['material'] == 'titanium') {
-                                                                                                                                    echo '<div class="grid-right-sec abtpro titanium"><span>Titanium</span></div>';
-                                                                                                                                } ?></div>
-
-                                                        <?php if ($list['Product']['product_type'] == 1) { ?>
-                                                            <hr>
-                                                            <div class="d-flex justify-content-between part_no"><span>Part Number #2 </span><span>
-                                                                    <div class="grid-right-sec abtpro"><span><?php echo $list['Product']['full_part']; ?></span></div>
-                                                                </span></div>
-                                                            <div class="d-flex justify-content-between"><span>Material Type #2 </span><?php if ($list['Product']['full_material'] == 'stainless steel + carbon') {
-                                                                                                                                            echo '<div class="grid-right-sec abtpro stainless_steel"><span>stainless steel + carbon</span></div>';
-                                                                                                                                        } elseif ($list['Product']['full_material'] == 'titanium') {
-                                                                                                                                            echo '<div class="grid-right-sec abtpro titanium"><span>Titanium</span></div>';
-                                                                                                                                        } ?></div>
-                                                        <?php } ?>
-
-                                                    <?php } else { ?>
-                                                        <div class="d-flex justify-content-between part_no"><span>Part Number </span><span>
-                                                                <div class="grid-right-sec abtpro"><span><?php echo $list['Product']['part']; ?></span></div>
-                                                            </span></div>
-                                                        <div class="d-flex justify-content-between"><span>Material Type </span><?php if ($list['Product']['material'] == 'stainless steel') {
-                                                                                                                                    echo '<div class="grid-right-sec abtpro stainless_steel"><span>Stainless steel</span></div>';
-                                                                                                                                } elseif ($list['Product']['material'] == 'titanium') {
-                                                                                                                                    echo '<div class="grid-right-sec abtpro titanium"><span>Titanium</span></div>';
-                                                                                                                                } ?></div>
+                                                        <div class="d-flex justify-content-between"><span>Material Type #2 </span><?php if ($list['Product']['full_material'] == 'stainless steel + carbon') {
+                                                                                                                                        echo '<div class="grid-right-sec abtpro stainless_steel"><span>stainless steel + carbon</span></div>';
+                                                                                                                                    } elseif ($list['Product']['full_material'] == 'titanium') {
+                                                                                                                                        echo '<div class="grid-right-sec abtpro titanium"><span>Titanium</span></div>';
+                                                                                                                                    } ?></div>
                                                     <?php } ?>
 
+                                                <?php } else { ?>
+                                                    <div class="d-flex justify-content-between part_no"><span>Part Number </span><span>
+                                                            <div class="grid-right-sec abtpro"><span><?php echo $list['Product']['part']; ?></span></div>
+                                                        </span></div>
+                                                    <div class="d-flex justify-content-between"><span>Material Type </span><?php if ($list['Product']['material'] == 'stainless steel') {
+                                                                                                                                echo '<div class="grid-right-sec abtpro stainless_steel"><span>Stainless steel</span></div>';
+                                                                                                                            } elseif ($list['Product']['material'] == 'titanium') {
+                                                                                                                                echo '<div class="grid-right-sec abtpro titanium"><span>Titanium</span></div>';
+                                                                                                                            } ?></div>
                                                 <?php } ?>
-                                            </div>
-                                            <hr>
-                                            <div>
-                                                <div class="d-flex justify-content-between"><span>Quantity</span><span>#<?php echo $list['Cart']['quantity']; ?></span></div>
-                                                <div class="d-flex justify-content-between"><span>Price </span><span><?php if ($list['Product']['discount'] > 0) {
-                                                                                                                            echo new_currency($list['Product']['price'], $p1);
-                                                                                                                        } else {
-                                                                                                                            echo currency($list['Product']['price']);
-                                                                                                                        } ?></span></div>
-                                            </div>
-                                            <hr>
-                                            <div class="d-flex justify-content-between total font-weight-bold mt-4"><span>Sub Total</span><span><?php echo currency($p1 * $list['Cart']['quantity']); ?></span></div>
+
+                                            <?php } ?>
                                         </div>
+                                        <hr>
+                                        <div>
+                                            <div class="d-flex justify-content-between"><span>Quantity</span><span>#<?php echo $list['Cart']['quantity']; ?></span></div>
+                                            <div class="d-flex justify-content-between"><span>Price </span><span><?php if ($list['Product']['discount'] > 0) {
+                                                                                                                        echo new_currency($list['Product']['price'], $p1);
+                                                                                                                    } else {
+                                                                                                                        echo currency($list['Product']['price']);
+                                                                                                                    } ?></span></div>
+                                        </div>
+                                        <hr>
+                                        <div class="d-flex justify-content-between total font-weight-bold mt-4"><span>Sub Total</span><span><?php echo currency($p1 * $list['Cart']['quantity']); ?></span></div>
                                     </div>
                                 </div>
-                            <?php $n++;
-                            } ?>
-                        </div>
+                            </div>
+                        <?php $n++;
+                        } ?>
+                    </div>
 
-                    </section>
+                </section>
 
-                    <?php /* ?>
+                <?php /* ?>
                     <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5 fifth-order-review">
                         <div class="table-responsive">
                             <table class="table">
@@ -500,7 +514,7 @@ if (isset($checkOutArr['note'])) {
                         </div>
                     </div>
                     <?php */ ?>
-                </div>
+
                 <?php
 
                 $warranty_amt = 0;
