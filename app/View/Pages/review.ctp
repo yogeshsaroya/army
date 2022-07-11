@@ -111,7 +111,7 @@ if (isset($checkOutArr['note'])) {
     .part_no {
         margin-bottom: 10px;
     }
-
+    h3.card-title { text-align: left;}
     @media (min-width: 992px) and (max-width: 1245px) {
         .fifth-order-review .grid-right-sec {
             display: initial;
