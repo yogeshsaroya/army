@@ -445,12 +445,14 @@ class PagesController extends AppController
 		$this->set(compact('all_pro'));
 	}
 
-	public function review($page = null)
+	public function review()
 	{
 		$this->set('title_for_layout', 'Review : Armytrix');
 		$all_pro = null;
 		$checkOutArr = $this->Session->read('checkOutArr');
 		$shipping = $this->Session->read('shipping');
+		if(empty($shipping) || empty($shipping)){ $this->redirect('cart'); }
+		
 		$WebSetting = $this->WebSetting->find('first', array('WebSetting.id' => 1));
 		$this->Product->bindModel(['belongsTo' => ['MotorcycleMake','MotorcycleModel','MotorcycleYear']],false);
 		//ec($checkOutArr); ec($shipping); die;
@@ -496,9 +498,6 @@ class PagesController extends AppController
 					if (!empty($new_pid)) { $shipping['pid'] = implode(',', $new_pid); }
 					$this->Session->write('shipping', $shipping);
 					$this->set(compact('WebSetting', 'checkOutArr', 'shipping', 'country_list', 'all_pro'));
-					if(!empty($page)){
-						$this->render('new_review');	
-					}
 				}
 			} else { $this->render('no_country'); }
 		}
