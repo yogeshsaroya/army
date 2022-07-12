@@ -5,7 +5,7 @@ App::uses('HttpSocket', 'Network/Http');
 class PaypalComponent extends Component {
 
 	// Live v Sandbox mode !important
-    public $sandboxMode = true;
+    public $sandboxMode = false;
 
 // Live paypal API config
 	//'endpoint' => 'https://api.paypal.com/nvp/',
