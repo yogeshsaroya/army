@@ -498,7 +498,7 @@ class PagesController extends AppController
 					if (!empty($new_pid)) { $shipping['pid'] = implode(',', $new_pid); }
 					$this->Session->write('shipping', $shipping);
 					$this->set(compact('WebSetting', 'checkOutArr', 'shipping', 'country_list', 'all_pro'));
-				}
+				}else { $this->render('no_country'); }
 			} else { $this->render('no_country'); }
 		}
 	}
