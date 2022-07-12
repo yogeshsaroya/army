@@ -141,7 +141,7 @@ class AppController extends Controller
 
 	function _setErrorLayout()
 	{
-		if ($this->name == 'CakeError') {
+		if ($this->name == 'CakeError' && $_SERVER['SERVER_NAME'] != 'localhost') {
 			$this->layout = '404';
 		}
 	}

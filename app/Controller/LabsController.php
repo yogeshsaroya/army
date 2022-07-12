@@ -7,7 +7,7 @@ class LabsController extends AppController
 		'VideoSlider',
 		'User', 'Model', 'Brand', 'Motor', 'Product', 'EmailTemplate', 'World', 'Library', 'ExhaustBrand', 'ExhaustModel', 'ExhaustProduct', 'PromoCode',
 		'ItemDetail', 'QualityDetail', 'Shipping', 'DealerLevel', 'Order', 'OrderItem', 'OrderHistory', 'OrderMessage', 'Address', 'Vote', 'VoteOption', 'Language', 'String', 'Translation', 'CountryList',
-		'Motorcycle', 'MotorcycleMake', 'MotorcycleModel', 'MotorcycleYear','MotorcycleShipping'
+		'Motorcycle', 'MotorcycleMake', 'MotorcycleModel', 'MotorcycleYear', 'MotorcycleShipping'
 	);
 	var $components = array('Auth', 'Session', 'Email', 'RequestHandler', 'Paginator', 'DATA', 'PhpExcel.PhpExcel');
 	var $helpers = array('Html', 'Form', 'Session', 'Paginator');
@@ -721,9 +721,9 @@ class LabsController extends AppController
 	public function lab_shipping_label($id = null)
 	{
 		$this->layout = false;
-		$this->OrderItem->bindModel(array('belongsTo' => array('Product' => array())),false);
-		$this->Order->bindModel(array('hasMany' => array('OrderItem', 'OrderHistory' => array('order' => array('id' => 'DESC')))),false);
-		$this->Product->bindModel(['belongsTo' => ['MotorcycleMake','MotorcycleModel','MotorcycleYear']],false);
+		$this->OrderItem->bindModel(array('belongsTo' => array('Product' => array())), false);
+		$this->Order->bindModel(array('hasMany' => array('OrderItem', 'OrderHistory' => array('order' => array('id' => 'DESC')))), false);
+		$this->Product->bindModel(['belongsTo' => ['MotorcycleMake', 'MotorcycleModel', 'MotorcycleYear']], false);
 		$data = $this->Order->find('first', array('recursive' => 3, 'conditions' => array('Order.id' => $id)));
 		if (!empty($data)) {
 			$this->set('d', $data);
@@ -886,7 +886,7 @@ class LabsController extends AppController
 		$this->set('title_for_layout', 'Order details : ' . WEBTITLE);
 		$this->OrderItem->bindModel(array('belongsTo' => array('Product' => array())));
 		$this->Order->bindModel(array('hasMany' => array('OrderItem', 'OrderHistory' => array('order' => array('id' => 'DESC')))));
-		$this->Product->bindModel(['belongsTo' => ['MotorcycleMake','MotorcycleModel','MotorcycleYear']],false);
+		$this->Product->bindModel(['belongsTo' => ['MotorcycleMake', 'MotorcycleModel', 'MotorcycleYear']], false);
 		$data = $this->Order->find('first', array('recursive' => 3, 'conditions' => array('Order.id' => $id)));
 		if (!empty($data)) {
 			$this->set('d', $data);
@@ -1239,10 +1239,12 @@ class LabsController extends AppController
 		$this->Model->bindModel(array('belongsTo' => array('Brand')));
 		$brand = $this->Brand->find('list', array('order' => array('Brand.name' => 'ASC'), 'fields' => array('id', 'name')));
 		$c = [];
-		if (!empty($id)) { $c = array('Model.brand_id' => $id); }
+		if (!empty($id)) {
+			$c = array('Model.brand_id' => $id);
+		}
 		$this->paginate = array('limit' => 200, 'conditions' => $c, 'order' => array('Model.pos' => 'ASC'));
 		$model = $this->paginate('Model');
-		
+
 
 		if (isset($_GET['edit']) && !empty($_GET['edit'])) {
 			$e = $this->Model->find('first', array('conditions' => array('Model.id' => $_GET['edit'])));
@@ -1357,7 +1359,7 @@ class LabsController extends AppController
 		}
 	}
 
-	
+
 
 	public function lab_delete_photo($id)
 	{
@@ -1795,7 +1797,7 @@ class LabsController extends AppController
 			}
 			if ($id == 'ss') {
 				if (isset($this->data['ss']) && !empty($this->data['ss'])) {
-					$d = $this->ItemDetail->find('first', array('conditions' => array('ItemDetail.id' => $this->data['id'])));	
+					$d = $this->ItemDetail->find('first', array('conditions' => array('ItemDetail.id' => $this->data['id'])));
 					if (!empty($d)) {
 						$arr = [];
 						foreach ($this->data['ss'] as $key => $val) {
@@ -1819,10 +1821,12 @@ class LabsController extends AppController
 				}
 			} elseif ($id == 'gal') {
 				if (isset($this->data['gal']) && !empty($this->data['gal'])) {
-					$d = $this->ItemDetail->find('first', array('conditions' => array('ItemDetail.id' => $this->data['id'])));	
+					$d = $this->ItemDetail->find('first', array('conditions' => array('ItemDetail.id' => $this->data['id'])));
 					if (!empty($d)) {
 						$arr = [];
-						foreach ($this->data['gal'] as $key => $val) { $arr[] = $val; }
+						foreach ($this->data['gal'] as $key => $val) {
+							$arr[] = $val;
+						}
 						if (!empty($arr)) {
 							$tArr = ['id' => $d['ItemDetail']['id'], 'gallery' => implode(',', $arr)];
 							$this->ItemDetail->save($tArr);
@@ -2090,14 +2094,18 @@ class LabsController extends AppController
 			if (isset($q['tab']) && $q['tab'] == 'gallery') {
 				$gids = explode(',', $data['ItemDetail']['gallery']);
 				$or1 = [];
-				if (!empty($data['ItemDetail']['gallery'])) { $or1 = array('FIELD(Library.id,' . $data['ItemDetail']['gallery'] . ')'); }
-				$gallery = $this->Library->find('all', array('conditions' => array('Library.id' => $gids), 'order' =>$or1));
+				if (!empty($data['ItemDetail']['gallery'])) {
+					$or1 = array('FIELD(Library.id,' . $data['ItemDetail']['gallery'] . ')');
+				}
+				$gallery = $this->Library->find('all', array('conditions' => array('Library.id' => $gids), 'order' => $or1));
 			}
 			if (isset($q['tab']) && $q['tab'] == 'slider') {
 				$ids = explode(',', $data['ItemDetail']['slider']);
 				$or = [];
-				if (!empty($data['ItemDetail']['slider'])) { $or = array('FIELD(Library.id,' . $data['ItemDetail']['slider'] . ')'); }
-				$sliders = $this->Library->find('all', array('conditions' => array('Library.id' => $ids), 'order'=>$or ));
+				if (!empty($data['ItemDetail']['slider'])) {
+					$or = array('FIELD(Library.id,' . $data['ItemDetail']['slider'] . ')');
+				}
+				$sliders = $this->Library->find('all', array('conditions' => array('Library.id' => $ids), 'order' => $or));
 			}
 			if (isset($q['tab']) && in_array($q['tab'], array('shipping', 'manage_shipping'))) {
 				$cList = $this->World->find('list', array('conditions' => array('World.type' => 'co', 'World.status' => 1), 'order' => array('World.name' => 'ASC'), 'field' => array('id', 'name')));
@@ -3468,7 +3476,7 @@ class LabsController extends AppController
 		}
 	}
 
-	
+
 
 	public function lab_country($id = null)
 	{
@@ -4744,9 +4752,9 @@ class LabsController extends AppController
 				if (empty($this->data['Product']['library_id'])) {
 					echo '<div class="alert alert-danger fadeIn animated">Please select image.</div>';
 				} else {
-					
+
 					$this->request->data['Product']['type'] = 6;
-					
+
 					if ($this->request->data['Product']['product_type'] == 2) {
 						$this->request->data['Product']['full_part'] = $this->request->data['Product']['full_material'] = $this->request->data['Product']['full_details'] = null;
 					}
@@ -4889,7 +4897,7 @@ class LabsController extends AppController
 						$u = 'https://www.googleapis.com/language/translate/v2?key=' . G_KEY . '&source=en&target=' . $page['language'];
 						$pArr = null;
 						$pArr['id'] = $page['id'];
-					
+
 						$name = $this->DATA->fetch($u . '&q=' . urlencode($data['Motorcycle']['title']) . '&q=' . urlencode($data['Motorcycle']['meta_title']) . '&q=' . urlencode($data['Motorcycle']['meta_description']));
 						if (!empty($name)) {
 							$arrName = json_decode($name, true);
@@ -4955,9 +4963,9 @@ class LabsController extends AppController
 			$this->redirect('/lab/labs/update_motorcycle/' . $id . '?tab=multilingual');
 		}
 
-		
 
-		
+
+
 		if (!empty($id)) {
 			$data = $sliders = [];
 			$this->Motorcycle->bindModel(array('hasMany' => array('Video' => ['order' => ['Video.pos' => 'ASC']]), 'belongsTo' => array('MotorcycleMake', 'MotorcycleModel', 'MotorcycleYear')));
@@ -4976,8 +4984,7 @@ class LabsController extends AppController
 					$or1 = array('FIELD(Library.id,' . $data['Motorcycle']['gallery'] . ')');
 					$sliders = $this->Library->find('all', array('order' => $or1, 'conditions' => array('Library.id' => $ids)));
 				}
-			}
-			 elseif (isset($q['tab']) &&  $q['tab'] == 'multilingual') {
+			} elseif (isset($q['tab']) &&  $q['tab'] == 'multilingual') {
 				$lgcode = [];
 				$langArr = $this->Language->find('list', array('fields' => array('Language.code', 'Language.language'), 'conditions' => array('Language.status' => 1)));
 				if (!empty($langArr)) {
@@ -5041,7 +5048,7 @@ class LabsController extends AppController
 	{
 		$this->autoRender = false;
 		if ($this->request->is('ajax')) {
-			
+
 			$d = $this->Motorcycle->find('first', array('conditions' => array('Motorcycle.id' => $this->data['id'])));
 			if ($this->data['type'] == 'del' && !empty($this->data['id']) && !empty($this->data['lid'])) {
 				if (!empty($d)) {
@@ -5068,10 +5075,9 @@ class LabsController extends AppController
 						$str = trim($str, ',');
 						$arr = array('id' => $d['Motorcycle']['id'], 'slider' => $str);
 						$this->Motorcycle->save($arr);
-					} 
+					}
 				}
-			}
-			elseif ($this->data['type'] == 'gallery' && !empty($this->data['id'])) {
+			} elseif ($this->data['type'] == 'gallery' && !empty($this->data['id'])) {
 				if (!empty($d)) {
 					if ($this->data['slider_for'] == 1) {
 						$f = explode(',', $d['Motorcycle']['gallery']);
@@ -5082,10 +5088,9 @@ class LabsController extends AppController
 						$str = trim($str, ',');
 						$arr = array('id' => $d['Motorcycle']['id'], 'gallery' => $str);
 						$this->Motorcycle->save($arr);
-					} 
+					}
 				}
-			}
-			 elseif ($this->data['type'] == 'primary' && !empty($this->data['id'])) {
+			} elseif ($this->data['type'] == 'primary' && !empty($this->data['id'])) {
 				if (!empty($d)) {
 					if ($this->data['dtype'] == 'slider') {
 						$ids = explode(',', $d['Motorcycle']['slider']);
@@ -5207,26 +5212,29 @@ class LabsController extends AppController
 	{
 		$this->autoRender = false;
 		if (!empty($this->data)) {
-			$d = $this->ItemDetail->find('all', array('conditions' => array('ItemDetail.language'=>'eng','ItemDetail.motor_id' => $this->data['id'])));
+			$d = $this->ItemDetail->find('all', array('conditions' => array('ItemDetail.language' => 'eng', 'ItemDetail.motor_id' => $this->data['id'])));
 			$ids = [];
 			$st = 2;
-			if( !empty($d) ){
-				foreach($d  as $list ){
+			if (!empty($d)) {
+				foreach ($d  as $list) {
 					$ids[] = $list['ItemDetail']['id'];
-					if($list['ItemDetail']['status'] == 1 ){ $st = 1; }
+					if ($list['ItemDetail']['status'] == 1) {
+						$st = 1;
+					}
 				}
-				if($st == 1 ){
-				 echo "<script> alert('Car motor record NOT deleted. Please delete or inactive related Car to delete this motor record.');</script>";
-				 exit;
-				}else{
+				if ($st == 1) {
+					echo "<script> alert('Car motor record NOT deleted. Please delete or inactive related Car to delete this motor record.');</script>";
+					exit;
+				} else {
 					$this->ItemDetail->deleteAll(array('ItemDetail.id' => $ids), false);
 					$this->ItemDetail->deleteAll(array('ItemDetail.item_detail_id' => $ids), false);
 					$this->Video->deleteAll(array('Video.item_detail_id' => $ids), false);
-					$this->Motor->id = $this->data['id']; $this->Motor->delete();
+					$this->Motor->id = $this->data['id'];
+					$this->Motor->delete();
 					echo "<script> alert('Car motor record has been deleted'); location.reload();</script>";
 					exit;
 				}
-			}else{
+			} else {
 				$this->Motor->id = $this->data['id'];
 				$this->Motor->delete();
 				echo "<script> alert('Car Motor record has been deleted'); location.reload();</script>";
@@ -5259,38 +5267,42 @@ class LabsController extends AppController
 		if (!empty($this->data)) {
 			$carIDS = $motorIDS = [];
 			$motorSt = $st = 2;
-			$this->Motor->bindModel(['hasMany'=>['ItemDetail'=>['conditions'=>['ItemDetail.language'=>'eng']]]]);
-			$this->Motor->unbindModel(['belongsTo'=>['Library','Model']]);
-			$getMotor = $this->Motor->find('all',['recursive'=>2,'conditions'=>['Motor.model_id'=>$this->data['id']]]);
-			if(!empty($getMotor)){
-				foreach($getMotor as $mt){
+			$this->Motor->bindModel(['hasMany' => ['ItemDetail' => ['conditions' => ['ItemDetail.language' => 'eng']]]]);
+			$this->Motor->unbindModel(['belongsTo' => ['Library', 'Model']]);
+			$getMotor = $this->Motor->find('all', ['recursive' => 2, 'conditions' => ['Motor.model_id' => $this->data['id']]]);
+			if (!empty($getMotor)) {
+				foreach ($getMotor as $mt) {
 					$motorIDS[] = $mt['Motor']['id'];
-					if($mt['Motor']['status'] == 1 ){ $motorSt = 1; }
-					if(!empty($mt['ItemDetail'])){
-						foreach($mt['ItemDetail'] as $car){
+					if ($mt['Motor']['status'] == 1) {
+						$motorSt = 1;
+					}
+					if (!empty($mt['ItemDetail'])) {
+						foreach ($mt['ItemDetail'] as $car) {
 							$carIDS[] = $car['id'];
-							if($car['status'] == 1 ){ $st = 1; }
+							if ($car['status'] == 1) {
+								$st = 1;
+							}
 						}
 					}
 				}
-				if($st == 2){
-					if(!empty($carIDS)){
+				if ($st == 2) {
+					if (!empty($carIDS)) {
 						$this->ItemDetail->deleteAll(array('ItemDetail.id' => $carIDS), false);
 						$this->ItemDetail->deleteAll(array('ItemDetail.item_detail_id' => $carIDS), false);
 						$this->Video->deleteAll(array('Video.item_detail_id' => $carIDS), false);
 					}
-					if(!empty($motorIDS)){
+					if (!empty($motorIDS)) {
 						$this->Motor->deleteAll(array('Motor.id' => $motorIDS), false);
 					}
 					$this->Model->id = $this->data['id'];
 					$this->Model->delete();
 					echo "<script> alert('Car Model and related motor/car records has been deleted'); location.reload();</script>";
 					exit;
-				}else{
-					echo "<script> alert('Car Model record NOT deleted. Please delete or inactive related car motor and car record to delete this car model record.');</script>"; exit;
+				} else {
+					echo "<script> alert('Car Model record NOT deleted. Please delete or inactive related car motor and car record to delete this car model record.');</script>";
+					exit;
 				}
-			}
-			else{
+			} else {
 				$this->Model->id = $this->data['id'];
 				$this->Model->delete();
 				echo "<script> alert('Car Model record has been deleted'); location.reload();</script>";
@@ -5301,55 +5313,61 @@ class LabsController extends AppController
 	}
 
 
-	public function lab_del_brand(){
+	public function lab_del_brand()
+	{
 		$this->autoRender = false;
 		if (!empty($this->data)) {
 			$carIDS = $motorIDS = $model_ids = [];
 			$motorSt = $st = $model_st = 2;
-			$this->Model->bindModel(['hasMany'=>['Motor']]);
-			$this->Motor->bindModel(['hasMany'=>['ItemDetail'=>['conditions'=>['ItemDetail.language'=>'eng']]]]);
-			$this->Motor->unbindModel(['belongsTo'=>['Library']]);
-			$getModel = $this->Model->find('all',['recursive'=>2,'conditions'=>['Model.brand_id'=>$this->data['id']]]);
-			
-			if(!empty($getModel)){
-				foreach($getModel as $list){
-					if($list['Model']['status'] == 1){ $model_st = 1; }
+			$this->Model->bindModel(['hasMany' => ['Motor']]);
+			$this->Motor->bindModel(['hasMany' => ['ItemDetail' => ['conditions' => ['ItemDetail.language' => 'eng']]]]);
+			$this->Motor->unbindModel(['belongsTo' => ['Library']]);
+			$getModel = $this->Model->find('all', ['recursive' => 2, 'conditions' => ['Model.brand_id' => $this->data['id']]]);
+
+			if (!empty($getModel)) {
+				foreach ($getModel as $list) {
+					if ($list['Model']['status'] == 1) {
+						$model_st = 1;
+					}
 					$model_ids[] = $list['Model']['id'];
-					if(!empty($list['Motor'])){
-						foreach($list['Motor'] as $mt){
-							if($mt['status'] == 1 ){ $motorSt =1;}
+					if (!empty($list['Motor'])) {
+						foreach ($list['Motor'] as $mt) {
+							if ($mt['status'] == 1) {
+								$motorSt = 1;
+							}
 							$motorIDS[] = $mt['id'];
-							if(!empty($mt['ItemDetail'])){
-								foreach($mt['ItemDetail'] as $car){
+							if (!empty($mt['ItemDetail'])) {
+								foreach ($mt['ItemDetail'] as $car) {
 									$carIDS[] = $car['id'];
-									if($car['status'] == 1 ){ $st = 1; }
+									if ($car['status'] == 1) {
+										$st = 1;
+									}
 								}
 							}
 						}
 					}
 				}
-				
-				if($st == 2){
-					if(!empty($carIDS)){
+
+				if ($st == 2) {
+					if (!empty($carIDS)) {
 						$this->ItemDetail->deleteAll(array('ItemDetail.id' => $carIDS), false);
 						$this->ItemDetail->deleteAll(array('ItemDetail.item_detail_id' => $carIDS), false);
 						$this->Video->deleteAll(array('Video.item_detail_id' => $carIDS), false);
 					}
-					if(!empty($motorIDS)){
+					if (!empty($motorIDS)) {
 						$this->Motor->deleteAll(array('Motor.id' => $motorIDS), false);
 					}
-					if(!empty($model_ids)){
+					if (!empty($model_ids)) {
 						$this->Model->deleteAll(array('Model.id' => $model_ids), false);
 					}
-					$this->Brand->id = $this->data['id']; 
+					$this->Brand->id = $this->data['id'];
 					$this->Brand->delete();
 					echo "<script> alert('Car make and related model/motor/car records has been deleted'); location.reload();</script>";
-
-				}else{
-					echo "<script> alert('Car Make record NOT deleted. Please delete or inactive related car model/motor and car record to delete this car make record.');</script>"; exit;
+				} else {
+					echo "<script> alert('Car Make record NOT deleted. Please delete or inactive related car model/motor and car record to delete this car make record.');</script>";
+					exit;
 				}
-
-			}else{
+			} else {
 				$this->Brand->id = $this->data['id'];
 				$this->Brand->delete();
 				echo "<script> alert('Car Brand record has been deleted'); location.reload();</script>";
@@ -5358,5 +5376,85 @@ class LabsController extends AppController
 			exit;
 		}
 		exit;
+	}
+
+	public function lab_export_zone()
+	{
+		$this->autoRender = false;
+		$data_array = $this->CountryList->find('all', ['recursive' => -1, 'order' => ['CountryList.short_name' => 'ASC']]);
+		if (!empty($data_array)) {
+			$header_row = array('ID', 'iso2', 'Country Name', 'Region (car)', 'Region (motorcycle)', 'zone (motorcycle)', 'Catback', 'Downpipe', 'owrc', 'Fedex');
+			$filename = "regions_and_zones" . rand() . ".csv";
+			$csv_file = fopen('php://output', 'wr') or die("Can't open php://output");
+			header('Content-type: application/csv');
+			header('Content-Disposition: attachment; filename="' . $filename . '"');
+			fputcsv($csv_file, $header_row, ',', '"');
+			foreach ($data_array as $list) {
+				$row = [];
+				$row = [
+					$list['CountryList']['id'], $list['CountryList']['iso2'], $list['CountryList']['short_name'], $list['CountryList']['region'], $list['CountryList']['bike_region'], $list['CountryList']['zone'],
+					$list['CountryList']['catback'], $list['CountryList']['down_pipe'], $list['CountryList']['owrc'], $list['CountryList']['fedex_pack']
+				];
+				fputcsv($csv_file, $row, ',', '"');
+			}
+			fclose($csv_file);
+		}
+	}
+
+	public function _update_zone($path = null)
+	{
+		if (!empty($path) && file_exists($path)) {
+			$arr = [];
+			$row = 1;
+			if (($handle = fopen($path, "r")) !== FALSE) {
+				while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+					if ($row > 1) {
+						if (!empty($data)) {
+							$arr[] = [
+								'id' => $data[0], 'region' => $data[3], 'bike_region' => $data[4], 'zone' => strtolower($data[5]),
+								'catback' => $data[6], 'down_pipe' => $data[7], 'owrc' => $data[8], 'fedex_pack' => $data[9]
+							];
+						}
+					}
+					$row++;
+				}
+				fclose($handle);
+			}
+			if (!empty($arr)) {
+				$this->CountryList->saveMany($arr);
+			}
+			try {
+				unlink($path);
+			} catch (\Throwable $th) { }
+		}
+	}
+
+	public function lab_import_zone($type = null)
+	{
+
+		if ($this->RequestHandler->isAjax() && !empty($this->data)) {
+			if (!empty($this->data['Import']['import_file'])) {
+				if (!file_exists('csv/temp')) {
+					mkdir('csv/temp', 0777, true);
+				}
+				if (isset($this->data['Import']['import_file']['name']) && !empty($this->data['Import']['import_file']['name'])) {
+					$img = $this->data['Import']['import_file']['name'];
+					$imgExt = strtolower(pathinfo($this->data['Import']['import_file']['name'], PATHINFO_EXTENSION));
+					$fName = rand(1234, 98765) . "_" . strtolower(pathinfo($this->data['Import']['import_file']['name'], PATHINFO_FILENAME));
+					$filename = strtolower(Inflector::slug($fName, '-')) . "." . $imgExt;
+					if (in_array($imgExt, array('csv'))) {
+						if (move_uploaded_file($this->data['Import']['import_file']['tmp_name'], WWW_ROOT . 'csv/temp/' . $filename)) {
+							$file_path = "csv/temp/" . $filename;
+							$this->_update_zone($file_path);
+							echo '<div class="alert alert-success">Records have been updated. </div>';
+							echo "<script> $('#lib_save').remove(); setTimeout(function(){ location.reload(); }, 1000);</script>";
+						}
+					}
+				}
+			} else {
+				echo '<div class="alert alert-danger">Please select upload file.</div>';
+			}
+			exit;
+		}
 	}
 }

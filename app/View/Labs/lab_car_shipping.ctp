@@ -43,21 +43,21 @@ $regions = regions();
 	<section class="content-header">
 		<h1>Shipping for Car Products</h1>
 	</section>
-
-	<!-- Main content -->
 	<section class="content">
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="box">
-
-					<!-- /.box-header -->
 					<div class="box">
-
 						<div class="box-body">
 							<div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-								<div class="row">
+							<div class="row mb-20">
 									<div class="col-sm-6"></div>
-									<div class="col-sm-6"></div>
+									<div class="col-sm-6">
+									<?php 
+									echo $this->Html->link('Export','/lab/labs/export_zone',['class'=>'pull-right btn btn-info btn-flat']);
+									echo $this->Html->link('Import','/lab/labs/import_zone',['class'=>'GnResPopAjax pull-right btn btn-info btn-flat mr-20 ']);	
+									?>
+									</div>
 								</div>
 								<div class="row">
 									<div class="col-sm-12" id="lab_table">

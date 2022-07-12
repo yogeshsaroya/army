@@ -37,6 +37,7 @@ $regions = regions();
 	.center {
 		text-align: center !important
 	}
+	
 </style>
 
 <div class="content-wrapper" style="min-height: 916px;">
@@ -56,10 +57,15 @@ $regions = regions();
 
 						<div class="box-body">
 							<div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-								<div class="row">
-									<div class="col-sm-6"></div>
-									<div class="col-sm-6"></div>
+							<div class="row mb-20">
+								<div class="col-sm-6"></div>
+								<div class="col-sm-6"> 
+									<?php 
+									echo $this->Html->link('Export','/lab/labs/export_zone',['class'=>'pull-right btn btn-info btn-flat']);
+									echo $this->Html->link('Import','/lab/labs/import_zone',['class'=>'GnResPopAjax pull-right btn btn-info btn-flat mr-20 ']);	
+									?>
 								</div>
+							</div>
 								<div class="row">
 									<div class="col-sm-12" id="lab_table">
 										<table class="table table-bordered table-hover dataTable" id="example2" role="grid" aria-describedby="example2_info">
