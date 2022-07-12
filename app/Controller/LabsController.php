@@ -5410,10 +5410,7 @@ class LabsController extends AppController
 				while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 					if ($row > 1) {
 						if (!empty($data)) {
-							$arr[] = [
-								'id' => $data[0], 'region' => $data[3], 'bike_region' => $data[4], 'zone' => strtolower($data[5]),
-								'catback' => $data[6], 'down_pipe' => $data[7], 'owrc' => $data[8], 'fedex_pack' => $data[9]
-							];
+							$arr[] = ['id' => $data[0], 'region' => $data[3], 'bike_region' => $data[4], 'zone' => strtolower($data[5]), 'catback' => $data[6], 'down_pipe' => $data[7], 'owrc' => $data[8], 'fedex_pack' => $data[9]];
 						}
 					}
 					$row++;
@@ -5425,13 +5422,13 @@ class LabsController extends AppController
 			}
 			try {
 				unlink($path);
-			} catch (\Throwable $th) { }
+			} catch (\Throwable $th) {
+			}
 		}
 	}
 
 	public function lab_import_zone($type = null)
 	{
-
 		if ($this->RequestHandler->isAjax() && !empty($this->data)) {
 			if (!empty($this->data['Import']['import_file'])) {
 				if (!file_exists('csv/temp')) {
@@ -5446,6 +5443,81 @@ class LabsController extends AppController
 						if (move_uploaded_file($this->data['Import']['import_file']['tmp_name'], WWW_ROOT . 'csv/temp/' . $filename)) {
 							$file_path = "csv/temp/" . $filename;
 							$this->_update_zone($file_path);
+							echo '<div class="alert alert-success">Records have been updated. </div>';
+							echo "<script> $('#lib_save').remove(); setTimeout(function(){ location.reload(); }, 1000);</script>";
+						}
+					}
+				}
+			} else {
+				echo '<div class="alert alert-danger">Please select upload file.</div>';
+			}
+			exit;
+		}
+	}
+
+	public function _update_bike_shipping($path)
+	{
+		if (!empty($path) && file_exists($path)) {
+			$arr = $box = $zone = [];
+			$row = $row1 = 1;
+			if (($handle = fopen($path, "r")) !== FALSE) {
+				while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+					if ($row == 1) {
+						if (!empty($data)) {
+							foreach ($data as $k => $v) {
+								if ($k > 0) { $zone[] = $v; }
+							}
+						}
+					}
+					$row++;
+				}
+				fclose($handle);
+			}  
+
+			if (($handle = fopen($path, "r")) !== FALSE) {
+				while (($data1 = fgetcsv($handle, 1000, ",")) !== FALSE) {
+					if ($row1 > 1) {
+						if (!empty($data1)) {
+							foreach ($data1 as $k1 => $v1) {
+								if ($k1 > 0) { $box[$zone[$k1 - 1]][] = $v1; }
+							}
+						}
+					}
+					$row1++;
+				}
+				fclose($handle);
+			}
+
+			foreach ($box as $k => $v) {
+				foreach ($v as $c => $d) { $arr[] = ['id' => null, 'zone' => $k, 'box_size' => $c + 1, 'price' => $d]; }
+			}
+			if (!empty($arr)) {
+				$this->MotorcycleShipping->deleteAll(array('MotorcycleShipping.box_size >' => 0), false);
+				$this->MotorcycleShipping->saveAll($arr);
+			}
+			try {
+				unlink($path);
+			} catch (\Throwable $th) {
+			}
+		}
+	}
+
+	public function lab_import_bike_shipping()
+	{
+		if ($this->RequestHandler->isAjax() && !empty($this->data)) {
+			if (!empty($this->data['Import']['import_file'])) {
+				if (!file_exists('csv/temp')) {
+					mkdir('csv/temp', 0777, true);
+				}
+				if (isset($this->data['Import']['import_file']['name']) && !empty($this->data['Import']['import_file']['name'])) {
+					$img = $this->data['Import']['import_file']['name'];
+					$imgExt = strtolower(pathinfo($this->data['Import']['import_file']['name'], PATHINFO_EXTENSION));
+					$fName = rand(987, 123) . "_" . strtolower(pathinfo($this->data['Import']['import_file']['name'], PATHINFO_FILENAME));
+					$filename = strtolower(Inflector::slug($fName, '-')) . "." . $imgExt;
+					if (in_array($imgExt, array('csv'))) {
+						if (move_uploaded_file($this->data['Import']['import_file']['tmp_name'], WWW_ROOT . 'csv/temp/' . $filename)) {
+							$file_path = "csv/temp/" . $filename;
+							$this->_update_bike_shipping($file_path);
 							echo '<div class="alert alert-success">Records have been updated. </div>';
 							echo "<script> $('#lib_save').remove(); setTimeout(function(){ location.reload(); }, 1000);</script>";
 						}
