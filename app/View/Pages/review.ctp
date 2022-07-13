@@ -113,7 +113,7 @@ if (isset($checkOutArr['note'])) {
     }
     .font-italic.mb-4{margin: 1.5rem 0 0 0; }
     h3.card-title { text-align: left;}
-    .text-red, .text-red .text-muted{color: red !important}
+    .text-red, .text-red .text-muted{color: #a94442 !important}
     @media (min-width: 992px) and (max-width: 1245px) {
         .fifth-order-review .grid-right-sec {
             display: initial;
