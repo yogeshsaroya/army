@@ -25,7 +25,7 @@ ARMYTRIX  CORP.</span>
 </div>
 </div>
 		
-<div class="col-sm-5 bg-gray">
+<div class="col-sm-5 bg-gray pd_r_30">
 	<h3>Ship to</h3>
 	<address>
 		<?php echo $data['Order']['first_name']." ".$data['Order']['first_name'];?><br>
