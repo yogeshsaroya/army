@@ -533,7 +533,7 @@ if (isset($checkOutArr['note'])) {
 
                         <div class="form-group"><label><input type="checkbox" required="required" name="tnc" id='tnc' value="1"> I have read and agree to <a href="<?php echo SITEURL . "terms_and_conditions"; ?>" target="_blank"><b>the Armytrix Online Store Terms & Conditions. </b></a></label></div>
                         <div class="form-group"><label><input type="checkbox" required="required" name="tnc2" id='tnc2' value="1"> I have read and understand the return policy from the Armytrix Online Store Terms & Conditions, I will be refunded in full to my original form of payment, excluding the cost of delivery, cost of returning product(s), and cost of 5% PayPal refund processing fee.</label></div>
-                        <div class="form-group"><label><input type="checkbox" required="required" name="tnc3" id='tnc3' value="1"> I have verified that the product(s) selected is comaptible with my car model. I understand and agree that in the event that I wish to cancel my order because the product(s) turned out to be incompatible, there will be a 5% refund charge by PayPal</label></div>
+                        <div class="form-group"><label><input type="checkbox" required="required" name="tnc3" id='tnc3' value="1"> I have verified that the product(s) selected is compatible with my car model. I understand and agree that in the event that I wish to cancel my order because the product(s) turned out to be incompatible, there will be a 5% refund charge by PayPal</label></div>
 
 
                     </div>
