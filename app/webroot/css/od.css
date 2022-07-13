@@ -37,6 +37,7 @@ h1.order-revew:before{position:absolute;top:50%;transform:translateY(-50%);-webk
 .foot-botm p a{text-decoration:underline}
 .cntct-dlts h6 img{width:auto}
 #order_st_page .pd_r_30{ padding-left: 30px !important}
+#order_st_page .text-red{color: #a94442 !important}
 
 @media (max-width: 980px) {
 .invoice-page p,.invoice-page td,.invoice-page div,.invoice-page blockquote p,.invoice-page input,.invoice-page{font-size:20px}

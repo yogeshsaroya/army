@@ -110,8 +110,8 @@
                             <div class="price-boxx">USD $<?php echo num_2($data['Order']['shipping_cost']); ?></div>
                         </div>
                         <div class="flex-box flex-unwrap invoice-total">
-                            <div class="txt-bx">Shipping Fee Discount (-)</div>
-                            <div class="price-boxx">USD $<?php echo num_2($data['Order']['discount']); ?></div>
+                            <div class="txt-bx text-red">Shipping Fee Discount (-)</div>
+                            <div class="price-boxx text-red">- USD $<?php echo num_2($data['Order']['discount']); ?></div>
                         </div>
                         <div class="flex-box flex-unwrap invoice-total">
                             <div class="txt-bx">Warranty Extension (+)</div>
