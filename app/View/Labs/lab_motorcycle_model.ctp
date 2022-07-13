@@ -70,6 +70,7 @@
                                                 <th><?php echo $this->Paginator->sort('MotorcycleModel.created', 'Created', array('escape' => false)); ?></th>
                                                 <th>Edit</th>
                                                 <th>Action</th>
+                                                <th>Delete</th>
                                             </tr>
                                         </thead>
                                         <tbody id="<?php echo (isset($id) && !empty($id) ? 'table_rows' : null); ?>">
@@ -92,13 +93,14 @@
                                                                 }
 
                                                                 ?></tb>
+                                                                <td> <a href="javascript:void(0);" onclick="model_del(<?php echo $list['MotorcycleModel']['id']; ?>);">Delete</a></td>
 
                                                     </tr>
                                                 <?php $n++;
                                                 }
                                             } else { ?>
                                                 <tr>
-                                                    <td colspan="6">Your model tab is empty</td>
+                                                    <td colspan="7">Your model tab is empty</td>
                                                 </tr>
                                             <?php } ?>
                                         </tbody>
@@ -141,6 +143,20 @@
 
 
 <script>
+    function model_del(id) {
+		var txt;
+		var r = confirm("Are you sure you want to delete Motorcycle Model? related years and motorcycle records will be deleted.");
+		if (r == true) {
+			$.ajax({
+				type: 'POST',
+				url: '' + SITEURL + 'lab/labs/rm_bike_model',
+				data: { id: id },
+				success: function(data) { $("#ajax_req").html(data); },
+				error: function(comment) { $("#ajax_req").html(comment); }
+			});
+
+		}
+	}
     $(document).ready(function() {
         <?php if (isset($id) && !empty($id)) { ?>
             $("#table_rows").sortable({

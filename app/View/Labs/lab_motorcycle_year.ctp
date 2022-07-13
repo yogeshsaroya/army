@@ -1,4 +1,4 @@
-<?php 
+<?php
 $years = getYears();
 ?>
 <div class="content-wrapper" style="min-height: 1066px;">
@@ -8,7 +8,10 @@ $years = getYears();
 				width: auto;
 			}
 		}
-        #clr_btn{margin-left: 20px;}
+
+		#clr_btn {
+			margin-left: 20px;
+		}
 	</style>
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
@@ -53,14 +56,14 @@ $years = getYears();
 								<div class="col-xs-3">
 									<label>Model</label><?php echo $this->Form->input('motorcycle_model_id', array('id' => 'model_id', 'options' => $model_list, 'empty' => 'Select Model', 'default' => $mid, 'label' => false, 'error' => false, 'div' => false, 'class' => 'form-control input-md')); ?>
 								</div>
-								<div class="col-xs-3"><label>Year From</label><?php echo $this->Form->input('year_from', array('id' => 'year_from','options' => $years, 'empty' => 'Year From', 'default' =>(isset($year_from)?$year_from:null), 'label' => false, 'error' => false, 'div' => false, 'class' => 'form-control input-md')); ?></div>
-                                <div class="col-xs-3"><label>Year To</label><?php echo $this->Form->input('year_to', array('id' => 'year_to','options' => $years, 'empty' => 'Year To', 'default' => (isset($year_to)? $year_to:null), 'label' => false, 'error' => false, 'div' => false, 'class' => 'form-control input-md')); ?></div>
+								<div class="col-xs-3"><label>Year From</label><?php echo $this->Form->input('year_from', array('id' => 'year_from', 'options' => $years, 'empty' => 'Year From', 'default' => (isset($year_from) ? $year_from : null), 'label' => false, 'error' => false, 'div' => false, 'class' => 'form-control input-md')); ?></div>
+								<div class="col-xs-3"><label>Year To</label><?php echo $this->Form->input('year_to', array('id' => 'year_to', 'options' => $years, 'empty' => 'Year To', 'default' => (isset($year_to) ? $year_to : null), 'label' => false, 'error' => false, 'div' => false, 'class' => 'form-control input-md')); ?></div>
 							</div>
 							<div class="clearfix"></div>
 							<div class="box-footer">
-                            <?php echo $this->Html->link('Clear','/lab/labs/motorcycle_year',['class'=>'btn btn-default pull-right','id'=>'clr_btn']);?>
+								<?php echo $this->Html->link('Clear', '/lab/labs/motorcycle_year', ['class' => 'btn btn-default pull-right', 'id' => 'clr_btn']); ?>
 								<input type="button" class="btn btn-success pull-right" id="add_br" value="Save">
-                                
+
 							</div>
 						</div>
 						<!-- /.box-body -->
@@ -95,11 +98,11 @@ $years = getYears();
 												foreach ($data as $list) { ?>
 													<tr id="tr_<?php echo $list['MotorcycleYear']['id']; ?>">
 														<td><?php echo $list['MotorcycleYear']['id']; ?></td>
-														<td><?php echo $list['MotorcycleYear']['year_from']." - ".(!empty($list['MotorcycleYear']['year_to'])? $list['MotorcycleYear']['year_to'] : 'present'); ?></td>
+														<td><?php echo $list['MotorcycleYear']['year_from'] . " - " . (!empty($list['MotorcycleYear']['year_to']) ? $list['MotorcycleYear']['year_to'] : 'present'); ?></td>
 														<td><?php echo $list['MotorcycleModel']['name']; ?></td>
 														<td><?php echo $list['MotorcycleMake']['name']; ?></td>
 														<td> <?php echo $this->html->link('Edit', '/lab/labs/motorcycle_year/' . $list['MotorcycleYear']['motorcycle_make_id'] . '/' . $list['MotorcycleYear']['motorcycle_model_id'] . '?edit=' . $list['MotorcycleYear']['id']); ?></td>
-														<td> <?php echo $this->html->link('Delete', '/lab/labs/motorcycle_year/' . $list['MotorcycleYear']['motorcycle_make_id'] . '/' . $list['MotorcycleYear']['motorcycle_model_id'] . '?del=' . $list['MotorcycleYear']['id'],['confirm'=>'Are you sure you wnat to delete this models year?']); ?></td>
+														<td> <a href="javascript:void(0);" onclick="motor_del(<?php echo $list['MotorcycleYear']['id']; ?>);">Delete</a></td>
 														<td> <?php
 																if ($list['MotorcycleYear']['status'] == 1) {
 																	echo $this->html->link('Active', '/lab/labs/motorcycle_year?status=' . $list['MotorcycleYear']['id'], array('class' => 'text-green'));
@@ -154,6 +157,27 @@ $years = getYears();
 </div>
 
 <script>
+	function motor_del(id) {
+		var txt;
+		var r = confirm("Are you sure you want to delete Model Years record?");
+		if (r == true) {
+			$.ajax({
+				type: 'POST',
+				url: '' + SITEURL + 'lab/labs/rm_bike_year',
+				data: {
+					id: id
+				},
+				success: function(data) {
+					$("#ajax_req").html(data);
+				},
+				error: function(comment) {
+					$("#ajax_req").html(comment);
+				}
+			});
+
+		}
+	}
+
 	$(document).ready(function() {
 		$("#brand_id").change(function() {
 			window.location.href = '<?php echo SITEURL; ?>lab/labs/motorcycle_year/' + this.value;
@@ -174,10 +198,10 @@ $years = getYears();
 			var brand_id = $.trim($('#brand_id').val());
 			var model_id = $.trim($('#model_id').val());
 
-            var year_from = $.trim($('#year_from').val());
-            var year_to = $.trim($('#year_to').val());
-            
-			
+			var year_from = $.trim($('#year_from').val());
+			var year_to = $.trim($('#year_to').val());
+
+
 
 			if (brand_id == "") {
 				$('#brand_id').focus();
@@ -188,15 +212,20 @@ $years = getYears();
 			} else if (year_from == "") {
 				$('#year_from').focus();
 				$("#app_err").html('<div class="alert alert-danger" role="alert"> Please select year from.</div>');
-			} 
-            else {
+			} else {
 
 				$("#add_br").prop("disabled", true);
 				$("#add_br").val('Please wait...');
 				$.ajax({
 					type: 'POST',
 					url: '' + SITEURL + 'lab/labs/motorcycle_year',
-					data : {motorcycle_make_id:brand_id,motorcycle_model_id:model_id,id:id,year_from:year_from,year_to:year_to},
+					data: {
+						motorcycle_make_id: brand_id,
+						motorcycle_model_id: model_id,
+						id: id,
+						year_from: year_from,
+						year_to: year_to
+					},
 					success: function(data) {
 						btnDefault('add_br', 'Save');
 						$("#app_err").html(data);

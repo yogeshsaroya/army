@@ -62,7 +62,7 @@ if (!empty($data)) {
         <td class="center gnTxt"><a href="<?php echo SITEURL."lab/labs/motorcycles?id=".$list['Motorcycle']['id'];?>" title=""><?php if($list['Motorcycle']['status'] == 1){ echo "<p class='text-green'>Active</p>";}else{ echo "<p class='text-red'>Deactivate</p>";}?></a></td>
         <td class="center gnTxt"><?php echo date('M d,Y',strtotime($list['Motorcycle']['created']));?></td>
         <td class="center gnTxt"><a href="<?php echo SITEURL."lab/labs/update_motorcycle/".$list['Motorcycle']['id'];?>" title="">Edit</a></td>
-        <td> <?php echo $this->html->link('Delete','/lab/labs/motorcycles?del='.$list['Motorcycle']['id'],array('class' => 'text-red','confirm' => 'Do you want to delete this Car Details?')); ?></td>   
+        <td> <?php echo $this->html->link('Delete','/lab/labs/del_bike/'.$list['Motorcycle']['id'],array('class' => 'text-red','confirm' => 'Do you want to delete this Motorcycle record?')); ?></td>   
            
            </tr>
 	<?php $n++;} }else{ ?>

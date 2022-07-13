@@ -4628,14 +4628,6 @@ class LabsController extends AppController
 				$this->redirect($this->referer());
 			}
 		}
-		if (isset($this->request->query['del']) && !empty($this->request->query['del'])) {
-			$list = $this->MotorcycleYear->find('first', array('conditions' => array('MotorcycleYear.id' => $this->request->query['del'])));
-			if (!empty($list)) {
-				$this->MotorcycleYear->id = $list['MotorcycleYear']['id'];
-				$this->MotorcycleYear->delete();
-			}
-			$this->redirect($this->referer());
-		}
 
 		$this->MotorcycleModel->bindModel(array('belongsTo' => array('MotorcycleMake')));
 		$this->MotorcycleYear->bindModel(array('belongsTo' => array('MotorcycleModel', 'MotorcycleMake')));
@@ -5464,21 +5456,25 @@ class LabsController extends AppController
 					if ($row == 1) {
 						if (!empty($data)) {
 							foreach ($data as $k => $v) {
-								if ($k > 0) { $zone[] = $v; }
+								if ($k > 0) {
+									$zone[] = $v;
+								}
 							}
 						}
 					}
 					$row++;
 				}
 				fclose($handle);
-			}  
+			}
 
 			if (($handle = fopen($path, "r")) !== FALSE) {
 				while (($data1 = fgetcsv($handle, 1000, ",")) !== FALSE) {
 					if ($row1 > 1) {
 						if (!empty($data1)) {
 							foreach ($data1 as $k1 => $v1) {
-								if ($k1 > 0) { $box[$zone[$k1 - 1]][] = $v1; }
+								if ($k1 > 0) {
+									$box[$zone[$k1 - 1]][] = $v1;
+								}
 							}
 						}
 					}
@@ -5488,7 +5484,9 @@ class LabsController extends AppController
 			}
 
 			foreach ($box as $k => $v) {
-				foreach ($v as $c => $d) { $arr[] = ['id' => null, 'zone' => $k, 'box_size' => $c + 1, 'price' => $d]; }
+				foreach ($v as $c => $d) {
+					$arr[] = ['id' => null, 'zone' => $k, 'box_size' => $c + 1, 'price' => $d];
+				}
 			}
 			if (!empty($arr)) {
 				$this->MotorcycleShipping->deleteAll(array('MotorcycleShipping.box_size >' => 0), false);
@@ -5527,5 +5525,175 @@ class LabsController extends AppController
 			}
 			exit;
 		}
+	}
+
+
+	public function lab_del_bike($id = null)
+	{
+		$this->autoRender = false;
+		if (!empty($id)) {
+			$d = $this->Motorcycle->find('first', array('conditions' => array('Motorcycle.id' => $id)));
+			if (!empty($d)) {
+				$this->Motorcycle->id = $d['Motorcycle']['id'];
+				$this->Motorcycle->delete();
+				$this->Motorcycle->deleteAll(array('Motorcycle.motorcycle_id' => $d['Motorcycle']['id']), false);
+				$this->Video->deleteAll(array('Video.motorcycle_id' => $d['Motorcycle']['id']), false);
+			}
+			$this->redirect($this->referer());
+		}
+	}
+
+
+	public function lab_rm_bike_year()
+	{
+		$this->autoRender = false;
+		if (!empty($this->data)) {
+			$d = $this->Motorcycle->find('all', array('conditions' => array('Motorcycle.language' => 'eng', 'Motorcycle.motorcycle_year_id' => $this->data['id'])));
+			$ids = [];
+			$st = 2;
+			if (!empty($d)) {
+				foreach ($d  as $list) {
+					$ids[] = $list['Motorcycle']['id'];
+					if ($list['Motorcycle']['status'] == 1) {
+						$st = 1;
+					}
+				}
+				if ($st == 1) {
+					echo "<script> alert('Motorcycle record NOT deleted. Please delete or inactive related motorcycle page to delete this Year record.');</script>";
+					exit;
+				} else {
+					$this->Motorcycle->deleteAll(array('Motorcycle.id' => $ids), false);
+					$this->Motorcycle->deleteAll(array('Motorcycle.motorcycle_id' => $ids), false);
+					$this->Video->deleteAll(array('Video.motorcycle_id' => $ids), false);
+					$this->MotorcycleYear->id = $this->data['id'];
+					$this->MotorcycleYear->delete();
+					echo "<script> alert('Motorcycle year record has been deleted'); location.reload();</script>";
+					exit;
+				}
+			} else {
+				$this->MotorcycleYear->id = $this->data['id'];
+				$this->MotorcycleYear->delete();
+				echo "<script> alert('Motorcycle Year record has been deleted'); location.reload();</script>";
+				exit;
+			}
+		}
+		exit;
+	}
+
+
+	public function lab_rm_bike_model()
+	{
+		$this->autoRender = false;
+		if (!empty($this->data)) {
+			$carIDS = $motorIDS = [];
+			$motorSt = $st = 2;
+			$this->MotorcycleYear->bindModel(['hasMany' => ['Motorcycle' => ['conditions' => ['Motorcycle.language' => 'eng']]]]);
+			$this->MotorcycleYear->unbindModel(['belongsTo' => ['Library', 'MotorcycleModel']]);
+			$getMotor = $this->MotorcycleYear->find('all', ['recursive' => 2, 'conditions' => ['MotorcycleYear.motorcycle_model_id' => $this->data['id']]]);
+			if (!empty($getMotor)) {
+				foreach ($getMotor as $mt) {
+					$motorIDS[] = $mt['MotorcycleYear']['id'];
+					if ($mt['MotorcycleYear']['status'] == 1) {
+						$motorSt = 1;
+					}
+					if (!empty($mt['Motorcycle'])) {
+						foreach ($mt['Motorcycle'] as $car) {
+							$carIDS[] = $car['id'];
+							if ($car['status'] == 1) {
+								$st = 1;
+							}
+						}
+					}
+				}
+				if ($st == 2) {
+					if (!empty($carIDS)) {
+						$this->Motorcycle->deleteAll(array('Motorcycle.id' => $carIDS), false);
+						$this->Motorcycle->deleteAll(array('Motorcycle.motorcycle_id' => $carIDS), false);
+						$this->Video->deleteAll(array('Video.motorcycle_id' => $carIDS), false);
+					}
+					if (!empty($motorIDS)) {
+						$this->MotorcycleYear->deleteAll(array('MotorcycleYear.id' => $motorIDS), false);
+					}
+					$this->MotorcycleModel->id = $this->data['id'];
+					$this->MotorcycleModel->delete();
+					echo "<script> alert('Motorcycle Model and related year/motorcycle page has been deleted'); location.reload();</script>";
+					exit;
+				} else {
+					echo "<script> alert('Motorcycle Model record NOT deleted. Please delete or inactive related Motorcycle years and motorcycle page to delete this motorcycle model record.');</script>";
+					exit;
+				}
+			} else {
+				$this->MotorcycleModel->id = $this->data['id'];
+				$this->MotorcycleModel->delete();
+				echo "<script> alert('Motorcycle Model record has been deleted'); location.reload();</script>";
+				exit;
+			}
+		}
+		exit;
+	}
+
+	public function lab_rm_bike_make()
+	{
+		$this->autoRender = false;
+		if (!empty($this->data)) {
+			$carIDS = $motorIDS = $model_ids = [];
+			$motorSt = $st = $model_st = 2;
+			$this->MotorcycleModel->bindModel(['hasMany' => ['MotorcycleYear']]);
+			$this->MotorcycleYear->bindModel(['hasMany' => ['Motorcycle' => ['conditions' => ['Motorcycle.language' => 'eng']]]]);
+			$this->MotorcycleYear->unbindModel(['belongsTo' => ['Library']]);
+			$getModel = $this->MotorcycleModel->find('all', ['recursive' => 2, 'conditions' => ['MotorcycleModel.motorcycle_make_id' => $this->data['id']]]);
+
+			if (!empty($getModel)) {
+				foreach ($getModel as $list) {
+					if ($list['MotorcycleModel']['status'] == 1) {
+						$model_st = 1;
+					}
+					$model_ids[] = $list['MotorcycleModel']['id'];
+					if (!empty($list['MotorcycleYear'])) {
+						foreach ($list['MotorcycleYear'] as $mt) {
+							if ($mt['status'] == 1) {
+								$motorSt = 1;
+							}
+							$motorIDS[] = $mt['id'];
+							if (!empty($mt['Motorcycle'])) {
+								foreach ($mt['Motorcycle'] as $car) {
+									$carIDS[] = $car['id'];
+									if ($car['status'] == 1) {
+										$st = 1;
+									}
+								}
+							}
+						}
+					}
+				}
+
+				if ($st == 2) {
+					if (!empty($carIDS)) {
+						$this->Motorcycle->deleteAll(array('Motorcycle.id' => $carIDS), false);
+						$this->Motorcycle->deleteAll(array('Motorcycle.motorcycle_id' => $carIDS), false);
+						$this->Video->deleteAll(array('Video.motorcycle_id' => $carIDS), false);
+					}
+					if (!empty($motorIDS)) {
+						$this->MotorcycleYear->deleteAll(array('MotorcycleYear.id' => $motorIDS), false);
+					}
+					if (!empty($model_ids)) {
+						$this->MotorcycleModel->deleteAll(array('MotorcycleModel.id' => $model_ids), false);
+					}
+					$this->MotorcycleMake->id = $this->data['id'];
+					$this->MotorcycleMake->delete();
+					echo "<script> alert('Motorcycle make and related model/year/motorcycle page has been deleted'); location.reload();</script>";
+				} else {
+					echo "<script> alert('Motorcycle Make record NOT deleted. Please delete or inactive related  model/year and motorcycle page to delete this Motorcycle make record.');</script>";
+					exit;
+				}
+			} else {
+				$this->MotorcycleMake->id = $this->data['id'];
+				$this->MotorcycleMake->delete();
+				echo "<script> alert('Motorcycle Make record has been deleted'); location.reload();</script>";
+				exit;
+			}
+			exit;
+		}
+		exit;
 	}
 }
