@@ -124,11 +124,12 @@ section.motor_container{max-width:90%}
                 </div>
             <?php } ?>
             <div class="videoWrapperNw page_container fullMxWd">
-                <div class="pd_100"></div>
+                
                 <?php if (!empty($products)) {
                     foreach ($products as $product) {
                         $p = 'cdn/' . $product['Library']['full_path'];
                         $cImg = new_show_image($p, 800, 800, 100, 'ff', null); ?>
+                        <div class="pd_100"></div>
                         <div class="row pro_box">
                             <div class="col-md-7"> <img src="<?php echo $cImg; ?>" class="pro_img" alt="" loading="lazy" width="100%" height="auto"> </div>
                             <div class="col-md-5 text-left">
