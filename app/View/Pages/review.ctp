@@ -113,6 +113,7 @@ if (isset($checkOutArr['note'])) {
     }
     .font-italic.mb-4{margin: 1.5rem 0 0 0; }
     h3.card-title { text-align: left;}
+    .text-red, .text-red .text-muted{color: red !important}
     @media (min-width: 992px) and (max-width: 1245px) {
         .fifth-order-review .grid-right-sec {
             display: initial;
@@ -525,11 +526,11 @@ if (isset($checkOutArr['note'])) {
                 <div class="row py-5 p-4 bg-white rounded shadow-sm">
                     <div class="col-lg-6">
                         <div class="form-group"><label for="cmnts" class="font-weight-bold">Comments</label> <textarea class="form-control" id="note" rows="6" name='note' placeholder="If you have any question regarding to the custom value declaration of the goods you've purchased, please contact sales@armytrix.com or leave message in your order message board. Otherwise we will ship the goods value as it is."><?php echo $note; ?></textarea></div>
-                        <div class="form-group <?php if ($a_downpipe > 0 || $a_catback > 0) {
-                                                    echo 'required';
-                                                } ?>"><label for="vin" class="control-label">VIN Number</label> <input type="text" name="vin_number" class="form-control" <?php if ($a_downpipe > 0 || $a_catback > 0) {
-                                                                                                                                                                                echo 'required="required"';
-                                                                                                                                                                            } ?> maxlength="17"></div>
+                        
+                        <?php if ($a_downpipe > 0 || $a_catback > 0) { ?>
+                        <div class="form-group <?php if ($a_downpipe > 0 || $a_catback > 0) { echo 'required'; } ?>"><label for="vin" class="control-label">VIN Number</label> <input type="text" name="vin_number" class="form-control" <?php if ($a_downpipe > 0 || $a_catback > 0) { echo 'required="required"'; } ?> maxlength="17"></div>
+                        <?php }else{ ?> <input type="hidden" name="vin_number" id="vin_number" value=""/> <?php }?>
+
                         <div class="form-group"><label><input type="checkbox" required="required" name="tnc" id='tnc' value="1"> I have read and agree to <a href="<?php echo SITEURL . "terms_and_conditions"; ?>" target="_blank"><b>the Armytrix Online Store Terms & Conditions. </b></a></label></div>
                         <div class="form-group"><label><input type="checkbox" required="required" name="tnc2" id='tnc2' value="1"> I have read and understand the return policy from the Armytrix Online Store Terms & Conditions, I will be refunded in full to my original form of payment, excluding the cost of delivery, cost of returning product(s), and cost of 5% PayPal refund processing fee.</label></div>
                         <div class="form-group"><label><input type="checkbox" required="required" name="tnc3" id='tnc3' value="1"> I have verified that the product(s) selected is comaptible with my car model. I understand and agree that in the event that I wish to cancel my order because the product(s) turned out to be incompatible, there will be a 5% refund charge by PayPal</label></div>
@@ -543,15 +544,11 @@ if (isset($checkOutArr['note'])) {
                             <ul class="list-unstyled mb-4">
                                 <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><span class="price" id="_total_amount"><?php echo currency($total); ?></span></li>
                                 <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Shipping and handling (+)</strong><span class="price" id="_shipping_cost"><?php echo currency($shipping_cost);; ?></span></li>
-                                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Shipping Fee Discount (-)</strong><span class="price" id="_shipping_discount"><?php echo currency($discount); ?></span></li>
-                                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">
-                                        <div class="form-group "><label>Warranty Extension <input type="checkbox" name="warranty_extension_check" id='warranty_extension_check'><i class="fa fa-question-circle" aria-hidden="true" data-toggle="tooltip" title="An additional warranty of one year can be purchased upon selecting this option"></i></label></div>
-                                    </strong><span class="price" id="_warranty"><?php echo currency($warranty_amt); ?></span></li>
-                                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Grand Total</strong>
-                                    <strong>
-                                        <h5 class="font-weight-bold"><span class="price" id="_ngt"><?php echo currency($gt_total); ?></span></h5>
-                                    </strong>
-                                </li>
+                                <li class="d-flex justify-content-between py-3 border-bottom text-red"><strong class="text-muted">Shipping Fee Discount (-)</strong><span class="price" id="_shipping_discount">-<?php echo currency($discount); ?></span></li>
+                                <?php if ($a_downpipe > 0 || $a_catback > 0) { ?>
+                                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted"><div class="form-group "><label>Warranty Extension <input type="checkbox" name="warranty_extension_check" id='warranty_extension_check'><i class="fa fa-question-circle" aria-hidden="true" data-toggle="tooltip" title="An additional warranty of one year can be purchased upon selecting this option"></i></label></div></strong><span class="price" id="_warranty"><?php echo currency($warranty_amt); ?></span></li>
+                                <?php }?>
+                                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Grand Total</strong><strong><h5 class="font-weight-bold"><span class="price" id="_ngt"><?php echo currency($gt_total); ?></span></h5></strong></li>
                             </ul>
 
                             <?php

@@ -19,7 +19,7 @@
 									<div class="col-sm-6"></div>
 									<div class="col-sm-6">
 										<?php 
-										echo $this->Html->link('Export (demo only)',SITEURL.'/doc/motorcycle_shipping.csv',['class'=>'pull-right btn btn-info btn-flat']);
+										echo $this->Html->link('Export (demo only)',SITEURL.'/doc/motorcycle_shipping.csv',['class'=>'pull-right btn btn-info btn-flat','download'=>'download']);
 										echo $this->Html->link('Import', '/lab/labs/import_bike_shipping', ['class' => 'GnResPopAjax pull-right btn btn-info btn-flat mr-20 ']); ?>
 									</div>
 								</div>
