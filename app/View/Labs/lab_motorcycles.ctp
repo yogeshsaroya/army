@@ -14,7 +14,7 @@
 
 </style>
 
-<section class="content-header"><h1>Model List</h1></section>
+<section class="content-header"><h1>Motorcycles List</h1></section>
 <?php echo $this->Session->flash('msg');?>
 <section class="content">
 <div class="box">

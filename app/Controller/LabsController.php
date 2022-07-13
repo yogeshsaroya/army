@@ -4670,8 +4670,7 @@ class LabsController extends AppController
 	{
 		$this->autoRender = false;
 		if (!empty($eid) && !empty($mid) && !empty($bid)) {
-			$i = $this->Motorcycle->find('first', array('conditions' => array('Motorcycle.motorcycle_year_id' => $bid, 'Motorcycle.motorcycle_model_id' => $mid, 'Motorcycle.motorcycle_make_id' => $eid)));
-
+			$i = $this->Motorcycle->find('first', array('conditions' => array('Motorcycle.motorcycle_year_id' => $eid, 'Motorcycle.motorcycle_model_id' => $mid, 'Motorcycle.motorcycle_make_id' => $bid)));
 			if (!empty($i)) {
 				$this->redirect(SITEURL . 'lab/labs/update_motorcycle/' . $i['Motorcycle']['id']);
 			} else {
