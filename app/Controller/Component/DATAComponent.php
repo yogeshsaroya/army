@@ -508,7 +508,7 @@ class DATAComponent extends Component {
 <tr><td><table>'.$tr.'<tr><td></td><td style="border-top: 1px solid #000; padding: 10px 0 0;"><table>
 <tr><td style="padding: 5px; width: 150px">Subtotal (+)</td><td style="text-align: right; color: #00aa00; padding: 5px">USD $'.num_2($data['Order']['total_amount']).'</td></tr>
 <tr><td style="padding: 5px; width: 150px">Shipping Cost (+)</td><td style="text-align: right; color: #00aa00; padding: 5px">USD $'.num_2($data['Order']['shipping_cost']).'</td></tr>
-<tr><td style="padding: 5px; width: 150px">Shipping Fee Discount (-)</td><td style="width: 100px; text-align: right; color: #00aa00; padding: 5px">USD $'.num_2($data['Order']['discount']).'</td></tr>
+<tr><td style="padding: 5px; width: 150px;color: #a94442">Shipping Fee Discount (-)</td><td style="width: 100px; text-align: right; color: #a94442; padding: 5px">USD $'.num_2($data['Order']['discount']).'</td></tr>
 <tr><td style="padding: 5px; width: 150px">Warranty Extension (+)</td><td style="width: 100px; text-align: right; color: #00aa00; padding: 5px">USD $'.num_2($data['Order']['warranty_extension']).'</td></tr>
 <tr><td style="padding: 5px; width: 150px">Grand Total</td><td style="text-align: right; color: #00aa00; padding: 5px">USD $'.num_2($data['Order']['grand_total']).'</td></tr>
 </table></td></tr></table></td></tr><tr><td><a href="'.SITEURL.'contact" style="color: inherit;"><div style="text-align: center; padding-left: 80px; background: url('.SITEURL.'v/em/msg-icon.png) no-repeat left center; max-width: 250px; margin: 15px auto;">
@@ -577,7 +577,7 @@ class DATAComponent extends Component {
 <tr><td><table>'.$tr.'<tr><td></td><td style="border-top: 1px solid #000; padding: 10px 0 0;"><table>
 <tr><td style="padding: 5px; width: 150px">Subtotal (+)</td><td style="text-align: right; color: #00aa00; padding: 5px">USD $'.num_2($data['Order']['total_amount']).'</td></tr>
 <tr><td style="padding: 5px; width: 150px">Shipping Cost (+)</td><td style="text-align: right; color: #00aa00; padding: 5px">USD $'.num_2($data['Order']['shipping_cost']).'</td></tr>
-<tr><td style="padding: 5px; width: 150px">Shipping Fee Discount (-)</td><td style="width: 100px; text-align: right; color: #00aa00; padding: 5px">USD $'.num_2($data['Order']['discount']).'</td></tr>
+<tr><td style="padding: 5px; width: 150px;color: #a94442">Shipping Fee Discount (-)</td><td style="width: 100px; text-align: right; color: #a94442; padding: 5px">USD $'.num_2($data['Order']['discount']).'</td></tr>
 <tr><td style="padding: 5px; width: 150px">Warranty Extension (+)</td><td style="width: 100px; text-align: right; color: #00aa00; padding: 5px">USD $'.num_2($data['Order']['warranty_extension']).'</td></tr>
 <tr><td style="padding: 5px; width: 150px">Grand Total</td><td style="text-align: right; color: #00aa00; padding: 5px">USD $'.num_2($data['Order']['grand_total']).'</td></tr>
 </table></td></tr></table></td></tr><tr><td><a href="'.SITEURL.'contact" style="color: inherit;"><div style="text-align: center; padding-left: 80px; background: url('.SITEURL.'v/em/msg-icon.png) no-repeat left center; max-width: 250px; margin: 15px auto;">
