@@ -90,6 +90,9 @@ section.motor_container{max-width:90%}
 .pd_100, .mx-640{padding:0px}
 
 .pro_img { padding:0; margin: 0; }
+
+.fullWidthImages>img, img { max-width: 75%; }
+
 }
 @media (min-width: 768px) {
 #v2_motor_exh .container{width:750px}
