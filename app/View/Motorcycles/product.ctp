@@ -87,7 +87,7 @@ section.motor_container{max-width:90%}
 .motor_container .sub_head_5{margin:50px 0 10px}
 .pd_100{padding-bottom:40px}
 .pro_img { padding:0; margin: 0; }
-.fullWidthImages>img, img { max-width: 75%; }
+.pro_box img { max-width: 75%; }
 }
 @media (min-width: 768px) {
 #v2_motor_exh .container{width:750px}
