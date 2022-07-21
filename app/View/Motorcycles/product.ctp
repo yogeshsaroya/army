@@ -47,13 +47,13 @@ div#v2_motor_exh .slick-arrow.slick-next{background:url(../v2/img/arrowControls.
 #v2_motor_exh .tabBtn{opacity:0.5;display:inline-block;padding:10px 14px 9px;margin:2px 0;font-size:12px;border-radius:4px;text-transform:uppercase;font-weight:900}
 #v2_motor_exh input[type="button"]{background-color: #44d62c; display:inline-block;margin:0;border-radius:0;border:none;font-size:13px!important;line-height:20px!important;height:40px;color:#fff;padding:0 30px;border-radius:3px;-webkit-appearance:none;text-transform:uppercase;font-weight:900}
 .pd{padding-bottom:20px}
-.pd_100{padding-bottom:10px}
+.pd_100{padding-bottom:40px}
 .pro_box{padding:10px 0}
 .hr_red{padding:20px 0}
 .video-responsive{overflow:hidden;padding-bottom:56.25%;position:relative;height:0}
 .video-responsive iframe{left:0;top:0;height:100%;width:100%;position:absolute}
 .pro_img{padding-right:20px}
-.mx-640{padding:20px 0;max-width:720px;margin:auto}
+.mx-640{padding:40px 0;max-width:720px;margin:auto}
 .fullWidthImages>img,img{width:auto;max-width:100%;height:auto}
 .pro_price{font-weight:900;margin-bottom:5px}
 .pro-details div{font-weight:600}
