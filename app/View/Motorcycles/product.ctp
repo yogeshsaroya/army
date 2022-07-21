@@ -120,7 +120,7 @@ section.motor_container{max-width:90%}
     <?php } ?>
     <section class="motor_container">
         <div class="page_container">
-            <?php if(!empty($slider))  { echo $this->element('v2/product_slider', ['slider' => $slider, 'width' => 720, 'height' => 750]); }?>
+            <?php if(!empty($slider))  { echo $this->element('v2/product_slider', ['slider' => $slider, 'width' => 720, 'height' => 400]); }?>
             <?php if (!empty($Adata['Video'][0])) { ?>
                 <div class="videoWrapperNw page_container fullMxWd" id="pro_1">
                     <?php echo '<div class="video-responsive"><iframe id="home_bg_v" width="100%" height="600" loading="lazy" src="https://www.youtube-nocookie.com/embed/' . $Adata['Video'][0]['video'] . '?controls=1&enablejsapi=1&modestbranding=1&showinfo=0&iv_load_policy=3&html5=1&fs=1&rel=0&hl=en&cc_lang_pref=en&cc_load_policy=1&start=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'; ?>
