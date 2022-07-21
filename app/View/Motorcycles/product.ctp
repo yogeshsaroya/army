@@ -35,7 +35,7 @@ div#v2_motor_exh .slick-arrow.slick-next{background:url(../v2/img/arrowControls.
 .sub_head_3 p{margin-bottom:50px}
 .motor_container p{max-width:70%;display:inline-block}
 #v2_motor_exh h2.head_5{margin-bottom:50px}
-section.motor_container{max-width:80%;display:inline-block}
+
 .fa{font-size:33px}
 .fa_new{font-size:50px;margin:0 10px 5px 5px}
 .ot_head{margin:70px 0 20px}
@@ -44,10 +44,10 @@ section.motor_container{max-width:80%;display:inline-block}
 #v2_motor_exh h1.mt-3.text-center{padding:3rem 20px 0}
 #v2_motor_exh .tabBtn.stainless.steel{background:#ff6624;color:#fff}
 #v2_motor_exh .tabBtn.titanium{background:#0c59cf;color:#fff}
-#v2_motor_exh .tabBtn{display:inline-block;padding:10px 14px 9px;margin:2px 0;font-size:12px;border-radius:4px;text-transform:uppercase;font-weight:900}
-#v2_motor_exh input[type="button"]{display:inline-block;margin:0;border-radius:0;border:none;font-size:13px!important;line-height:20px!important;height:40px;color:#fff;padding:0 30px;border-radius:3px;-webkit-appearance:none;text-transform:uppercase;font-weight:900}
+#v2_motor_exh .tabBtn{opacity:0.5;display:inline-block;padding:10px 14px 9px;margin:2px 0;font-size:12px;border-radius:4px;text-transform:uppercase;font-weight:900}
+#v2_motor_exh input[type="button"]{background-color: #44d62c; display:inline-block;margin:0;border-radius:0;border:none;font-size:13px!important;line-height:20px!important;height:40px;color:#fff;padding:0 30px;border-radius:3px;-webkit-appearance:none;text-transform:uppercase;font-weight:900}
 .pd{padding-bottom:20px}
-.pd_100{padding-bottom:100px}
+.pd_100{padding-bottom:10px}
 .pro_box{padding:10px 0}
 .hr_red{padding:20px 0}
 .video-responsive{overflow:hidden;padding-bottom:56.25%;position:relative;height:0}
@@ -59,6 +59,8 @@ section.motor_container{max-width:80%;display:inline-block}
 .pro-details div{font-weight:600}
 .part_type{margin-bottom:10px}
 .btn.btn-secondary{background-color:#c3c3c3;cursor:not-allowed;color:#000}
+
+section.motor_container{max-width:60%;display:inline-block}
 
 @media (max-width: 1024px) {
 section.motor_container{max-width:80%}
@@ -82,10 +84,11 @@ section.motor_container{max-width:90%}
 .motor_container p{text-align:justify}
 #v2_motor_exh h2{font-size:20px}
 #v2_motor_exh h2.head_3{margin:50px 10px;font-size:12px}
-#v2_main section{padding-bottom:0}
+#v2_main section{padding:0}
 #v2_motor_exh .pad60{margin-top:0}
 .motor_container .sub_head_5{margin:50px 0 10px}
-.pd_100{padding-bottom:40px}
+.pd_100, .mx-640{padding:0px}
+
 .pro_img { padding:0; margin: 0; }
 }
 @media (min-width: 768px) {
@@ -134,7 +137,6 @@ section.motor_container{max-width:90%}
                             <div class="col-md-7"> <img src="<?php echo $cImg; ?>" class="pro_img" alt="" loading="lazy" width="100%" height="auto"> </div>
                             <div class="col-md-5 text-left">
                                 <div class="pro-details vertical-center">
-                                    <h2>ARMYTRIX VALVETRONIC EXHAUST SYSTEM</h2>
                                     <h3><?php echo $product['Product']['title']; ?></h3>
                                     <div class="pd"></div>
 
