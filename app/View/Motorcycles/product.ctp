@@ -56,7 +56,12 @@ div#v2_motor_exh .slick-arrow.slick-next{background:url(../v2/img/arrowControls.
 .mx-640{padding:20px 0;max-width:720px;margin:auto}
 .fullWidthImages>img,img{width:auto;max-width:100%;height:auto}
 .pro_price{font-weight:900;margin-bottom:5px}
-.pro-details div{font-weight:600}
+.pro-details div{
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 1.5;
+
+}
 .part_type{margin-bottom:10px}
 .btn.btn-secondary{background-color:#c3c3c3;cursor:not-allowed;color:#000}
 section.motor_container{max-width:70%;display:inline-block}
@@ -85,9 +90,14 @@ section.motor_container{max-width:90%}
 #v2_main section{padding-bottom:0}
 #v2_motor_exh .pad60{margin-top:0}
 .motor_container .sub_head_5{margin:50px 0 10px}
-.pd_100{padding-bottom:40px}
+.pd_100{padding-bottom:0px}
+hr {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    
+}
 .pro_img { padding:0; margin: 0; }
-.pro_box img { max-width: 75%; }
+.pro_box img { max-width: 60%; }
 }
 @media (min-width: 768px) {
 #v2_motor_exh .container{width:750px}
@@ -135,7 +145,7 @@ section.motor_container{max-width:90%}
                             <div class="col-md-7"> <img src="<?php echo $cImg; ?>" class="pro_img" alt="" loading="lazy" width="100%" height="auto"> </div>
                             <div class="col-md-5 text-left">
                                 <div class="pro-details vertical-center">
-                                    <h3><?php echo $product['Product']['title']; ?></h3>
+                                    <h2><?php echo $product['Product']['title']; ?></h2>
                                     <div class="pd"></div>
 
                                     <div class="part_type"><span class="tabBtn <?php echo strtolower($product['Product']['material']); ?>"><?php echo strtoupper($product['Product']['material']); ?></span> # <?php echo $product['Product']['part']; ?></div>
