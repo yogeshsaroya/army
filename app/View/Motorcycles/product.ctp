@@ -103,6 +103,25 @@ hr {
 #v2_motor_exh .container{width:750px}
 .pro_box img { max-width: 60%; }
 }
+
+@media (max-width: 768px) {
+    .mx-640 {
+        max-width: 100%;
+        width: 100%;
+        padding: 20px 0 40px;
+        margin: auto
+    }
+
+    div#v2_motor_exh .slick-arrow {
+        left: 30px;
+        z-index: 9
+    }
+
+    div#v2_motor_exh .slick-arrow.slick-next {
+        right: 20px
+    }
+}
+
 @media (min-width: 992px) {
 #v2_motor_exh .container{width:970px}
 }
