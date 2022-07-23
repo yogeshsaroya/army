@@ -67,12 +67,12 @@ div#v2_motor_exh .slick-arrow.slick-next{background:url(../v2/img/arrowControls.
 section.motor_container{max-width:70%;display:inline-block}
 
 
-.slick-prev:before
+#v2_motor_exh .slick-prev:before
 {
     content: none;
 }
 
-.slick-next:before
+#v2_motor_exh .slick-next:before
 {
     content: none;
 }
