@@ -101,6 +101,7 @@ hr {
 }
 @media (min-width: 768px) {
 #v2_motor_exh .container{width:750px}
+.pro_box img { max-width: 60%; }
 }
 @media (min-width: 992px) {
 #v2_motor_exh .container{width:970px}
