@@ -108,6 +108,13 @@ hr {
 @media (min-width: 1200px) {
 #v2_motor_exh .container{width:1170px}
 }
+@media (max-width: 580px){
+
+#v2_motor_exh section {
+    padding: 0;
+}
+}
+
 </style>
 <?php $this->end(); ?>
 <div id="v2_motor_exh">
