@@ -113,12 +113,12 @@ hr {
     }
 
     div#v2_motor_exh .slick-arrow {
-        left: 30px;
+        left: 0;
         z-index: 9
     }
 
     div#v2_motor_exh .slick-arrow.slick-next {
-        right: 20px
+        right: 0
     }
 }
 
