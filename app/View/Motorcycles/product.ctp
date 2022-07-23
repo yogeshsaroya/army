@@ -65,6 +65,19 @@ div#v2_motor_exh .slick-arrow.slick-next{background:url(../v2/img/arrowControls.
 .part_type{margin-bottom:10px}
 .btn.btn-secondary{background-color:#c3c3c3;cursor:not-allowed;color:#000}
 section.motor_container{max-width:70%;display:inline-block}
+
+
+.slick-prev:before
+{
+    content: none;
+}
+
+.slick-next:before
+{
+    content: none;
+}
+
+
 @media (max-width: 1024px) {
 section.motor_container{max-width:80%}
 .motor_container p{max-width:80%}
