@@ -47,7 +47,7 @@ div#v2_motor_exh .slick-arrow.slick-next{background:url(../v2/img/arrowControls.
 #v2_motor_exh .tabBtn{opacity:0.5;display:inline-block;padding:10px 14px 9px;margin:2px 0;font-size:12px;border-radius:4px;text-transform:uppercase;font-weight:900}
 #v2_motor_exh input[type="button"]{background-color: #44d62c; display:inline-block;margin:0;border-radius:0;border:none;font-size:13px!important;line-height:20px!important;height:40px;color:#fff;padding:0 30px;border-radius:3px;-webkit-appearance:none;text-transform:uppercase;font-weight:900}
 .pd{padding-bottom:20px}
-.pd_100{padding-bottom:100px}
+.pd_100{padding-bottom:10px}
 .pro_box{padding:10px 0}
 .hr_red{padding:20px 0}
 .video-responsive{overflow:hidden;padding-bottom:56.25%;position:relative;height:0}
